@@ -1,0 +1,2 @@
+C:\Users\טיירי\Documents\תכנות\פרוייקט\C#\projectBSD\ServerMusicBSD\ServerMusicBSD\obj\Debug\ServerMusicBSD.csprojAssemblyReference.cache
+C:\Users\טיירי\Documents\תכנות\פרוייקט\C#\projectBSD\ServerMusicBSD\ServerMusicBSD\obj\Debug\ServerMusicBSD.csproj.CoreCompileInputs.cache
