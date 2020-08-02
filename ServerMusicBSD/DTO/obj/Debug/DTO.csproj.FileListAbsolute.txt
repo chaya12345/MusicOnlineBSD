@@ -1,0 +1,6 @@
+C:\Users\טיירי\Documents\תכנות\פרוייקט\C#\projectBSD\ServerMusicBSD\DTO\bin\Debug\DTO.dll
+C:\Users\טיירי\Documents\תכנות\פרוייקט\C#\projectBSD\ServerMusicBSD\DTO\bin\Debug\DTO.pdb
+C:\Users\טיירי\Documents\תכנות\פרוייקט\C#\projectBSD\ServerMusicBSD\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
+C:\Users\טיירי\Documents\תכנות\פרוייקט\C#\projectBSD\ServerMusicBSD\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\טיירי\Documents\תכנות\פרוייקט\C#\projectBSD\ServerMusicBSD\DTO\obj\Debug\DTO.dll
+C:\Users\טיירי\Documents\תכנות\פרוייקט\C#\projectBSD\ServerMusicBSD\DTO\obj\Debug\DTO.pdb
