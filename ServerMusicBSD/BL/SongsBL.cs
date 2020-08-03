@@ -20,5 +20,9 @@ namespace BL
         {
             return Casts.ToSongsDTO.GetSongs(et.getSongs().ToList());
         }
+        public static List<SongsDTO> GetSongsBySinger(string singerName)
+        {
+            return Casts.ToSongsDTO.GetSongs(et.searchBySinger(singerName).ToList());
+        }
     }
 }
