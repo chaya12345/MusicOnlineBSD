@@ -24,5 +24,32 @@ namespace BL
         {
             return Casts.ToSongsDTO.GetSongs(et.searchBySinger(singerName).ToList());
         }
+        public static List<SongsDTO> GetSongsByAlbum(string albumName)
+        {
+            return Casts.ToSongsDTO.GetSongs(et.searchByAlbum(albumName).ToList());
+        }
+        public static List<SongsDTO> GetSongsByTag(string tagName)
+        {
+            return Casts.ToSongsDTO.GetSongs(et.getByTag(tagName).ToList());
+        }
+        public static List<SongsDTO> GetSongsByTags(string[] tags)
+        {
+            List<SongsDTO> songs = new List<SongsDTO>();
+            foreach (string tag in tags)
+            {
+                songs.AddRange(GetSongsByTag(tag));
+            }
+            return songs;
+        }
+        public static List<SongsDTO> GetSongsByAllTags(string[] tags)
+        {
+            List<SongsDTO> songs = GetSongs();
+            List<SongsDTO> resultSongs = new List<SongsDTO>();
+            foreach (SongsDTO song in songs)
+            {
+                // string tagsToSong = et.getTagsOfSong(song.id).ToString();
+            }
+            return resultSongs;
+        }
     }
 }

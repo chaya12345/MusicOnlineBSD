@@ -403,6 +403,10 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="getTagsOfSong" IsComposable="true" ReturnType="Collection(MusicOnlineModel.getTagsOfSong_Result)">
+      <Parameter Name="songId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getSingers" IsComposable="true" ReturnType="Collection(String)" />
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -414,5 +418,28 @@
     <Property Type="Int32" Name="ID" Nullable="false" />
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="getTagsOfSong_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="C1" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C2" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C3" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C4" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C5" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C6" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C7" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C8" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C9" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C10" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C11" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C12" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C13" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C14" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C15" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C16" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C17" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C18" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C19" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="C20" Nullable="true" MaxLength="50" />
   </ComplexType>
 </Schema>

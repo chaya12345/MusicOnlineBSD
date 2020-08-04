@@ -187,5 +187,21 @@ namespace DAL
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        [DbFunction("MusicOnlineEntities", "getTagsOfSong")]
+        public virtual IQueryable<getTagsOfSong_Result> getTagsOfSong(Nullable<int> songId)
+        {
+            var songIdParameter = songId.HasValue ?
+                new ObjectParameter("songId", songId) :
+                new ObjectParameter("songId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getTagsOfSong_Result>("[MusicOnlineEntities].[getTagsOfSong](@songId)", songIdParameter);
+        }
+    
+        [DbFunction("MusicOnlineEntities", "getSingers")]
+        public virtual IQueryable<string> getSingers()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<string>("[MusicOnlineEntities].[getSingers]()");
+        }
     }
 }

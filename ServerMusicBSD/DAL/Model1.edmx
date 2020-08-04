@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MusicOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MusicOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AlbumsTBL">
           <Key>
             <PropertyRef Name="id" />
@@ -275,6 +275,15 @@
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="getSingers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="name" Type="varchar" MaxLength="50" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="getSongs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <ReturnType>
             <CollectionType>
@@ -290,6 +299,36 @@
                 <Property Name="unliked" Type="int" />
                 <Property Name="tagsId" Type="int" />
                 <Property Name="albumId" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="getTagsOfSong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="songId" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="id" Type="int" Nullable="false" />
+                <Property Name="1" Type="varchar" MaxLength="50" />
+                <Property Name="2" Type="varchar" MaxLength="50" />
+                <Property Name="3" Type="varchar" MaxLength="50" />
+                <Property Name="4" Type="varchar" MaxLength="50" />
+                <Property Name="5" Type="varchar" MaxLength="50" />
+                <Property Name="6" Type="varchar" MaxLength="50" />
+                <Property Name="7" Type="varchar" MaxLength="50" />
+                <Property Name="8" Type="varchar" MaxLength="50" />
+                <Property Name="9" Type="varchar" MaxLength="50" />
+                <Property Name="10" Type="varchar" MaxLength="50" />
+                <Property Name="11" Type="varchar" MaxLength="50" />
+                <Property Name="12" Type="varchar" MaxLength="50" />
+                <Property Name="13" Type="varchar" MaxLength="50" />
+                <Property Name="14" Type="varchar" MaxLength="50" />
+                <Property Name="15" Type="varchar" MaxLength="50" />
+                <Property Name="16" Type="varchar" MaxLength="50" />
+                <Property Name="17" Type="varchar" MaxLength="50" />
+                <Property Name="18" Type="varchar" MaxLength="50" />
+                <Property Name="19" Type="varchar" MaxLength="50" />
+                <Property Name="20" Type="varchar" MaxLength="50" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -413,8 +452,7 @@
             <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MusicOnlineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -779,17 +817,17 @@
             <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
           </AssociationSet>
           <FunctionImport Name="getByTag" IsComposable="true" ReturnType="Collection(MusicOnlineModel.getByTag_Result)">
-            <Parameter Name="tag" Mode="In" Type="String" />
+          <Parameter Name="tag" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="getPlaylists" IsComposable="true" ReturnType="Collection(MusicOnlineModel.getPlaylists_Result)">
-            <Parameter Name="userId" Mode="In" Type="Int32" />
+          <Parameter Name="userId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getSongs" IsComposable="true" ReturnType="Collection(MusicOnlineModel.getSongs_Result)" />
           <FunctionImport Name="searchByAlbum" IsComposable="true" ReturnType="Collection(MusicOnlineModel.searchByAlbum_Result)">
-            <Parameter Name="albumName" Mode="In" Type="String" />
+          <Parameter Name="albumName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="searchBySinger" IsComposable="true" ReturnType="Collection(MusicOnlineModel.searchBySinger_Result)">
-            <Parameter Name="singerName" Mode="In" Type="String" />
+          <Parameter Name="singerName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
@@ -821,6 +859,10 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="getTagsOfSong" IsComposable="true" ReturnType="Collection(MusicOnlineModel.getTagsOfSong_Result)">
+          <Parameter Name="songId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getSingers" IsComposable="true" ReturnType="Collection(String)" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -832,6 +874,29 @@
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="getTagsOfSong_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="C1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C2" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C3" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C4" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C5" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C6" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C7" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C8" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C9" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C10" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C11" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C12" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C13" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C14" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C15" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C16" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C17" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C18" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C19" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="C20" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1080,6 +1145,34 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="MusicOnlineModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="MusicOnlineModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="getTagsOfSong" FunctionName="MusicOnlineModel.Store.getTagsOfSong">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MusicOnlineModel.getTagsOfSong_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="C1" ColumnName="1" />
+                <ScalarProperty Name="C2" ColumnName="2" />
+                <ScalarProperty Name="C3" ColumnName="3" />
+                <ScalarProperty Name="C4" ColumnName="4" />
+                <ScalarProperty Name="C5" ColumnName="5" />
+                <ScalarProperty Name="C6" ColumnName="6" />
+                <ScalarProperty Name="C7" ColumnName="7" />
+                <ScalarProperty Name="C8" ColumnName="8" />
+                <ScalarProperty Name="C9" ColumnName="9" />
+                <ScalarProperty Name="C10" ColumnName="10" />
+                <ScalarProperty Name="C11" ColumnName="11" />
+                <ScalarProperty Name="C12" ColumnName="12" />
+                <ScalarProperty Name="C13" ColumnName="13" />
+                <ScalarProperty Name="C14" ColumnName="14" />
+                <ScalarProperty Name="C15" ColumnName="15" />
+                <ScalarProperty Name="C16" ColumnName="16" />
+                <ScalarProperty Name="C17" ColumnName="17" />
+                <ScalarProperty Name="C18" ColumnName="18" />
+                <ScalarProperty Name="C19" ColumnName="19" />
+                <ScalarProperty Name="C20" ColumnName="20" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getSingers" FunctionName="MusicOnlineModel.Store.getSingers" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1094,7 +1187,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

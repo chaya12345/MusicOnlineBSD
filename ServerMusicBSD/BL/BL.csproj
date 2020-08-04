@@ -50,7 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Casts\ToSingersDTO.cs" />
     <Compile Include="Casts\ToSongsDTO.cs" />
+    <Compile Include="SingersBL.cs" />
     <Compile Include="SongsBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -242,5 +242,33 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="MusicOnlineModel.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="MusicOnlineModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="getTagsOfSong" FunctionName="MusicOnlineModel.Store.getTagsOfSong">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MusicOnlineModel.getTagsOfSong_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="C1" ColumnName="1" />
+          <ScalarProperty Name="C2" ColumnName="2" />
+          <ScalarProperty Name="C3" ColumnName="3" />
+          <ScalarProperty Name="C4" ColumnName="4" />
+          <ScalarProperty Name="C5" ColumnName="5" />
+          <ScalarProperty Name="C6" ColumnName="6" />
+          <ScalarProperty Name="C7" ColumnName="7" />
+          <ScalarProperty Name="C8" ColumnName="8" />
+          <ScalarProperty Name="C9" ColumnName="9" />
+          <ScalarProperty Name="C10" ColumnName="10" />
+          <ScalarProperty Name="C11" ColumnName="11" />
+          <ScalarProperty Name="C12" ColumnName="12" />
+          <ScalarProperty Name="C13" ColumnName="13" />
+          <ScalarProperty Name="C14" ColumnName="14" />
+          <ScalarProperty Name="C15" ColumnName="15" />
+          <ScalarProperty Name="C16" ColumnName="16" />
+          <ScalarProperty Name="C17" ColumnName="17" />
+          <ScalarProperty Name="C18" ColumnName="18" />
+          <ScalarProperty Name="C19" ColumnName="19" />
+          <ScalarProperty Name="C20" ColumnName="20" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getSingers" FunctionName="MusicOnlineModel.Store.getSingers" />
   </EntityContainerMapping>
 </Mapping>
