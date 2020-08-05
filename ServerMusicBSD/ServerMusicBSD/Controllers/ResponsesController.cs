@@ -5,15 +5,15 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using BL;
+using DAL;
 
 namespace ServerMusicBSD.Controllers
 {
     public class ResponsesController : ApiController
     {
-        public void PostResponse(int articleId, string name,
-            string title, string content, DateTime date)
+        public void PostResponse(ResponsesTBL response)
         {
-            ResponsesBL.AddResponse(articleId, name, title, content, date);
+            ResponsesBL.AddResponse(response);
         }
     }
 }

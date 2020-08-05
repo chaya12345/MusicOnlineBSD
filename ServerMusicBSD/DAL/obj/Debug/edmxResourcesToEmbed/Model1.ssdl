@@ -95,26 +95,26 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="1" Type="varchar" MaxLength="50" />
-    <Property Name="2" Type="varchar" MaxLength="50" />
-    <Property Name="3" Type="varchar" MaxLength="50" />
-    <Property Name="4" Type="varchar" MaxLength="50" />
-    <Property Name="5" Type="varchar" MaxLength="50" />
-    <Property Name="6" Type="varchar" MaxLength="50" />
-    <Property Name="7" Type="varchar" MaxLength="50" />
-    <Property Name="8" Type="varchar" MaxLength="50" />
-    <Property Name="9" Type="varchar" MaxLength="50" />
-    <Property Name="10" Type="varchar" MaxLength="50" />
-    <Property Name="11" Type="varchar" MaxLength="50" />
-    <Property Name="12" Type="varchar" MaxLength="50" />
-    <Property Name="13" Type="varchar" MaxLength="50" />
-    <Property Name="14" Type="varchar" MaxLength="50" />
-    <Property Name="15" Type="varchar" MaxLength="50" />
-    <Property Name="16" Type="varchar" MaxLength="50" />
-    <Property Name="17" Type="varchar" MaxLength="50" />
-    <Property Name="18" Type="varchar" MaxLength="50" />
-    <Property Name="19" Type="varchar" MaxLength="50" />
-    <Property Name="20" Type="varchar" MaxLength="50" />
+    <Property Name="Tag1" Type="varchar" MaxLength="50" />
+    <Property Name="Tag2" Type="varchar" MaxLength="50" />
+    <Property Name="Tag3" Type="varchar" MaxLength="50" />
+    <Property Name="Tag4" Type="varchar" MaxLength="50" />
+    <Property Name="Tag5" Type="varchar" MaxLength="50" />
+    <Property Name="Tag6" Type="varchar" MaxLength="50" />
+    <Property Name="Tag7" Type="varchar" MaxLength="50" />
+    <Property Name="Tag8" Type="varchar" MaxLength="50" />
+    <Property Name="Tag9" Type="varchar" MaxLength="50" />
+    <Property Name="Tag10" Type="varchar" MaxLength="50" />
+    <Property Name="Tag11" Type="varchar" MaxLength="50" />
+    <Property Name="Tag12" Type="varchar" MaxLength="50" />
+    <Property Name="Tag13" Type="varchar" MaxLength="50" />
+    <Property Name="Tag14" Type="varchar" MaxLength="50" />
+    <Property Name="Tag15" Type="varchar" MaxLength="50" />
+    <Property Name="Tag16" Type="varchar" MaxLength="50" />
+    <Property Name="Tag17" Type="varchar" MaxLength="50" />
+    <Property Name="Tag18" Type="varchar" MaxLength="50" />
+    <Property Name="Tag19" Type="varchar" MaxLength="50" />
+    <Property Name="Tag20" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="UsersTBL">
     <Key>

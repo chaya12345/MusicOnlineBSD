@@ -11,10 +11,11 @@ namespace BL
     public class ResponsesBL
     {
         static MusicOnlineEntities et = new MusicOnlineEntities();
-        public static void AddResponse([FromBody] int articleId, string name,
-            string title, string content, DateTime date)
+        public static void AddResponse([FromBody]ResponsesTBL response)
         {
-            et.addResponse(articleId, name, title, content, date);
+            //et.addResponse(articleId, name, title, content, date);
+            et.ResponsesTBL.Add(response);
+            et.SaveChanges();
         }
     }
 }

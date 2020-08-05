@@ -103,27 +103,27 @@
     <EntitySetMapping Name="TagsTBL">
       <EntityTypeMapping TypeName="MusicOnlineModel.TagsTBL">
         <MappingFragment StoreEntitySet="TagsTBL">
+          <ScalarProperty Name="Tag20" ColumnName="Tag20" />
+          <ScalarProperty Name="Tag19" ColumnName="Tag19" />
+          <ScalarProperty Name="Tag18" ColumnName="Tag18" />
+          <ScalarProperty Name="Tag17" ColumnName="Tag17" />
+          <ScalarProperty Name="Tag16" ColumnName="Tag16" />
+          <ScalarProperty Name="Tag15" ColumnName="Tag15" />
+          <ScalarProperty Name="Tag14" ColumnName="Tag14" />
+          <ScalarProperty Name="Tag13" ColumnName="Tag13" />
+          <ScalarProperty Name="Tag12" ColumnName="Tag12" />
+          <ScalarProperty Name="Tag11" ColumnName="Tag11" />
+          <ScalarProperty Name="Tag10" ColumnName="Tag10" />
+          <ScalarProperty Name="Tag9" ColumnName="Tag9" />
+          <ScalarProperty Name="Tag8" ColumnName="Tag8" />
+          <ScalarProperty Name="Tag7" ColumnName="Tag7" />
+          <ScalarProperty Name="Tag6" ColumnName="Tag6" />
+          <ScalarProperty Name="Tag5" ColumnName="Tag5" />
+          <ScalarProperty Name="Tag4" ColumnName="Tag4" />
+          <ScalarProperty Name="Tag3" ColumnName="Tag3" />
+          <ScalarProperty Name="Tag2" ColumnName="Tag2" />
+          <ScalarProperty Name="Tag1" ColumnName="Tag1" />
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="C1" ColumnName="1" />
-          <ScalarProperty Name="C2" ColumnName="2" />
-          <ScalarProperty Name="C3" ColumnName="3" />
-          <ScalarProperty Name="C4" ColumnName="4" />
-          <ScalarProperty Name="C5" ColumnName="5" />
-          <ScalarProperty Name="C6" ColumnName="6" />
-          <ScalarProperty Name="C7" ColumnName="7" />
-          <ScalarProperty Name="C8" ColumnName="8" />
-          <ScalarProperty Name="C9" ColumnName="9" />
-          <ScalarProperty Name="C10" ColumnName="10" />
-          <ScalarProperty Name="C11" ColumnName="11" />
-          <ScalarProperty Name="C12" ColumnName="12" />
-          <ScalarProperty Name="C13" ColumnName="13" />
-          <ScalarProperty Name="C14" ColumnName="14" />
-          <ScalarProperty Name="C15" ColumnName="15" />
-          <ScalarProperty Name="C16" ColumnName="16" />
-          <ScalarProperty Name="C17" ColumnName="17" />
-          <ScalarProperty Name="C18" ColumnName="18" />
-          <ScalarProperty Name="C19" ColumnName="19" />
-          <ScalarProperty Name="C20" ColumnName="20" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
