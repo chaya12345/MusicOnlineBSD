@@ -27,3 +27,7 @@ C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\obj\Debug\BL.csprojAsse
 C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\obj\Debug\BL.csproj.CopyComplete
 C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\obj\Debug\BL.dll
 C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\obj\Debug\BL.pdb
+C:\Users\טיירי\Documents\תכנות\פרוייקט\C#\projectBSD\ServerMusicBSD\BL\bin\Debug\System.Net.Http.Formatting.dll
+C:\Users\טיירי\Documents\תכנות\פרוייקט\C#\projectBSD\ServerMusicBSD\BL\bin\Debug\System.Web.Http.dll
+C:\Users\טיירי\Documents\תכנות\פרוייקט\C#\projectBSD\ServerMusicBSD\BL\bin\Debug\System.Net.Http.Formatting.xml
+C:\Users\טיירי\Documents\תכנות\פרוייקט\C#\projectBSD\ServerMusicBSD\BL\bin\Debug\System.Web.Http.xml

@@ -22,26 +22,26 @@ namespace DAL
         }
     
         public int id { get; set; }
-        public string C1 { get; set; }
-        public string C2 { get; set; }
-        public string C3 { get; set; }
-        public string C4 { get; set; }
-        public string C5 { get; set; }
-        public string C6 { get; set; }
-        public string C7 { get; set; }
-        public string C8 { get; set; }
-        public string C9 { get; set; }
-        public string C10 { get; set; }
-        public string C11 { get; set; }
-        public string C12 { get; set; }
-        public string C13 { get; set; }
-        public string C14 { get; set; }
-        public string C15 { get; set; }
-        public string C16 { get; set; }
-        public string C17 { get; set; }
-        public string C18 { get; set; }
-        public string C19 { get; set; }
-        public string C20 { get; set; }
+        public string Tag1 { get; set; }
+        public string Tag2 { get; set; }
+        public string Tag3 { get; set; }
+        public string Tag4 { get; set; }
+        public string Tag5 { get; set; }
+        public string Tag6 { get; set; }
+        public string Tag7 { get; set; }
+        public string Tag8 { get; set; }
+        public string Tag9 { get; set; }
+        public string Tag10 { get; set; }
+        public string Tag11 { get; set; }
+        public string Tag12 { get; set; }
+        public string Tag13 { get; set; }
+        public string Tag14 { get; set; }
+        public string Tag15 { get; set; }
+        public string Tag16 { get; set; }
+        public string Tag17 { get; set; }
+        public string Tag18 { get; set; }
+        public string Tag19 { get; set; }
+        public string Tag20 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ArticlesBTL> ArticlesBTL { get; set; }

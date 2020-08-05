@@ -13,8 +13,14 @@ using Newtonsoft.Json;
 
 namespace BL
 {
+
+    public class TagsResponse
+    {
+        public List<string> tags;
+    }
     public class SongsBL
     {
+
         static MusicOnlineEntities et = new MusicOnlineEntities();
         public static List<SongsDTO> GetSongs()
         {
@@ -41,23 +47,25 @@ namespace BL
             }
             return songs;
         }
-        public static List<SongsDTO> GetSongsByAllTags(string tags)
+        public static List<SongsDTO> GetSongsByAllTags(List<string> tags)
         {
             List<SongsDTO> songs = GetSongs();
             List<SongsDTO> resultSongs = new List<SongsDTO>();
+
             foreach (SongsDTO song in songs)
             {
-                string tagsToSong = et.getTagsOfSong(song.id).ToString();
-                bool contain = true;
-                if (!tagsToSong.Contains(tags))
-                    contain = false;
-                //foreach (string tag in tags)
-                //{
-                //    if (!tagsToSong.Contains(tag))
-                //        contain = false;
-                //}
-                if (contain)
-                    resultSongs.Add(song);
+                List<List<string>> list;
+                var tagsToSong = et.getTagsOfSong(song.id);
+                if (song.tagsId != null)
+                    list = tagsToSong.Select(t => new List<string>() { t.Tag1, t.Tag2, t.Tag3 }).ToList();
+                //    bool contain = true;
+                //    foreach (string tag in tags)
+                //    {
+                //        if (!tagsToSong.Contains(tag))
+                //            contain = false;
+                //    }
+                //    if (contain)
+                //        resultSongs.Add(song);
             }
             return resultSongs;
         }
