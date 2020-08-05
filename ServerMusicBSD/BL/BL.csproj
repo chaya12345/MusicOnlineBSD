@@ -52,7 +52,6 @@
   <ItemGroup>
     <Compile Include="Casts\ToSingersDTO.cs" />
     <Compile Include="Casts\ToSongsDTO.cs" />
-    <Compile Include="Casts\ToUsersTDO.cs" />
     <Compile Include="SingersBL.cs" />
     <Compile Include="SongsBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
