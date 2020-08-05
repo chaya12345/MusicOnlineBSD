@@ -14,3 +14,16 @@ C:\Users\טיירי\Documents\תכנות\פרוייקט\C#\projectBSD\ServerMusi
 C:\Users\טיירי\Documents\תכנות\פרוייקט\C#\projectBSD\ServerMusicBSD\BL\obj\Debug\BL.pdb
 C:\Users\טיירי\Documents\תכנות\פרוייקט\C#\projectBSD\ServerMusicBSD\BL\bin\Debug\Newtonsoft.Json.dll
 C:\Users\טיירי\Documents\תכנות\פרוייקט\C#\projectBSD\ServerMusicBSD\BL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\bin\Debug\BL.dll
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\bin\Debug\BL.pdb
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\bin\Debug\DAL.dll
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\bin\Debug\DTO.dll
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\bin\Debug\DAL.pdb
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\bin\Debug\DAL.dll.config
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\bin\Debug\DTO.pdb
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\obj\Debug\BL.csprojAssemblyReference.cache
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\obj\Debug\BL.csproj.CopyComplete
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\obj\Debug\BL.dll
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\obj\Debug\BL.pdb
