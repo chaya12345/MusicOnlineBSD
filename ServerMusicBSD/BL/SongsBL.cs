@@ -41,15 +41,26 @@ namespace BL
             }
             return songs;
         }
-        public static List<SongsDTO> GetSongsByAllTags(string[] tags)
+        public static List<SongsDTO> GetSongsByAllTags(string tags)
         {
             List<SongsDTO> songs = GetSongs();
             List<SongsDTO> resultSongs = new List<SongsDTO>();
             foreach (SongsDTO song in songs)
             {
-                // string tagsToSong = et.getTagsOfSong(song.id).ToString();
+                string tagsToSong = et.getTagsOfSong(song.id).ToString();
+                bool contain = true;
+                if (!tagsToSong.Contains(tags))
+                    contain = false;
+                //foreach (string tag in tags)
+                //{
+                //    if (!tagsToSong.Contains(tag))
+                //        contain = false;
+                //}
+                if (contain)
+                    resultSongs.Add(song);
             }
             return resultSongs;
         }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,9 +18,8 @@ namespace BL
         }
         public static void AddSinger(string name)
         {
-            SingersTBL newSinger = new SingersTBL();
-            newSinger.name = name;
-            et.SingersTBL.Add(newSinger);
+            et.addSinger(name);
+            et.SaveChanges();
         }
     }
 }

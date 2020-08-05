@@ -270,5 +270,7 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="getSingers" FunctionName="MusicOnlineModel.Store.getSingers" />
+    <FunctionImportMapping FunctionImportName="addSinger" FunctionName="MusicOnlineModel.Store.addSinger" />
+    <FunctionImportMapping FunctionImportName="addResponse" FunctionName="MusicOnlineModel.Store.addResponse" />
   </EntityContainerMapping>
 </Mapping>

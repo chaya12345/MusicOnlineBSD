@@ -203,5 +203,39 @@ namespace DAL
         {
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<string>("[MusicOnlineEntities].[getSingers]()");
         }
+    
+        public virtual int addSinger(string name)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addSinger", nameParameter);
+        }
+    
+        public virtual int addResponse(Nullable<int> articleId, string name, string title, string content, Nullable<System.DateTime> date)
+        {
+            var articleIdParameter = articleId.HasValue ?
+                new ObjectParameter("articleId", articleId) :
+                new ObjectParameter("articleId", typeof(int));
+    
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            var titleParameter = title != null ?
+                new ObjectParameter("title", title) :
+                new ObjectParameter("title", typeof(string));
+    
+            var contentParameter = content != null ?
+                new ObjectParameter("content", content) :
+                new ObjectParameter("content", typeof(string));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addResponse", articleIdParameter, nameParameter, titleParameter, contentParameter, dateParameter);
+        }
     }
 }

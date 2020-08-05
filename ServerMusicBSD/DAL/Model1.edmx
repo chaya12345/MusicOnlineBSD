@@ -242,6 +242,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="addResponse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="articleId" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="title" Type="varchar" Mode="In" />
+          <Parameter Name="content" Type="varchar(max)" Mode="In" />
+          <Parameter Name="date" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="addSinger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="getByTag" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tag" Type="varchar" Mode="In" />
@@ -863,6 +873,16 @@
           <Parameter Name="songId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getSingers" IsComposable="true" ReturnType="Collection(String)" />
+          <FunctionImport Name="addSinger">
+          <Parameter Name="name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="addResponse">
+            <Parameter Name="articleId" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="title" Mode="In" Type="String" />
+            <Parameter Name="content" Mode="In" Type="String" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1173,6 +1193,8 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="getSingers" FunctionName="MusicOnlineModel.Store.getSingers" />
+          <FunctionImportMapping FunctionImportName="addSinger" FunctionName="MusicOnlineModel.Store.addSinger" />
+          <FunctionImportMapping FunctionImportName="addResponse" FunctionName="MusicOnlineModel.Store.addResponse" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

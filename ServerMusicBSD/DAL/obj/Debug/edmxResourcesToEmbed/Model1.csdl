@@ -407,6 +407,16 @@
       <Parameter Name="songId" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="getSingers" IsComposable="true" ReturnType="Collection(String)" />
+    <FunctionImport Name="addSinger">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="addResponse">
+      <Parameter Name="articleId" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="content" Mode="In" Type="String" />
+      <Parameter Name="date" Mode="In" Type="DateTime" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />

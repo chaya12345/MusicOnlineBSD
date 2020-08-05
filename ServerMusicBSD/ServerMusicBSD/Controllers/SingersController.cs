@@ -11,11 +11,11 @@ namespace ServerMusicBSD.Controllers
 {
     public class SingersController : ApiController
     {
-        public static List<string> GetSingers()
+        public List<string> GetSingers()
         {
             return SingersBL.GetSingers();
         }
-        public static void PostSinger([FromBody] string name)
+        public void PostSinger(string name)
         {
             SingersBL.AddSinger(name);
         }

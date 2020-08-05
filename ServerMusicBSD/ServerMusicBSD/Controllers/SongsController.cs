@@ -34,10 +34,13 @@ namespace ServerMusicBSD.Controllers
         {
             return SongsBL.GetSongsByTags(tags);
         }
-        //public List<SongsDTO> GetSongsByAllTags(string[] tags)
-        //{
-
-        //}
-
+        public List<SongsDTO> PostSongsByAllTags(/*[FromBody]*/ string tags)
+        {
+            return SongsBL.GetSongsByAllTags(tags);
+        }
+        public List<string> GetSingers()
+        {
+            return SingersBL.GetSingers();
+        }
     }
 }
