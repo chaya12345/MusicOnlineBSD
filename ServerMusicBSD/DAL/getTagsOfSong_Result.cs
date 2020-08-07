@@ -14,25 +14,25 @@ namespace DAL
     public partial class getTagsOfSong_Result
     {
         public int id { get; set; }
-        public string C1 { get; set; }
-        public string C2 { get; set; }
-        public string C3 { get; set; }
-        public string C4 { get; set; }
-        public string C5 { get; set; }
-        public string C6 { get; set; }
-        public string C7 { get; set; }
-        public string C8 { get; set; }
-        public string C9 { get; set; }
-        public string C10 { get; set; }
-        public string C11 { get; set; }
-        public string C12 { get; set; }
-        public string C13 { get; set; }
-        public string C14 { get; set; }
-        public string C15 { get; set; }
-        public string C16 { get; set; }
-        public string C17 { get; set; }
-        public string C18 { get; set; }
-        public string C19 { get; set; }
-        public string C20 { get; set; }
+        public string tag1 { get; set; }
+        public string tag2 { get; set; }
+        public string tag3 { get; set; }
+        public string tag4 { get; set; }
+        public string tag5 { get; set; }
+        public string tag6 { get; set; }
+        public string tag7 { get; set; }
+        public string tag8 { get; set; }
+        public string tag9 { get; set; }
+        public string tag10 { get; set; }
+        public string tag11 { get; set; }
+        public string tag12 { get; set; }
+        public string tag13 { get; set; }
+        public string tag14 { get; set; }
+        public string tag15 { get; set; }
+        public string tag16 { get; set; }
+        public string tag17 { get; set; }
+        public string tag18 { get; set; }
+        public string tag19 { get; set; }
+        public string tag20 { get; set; }
     }
 }

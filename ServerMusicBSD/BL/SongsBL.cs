@@ -57,7 +57,7 @@ namespace BL
                 List<List<string>> list;
                 var tagsToSong = et.getTagsOfSong(song.id);
                 if (song.tagsId != null)
-                    list = tagsToSong.Select(t => new List<string>() { t.Tag1, t.Tag2, t.Tag3 }).ToList();
+                    list = tagsToSong.Select(t => new List<string>() { t.tag1, t.tag2, t.tag3 }).ToList();
                 //    bool contain = true;
                 //    foreach (string tag in tags)
                 //    {
