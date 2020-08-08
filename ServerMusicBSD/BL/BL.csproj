@@ -58,10 +58,14 @@
   <ItemGroup>
     <Compile Include="Casts\ToSingersDTO.cs" />
     <Compile Include="Casts\ToSongsDTO.cs" />
+    <Compile Include="Casts\ToUsersDTO.cs" />
+    <Compile Include="PlaylistBL.cs" />
     <Compile Include="ResponsesBL.cs" />
     <Compile Include="SingersBL.cs" />
     <Compile Include="SongsBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SongsToPlaylistsBL.cs" />
+    <Compile Include="UsersBL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

@@ -38,9 +38,5 @@ namespace ServerMusicBSD.Controllers
         {
             return SongsBL.GetSongsByAllTags(tagsResponse.tags);
         }
-        public List<string> GetSingers()
-        {
-            return SingersBL.GetSingers();
-        }
     }
 }

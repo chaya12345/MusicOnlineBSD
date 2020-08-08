@@ -11,7 +11,7 @@ namespace ServerMusicBSD.Controllers
 {
     public class ResponsesController : ApiController
     {
-        public void PostResponse(ResponsesTBL response)
+        public void PostResponse(ResponsesTBL response)//תגובות
         {
             ResponsesBL.AddResponse(response);
         }

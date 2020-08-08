@@ -13,7 +13,6 @@ namespace BL
         static MusicOnlineEntities et = new MusicOnlineEntities();
         public static void AddResponse([FromBody]ResponsesTBL response)
         {
-            //et.addResponse(articleId, name, title, content, date);
             et.ResponsesTBL.Add(response);
             et.SaveChanges();
         }
