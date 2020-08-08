@@ -89,40 +89,29 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="MusicOnlineModel.sysdiagrams">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="TagsTBL">
       <EntityTypeMapping TypeName="MusicOnlineModel.TagsTBL">
         <MappingFragment StoreEntitySet="TagsTBL">
-          <ScalarProperty Name="Tag20" ColumnName="Tag20" />
-          <ScalarProperty Name="Tag19" ColumnName="Tag19" />
-          <ScalarProperty Name="Tag18" ColumnName="Tag18" />
-          <ScalarProperty Name="Tag17" ColumnName="Tag17" />
-          <ScalarProperty Name="Tag16" ColumnName="Tag16" />
-          <ScalarProperty Name="Tag15" ColumnName="Tag15" />
-          <ScalarProperty Name="Tag14" ColumnName="Tag14" />
-          <ScalarProperty Name="Tag13" ColumnName="Tag13" />
-          <ScalarProperty Name="Tag12" ColumnName="Tag12" />
-          <ScalarProperty Name="Tag11" ColumnName="Tag11" />
-          <ScalarProperty Name="Tag10" ColumnName="Tag10" />
-          <ScalarProperty Name="Tag9" ColumnName="Tag9" />
-          <ScalarProperty Name="Tag8" ColumnName="Tag8" />
-          <ScalarProperty Name="Tag7" ColumnName="Tag7" />
-          <ScalarProperty Name="Tag6" ColumnName="Tag6" />
-          <ScalarProperty Name="Tag5" ColumnName="Tag5" />
-          <ScalarProperty Name="Tag4" ColumnName="Tag4" />
-          <ScalarProperty Name="Tag3" ColumnName="Tag3" />
-          <ScalarProperty Name="Tag2" ColumnName="Tag2" />
-          <ScalarProperty Name="Tag1" ColumnName="Tag1" />
+          <ScalarProperty Name="tag20" ColumnName="tag20" />
+          <ScalarProperty Name="tag19" ColumnName="tag19" />
+          <ScalarProperty Name="tag18" ColumnName="tag18" />
+          <ScalarProperty Name="tag17" ColumnName="tag17" />
+          <ScalarProperty Name="tag16" ColumnName="tag16" />
+          <ScalarProperty Name="tag15" ColumnName="tag15" />
+          <ScalarProperty Name="tag14" ColumnName="tag14" />
+          <ScalarProperty Name="tag13" ColumnName="tag13" />
+          <ScalarProperty Name="tag12" ColumnName="tag12" />
+          <ScalarProperty Name="tag11" ColumnName="tag11" />
+          <ScalarProperty Name="tag10" ColumnName="tag10" />
+          <ScalarProperty Name="tag9" ColumnName="tag9" />
+          <ScalarProperty Name="tag8" ColumnName="tag8" />
+          <ScalarProperty Name="tag7" ColumnName="tag7" />
+          <ScalarProperty Name="tag6" ColumnName="tag6" />
+          <ScalarProperty Name="tag5" ColumnName="tag5" />
+          <ScalarProperty Name="tag4" ColumnName="tag4" />
+          <ScalarProperty Name="tag3" ColumnName="tag3" />
+          <ScalarProperty Name="tag2" ColumnName="tag2" />
+          <ScalarProperty Name="tag1" ColumnName="tag1" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -218,59 +207,5 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="MusicOnlineModel.Store.sp_alterdiagram" />
-    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="MusicOnlineModel.Store.sp_creatediagram" />
-    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="MusicOnlineModel.Store.sp_dropdiagram" />
-    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="MusicOnlineModel.Store.sp_helpdiagramdefinition">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MusicOnlineModel.sp_helpdiagramdefinition_Result">
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="definition" ColumnName="definition" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="MusicOnlineModel.Store.sp_helpdiagrams">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MusicOnlineModel.sp_helpdiagrams_Result">
-          <ScalarProperty Name="Database" ColumnName="Database" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Owner" ColumnName="Owner" />
-          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="MusicOnlineModel.Store.sp_renamediagram" />
-    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="MusicOnlineModel.Store.sp_upgraddiagrams" />
-    <FunctionImportMapping FunctionImportName="getTagsOfSong" FunctionName="MusicOnlineModel.Store.getTagsOfSong">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MusicOnlineModel.getTagsOfSong_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="C1" ColumnName="1" />
-          <ScalarProperty Name="C2" ColumnName="2" />
-          <ScalarProperty Name="C3" ColumnName="3" />
-          <ScalarProperty Name="C4" ColumnName="4" />
-          <ScalarProperty Name="C5" ColumnName="5" />
-          <ScalarProperty Name="C6" ColumnName="6" />
-          <ScalarProperty Name="C7" ColumnName="7" />
-          <ScalarProperty Name="C8" ColumnName="8" />
-          <ScalarProperty Name="C9" ColumnName="9" />
-          <ScalarProperty Name="C10" ColumnName="10" />
-          <ScalarProperty Name="C11" ColumnName="11" />
-          <ScalarProperty Name="C12" ColumnName="12" />
-          <ScalarProperty Name="C13" ColumnName="13" />
-          <ScalarProperty Name="C14" ColumnName="14" />
-          <ScalarProperty Name="C15" ColumnName="15" />
-          <ScalarProperty Name="C16" ColumnName="16" />
-          <ScalarProperty Name="C17" ColumnName="17" />
-          <ScalarProperty Name="C18" ColumnName="18" />
-          <ScalarProperty Name="C19" ColumnName="19" />
-          <ScalarProperty Name="C20" ColumnName="20" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="getSingers" FunctionName="MusicOnlineModel.Store.getSingers" />
-    <FunctionImportMapping FunctionImportName="addSinger" FunctionName="MusicOnlineModel.Store.addSinger" />
-    <FunctionImportMapping FunctionImportName="addResponse" FunctionName="MusicOnlineModel.Store.addResponse" />
   </EntityContainerMapping>
 </Mapping>

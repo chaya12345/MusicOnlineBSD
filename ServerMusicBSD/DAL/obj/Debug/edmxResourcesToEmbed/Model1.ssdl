@@ -80,41 +80,31 @@
     <Property Name="playlistId" Type="int" />
     <Property Name="songId" Type="int" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="TagsTBL">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Tag1" Type="varchar" MaxLength="50" />
-    <Property Name="Tag2" Type="varchar" MaxLength="50" />
-    <Property Name="Tag3" Type="varchar" MaxLength="50" />
-    <Property Name="Tag4" Type="varchar" MaxLength="50" />
-    <Property Name="Tag5" Type="varchar" MaxLength="50" />
-    <Property Name="Tag6" Type="varchar" MaxLength="50" />
-    <Property Name="Tag7" Type="varchar" MaxLength="50" />
-    <Property Name="Tag8" Type="varchar" MaxLength="50" />
-    <Property Name="Tag9" Type="varchar" MaxLength="50" />
-    <Property Name="Tag10" Type="varchar" MaxLength="50" />
-    <Property Name="Tag11" Type="varchar" MaxLength="50" />
-    <Property Name="Tag12" Type="varchar" MaxLength="50" />
-    <Property Name="Tag13" Type="varchar" MaxLength="50" />
-    <Property Name="Tag14" Type="varchar" MaxLength="50" />
-    <Property Name="Tag15" Type="varchar" MaxLength="50" />
-    <Property Name="Tag16" Type="varchar" MaxLength="50" />
-    <Property Name="Tag17" Type="varchar" MaxLength="50" />
-    <Property Name="Tag18" Type="varchar" MaxLength="50" />
-    <Property Name="Tag19" Type="varchar" MaxLength="50" />
-    <Property Name="Tag20" Type="varchar" MaxLength="50" />
+    <Property Name="tag1" Type="varchar" MaxLength="50" />
+    <Property Name="tag2" Type="varchar" MaxLength="50" />
+    <Property Name="tag3" Type="varchar" MaxLength="50" />
+    <Property Name="tag4" Type="varchar" MaxLength="50" />
+    <Property Name="tag5" Type="varchar" MaxLength="50" />
+    <Property Name="tag6" Type="varchar" MaxLength="50" />
+    <Property Name="tag7" Type="varchar" MaxLength="50" />
+    <Property Name="tag8" Type="varchar" MaxLength="50" />
+    <Property Name="tag9" Type="varchar" MaxLength="50" />
+    <Property Name="tag10" Type="varchar" MaxLength="50" />
+    <Property Name="tag11" Type="varchar" MaxLength="50" />
+    <Property Name="tag12" Type="varchar" MaxLength="50" />
+    <Property Name="tag13" Type="varchar" MaxLength="50" />
+    <Property Name="tag14" Type="varchar" MaxLength="50" />
+    <Property Name="tag15" Type="varchar" MaxLength="50" />
+    <Property Name="tag16" Type="varchar" MaxLength="50" />
+    <Property Name="tag17" Type="varchar" MaxLength="50" />
+    <Property Name="tag18" Type="varchar" MaxLength="50" />
+    <Property Name="tag19" Type="varchar" MaxLength="50" />
+    <Property Name="tag20" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="UsersTBL">
     <Key>
@@ -177,7 +167,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SongsTBL_albumsTBL">
+  <Association Name="FK_SongsTBL_AlbumsTBL">
     <End Role="AlbumsTBL" Type="Self.AlbumsTBL" Multiplicity="0..1" />
     <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="*" />
     <ReferentialConstraint>
@@ -237,17 +227,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="addResponse" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="articleId" Type="int" Mode="In" />
-    <Parameter Name="name" Type="varchar" Mode="In" />
-    <Parameter Name="title" Type="varchar" Mode="In" />
-    <Parameter Name="content" Type="varchar(max)" Mode="In" />
-    <Parameter Name="date" Type="datetime" Mode="In" />
-  </Function>
-  <Function Name="addSinger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="name" Type="varchar" Mode="In" />
-  </Function>
-  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
   <Function Name="getByTag" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="tag" Type="varchar" Mode="In" />
     <ReturnType>
@@ -280,15 +259,6 @@
       </CollectionType>
     </ReturnType>
   </Function>
-  <Function Name="getSingers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <ReturnType>
-      <CollectionType>
-        <RowType>
-          <Property Name="name" Type="varchar" MaxLength="50" />
-        </RowType>
-      </CollectionType>
-    </ReturnType>
-  </Function>
   <Function Name="getSongs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <ReturnType>
       <CollectionType>
@@ -304,36 +274,6 @@
           <Property Name="unliked" Type="int" />
           <Property Name="tagsId" Type="int" />
           <Property Name="albumId" Type="int" />
-        </RowType>
-      </CollectionType>
-    </ReturnType>
-  </Function>
-  <Function Name="getTagsOfSong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="songId" Type="int" Mode="In" />
-    <ReturnType>
-      <CollectionType>
-        <RowType>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="1" Type="varchar" MaxLength="50" />
-          <Property Name="2" Type="varchar" MaxLength="50" />
-          <Property Name="3" Type="varchar" MaxLength="50" />
-          <Property Name="4" Type="varchar" MaxLength="50" />
-          <Property Name="5" Type="varchar" MaxLength="50" />
-          <Property Name="6" Type="varchar" MaxLength="50" />
-          <Property Name="7" Type="varchar" MaxLength="50" />
-          <Property Name="8" Type="varchar" MaxLength="50" />
-          <Property Name="9" Type="varchar" MaxLength="50" />
-          <Property Name="10" Type="varchar" MaxLength="50" />
-          <Property Name="11" Type="varchar" MaxLength="50" />
-          <Property Name="12" Type="varchar" MaxLength="50" />
-          <Property Name="13" Type="varchar" MaxLength="50" />
-          <Property Name="14" Type="varchar" MaxLength="50" />
-          <Property Name="15" Type="varchar" MaxLength="50" />
-          <Property Name="16" Type="varchar" MaxLength="50" />
-          <Property Name="17" Type="varchar" MaxLength="50" />
-          <Property Name="18" Type="varchar" MaxLength="50" />
-          <Property Name="19" Type="varchar" MaxLength="50" />
-          <Property Name="20" Type="varchar" MaxLength="50" />
         </RowType>
       </CollectionType>
     </ReturnType>
@@ -378,36 +318,6 @@
       </CollectionType>
     </ReturnType>
   </Function>
-  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="version" Type="int" Mode="In" />
-    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-  </Function>
-  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="version" Type="int" Mode="In" />
-    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-  </Function>
-  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="MusicOnlineModelStoreContainer">
     <EntitySet Name="AlbumsTBL" EntityType="Self.AlbumsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ArticlesBTL" EntityType="Self.ArticlesBTL" Schema="dbo" store:Type="Tables" />
@@ -417,7 +327,6 @@
     <EntitySet Name="SingersTBL" EntityType="Self.SingersTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SongsTBL" EntityType="Self.SongsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsTBL" EntityType="Self.TagsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_ArticlesBTL_TagsTBL" Association="Self.FK_ArticlesBTL_TagsTBL">
@@ -436,7 +345,7 @@
       <End Role="ArticlesBTL" EntitySet="ArticlesBTL" />
       <End Role="ResponsesTBL" EntitySet="ResponsesTBL" />
     </AssociationSet>
-    <AssociationSet Name="FK_SongsTBL_albumsTBL" Association="Self.FK_SongsTBL_albumsTBL">
+    <AssociationSet Name="FK_SongsTBL_AlbumsTBL" Association="Self.FK_SongsTBL_AlbumsTBL">
       <End Role="AlbumsTBL" EntitySet="AlbumsTBL" />
       <End Role="SongsTBL" EntitySet="SongsTBL" />
     </AssociationSet>

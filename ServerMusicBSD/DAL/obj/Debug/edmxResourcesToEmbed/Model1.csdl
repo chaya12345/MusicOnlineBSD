@@ -169,26 +169,26 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="ArticlesBTL" Relationship="Self.FK_ArticlesBTL_TagsTBL" FromRole="TagsTBL" ToRole="ArticlesBTL" />
     <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsTBL_TagsTBL" FromRole="TagsTBL" ToRole="SongsTBL" />
-    <Property Name="Tag1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Tag2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Tag3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Tag4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Tag5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Tag6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Tag7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Tag8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Tag9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Tag10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Tag11" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Tag12" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Tag13" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Tag14" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Tag15" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Tag16" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Tag17" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Tag18" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Tag19" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Tag20" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag11" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag12" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag13" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag14" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag15" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag16" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag17" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag18" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag19" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tag20" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="UsersTBL">
     <Key>
