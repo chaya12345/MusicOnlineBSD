@@ -56,6 +56,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticlesBL.cs" />
+    <Compile Include="Casts\ToArticlesDTO.cs" />
     <Compile Include="Casts\ToSingersDTO.cs" />
     <Compile Include="Casts\ToSongsDTO.cs" />
     <Compile Include="Casts\ToUsersDTO.cs" />
