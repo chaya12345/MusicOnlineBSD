@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using DTO;
 using BL;
+using DAL;
 
 namespace ServerMusicBSD.Controllers
 {
@@ -13,7 +14,19 @@ namespace ServerMusicBSD.Controllers
     {
         public List<ArticlesDTO> GetArticles()
         {
-            return BL.ArticlesBL.GetArticles();
+            return ArticlesBL.GetArticles();
+        }
+        public ArticlesDTO GetArticleById(int id)
+        {
+            return ArticlesBL.GetArticleById(id);
+        }
+        public void PostArticle([FromBody] ArticlesBTL article)
+        {
+            ArticlesBL.AddArticle(article);
+        }
+        public void DeleteArticle(int articleId)
+        {
+            ArticlesBL.DeleteArticle(articleId);
         }
     }
 }

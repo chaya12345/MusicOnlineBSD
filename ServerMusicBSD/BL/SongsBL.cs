@@ -56,8 +56,8 @@ namespace BL
             {
                 List<List<string>> list;
                 var tagsToSong = et.getTagsOfSong(song.id);
-                if (song.tagsId != null)
-                    list = tagsToSong.Select(t => new List<string>() { t.tag1, t.tag2, t.tag3 }).ToList();
+                //if (song.tagsId != null)
+                //    list = tagsToSong.Select(t => new List<string>() { t.tag1, t.tag2, t.tag3 }).ToList();
                 //    bool contain = true;
                 //    foreach (string tag in tags)
                 //    {
@@ -70,5 +70,20 @@ namespace BL
             return resultSongs;
         }
 
+        public static void addSong(SongsTBL song)
+        {
+            et.SongsTBL.Add(song);
+            et.SaveChanges();
+        }
+        public static void DeleteSong(int songId)
+        {
+            if (songId != null)
+            {
+                SongsTBL song = et.SongsTBL.Where(s => s.id == songId).FirstOrDefault();
+                et.SongsTBL.Remove(song);
+                et.SaveChanges();
+            }
+
+        }
     }
 }

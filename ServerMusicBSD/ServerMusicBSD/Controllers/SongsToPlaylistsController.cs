@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using BL;
 using DAL;
+using DTO;
 
 namespace ServerMusicBSD.Controllers
 {
@@ -16,13 +17,17 @@ namespace ServerMusicBSD.Controllers
             SongsToPlaylistsBL.AddSongToPlaylist(songToPlaylist);
         }
         [AcceptVerbs("Put")]
-        public void PutSong(int id, [FromBody] SongsToPlaylistsTBL songsToPlaylist)
+        public void PutSong(int id, int playlistId)
         {
-            SongsToPlaylistsBL.MoveSongToOtherPlaylist(id, songsToPlaylist);
+            SongsToPlaylistsBL.MoveSongToOtherPlaylist(id, playlistId);
         }
         public void DeleteSong(int id)
         {
             SongsToPlaylistsBL.DeleteSong(id);
+        }
+        public List<SongsToPlaylistsDTO> GetSongsToPlaylists(int playlistId)
+        {
+            return SongsToPlaylistsBL.GetSongsToPlaylists(playlistId);
         }
 
     }

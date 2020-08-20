@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
+using DTO;
 
 namespace BL
 {
@@ -22,14 +23,16 @@ namespace BL
             {
                 et.PlaylistsTBL.Remove(playlist);
                 et.SaveChanges();
+                List<SongsToPlaylistsTBL> songsToDelet = et.SongsToPlaylistsTBL.Where(s => s.playlistId == id).ToList();
+                foreach (SongsToPlaylistsTBL song in songsToDelet)
+                {
+                    SongsToPlaylistsBL.DeleteSong(song.id);
+                }
             }
-            List<SongsToPlaylistsTBL> songsToDelet = et.SongsToPlaylistsTBL.Where(s => s.playlistId == id).ToList();
-            foreach (SongsToPlaylistsTBL song in songsToDelet)
-            {
-                SongsToPlaylistsBL.DeleteSong(song.id);
-            }
-            
-
+        }
+        public static List<PlaylistsDTO> GetPlaylistsByUserId(int userId)
+        {
+            return Casts.ToPlaylistsDTO.GetPlaylists(et.PlaylistsTBL.Where(p => p.userId == userId).ToList());
         }
     }
 }

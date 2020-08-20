@@ -28,6 +28,7 @@ namespace DAL
         public Nullable<bool> repeat { get; set; }
         public Nullable<bool> coincidental { get; set; }
         public Nullable<bool> newsletter { get; set; }
+        public Nullable<bool> saveLike { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PlaylistsTBL> PlaylistsTBL { get; set; }

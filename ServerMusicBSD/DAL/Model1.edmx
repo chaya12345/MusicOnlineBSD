@@ -76,6 +76,9 @@
           <Property Name="unliked" Type="int" />
           <Property Name="tagsId" Type="int" />
           <Property Name="albumId" Type="int" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
+          <Property Name="image" Type="varchar(max)" />
+          <Property Name="content" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="SongsToPlaylistsTBL">
           <Key>
@@ -85,31 +88,48 @@
           <Property Name="playlistId" Type="int" />
           <Property Name="songId" Type="int" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TagNameTBL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="TagsTBL">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="tag1" Type="varchar" MaxLength="50" />
-          <Property Name="tag2" Type="varchar" MaxLength="50" />
-          <Property Name="tag3" Type="varchar" MaxLength="50" />
-          <Property Name="tag4" Type="varchar" MaxLength="50" />
-          <Property Name="tag5" Type="varchar" MaxLength="50" />
-          <Property Name="tag6" Type="varchar" MaxLength="50" />
-          <Property Name="tag7" Type="varchar" MaxLength="50" />
-          <Property Name="tag8" Type="varchar" MaxLength="50" />
-          <Property Name="tag9" Type="varchar" MaxLength="50" />
-          <Property Name="tag10" Type="varchar" MaxLength="50" />
-          <Property Name="tag11" Type="varchar" MaxLength="50" />
-          <Property Name="tag12" Type="varchar" MaxLength="50" />
-          <Property Name="tag13" Type="varchar" MaxLength="50" />
-          <Property Name="tag14" Type="varchar" MaxLength="50" />
-          <Property Name="tag15" Type="varchar" MaxLength="50" />
-          <Property Name="tag16" Type="varchar" MaxLength="50" />
-          <Property Name="tag17" Type="varchar" MaxLength="50" />
-          <Property Name="tag18" Type="varchar" MaxLength="50" />
-          <Property Name="tag19" Type="varchar" MaxLength="50" />
-          <Property Name="tag20" Type="varchar" MaxLength="50" />
+          <Property Name="tag1" Type="int" />
+          <Property Name="tag2" Type="int" />
+          <Property Name="tag3" Type="int" />
+          <Property Name="tag4" Type="int" />
+          <Property Name="tag5" Type="int" />
+          <Property Name="tag6" Type="int" />
+          <Property Name="tag7" Type="int" />
+          <Property Name="tag8" Type="int" />
+          <Property Name="tag9" Type="int" />
+          <Property Name="tag10" Type="int" />
+          <Property Name="tag11" Type="int" />
+          <Property Name="tag12" Type="int" />
+          <Property Name="tag13" Type="int" />
+          <Property Name="tag14" Type="int" />
+          <Property Name="tag15" Type="int" />
+          <Property Name="tag16" Type="int" />
+          <Property Name="tag17" Type="int" />
+          <Property Name="tag18" Type="int" />
+          <Property Name="tag19" Type="int" />
+          <Property Name="tag20" Type="int" />
         </EntityType>
         <EntityType Name="UsersTBL">
           <Key>
@@ -123,6 +143,7 @@
           <Property Name="repeat" Type="bit" />
           <Property Name="coincidental" Type="bit" />
           <Property Name="newsletter" Type="bit" />
+          <Property Name="saveLike" Type="bit" />
         </EntityType>
         <Association Name="FK_ArticlesBTL_TagsTBL">
           <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="0..1" />
@@ -332,6 +353,8 @@
           <EntitySet Name="SingersTBL" EntityType="Self.SingersTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SongsTBL" EntityType="Self.SongsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TagNameTBL" EntityType="Self.TagNameTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TagsTBL" EntityType="Self.TagsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ArticlesBTL_TagsTBL" Association="Self.FK_ArticlesBTL_TagsTBL">
@@ -516,6 +539,9 @@
           <NavigationProperty Name="SingersTBL" Relationship="Self.FK_SongsTBL_SingersTBL" FromRole="SongsTBL" ToRole="SingersTBL" />
           <NavigationProperty Name="TagsTBL" Relationship="Self.FK_SongsTBL_TagsTBL" FromRole="SongsTBL" ToRole="TagsTBL" />
           <NavigationProperty Name="SongsToPlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToPlaylistsTBL" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SongsToPlaylistsTBL">
           <Key>
@@ -527,16 +553,6 @@
           <NavigationProperty Name="PlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_PlaylistsTBL" FromRole="SongsToPlaylistsTBL" ToRole="PlaylistsTBL" />
           <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsToPlaylistsTBL" ToRole="SongsTBL" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="TagsTBL">
           <Key>
             <PropertyRef Name="id" />
@@ -544,26 +560,26 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="ArticlesBTL" Relationship="Self.FK_ArticlesBTL_TagsTBL" FromRole="TagsTBL" ToRole="ArticlesBTL" />
           <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsTBL_TagsTBL" FromRole="TagsTBL" ToRole="SongsTBL" />
-          <Property Name="tag1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tag2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tag3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tag4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tag5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tag6" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tag7" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tag8" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tag9" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tag10" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tag11" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tag12" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tag13" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tag14" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tag15" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tag16" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tag17" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tag18" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tag19" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="tag20" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tag1" Type="String" />
+          <Property Name="tag2" Type="String" />
+          <Property Name="tag3" Type="String" />
+          <Property Name="tag4" Type="String" />
+          <Property Name="tag5" Type="String" />
+          <Property Name="tag6" Type="String" />
+          <Property Name="tag7" Type="String" />
+          <Property Name="tag8" Type="String" />
+          <Property Name="tag9" Type="String" />
+          <Property Name="tag10" Type="String" />
+          <Property Name="tag11" Type="String" />
+          <Property Name="tag12" Type="String" />
+          <Property Name="tag13" Type="String" />
+          <Property Name="tag14" Type="String" />
+          <Property Name="tag15" Type="String" />
+          <Property Name="tag16" Type="String" />
+          <Property Name="tag17" Type="String" />
+          <Property Name="tag18" Type="String" />
+          <Property Name="tag19" Type="String" />
+          <Property Name="tag20" Type="String" />
         </EntityType>
         <EntityType Name="UsersTBL">
           <Key>
@@ -578,6 +594,7 @@
           <Property Name="coincidental" Type="Boolean" />
           <Property Name="newsletter" Type="Boolean" />
           <NavigationProperty Name="PlaylistsTBL" Relationship="Self.FK_PlaylistsTBL_UsersTBL" FromRole="UsersTBL" ToRole="PlaylistsTBL" />
+          <Property Name="saveLike" Type="Boolean" />
         </EntityType>
         <Association Name="FK_SongsTBL_albumsTBL">
           <End Role="AlbumsTBL" Type="Self.AlbumsTBL" Multiplicity="0..1" />
@@ -696,7 +713,6 @@
           <EntitySet Name="SingersTBL" EntityType="Self.SingersTBL" />
           <EntitySet Name="SongsTBL" EntityType="Self.SongsTBL" />
           <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TagsTBL" EntityType="Self.TagsTBL" />
           <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" />
           <AssociationSet Name="FK_SongsTBL_albumsTBL" Association="Self.FK_SongsTBL_albumsTBL">
@@ -792,6 +808,8 @@
             <Parameter Name="content" Mode="In" Type="String" />
             <Parameter Name="date" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <EntitySet Name="TagNameTBLs" EntityType="MusicOnlineModel.TagNameTBL" />
+          <EntitySet Name="sysdiagrams" EntityType="MusicOnlineModel.sysdiagram" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -827,6 +845,23 @@
           <Property Type="String" Name="C19" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="C20" Nullable="true" MaxLength="50" />
         </ComplexType>
+        <EntityType Name="TagNameTBL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -898,6 +933,9 @@
           <EntitySetMapping Name="SongsTBL">
             <EntityTypeMapping TypeName="MusicOnlineModel.SongsTBL">
               <MappingFragment StoreEntitySet="SongsTBL">
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="fileLocation" ColumnName="fileLocation" />
@@ -951,6 +989,7 @@
           <EntitySetMapping Name="UsersTBL">
             <EntityTypeMapping TypeName="MusicOnlineModel.UsersTBL">
               <MappingFragment StoreEntitySet="UsersTBL">
+                <ScalarProperty Name="saveLike" ColumnName="saveLike" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="mail" ColumnName="mail" />
@@ -1039,6 +1078,25 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="TagNameTBLs">
+            <EntityTypeMapping TypeName="MusicOnlineModel.TagNameTBL">
+              <MappingFragment StoreEntitySet="TagNameTBL">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MusicOnlineModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

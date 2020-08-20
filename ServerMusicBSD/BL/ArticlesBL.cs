@@ -15,5 +15,23 @@ namespace BL
         {
             return Casts.ToArticlesDTO.GetArticles(et.ArticlesBTL.ToList());
         }
+        public static ArticlesDTO GetArticleById(int articleId)
+        {
+            return Casts.ToArticlesDTO.GetArticle(et.ArticlesBTL.Where(a => a.id == articleId).FirstOrDefault());
+        }
+        public static void AddArticle(ArticlesBTL article)
+        {
+            et.ArticlesBTL.Add(article);
+            et.SaveChanges();
+        }
+        public static void DeleteArticle(int articleId)
+        {
+            if (articleId != null)
+            {
+                ArticlesBTL article = et.ArticlesBTL.Where(a => a.id == articleId).FirstOrDefault();
+                et.ArticlesBTL.Remove(article);
+                et.SaveChanges();
+            }
+        }
     }
 }

@@ -12,16 +12,28 @@ namespace ServerMusicBSD.Controllers
 {
     public class UsersController : ApiController
     {
-        public void Post([FromBody] UsersTBL newUser)
+        public void PostUser([FromBody] UsersTBL newUser)
         {
             UsersBL.AddUser(newUser);
         }
-        [AcceptVerbs("Put")]
-        public void Put(int userId,[FromBody] UsersTBL user)
+        public void PutUser(int userId,[FromBody] UsersTBL user)
         {
 
             UsersBL.UpdateUser(userId, user);
         }
+        public void PutProfil(int userId,[FromBody] UsersTBL user)
+        {
+            UsersBL.UpdateProfil(userId, user);
+        }
+        public void PutPassword(int userId, string password)
+        {
+            UsersBL.UpdatePassword(userId, password);
+        }
+        public void PutDefinition(int userId, [FromBody] UsersTBL user)
+        {
+            UsersBL.UpdateDefinition(userId, user);
+        }
+
         public UsersDTO GetUser(string userName,string password)
         {
             return UsersBL.GetUser(userName, password);

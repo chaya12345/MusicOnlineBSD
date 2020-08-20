@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
+using DTO;
 
 
 namespace BL
@@ -16,14 +17,14 @@ namespace BL
             et.SongsToPlaylistsTBL.Add(songToPlaylist);
             et.SaveChanges();
         }
-        public static void MoveSongToOtherPlaylist(int id, SongsToPlaylistsTBL songsToPlaylists)
+        public static void MoveSongToOtherPlaylist(int id, int playlistId)
         {
             SongsToPlaylistsTBL songsTo = et.SongsToPlaylistsTBL.Where(s => s.id == id).FirstOrDefault();
             if (songsTo != null)
             {
-                if (songsToPlaylists.playlistId != null)
+                if (playlistId != null)
                 {
-                    songsTo.playlistId = songsToPlaylists.playlistId;
+                    songsTo.playlistId = playlistId;
                     et.SaveChanges();
                 }
             }
@@ -33,6 +34,10 @@ namespace BL
             SongsToPlaylistsTBL song = et.SongsToPlaylistsTBL.Where(s => s.id == id).FirstOrDefault();
             et.SongsToPlaylistsTBL.Remove(song);
             et.SaveChanges();
+        }
+        public static List<SongsToPlaylistsDTO> GetSongsToPlaylists(int playlistId)
+        {
+            return Casts.ToSongsToPlaylistsDTO.GetSongsToPlaylists(et.SongsToPlaylistsTBL.Where(s => s.playlistId == playlistId).ToList());
         }
     }
 }

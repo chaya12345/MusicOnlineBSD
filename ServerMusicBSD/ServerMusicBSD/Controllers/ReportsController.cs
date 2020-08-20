@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using DAL;
+using BL;
+using DTO;
 
 namespace ServerMusicBSD.Controllers
 {
@@ -13,8 +15,19 @@ namespace ServerMusicBSD.Controllers
         MusicOnlineEntities et = new MusicOnlineEntities();
         public void PostReport([FromBody] ReportsTBL report)
         {
-            et.ReportsTBL.Add(report);
-            et.SaveChanges();
+            ReportsBL.addReport(report);
+        }
+        public List<ReportsDTO> GetReports()
+        {
+            return ReportsBL.GetReports();
+        }
+        public ReportsDTO GetReportById(int reportId)
+        {
+            return ReportsBL.GetReportById(reportId);
+        }
+        public void PutReportStatus(int id,string status)
+        {
+            ReportsBL.ChangeReportStatus(id, status);
         }
     }
 }

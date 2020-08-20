@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using BL;
 using DTO;
+using DAL;
 
 namespace ServerMusicBSD.Controllers
 {
@@ -37,6 +38,14 @@ namespace ServerMusicBSD.Controllers
         public List<SongsDTO> PostSongsByAllTags([FromBody] TagsResponse tagsResponse)
         {
             return SongsBL.GetSongsByAllTags(tagsResponse.tags);
+        }
+        public void PostSong([FromBody] SongsTBL song)
+        {
+            SongsBL.addSong(song);
+        }
+        public void DeleteSong(int songId)
+        {
+            SongsBL.DeleteSong(songId);
         }
     }
 }
