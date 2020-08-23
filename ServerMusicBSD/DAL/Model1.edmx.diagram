@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0b6e0ceb5e614f34a9373f586e1ccd58" Name="Diagram1" ZoomLevel="57">
+      <Diagram DiagramId="0b6e0ceb5e614f34a9373f586e1ccd58" Name="Diagram1" ZoomLevel="79">
         <EntityTypeShape EntityType="MusicOnlineModel.AlbumsTBL" Width="1.5" PointX="3.75" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.ArticlesBTL" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.PlaylistsTBL" Width="1.5" PointX="6" PointY="12.875" IsExpanded="true" />
@@ -24,50 +24,7 @@
         <AssociationConnector Association="MusicOnlineModel.FK_SongsTBL_SingersTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_SongsTBL_TagsTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_SongsToPlaylistsTBL_SongsTBL" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="MusicOnlineModel.TagNameTBL" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="MusicOnlineModel.sysdiagram" Width="1.5" PointX="6.375" PointY="9.75" />
-        <EntityTypeShape EntityType="MusicOnlineModel.Absence" Width="1.5" PointX="12.875" PointY="14.75" />
-        <EntityTypeShape EntityType="MusicOnlineModel.AbsencesForTeacher" Width="1.5" PointX="15.125" PointY="15.125" />
-        <EntityTypeShape EntityType="MusicOnlineModel.Class" Width="1.5" PointX="12.875" PointY="21.25" />
-        <EntityTypeShape EntityType="MusicOnlineModel.Dairy" Width="1.5" PointX="17.375" PointY="19.75" />
-        <EntityTypeShape EntityType="MusicOnlineModel.Group" Width="1.5" PointX="20.375" PointY="19.875" />
-        <EntityTypeShape EntityType="MusicOnlineModel.HourType" Width="1.5" PointX="18.125" PointY="17.125" />
-        <EntityTypeShape EntityType="MusicOnlineModel.Occasion" Width="1.5" PointX="10.625" PointY="17.875" />
-        <EntityTypeShape EntityType="MusicOnlineModel.OccasionType" Width="1.5" PointX="8.375" PointY="18.625" />
-        <EntityTypeShape EntityType="MusicOnlineModel.PayAbsence" Width="1.5" PointX="10.625" PointY="14.5" />
-        <EntityTypeShape EntityType="MusicOnlineModel.Reforma" Width="1.5" PointX="18.125" PointY="29" />
-        <EntityTypeShape EntityType="MusicOnlineModel.Room" Width="1.5" PointX="15.125" PointY="19.5" />
-        <EntityTypeShape EntityType="MusicOnlineModel.Schedule" Width="1.5" PointX="22.625" PointY="21" />
-        <EntityTypeShape EntityType="MusicOnlineModel.SchoolType" Width="1.5" PointX="18.125" PointY="26.75" />
-        <EntityTypeShape EntityType="MusicOnlineModel.Subject" Width="1.5" PointX="15.125" PointY="25.25" />
-        <EntityTypeShape EntityType="MusicOnlineModel.Teacher" Width="1.5" PointX="12.875" PointY="17.375" />
-        <AssociationConnector Association="MusicOnlineModel.FK_AbsencesForTeacher_Absence1" />
-        <AssociationConnector Association="MusicOnlineModel.FK_AbsencesForTeacher_Teacher" />
-        <AssociationConnector Association="MusicOnlineModel.FK_Room_Class" />
-        <AssociationConnector Association="MusicOnlineModel.FK_Dairy_Group" />
-        <AssociationConnector Association="MusicOnlineModel.FK_Dairy_Ocation" />
-        <AssociationConnector Association="MusicOnlineModel.FK_Dairy_OcationType" />
-        <AssociationConnector Association="MusicOnlineModel.FK_Dairy_Room" />
-        <AssociationConnector Association="MusicOnlineModel.FK_Dairy_Subject" />
-        <AssociationConnector Association="MusicOnlineModel.FK_Dairy_Teacher" />
-        <AssociationConnector Association="MusicOnlineModel.FK_Group_HourType" />
-        <AssociationConnector Association="MusicOnlineModel.FK_Group_PayAbsence" />
-        <AssociationConnector Association="MusicOnlineModel.FK_Group_Reforma" />
-        <AssociationConnector Association="MusicOnlineModel.FK_Group_Room" />
-        <AssociationConnector Association="MusicOnlineModel.FK_Group_SchoolType" />
-        <AssociationConnector Association="MusicOnlineModel.FK_Group_Subject" />
-        <AssociationConnector Association="MusicOnlineModel.FK_Group_Teacher" />
-        <AssociationConnector Association="MusicOnlineModel.FK_Schedule_Group" />
-        <AssociationConnector Association="MusicOnlineModel.FK_Ocation_OcationType" />
-        <AssociationConnector Association="MusicOnlineModel.FK_Schedule_Room" />
-        <AssociationConnector Association="MusicOnlineModel.ClassesForGroup" />
-        <AssociationConnector Association="MusicOnlineModel.ClassesForOccasion" />
-        <AssociationConnector Association="MusicOnlineModel.DairyForClasses" />
-        <AssociationConnector Association="MusicOnlineModel.PayAbsencesForTeacher" />
-        <AssociationConnector Association="MusicOnlineModel.RoomsForOccasion" />
-        <AssociationConnector Association="MusicOnlineModel.SubjectsForClass" />
-        <AssociationConnector Association="MusicOnlineModel.TeachersForOccasion" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

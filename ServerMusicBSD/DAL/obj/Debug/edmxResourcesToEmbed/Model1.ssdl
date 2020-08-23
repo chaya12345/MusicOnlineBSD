@@ -1,764 +1,714 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MusicOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="Absence">
+  <EntityType Name="AlbumsTBL">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
   </EntityType>
-  <EntityType Name="AbsencesForTeacher">
+  <EntityType Name="ArticlesBTL">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Type" Type="int" Nullable="false" />
-    <Property Name="TeacherId" Type="int" Nullable="false" />
-    <Property Name="FromDate" Type="date" Nullable="false" />
-    <Property Name="ToDate" Type="date" Nullable="false" />
-    <Property Name="TeacherStandIn" Type="int" />
-    <Property Name="FromLesson" Type="int" />
-    <Property Name="ToLesson" Type="int" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="50" />
+    <Property Name="files" Type="varchar(max)" />
+    <Property Name="content" Type="varchar(max)" />
+    <Property Name="date" Type="date" />
+    <Property Name="tagsId" Type="int" />
   </EntityType>
-  <EntityType Name="Class">
+  <EntityType Name="PlaylistsTBL">
     <Key>
-      <PropertyRef Name="Num" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="Num" Type="int" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="10" Nullable="false" />
-    <Property Name="Layer" Type="int" Nullable="false" />
-    <Property Name="Number" Type="int" Nullable="false" />
-    <Property Name="SchoolType" Type="int" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="int" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
   </EntityType>
-  <EntityType Name="ClassesForGroup">
+  <EntityType Name="ReportsTBL">
     <Key>
-      <PropertyRef Name="GroupId" />
-      <PropertyRef Name="ClassId" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="GroupId" Type="int" Nullable="false" />
-    <Property Name="ClassId" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="mail" Type="varchar" MaxLength="50" />
+    <Property Name="phone" Type="varchar" MaxLength="50" />
+    <Property Name="songId" Type="int" />
+    <Property Name="message" Type="varchar(max)" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
   </EntityType>
-  <EntityType Name="ClassesForOccasion">
+  <EntityType Name="ResponsesTBL">
     <Key>
-      <PropertyRef Name="OccasionId" />
-      <PropertyRef Name="ClassId" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="OccasionId" Type="int" Nullable="false" />
-    <Property Name="ClassId" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="articleId" Type="int" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="title" Type="varchar" MaxLength="50" />
+    <Property Name="content" Type="nvarchar(max)" />
+    <Property Name="date" Type="date" />
   </EntityType>
-  <EntityType Name="Dairy">
+  <EntityType Name="SingersTBL">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Num" Type="int" />
-    <Property Name="TeacherId" Type="int" />
-    <Property Name="SubjectId" Type="int" />
-    <Property Name="TypeId" Type="int" />
-    <Property Name="GroupId" Type="int" />
-    <Property Name="RoomId" Type="int" />
-    <Property Name="IsGrouped" Type="bit" Nullable="false" />
-    <Property Name="OccasionId" Type="int" />
-    <Property Name="Reforma" Type="int" />
-    <Property Name="FromDate" Type="date" Nullable="false" />
-    <Property Name="ToDate" Type="date" Nullable="false" />
-    <Property Name="Hour" Type="int" Nullable="false" />
-    <Property Name="CalculateHours" Type="decimal" Precision="4" Scale="2" />
-    <Property Name="Cause" Type="int" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
   </EntityType>
-  <EntityType Name="DairyForClasses">
+  <EntityType Name="SongsTBL">
     <Key>
-      <PropertyRef Name="DairyId" />
-      <PropertyRef Name="ClassId" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="DairyId" Type="int" Nullable="false" />
-    <Property Name="ClassId" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="fileLocation" Type="varchar(max)" />
+    <Property Name="type" Type="varchar" MaxLength="50" />
+    <Property Name="date" Type="date" />
+    <Property Name="count" Type="bigint" />
+    <Property Name="singerId" Type="int" />
+    <Property Name="liked" Type="int" />
+    <Property Name="unliked" Type="int" />
+    <Property Name="tagsId" Type="int" />
+    <Property Name="albumId" Type="int" />
+    <Property Name="title" Type="varchar" MaxLength="50" />
+    <Property Name="image" Type="varchar(max)" />
+    <Property Name="content" Type="varchar" MaxLength="50" />
   </EntityType>
-  <EntityType Name="Group">
+  <EntityType Name="SongsToPlaylistsTBL">
     <Key>
-      <PropertyRef Name="Num" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="Num" Type="int" Nullable="false" />
-    <Property Name="Teacher" Type="int" />
-    <Property Name="Subject" Type="int" />
-    <Property Name="Room" Type="int" />
-    <Property Name="Hours" Type="int" />
-    <Property Name="CalculateHours" Type="decimal" Precision="4" Scale="2" />
-    <Property Name="SchoolType" Type="int" />
-    <Property Name="Reforma" Type="int" />
-    <Property Name="PayAbsence" Type="int" />
-    <Property Name="HourType" Type="int" />
-    <Property Name="SubHourType" Type="int" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="playlistId" Type="int" />
+    <Property Name="songId" Type="int" />
   </EntityType>
-  <EntityType Name="HourType">
+  <EntityType Name="TagNameTBL">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="ParentId" Type="int" />
-    <Property Name="Name" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
   </EntityType>
-  <EntityType Name="Occasion">
+  <EntityType Name="TagsTBL">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FromDate" Type="date" />
-    <Property Name="ToDate" Type="date" />
-    <Property Name="OccasionType" Type="int" />
-    <Property Name="FromLesson" Type="int" />
-    <Property Name="ToLesson" Type="int" />
-    <Property Name="Subject" Type="int" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tag1" Type="int" />
+    <Property Name="tag2" Type="int" />
+    <Property Name="tag3" Type="int" />
+    <Property Name="tag4" Type="int" />
+    <Property Name="tag5" Type="int" />
+    <Property Name="tag6" Type="int" />
+    <Property Name="tag7" Type="int" />
+    <Property Name="tag8" Type="int" />
+    <Property Name="tag9" Type="int" />
+    <Property Name="tag10" Type="int" />
+    <Property Name="tag11" Type="int" />
+    <Property Name="tag12" Type="int" />
+    <Property Name="tag13" Type="int" />
+    <Property Name="tag14" Type="int" />
+    <Property Name="tag15" Type="int" />
+    <Property Name="tag16" Type="int" />
+    <Property Name="tag17" Type="int" />
+    <Property Name="tag18" Type="int" />
+    <Property Name="tag19" Type="int" />
+    <Property Name="tag20" Type="int" />
   </EntityType>
-  <EntityType Name="OccasionType">
+  <EntityType Name="UsersTBL">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="mail" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="type" Type="bit" />
+    <Property Name="repeat" Type="bit" />
+    <Property Name="coincidental" Type="bit" />
+    <Property Name="newsletter" Type="bit" />
+    <Property Name="saveLike" Type="bit" />
   </EntityType>
-  <EntityType Name="PayAbsence">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
-    <Property Name="IsStandart" Type="bit" />
-  </EntityType>
-  <EntityType Name="PayAbsencesForTeacher">
-    <Key>
-      <PropertyRef Name="IdTeacher" />
-      <PropertyRef Name="IdPayAbsence" />
-    </Key>
-    <Property Name="IdTeacher" Type="int" Nullable="false" />
-    <Property Name="IdPayAbsence" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Reforma">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Room">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Floor" Type="int" Nullable="false" />
-    <Property Name="Number" Type="int" Nullable="false" />
-    <Property Name="ClassId" Type="int" />
-    <Property Name="UseFor" Type="nvarchar" MaxLength="20" />
-  </EntityType>
-  <EntityType Name="RoomsForOccasion">
-    <Key>
-      <PropertyRef Name="OccasionId" />
-      <PropertyRef Name="RoomId" />
-    </Key>
-    <Property Name="OccasionId" Type="int" Nullable="false" />
-    <Property Name="RoomId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Schedule">
-    <Key>
-      <PropertyRef Name="Num" />
-    </Key>
-    <Property Name="Num" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="GroupId" Type="int" Nullable="false" />
-    <Property Name="WeekDay" Type="int" Nullable="false" />
-    <Property Name="Day" Type="int" Nullable="false" />
-    <Property Name="Hour" Type="int" Nullable="false" />
-    <Property Name="Room" Type="int" />
-  </EntityType>
-  <EntityType Name="SchoolType">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Subject">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
-    <Property Name="Color" Type="nchar" MaxLength="10" />
-  </EntityType>
-  <EntityType Name="SubjectsForClass">
-    <Key>
-      <PropertyRef Name="ClassId" />
-      <PropertyRef Name="SubjectId" />
-    </Key>
-    <Property Name="ClassId" Type="int" Nullable="false" />
-    <Property Name="SubjectId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Teacher">
-    <Key>
-      <PropertyRef Name="Num" />
-    </Key>
-    <Property Name="Num" Type="int" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="TeachersForOccasion">
-    <Key>
-      <PropertyRef Name="OccasionId" />
-      <PropertyRef Name="TeacherId" />
-    </Key>
-    <Property Name="OccasionId" Type="int" Nullable="false" />
-    <Property Name="TeacherId" Type="int" Nullable="false" />
-  </EntityType>
-  <Association Name="FK_AbsencesForTeacher_Absence1">
-    <End Role="Absence" Type="Self.Absence" Multiplicity="1" />
-    <End Role="AbsencesForTeacher" Type="Self.AbsencesForTeacher" Multiplicity="*" />
+  <Association Name="FK_ArticlesBTL_TagsTBL">
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="0..1" />
+    <End Role="ArticlesBTL" Type="Self.ArticlesBTL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Absence">
-        <PropertyRef Name="Id" />
+      <Principal Role="TagsTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="AbsencesForTeacher">
-        <PropertyRef Name="Type" />
+      <Dependent Role="ArticlesBTL">
+        <PropertyRef Name="tagsId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_AbsencesForTeacher_Teacher">
-    <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
-    <End Role="AbsencesForTeacher" Type="Self.AbsencesForTeacher" Multiplicity="*" />
+  <Association Name="FK_PlaylistsTBL_UsersTBL">
+    <End Role="UsersTBL" Type="Self.UsersTBL" Multiplicity="0..1" />
+    <End Role="PlaylistsTBL" Type="Self.PlaylistsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Teacher">
-        <PropertyRef Name="Num" />
+      <Principal Role="UsersTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="AbsencesForTeacher">
-        <PropertyRef Name="TeacherId" />
+      <Dependent Role="PlaylistsTBL">
+        <PropertyRef Name="userId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ClassesForGroup_Class">
-    <End Role="Class" Type="Self.Class" Multiplicity="1" />
-    <End Role="ClassesForGroup" Type="Self.ClassesForGroup" Multiplicity="*" />
+  <Association Name="FK_ReportsTBL_SongsTBL">
+    <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="0..1" />
+    <End Role="ReportsTBL" Type="Self.ReportsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Class">
-        <PropertyRef Name="Num" />
+      <Principal Role="SongsTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="ClassesForGroup">
-        <PropertyRef Name="ClassId" />
+      <Dependent Role="ReportsTBL">
+        <PropertyRef Name="songId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ClassesForGroup_Group">
-    <End Role="Group" Type="Self.Group" Multiplicity="1" />
-    <End Role="ClassesForGroup" Type="Self.ClassesForGroup" Multiplicity="*" />
+  <Association Name="FK_ResponsesTBL_ArticlesBTL">
+    <End Role="ArticlesBTL" Type="Self.ArticlesBTL" Multiplicity="0..1" />
+    <End Role="ResponsesTBL" Type="Self.ResponsesTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Group">
-        <PropertyRef Name="Num" />
+      <Principal Role="ArticlesBTL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="ClassesForGroup">
-        <PropertyRef Name="GroupId" />
+      <Dependent Role="ResponsesTBL">
+        <PropertyRef Name="articleId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ClassesForOcation_Ocation">
-    <End Role="Occasion" Type="Self.Occasion" Multiplicity="1" />
-    <End Role="ClassesForOccasion" Type="Self.ClassesForOccasion" Multiplicity="*" />
+  <Association Name="FK_SongsTBL_AlbumsTBL">
+    <End Role="AlbumsTBL" Type="Self.AlbumsTBL" Multiplicity="0..1" />
+    <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Occasion">
-        <PropertyRef Name="Id" />
+      <Principal Role="AlbumsTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="ClassesForOccasion">
-        <PropertyRef Name="OccasionId" />
+      <Dependent Role="SongsTBL">
+        <PropertyRef Name="albumId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ClassesForOccasion_Class">
-    <End Role="Class" Type="Self.Class" Multiplicity="1" />
-    <End Role="ClassesForOccasion" Type="Self.ClassesForOccasion" Multiplicity="*" />
+  <Association Name="FK_SongsTBL_SingersTBL">
+    <End Role="SingersTBL" Type="Self.SingersTBL" Multiplicity="0..1" />
+    <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Class">
-        <PropertyRef Name="Num" />
+      <Principal Role="SingersTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="ClassesForOccasion">
-        <PropertyRef Name="ClassId" />
+      <Dependent Role="SongsTBL">
+        <PropertyRef Name="singerId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Dairy_Group">
-    <End Role="Group" Type="Self.Group" Multiplicity="0..1" />
-    <End Role="Dairy" Type="Self.Dairy" Multiplicity="*" />
+  <Association Name="FK_SongsTBL_TagsTBL">
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="0..1" />
+    <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Group">
-        <PropertyRef Name="Num" />
+      <Principal Role="TagsTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Dairy">
-        <PropertyRef Name="GroupId" />
+      <Dependent Role="SongsTBL">
+        <PropertyRef Name="tagsId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Dairy_Ocation">
-    <End Role="Occasion" Type="Self.Occasion" Multiplicity="0..1" />
-    <End Role="Dairy" Type="Self.Dairy" Multiplicity="*" />
+  <Association Name="FK_SongsToPlaylistsTBL_PlaylistsTBL">
+    <End Role="PlaylistsTBL" Type="Self.PlaylistsTBL" Multiplicity="0..1" />
+    <End Role="SongsToPlaylistsTBL" Type="Self.SongsToPlaylistsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Occasion">
-        <PropertyRef Name="Id" />
+      <Principal Role="PlaylistsTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Dairy">
-        <PropertyRef Name="OccasionId" />
+      <Dependent Role="SongsToPlaylistsTBL">
+        <PropertyRef Name="playlistId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Dairy_OcationType">
-    <End Role="OccasionType" Type="Self.OccasionType" Multiplicity="0..1" />
-    <End Role="Dairy" Type="Self.Dairy" Multiplicity="*" />
+  <Association Name="FK_SongsToPlaylistsTBL_SongsTBL">
+    <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="0..1" />
+    <End Role="SongsToPlaylistsTBL" Type="Self.SongsToPlaylistsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="OccasionType">
-        <PropertyRef Name="Id" />
+      <Principal Role="SongsTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Dairy">
-        <PropertyRef Name="TypeId" />
+      <Dependent Role="SongsToPlaylistsTBL">
+        <PropertyRef Name="songId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Dairy_Room">
-    <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
-    <End Role="Dairy" Type="Self.Dairy" Multiplicity="*" />
+  <Association Name="FK_TagsTBL_TagNameTBL">
+    <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Room">
-        <PropertyRef Name="Id" />
+      <Principal Role="TagNameTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Dairy">
-        <PropertyRef Name="RoomId" />
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tag1" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Dairy_Subject">
-    <End Role="Subject" Type="Self.Subject" Multiplicity="0..1" />
-    <End Role="Dairy" Type="Self.Dairy" Multiplicity="*" />
+  <Association Name="FK_TagsTBL_TagNameTBL1">
+    <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Subject">
-        <PropertyRef Name="Id" />
+      <Principal Role="TagNameTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Dairy">
-        <PropertyRef Name="SubjectId" />
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tag2" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Dairy_Teacher">
-    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
-    <End Role="Dairy" Type="Self.Dairy" Multiplicity="*" />
+  <Association Name="FK_TagsTBL_TagNameTBL10">
+    <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Teacher">
-        <PropertyRef Name="Num" />
+      <Principal Role="TagNameTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Dairy">
-        <PropertyRef Name="TeacherId" />
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tag11" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_DairyForClasses_Class">
-    <End Role="Class" Type="Self.Class" Multiplicity="1" />
-    <End Role="DairyForClasses" Type="Self.DairyForClasses" Multiplicity="*" />
+  <Association Name="FK_TagsTBL_TagNameTBL11">
+    <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Class">
-        <PropertyRef Name="Num" />
+      <Principal Role="TagNameTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="DairyForClasses">
-        <PropertyRef Name="ClassId" />
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tag12" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_DairyForClasses_Dairy">
-    <End Role="Dairy" Type="Self.Dairy" Multiplicity="1" />
-    <End Role="DairyForClasses" Type="Self.DairyForClasses" Multiplicity="*" />
+  <Association Name="FK_TagsTBL_TagNameTBL12">
+    <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Dairy">
-        <PropertyRef Name="Id" />
+      <Principal Role="TagNameTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="DairyForClasses">
-        <PropertyRef Name="DairyId" />
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tag13" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Group_HourType">
-    <End Role="HourType" Type="Self.HourType" Multiplicity="0..1" />
-    <End Role="Group" Type="Self.Group" Multiplicity="*" />
+  <Association Name="FK_TagsTBL_TagNameTBL13">
+    <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="HourType">
-        <PropertyRef Name="Id" />
+      <Principal Role="TagNameTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Group">
-        <PropertyRef Name="HourType" />
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tag14" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Group_PayAbsence">
-    <End Role="PayAbsence" Type="Self.PayAbsence" Multiplicity="0..1" />
-    <End Role="Group" Type="Self.Group" Multiplicity="*" />
+  <Association Name="FK_TagsTBL_TagNameTBL14">
+    <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="PayAbsence">
-        <PropertyRef Name="Id" />
+      <Principal Role="TagNameTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Group">
-        <PropertyRef Name="PayAbsence" />
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tag15" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Group_Reforma">
-    <End Role="Reforma" Type="Self.Reforma" Multiplicity="0..1" />
-    <End Role="Group" Type="Self.Group" Multiplicity="*" />
+  <Association Name="FK_TagsTBL_TagNameTBL15">
+    <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Reforma">
-        <PropertyRef Name="Id" />
+      <Principal Role="TagNameTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Group">
-        <PropertyRef Name="Reforma" />
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tag16" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Group_Room">
-    <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
-    <End Role="Group" Type="Self.Group" Multiplicity="*" />
+  <Association Name="FK_TagsTBL_TagNameTBL16">
+    <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Room">
-        <PropertyRef Name="Id" />
+      <Principal Role="TagNameTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Group">
-        <PropertyRef Name="Room" />
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tag17" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Group_SchoolType">
-    <End Role="SchoolType" Type="Self.SchoolType" Multiplicity="0..1" />
-    <End Role="Group" Type="Self.Group" Multiplicity="*" />
+  <Association Name="FK_TagsTBL_TagNameTBL17">
+    <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="SchoolType">
-        <PropertyRef Name="Id" />
+      <Principal Role="TagNameTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Group">
-        <PropertyRef Name="SchoolType" />
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tag18" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Group_Subject">
-    <End Role="Subject" Type="Self.Subject" Multiplicity="0..1" />
-    <End Role="Group" Type="Self.Group" Multiplicity="*" />
+  <Association Name="FK_TagsTBL_TagNameTBL18">
+    <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Subject">
-        <PropertyRef Name="Id" />
+      <Principal Role="TagNameTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Group">
-        <PropertyRef Name="Subject" />
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tag19" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Group_Teacher">
-    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
-    <End Role="Group" Type="Self.Group" Multiplicity="*" />
+  <Association Name="FK_TagsTBL_TagNameTBL19">
+    <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Teacher">
-        <PropertyRef Name="Num" />
+      <Principal Role="TagNameTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Group">
-        <PropertyRef Name="Teacher" />
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tag20" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Ocation_OcationType">
-    <End Role="OccasionType" Type="Self.OccasionType" Multiplicity="0..1" />
-    <End Role="Occasion" Type="Self.Occasion" Multiplicity="*" />
+  <Association Name="FK_TagsTBL_TagNameTBL2">
+    <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="OccasionType">
-        <PropertyRef Name="Id" />
+      <Principal Role="TagNameTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Occasion">
-        <PropertyRef Name="OccasionType" />
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tag3" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PayAbsencesForTeacher_PayAbsence">
-    <End Role="PayAbsence" Type="Self.PayAbsence" Multiplicity="1" />
-    <End Role="PayAbsencesForTeacher" Type="Self.PayAbsencesForTeacher" Multiplicity="*" />
+  <Association Name="FK_TagsTBL_TagNameTBL3">
+    <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="PayAbsence">
-        <PropertyRef Name="Id" />
+      <Principal Role="TagNameTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="PayAbsencesForTeacher">
-        <PropertyRef Name="IdPayAbsence" />
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tag4" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PayAbsencesForTeacher_Teacher">
-    <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
-    <End Role="PayAbsencesForTeacher" Type="Self.PayAbsencesForTeacher" Multiplicity="*" />
+  <Association Name="FK_TagsTBL_TagNameTBL4">
+    <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Teacher">
-        <PropertyRef Name="Num" />
+      <Principal Role="TagNameTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="PayAbsencesForTeacher">
-        <PropertyRef Name="IdTeacher" />
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tag5" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Room_Class">
-    <End Role="Class" Type="Self.Class" Multiplicity="0..1" />
-    <End Role="Room" Type="Self.Room" Multiplicity="*" />
+  <Association Name="FK_TagsTBL_TagNameTBL5">
+    <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Class">
-        <PropertyRef Name="Num" />
+      <Principal Role="TagNameTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Room">
-        <PropertyRef Name="ClassId" />
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tag6" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_RoomsForOcation_Ocation">
-    <End Role="Occasion" Type="Self.Occasion" Multiplicity="1" />
-    <End Role="RoomsForOccasion" Type="Self.RoomsForOccasion" Multiplicity="*" />
+  <Association Name="FK_TagsTBL_TagNameTBL6">
+    <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Occasion">
-        <PropertyRef Name="Id" />
+      <Principal Role="TagNameTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="RoomsForOccasion">
-        <PropertyRef Name="OccasionId" />
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tag7" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_RoomsForOcation_Room">
-    <End Role="Room" Type="Self.Room" Multiplicity="1" />
-    <End Role="RoomsForOccasion" Type="Self.RoomsForOccasion" Multiplicity="*" />
+  <Association Name="FK_TagsTBL_TagNameTBL7">
+    <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Room">
-        <PropertyRef Name="Id" />
+      <Principal Role="TagNameTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="RoomsForOccasion">
-        <PropertyRef Name="RoomId" />
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tag8" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Schedule_Group">
-    <End Role="Group" Type="Self.Group" Multiplicity="1" />
-    <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+  <Association Name="FK_TagsTBL_TagNameTBL8">
+    <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Group">
-        <PropertyRef Name="Num" />
+      <Principal Role="TagNameTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Schedule">
-        <PropertyRef Name="GroupId" />
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tag9" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Schedule_Room">
-    <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
-    <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+  <Association Name="FK_TagsTBL_TagNameTBL9">
+    <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Room">
-        <PropertyRef Name="Id" />
+      <Principal Role="TagNameTBL">
+        <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="Schedule">
-        <PropertyRef Name="Room" />
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tag10" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SubjectsForClass_Class">
-    <End Role="Class" Type="Self.Class" Multiplicity="1" />
-    <End Role="SubjectsForClass" Type="Self.SubjectsForClass" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Class">
-        <PropertyRef Name="Num" />
-      </Principal>
-      <Dependent Role="SubjectsForClass">
-        <PropertyRef Name="ClassId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SubjectsForClass_Subject">
-    <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
-    <End Role="SubjectsForClass" Type="Self.SubjectsForClass" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Subject">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="SubjectsForClass">
-        <PropertyRef Name="SubjectId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TeachersForOcation_Ocation">
-    <End Role="Occasion" Type="Self.Occasion" Multiplicity="1" />
-    <End Role="TeachersForOccasion" Type="Self.TeachersForOccasion" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Occasion">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TeachersForOccasion">
-        <PropertyRef Name="OccasionId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TeachersForOccasion_Teacher">
-    <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
-    <End Role="TeachersForOccasion" Type="Self.TeachersForOccasion" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Teacher">
-        <PropertyRef Name="Num" />
-      </Principal>
-      <Dependent Role="TeachersForOccasion">
-        <PropertyRef Name="TeacherId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Function Name="FILL_CONST_TABLES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="TRUNCATE_MONTHLY_TABLES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="getByTag" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tag" Type="varchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="fileLocation" Type="varchar(max)" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="date" />
+          <Property Name="count" Type="bigint" />
+          <Property Name="singerId" Type="int" />
+          <Property Name="liked" Type="int" />
+          <Property Name="unliked" Type="int" />
+          <Property Name="tagsId" Type="int" />
+          <Property Name="albumId" Type="int" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
+          <Property Name="image" Type="varchar(max)" />
+          <Property Name="content" Type="varchar" MaxLength="50" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="getPlaylists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="playlistId" Type="int" />
+          <Property Name="songId" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="getSongs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="fileLocation" Type="varchar(max)" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="date" />
+          <Property Name="count" Type="bigint" />
+          <Property Name="singerId" Type="int" />
+          <Property Name="liked" Type="int" />
+          <Property Name="unliked" Type="int" />
+          <Property Name="tagsId" Type="int" />
+          <Property Name="albumId" Type="int" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
+          <Property Name="image" Type="varchar(max)" />
+          <Property Name="content" Type="varchar" MaxLength="50" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="searchByAlbum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="albumName" Type="varchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="fileLocation" Type="varchar(max)" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="date" />
+          <Property Name="count" Type="bigint" />
+          <Property Name="singerId" Type="int" />
+          <Property Name="liked" Type="int" />
+          <Property Name="unliked" Type="int" />
+          <Property Name="tagsId" Type="int" />
+          <Property Name="albumId" Type="int" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
+          <Property Name="image" Type="varchar(max)" />
+          <Property Name="content" Type="varchar" MaxLength="50" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="searchBySinger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="singerName" Type="varchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="fileLocation" Type="varchar(max)" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="date" />
+          <Property Name="count" Type="bigint" />
+          <Property Name="singerId" Type="int" />
+          <Property Name="liked" Type="int" />
+          <Property Name="unliked" Type="int" />
+          <Property Name="tagsId" Type="int" />
+          <Property Name="albumId" Type="int" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
+          <Property Name="image" Type="varchar(max)" />
+          <Property Name="content" Type="varchar" MaxLength="50" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
   <EntityContainer Name="MusicOnlineModelStoreContainer">
-    <EntitySet Name="Absence" EntityType="Self.Absence" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="AbsencesForTeacher" EntityType="Self.AbsencesForTeacher" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ClassesForGroup" EntityType="Self.ClassesForGroup" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ClassesForOccasion" EntityType="Self.ClassesForOccasion" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Dairy" EntityType="Self.Dairy" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="DairyForClasses" EntityType="Self.DairyForClasses" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="HourType" EntityType="Self.HourType" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Occasion" EntityType="Self.Occasion" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="OccasionType" EntityType="Self.OccasionType" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="PayAbsence" EntityType="Self.PayAbsence" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="PayAbsencesForTeacher" EntityType="Self.PayAbsencesForTeacher" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Reforma" EntityType="Self.Reforma" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="RoomsForOccasion" EntityType="Self.RoomsForOccasion" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="SchoolType" EntityType="Self.SchoolType" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="SubjectsForClass" EntityType="Self.SubjectsForClass" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TeachersForOccasion" EntityType="Self.TeachersForOccasion" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_AbsencesForTeacher_Absence1" Association="Self.FK_AbsencesForTeacher_Absence1">
-      <End Role="Absence" EntitySet="Absence" />
-      <End Role="AbsencesForTeacher" EntitySet="AbsencesForTeacher" />
+    <EntitySet Name="AlbumsTBL" EntityType="Self.AlbumsTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ArticlesBTL" EntityType="Self.ArticlesBTL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PlaylistsTBL" EntityType="Self.PlaylistsTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportsTBL" EntityType="Self.ReportsTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResponsesTBL" EntityType="Self.ResponsesTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SingersTBL" EntityType="Self.SingersTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SongsTBL" EntityType="Self.SongsTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TagNameTBL" EntityType="Self.TagNameTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TagsTBL" EntityType="Self.TagsTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ArticlesBTL_TagsTBL" Association="Self.FK_ArticlesBTL_TagsTBL">
+      <End Role="TagsTBL" EntitySet="TagsTBL" />
+      <End Role="ArticlesBTL" EntitySet="ArticlesBTL" />
     </AssociationSet>
-    <AssociationSet Name="FK_AbsencesForTeacher_Teacher" Association="Self.FK_AbsencesForTeacher_Teacher">
-      <End Role="Teacher" EntitySet="Teacher" />
-      <End Role="AbsencesForTeacher" EntitySet="AbsencesForTeacher" />
+    <AssociationSet Name="FK_PlaylistsTBL_UsersTBL" Association="Self.FK_PlaylistsTBL_UsersTBL">
+      <End Role="UsersTBL" EntitySet="UsersTBL" />
+      <End Role="PlaylistsTBL" EntitySet="PlaylistsTBL" />
     </AssociationSet>
-    <AssociationSet Name="FK_ClassesForGroup_Class" Association="Self.FK_ClassesForGroup_Class">
-      <End Role="Class" EntitySet="Class" />
-      <End Role="ClassesForGroup" EntitySet="ClassesForGroup" />
+    <AssociationSet Name="FK_ReportsTBL_SongsTBL" Association="Self.FK_ReportsTBL_SongsTBL">
+      <End Role="SongsTBL" EntitySet="SongsTBL" />
+      <End Role="ReportsTBL" EntitySet="ReportsTBL" />
     </AssociationSet>
-    <AssociationSet Name="FK_ClassesForGroup_Group" Association="Self.FK_ClassesForGroup_Group">
-      <End Role="Group" EntitySet="Group" />
-      <End Role="ClassesForGroup" EntitySet="ClassesForGroup" />
+    <AssociationSet Name="FK_ResponsesTBL_ArticlesBTL" Association="Self.FK_ResponsesTBL_ArticlesBTL">
+      <End Role="ArticlesBTL" EntitySet="ArticlesBTL" />
+      <End Role="ResponsesTBL" EntitySet="ResponsesTBL" />
     </AssociationSet>
-    <AssociationSet Name="FK_ClassesForOcation_Ocation" Association="Self.FK_ClassesForOcation_Ocation">
-      <End Role="Occasion" EntitySet="Occasion" />
-      <End Role="ClassesForOccasion" EntitySet="ClassesForOccasion" />
+    <AssociationSet Name="FK_SongsTBL_AlbumsTBL" Association="Self.FK_SongsTBL_AlbumsTBL">
+      <End Role="AlbumsTBL" EntitySet="AlbumsTBL" />
+      <End Role="SongsTBL" EntitySet="SongsTBL" />
     </AssociationSet>
-    <AssociationSet Name="FK_ClassesForOccasion_Class" Association="Self.FK_ClassesForOccasion_Class">
-      <End Role="Class" EntitySet="Class" />
-      <End Role="ClassesForOccasion" EntitySet="ClassesForOccasion" />
+    <AssociationSet Name="FK_SongsTBL_SingersTBL" Association="Self.FK_SongsTBL_SingersTBL">
+      <End Role="SingersTBL" EntitySet="SingersTBL" />
+      <End Role="SongsTBL" EntitySet="SongsTBL" />
     </AssociationSet>
-    <AssociationSet Name="FK_Dairy_Group" Association="Self.FK_Dairy_Group">
-      <End Role="Group" EntitySet="Group" />
-      <End Role="Dairy" EntitySet="Dairy" />
+    <AssociationSet Name="FK_SongsTBL_TagsTBL" Association="Self.FK_SongsTBL_TagsTBL">
+      <End Role="TagsTBL" EntitySet="TagsTBL" />
+      <End Role="SongsTBL" EntitySet="SongsTBL" />
     </AssociationSet>
-    <AssociationSet Name="FK_Dairy_Ocation" Association="Self.FK_Dairy_Ocation">
-      <End Role="Occasion" EntitySet="Occasion" />
-      <End Role="Dairy" EntitySet="Dairy" />
+    <AssociationSet Name="FK_SongsToPlaylistsTBL_PlaylistsTBL" Association="Self.FK_SongsToPlaylistsTBL_PlaylistsTBL">
+      <End Role="PlaylistsTBL" EntitySet="PlaylistsTBL" />
+      <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
     </AssociationSet>
-    <AssociationSet Name="FK_Dairy_OcationType" Association="Self.FK_Dairy_OcationType">
-      <End Role="OccasionType" EntitySet="OccasionType" />
-      <End Role="Dairy" EntitySet="Dairy" />
+    <AssociationSet Name="FK_SongsToPlaylistsTBL_SongsTBL" Association="Self.FK_SongsToPlaylistsTBL_SongsTBL">
+      <End Role="SongsTBL" EntitySet="SongsTBL" />
+      <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
     </AssociationSet>
-    <AssociationSet Name="FK_Dairy_Room" Association="Self.FK_Dairy_Room">
-      <End Role="Room" EntitySet="Room" />
-      <End Role="Dairy" EntitySet="Dairy" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Dairy_Subject" Association="Self.FK_Dairy_Subject">
-      <End Role="Subject" EntitySet="Subject" />
-      <End Role="Dairy" EntitySet="Dairy" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Dairy_Teacher" Association="Self.FK_Dairy_Teacher">
-      <End Role="Teacher" EntitySet="Teacher" />
-      <End Role="Dairy" EntitySet="Dairy" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DairyForClasses_Class" Association="Self.FK_DairyForClasses_Class">
-      <End Role="Class" EntitySet="Class" />
-      <End Role="DairyForClasses" EntitySet="DairyForClasses" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DairyForClasses_Dairy" Association="Self.FK_DairyForClasses_Dairy">
-      <End Role="Dairy" EntitySet="Dairy" />
-      <End Role="DairyForClasses" EntitySet="DairyForClasses" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Group_HourType" Association="Self.FK_Group_HourType">
-      <End Role="HourType" EntitySet="HourType" />
-      <End Role="Group" EntitySet="Group" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Group_PayAbsence" Association="Self.FK_Group_PayAbsence">
-      <End Role="PayAbsence" EntitySet="PayAbsence" />
-      <End Role="Group" EntitySet="Group" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Group_Reforma" Association="Self.FK_Group_Reforma">
-      <End Role="Reforma" EntitySet="Reforma" />
-      <End Role="Group" EntitySet="Group" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Group_Room" Association="Self.FK_Group_Room">
-      <End Role="Room" EntitySet="Room" />
-      <End Role="Group" EntitySet="Group" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Group_SchoolType" Association="Self.FK_Group_SchoolType">
-      <End Role="SchoolType" EntitySet="SchoolType" />
-      <End Role="Group" EntitySet="Group" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Group_Subject" Association="Self.FK_Group_Subject">
-      <End Role="Subject" EntitySet="Subject" />
-      <End Role="Group" EntitySet="Group" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Group_Teacher" Association="Self.FK_Group_Teacher">
-      <End Role="Teacher" EntitySet="Teacher" />
-      <End Role="Group" EntitySet="Group" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Ocation_OcationType" Association="Self.FK_Ocation_OcationType">
-      <End Role="OccasionType" EntitySet="OccasionType" />
-      <End Role="Occasion" EntitySet="Occasion" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PayAbsencesForTeacher_PayAbsence" Association="Self.FK_PayAbsencesForTeacher_PayAbsence">
-      <End Role="PayAbsence" EntitySet="PayAbsence" />
-      <End Role="PayAbsencesForTeacher" EntitySet="PayAbsencesForTeacher" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PayAbsencesForTeacher_Teacher" Association="Self.FK_PayAbsencesForTeacher_Teacher">
-      <End Role="Teacher" EntitySet="Teacher" />
-      <End Role="PayAbsencesForTeacher" EntitySet="PayAbsencesForTeacher" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Room_Class" Association="Self.FK_Room_Class">
-      <End Role="Class" EntitySet="Class" />
-      <End Role="Room" EntitySet="Room" />
-    </AssociationSet>
-    <AssociationSet Name="FK_RoomsForOcation_Ocation" Association="Self.FK_RoomsForOcation_Ocation">
-      <End Role="Occasion" EntitySet="Occasion" />
-      <End Role="RoomsForOccasion" EntitySet="RoomsForOccasion" />
-    </AssociationSet>
-    <AssociationSet Name="FK_RoomsForOcation_Room" Association="Self.FK_RoomsForOcation_Room">
-      <End Role="Room" EntitySet="Room" />
-      <End Role="RoomsForOccasion" EntitySet="RoomsForOccasion" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Schedule_Group" Association="Self.FK_Schedule_Group">
-      <End Role="Group" EntitySet="Group" />
-      <End Role="Schedule" EntitySet="Schedule" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Schedule_Room" Association="Self.FK_Schedule_Room">
-      <End Role="Room" EntitySet="Room" />
-      <End Role="Schedule" EntitySet="Schedule" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SubjectsForClass_Class" Association="Self.FK_SubjectsForClass_Class">
-      <End Role="Class" EntitySet="Class" />
-      <End Role="SubjectsForClass" EntitySet="SubjectsForClass" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SubjectsForClass_Subject" Association="Self.FK_SubjectsForClass_Subject">
-      <End Role="Subject" EntitySet="Subject" />
-      <End Role="SubjectsForClass" EntitySet="SubjectsForClass" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TeachersForOcation_Ocation" Association="Self.FK_TeachersForOcation_Ocation">
-      <End Role="Occasion" EntitySet="Occasion" />
-      <End Role="TeachersForOccasion" EntitySet="TeachersForOccasion" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TeachersForOccasion_Teacher" Association="Self.FK_TeachersForOccasion_Teacher">
-      <End Role="Teacher" EntitySet="Teacher" />
-      <End Role="TeachersForOccasion" EntitySet="TeachersForOccasion" />
-    </AssociationSet>
+    <!-- my changes (tamar)
+<AssociationSet Name="FK_TagsTBL_TagNameTBL" Association="Self.FK_TagsTBL_TagNameTBL">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL1" Association="Self.FK_TagsTBL_TagNameTBL1">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL10" Association="Self.FK_TagsTBL_TagNameTBL10">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL11" Association="Self.FK_TagsTBL_TagNameTBL11">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL12" Association="Self.FK_TagsTBL_TagNameTBL12">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL13" Association="Self.FK_TagsTBL_TagNameTBL13">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL14" Association="Self.FK_TagsTBL_TagNameTBL14">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL15" Association="Self.FK_TagsTBL_TagNameTBL15">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL16" Association="Self.FK_TagsTBL_TagNameTBL16">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL17" Association="Self.FK_TagsTBL_TagNameTBL17">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL18" Association="Self.FK_TagsTBL_TagNameTBL18">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL19" Association="Self.FK_TagsTBL_TagNameTBL19">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL2" Association="Self.FK_TagsTBL_TagNameTBL2">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL3" Association="Self.FK_TagsTBL_TagNameTBL3">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL4" Association="Self.FK_TagsTBL_TagNameTBL4">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL5" Association="Self.FK_TagsTBL_TagNameTBL5">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL6" Association="Self.FK_TagsTBL_TagNameTBL6">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL7" Association="Self.FK_TagsTBL_TagNameTBL7">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL8" Association="Self.FK_TagsTBL_TagNameTBL8">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL9" Association="Self.FK_TagsTBL_TagNameTBL9">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>-->
   </EntityContainer>
 </Schema>

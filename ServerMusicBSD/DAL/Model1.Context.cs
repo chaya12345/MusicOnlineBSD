@@ -37,23 +37,6 @@ namespace DAL
         public virtual DbSet<SongsToPlaylistsTBL> SongsToPlaylistsTBL { get; set; }
         public virtual DbSet<TagsTBL> TagsTBL { get; set; }
         public virtual DbSet<UsersTBL> UsersTBL { get; set; }
-        public virtual DbSet<TagNameTBL> TagNameTBLs { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<Absence> Absences { get; set; }
-        public virtual DbSet<AbsencesForTeacher> AbsencesForTeachers { get; set; }
-        public virtual DbSet<Class> Classes { get; set; }
-        public virtual DbSet<Dairy> Dairies { get; set; }
-        public virtual DbSet<Group> Groups { get; set; }
-        public virtual DbSet<HourType> HourTypes { get; set; }
-        public virtual DbSet<Occasion> Occasions { get; set; }
-        public virtual DbSet<OccasionType> OccasionTypes { get; set; }
-        public virtual DbSet<PayAbsence> PayAbsences { get; set; }
-        public virtual DbSet<Reforma> Reformas { get; set; }
-        public virtual DbSet<Room> Rooms { get; set; }
-        public virtual DbSet<Schedule> Schedules { get; set; }
-        public virtual DbSet<SchoolType> SchoolTypes { get; set; }
-        public virtual DbSet<Subject> Subjects { get; set; }
-        public virtual DbSet<Teacher> Teachers { get; set; }
     
         [DbFunction("MusicOnlineEntities", "getByTag")]
         public virtual IQueryable<getByTag_Result> getByTag(string tag)
@@ -262,6 +245,52 @@ namespace DAL
         public virtual int TRUNCATE_MONTHLY_TABLES()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TRUNCATE_MONTHLY_TABLES");
+        }
+    
+        [DbFunction("MusicOnlineEntities", "getByTag1")]
+        public virtual IQueryable<getByTag1_Result> getByTag1(string tag)
+        {
+            var tagParameter = tag != null ?
+                new ObjectParameter("tag", tag) :
+                new ObjectParameter("tag", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getByTag1_Result>("[MusicOnlineEntities].[getByTag1](@tag)", tagParameter);
+        }
+    
+        [DbFunction("MusicOnlineEntities", "getPlaylists1")]
+        public virtual IQueryable<getPlaylists1_Result> getPlaylists1(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getPlaylists1_Result>("[MusicOnlineEntities].[getPlaylists1](@userId)", userIdParameter);
+        }
+    
+        [DbFunction("MusicOnlineEntities", "getSongs1")]
+        public virtual IQueryable<getSongs1_Result> getSongs1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getSongs1_Result>("[MusicOnlineEntities].[getSongs1]()");
+        }
+    
+        [DbFunction("MusicOnlineEntities", "searchByAlbum1")]
+        public virtual IQueryable<searchByAlbum1_Result> searchByAlbum1(string albumName)
+        {
+            var albumNameParameter = albumName != null ?
+                new ObjectParameter("albumName", albumName) :
+                new ObjectParameter("albumName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<searchByAlbum1_Result>("[MusicOnlineEntities].[searchByAlbum1](@albumName)", albumNameParameter);
+        }
+    
+        [DbFunction("MusicOnlineEntities", "searchBySinger1")]
+        public virtual IQueryable<searchBySinger1_Result> searchBySinger1(string singerName)
+        {
+            var singerNameParameter = singerName != null ?
+                new ObjectParameter("singerName", singerName) :
+                new ObjectParameter("singerName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<searchBySinger1_Result>("[MusicOnlineEntities].[searchBySinger1](@singerName)", singerNameParameter);
         }
     }
 }

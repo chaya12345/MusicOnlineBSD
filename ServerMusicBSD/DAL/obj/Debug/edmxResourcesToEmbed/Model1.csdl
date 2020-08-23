@@ -162,26 +162,26 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="ArticlesBTL" Relationship="Self.FK_ArticlesBTL_TagsTBL" FromRole="TagsTBL" ToRole="ArticlesBTL" />
     <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsTBL_TagsTBL" FromRole="TagsTBL" ToRole="SongsTBL" />
-    <Property Name="tag1" Type="String" />
-    <Property Name="tag2" Type="String" />
-    <Property Name="tag3" Type="String" />
-    <Property Name="tag4" Type="String" />
-    <Property Name="tag5" Type="String" />
-    <Property Name="tag6" Type="String" />
-    <Property Name="tag7" Type="String" />
-    <Property Name="tag8" Type="String" />
-    <Property Name="tag9" Type="String" />
-    <Property Name="tag10" Type="String" />
-    <Property Name="tag11" Type="String" />
-    <Property Name="tag12" Type="String" />
-    <Property Name="tag13" Type="String" />
-    <Property Name="tag14" Type="String" />
-    <Property Name="tag15" Type="String" />
-    <Property Name="tag16" Type="String" />
-    <Property Name="tag17" Type="String" />
-    <Property Name="tag18" Type="String" />
-    <Property Name="tag19" Type="String" />
-    <Property Name="tag20" Type="String" />
+    <Property Name="tag1" Type="Int32" />
+    <Property Name="tag2" Type="Int32" />
+    <Property Name="tag3" Type="Int32" />
+    <Property Name="tag4" Type="Int32" />
+    <Property Name="tag5" Type="Int32" />
+    <Property Name="tag6" Type="Int32" />
+    <Property Name="tag7" Type="Int32" />
+    <Property Name="tag8" Type="Int32" />
+    <Property Name="tag9" Type="Int32" />
+    <Property Name="tag10" Type="Int32" />
+    <Property Name="tag11" Type="Int32" />
+    <Property Name="tag12" Type="Int32" />
+    <Property Name="tag13" Type="Int32" />
+    <Property Name="tag14" Type="Int32" />
+    <Property Name="tag15" Type="Int32" />
+    <Property Name="tag16" Type="Int32" />
+    <Property Name="tag17" Type="Int32" />
+    <Property Name="tag18" Type="Int32" />
+    <Property Name="tag19" Type="Int32" />
+    <Property Name="tag20" Type="Int32" />
   </EntityType>
   <EntityType Name="UsersTBL">
     <Key>
@@ -410,129 +410,21 @@
       <Parameter Name="content" Mode="In" Type="String" />
       <Parameter Name="date" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <EntitySet Name="TagNameTBLs" EntityType="MusicOnlineModel.TagNameTBL" />
-    <EntitySet Name="sysdiagrams" EntityType="MusicOnlineModel.sysdiagram" />
-    <EntitySet Name="Absences" EntityType="MusicOnlineModel.Absence" />
-    <EntitySet Name="AbsencesForTeachers" EntityType="MusicOnlineModel.AbsencesForTeacher" />
-    <EntitySet Name="Classes" EntityType="MusicOnlineModel.Class" />
-    <EntitySet Name="Dairies" EntityType="MusicOnlineModel.Dairy" />
-    <EntitySet Name="Groups" EntityType="MusicOnlineModel.Group" />
-    <EntitySet Name="HourTypes" EntityType="MusicOnlineModel.HourType" />
-    <EntitySet Name="Occasions" EntityType="MusicOnlineModel.Occasion" />
-    <EntitySet Name="OccasionTypes" EntityType="MusicOnlineModel.OccasionType" />
-    <EntitySet Name="PayAbsences" EntityType="MusicOnlineModel.PayAbsence" />
-    <EntitySet Name="Reformas" EntityType="MusicOnlineModel.Reforma" />
-    <EntitySet Name="Rooms" EntityType="MusicOnlineModel.Room" />
-    <EntitySet Name="Schedules" EntityType="MusicOnlineModel.Schedule" />
-    <EntitySet Name="SchoolTypes" EntityType="MusicOnlineModel.SchoolType" />
-    <EntitySet Name="Subjects" EntityType="MusicOnlineModel.Subject" />
-    <EntitySet Name="Teachers" EntityType="MusicOnlineModel.Teacher" />
-    <AssociationSet Name="FK_AbsencesForTeacher_Absence1" Association="MusicOnlineModel.FK_AbsencesForTeacher_Absence1">
-      <End Role="Absence" EntitySet="Absences" />
-      <End Role="AbsencesForTeacher" EntitySet="AbsencesForTeachers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_AbsencesForTeacher_Teacher" Association="MusicOnlineModel.FK_AbsencesForTeacher_Teacher">
-      <End Role="Teacher" EntitySet="Teachers" />
-      <End Role="AbsencesForTeacher" EntitySet="AbsencesForTeachers" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Room_Class" Association="MusicOnlineModel.FK_Room_Class">
-      <End Role="Class" EntitySet="Classes" />
-      <End Role="Room" EntitySet="Rooms" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Dairy_Group" Association="MusicOnlineModel.FK_Dairy_Group">
-      <End Role="Group" EntitySet="Groups" />
-      <End Role="Dairy" EntitySet="Dairies" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Dairy_Ocation" Association="MusicOnlineModel.FK_Dairy_Ocation">
-      <End Role="Occasion" EntitySet="Occasions" />
-      <End Role="Dairy" EntitySet="Dairies" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Dairy_OcationType" Association="MusicOnlineModel.FK_Dairy_OcationType">
-      <End Role="OccasionType" EntitySet="OccasionTypes" />
-      <End Role="Dairy" EntitySet="Dairies" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Dairy_Room" Association="MusicOnlineModel.FK_Dairy_Room">
-      <End Role="Room" EntitySet="Rooms" />
-      <End Role="Dairy" EntitySet="Dairies" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Dairy_Subject" Association="MusicOnlineModel.FK_Dairy_Subject">
-      <End Role="Subject" EntitySet="Subjects" />
-      <End Role="Dairy" EntitySet="Dairies" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Dairy_Teacher" Association="MusicOnlineModel.FK_Dairy_Teacher">
-      <End Role="Teacher" EntitySet="Teachers" />
-      <End Role="Dairy" EntitySet="Dairies" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Group_HourType" Association="MusicOnlineModel.FK_Group_HourType">
-      <End Role="HourType" EntitySet="HourTypes" />
-      <End Role="Group" EntitySet="Groups" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Group_PayAbsence" Association="MusicOnlineModel.FK_Group_PayAbsence">
-      <End Role="PayAbsence" EntitySet="PayAbsences" />
-      <End Role="Group" EntitySet="Groups" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Group_Reforma" Association="MusicOnlineModel.FK_Group_Reforma">
-      <End Role="Reforma" EntitySet="Reformas" />
-      <End Role="Group" EntitySet="Groups" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Group_Room" Association="MusicOnlineModel.FK_Group_Room">
-      <End Role="Room" EntitySet="Rooms" />
-      <End Role="Group" EntitySet="Groups" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Group_SchoolType" Association="MusicOnlineModel.FK_Group_SchoolType">
-      <End Role="SchoolType" EntitySet="SchoolTypes" />
-      <End Role="Group" EntitySet="Groups" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Group_Subject" Association="MusicOnlineModel.FK_Group_Subject">
-      <End Role="Subject" EntitySet="Subjects" />
-      <End Role="Group" EntitySet="Groups" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Group_Teacher" Association="MusicOnlineModel.FK_Group_Teacher">
-      <End Role="Teacher" EntitySet="Teachers" />
-      <End Role="Group" EntitySet="Groups" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Schedule_Group" Association="MusicOnlineModel.FK_Schedule_Group">
-      <End Role="Group" EntitySet="Groups" />
-      <End Role="Schedule" EntitySet="Schedules" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Ocation_OcationType" Association="MusicOnlineModel.FK_Ocation_OcationType">
-      <End Role="OccasionType" EntitySet="OccasionTypes" />
-      <End Role="Occasion" EntitySet="Occasions" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Schedule_Room" Association="MusicOnlineModel.FK_Schedule_Room">
-      <End Role="Room" EntitySet="Rooms" />
-      <End Role="Schedule" EntitySet="Schedules" />
-    </AssociationSet>
-    <AssociationSet Name="ClassesForGroup" Association="MusicOnlineModel.ClassesForGroup">
-      <End Role="Class" EntitySet="Classes" />
-      <End Role="Group" EntitySet="Groups" />
-    </AssociationSet>
-    <AssociationSet Name="ClassesForOccasion" Association="MusicOnlineModel.ClassesForOccasion">
-      <End Role="Occasion" EntitySet="Occasions" />
-      <End Role="Class" EntitySet="Classes" />
-    </AssociationSet>
-    <AssociationSet Name="DairyForClasses" Association="MusicOnlineModel.DairyForClasses">
-      <End Role="Class" EntitySet="Classes" />
-      <End Role="Dairy" EntitySet="Dairies" />
-    </AssociationSet>
-    <AssociationSet Name="PayAbsencesForTeacher" Association="MusicOnlineModel.PayAbsencesForTeacher">
-      <End Role="PayAbsence" EntitySet="PayAbsences" />
-      <End Role="Teacher" EntitySet="Teachers" />
-    </AssociationSet>
-    <AssociationSet Name="RoomsForOccasion" Association="MusicOnlineModel.RoomsForOccasion">
-      <End Role="Occasion" EntitySet="Occasions" />
-      <End Role="Room" EntitySet="Rooms" />
-    </AssociationSet>
-    <AssociationSet Name="SubjectsForClass" Association="MusicOnlineModel.SubjectsForClass">
-      <End Role="Class" EntitySet="Classes" />
-      <End Role="Subject" EntitySet="Subjects" />
-    </AssociationSet>
-    <AssociationSet Name="TeachersForOccasion" Association="MusicOnlineModel.TeachersForOccasion">
-      <End Role="Occasion" EntitySet="Occasions" />
-      <End Role="Teacher" EntitySet="Teachers" />
-    </AssociationSet>
     <FunctionImport Name="FILL_CONST_TABLES" />
     <FunctionImport Name="TRUNCATE_MONTHLY_TABLES" />
+    <FunctionImport Name="getByTag1" IsComposable="true" ReturnType="Collection(MusicOnlineModel.getByTag1_Result)">
+      <Parameter Name="tag" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getPlaylists1" IsComposable="true" ReturnType="Collection(MusicOnlineModel.getPlaylists1_Result)">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getSongs1" IsComposable="true" ReturnType="Collection(MusicOnlineModel.getSongs1_Result)" />
+    <FunctionImport Name="searchByAlbum1" IsComposable="true" ReturnType="Collection(MusicOnlineModel.searchByAlbum1_Result)">
+      <Parameter Name="albumName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="searchBySinger1" IsComposable="true" ReturnType="Collection(MusicOnlineModel.searchBySinger1_Result)">
+      <Parameter Name="singerName" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -568,480 +460,73 @@
     <Property Type="String" Name="C19" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="C20" Nullable="true" MaxLength="50" />
   </ComplexType>
-  <EntityType Name="TagNameTBL">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
-  <EntityType Name="Absence">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="AbsencesForTeachers" Relationship="MusicOnlineModel.FK_AbsencesForTeacher_Absence1" FromRole="Absence" ToRole="AbsencesForTeacher" />
-  </EntityType>
-  <EntityType Name="AbsencesForTeacher">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Type" Type="Int32" Nullable="false" />
-    <Property Name="TeacherId" Type="Int32" Nullable="false" />
-    <Property Name="FromDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="TeacherStandIn" Type="Int32" />
-    <Property Name="FromLesson" Type="Int32" />
-    <Property Name="ToLesson" Type="Int32" />
-    <NavigationProperty Name="Absence" Relationship="MusicOnlineModel.FK_AbsencesForTeacher_Absence1" FromRole="AbsencesForTeacher" ToRole="Absence" />
-    <NavigationProperty Name="Teacher" Relationship="MusicOnlineModel.FK_AbsencesForTeacher_Teacher" FromRole="AbsencesForTeacher" ToRole="Teacher" />
-  </EntityType>
-  <EntityType Name="Class">
-    <Key>
-      <PropertyRef Name="Num" />
-    </Key>
-    <Property Name="Num" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-    <Property Name="Layer" Type="Int32" Nullable="false" />
-    <Property Name="Number" Type="Int32" Nullable="false" />
-    <Property Name="SchoolType" Type="Int32" />
-    <NavigationProperty Name="Rooms" Relationship="MusicOnlineModel.FK_Room_Class" FromRole="Class" ToRole="Room" />
-    <NavigationProperty Name="Groups" Relationship="MusicOnlineModel.ClassesForGroup" FromRole="Class" ToRole="Group" />
-    <NavigationProperty Name="Occasions" Relationship="MusicOnlineModel.ClassesForOccasion" FromRole="Class" ToRole="Occasion" />
-    <NavigationProperty Name="Dairies" Relationship="MusicOnlineModel.DairyForClasses" FromRole="Class" ToRole="Dairy" />
-    <NavigationProperty Name="Subjects" Relationship="MusicOnlineModel.SubjectsForClass" FromRole="Class" ToRole="Subject" />
-  </EntityType>
-  <EntityType Name="Dairy">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="Num" Type="Int32" />
-    <Property Name="TeacherId" Type="Int32" />
-    <Property Name="SubjectId" Type="Int32" />
-    <Property Name="TypeId" Type="Int32" />
-    <Property Name="GroupId" Type="Int32" />
-    <Property Name="RoomId" Type="Int32" />
-    <Property Name="IsGrouped" Type="Boolean" Nullable="false" />
-    <Property Name="OccasionId" Type="Int32" />
-    <Property Name="Reforma" Type="Int32" />
-    <Property Name="FromDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="Hour" Type="Int32" Nullable="false" />
-    <Property Name="CalculateHours" Type="Decimal" Precision="4" Scale="2" />
-    <Property Name="Cause" Type="Int32" />
-    <NavigationProperty Name="Group" Relationship="MusicOnlineModel.FK_Dairy_Group" FromRole="Dairy" ToRole="Group" />
-    <NavigationProperty Name="Occasion" Relationship="MusicOnlineModel.FK_Dairy_Ocation" FromRole="Dairy" ToRole="Occasion" />
-    <NavigationProperty Name="OccasionType" Relationship="MusicOnlineModel.FK_Dairy_OcationType" FromRole="Dairy" ToRole="OccasionType" />
-    <NavigationProperty Name="Room" Relationship="MusicOnlineModel.FK_Dairy_Room" FromRole="Dairy" ToRole="Room" />
-    <NavigationProperty Name="Subject" Relationship="MusicOnlineModel.FK_Dairy_Subject" FromRole="Dairy" ToRole="Subject" />
-    <NavigationProperty Name="Teacher" Relationship="MusicOnlineModel.FK_Dairy_Teacher" FromRole="Dairy" ToRole="Teacher" />
-    <NavigationProperty Name="Classes" Relationship="MusicOnlineModel.DairyForClasses" FromRole="Dairy" ToRole="Class" />
-  </EntityType>
-  <EntityType Name="Group">
-    <Key>
-      <PropertyRef Name="Num" />
-    </Key>
-    <Property Name="Num" Type="Int32" Nullable="false" />
-    <Property Name="Teacher" Type="Int32" />
-    <Property Name="Subject" Type="Int32" />
-    <Property Name="Room" Type="Int32" />
-    <Property Name="Hours" Type="Int32" />
-    <Property Name="CalculateHours" Type="Decimal" Precision="4" Scale="2" />
-    <Property Name="SchoolType" Type="Int32" />
-    <Property Name="Reforma" Type="Int32" />
-    <Property Name="PayAbsence" Type="Int32" />
-    <Property Name="HourType" Type="Int32" />
-    <Property Name="SubHourType" Type="Int32" />
-    <NavigationProperty Name="Dairies" Relationship="MusicOnlineModel.FK_Dairy_Group" FromRole="Group" ToRole="Dairy" />
-    <NavigationProperty Name="HourType1" Relationship="MusicOnlineModel.FK_Group_HourType" FromRole="Group" ToRole="HourType" />
-    <NavigationProperty Name="PayAbsence1" Relationship="MusicOnlineModel.FK_Group_PayAbsence" FromRole="Group" ToRole="PayAbsence" />
-    <NavigationProperty Name="Reforma1" Relationship="MusicOnlineModel.FK_Group_Reforma" FromRole="Group" ToRole="Reforma" />
-    <NavigationProperty Name="Room1" Relationship="MusicOnlineModel.FK_Group_Room" FromRole="Group" ToRole="Room" />
-    <NavigationProperty Name="SchoolType1" Relationship="MusicOnlineModel.FK_Group_SchoolType" FromRole="Group" ToRole="SchoolType" />
-    <NavigationProperty Name="Subject1" Relationship="MusicOnlineModel.FK_Group_Subject" FromRole="Group" ToRole="Subject" />
-    <NavigationProperty Name="Teacher1" Relationship="MusicOnlineModel.FK_Group_Teacher" FromRole="Group" ToRole="Teacher" />
-    <NavigationProperty Name="Schedules" Relationship="MusicOnlineModel.FK_Schedule_Group" FromRole="Group" ToRole="Schedule" />
-    <NavigationProperty Name="Classes" Relationship="MusicOnlineModel.ClassesForGroup" FromRole="Group" ToRole="Class" />
-  </EntityType>
-  <EntityType Name="HourType">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="ParentId" Type="Int32" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Groups" Relationship="MusicOnlineModel.FK_Group_HourType" FromRole="HourType" ToRole="Group" />
-  </EntityType>
-  <EntityType Name="Occasion">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="FromDate" Type="DateTime" Precision="0" />
-    <Property Name="ToDate" Type="DateTime" Precision="0" />
-    <Property Name="OccasionType" Type="Int32" />
-    <Property Name="FromLesson" Type="Int32" />
-    <Property Name="ToLesson" Type="Int32" />
-    <Property Name="Subject" Type="Int32" />
-    <NavigationProperty Name="Dairies" Relationship="MusicOnlineModel.FK_Dairy_Ocation" FromRole="Occasion" ToRole="Dairy" />
-    <NavigationProperty Name="OccasionType1" Relationship="MusicOnlineModel.FK_Ocation_OcationType" FromRole="Occasion" ToRole="OccasionType" />
-    <NavigationProperty Name="Classes" Relationship="MusicOnlineModel.ClassesForOccasion" FromRole="Occasion" ToRole="Class" />
-    <NavigationProperty Name="Rooms" Relationship="MusicOnlineModel.RoomsForOccasion" FromRole="Occasion" ToRole="Room" />
-    <NavigationProperty Name="Teachers" Relationship="MusicOnlineModel.TeachersForOccasion" FromRole="Occasion" ToRole="Teacher" />
-  </EntityType>
-  <EntityType Name="OccasionType">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Dairies" Relationship="MusicOnlineModel.FK_Dairy_OcationType" FromRole="OccasionType" ToRole="Dairy" />
-    <NavigationProperty Name="Occasions" Relationship="MusicOnlineModel.FK_Ocation_OcationType" FromRole="OccasionType" ToRole="Occasion" />
-  </EntityType>
-  <EntityType Name="PayAbsence">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="IsStandart" Type="Boolean" />
-    <NavigationProperty Name="Groups" Relationship="MusicOnlineModel.FK_Group_PayAbsence" FromRole="PayAbsence" ToRole="Group" />
-    <NavigationProperty Name="Teachers" Relationship="MusicOnlineModel.PayAbsencesForTeacher" FromRole="PayAbsence" ToRole="Teacher" />
-  </EntityType>
-  <EntityType Name="Reforma">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Groups" Relationship="MusicOnlineModel.FK_Group_Reforma" FromRole="Reforma" ToRole="Group" />
-  </EntityType>
-  <EntityType Name="Room">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Floor" Type="Int32" Nullable="false" />
-    <Property Name="Number" Type="Int32" Nullable="false" />
-    <Property Name="ClassId" Type="Int32" />
-    <Property Name="UseFor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Class" Relationship="MusicOnlineModel.FK_Room_Class" FromRole="Room" ToRole="Class" />
-    <NavigationProperty Name="Dairies" Relationship="MusicOnlineModel.FK_Dairy_Room" FromRole="Room" ToRole="Dairy" />
-    <NavigationProperty Name="Groups" Relationship="MusicOnlineModel.FK_Group_Room" FromRole="Room" ToRole="Group" />
-    <NavigationProperty Name="Schedules" Relationship="MusicOnlineModel.FK_Schedule_Room" FromRole="Room" ToRole="Schedule" />
-    <NavigationProperty Name="Occasions" Relationship="MusicOnlineModel.RoomsForOccasion" FromRole="Room" ToRole="Occasion" />
-  </EntityType>
-  <EntityType Name="Schedule">
-    <Key>
-      <PropertyRef Name="Num" />
-    </Key>
-    <Property Name="Num" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="GroupId" Type="Int32" Nullable="false" />
-    <Property Name="WeekDay" Type="Int32" Nullable="false" />
-    <Property Name="Day" Type="Int32" Nullable="false" />
-    <Property Name="Hour" Type="Int32" Nullable="false" />
-    <Property Name="Room" Type="Int32" />
-    <NavigationProperty Name="Group" Relationship="MusicOnlineModel.FK_Schedule_Group" FromRole="Schedule" ToRole="Group" />
-    <NavigationProperty Name="Room1" Relationship="MusicOnlineModel.FK_Schedule_Room" FromRole="Schedule" ToRole="Room" />
-  </EntityType>
-  <EntityType Name="SchoolType">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Groups" Relationship="MusicOnlineModel.FK_Group_SchoolType" FromRole="SchoolType" ToRole="Group" />
-  </EntityType>
-  <EntityType Name="Subject">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-    <Property Name="Color" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-    <NavigationProperty Name="Dairies" Relationship="MusicOnlineModel.FK_Dairy_Subject" FromRole="Subject" ToRole="Dairy" />
-    <NavigationProperty Name="Groups" Relationship="MusicOnlineModel.FK_Group_Subject" FromRole="Subject" ToRole="Group" />
-    <NavigationProperty Name="Classes" Relationship="MusicOnlineModel.SubjectsForClass" FromRole="Subject" ToRole="Class" />
-  </EntityType>
-  <EntityType Name="Teacher">
-    <Key>
-      <PropertyRef Name="Num" />
-    </Key>
-    <Property Name="Num" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="AbsencesForTeachers" Relationship="MusicOnlineModel.FK_AbsencesForTeacher_Teacher" FromRole="Teacher" ToRole="AbsencesForTeacher" />
-    <NavigationProperty Name="Dairies" Relationship="MusicOnlineModel.FK_Dairy_Teacher" FromRole="Teacher" ToRole="Dairy" />
-    <NavigationProperty Name="Groups" Relationship="MusicOnlineModel.FK_Group_Teacher" FromRole="Teacher" ToRole="Group" />
-    <NavigationProperty Name="PayAbsences" Relationship="MusicOnlineModel.PayAbsencesForTeacher" FromRole="Teacher" ToRole="PayAbsence" />
-    <NavigationProperty Name="Occasions" Relationship="MusicOnlineModel.TeachersForOccasion" FromRole="Teacher" ToRole="Occasion" />
-  </EntityType>
-  <Association Name="FK_AbsencesForTeacher_Absence1">
-    <End Type="MusicOnlineModel.Absence" Role="Absence" Multiplicity="1" />
-    <End Type="MusicOnlineModel.AbsencesForTeacher" Role="AbsencesForTeacher" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Absence">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="AbsencesForTeacher">
-        <PropertyRef Name="Type" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_AbsencesForTeacher_Teacher">
-    <End Type="MusicOnlineModel.Teacher" Role="Teacher" Multiplicity="1" />
-    <End Type="MusicOnlineModel.AbsencesForTeacher" Role="AbsencesForTeacher" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Teacher">
-        <PropertyRef Name="Num" />
-      </Principal>
-      <Dependent Role="AbsencesForTeacher">
-        <PropertyRef Name="TeacherId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Room_Class">
-    <End Type="MusicOnlineModel.Class" Role="Class" Multiplicity="0..1" />
-    <End Type="MusicOnlineModel.Room" Role="Room" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Class">
-        <PropertyRef Name="Num" />
-      </Principal>
-      <Dependent Role="Room">
-        <PropertyRef Name="ClassId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Dairy_Group">
-    <End Type="MusicOnlineModel.Group" Role="Group" Multiplicity="0..1" />
-    <End Type="MusicOnlineModel.Dairy" Role="Dairy" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Group">
-        <PropertyRef Name="Num" />
-      </Principal>
-      <Dependent Role="Dairy">
-        <PropertyRef Name="GroupId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Dairy_Ocation">
-    <End Type="MusicOnlineModel.Occasion" Role="Occasion" Multiplicity="0..1" />
-    <End Type="MusicOnlineModel.Dairy" Role="Dairy" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Occasion">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Dairy">
-        <PropertyRef Name="OccasionId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Dairy_OcationType">
-    <End Type="MusicOnlineModel.OccasionType" Role="OccasionType" Multiplicity="0..1" />
-    <End Type="MusicOnlineModel.Dairy" Role="Dairy" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="OccasionType">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Dairy">
-        <PropertyRef Name="TypeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Dairy_Room">
-    <End Type="MusicOnlineModel.Room" Role="Room" Multiplicity="0..1" />
-    <End Type="MusicOnlineModel.Dairy" Role="Dairy" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Room">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Dairy">
-        <PropertyRef Name="RoomId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Dairy_Subject">
-    <End Type="MusicOnlineModel.Subject" Role="Subject" Multiplicity="0..1" />
-    <End Type="MusicOnlineModel.Dairy" Role="Dairy" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Subject">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Dairy">
-        <PropertyRef Name="SubjectId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Dairy_Teacher">
-    <End Type="MusicOnlineModel.Teacher" Role="Teacher" Multiplicity="0..1" />
-    <End Type="MusicOnlineModel.Dairy" Role="Dairy" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Teacher">
-        <PropertyRef Name="Num" />
-      </Principal>
-      <Dependent Role="Dairy">
-        <PropertyRef Name="TeacherId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Group_HourType">
-    <End Type="MusicOnlineModel.HourType" Role="HourType" Multiplicity="0..1" />
-    <End Type="MusicOnlineModel.Group" Role="Group" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="HourType">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Group">
-        <PropertyRef Name="HourType" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Group_PayAbsence">
-    <End Type="MusicOnlineModel.PayAbsence" Role="PayAbsence" Multiplicity="0..1" />
-    <End Type="MusicOnlineModel.Group" Role="Group" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PayAbsence">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Group">
-        <PropertyRef Name="PayAbsence" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Group_Reforma">
-    <End Type="MusicOnlineModel.Reforma" Role="Reforma" Multiplicity="0..1" />
-    <End Type="MusicOnlineModel.Group" Role="Group" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Reforma">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Group">
-        <PropertyRef Name="Reforma" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Group_Room">
-    <End Type="MusicOnlineModel.Room" Role="Room" Multiplicity="0..1" />
-    <End Type="MusicOnlineModel.Group" Role="Group" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Room">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Group">
-        <PropertyRef Name="Room" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Group_SchoolType">
-    <End Type="MusicOnlineModel.SchoolType" Role="SchoolType" Multiplicity="0..1" />
-    <End Type="MusicOnlineModel.Group" Role="Group" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SchoolType">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Group">
-        <PropertyRef Name="SchoolType" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Group_Subject">
-    <End Type="MusicOnlineModel.Subject" Role="Subject" Multiplicity="0..1" />
-    <End Type="MusicOnlineModel.Group" Role="Group" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Subject">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Group">
-        <PropertyRef Name="Subject" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Group_Teacher">
-    <End Type="MusicOnlineModel.Teacher" Role="Teacher" Multiplicity="0..1" />
-    <End Type="MusicOnlineModel.Group" Role="Group" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Teacher">
-        <PropertyRef Name="Num" />
-      </Principal>
-      <Dependent Role="Group">
-        <PropertyRef Name="Teacher" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Schedule_Group">
-    <End Type="MusicOnlineModel.Group" Role="Group" Multiplicity="1" />
-    <End Type="MusicOnlineModel.Schedule" Role="Schedule" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Group">
-        <PropertyRef Name="Num" />
-      </Principal>
-      <Dependent Role="Schedule">
-        <PropertyRef Name="GroupId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Ocation_OcationType">
-    <End Type="MusicOnlineModel.OccasionType" Role="OccasionType" Multiplicity="0..1" />
-    <End Type="MusicOnlineModel.Occasion" Role="Occasion" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="OccasionType">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Occasion">
-        <PropertyRef Name="OccasionType" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Schedule_Room">
-    <End Type="MusicOnlineModel.Room" Role="Room" Multiplicity="0..1" />
-    <End Type="MusicOnlineModel.Schedule" Role="Schedule" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Room">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Schedule">
-        <PropertyRef Name="Room" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ClassesForGroup">
-    <End Type="MusicOnlineModel.Class" Role="Class" Multiplicity="*" />
-    <End Type="MusicOnlineModel.Group" Role="Group" Multiplicity="*" />
-  </Association>
-  <Association Name="ClassesForOccasion">
-    <End Type="MusicOnlineModel.Occasion" Role="Occasion" Multiplicity="*" />
-    <End Type="MusicOnlineModel.Class" Role="Class" Multiplicity="*" />
-  </Association>
-  <Association Name="DairyForClasses">
-    <End Type="MusicOnlineModel.Class" Role="Class" Multiplicity="*" />
-    <End Type="MusicOnlineModel.Dairy" Role="Dairy" Multiplicity="*" />
-  </Association>
-  <Association Name="PayAbsencesForTeacher">
-    <End Type="MusicOnlineModel.PayAbsence" Role="PayAbsence" Multiplicity="*" />
-    <End Type="MusicOnlineModel.Teacher" Role="Teacher" Multiplicity="*" />
-  </Association>
-  <Association Name="RoomsForOccasion">
-    <End Type="MusicOnlineModel.Occasion" Role="Occasion" Multiplicity="*" />
-    <End Type="MusicOnlineModel.Room" Role="Room" Multiplicity="*" />
-  </Association>
-  <Association Name="SubjectsForClass">
-    <End Type="MusicOnlineModel.Class" Role="Class" Multiplicity="*" />
-    <End Type="MusicOnlineModel.Subject" Role="Subject" Multiplicity="*" />
-  </Association>
-  <Association Name="TeachersForOccasion">
-    <End Type="MusicOnlineModel.Occasion" Role="Occasion" Multiplicity="*" />
-    <End Type="MusicOnlineModel.Teacher" Role="Teacher" Multiplicity="*" />
-  </Association>
+  <ComplexType Name="getByTag1_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="fileLocation" Nullable="true" />
+    <Property Type="String" Name="type" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="date" Nullable="true" Precision="10" />
+    <Property Type="Int64" Name="count" Nullable="true" />
+    <Property Type="Int32" Name="singerId" Nullable="true" />
+    <Property Type="Int32" Name="liked" Nullable="true" />
+    <Property Type="Int32" Name="unliked" Nullable="true" />
+    <Property Type="Int32" Name="tagsId" Nullable="true" />
+    <Property Type="Int32" Name="albumId" Nullable="true" />
+    <Property Type="String" Name="title" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="image" Nullable="true" />
+    <Property Type="String" Name="content" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="getPlaylists1_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="Int32" Name="playlistId" Nullable="true" />
+    <Property Type="Int32" Name="songId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="getSongs1_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="fileLocation" Nullable="true" />
+    <Property Type="String" Name="type" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="date" Nullable="true" Precision="10" />
+    <Property Type="Int64" Name="count" Nullable="true" />
+    <Property Type="Int32" Name="singerId" Nullable="true" />
+    <Property Type="Int32" Name="liked" Nullable="true" />
+    <Property Type="Int32" Name="unliked" Nullable="true" />
+    <Property Type="Int32" Name="tagsId" Nullable="true" />
+    <Property Type="Int32" Name="albumId" Nullable="true" />
+    <Property Type="String" Name="title" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="image" Nullable="true" />
+    <Property Type="String" Name="content" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="searchByAlbum1_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="fileLocation" Nullable="true" />
+    <Property Type="String" Name="type" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="date" Nullable="true" Precision="10" />
+    <Property Type="Int64" Name="count" Nullable="true" />
+    <Property Type="Int32" Name="singerId" Nullable="true" />
+    <Property Type="Int32" Name="liked" Nullable="true" />
+    <Property Type="Int32" Name="unliked" Nullable="true" />
+    <Property Type="Int32" Name="tagsId" Nullable="true" />
+    <Property Type="Int32" Name="albumId" Nullable="true" />
+    <Property Type="String" Name="title" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="image" Nullable="true" />
+    <Property Type="String" Name="content" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="searchBySinger1_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="fileLocation" Nullable="true" />
+    <Property Type="String" Name="type" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="date" Nullable="true" Precision="10" />
+    <Property Type="Int64" Name="count" Nullable="true" />
+    <Property Type="Int32" Name="singerId" Nullable="true" />
+    <Property Type="Int32" Name="liked" Nullable="true" />
+    <Property Type="Int32" Name="unliked" Nullable="true" />
+    <Property Type="Int32" Name="tagsId" Nullable="true" />
+    <Property Type="Int32" Name="albumId" Nullable="true" />
+    <Property Type="String" Name="title" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="image" Nullable="true" />
+    <Property Type="String" Name="content" Nullable="true" MaxLength="50" />
+  </ComplexType>
 </Schema>

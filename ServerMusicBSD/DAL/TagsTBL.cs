@@ -22,26 +22,26 @@ namespace DAL
         }
     
         public int id { get; set; }
-        public string tag1 { get; set; }
-        public string tag2 { get; set; }
-        public string tag3 { get; set; }
-        public string tag4 { get; set; }
-        public string tag5 { get; set; }
-        public string tag6 { get; set; }
-        public string tag7 { get; set; }
-        public string tag8 { get; set; }
-        public string tag9 { get; set; }
-        public string tag10 { get; set; }
-        public string tag11 { get; set; }
-        public string tag12 { get; set; }
-        public string tag13 { get; set; }
-        public string tag14 { get; set; }
-        public string tag15 { get; set; }
-        public string tag16 { get; set; }
-        public string tag17 { get; set; }
-        public string tag18 { get; set; }
-        public string tag19 { get; set; }
-        public string tag20 { get; set; }
+        public Nullable<int> tag1 { get; set; }
+        public Nullable<int> tag2 { get; set; }
+        public Nullable<int> tag3 { get; set; }
+        public Nullable<int> tag4 { get; set; }
+        public Nullable<int> tag5 { get; set; }
+        public Nullable<int> tag6 { get; set; }
+        public Nullable<int> tag7 { get; set; }
+        public Nullable<int> tag8 { get; set; }
+        public Nullable<int> tag9 { get; set; }
+        public Nullable<int> tag10 { get; set; }
+        public Nullable<int> tag11 { get; set; }
+        public Nullable<int> tag12 { get; set; }
+        public Nullable<int> tag13 { get; set; }
+        public Nullable<int> tag14 { get; set; }
+        public Nullable<int> tag15 { get; set; }
+        public Nullable<int> tag16 { get; set; }
+        public Nullable<int> tag17 { get; set; }
+        public Nullable<int> tag18 { get; set; }
+        public Nullable<int> tag19 { get; set; }
+        public Nullable<int> tag20 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ArticlesBTL> ArticlesBTL { get; set; }

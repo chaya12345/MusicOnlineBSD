@@ -10,14 +10,11 @@
 namespace DAL
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class getPlaylists1_Result
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int id { get; set; }
+        public Nullable<int> playlistId { get; set; }
+        public Nullable<int> songId { get; set; }
     }
 }
