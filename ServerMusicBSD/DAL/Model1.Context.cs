@@ -39,6 +39,21 @@ namespace DAL
         public virtual DbSet<UsersTBL> UsersTBL { get; set; }
         public virtual DbSet<TagNameTBL> TagNameTBLs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Absence> Absences { get; set; }
+        public virtual DbSet<AbsencesForTeacher> AbsencesForTeachers { get; set; }
+        public virtual DbSet<Class> Classes { get; set; }
+        public virtual DbSet<Dairy> Dairies { get; set; }
+        public virtual DbSet<Group> Groups { get; set; }
+        public virtual DbSet<HourType> HourTypes { get; set; }
+        public virtual DbSet<Occasion> Occasions { get; set; }
+        public virtual DbSet<OccasionType> OccasionTypes { get; set; }
+        public virtual DbSet<PayAbsence> PayAbsences { get; set; }
+        public virtual DbSet<Reforma> Reformas { get; set; }
+        public virtual DbSet<Room> Rooms { get; set; }
+        public virtual DbSet<Schedule> Schedules { get; set; }
+        public virtual DbSet<SchoolType> SchoolTypes { get; set; }
+        public virtual DbSet<Subject> Subjects { get; set; }
+        public virtual DbSet<Teacher> Teachers { get; set; }
     
         [DbFunction("MusicOnlineEntities", "getByTag")]
         public virtual IQueryable<getByTag_Result> getByTag(string tag)
@@ -237,6 +252,16 @@ namespace DAL
                 new ObjectParameter("date", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addResponse", articleIdParameter, nameParameter, titleParameter, contentParameter, dateParameter);
+        }
+    
+        public virtual int FILL_CONST_TABLES()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FILL_CONST_TABLES");
+        }
+    
+        public virtual int TRUNCATE_MONTHLY_TABLES()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TRUNCATE_MONTHLY_TABLES");
         }
     }
 }

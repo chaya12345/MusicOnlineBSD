@@ -1,211 +1,229 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="MusicOnlineModelStoreContainer" CdmEntityContainer="MusicOnlineEntities">
-    <EntitySetMapping Name="AlbumsTBL">
-      <EntityTypeMapping TypeName="MusicOnlineModel.AlbumsTBL">
-        <MappingFragment StoreEntitySet="AlbumsTBL">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
+    <EntitySetMapping Name="Absences">
+      <EntityTypeMapping TypeName="MusicOnlineModel.Absence">
+        <MappingFragment StoreEntitySet="Absence">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ArticlesBTL">
-      <EntityTypeMapping TypeName="MusicOnlineModel.ArticlesBTL">
-        <MappingFragment StoreEntitySet="ArticlesBTL">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="files" ColumnName="files" />
-          <ScalarProperty Name="content" ColumnName="content" />
-          <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="tagsId" ColumnName="tagsId" />
+    <EntitySetMapping Name="AbsencesForTeachers">
+      <EntityTypeMapping TypeName="MusicOnlineModel.AbsencesForTeacher">
+        <MappingFragment StoreEntitySet="AbsencesForTeacher">
+          <ScalarProperty Name="ToLesson" ColumnName="ToLesson" />
+          <ScalarProperty Name="FromLesson" ColumnName="FromLesson" />
+          <ScalarProperty Name="TeacherStandIn" ColumnName="TeacherStandIn" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PlaylistsTBL">
-      <EntityTypeMapping TypeName="MusicOnlineModel.PlaylistsTBL">
-        <MappingFragment StoreEntitySet="PlaylistsTBL">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="userId" ColumnName="userId" />
-          <ScalarProperty Name="name" ColumnName="name" />
+    <EntitySetMapping Name="Classes">
+      <EntityTypeMapping TypeName="MusicOnlineModel.Class">
+        <MappingFragment StoreEntitySet="Class">
+          <ScalarProperty Name="SchoolType" ColumnName="SchoolType" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Layer" ColumnName="Layer" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ReportsTBL">
-      <EntityTypeMapping TypeName="MusicOnlineModel.ReportsTBL">
-        <MappingFragment StoreEntitySet="ReportsTBL">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="mail" ColumnName="mail" />
-          <ScalarProperty Name="phone" ColumnName="phone" />
-          <ScalarProperty Name="songId" ColumnName="songId" />
-          <ScalarProperty Name="message" ColumnName="message" />
-          <ScalarProperty Name="status" ColumnName="status" />
+    <EntitySetMapping Name="Dairies">
+      <EntityTypeMapping TypeName="MusicOnlineModel.Dairy">
+        <MappingFragment StoreEntitySet="Dairy">
+          <ScalarProperty Name="Cause" ColumnName="Cause" />
+          <ScalarProperty Name="CalculateHours" ColumnName="CalculateHours" />
+          <ScalarProperty Name="Hour" ColumnName="Hour" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="Reforma" ColumnName="Reforma" />
+          <ScalarProperty Name="OccasionId" ColumnName="OccasionId" />
+          <ScalarProperty Name="IsGrouped" ColumnName="IsGrouped" />
+          <ScalarProperty Name="RoomId" ColumnName="RoomId" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ResponsesTBL">
-      <EntityTypeMapping TypeName="MusicOnlineModel.ResponsesTBL">
-        <MappingFragment StoreEntitySet="ResponsesTBL">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="articleId" ColumnName="articleId" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="content" ColumnName="content" />
-          <ScalarProperty Name="date" ColumnName="date" />
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="MusicOnlineModel.Group">
+        <MappingFragment StoreEntitySet="Group">
+          <ScalarProperty Name="SubHourType" ColumnName="SubHourType" />
+          <ScalarProperty Name="HourType" ColumnName="HourType" />
+          <ScalarProperty Name="PayAbsence" ColumnName="PayAbsence" />
+          <ScalarProperty Name="Reforma" ColumnName="Reforma" />
+          <ScalarProperty Name="SchoolType" ColumnName="SchoolType" />
+          <ScalarProperty Name="CalculateHours" ColumnName="CalculateHours" />
+          <ScalarProperty Name="Hours" ColumnName="Hours" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Teacher" ColumnName="Teacher" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SingersTBL">
-      <EntityTypeMapping TypeName="MusicOnlineModel.SingersTBL">
-        <MappingFragment StoreEntitySet="SingersTBL">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
+    <EntitySetMapping Name="HourTypes">
+      <EntityTypeMapping TypeName="MusicOnlineModel.HourType">
+        <MappingFragment StoreEntitySet="HourType">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SongsTBL">
-      <EntityTypeMapping TypeName="MusicOnlineModel.SongsTBL">
-        <MappingFragment StoreEntitySet="SongsTBL">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="fileLocation" ColumnName="fileLocation" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="count" ColumnName="count" />
-          <ScalarProperty Name="singerId" ColumnName="singerId" />
-          <ScalarProperty Name="liked" ColumnName="liked" />
-          <ScalarProperty Name="unliked" ColumnName="unliked" />
-          <ScalarProperty Name="tagsId" ColumnName="tagsId" />
-          <ScalarProperty Name="albumId" ColumnName="albumId" />
+    <EntitySetMapping Name="Occasions">
+      <EntityTypeMapping TypeName="MusicOnlineModel.Occasion">
+        <MappingFragment StoreEntitySet="Occasion">
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="ToLesson" ColumnName="ToLesson" />
+          <ScalarProperty Name="FromLesson" ColumnName="FromLesson" />
+          <ScalarProperty Name="OccasionType" ColumnName="OccasionType" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SongsToPlaylistsTBL">
-      <EntityTypeMapping TypeName="MusicOnlineModel.SongsToPlaylistsTBL">
-        <MappingFragment StoreEntitySet="SongsToPlaylistsTBL">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="playlistId" ColumnName="playlistId" />
-          <ScalarProperty Name="songId" ColumnName="songId" />
+    <EntitySetMapping Name="OccasionTypes">
+      <EntityTypeMapping TypeName="MusicOnlineModel.OccasionType">
+        <MappingFragment StoreEntitySet="OccasionType">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TagsTBL">
-      <EntityTypeMapping TypeName="MusicOnlineModel.TagsTBL">
-        <MappingFragment StoreEntitySet="TagsTBL">
-          <ScalarProperty Name="tag20" ColumnName="tag20" />
-          <ScalarProperty Name="tag19" ColumnName="tag19" />
-          <ScalarProperty Name="tag18" ColumnName="tag18" />
-          <ScalarProperty Name="tag17" ColumnName="tag17" />
-          <ScalarProperty Name="tag16" ColumnName="tag16" />
-          <ScalarProperty Name="tag15" ColumnName="tag15" />
-          <ScalarProperty Name="tag14" ColumnName="tag14" />
-          <ScalarProperty Name="tag13" ColumnName="tag13" />
-          <ScalarProperty Name="tag12" ColumnName="tag12" />
-          <ScalarProperty Name="tag11" ColumnName="tag11" />
-          <ScalarProperty Name="tag10" ColumnName="tag10" />
-          <ScalarProperty Name="tag9" ColumnName="tag9" />
-          <ScalarProperty Name="tag8" ColumnName="tag8" />
-          <ScalarProperty Name="tag7" ColumnName="tag7" />
-          <ScalarProperty Name="tag6" ColumnName="tag6" />
-          <ScalarProperty Name="tag5" ColumnName="tag5" />
-          <ScalarProperty Name="tag4" ColumnName="tag4" />
-          <ScalarProperty Name="tag3" ColumnName="tag3" />
-          <ScalarProperty Name="tag2" ColumnName="tag2" />
-          <ScalarProperty Name="tag1" ColumnName="tag1" />
-          <ScalarProperty Name="id" ColumnName="id" />
+    <EntitySetMapping Name="PayAbsences">
+      <EntityTypeMapping TypeName="MusicOnlineModel.PayAbsence">
+        <MappingFragment StoreEntitySet="PayAbsence">
+          <ScalarProperty Name="IsStandart" ColumnName="IsStandart" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="UsersTBL">
-      <EntityTypeMapping TypeName="MusicOnlineModel.UsersTBL">
-        <MappingFragment StoreEntitySet="UsersTBL">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="mail" ColumnName="mail" />
-          <ScalarProperty Name="password" ColumnName="password" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="repeat" ColumnName="repeat" />
-          <ScalarProperty Name="coincidental" ColumnName="coincidental" />
-          <ScalarProperty Name="newsletter" ColumnName="newsletter" />
+    <EntitySetMapping Name="Reformas">
+      <EntityTypeMapping TypeName="MusicOnlineModel.Reforma">
+        <MappingFragment StoreEntitySet="Reforma">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionName="MusicOnlineModel.Store.getByTag" FunctionImportName="getByTag">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MusicOnlineModel.getByTag_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="fileLocation" ColumnName="fileLocation" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="count" ColumnName="count" />
-          <ScalarProperty Name="singerId" ColumnName="singerId" />
-          <ScalarProperty Name="liked" ColumnName="liked" />
-          <ScalarProperty Name="unliked" ColumnName="unliked" />
-          <ScalarProperty Name="tagsId" ColumnName="tagsId" />
-          <ScalarProperty Name="albumId" ColumnName="albumId" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionName="MusicOnlineModel.Store.getPlaylists" FunctionImportName="getPlaylists">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MusicOnlineModel.getPlaylists_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="playlistId" ColumnName="playlistId" />
-          <ScalarProperty Name="songId" ColumnName="songId" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionName="MusicOnlineModel.Store.getSongs" FunctionImportName="getSongs">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MusicOnlineModel.getSongs_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="fileLocation" ColumnName="fileLocation" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="count" ColumnName="count" />
-          <ScalarProperty Name="singerId" ColumnName="singerId" />
-          <ScalarProperty Name="liked" ColumnName="liked" />
-          <ScalarProperty Name="unliked" ColumnName="unliked" />
-          <ScalarProperty Name="tagsId" ColumnName="tagsId" />
-          <ScalarProperty Name="albumId" ColumnName="albumId" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionName="MusicOnlineModel.Store.searchByAlbum" FunctionImportName="searchByAlbum">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MusicOnlineModel.searchByAlbum_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="fileLocation" ColumnName="fileLocation" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="count" ColumnName="count" />
-          <ScalarProperty Name="singerId" ColumnName="singerId" />
-          <ScalarProperty Name="liked" ColumnName="liked" />
-          <ScalarProperty Name="unliked" ColumnName="unliked" />
-          <ScalarProperty Name="tagsId" ColumnName="tagsId" />
-          <ScalarProperty Name="albumId" ColumnName="albumId" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionName="MusicOnlineModel.Store.searchBySinger" FunctionImportName="searchBySinger">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MusicOnlineModel.searchBySinger_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="fileLocation" ColumnName="fileLocation" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="count" ColumnName="count" />
-          <ScalarProperty Name="singerId" ColumnName="singerId" />
-          <ScalarProperty Name="liked" ColumnName="liked" />
-          <ScalarProperty Name="unliked" ColumnName="unliked" />
-          <ScalarProperty Name="tagsId" ColumnName="tagsId" />
-          <ScalarProperty Name="albumId" ColumnName="albumId" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
+    <EntitySetMapping Name="Rooms">
+      <EntityTypeMapping TypeName="MusicOnlineModel.Room">
+        <MappingFragment StoreEntitySet="Room">
+          <ScalarProperty Name="UseFor" ColumnName="UseFor" />
+          <ScalarProperty Name="ClassId" ColumnName="ClassId" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schedules">
+      <EntityTypeMapping TypeName="MusicOnlineModel.Schedule">
+        <MappingFragment StoreEntitySet="Schedule">
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Hour" ColumnName="Hour" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="WeekDay" ColumnName="WeekDay" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SchoolTypes">
+      <EntityTypeMapping TypeName="MusicOnlineModel.SchoolType">
+        <MappingFragment StoreEntitySet="SchoolType">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subjects">
+      <EntityTypeMapping TypeName="MusicOnlineModel.Subject">
+        <MappingFragment StoreEntitySet="Subject">
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teachers">
+      <EntityTypeMapping TypeName="MusicOnlineModel.Teacher">
+        <MappingFragment StoreEntitySet="Teacher">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ClassesForGroup" TypeName="MusicOnlineModel.ClassesForGroup" StoreEntitySet="ClassesForGroup">
+      <EndProperty Name="Group">
+        <ScalarProperty Name="Num" ColumnName="GroupId" />
+      </EndProperty>
+      <EndProperty Name="Class">
+        <ScalarProperty Name="Num" ColumnName="ClassId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ClassesForOccasion" TypeName="MusicOnlineModel.ClassesForOccasion" StoreEntitySet="ClassesForOccasion">
+      <EndProperty Name="Class">
+        <ScalarProperty Name="Num" ColumnName="ClassId" />
+      </EndProperty>
+      <EndProperty Name="Occasion">
+        <ScalarProperty Name="Id" ColumnName="OccasionId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DairyForClasses" TypeName="MusicOnlineModel.DairyForClasses" StoreEntitySet="DairyForClasses">
+      <EndProperty Name="Dairy">
+        <ScalarProperty Name="Id" ColumnName="DairyId" />
+      </EndProperty>
+      <EndProperty Name="Class">
+        <ScalarProperty Name="Num" ColumnName="ClassId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PayAbsencesForTeacher" TypeName="MusicOnlineModel.PayAbsencesForTeacher" StoreEntitySet="PayAbsencesForTeacher">
+      <EndProperty Name="Teacher">
+        <ScalarProperty Name="Num" ColumnName="IdTeacher" />
+      </EndProperty>
+      <EndProperty Name="PayAbsence">
+        <ScalarProperty Name="Id" ColumnName="IdPayAbsence" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RoomsForOccasion" TypeName="MusicOnlineModel.RoomsForOccasion" StoreEntitySet="RoomsForOccasion">
+      <EndProperty Name="Room">
+        <ScalarProperty Name="Id" ColumnName="RoomId" />
+      </EndProperty>
+      <EndProperty Name="Occasion">
+        <ScalarProperty Name="Id" ColumnName="OccasionId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SubjectsForClass" TypeName="MusicOnlineModel.SubjectsForClass" StoreEntitySet="SubjectsForClass">
+      <EndProperty Name="Subject">
+        <ScalarProperty Name="Id" ColumnName="SubjectId" />
+      </EndProperty>
+      <EndProperty Name="Class">
+        <ScalarProperty Name="Num" ColumnName="ClassId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TeachersForOccasion" TypeName="MusicOnlineModel.TeachersForOccasion" StoreEntitySet="TeachersForOccasion">
+      <EndProperty Name="Teacher">
+        <ScalarProperty Name="Num" ColumnName="TeacherId" />
+      </EndProperty>
+      <EndProperty Name="Occasion">
+        <ScalarProperty Name="Id" ColumnName="OccasionId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="FILL_CONST_TABLES" FunctionName="MusicOnlineModel.Store.FILL_CONST_TABLES" />
+    <FunctionImportMapping FunctionImportName="TRUNCATE_MONTHLY_TABLES" FunctionName="MusicOnlineModel.Store.TRUNCATE_MONTHLY_TABLES" />
   </EntityContainerMapping>
 </Mapping>
