@@ -67,47 +67,6 @@
         <AssociationConnector Association="MusicOnlineModel.RoomsForOccasion" />
         <AssociationConnector Association="MusicOnlineModel.SubjectsForClass" />
         <AssociationConnector Association="MusicOnlineModel.TeachersForOccasion" />
-        <EntityTypeShape EntityType="MusicOnlineModel.AlbumsTBL1" Width="1.5" PointX="12.625" PointY="12" />
-        <EntityTypeShape EntityType="MusicOnlineModel.ArticlesBTL1" Width="1.5" PointX="14.875" PointY="10.125" />
-        <EntityTypeShape EntityType="MusicOnlineModel.PlaylistsTBL1" Width="1.5" PointX="14.875" PointY="29" />
-        <EntityTypeShape EntityType="MusicOnlineModel.ReportsTBL1" Width="1.5" PointX="17.125" PointY="6.375" />
-        <EntityTypeShape EntityType="MusicOnlineModel.ResponsesTBL1" Width="1.5" PointX="17.125" PointY="10.125" />
-        <EntityTypeShape EntityType="MusicOnlineModel.SingersTBL1" Width="1.5" PointX="12.625" PointY="25.25" />
-        <EntityTypeShape EntityType="MusicOnlineModel.SongsTBL1" Width="1.5" PointX="14.875" PointY="3.625" />
-        <EntityTypeShape EntityType="MusicOnlineModel.SongsToPlaylistsTBL1" Width="1.5" PointX="17.125" PointY="3" />
-        <EntityTypeShape EntityType="MusicOnlineModel.sysdiagram1" Width="1.5" PointX="8.375" PointY="9.75" />
-        <EntityTypeShape EntityType="MusicOnlineModel.TagNameTBL1" Width="1.5" PointX="10.375" PointY="3.25" />
-        <EntityTypeShape EntityType="MusicOnlineModel.TagsTBL1" Width="1.5" PointX="12.625" PointY="1.25" />
-        <EntityTypeShape EntityType="MusicOnlineModel.UsersTBL1" Width="1.5" PointX="12.625" PointY="28.5" />
-        <AssociationConnector Association="MusicOnlineModel.FK_SongsTBL_AlbumsTBL1" />
-        <AssociationConnector Association="MusicOnlineModel.FK_ArticlesBTL_TagsTBL1" />
-        <AssociationConnector Association="MusicOnlineModel.FK_ResponsesTBL_ArticlesBTL1" />
-        <AssociationConnector Association="MusicOnlineModel.FK_PlaylistsTBL_UsersTBL1" />
-        <AssociationConnector Association="MusicOnlineModel.FK_SongsToPlaylistsTBL_PlaylistsTBL1" />
-        <AssociationConnector Association="MusicOnlineModel.FK_ReportsTBL_SongsTBL1" />
-        <AssociationConnector Association="MusicOnlineModel.FK_SongsTBL_SingersTBL1" />
-        <AssociationConnector Association="MusicOnlineModel.FK_SongsTBL_TagsTBL1" />
-        <AssociationConnector Association="MusicOnlineModel.FK_SongsToPlaylistsTBL_SongsTBL1" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL1" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL10" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL11" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL12" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL13" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL14" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL15" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL16" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL17" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL18" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL19" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL2" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL3" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL4" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL5" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL6" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL7" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL8" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL9" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
