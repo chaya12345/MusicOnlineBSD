@@ -54,6 +54,18 @@ namespace DAL
         public virtual DbSet<SchoolType> SchoolTypes { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }
+        public virtual DbSet<AlbumsTBL1> AlbumsTBL1 { get; set; }
+        public virtual DbSet<ArticlesBTL1> ArticlesBTL1 { get; set; }
+        public virtual DbSet<PlaylistsTBL1> PlaylistsTBL1 { get; set; }
+        public virtual DbSet<ReportsTBL1> ReportsTBL1 { get; set; }
+        public virtual DbSet<ResponsesTBL1> ResponsesTBL1 { get; set; }
+        public virtual DbSet<SingersTBL1> SingersTBL1 { get; set; }
+        public virtual DbSet<SongsTBL1> SongsTBL1 { get; set; }
+        public virtual DbSet<SongsToPlaylistsTBL1> SongsToPlaylistsTBL1 { get; set; }
+        public virtual DbSet<sysdiagram1> sysdiagram1 { get; set; }
+        public virtual DbSet<TagNameTBL1> TagNameTBL1 { get; set; }
+        public virtual DbSet<TagsTBL1> TagsTBL1 { get; set; }
+        public virtual DbSet<UsersTBL1> UsersTBL1 { get; set; }
     
         [DbFunction("MusicOnlineEntities", "getByTag")]
         public virtual IQueryable<getByTag_Result> getByTag(string tag)
@@ -262,6 +274,155 @@ namespace DAL
         public virtual int TRUNCATE_MONTHLY_TABLES()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TRUNCATE_MONTHLY_TABLES");
+        }
+    
+        [DbFunction("MusicOnlineEntities", "getByTag1")]
+        public virtual IQueryable<getByTag1_Result> getByTag1(string tag)
+        {
+            var tagParameter = tag != null ?
+                new ObjectParameter("tag", tag) :
+                new ObjectParameter("tag", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getByTag1_Result>("[MusicOnlineEntities].[getByTag1](@tag)", tagParameter);
+        }
+    
+        [DbFunction("MusicOnlineEntities", "getPlaylists1")]
+        public virtual IQueryable<getPlaylists1_Result> getPlaylists1(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getPlaylists1_Result>("[MusicOnlineEntities].[getPlaylists1](@userId)", userIdParameter);
+        }
+    
+        [DbFunction("MusicOnlineEntities", "getSongs1")]
+        public virtual IQueryable<getSongs1_Result> getSongs1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getSongs1_Result>("[MusicOnlineEntities].[getSongs1]()");
+        }
+    
+        [DbFunction("MusicOnlineEntities", "searchByAlbum1")]
+        public virtual IQueryable<searchByAlbum1_Result> searchByAlbum1(string albumName)
+        {
+            var albumNameParameter = albumName != null ?
+                new ObjectParameter("albumName", albumName) :
+                new ObjectParameter("albumName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<searchByAlbum1_Result>("[MusicOnlineEntities].[searchByAlbum1](@albumName)", albumNameParameter);
+        }
+    
+        [DbFunction("MusicOnlineEntities", "searchBySinger1")]
+        public virtual IQueryable<searchBySinger1_Result> searchBySinger1(string singerName)
+        {
+            var singerNameParameter = singerName != null ?
+                new ObjectParameter("singerName", singerName) :
+                new ObjectParameter("singerName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<searchBySinger1_Result>("[MusicOnlineEntities].[searchBySinger1](@singerName)", singerNameParameter);
+        }
+    
+        public virtual int sp_alterdiagram1(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram1", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_creatediagram1(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram1", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_dropdiagram1(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram1", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagramdefinition1_Result> sp_helpdiagramdefinition1(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition1_Result>("sp_helpdiagramdefinition1", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagrams1_Result> sp_helpdiagrams1(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams1_Result>("sp_helpdiagrams1", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual int sp_renamediagram1(string diagramname, Nullable<int> owner_id, string new_diagramname)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var new_diagramnameParameter = new_diagramname != null ?
+                new ObjectParameter("new_diagramname", new_diagramname) :
+                new ObjectParameter("new_diagramname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram1", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
+        }
+    
+        public virtual int sp_upgraddiagrams1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams1");
         }
     }
 }
