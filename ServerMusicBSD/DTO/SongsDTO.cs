@@ -19,5 +19,8 @@ namespace DTO
         public Nullable<int> unliked { get; set; }
         public Nullable<int> tagsId { get; set; }
         public Nullable<int> albumId { get; set; }
+        public string title { get; set; }
+        public string image { get; set; }
+        public string content { get; set; }
     }
 }

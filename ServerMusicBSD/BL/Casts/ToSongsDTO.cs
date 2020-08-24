@@ -10,7 +10,7 @@ namespace BL.Casts
 {
     public class ToSongsDTO
     {
-        public static SongsDTO GetSong(getSongs_Result songs)
+        public static SongsDTO GetSong(SongsTBL songs)
         {
             SongsDTO newSong = new SongsDTO();
             newSong.id = songs.id;
@@ -24,94 +24,16 @@ namespace BL.Casts
             newSong.unliked = songs.unliked;
             newSong.tagsId = songs.tagsId;
             newSong.albumId = songs.albumId;
+            newSong.title = songs.title;
+            newSong.image = songs.image;
+            newSong.content = songs.content;
             return newSong;
         }
 
-        public static List<SongsDTO> GetSongs(List<getSongs_Result> songs)
+        public static List<SongsDTO> GetSongs(List<SongsTBL> songs)
         {
             List<SongsDTO> songsDTO = new List<SongsDTO>();
-            foreach (getSongs_Result song in songs)
-            {
-                songsDTO.Add(GetSong(song));
-            }
-            return songsDTO;
-        }
-
-        public static SongsDTO GetSong(searchBySinger_Result songs)
-        {
-            SongsDTO newSong = new SongsDTO();
-            newSong.id = songs.id;
-            newSong.name = songs.name;
-            newSong.fileLocation = songs.fileLocation;
-            newSong.type = songs.type;
-            newSong.date = songs.date;
-            newSong.count = songs.count;
-            newSong.singerId = songs.singerId;
-            newSong.liked = songs.liked;
-            newSong.unliked = songs.unliked;
-            newSong.tagsId = songs.tagsId;
-            newSong.albumId = songs.albumId;
-            return newSong;
-        }
-
-        public static List<SongsDTO> GetSongs(List<searchBySinger_Result> songs)
-        {
-            List<SongsDTO> songsDTO = new List<SongsDTO>();
-            foreach (searchBySinger_Result song in songs)
-            {
-                songsDTO.Add(GetSong(song));
-            }
-            return songsDTO;
-        }
-
-        public static SongsDTO GetSong(searchByAlbum_Result songs)
-        {
-            SongsDTO newSong = new SongsDTO();
-            newSong.id = songs.id;
-            newSong.name = songs.name;
-            newSong.fileLocation = songs.fileLocation;
-            newSong.type = songs.type;
-            newSong.date = songs.date;
-            newSong.count = songs.count;
-            newSong.singerId = songs.singerId;
-            newSong.liked = songs.liked;
-            newSong.unliked = songs.unliked;
-            newSong.tagsId = songs.tagsId;
-            newSong.albumId = songs.albumId;
-            return newSong;
-        }
-
-        public static List<SongsDTO> GetSongs(List<searchByAlbum_Result> songs)
-        {
-            List<SongsDTO> songsDTO = new List<SongsDTO>();
-            foreach (searchByAlbum_Result song in songs)
-            {
-                songsDTO.Add(GetSong(song));
-            }
-            return songsDTO;
-        }
-
-        public static SongsDTO GetSong(getByTag_Result songs)
-        {
-            SongsDTO newSong = new SongsDTO();
-            newSong.id = songs.id;
-            newSong.name = songs.name;
-            newSong.fileLocation = songs.fileLocation;
-            newSong.type = songs.type;
-            newSong.date = songs.date;
-            newSong.count = songs.count;
-            newSong.singerId = songs.singerId;
-            newSong.liked = songs.liked;
-            newSong.unliked = songs.unliked;
-            newSong.tagsId = songs.tagsId;
-            newSong.albumId = songs.albumId;
-            return newSong;
-        }
-
-        public static List<SongsDTO> GetSongs(List<getByTag_Result> songs)
-        {
-            List<SongsDTO> songsDTO = new List<SongsDTO>();
-            foreach (getByTag_Result song in songs)
+            foreach (SongsTBL song in songs)
             {
                 songsDTO.Add(GetSong(song));
             }
