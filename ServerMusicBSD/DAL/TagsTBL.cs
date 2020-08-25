@@ -47,5 +47,25 @@ namespace DAL
         public virtual ICollection<ArticlesBTL> ArticlesBTL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SongsTBL> SongsTBL { get; set; }
+        public virtual TagNameTBL TagNameTBL { get; set; }
+        public virtual TagNameTBL TagNameTBL1 { get; set; }
+        public virtual TagNameTBL TagNameTBL2 { get; set; }
+        public virtual TagNameTBL TagNameTBL3 { get; set; }
+        public virtual TagNameTBL TagNameTBL4 { get; set; }
+        public virtual TagNameTBL TagNameTBL5 { get; set; }
+        public virtual TagNameTBL TagNameTBL6 { get; set; }
+        public virtual TagNameTBL TagNameTBL7 { get; set; }
+        public virtual TagNameTBL TagNameTBL8 { get; set; }
+        public virtual TagNameTBL TagNameTBL9 { get; set; }
+        public virtual TagNameTBL TagNameTBL10 { get; set; }
+        public virtual TagNameTBL TagNameTBL11 { get; set; }
+        public virtual TagNameTBL TagNameTBL12 { get; set; }
+        public virtual TagNameTBL TagNameTBL13 { get; set; }
+        public virtual TagNameTBL TagNameTBL14 { get; set; }
+        public virtual TagNameTBL TagNameTBL15 { get; set; }
+        public virtual TagNameTBL TagNameTBL16 { get; set; }
+        public virtual TagNameTBL TagNameTBL17 { get; set; }
+        public virtual TagNameTBL TagNameTBL18 { get; set; }
+        public virtual TagNameTBL TagNameTBL19 { get; set; }
     }
 }

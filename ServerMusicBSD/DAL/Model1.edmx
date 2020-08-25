@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MusicOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AlbumsTBL">
           <Key>
             <PropertyRef Name="id" />
@@ -243,7 +243,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL">
+        <Association Name="FK_TagsTBL_TagNameTBL20">
           <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
           <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -255,7 +255,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL1">
+        <Association Name="FK_TagsTBL_TagNameTBL21">
           <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
           <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -267,127 +267,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL10">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag11" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL11">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag12" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL12">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag13" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL13">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag14" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL14">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag15" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL15">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag16" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL16">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag17" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL17">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag18" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL18">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag19" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL19">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag20" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL2">
+        <Association Name="FK_TagsTBL_TagNameTBL22">
           <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
           <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -399,7 +279,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL3">
+        <Association Name="FK_TagsTBL_TagNameTBL23">
           <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
           <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -411,7 +291,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL4">
+        <Association Name="FK_TagsTBL_TagNameTBL24">
           <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
           <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -423,7 +303,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL5">
+        <Association Name="FK_TagsTBL_TagNameTBL25">
           <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
           <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -435,7 +315,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL6">
+        <Association Name="FK_TagsTBL_TagNameTBL26">
           <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
           <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -447,7 +327,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL7">
+        <Association Name="FK_TagsTBL_TagNameTBL27">
           <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
           <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -459,7 +339,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL8">
+        <Association Name="FK_TagsTBL_TagNameTBL28">
           <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
           <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -471,7 +351,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL9">
+        <Association Name="FK_TagsTBL_TagNameTBL29">
           <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
           <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -483,6 +363,127 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL30">
+          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag11" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL31">
+          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag12" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL32">
+          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag13" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL33">
+          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag14" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL34">
+          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag15" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL35">
+          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag16" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL36">
+          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag17" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL37">
+          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag18" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL38">
+          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag19" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL39">
+          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
+          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag20" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="getByTag" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="tag" Type="varchar" Mode="In" />
           <ReturnType>
@@ -586,7 +587,37 @@
             </CollectionType>
           </ReturnType>
         </Function>
-        <EntityContainer Name="MusicOnlineModelStoreContainer">
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Model1StoreContainer">
           <EntitySet Name="AlbumsTBL" EntityType="Self.AlbumsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ArticlesBTL" EntityType="Self.ArticlesBTL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlaylistsTBL" EntityType="Self.PlaylistsTBL" Schema="dbo" store:Type="Tables" />
@@ -634,156 +665,270 @@
             <End Role="SongsTBL" EntitySet="SongsTBL" />
             <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
           </AssociationSet>
-     <!-- my changes (tamar)
-<AssociationSet Name="FK_TagsTBL_TagNameTBL" Association="Self.FK_TagsTBL_TagNameTBL">
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL20" Association="Self.FK_TagsTBL_TagNameTBL20">
             <End Role="TagNameTBL" EntitySet="TagNameTBL" />
             <End Role="TagsTBL" EntitySet="TagsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL1" Association="Self.FK_TagsTBL_TagNameTBL1">
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL21" Association="Self.FK_TagsTBL_TagNameTBL21">
             <End Role="TagNameTBL" EntitySet="TagNameTBL" />
             <End Role="TagsTBL" EntitySet="TagsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL10" Association="Self.FK_TagsTBL_TagNameTBL10">
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL22" Association="Self.FK_TagsTBL_TagNameTBL22">
             <End Role="TagNameTBL" EntitySet="TagNameTBL" />
             <End Role="TagsTBL" EntitySet="TagsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL11" Association="Self.FK_TagsTBL_TagNameTBL11">
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL23" Association="Self.FK_TagsTBL_TagNameTBL23">
             <End Role="TagNameTBL" EntitySet="TagNameTBL" />
             <End Role="TagsTBL" EntitySet="TagsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL12" Association="Self.FK_TagsTBL_TagNameTBL12">
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL24" Association="Self.FK_TagsTBL_TagNameTBL24">
             <End Role="TagNameTBL" EntitySet="TagNameTBL" />
             <End Role="TagsTBL" EntitySet="TagsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL13" Association="Self.FK_TagsTBL_TagNameTBL13">
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL25" Association="Self.FK_TagsTBL_TagNameTBL25">
             <End Role="TagNameTBL" EntitySet="TagNameTBL" />
             <End Role="TagsTBL" EntitySet="TagsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL14" Association="Self.FK_TagsTBL_TagNameTBL14">
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL26" Association="Self.FK_TagsTBL_TagNameTBL26">
             <End Role="TagNameTBL" EntitySet="TagNameTBL" />
             <End Role="TagsTBL" EntitySet="TagsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL15" Association="Self.FK_TagsTBL_TagNameTBL15">
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL27" Association="Self.FK_TagsTBL_TagNameTBL27">
             <End Role="TagNameTBL" EntitySet="TagNameTBL" />
             <End Role="TagsTBL" EntitySet="TagsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL16" Association="Self.FK_TagsTBL_TagNameTBL16">
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL28" Association="Self.FK_TagsTBL_TagNameTBL28">
             <End Role="TagNameTBL" EntitySet="TagNameTBL" />
             <End Role="TagsTBL" EntitySet="TagsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL17" Association="Self.FK_TagsTBL_TagNameTBL17">
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL29" Association="Self.FK_TagsTBL_TagNameTBL29">
             <End Role="TagNameTBL" EntitySet="TagNameTBL" />
             <End Role="TagsTBL" EntitySet="TagsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL18" Association="Self.FK_TagsTBL_TagNameTBL18">
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL30" Association="Self.FK_TagsTBL_TagNameTBL30">
             <End Role="TagNameTBL" EntitySet="TagNameTBL" />
             <End Role="TagsTBL" EntitySet="TagsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL19" Association="Self.FK_TagsTBL_TagNameTBL19">
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL31" Association="Self.FK_TagsTBL_TagNameTBL31">
             <End Role="TagNameTBL" EntitySet="TagNameTBL" />
             <End Role="TagsTBL" EntitySet="TagsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL2" Association="Self.FK_TagsTBL_TagNameTBL2">
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL32" Association="Self.FK_TagsTBL_TagNameTBL32">
             <End Role="TagNameTBL" EntitySet="TagNameTBL" />
             <End Role="TagsTBL" EntitySet="TagsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL3" Association="Self.FK_TagsTBL_TagNameTBL3">
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL33" Association="Self.FK_TagsTBL_TagNameTBL33">
             <End Role="TagNameTBL" EntitySet="TagNameTBL" />
             <End Role="TagsTBL" EntitySet="TagsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL4" Association="Self.FK_TagsTBL_TagNameTBL4">
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL34" Association="Self.FK_TagsTBL_TagNameTBL34">
             <End Role="TagNameTBL" EntitySet="TagNameTBL" />
             <End Role="TagsTBL" EntitySet="TagsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL5" Association="Self.FK_TagsTBL_TagNameTBL5">
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL35" Association="Self.FK_TagsTBL_TagNameTBL35">
             <End Role="TagNameTBL" EntitySet="TagNameTBL" />
             <End Role="TagsTBL" EntitySet="TagsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL6" Association="Self.FK_TagsTBL_TagNameTBL6">
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL36" Association="Self.FK_TagsTBL_TagNameTBL36">
             <End Role="TagNameTBL" EntitySet="TagNameTBL" />
             <End Role="TagsTBL" EntitySet="TagsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL7" Association="Self.FK_TagsTBL_TagNameTBL7">
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL37" Association="Self.FK_TagsTBL_TagNameTBL37">
             <End Role="TagNameTBL" EntitySet="TagNameTBL" />
             <End Role="TagsTBL" EntitySet="TagsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL8" Association="Self.FK_TagsTBL_TagNameTBL8">
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL38" Association="Self.FK_TagsTBL_TagNameTBL38">
             <End Role="TagNameTBL" EntitySet="TagNameTBL" />
             <End Role="TagsTBL" EntitySet="TagsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL9" Association="Self.FK_TagsTBL_TagNameTBL9">
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL39" Association="Self.FK_TagsTBL_TagNameTBL39">
             <End Role="TagNameTBL" EntitySet="TagNameTBL" />
             <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>-->
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="MusicOnlineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <ComplexType Name="getByTag_Result">
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="fileLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="date" Type="DateTime" />
-          <Property Name="count" Type="Int64" />
-          <Property Name="singerId" Type="Int32" />
-          <Property Name="liked" Type="Int32" />
-          <Property Name="unliked" Type="Int32" />
-          <Property Name="tagsId" Type="Int32" />
-          <Property Name="albumId" Type="Int32" />
-        </ComplexType>
-        <ComplexType Name="getPlaylists_Result">
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="playlistId" Type="Int32" />
-          <Property Name="songId" Type="Int32" />
-        </ComplexType>
-        <ComplexType Name="getSongs_Result">
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="fileLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="date" Type="DateTime" />
-          <Property Name="count" Type="Int64" />
-          <Property Name="singerId" Type="Int32" />
-          <Property Name="liked" Type="Int32" />
-          <Property Name="unliked" Type="Int32" />
-          <Property Name="tagsId" Type="Int32" />
-          <Property Name="albumId" Type="Int32" />
-        </ComplexType>
-        <ComplexType Name="searchByAlbum_Result">
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="fileLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="date" Type="DateTime" />
-          <Property Name="count" Type="Int64" />
-          <Property Name="singerId" Type="Int32" />
-          <Property Name="liked" Type="Int32" />
-          <Property Name="unliked" Type="Int32" />
-          <Property Name="tagsId" Type="Int32" />
-          <Property Name="albumId" Type="Int32" />
-        </ComplexType>
-        <ComplexType Name="searchBySinger_Result">
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="fileLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="date" Type="DateTime" />
-          <Property Name="count" Type="Int64" />
-          <Property Name="singerId" Type="Int32" />
-          <Property Name="liked" Type="Int32" />
-          <Property Name="unliked" Type="Int32" />
-          <Property Name="tagsId" Type="Int32" />
-          <Property Name="albumId" Type="Int32" />
-        </ComplexType>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AlbumsTBL" EntityType="Model1.AlbumsTBL" />
+          <EntitySet Name="ArticlesBTL" EntityType="Model1.ArticlesBTL" />
+          <EntitySet Name="PlaylistsTBL" EntityType="Model1.PlaylistsTBL" />
+          <EntitySet Name="ReportsTBL" EntityType="Model1.ReportsTBL" />
+          <EntitySet Name="ResponsesTBL" EntityType="Model1.ResponsesTBL" />
+          <EntitySet Name="SingersTBL" EntityType="Model1.SingersTBL" />
+          <EntitySet Name="SongsTBL" EntityType="Model1.SongsTBL" />
+          <EntitySet Name="SongsToPlaylistsTBL" EntityType="Model1.SongsToPlaylistsTBL" />
+          <EntitySet Name="TagNameTBL" EntityType="Model1.TagNameTBL" />
+          <EntitySet Name="TagsTBL" EntityType="Model1.TagsTBL" />
+          <EntitySet Name="UsersTBL" EntityType="Model1.UsersTBL" />
+          <AssociationSet Name="FK_SongsTBL_AlbumsTBL" Association="Model1.FK_SongsTBL_AlbumsTBL">
+            <End Role="AlbumsTBL" EntitySet="AlbumsTBL" />
+            <End Role="SongsTBL" EntitySet="SongsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticlesBTL_TagsTBL" Association="Model1.FK_ArticlesBTL_TagsTBL">
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+            <End Role="ArticlesBTL" EntitySet="ArticlesBTL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResponsesTBL_ArticlesBTL" Association="Model1.FK_ResponsesTBL_ArticlesBTL">
+            <End Role="ArticlesBTL" EntitySet="ArticlesBTL" />
+            <End Role="ResponsesTBL" EntitySet="ResponsesTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlaylistsTBL_UsersTBL" Association="Model1.FK_PlaylistsTBL_UsersTBL">
+            <End Role="UsersTBL" EntitySet="UsersTBL" />
+            <End Role="PlaylistsTBL" EntitySet="PlaylistsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SongsToPlaylistsTBL_PlaylistsTBL" Association="Model1.FK_SongsToPlaylistsTBL_PlaylistsTBL">
+            <End Role="PlaylistsTBL" EntitySet="PlaylistsTBL" />
+            <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportsTBL_SongsTBL" Association="Model1.FK_ReportsTBL_SongsTBL">
+            <End Role="SongsTBL" EntitySet="SongsTBL" />
+            <End Role="ReportsTBL" EntitySet="ReportsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SongsTBL_SingersTBL" Association="Model1.FK_SongsTBL_SingersTBL">
+            <End Role="SingersTBL" EntitySet="SingersTBL" />
+            <End Role="SongsTBL" EntitySet="SongsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SongsTBL_TagsTBL" Association="Model1.FK_SongsTBL_TagsTBL">
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+            <End Role="SongsTBL" EntitySet="SongsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SongsToPlaylistsTBL_SongsTBL" Association="Model1.FK_SongsToPlaylistsTBL_SongsTBL">
+            <End Role="SongsTBL" EntitySet="SongsTBL" />
+            <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL20" Association="Model1.FK_TagsTBL_TagNameTBL20">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL21" Association="Model1.FK_TagsTBL_TagNameTBL21">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL22" Association="Model1.FK_TagsTBL_TagNameTBL22">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL23" Association="Model1.FK_TagsTBL_TagNameTBL23">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL24" Association="Model1.FK_TagsTBL_TagNameTBL24">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL25" Association="Model1.FK_TagsTBL_TagNameTBL25">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL26" Association="Model1.FK_TagsTBL_TagNameTBL26">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL27" Association="Model1.FK_TagsTBL_TagNameTBL27">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL28" Association="Model1.FK_TagsTBL_TagNameTBL28">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL29" Association="Model1.FK_TagsTBL_TagNameTBL29">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL30" Association="Model1.FK_TagsTBL_TagNameTBL30">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL31" Association="Model1.FK_TagsTBL_TagNameTBL31">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL32" Association="Model1.FK_TagsTBL_TagNameTBL32">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL33" Association="Model1.FK_TagsTBL_TagNameTBL33">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL34" Association="Model1.FK_TagsTBL_TagNameTBL34">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL35" Association="Model1.FK_TagsTBL_TagNameTBL35">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL36" Association="Model1.FK_TagsTBL_TagNameTBL36">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL37" Association="Model1.FK_TagsTBL_TagNameTBL37">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL38" Association="Model1.FK_TagsTBL_TagNameTBL38">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TagsTBL_TagNameTBL39" Association="Model1.FK_TagsTBL_TagNameTBL39">
+            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          </AssociationSet>
+          <FunctionImport Name="getByTag" IsComposable="true" ReturnType="Collection(Model1.getByTag_Result)">
+            <Parameter Name="tag" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getPlaylists" IsComposable="true" ReturnType="Collection(Model1.getPlaylists_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getSongs" IsComposable="true" ReturnType="Collection(Model1.getSongs_Result)" />
+          <FunctionImport Name="searchByAlbum" IsComposable="true" ReturnType="Collection(Model1.searchByAlbum_Result)">
+            <Parameter Name="albumName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="searchBySinger" IsComposable="true" ReturnType="Collection(Model1.searchBySinger_Result)">
+            <Parameter Name="singerName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Model1.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Model1.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
         <EntityType Name="AlbumsTBL">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsTBL_albumsTBL" FromRole="AlbumsTBL" ToRole="SongsTBL" />
+          <NavigationProperty Name="SongsTBL" Relationship="Model1.FK_SongsTBL_AlbumsTBL" FromRole="AlbumsTBL" ToRole="SongsTBL" />
         </EntityType>
         <EntityType Name="ArticlesBTL">
           <Key>
@@ -795,8 +940,8 @@
           <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="date" Type="DateTime" Precision="0" />
           <Property Name="tagsId" Type="Int32" />
-          <NavigationProperty Name="TagsTBL" Relationship="Self.FK_ArticlesBTL_TagsTBL" FromRole="ArticlesBTL" ToRole="TagsTBL" />
-          <NavigationProperty Name="ResponsesTBL" Relationship="Self.FK_ResponsesTBL_ArticlesBTL" FromRole="ArticlesBTL" ToRole="ResponsesTBL" />
+          <NavigationProperty Name="TagsTBL" Relationship="Model1.FK_ArticlesBTL_TagsTBL" FromRole="ArticlesBTL" ToRole="TagsTBL" />
+          <NavigationProperty Name="ResponsesTBL" Relationship="Model1.FK_ResponsesTBL_ArticlesBTL" FromRole="ArticlesBTL" ToRole="ResponsesTBL" />
         </EntityType>
         <EntityType Name="PlaylistsTBL">
           <Key>
@@ -805,8 +950,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userId" Type="Int32" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="UsersTBL" Relationship="Self.FK_PlaylistsTBL_UsersTBL" FromRole="PlaylistsTBL" ToRole="UsersTBL" />
-          <NavigationProperty Name="SongsToPlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_PlaylistsTBL" FromRole="PlaylistsTBL" ToRole="SongsToPlaylistsTBL" />
+          <NavigationProperty Name="UsersTBL" Relationship="Model1.FK_PlaylistsTBL_UsersTBL" FromRole="PlaylistsTBL" ToRole="UsersTBL" />
+          <NavigationProperty Name="SongsToPlaylistsTBL" Relationship="Model1.FK_SongsToPlaylistsTBL_PlaylistsTBL" FromRole="PlaylistsTBL" ToRole="SongsToPlaylistsTBL" />
         </EntityType>
         <EntityType Name="ReportsTBL">
           <Key>
@@ -819,7 +964,7 @@
           <Property Name="songId" Type="Int32" />
           <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="SongsTBL" Relationship="Self.FK_ReportsTBL_SongsTBL" FromRole="ReportsTBL" ToRole="SongsTBL" />
+          <NavigationProperty Name="SongsTBL" Relationship="Model1.FK_ReportsTBL_SongsTBL" FromRole="ReportsTBL" ToRole="SongsTBL" />
         </EntityType>
         <EntityType Name="ResponsesTBL">
           <Key>
@@ -831,7 +976,7 @@
           <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="date" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="ArticlesBTL" Relationship="Self.FK_ResponsesTBL_ArticlesBTL" FromRole="ResponsesTBL" ToRole="ArticlesBTL" />
+          <NavigationProperty Name="ArticlesBTL" Relationship="Model1.FK_ResponsesTBL_ArticlesBTL" FromRole="ResponsesTBL" ToRole="ArticlesBTL" />
         </EntityType>
         <EntityType Name="SingersTBL">
           <Key>
@@ -839,7 +984,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsTBL_SingersTBL" FromRole="SingersTBL" ToRole="SongsTBL" />
+          <NavigationProperty Name="SongsTBL" Relationship="Model1.FK_SongsTBL_SingersTBL" FromRole="SingersTBL" ToRole="SongsTBL" />
         </EntityType>
         <EntityType Name="SongsTBL">
           <Key>
@@ -856,14 +1001,14 @@
           <Property Name="unliked" Type="Int32" />
           <Property Name="tagsId" Type="Int32" />
           <Property Name="albumId" Type="Int32" />
-          <NavigationProperty Name="AlbumsTBL" Relationship="Self.FK_SongsTBL_albumsTBL" FromRole="SongsTBL" ToRole="AlbumsTBL" />
-          <NavigationProperty Name="ReportsTBL" Relationship="Self.FK_ReportsTBL_SongsTBL" FromRole="SongsTBL" ToRole="ReportsTBL" />
-          <NavigationProperty Name="SingersTBL" Relationship="Self.FK_SongsTBL_SingersTBL" FromRole="SongsTBL" ToRole="SingersTBL" />
-          <NavigationProperty Name="TagsTBL" Relationship="Self.FK_SongsTBL_TagsTBL" FromRole="SongsTBL" ToRole="TagsTBL" />
-          <NavigationProperty Name="SongsToPlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToPlaylistsTBL" />
           <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="content" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AlbumsTBL" Relationship="Model1.FK_SongsTBL_AlbumsTBL" FromRole="SongsTBL" ToRole="AlbumsTBL" />
+          <NavigationProperty Name="ReportsTBL" Relationship="Model1.FK_ReportsTBL_SongsTBL" FromRole="SongsTBL" ToRole="ReportsTBL" />
+          <NavigationProperty Name="SingersTBL" Relationship="Model1.FK_SongsTBL_SingersTBL" FromRole="SongsTBL" ToRole="SingersTBL" />
+          <NavigationProperty Name="TagsTBL" Relationship="Model1.FK_SongsTBL_TagsTBL" FromRole="SongsTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="SongsToPlaylistsTBL" Relationship="Model1.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToPlaylistsTBL" />
         </EntityType>
         <EntityType Name="SongsToPlaylistsTBL">
           <Key>
@@ -872,16 +1017,41 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="playlistId" Type="Int32" />
           <Property Name="songId" Type="Int32" />
-          <NavigationProperty Name="PlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_PlaylistsTBL" FromRole="SongsToPlaylistsTBL" ToRole="PlaylistsTBL" />
-          <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsToPlaylistsTBL" ToRole="SongsTBL" />
+          <NavigationProperty Name="PlaylistsTBL" Relationship="Model1.FK_SongsToPlaylistsTBL_PlaylistsTBL" FromRole="SongsToPlaylistsTBL" ToRole="PlaylistsTBL" />
+          <NavigationProperty Name="SongsTBL" Relationship="Model1.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsToPlaylistsTBL" ToRole="SongsTBL" />
+        </EntityType>
+        <EntityType Name="TagNameTBL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TagsTBL" Relationship="Model1.FK_TagsTBL_TagNameTBL20" FromRole="TagNameTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="TagsTBL1" Relationship="Model1.FK_TagsTBL_TagNameTBL21" FromRole="TagNameTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="TagsTBL2" Relationship="Model1.FK_TagsTBL_TagNameTBL22" FromRole="TagNameTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="TagsTBL3" Relationship="Model1.FK_TagsTBL_TagNameTBL23" FromRole="TagNameTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="TagsTBL4" Relationship="Model1.FK_TagsTBL_TagNameTBL24" FromRole="TagNameTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="TagsTBL5" Relationship="Model1.FK_TagsTBL_TagNameTBL25" FromRole="TagNameTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="TagsTBL6" Relationship="Model1.FK_TagsTBL_TagNameTBL26" FromRole="TagNameTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="TagsTBL7" Relationship="Model1.FK_TagsTBL_TagNameTBL27" FromRole="TagNameTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="TagsTBL8" Relationship="Model1.FK_TagsTBL_TagNameTBL28" FromRole="TagNameTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="TagsTBL9" Relationship="Model1.FK_TagsTBL_TagNameTBL29" FromRole="TagNameTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="TagsTBL10" Relationship="Model1.FK_TagsTBL_TagNameTBL30" FromRole="TagNameTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="TagsTBL11" Relationship="Model1.FK_TagsTBL_TagNameTBL31" FromRole="TagNameTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="TagsTBL12" Relationship="Model1.FK_TagsTBL_TagNameTBL32" FromRole="TagNameTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="TagsTBL13" Relationship="Model1.FK_TagsTBL_TagNameTBL33" FromRole="TagNameTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="TagsTBL14" Relationship="Model1.FK_TagsTBL_TagNameTBL34" FromRole="TagNameTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="TagsTBL15" Relationship="Model1.FK_TagsTBL_TagNameTBL35" FromRole="TagNameTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="TagsTBL16" Relationship="Model1.FK_TagsTBL_TagNameTBL36" FromRole="TagNameTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="TagsTBL17" Relationship="Model1.FK_TagsTBL_TagNameTBL37" FromRole="TagNameTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="TagsTBL18" Relationship="Model1.FK_TagsTBL_TagNameTBL38" FromRole="TagNameTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="TagsTBL19" Relationship="Model1.FK_TagsTBL_TagNameTBL39" FromRole="TagNameTBL" ToRole="TagsTBL" />
         </EntityType>
         <EntityType Name="TagsTBL">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="ArticlesBTL" Relationship="Self.FK_ArticlesBTL_TagsTBL" FromRole="TagsTBL" ToRole="ArticlesBTL" />
-          <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsTBL_TagsTBL" FromRole="TagsTBL" ToRole="SongsTBL" />
           <Property Name="tag1" Type="Int32" />
           <Property Name="tag2" Type="Int32" />
           <Property Name="tag3" Type="Int32" />
@@ -902,6 +1072,28 @@
           <Property Name="tag18" Type="Int32" />
           <Property Name="tag19" Type="Int32" />
           <Property Name="tag20" Type="Int32" />
+          <NavigationProperty Name="ArticlesBTL" Relationship="Model1.FK_ArticlesBTL_TagsTBL" FromRole="TagsTBL" ToRole="ArticlesBTL" />
+          <NavigationProperty Name="SongsTBL" Relationship="Model1.FK_SongsTBL_TagsTBL" FromRole="TagsTBL" ToRole="SongsTBL" />
+          <NavigationProperty Name="TagNameTBL" Relationship="Model1.FK_TagsTBL_TagNameTBL20" FromRole="TagsTBL" ToRole="TagNameTBL" />
+          <NavigationProperty Name="TagNameTBL1" Relationship="Model1.FK_TagsTBL_TagNameTBL21" FromRole="TagsTBL" ToRole="TagNameTBL" />
+          <NavigationProperty Name="TagNameTBL2" Relationship="Model1.FK_TagsTBL_TagNameTBL22" FromRole="TagsTBL" ToRole="TagNameTBL" />
+          <NavigationProperty Name="TagNameTBL3" Relationship="Model1.FK_TagsTBL_TagNameTBL23" FromRole="TagsTBL" ToRole="TagNameTBL" />
+          <NavigationProperty Name="TagNameTBL4" Relationship="Model1.FK_TagsTBL_TagNameTBL24" FromRole="TagsTBL" ToRole="TagNameTBL" />
+          <NavigationProperty Name="TagNameTBL5" Relationship="Model1.FK_TagsTBL_TagNameTBL25" FromRole="TagsTBL" ToRole="TagNameTBL" />
+          <NavigationProperty Name="TagNameTBL6" Relationship="Model1.FK_TagsTBL_TagNameTBL26" FromRole="TagsTBL" ToRole="TagNameTBL" />
+          <NavigationProperty Name="TagNameTBL7" Relationship="Model1.FK_TagsTBL_TagNameTBL27" FromRole="TagsTBL" ToRole="TagNameTBL" />
+          <NavigationProperty Name="TagNameTBL8" Relationship="Model1.FK_TagsTBL_TagNameTBL28" FromRole="TagsTBL" ToRole="TagNameTBL" />
+          <NavigationProperty Name="TagNameTBL9" Relationship="Model1.FK_TagsTBL_TagNameTBL29" FromRole="TagsTBL" ToRole="TagNameTBL" />
+          <NavigationProperty Name="TagNameTBL10" Relationship="Model1.FK_TagsTBL_TagNameTBL30" FromRole="TagsTBL" ToRole="TagNameTBL" />
+          <NavigationProperty Name="TagNameTBL11" Relationship="Model1.FK_TagsTBL_TagNameTBL31" FromRole="TagsTBL" ToRole="TagNameTBL" />
+          <NavigationProperty Name="TagNameTBL12" Relationship="Model1.FK_TagsTBL_TagNameTBL32" FromRole="TagsTBL" ToRole="TagNameTBL" />
+          <NavigationProperty Name="TagNameTBL13" Relationship="Model1.FK_TagsTBL_TagNameTBL33" FromRole="TagsTBL" ToRole="TagNameTBL" />
+          <NavigationProperty Name="TagNameTBL14" Relationship="Model1.FK_TagsTBL_TagNameTBL34" FromRole="TagsTBL" ToRole="TagNameTBL" />
+          <NavigationProperty Name="TagNameTBL15" Relationship="Model1.FK_TagsTBL_TagNameTBL35" FromRole="TagsTBL" ToRole="TagNameTBL" />
+          <NavigationProperty Name="TagNameTBL16" Relationship="Model1.FK_TagsTBL_TagNameTBL36" FromRole="TagsTBL" ToRole="TagNameTBL" />
+          <NavigationProperty Name="TagNameTBL17" Relationship="Model1.FK_TagsTBL_TagNameTBL37" FromRole="TagsTBL" ToRole="TagNameTBL" />
+          <NavigationProperty Name="TagNameTBL18" Relationship="Model1.FK_TagsTBL_TagNameTBL38" FromRole="TagsTBL" ToRole="TagNameTBL" />
+          <NavigationProperty Name="TagNameTBL19" Relationship="Model1.FK_TagsTBL_TagNameTBL39" FromRole="TagsTBL" ToRole="TagNameTBL" />
         </EntityType>
         <EntityType Name="UsersTBL">
           <Key>
@@ -915,12 +1107,12 @@
           <Property Name="repeat" Type="Boolean" />
           <Property Name="coincidental" Type="Boolean" />
           <Property Name="newsletter" Type="Boolean" />
-          <NavigationProperty Name="PlaylistsTBL" Relationship="Self.FK_PlaylistsTBL_UsersTBL" FromRole="UsersTBL" ToRole="PlaylistsTBL" />
           <Property Name="saveLike" Type="Boolean" />
+          <NavigationProperty Name="PlaylistsTBL" Relationship="Model1.FK_PlaylistsTBL_UsersTBL" FromRole="UsersTBL" ToRole="PlaylistsTBL" />
         </EntityType>
-        <Association Name="FK_SongsTBL_albumsTBL">
-          <End Role="AlbumsTBL" Type="Self.AlbumsTBL" Multiplicity="0..1" />
-          <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="*" />
+        <Association Name="FK_SongsTBL_AlbumsTBL">
+          <End Type="Model1.AlbumsTBL" Role="AlbumsTBL" Multiplicity="0..1" />
+          <End Type="Model1.SongsTBL" Role="SongsTBL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AlbumsTBL">
               <PropertyRef Name="id" />
@@ -931,8 +1123,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ArticlesBTL_TagsTBL">
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="0..1" />
-          <End Role="ArticlesBTL" Type="Self.ArticlesBTL" Multiplicity="*" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="0..1" />
+          <End Type="Model1.ArticlesBTL" Role="ArticlesBTL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TagsTBL">
               <PropertyRef Name="id" />
@@ -943,8 +1135,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ResponsesTBL_ArticlesBTL">
-          <End Role="ArticlesBTL" Type="Self.ArticlesBTL" Multiplicity="0..1" />
-          <End Role="ResponsesTBL" Type="Self.ResponsesTBL" Multiplicity="*" />
+          <End Type="Model1.ArticlesBTL" Role="ArticlesBTL" Multiplicity="0..1" />
+          <End Type="Model1.ResponsesTBL" Role="ResponsesTBL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ArticlesBTL">
               <PropertyRef Name="id" />
@@ -955,8 +1147,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PlaylistsTBL_UsersTBL">
-          <End Role="UsersTBL" Type="Self.UsersTBL" Multiplicity="0..1" />
-          <End Role="PlaylistsTBL" Type="Self.PlaylistsTBL" Multiplicity="*" />
+          <End Type="Model1.UsersTBL" Role="UsersTBL" Multiplicity="0..1" />
+          <End Type="Model1.PlaylistsTBL" Role="PlaylistsTBL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UsersTBL">
               <PropertyRef Name="id" />
@@ -967,8 +1159,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SongsToPlaylistsTBL_PlaylistsTBL">
-          <End Role="PlaylistsTBL" Type="Self.PlaylistsTBL" Multiplicity="0..1" />
-          <End Role="SongsToPlaylistsTBL" Type="Self.SongsToPlaylistsTBL" Multiplicity="*" />
+          <End Type="Model1.PlaylistsTBL" Role="PlaylistsTBL" Multiplicity="0..1" />
+          <End Type="Model1.SongsToPlaylistsTBL" Role="SongsToPlaylistsTBL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PlaylistsTBL">
               <PropertyRef Name="id" />
@@ -979,8 +1171,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ReportsTBL_SongsTBL">
-          <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="0..1" />
-          <End Role="ReportsTBL" Type="Self.ReportsTBL" Multiplicity="*" />
+          <End Type="Model1.SongsTBL" Role="SongsTBL" Multiplicity="0..1" />
+          <End Type="Model1.ReportsTBL" Role="ReportsTBL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SongsTBL">
               <PropertyRef Name="id" />
@@ -991,8 +1183,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SongsTBL_SingersTBL">
-          <End Role="SingersTBL" Type="Self.SingersTBL" Multiplicity="0..1" />
-          <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="*" />
+          <End Type="Model1.SingersTBL" Role="SingersTBL" Multiplicity="0..1" />
+          <End Type="Model1.SongsTBL" Role="SongsTBL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SingersTBL">
               <PropertyRef Name="id" />
@@ -1003,8 +1195,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SongsTBL_TagsTBL">
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="0..1" />
-          <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="*" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="0..1" />
+          <End Type="Model1.SongsTBL" Role="SongsTBL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TagsTBL">
               <PropertyRef Name="id" />
@@ -1015,8 +1207,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SongsToPlaylistsTBL_SongsTBL">
-          <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="0..1" />
-          <End Role="SongsToPlaylistsTBL" Type="Self.SongsToPlaylistsTBL" Multiplicity="*" />
+          <End Type="Model1.SongsTBL" Role="SongsTBL" Multiplicity="0..1" />
+          <End Type="Model1.SongsToPlaylistsTBL" Role="SongsToPlaylistsTBL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SongsTBL">
               <PropertyRef Name="id" />
@@ -1026,126 +1218,315 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MusicOnlineEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AlbumsTBL" EntityType="Self.AlbumsTBL" />
-          <EntitySet Name="ArticlesBTL" EntityType="Self.ArticlesBTL" />
-          <EntitySet Name="PlaylistsTBL" EntityType="Self.PlaylistsTBL" />
-          <EntitySet Name="ReportsTBL" EntityType="Self.ReportsTBL" />
-          <EntitySet Name="ResponsesTBL" EntityType="Self.ResponsesTBL" />
-          <EntitySet Name="SingersTBL" EntityType="Self.SingersTBL" />
-          <EntitySet Name="SongsTBL" EntityType="Self.SongsTBL" />
-          <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" />
-          <EntitySet Name="TagsTBL" EntityType="Self.TagsTBL" />
-          <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" />
-          <AssociationSet Name="FK_SongsTBL_albumsTBL" Association="Self.FK_SongsTBL_albumsTBL">
-            <End Role="AlbumsTBL" EntitySet="AlbumsTBL" />
-            <End Role="SongsTBL" EntitySet="SongsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArticlesBTL_TagsTBL" Association="Self.FK_ArticlesBTL_TagsTBL">
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-            <End Role="ArticlesBTL" EntitySet="ArticlesBTL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ResponsesTBL_ArticlesBTL" Association="Self.FK_ResponsesTBL_ArticlesBTL">
-            <End Role="ArticlesBTL" EntitySet="ArticlesBTL" />
-            <End Role="ResponsesTBL" EntitySet="ResponsesTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PlaylistsTBL_UsersTBL" Association="Self.FK_PlaylistsTBL_UsersTBL">
-            <End Role="UsersTBL" EntitySet="UsersTBL" />
-            <End Role="PlaylistsTBL" EntitySet="PlaylistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SongsToPlaylistsTBL_PlaylistsTBL" Association="Self.FK_SongsToPlaylistsTBL_PlaylistsTBL">
-            <End Role="PlaylistsTBL" EntitySet="PlaylistsTBL" />
-            <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ReportsTBL_SongsTBL" Association="Self.FK_ReportsTBL_SongsTBL">
-            <End Role="SongsTBL" EntitySet="SongsTBL" />
-            <End Role="ReportsTBL" EntitySet="ReportsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SongsTBL_SingersTBL" Association="Self.FK_SongsTBL_SingersTBL">
-            <End Role="SingersTBL" EntitySet="SingersTBL" />
-            <End Role="SongsTBL" EntitySet="SongsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SongsTBL_TagsTBL" Association="Self.FK_SongsTBL_TagsTBL">
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-            <End Role="SongsTBL" EntitySet="SongsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SongsToPlaylistsTBL_SongsTBL" Association="Self.FK_SongsToPlaylistsTBL_SongsTBL">
-            <End Role="SongsTBL" EntitySet="SongsTBL" />
-            <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
-          </AssociationSet>
-          <FunctionImport Name="getByTag" IsComposable="true" ReturnType="Collection(MusicOnlineModel.getByTag_Result)">
-          <Parameter Name="tag" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="getPlaylists" IsComposable="true" ReturnType="Collection(MusicOnlineModel.getPlaylists_Result)">
-          <Parameter Name="userId" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="getSongs" IsComposable="true" ReturnType="Collection(MusicOnlineModel.getSongs_Result)" />
-          <FunctionImport Name="searchByAlbum" IsComposable="true" ReturnType="Collection(MusicOnlineModel.searchByAlbum_Result)">
-          <Parameter Name="albumName" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="searchBySinger" IsComposable="true" ReturnType="Collection(MusicOnlineModel.searchBySinger_Result)">
-          <Parameter Name="singerName" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MusicOnlineModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MusicOnlineModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="getTagsOfSong" IsComposable="true" ReturnType="Collection(MusicOnlineModel.getTagsOfSong_Result)">
-          <Parameter Name="songId" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="getSingers" IsComposable="true" ReturnType="Collection(String)" />
-          <FunctionImport Name="addSinger">
-          <Parameter Name="name" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="addResponse">
-            <Parameter Name="articleId" Mode="In" Type="Int32" />
-            <Parameter Name="name" Mode="In" Type="String" />
-            <Parameter Name="title" Mode="In" Type="String" />
-            <Parameter Name="content" Mode="In" Type="String" />
-            <Parameter Name="date" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="FILL_CONST_TABLES" />
-          <FunctionImport Name="TRUNCATE_MONTHLY_TABLES" />
-          <FunctionImport Name="getByTag1" IsComposable="true" ReturnType="Collection(MusicOnlineModel.getByTag1_Result)">
-          <Parameter Name="tag" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="getPlaylists1" IsComposable="true" ReturnType="Collection(MusicOnlineModel.getPlaylists1_Result)">
-          <Parameter Name="userId" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="getSongs1" IsComposable="true" ReturnType="Collection(MusicOnlineModel.getSongs1_Result)" />
-          <FunctionImport Name="searchByAlbum1" IsComposable="true" ReturnType="Collection(MusicOnlineModel.searchByAlbum1_Result)">
-          <Parameter Name="albumName" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="searchBySinger1" IsComposable="true" ReturnType="Collection(MusicOnlineModel.searchBySinger1_Result)">
-          <Parameter Name="singerName" Mode="In" Type="String" />
-          </FunctionImport>
-        </EntityContainer>
+        <Association Name="FK_TagsTBL_TagNameTBL20">
+          <End Type="Model1.TagNameTBL" Role="TagNameTBL" Multiplicity="0..1" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL21">
+          <End Type="Model1.TagNameTBL" Role="TagNameTBL" Multiplicity="0..1" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL22">
+          <End Type="Model1.TagNameTBL" Role="TagNameTBL" Multiplicity="0..1" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL23">
+          <End Type="Model1.TagNameTBL" Role="TagNameTBL" Multiplicity="0..1" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL24">
+          <End Type="Model1.TagNameTBL" Role="TagNameTBL" Multiplicity="0..1" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag5" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL25">
+          <End Type="Model1.TagNameTBL" Role="TagNameTBL" Multiplicity="0..1" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag6" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL26">
+          <End Type="Model1.TagNameTBL" Role="TagNameTBL" Multiplicity="0..1" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag7" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL27">
+          <End Type="Model1.TagNameTBL" Role="TagNameTBL" Multiplicity="0..1" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag8" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL28">
+          <End Type="Model1.TagNameTBL" Role="TagNameTBL" Multiplicity="0..1" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag9" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL29">
+          <End Type="Model1.TagNameTBL" Role="TagNameTBL" Multiplicity="0..1" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag10" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL30">
+          <End Type="Model1.TagNameTBL" Role="TagNameTBL" Multiplicity="0..1" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag11" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL31">
+          <End Type="Model1.TagNameTBL" Role="TagNameTBL" Multiplicity="0..1" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag12" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL32">
+          <End Type="Model1.TagNameTBL" Role="TagNameTBL" Multiplicity="0..1" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag13" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL33">
+          <End Type="Model1.TagNameTBL" Role="TagNameTBL" Multiplicity="0..1" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag14" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL34">
+          <End Type="Model1.TagNameTBL" Role="TagNameTBL" Multiplicity="0..1" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag15" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL35">
+          <End Type="Model1.TagNameTBL" Role="TagNameTBL" Multiplicity="0..1" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag16" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL36">
+          <End Type="Model1.TagNameTBL" Role="TagNameTBL" Multiplicity="0..1" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag17" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL37">
+          <End Type="Model1.TagNameTBL" Role="TagNameTBL" Multiplicity="0..1" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag18" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL38">
+          <End Type="Model1.TagNameTBL" Role="TagNameTBL" Multiplicity="0..1" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag19" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TagsTBL_TagNameTBL39">
+          <End Type="Model1.TagNameTBL" Role="TagNameTBL" Multiplicity="0..1" />
+          <End Type="Model1.TagsTBL" Role="TagsTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TagNameTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TagsTBL">
+              <PropertyRef Name="tag20" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="getByTag_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="fileLocation" Nullable="true" />
+          <Property Type="String" Name="type" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="date" Nullable="true" Precision="10" />
+          <Property Type="Int64" Name="count" Nullable="true" />
+          <Property Type="Int32" Name="singerId" Nullable="true" />
+          <Property Type="Int32" Name="liked" Nullable="true" />
+          <Property Type="Int32" Name="unliked" Nullable="true" />
+          <Property Type="Int32" Name="tagsId" Nullable="true" />
+          <Property Type="Int32" Name="albumId" Nullable="true" />
+          <Property Type="String" Name="title" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="image" Nullable="true" />
+          <Property Type="String" Name="content" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="getPlaylists_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="Int32" Name="playlistId" Nullable="true" />
+          <Property Type="Int32" Name="songId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="getSongs_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="fileLocation" Nullable="true" />
+          <Property Type="String" Name="type" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="date" Nullable="true" Precision="10" />
+          <Property Type="Int64" Name="count" Nullable="true" />
+          <Property Type="Int32" Name="singerId" Nullable="true" />
+          <Property Type="Int32" Name="liked" Nullable="true" />
+          <Property Type="Int32" Name="unliked" Nullable="true" />
+          <Property Type="Int32" Name="tagsId" Nullable="true" />
+          <Property Type="Int32" Name="albumId" Nullable="true" />
+          <Property Type="String" Name="title" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="image" Nullable="true" />
+          <Property Type="String" Name="content" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="searchByAlbum_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="fileLocation" Nullable="true" />
+          <Property Type="String" Name="type" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="date" Nullable="true" Precision="10" />
+          <Property Type="Int64" Name="count" Nullable="true" />
+          <Property Type="Int32" Name="singerId" Nullable="true" />
+          <Property Type="Int32" Name="liked" Nullable="true" />
+          <Property Type="Int32" Name="unliked" Nullable="true" />
+          <Property Type="Int32" Name="tagsId" Nullable="true" />
+          <Property Type="Int32" Name="albumId" Nullable="true" />
+          <Property Type="String" Name="title" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="image" Nullable="true" />
+          <Property Type="String" Name="content" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="searchBySinger_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="fileLocation" Nullable="true" />
+          <Property Type="String" Name="type" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="date" Nullable="true" Precision="10" />
+          <Property Type="Int64" Name="count" Nullable="true" />
+          <Property Type="Int32" Name="singerId" Nullable="true" />
+          <Property Type="Int32" Name="liked" Nullable="true" />
+          <Property Type="Int32" Name="unliked" Nullable="true" />
+          <Property Type="Int32" Name="tagsId" Nullable="true" />
+          <Property Type="Int32" Name="albumId" Nullable="true" />
+          <Property Type="String" Name="title" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="image" Nullable="true" />
+          <Property Type="String" Name="content" Nullable="true" MaxLength="50" />
+        </ComplexType>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
@@ -1157,218 +1538,36 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="getTagsOfSong_Result">
-          <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="String" Name="C1" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="C2" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="C3" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="C4" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="C5" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="C6" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="C7" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="C8" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="C9" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="C10" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="C11" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="C12" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="C13" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="C14" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="C15" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="C16" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="C17" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="C18" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="C19" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="C20" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="getByTag1_Result">
-          <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="fileLocation" Nullable="true" />
-          <Property Type="String" Name="type" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="date" Nullable="true" Precision="10" />
-          <Property Type="Int64" Name="count" Nullable="true" />
-          <Property Type="Int32" Name="singerId" Nullable="true" />
-          <Property Type="Int32" Name="liked" Nullable="true" />
-          <Property Type="Int32" Name="unliked" Nullable="true" />
-          <Property Type="Int32" Name="tagsId" Nullable="true" />
-          <Property Type="Int32" Name="albumId" Nullable="true" />
-          <Property Type="String" Name="title" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="image" Nullable="true" />
-          <Property Type="String" Name="content" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="getPlaylists1_Result">
-          <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="Int32" Name="playlistId" Nullable="true" />
-          <Property Type="Int32" Name="songId" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="getSongs1_Result">
-          <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="fileLocation" Nullable="true" />
-          <Property Type="String" Name="type" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="date" Nullable="true" Precision="10" />
-          <Property Type="Int64" Name="count" Nullable="true" />
-          <Property Type="Int32" Name="singerId" Nullable="true" />
-          <Property Type="Int32" Name="liked" Nullable="true" />
-          <Property Type="Int32" Name="unliked" Nullable="true" />
-          <Property Type="Int32" Name="tagsId" Nullable="true" />
-          <Property Type="Int32" Name="albumId" Nullable="true" />
-          <Property Type="String" Name="title" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="image" Nullable="true" />
-          <Property Type="String" Name="content" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="searchByAlbum1_Result">
-          <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="fileLocation" Nullable="true" />
-          <Property Type="String" Name="type" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="date" Nullable="true" Precision="10" />
-          <Property Type="Int64" Name="count" Nullable="true" />
-          <Property Type="Int32" Name="singerId" Nullable="true" />
-          <Property Type="Int32" Name="liked" Nullable="true" />
-          <Property Type="Int32" Name="unliked" Nullable="true" />
-          <Property Type="Int32" Name="tagsId" Nullable="true" />
-          <Property Type="Int32" Name="albumId" Nullable="true" />
-          <Property Type="String" Name="title" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="image" Nullable="true" />
-          <Property Type="String" Name="content" Nullable="true" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="searchBySinger1_Result">
-          <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="fileLocation" Nullable="true" />
-          <Property Type="String" Name="type" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="date" Nullable="true" Precision="10" />
-          <Property Type="Int64" Name="count" Nullable="true" />
-          <Property Type="Int32" Name="singerId" Nullable="true" />
-          <Property Type="Int32" Name="liked" Nullable="true" />
-          <Property Type="Int32" Name="unliked" Nullable="true" />
-          <Property Type="Int32" Name="tagsId" Nullable="true" />
-          <Property Type="Int32" Name="albumId" Nullable="true" />
-          <Property Type="String" Name="title" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="image" Nullable="true" />
-          <Property Type="String" Name="content" Nullable="true" MaxLength="50" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MusicOnlineModelStoreContainer" CdmEntityContainer="MusicOnlineEntities">
-          <FunctionImportMapping FunctionImportName="getByTag1" FunctionName="MusicOnlineModel.Store.getByTag">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="MusicOnlineModel.getByTag1_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="fileLocation" ColumnName="fileLocation" />
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="count" ColumnName="count" />
-                <ScalarProperty Name="singerId" ColumnName="singerId" />
-                <ScalarProperty Name="liked" ColumnName="liked" />
-                <ScalarProperty Name="unliked" ColumnName="unliked" />
-                <ScalarProperty Name="tagsId" ColumnName="tagsId" />
-                <ScalarProperty Name="albumId" ColumnName="albumId" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="content" ColumnName="content" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="getPlaylists1" FunctionName="MusicOnlineModel.Store.getPlaylists">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="MusicOnlineModel.getPlaylists1_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="playlistId" ColumnName="playlistId" />
-                <ScalarProperty Name="songId" ColumnName="songId" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="getSongs1" FunctionName="MusicOnlineModel.Store.getSongs">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="MusicOnlineModel.getSongs1_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="fileLocation" ColumnName="fileLocation" />
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="count" ColumnName="count" />
-                <ScalarProperty Name="singerId" ColumnName="singerId" />
-                <ScalarProperty Name="liked" ColumnName="liked" />
-                <ScalarProperty Name="unliked" ColumnName="unliked" />
-                <ScalarProperty Name="tagsId" ColumnName="tagsId" />
-                <ScalarProperty Name="albumId" ColumnName="albumId" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="content" ColumnName="content" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="searchByAlbum1" FunctionName="MusicOnlineModel.Store.searchByAlbum">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="MusicOnlineModel.searchByAlbum1_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="fileLocation" ColumnName="fileLocation" />
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="count" ColumnName="count" />
-                <ScalarProperty Name="singerId" ColumnName="singerId" />
-                <ScalarProperty Name="liked" ColumnName="liked" />
-                <ScalarProperty Name="unliked" ColumnName="unliked" />
-                <ScalarProperty Name="tagsId" ColumnName="tagsId" />
-                <ScalarProperty Name="albumId" ColumnName="albumId" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="content" ColumnName="content" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="searchBySinger1" FunctionName="MusicOnlineModel.Store.searchBySinger">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="MusicOnlineModel.searchBySinger1_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="fileLocation" ColumnName="fileLocation" />
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="count" ColumnName="count" />
-                <ScalarProperty Name="singerId" ColumnName="singerId" />
-                <ScalarProperty Name="liked" ColumnName="liked" />
-                <ScalarProperty Name="unliked" ColumnName="unliked" />
-                <ScalarProperty Name="tagsId" ColumnName="tagsId" />
-                <ScalarProperty Name="albumId" ColumnName="albumId" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="content" ColumnName="content" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <EntitySetMapping Name="SingersTBL">
-            <EntityTypeMapping TypeName="IsTypeOf(MusicOnlineModel.SingersTBL)">
-              <MappingFragment StoreEntitySet="SingersTBL">
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Model1" />
+        <Alias Key="Target" Value="Model1.Store" />
+        <EntityContainerMapping CdmEntityContainer="Model1Container" StorageEntityContainer="Model1StoreContainer">
+          <EntitySetMapping Name="AlbumsTBL">
+            <EntityTypeMapping TypeName="Model1.AlbumsTBL">
+              <MappingFragment StoreEntitySet="AlbumsTBL">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UsersTBL">
-            <EntityTypeMapping TypeName="IsTypeOf(MusicOnlineModel.UsersTBL)">
-              <MappingFragment StoreEntitySet="UsersTBL">
-                <ScalarProperty Name="saveLike" ColumnName="saveLike" />
-                <ScalarProperty Name="newsletter" ColumnName="newsletter" />
-                <ScalarProperty Name="coincidental" ColumnName="coincidental" />
-                <ScalarProperty Name="repeat" ColumnName="repeat" />
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="mail" ColumnName="mail" />
-                <ScalarProperty Name="name" ColumnName="name" />
+          <EntitySetMapping Name="ArticlesBTL">
+            <EntityTypeMapping TypeName="Model1.ArticlesBTL">
+              <MappingFragment StoreEntitySet="ArticlesBTL">
+                <ScalarProperty Name="tagsId" ColumnName="tagsId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="files" ColumnName="files" />
+                <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PlaylistsTBL">
-            <EntityTypeMapping TypeName="IsTypeOf(MusicOnlineModel.PlaylistsTBL)">
+            <EntityTypeMapping TypeName="Model1.PlaylistsTBL">
               <MappingFragment StoreEntitySet="PlaylistsTBL">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="userId" ColumnName="userId" />
@@ -1377,7 +1576,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ReportsTBL">
-            <EntityTypeMapping TypeName="IsTypeOf(MusicOnlineModel.ReportsTBL)">
+            <EntityTypeMapping TypeName="Model1.ReportsTBL">
               <MappingFragment StoreEntitySet="ReportsTBL">
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="message" ColumnName="message" />
@@ -1389,17 +1588,28 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SongsToPlaylistsTBL">
-            <EntityTypeMapping TypeName="IsTypeOf(MusicOnlineModel.SongsToPlaylistsTBL)">
-              <MappingFragment StoreEntitySet="SongsToPlaylistsTBL">
-                <ScalarProperty Name="songId" ColumnName="songId" />
-                <ScalarProperty Name="playlistId" ColumnName="playlistId" />
+          <EntitySetMapping Name="ResponsesTBL">
+            <EntityTypeMapping TypeName="Model1.ResponsesTBL">
+              <MappingFragment StoreEntitySet="ResponsesTBL">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="articleId" ColumnName="articleId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SingersTBL">
+            <EntityTypeMapping TypeName="Model1.SingersTBL">
+              <MappingFragment StoreEntitySet="SingersTBL">
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SongsTBL">
-            <EntityTypeMapping TypeName="IsTypeOf(MusicOnlineModel.SongsTBL)">
+            <EntityTypeMapping TypeName="Model1.SongsTBL">
               <MappingFragment StoreEntitySet="SongsTBL">
                 <ScalarProperty Name="content" ColumnName="content" />
                 <ScalarProperty Name="image" ColumnName="image" />
@@ -1418,16 +1628,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AlbumsTBL">
-            <EntityTypeMapping TypeName="IsTypeOf(MusicOnlineModel.AlbumsTBL)">
-              <MappingFragment StoreEntitySet="AlbumsTBL">
+          <EntitySetMapping Name="SongsToPlaylistsTBL">
+            <EntityTypeMapping TypeName="Model1.SongsToPlaylistsTBL">
+              <MappingFragment StoreEntitySet="SongsToPlaylistsTBL">
+                <ScalarProperty Name="songId" ColumnName="songId" />
+                <ScalarProperty Name="playlistId" ColumnName="playlistId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TagNameTBL">
+            <EntityTypeMapping TypeName="Model1.TagNameTBL">
+              <MappingFragment StoreEntitySet="TagNameTBL">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TagsTBL">
-            <EntityTypeMapping TypeName="IsTypeOf(MusicOnlineModel.TagsTBL)">
+            <EntityTypeMapping TypeName="Model1.TagsTBL">
               <MappingFragment StoreEntitySet="TagsTBL">
                 <ScalarProperty Name="tag20" ColumnName="tag20" />
                 <ScalarProperty Name="tag19" ColumnName="tag19" />
@@ -1453,51 +1672,156 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ArticlesBTL">
-            <EntityTypeMapping TypeName="IsTypeOf(MusicOnlineModel.ArticlesBTL)">
-              <MappingFragment StoreEntitySet="ArticlesBTL">
-                <ScalarProperty Name="tagsId" ColumnName="tagsId" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="content" ColumnName="content" />
-                <ScalarProperty Name="files" ColumnName="files" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ResponsesTBL">
-            <EntityTypeMapping TypeName="IsTypeOf(MusicOnlineModel.ResponsesTBL)">
-              <MappingFragment StoreEntitySet="ResponsesTBL">
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="content" ColumnName="content" />
-                <ScalarProperty Name="title" ColumnName="title" />
+          <EntitySetMapping Name="UsersTBL">
+            <EntityTypeMapping TypeName="Model1.UsersTBL">
+              <MappingFragment StoreEntitySet="UsersTBL">
+                <ScalarProperty Name="saveLike" ColumnName="saveLike" />
+                <ScalarProperty Name="newsletter" ColumnName="newsletter" />
+                <ScalarProperty Name="coincidental" ColumnName="coincidental" />
+                <ScalarProperty Name="repeat" ColumnName="repeat" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
                 <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="articleId" ColumnName="articleId" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="getByTag" FunctionName="Model1.Store.getByTag">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model1.getByTag_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="fileLocation" ColumnName="fileLocation" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="singerId" ColumnName="singerId" />
+                <ScalarProperty Name="liked" ColumnName="liked" />
+                <ScalarProperty Name="unliked" ColumnName="unliked" />
+                <ScalarProperty Name="tagsId" ColumnName="tagsId" />
+                <ScalarProperty Name="albumId" ColumnName="albumId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="content" ColumnName="content" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getPlaylists" FunctionName="Model1.Store.getPlaylists">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model1.getPlaylists_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="playlistId" ColumnName="playlistId" />
+                <ScalarProperty Name="songId" ColumnName="songId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getSongs" FunctionName="Model1.Store.getSongs">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model1.getSongs_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="fileLocation" ColumnName="fileLocation" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="singerId" ColumnName="singerId" />
+                <ScalarProperty Name="liked" ColumnName="liked" />
+                <ScalarProperty Name="unliked" ColumnName="unliked" />
+                <ScalarProperty Name="tagsId" ColumnName="tagsId" />
+                <ScalarProperty Name="albumId" ColumnName="albumId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="content" ColumnName="content" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="searchByAlbum" FunctionName="Model1.Store.searchByAlbum">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model1.searchByAlbum_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="fileLocation" ColumnName="fileLocation" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="singerId" ColumnName="singerId" />
+                <ScalarProperty Name="liked" ColumnName="liked" />
+                <ScalarProperty Name="unliked" ColumnName="unliked" />
+                <ScalarProperty Name="tagsId" ColumnName="tagsId" />
+                <ScalarProperty Name="albumId" ColumnName="albumId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="content" ColumnName="content" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="searchBySinger" FunctionName="Model1.Store.searchBySinger">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model1.searchBySinger_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="fileLocation" ColumnName="fileLocation" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="singerId" ColumnName="singerId" />
+                <ScalarProperty Name="liked" ColumnName="liked" />
+                <ScalarProperty Name="unliked" ColumnName="unliked" />
+                <ScalarProperty Name="tagsId" ColumnName="tagsId" />
+                <ScalarProperty Name="albumId" ColumnName="albumId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="content" ColumnName="content" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Model1.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Model1.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Model1.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Model1.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model1.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Model1.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model1.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Model1.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Model1.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
-    <Connection>
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
       </DesignerInfoPropertySet>
-    </Connection>
-    <Options>
+    </edmx:Connection>
+    <edmx:Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
       </DesignerInfoPropertySet>
-    </Options>
+    </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
-  </Designer>
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
 </edmx:Edmx>

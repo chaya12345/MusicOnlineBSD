@@ -15,10 +15,10 @@ namespace DAL
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class MusicOnlineEntities : DbContext
+    public partial class Model1Container : DbContext
     {
-        public MusicOnlineEntities()
-            : base("name=MusicOnlineEntities")
+        public Model1Container()
+            : base("name=Model1Container")
         {
         }
     
@@ -35,53 +35,54 @@ namespace DAL
         public virtual DbSet<SingersTBL> SingersTBL { get; set; }
         public virtual DbSet<SongsTBL> SongsTBL { get; set; }
         public virtual DbSet<SongsToPlaylistsTBL> SongsToPlaylistsTBL { get; set; }
+        public virtual DbSet<TagNameTBL> TagNameTBL { get; set; }
         public virtual DbSet<TagsTBL> TagsTBL { get; set; }
         public virtual DbSet<UsersTBL> UsersTBL { get; set; }
     
-        [DbFunction("MusicOnlineEntities", "getByTag")]
+        [DbFunction("Model1Container", "getByTag")]
         public virtual IQueryable<getByTag_Result> getByTag(string tag)
         {
             var tagParameter = tag != null ?
                 new ObjectParameter("tag", tag) :
                 new ObjectParameter("tag", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getByTag_Result>("[MusicOnlineEntities].[getByTag](@tag)", tagParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getByTag_Result>("[Model1Container].[getByTag](@tag)", tagParameter);
         }
     
-        [DbFunction("MusicOnlineEntities", "getPlaylists")]
+        [DbFunction("Model1Container", "getPlaylists")]
         public virtual IQueryable<getPlaylists_Result> getPlaylists(Nullable<int> userId)
         {
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getPlaylists_Result>("[MusicOnlineEntities].[getPlaylists](@userId)", userIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getPlaylists_Result>("[Model1Container].[getPlaylists](@userId)", userIdParameter);
         }
     
-        [DbFunction("MusicOnlineEntities", "getSongs")]
+        [DbFunction("Model1Container", "getSongs")]
         public virtual IQueryable<getSongs_Result> getSongs()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getSongs_Result>("[MusicOnlineEntities].[getSongs]()");
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getSongs_Result>("[Model1Container].[getSongs]()");
         }
     
-        [DbFunction("MusicOnlineEntities", "searchByAlbum")]
+        [DbFunction("Model1Container", "searchByAlbum")]
         public virtual IQueryable<searchByAlbum_Result> searchByAlbum(string albumName)
         {
             var albumNameParameter = albumName != null ?
                 new ObjectParameter("albumName", albumName) :
                 new ObjectParameter("albumName", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<searchByAlbum_Result>("[MusicOnlineEntities].[searchByAlbum](@albumName)", albumNameParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<searchByAlbum_Result>("[Model1Container].[searchByAlbum](@albumName)", albumNameParameter);
         }
     
-        [DbFunction("MusicOnlineEntities", "searchBySinger")]
+        [DbFunction("Model1Container", "searchBySinger")]
         public virtual IQueryable<searchBySinger_Result> searchBySinger(string singerName)
         {
             var singerNameParameter = singerName != null ?
                 new ObjectParameter("singerName", singerName) :
                 new ObjectParameter("singerName", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<searchBySinger_Result>("[MusicOnlineEntities].[searchBySinger](@singerName)", singerNameParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<searchBySinger_Result>("[Model1Container].[searchBySinger](@singerName)", singerNameParameter);
         }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
@@ -185,112 +186,6 @@ namespace DAL
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
-        }
-    
-        [DbFunction("MusicOnlineEntities", "getTagsOfSong")]
-        public virtual IQueryable<getTagsOfSong_Result> getTagsOfSong(Nullable<int> songId)
-        {
-            var songIdParameter = songId.HasValue ?
-                new ObjectParameter("songId", songId) :
-                new ObjectParameter("songId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getTagsOfSong_Result>("[MusicOnlineEntities].[getTagsOfSong](@songId)", songIdParameter);
-        }
-    
-        [DbFunction("MusicOnlineEntities", "getSingers")]
-        public virtual IQueryable<string> getSingers()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<string>("[MusicOnlineEntities].[getSingers]()");
-        }
-    
-        public virtual int addSinger(string name)
-        {
-            var nameParameter = name != null ?
-                new ObjectParameter("name", name) :
-                new ObjectParameter("name", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addSinger", nameParameter);
-        }
-    
-        public virtual int addResponse(Nullable<int> articleId, string name, string title, string content, Nullable<System.DateTime> date)
-        {
-            var articleIdParameter = articleId.HasValue ?
-                new ObjectParameter("articleId", articleId) :
-                new ObjectParameter("articleId", typeof(int));
-    
-            var nameParameter = name != null ?
-                new ObjectParameter("name", name) :
-                new ObjectParameter("name", typeof(string));
-    
-            var titleParameter = title != null ?
-                new ObjectParameter("title", title) :
-                new ObjectParameter("title", typeof(string));
-    
-            var contentParameter = content != null ?
-                new ObjectParameter("content", content) :
-                new ObjectParameter("content", typeof(string));
-    
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("date", date) :
-                new ObjectParameter("date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addResponse", articleIdParameter, nameParameter, titleParameter, contentParameter, dateParameter);
-        }
-    
-        public virtual int FILL_CONST_TABLES()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FILL_CONST_TABLES");
-        }
-    
-        public virtual int TRUNCATE_MONTHLY_TABLES()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TRUNCATE_MONTHLY_TABLES");
-        }
-    
-        [DbFunction("MusicOnlineEntities", "getByTag1")]
-        public virtual IQueryable<getByTag1_Result> getByTag1(string tag)
-        {
-            var tagParameter = tag != null ?
-                new ObjectParameter("tag", tag) :
-                new ObjectParameter("tag", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getByTag1_Result>("[MusicOnlineEntities].[getByTag1](@tag)", tagParameter);
-        }
-    
-        [DbFunction("MusicOnlineEntities", "getPlaylists1")]
-        public virtual IQueryable<getPlaylists1_Result> getPlaylists1(Nullable<int> userId)
-        {
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("userId", userId) :
-                new ObjectParameter("userId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getPlaylists1_Result>("[MusicOnlineEntities].[getPlaylists1](@userId)", userIdParameter);
-        }
-    
-        [DbFunction("MusicOnlineEntities", "getSongs1")]
-        public virtual IQueryable<getSongs1_Result> getSongs1()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getSongs1_Result>("[MusicOnlineEntities].[getSongs1]()");
-        }
-    
-        [DbFunction("MusicOnlineEntities", "searchByAlbum1")]
-        public virtual IQueryable<searchByAlbum1_Result> searchByAlbum1(string albumName)
-        {
-            var albumNameParameter = albumName != null ?
-                new ObjectParameter("albumName", albumName) :
-                new ObjectParameter("albumName", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<searchByAlbum1_Result>("[MusicOnlineEntities].[searchByAlbum1](@albumName)", albumNameParameter);
-        }
-    
-        [DbFunction("MusicOnlineEntities", "searchBySinger1")]
-        public virtual IQueryable<searchBySinger1_Result> searchBySinger1(string singerName)
-        {
-            var singerNameParameter = singerName != null ?
-                new ObjectParameter("singerName", singerName) :
-                new ObjectParameter("singerName", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<searchBySinger1_Result>("[MusicOnlineEntities].[searchBySinger1](@singerName)", singerNameParameter);
         }
     }
 }
