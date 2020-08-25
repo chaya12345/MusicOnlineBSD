@@ -26,12 +26,9 @@ namespace BL
         }
         public static void DeleteArticle(int articleId)
         {
-            if (articleId != null)
-            {
-                ArticlesBTL article = et.ArticlesBTL.Where(a => a.id == articleId).FirstOrDefault();
-                et.ArticlesBTL.Remove(article);
-                et.SaveChanges();
-            }
+            ArticlesBTL article = et.ArticlesBTL.Where(a => a.id == articleId).FirstOrDefault();
+            et.ArticlesBTL.Remove(article);
+            et.SaveChanges();
         }
     }
 }

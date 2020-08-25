@@ -10,7 +10,7 @@ namespace DTO
     {
         public int id { get; set; }
         public string name { get; set; }
-        public string fileLocation { get; set; }
+        public string file_location { get; set; }
         public string type { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<long> count { get; set; }
@@ -20,7 +20,8 @@ namespace DTO
         public Nullable<int> tagsId { get; set; }
         public Nullable<int> albumId { get; set; }
         public string title { get; set; }
-        public string image { get; set; }
+        public string subtitle { get; set; }
+        public string image_location { get; set; }
         public string content { get; set; }
     }
 }

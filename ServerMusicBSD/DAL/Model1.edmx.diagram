@@ -4,22 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9ff847544a6a4ce69d1f9e4db2891261" Name="Diagram1" >
-        <EntityTypeShape EntityType="Model1.AlbumsTBL" Width="1.5" PointX="11.25" PointY="0.5" />
-        <EntityTypeShape EntityType="Model1.ArticlesBTL" Width="1.5" PointX="9.25" PointY="3.25" />
-        <EntityTypeShape EntityType="Model1.PlaylistsTBL" Width="1.5" PointX="11.25" PointY="2.375" />
-        <EntityTypeShape EntityType="Model1.ReportsTBL" Width="1.5" PointX="7.25" PointY="3" />
-        <EntityTypeShape EntityType="Model1.ResponsesTBL" Width="1.5" PointX="9.25" PointY="0.5" />
-        <EntityTypeShape EntityType="Model1.SingersTBL" Width="1.5" PointX="5.125" PointY="5.5" />
-        <EntityTypeShape EntityType="Model1.SongsTBL" Width="1.5" PointX="5.125" PointY="0.5" />
-        <EntityTypeShape EntityType="Model1.SongsToPlaylistsTBL" Width="1.5" PointX="7.25" PointY="0.5" />
-        <EntityTypeShape EntityType="Model1.TagNameTBL" Width="1.5" PointX="0.625" PointY="0.625" />
-        <EntityTypeShape EntityType="Model1.TagsTBL" Width="1.5" PointX="3" PointY="0.5" />
-        <EntityTypeShape EntityType="Model1.UsersTBL" Width="1.5" PointX="11.25" PointY="4.625" />
+      <Diagram DiagramId="eb0ce3afc84f414ea0e528a86389c130" Name="Diagram1" >
+        <EntityTypeShape EntityType="Model1.AlbumsTBL" Width="1.5" PointX="9.625" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.ArticlesBTL" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="Model1.PlaylistsTBL" Width="1.5" PointX="9.625" PointY="4.5" />
+        <EntityTypeShape EntityType="Model1.ReportsTBL" Width="1.5" PointX="7.5" PointY="2.75" />
+        <EntityTypeShape EntityType="Model1.ResponsesTBL" Width="1.5" PointX="7.5" PointY="5.75" />
+        <EntityTypeShape EntityType="Model1.SingersTBL" Width="1.5" PointX="9.625" PointY="2.5" />
+        <EntityTypeShape EntityType="Model1.SongsTBL" Width="1.5" PointX="5.375" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.SongsToPlaylistsTBL" Width="1.5" PointX="7.5" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.TagNameTBL" Width="1.5" PointX="0.875" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.TagsTBL" Width="1.5" PointX="3.25" PointY="0.5" />
+        <EntityTypeShape EntityType="Model1.UsersTBL" Width="1.5" PointX="11.75" PointY="0.5" />
         <AssociationConnector Association="Model1.FK_SongsTBL_AlbumsTBL" />
         <AssociationConnector Association="Model1.FK_ArticlesBTL_TagsTBL" />
         <AssociationConnector Association="Model1.FK_ResponsesTBL_ArticlesBTL" />
-        <AssociationConnector Association="Model1.FK_PlaylistsTBL_UsersTBL" />
+        <AssociationConnector Association="Model1.FK_PlaylistsTBL_UsersTBL" ManuallyRouted="true" >
+          <ConnectorPoint PointX="11.78125" PointY="3.4417936197916665" />
+          <ConnectorPoint PointX="11.78125" PointY="6.2615364583333326" />
+          <ConnectorPoint PointX="11.125" PointY="6.2615364583333326" />
+        </AssociationConnector>
         <AssociationConnector Association="Model1.FK_SongsToPlaylistsTBL_PlaylistsTBL" />
         <AssociationConnector Association="Model1.FK_ReportsTBL_SongsTBL" />
         <AssociationConnector Association="Model1.FK_SongsTBL_SingersTBL" />
@@ -45,6 +49,7 @@
         <AssociationConnector Association="Model1.FK_TagsTBL_TagNameTBL37" />
         <AssociationConnector Association="Model1.FK_TagsTBL_TagNameTBL38" />
         <AssociationConnector Association="Model1.FK_TagsTBL_TagNameTBL39" />
+        <EntityTypeShape EntityType="Model1.sysdiagrams" Width="1.5" PointX="11.875" PointY="4" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

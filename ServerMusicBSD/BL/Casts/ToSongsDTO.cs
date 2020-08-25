@@ -15,7 +15,7 @@ namespace BL.Casts
             SongsDTO newSong = new SongsDTO();
             newSong.id = songs.id;
             newSong.name = songs.name;
-            newSong.fileLocation = songs.fileLocation;
+            newSong.file_location = songs.file_location;
             newSong.type = songs.type;
             newSong.date = songs.date;
             newSong.count = songs.count;
@@ -25,7 +25,8 @@ namespace BL.Casts
             newSong.tagsId = songs.tagsId;
             newSong.albumId = songs.albumId;
             newSong.title = songs.title;
-            newSong.image = songs.image;
+            newSong.subtitle = songs.subtitle;
+            newSong.image_location = songs.image_location;
             newSong.content = songs.content;
             return newSong;
         }

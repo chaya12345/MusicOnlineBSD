@@ -22,11 +22,8 @@ namespace BL
             SongsToPlaylistsTBL songsTo = et.SongsToPlaylistsTBL.Where(s => s.id == id).FirstOrDefault();
             if (songsTo != null)
             {
-                if (playlistId != null)
-                {
-                    songsTo.playlistId = playlistId;
-                    et.SaveChanges();
-                }
+                songsTo.playlistId = playlistId;
+                et.SaveChanges();
             }
         }
         public static void DeleteSong(int id)

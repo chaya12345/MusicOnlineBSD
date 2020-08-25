@@ -26,12 +26,9 @@ namespace BL
         }
         public static void ChangeReportStatus(int reportId, string status)
         {
-            if (reportId != null)
-            {
-                ReportsTBL report = et.ReportsTBL.Where(r => r.id == reportId).FirstOrDefault();
-                report.status = status;
-                et.SaveChanges();
-            }
+            ReportsTBL report = et.ReportsTBL.Where(r => r.id == reportId).FirstOrDefault();
+            report.status = status;
+            et.SaveChanges();
         }
     }
 }

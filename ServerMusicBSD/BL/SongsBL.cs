@@ -171,13 +171,9 @@ namespace BL
         }
         public static void DeleteSong(int songId)
         {
-            if (songId != null)
-            {
-                SongsTBL song = et.SongsTBL.Where(s => s.id == songId).FirstOrDefault();
-                et.SongsTBL.Remove(song);
-                et.SaveChanges();
-            }
-
+            SongsTBL song = et.SongsTBL.Where(s => s.id == songId).FirstOrDefault();
+            et.SongsTBL.Remove(song);
+            et.SaveChanges();
         }
     }
 }

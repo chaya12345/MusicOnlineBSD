@@ -1,5 +1,4 @@
-﻿using DAL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,12 +23,9 @@ namespace BL
         }
         public static void DeleteResponse(int responseId)
         {
-            if (responseId != null)
-            {
-                ResponsesTBL response = et.ResponsesTBL.Where(r => r.id == responseId).FirstOrDefault();
-                et.ResponsesTBL.Remove(response);
-                et.SaveChanges();
-            }
+            ResponsesTBL response = et.ResponsesTBL.Where(r => r.id == responseId).FirstOrDefault();
+            et.ResponsesTBL.Remove(response);
+            et.SaveChanges();
         }
     }
 }

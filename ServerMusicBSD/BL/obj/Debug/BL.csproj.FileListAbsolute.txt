@@ -53,3 +53,7 @@ C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\bin\Debug\System.Net.Ht
 C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\bin\Debug\System.Web.Http.dll
 C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\BL\bin\Debug\System.Web.Http.xml
+C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\obj\Debug\BL.csprojAssemblyReference.cache
+C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\obj\Debug\BL.dll
+C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\obj\Debug\BL.pdb
