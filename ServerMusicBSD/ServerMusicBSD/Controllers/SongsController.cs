@@ -27,21 +27,21 @@ namespace ServerMusicBSD.Controllers
             return SongsBL.GetSongsByAlbum(albumName);
         }
 
-        //public List<SongsDTO> GetSongsByTag(string tagName)
-        //{
-        //    return SongsBL.GetSongsByTag(tagName);
-        //}
-        //public List<SongsDTO> GetSongsByTags(string[] tags)
-        //{
-        //    return SongsBL.GetSongsByTags(tags);
-        //}
-        //public List<SongsDTO> PostSongsByAllTags([FromBody] TagsResponse tagsResponse)
-        //{
-        //    return SongsBL.GetSongsByAllTags(tagsResponse.tags);
-        //}
+        public List<SongsDTO> GetSongsByTag(string tagName)
+        {
+            return SongsBL.GetSongsByTag(tagName);
+        }
+        public List<SongsDTO> PostSongsByTags([FromBody] TagsResponse tagsResponse)
+        {
+            return SongsBL.GetSongsByTags(tagsResponse.tags);
+        }
+        public List<SongsDTO> PostSongsByAllTags([FromBody] TagsResponse tagsResponse)
+        {
+            return SongsBL.GetSongsByAllTags(tagsResponse.tags);
+        }
         public void PostSong([FromBody] SongsTBL song)
         {
-            SongsBL.addSong(song);
+            SongsBL.AddSong(song);
         }
         public void DeleteSong(int songId)
         {
@@ -50,7 +50,7 @@ namespace ServerMusicBSD.Controllers
 
         public void PostTagToSong(int songId,int tagId)
         {
-
+            SongsBL.AddTagToSong(songId, tagId);
         }
     }
 }

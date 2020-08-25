@@ -11,10 +11,15 @@ namespace BL
     public class TagNameBL
     {
         static MusicOnlineEntities et = new MusicOnlineEntities();
-        //public static List<TagNameDTO> GetTagNames()
-        //{
-            
-        //}
+        public static List<TagNameDTO> GetTagNames()
+        {
+            return Casts.ToTagNameDTO.GetTagNames(et.TagNameTBL.ToList());
+        }
+        public static void AddTagName(TagNameTBL tag)
+        {
+            et.TagNameTBL.Add(tag);
+            et.SaveChanges();
+        }
 
     }
 }

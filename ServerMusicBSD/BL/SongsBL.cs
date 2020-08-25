@@ -28,143 +28,104 @@ namespace BL
         }
         public static List<SongsDTO> GetSongsBySinger(string singerName)
         {
-            int id = et.SingersTBL.Where(s => s.name == singerName).FirstOrDefault().id;
-            return Casts.ToSongsDTO.GetSongs(et.SongsTBL.Where(s => s.singerId == id).ToList());
+            int singerId = et.SingersTBL.Where(s => s.name == singerName).FirstOrDefault().id;
+            List<SongsDTO> result= Casts.ToSongsDTO.GetSongs(et.SongsTBL.Where(s => s.singerId == singerId).ToList());
+            result.AddRange(GetSongsByTag(singerName));
+            return result;
         }
         public static List<SongsDTO> GetSongsByAlbum(string albumName)
         {
             int id = et.AlbumsTBL.Where(a => a.name == albumName).FirstOrDefault().id;
             return Casts.ToSongsDTO.GetSongs(et.SongsTBL.Where(a => a.albumId == id).ToList());
         }
-        //public static List<SongsDTO> GetSongsByTag(string tagName)
-        //{
-        //    int id = et.TagNameTBL.Where(t => t.name == tagName).FirstOrDefault().id;
-        //    List<SongsTBL> AllSong = et.SongsTBL.ToList();
-        //    List<SongsTBL> list = new List<SongsTBL>();
-        //    if (id != null)
-        //    {
-        //        foreach (SongsTBL song in AllSong)
-        //        {
-        //            TagsTBL tagsOfSong = et.TagsTBL.Where(t => t.id == song.tagsId).FirstOrDefault();
-        //            if (tagsOfSong.tag1 == id)
-        //            {
-        //                list.Add(song);
-        //            }
-        //            if (tagsOfSong.tag2 == id)
-        //            {
-        //                list.Add(song);
-        //            }
-        //            if (tagsOfSong.tag3 == id)
-        //            {
-        //                list.Add(song);
-        //            }
-        //            if (tagsOfSong.tag4 == id)
-        //            {
-        //                list.Add(song);
-        //            }
-        //            if (tagsOfSong.tag5 == id)
-        //            {
-        //                list.Add(song);
-        //            }
-        //            if (tagsOfSong.tag6 == id)
-        //            {
-        //                list.Add(song);
-        //            }
-        //            if (tagsOfSong.tag7 == id)
-        //            {
-        //                list.Add(song);
-        //            }
-        //            if (tagsOfSong.tag8 == id)
-        //            {
-        //                list.Add(song);
-        //            }
-        //            if (tagsOfSong.tag9 == id)
-        //            {
-        //                list.Add(song);
-        //            }
-        //            if (tagsOfSong.tag10 == id)
-        //            {
-        //                list.Add(song);
-        //            }
-        //            if (tagsOfSong.tag11 == id)
-        //            {
-        //                list.Add(song);
-        //            }
-        //            if (tagsOfSong.tag12 == id)
-        //            {
-        //                list.Add(song);
-        //            }
-        //            if (tagsOfSong.tag13 == id)
-        //            {
-        //                list.Add(song);
-        //            }
-        //            if (tagsOfSong.tag14 == id)
-        //            {
-        //                list.Add(song);
-        //            }
-        //            if (tagsOfSong.tag15 == id)
-        //            {
-        //                list.Add(song);
-        //            }
-        //            if (tagsOfSong.tag16 == id)
-        //            {
-        //                list.Add(song);
-        //            }
-        //            if (tagsOfSong.tag17 == id)
-        //            {
-        //                list.Add(song);
-        //            }
-        //            if (tagsOfSong.tag18 == id)
-        //            {
-        //                list.Add(song);
-        //            }
-        //            if (tagsOfSong.tag19 == id)
-        //            {
-        //                list.Add(song);
-        //            }
-        //            if (tagsOfSong.tag20 == id)
-        //            {
-        //                list.Add(song);
-        //            }
-
-
-        //        }
-        //    }
-        //    return Casts.ToSongsDTO.GetSongs(list);
-        //}
-        //public static List<SongsDTO> GetSongsByTags(string[] tags)
-        //{
-        //    List<SongsDTO> songs = new List<SongsDTO>();
-        //    foreach (string tag in tags)
-        //    {
-        //        songs.AddRange(GetSongsByTag(tag));
-        //    }
-        //    return songs;
-        //}
-        //public static List<SongsDTO> GetSongsByAllTags(List<string> tags)
-        //{
-        //    List<SongsDTO> songs = GetSongs();
-        //    List<SongsTBL> resultSongs = new List<SongsTBL>();
-        //    int mutchSong = 0;
-
-        //    foreach (SongsDTO song in songs)
-        //    {
-        //        TagsTBL tagsTBL = et.TagsTBL.Where(t => t.id == song.tagsId).FirstOrDefault();
-        //        if (tagsTBL.tag1 != null)
-        //        {
-// if(tags.Contains(et.TagNameTBL.Where(t=>t.id==tag1).FirstOrDefault().name)
-//שtag1 לא ריק וגם מוכל במערך
-//ככה צריך לבדוק כל שיר ושיר
-//וצריך להוסיף עוד משתנה כאונט שיספור כמה היה תגים מוכלים
-//אם מספר התגים המוכלים שווה לאורך המערך של התגים שהתרבל אז נוסיף את השיר לרשימת השירים המוחזרת
-        //        }
-                
-
-        //    }
-        //    return Casts.ToSongsDTO.GetSongs(resultSongs);
-        //}
-
-        public static void addSong(SongsTBL song)
+        public static List<SongsDTO> GetSongsByTag(string tagName)
+        {
+            int tagId=et.TagNameTBL.Where(t=>t.name==tagName).FirstOrDefault().id;
+            List<SongsDTO> AllSong = GetSongs();
+            List<SongsDTO> result = new List<SongsDTO>();
+            foreach (SongsDTO song in AllSong)
+            {
+                if (IsSongContainTag(song.tagsId, tagId))
+                {
+                    result.Add(song);
+                }
+            }
+            return result;
+        }
+        public static bool IsSongContainTag(Nullable<int> tagsId,int Tag)
+        {
+            TagsTBL tags = et.TagsTBL.Where(t => t.id == tagsId).FirstOrDefault();
+            if (tags.tag1 != null && tags.tag1 == Tag)
+                return true;
+            if (tags.tag2 != null && tags.tag2 == Tag)
+                return true;
+            if (tags.tag3 != null && tags.tag3 == Tag)
+                return true;
+            if (tags.tag4 != null && tags.tag4 == Tag)
+                return true;
+            if (tags.tag5 != null && tags.tag5 == Tag)
+                return true;
+            if (tags.tag6 != null && tags.tag6 == Tag)
+                return true;
+            if (tags.tag7 != null && tags.tag7 == Tag)
+                return true;
+            if (tags.tag8 != null && tags.tag8 == Tag)
+                return true;
+            if (tags.tag9 != null && tags.tag9 == Tag)
+                return true;
+            if (tags.tag10 != null && tags.tag10 == Tag)
+                return true;
+            if (tags.tag11 != null && tags.tag11 == Tag)
+                return true;
+            if (tags.tag12 != null && tags.tag12 == Tag)
+                return true;
+            if (tags.tag13 != null && tags.tag13 == Tag)
+                return true;
+            if (tags.tag14 != null && tags.tag14 == Tag)
+                return true;
+            if (tags.tag15 != null && tags.tag15 == Tag)
+                return true;
+            if (tags.tag16 != null && tags.tag16 == Tag)
+                return true;
+            if (tags.tag17 != null && tags.tag17 == Tag)
+                return true;
+            if (tags.tag18 != null && tags.tag18 == Tag)
+                return true;
+            if (tags.tag19 != null && tags.tag19 == Tag)
+                return true;
+            if (tags.tag20 != null && tags.tag20 == Tag)
+                return true;
+            return false;
+        }
+        public static List<SongsDTO> GetSongsByTags(List<string> tags)
+        {
+            List<SongsDTO> songs = new List<SongsDTO>();
+            foreach (string tag in tags)
+            {
+                songs.AddRange(GetSongsByTag(tag));
+            }
+            return songs;
+        }
+        public static List<SongsDTO> GetSongsByAllTags(List<string> tags)
+        {
+            int mutchTag = 0;
+            List<SongsDTO> allSongs = GetSongs();
+            List<SongsDTO> result = new List<SongsDTO>();
+            foreach (SongsDTO song in allSongs)
+            {
+                //בדיקה עבור כל שיר אם הוא מכיל את כל התגיות
+                foreach (string t in tags)
+                {
+                    int tag = et.TagNameTBL.Where(a => a.name == t).FirstOrDefault();
+                    if (IsSongContainTag(song.tagsId, tag))
+                        mutchTag++;
+                }
+                if (mutchTag == tags.Count())
+                    result.Add(song);
+            }
+            return result;
+        }
+        public static void AddSong(SongsTBL song)
         {
             et.SongsTBL.Add(song);
             et.SaveChanges();
@@ -174,6 +135,111 @@ namespace BL
             SongsTBL song = et.SongsTBL.Where(s => s.id == songId).FirstOrDefault();
             et.SongsTBL.Remove(song);
             et.SaveChanges();
+        }
+        public static void AddTagToSong(int songId,int tagNameId)
+        {
+            SongsTBL song = et.SongsTBL.Where(s => s.id == songId).FirstOrDefault();
+            TagsTBL tags = et.TagsTBL.Where(t => t.id == song.tagsId).FirstOrDefault();
+            if(tags.tag1==null)
+            {
+                tags.tag1 = tagNameId;
+                return;
+            }
+            if (tags.tag2 == null)
+            {
+                tags.tag2 = tagNameId;
+                return;
+            }
+            if (tags.tag3 == null)
+            {
+                tags.tag3 = tagNameId;
+                return;
+            }
+            if (tags.tag4 == null)
+            {
+                tags.tag4 = tagNameId;
+                return;
+            }
+            if (tags.tag5 == null)
+            {
+                tags.tag5 = tagNameId;
+                return;
+            }
+            if (tags.tag6 == null)
+            {
+                tags.tag6 = tagNameId;
+                return;
+            }
+            if (tags.tag7 == null)
+            {
+                tags.tag7 = tagNameId;
+                return;
+            }
+            if (tags.tag8 == null)
+            {
+                tags.tag8 = tagNameId;
+                return;
+            }
+            if (tags.tag9 == null)
+            {
+                tags.tag9 = tagNameId;
+                return;
+            }
+            if (tags.tag10 == null)
+            {
+                tags.tag10 = tagNameId;
+                return;
+            }
+            if (tags.tag11 == null)
+            {
+                tags.tag11 = tagNameId;
+                return;
+            }
+            if (tags.tag12 == null)
+            {
+                tags.tag12 = tagNameId;
+                return;
+            }
+            if (tags.tag13 == null)
+            {
+                tags.tag13 = tagNameId;
+                return;
+            }
+            if (tags.tag14 == null)
+            {
+                tags.tag14 = tagNameId;
+                return;
+            }
+            if (tags.tag15 == null)
+            {
+                tags.tag15 = tagNameId;
+                return;
+            }
+            if (tags.tag16 == null)
+            {
+                tags.tag16 = tagNameId;
+                return;
+            }
+            if (tags.tag17 == null)
+            {
+                tags.tag17 = tagNameId;
+                return;
+            }
+            if (tags.tag18 == null)
+            {
+                tags.tag18 = tagNameId;
+                return;
+            }
+            if (tags.tag19 == null)
+            {
+                tags.tag19 = tagNameId;
+                return;
+            }
+            if (tags.tag20 == null)
+            {
+                tags.tag20 = tagNameId;
+                return;
+            }
         }
     }
 }

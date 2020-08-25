@@ -30,5 +30,9 @@ namespace BL
             report.status = status;
             et.SaveChanges();
         }
+        public static List<ReportsDTO> GetAllUntreatedReports()
+        {
+            return Casts.ToReportsDTO.GetReports(et.ReportsTBL.where(r => r.status != "טופל").ToList());
+        }
     }
 }
