@@ -32,8 +32,8 @@ namespace BL
         }
         public static void AddTagToAtricle(int articleId, int tagNameId)
         {
-            ArticlesBTL arti = et.ArticlesTBL.Where(a => a.id == articleId).FirstOrDefault();
-            TagsTBL tags = et.TagsTBL.Where(t => t.id == arti.tagsId).FirstOrDefault();
+            ArticlesBTL article = et.ArticlesBTL.Where(a => a.id == articleId).FirstOrDefault();
+            TagsTBL tags = et.TagsTBL.Where(t => t.id == article.tagsId).FirstOrDefault();
             if (tags.tag1 == null)
             {
                 tags.tag1 = tagNameId;
@@ -213,7 +213,7 @@ namespace BL
                 //בדיקה עבור כל שיר אם הוא מכיל את כל התגיות
                 foreach (string t in tags)
                 {
-                    int tag = et.TagNameTBL.Where(a => a.name == t).FirstOrDefault();
+                    int tag = et.TagNameTBL.Where(a => a.name == t).FirstOrDefault().id;
                     if (IsArticleContainTag(song.tagsId, tag))
                         mutchTag++;
                 }

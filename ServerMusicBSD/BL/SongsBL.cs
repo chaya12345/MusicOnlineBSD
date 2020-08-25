@@ -114,10 +114,10 @@ namespace BL
             foreach (SongsDTO song in allSongs)
             {
                 //בדיקה עבור כל שיר אם הוא מכיל את כל התגיות
-                foreach (string t in tags)
+                foreach (string tag in tags)
                 {
-                    int tag = et.TagNameTBL.Where(a => a.name == t).FirstOrDefault();
-                    if (IsSongContainTag(song.tagsId, tag))
+                    int tagId = et.TagNameTBL.Where(a => a.name == tag).FirstOrDefault().id;
+                    if (IsSongContainTag(song.tagsId, tagId))
                         mutchTag++;
                 }
                 if (mutchTag == tags.Count())

@@ -15,10 +15,10 @@ namespace DAL
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class Model1Container1 : DbContext
+    public partial class MusicOnlineEntities : DbContext
     {
-        public Model1Container1()
-            : base("name=Model1Container1")
+        public MusicOnlineEntities()
+            : base("name=MusicOnlineEntities")
         {
         }
     
@@ -40,50 +40,50 @@ namespace DAL
         public virtual DbSet<UsersTBL> UsersTBL { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     
-        [DbFunction("Model1Container1", "getByTag")]
+        [DbFunction("MusicOnlineEntities", "getByTag")]
         public virtual IQueryable<getByTag_Result> getByTag(string tag)
         {
             var tagParameter = tag != null ?
                 new ObjectParameter("tag", tag) :
                 new ObjectParameter("tag", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getByTag_Result>("[Model1Container1].[getByTag](@tag)", tagParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getByTag_Result>("[MusicOnlineEntities].[getByTag](@tag)", tagParameter);
         }
     
-        [DbFunction("Model1Container1", "getPlaylists")]
+        [DbFunction("MusicOnlineEntities", "getPlaylists")]
         public virtual IQueryable<getPlaylists_Result> getPlaylists(Nullable<int> userId)
         {
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getPlaylists_Result>("[Model1Container1].[getPlaylists](@userId)", userIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getPlaylists_Result>("[MusicOnlineEntities].[getPlaylists](@userId)", userIdParameter);
         }
     
-        [DbFunction("Model1Container1", "getSongs")]
+        [DbFunction("MusicOnlineEntities", "getSongs")]
         public virtual IQueryable<getSongs_Result> getSongs()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getSongs_Result>("[Model1Container1].[getSongs]()");
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getSongs_Result>("[MusicOnlineEntities].[getSongs]()");
         }
     
-        [DbFunction("Model1Container1", "searchByAlbum")]
+        [DbFunction("MusicOnlineEntities", "searchByAlbum")]
         public virtual IQueryable<searchByAlbum_Result> searchByAlbum(string albumName)
         {
             var albumNameParameter = albumName != null ?
                 new ObjectParameter("albumName", albumName) :
                 new ObjectParameter("albumName", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<searchByAlbum_Result>("[Model1Container1].[searchByAlbum](@albumName)", albumNameParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<searchByAlbum_Result>("[MusicOnlineEntities].[searchByAlbum](@albumName)", albumNameParameter);
         }
     
-        [DbFunction("Model1Container1", "searchBySinger")]
+        [DbFunction("MusicOnlineEntities", "searchBySinger")]
         public virtual IQueryable<searchBySinger_Result> searchBySinger(string singerName)
         {
             var singerNameParameter = singerName != null ?
                 new ObjectParameter("singerName", singerName) :
                 new ObjectParameter("singerName", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<searchBySinger_Result>("[Model1Container1].[searchBySinger](@singerName)", singerNameParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<searchBySinger_Result>("[MusicOnlineEntities].[searchBySinger](@singerName)", singerNameParameter);
         }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
