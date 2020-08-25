@@ -151,14 +151,19 @@
     </Content>
     <Content Include="src\images\for_songs\211576_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_songs\223388_tumb_750Xauto.jpg" />
+    <Content Include="src\images\for_songs\2784.jpg" />
     <Content Include="src\images\for_songs\53646183_2533434770004335_7805584894150574080_o-560x315.jpg" />
+    <Content Include="src\images\for_songs\cover-27-560x373.jpg" />
+    <Content Include="src\images\for_songs\da-560x321.png" />
     <Content Include="src\images\for_songs\אלוקי-נשמה-יוטיוב-560x316.jpeg" />
+    <Content Include="src\songs\איציק דדיה\47e1dbf051d404c3fda9f2219b2fa2b1.mp4" />
     <Content Include="src\songs\איציק דדיה\איציק דדיה - נכספתי.mp4" />
     <Content Include="src\songs\איציק דדיה\אלוקי נשמה.mp4" />
-    <Content Include="src\songs\איציק דדיה\אנא איציק דדיה.mp4" />
+    <Content Include="src\songs\איציק דדיה\בדרך-לאומן-I-איציק-דדיה-I-הקליפ-הרשמי-Baderech-LUman-I-Itzik-Dadya-I-Official-Video.mp4" />
+    <Content Include="src\songs\איציק דדיה\בדרך-לאומן.mp3" />
     <Content Include="src\songs\איציק דדיה\האמונה בוערת.mp3" />
+    <Content Include="src\songs\איציק דדיה\מאט דאב &amp; איציק דדיה - אנא.mp4" />
     <Content Include="src\songs\איציק דדיה\מלחמות.mp3" />
-    <Content Include="src\songs\איציק דדיה\מאט דאב &amp; איציק דדיה - אנא.mp3" />
     <Content Include="src\songs\אריק דביר\אריק דביר - נרקוד.mp3" />
     <Content Include="src\songs\חיים ישראל\חיים ישראל - טעיתי.mp3" />
     <Content Include="src\songs\ישי ריבו\ישי ריבו - כתר מלוכה.mp3" />
@@ -166,7 +171,10 @@
     <Content Include="src\songs\קובי ברומר\קובי ברומר - עולים לירושלים.mp3" />
     <Content Include="src\songs\קובי ברומר\קובי ברומר - עם הנצח .mp3" />
     <Content Include="src\songs\שמחה פרידמן\שמחה פרידמן - לא לפחד.mp3" />
+    <Content Include="src\text\songs_content\איציק דדיה בדרך לאומן – הקליפ הרשמי.txt" />
+    <Content Include="src\text\songs_content\איציק דדיה בלהיט חדש – %27בדרך לאומן%27.txt" />
     <Content Include="src\text\songs_content\איציק דדיה בסינגל חדש %27האמונה בוערת%27.txt" />
+    <Content Include="src\text\songs_content\איציק דדיה בסינגל חדש %27כוכבים נופלים%27.txt" />
     <Content Include="src\text\songs_content\איציק דדיה ויניב בן משיח – אלוקי נשמה.txt" />
     <Content Include="src\text\songs_content\איציק דדיה חוזר במוסיקה מקורית ובוגרת יותר %27נכספתי%27.txt" />
     <Content Include="src\text\songs_content\מאט דאב ואיציק דדיה בדואט %27אנא%27.txt" />
