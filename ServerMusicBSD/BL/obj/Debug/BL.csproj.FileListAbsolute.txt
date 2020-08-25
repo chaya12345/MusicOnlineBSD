@@ -57,3 +57,17 @@ C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\obj\Debug\BL.csprojAssemblyRefere
 C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
 C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\obj\Debug\BL.dll
 C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\obj\Debug\BL.pdb
+C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\bin\Debug\BL.dll
+C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\bin\Debug\BL.pdb
+C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\bin\Debug\DAL.dll
+C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\bin\Debug\DTO.dll
+C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\bin\Debug\Newtonsoft.Json.dll
+C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\bin\Debug\System.Net.Http.Formatting.dll
+C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\bin\Debug\System.Web.Http.dll
+C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\bin\Debug\DAL.pdb
+C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\bin\Debug\DAL.dll.config
+C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\bin\Debug\DTO.pdb
+C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\bin\Debug\Newtonsoft.Json.xml
+C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\bin\Debug\System.Net.Http.Formatting.xml
+C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\bin\Debug\System.Web.Http.xml
+C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\BL\obj\Debug\BL.csproj.CopyComplete
