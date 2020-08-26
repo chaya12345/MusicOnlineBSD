@@ -28,6 +28,7 @@ namespace BL.Casts
             newSong.subtitle = songs.subtitle;
             newSong.image_location = songs.image_location;
             newSong.content = songs.content;
+            newSong.artistId = songs.artistId;
             return newSong;
         }
 

@@ -39,6 +39,8 @@ namespace DAL
         public virtual DbSet<TagsTBL> TagsTBL { get; set; }
         public virtual DbSet<UsersTBL> UsersTBL { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<ArtistsNameTBL> ArtistsNameTBL { get; set; }
+        public virtual DbSet<ArtistsTBL> ArtistsTBL { get; set; }
     
         [DbFunction("MusicOnlineEntities", "getByTag")]
         public virtual IQueryable<getByTag_Result> getByTag(string tag)

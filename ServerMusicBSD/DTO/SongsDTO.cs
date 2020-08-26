@@ -23,5 +23,6 @@ namespace DTO
         public string subtitle { get; set; }
         public string image_location { get; set; }
         public string content { get; set; }
+        public Nullable<int> artistId { get; set; }
     }
 }

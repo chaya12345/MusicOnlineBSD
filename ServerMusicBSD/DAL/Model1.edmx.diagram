@@ -21,8 +21,8 @@
         <AssociationConnector Association="Model1.FK_ResponsesTBL_ArticlesBTL" />
         <AssociationConnector Association="Model1.FK_PlaylistsTBL_UsersTBL" ManuallyRouted="true" >
           <ConnectorPoint PointX="11.78125" PointY="3.4417936197916665" />
-          <ConnectorPoint PointX="11.78125" PointY="6.2615364583333326" />
-          <ConnectorPoint PointX="11.125" PointY="6.2615364583333326" />
+          <ConnectorPoint PointX="11.78125" PointY="6.2615364583333317" />
+          <ConnectorPoint PointX="11.125" PointY="6.2615364583333317" />
         </AssociationConnector>
         <AssociationConnector Association="Model1.FK_SongsToPlaylistsTBL_PlaylistsTBL" />
         <AssociationConnector Association="Model1.FK_ReportsTBL_SongsTBL" />
@@ -50,6 +50,19 @@
         <AssociationConnector Association="Model1.FK_TagsTBL_TagNameTBL38" />
         <AssociationConnector Association="Model1.FK_TagsTBL_TagNameTBL39" />
         <EntityTypeShape EntityType="Model1.sysdiagrams" Width="1.5" PointX="11.875" PointY="4" />
+        <EntityTypeShape EntityType="Model1.ArtistsNameTBL" Width="1.5" PointX="10.125" PointY="7.75" />
+        <EntityTypeShape EntityType="Model1.ArtistsTBL" Width="1.5" PointX="12.375" PointY="6.875" />
+        <AssociationConnector Association="Model1.FK_ArtistsArrayTBL_ArtistsTBL" />
+        <AssociationConnector Association="Model1.FK_ArtistsArrayTBL_ArtistsTBL1" />
+        <AssociationConnector Association="Model1.FK_ArtistsArrayTBL_ArtistsTBL2" />
+        <AssociationConnector Association="Model1.FK_ArtistsArrayTBL_ArtistsTBL3" />
+        <AssociationConnector Association="Model1.FK_ArtistsArrayTBL_ArtistsTBL4" />
+        <AssociationConnector Association="Model1.FK_ArtistsArrayTBL_ArtistsTBL5" />
+        <AssociationConnector Association="Model1.FK_ArtistsArrayTBL_ArtistsTBL6" />
+        <AssociationConnector Association="Model1.FK_ArtistsArrayTBL_ArtistsTBL7" />
+        <AssociationConnector Association="Model1.FK_ArtistsArrayTBL_ArtistsTBL8" />
+        <AssociationConnector Association="Model1.FK_ArtistsArrayTBL_ArtistsTBL9" />
+        <AssociationConnector Association="Model1.FK_SongsTBL_ArtistsArrayTBL" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
