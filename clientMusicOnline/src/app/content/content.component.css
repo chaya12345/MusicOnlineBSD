@@ -1,0 +1,14 @@
+.wrap-container-content {
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+}
+
+side {
+    grid-area: 1 / 1 / 2 / 4;
+}
+
+main {
+    grid-area: 1 / 4 / 2 / 14;
+}

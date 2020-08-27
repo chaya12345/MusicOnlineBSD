@@ -1,0 +1,10 @@
+<div class="wrap-container-nav">
+    <div class="navs">
+        <div class="nav-item" *ngFor="let nav of navigations">
+            <button mat-button>
+                <span>{{nav.name}}</span>
+                <mat-icon>{{nav.icon}}</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="wrap-container-mini-searching">
+    <form>
+        <!-- serach specific song -->
+        <mat-form-field appearance="outline">
+            <input type="text" placeholder="חפש שיר" aria-label="Number" matInput [formControl]="songsControl"
+                [matAutocomplete]="autoSongs">
+            <button mat-icon-button matPrefix>
+                <mat-icon>search</mat-icon>
+            </button>
+            <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete">
+                <mat-option *ngFor="let song of filteredSongs | async" [value]="song">
+                    {{song}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <!-- serach songs by singer -->
+        <mat-form-field appearance="outline">
+            <input type="text" placeholder="חפש זמר" aria-label="Number" matInput [formControl]="singersControl"
+                [matAutocomplete]="autoSingers">
+            <button mat-icon-button matPrefix>
+                <mat-icon>search</mat-icon>
+            </button>
+            <mat-autocomplete autoActiveFirstOption #autoSingers="matAutocomplete">
+                <mat-option *ngFor="let singer of filteredSingers | async" [value]="singer">
+                    {{singer}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
+</div>
