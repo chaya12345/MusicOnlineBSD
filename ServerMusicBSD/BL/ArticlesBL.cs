@@ -10,7 +10,7 @@ namespace BL
 {
     public class ArticlesBL
     {
-        static MusicOnlineEntities et = new MusicOnlineEntities();
+        static MusicOnlineEntities1 et = new MusicOnlineEntities1();
         public static List<ArticlesDTO> GetArticles()
         {
             return Casts.ToArticlesDTO.GetArticles(et.ArticlesBTL.ToList());

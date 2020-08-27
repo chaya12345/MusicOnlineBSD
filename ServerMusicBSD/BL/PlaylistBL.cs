@@ -10,7 +10,7 @@ namespace BL
 {
     public class PlaylistBL
     {
-        static MusicOnlineEntities et = new MusicOnlineEntities();
+        static MusicOnlineEntities1 et = new MusicOnlineEntities1();
         public static void AddPlaylist(PlaylistsTBL playlist)
         {
             et.PlaylistsTBL.Add(playlist);

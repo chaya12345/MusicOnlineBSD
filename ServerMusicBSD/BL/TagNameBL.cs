@@ -10,7 +10,7 @@ namespace BL
 {
     public class TagNameBL
     {
-        static MusicOnlineEntities et = new MusicOnlineEntities();
+        static MusicOnlineEntities1 et = new MusicOnlineEntities1();
         public static List<TagNameDTO> GetTagNames()
         {
             return Casts.ToTagNameDTO.GetTagNames(et.TagNameTBL.ToList());

@@ -10,7 +10,8 @@ namespace BL
 {
     public class ReportsBL
     {
-        static MusicOnlineEntities et = new MusicOnlineEntities();
+        static MusicOnlineEntities1 et = new MusicOnlineEntities1();
+        
         public static void addReport(ReportsTBL report)
         {
             et.ReportsTBL.Add(report);
