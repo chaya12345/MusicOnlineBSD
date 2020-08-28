@@ -1535,7 +1535,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MusicOnlineEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MusicOnlineEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AlbumsTBL" EntityType="Self.AlbumsTBL" />
           <EntitySet Name="ArticlesBTL" EntityType="Self.ArticlesBTL" />
           <EntitySet Name="ArtistsNameTBL" EntityType="Self.ArtistsNameTBL" />
@@ -1715,7 +1715,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MusicOnlineModelStoreContainer" CdmEntityContainer="MusicOnlineEntities1">
+        <EntityContainerMapping StorageEntityContainer="MusicOnlineModelStoreContainer" CdmEntityContainer="MusicOnlineEntities">
           <EntitySetMapping Name="AlbumsTBL">
             <EntityTypeMapping TypeName="MusicOnlineModel.AlbumsTBL">
               <MappingFragment StoreEntitySet="AlbumsTBL">

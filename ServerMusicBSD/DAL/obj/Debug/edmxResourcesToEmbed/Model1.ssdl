@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Model1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="MusicOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="AlbumsTBL">
     <Key>
       <PropertyRef Name="id" />
@@ -635,118 +635,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="getByTag" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="tag" Type="varchar" Mode="In" />
-    <ReturnType>
-      <CollectionType>
-        <RowType>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="50" />
-          <Property Name="file_location" Type="varchar(max)" />
-          <Property Name="type" Type="varchar" MaxLength="50" />
-          <Property Name="date" Type="date" />
-          <Property Name="count" Type="bigint" />
-          <Property Name="singerId" Type="int" />
-          <Property Name="liked" Type="int" />
-          <Property Name="unliked" Type="int" />
-          <Property Name="tagsId" Type="int" />
-          <Property Name="albumId" Type="int" />
-          <Property Name="title" Type="varchar" MaxLength="150" />
-          <Property Name="subtitle" Type="varchar" MaxLength="200" />
-          <Property Name="image_location" Type="varchar(max)" />
-          <Property Name="content" Type="varchar(max)" />
-          <Property Name="artistId" Type="int" />
-        </RowType>
-      </CollectionType>
-    </ReturnType>
-  </Function>
-  <Function Name="getPlaylists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="userId" Type="int" Mode="In" />
-    <ReturnType>
-      <CollectionType>
-        <RowType>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="playlistId" Type="int" />
-          <Property Name="songId" Type="int" />
-        </RowType>
-      </CollectionType>
-    </ReturnType>
-  </Function>
-  <Function Name="getSongs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <ReturnType>
-      <CollectionType>
-        <RowType>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="50" />
-          <Property Name="file_location" Type="varchar(max)" />
-          <Property Name="type" Type="varchar" MaxLength="50" />
-          <Property Name="date" Type="date" />
-          <Property Name="count" Type="bigint" />
-          <Property Name="singerId" Type="int" />
-          <Property Name="liked" Type="int" />
-          <Property Name="unliked" Type="int" />
-          <Property Name="tagsId" Type="int" />
-          <Property Name="albumId" Type="int" />
-          <Property Name="title" Type="varchar" MaxLength="150" />
-          <Property Name="subtitle" Type="varchar" MaxLength="200" />
-          <Property Name="image_location" Type="varchar(max)" />
-          <Property Name="content" Type="varchar(max)" />
-          <Property Name="artistId" Type="int" />
-        </RowType>
-      </CollectionType>
-    </ReturnType>
-  </Function>
-  <Function Name="searchByAlbum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="albumName" Type="varchar" Mode="In" />
-    <ReturnType>
-      <CollectionType>
-        <RowType>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="50" />
-          <Property Name="file_location" Type="varchar(max)" />
-          <Property Name="type" Type="varchar" MaxLength="50" />
-          <Property Name="date" Type="date" />
-          <Property Name="count" Type="bigint" />
-          <Property Name="singerId" Type="int" />
-          <Property Name="liked" Type="int" />
-          <Property Name="unliked" Type="int" />
-          <Property Name="tagsId" Type="int" />
-          <Property Name="albumId" Type="int" />
-          <Property Name="title" Type="varchar" MaxLength="150" />
-          <Property Name="subtitle" Type="varchar" MaxLength="200" />
-          <Property Name="image_location" Type="varchar(max)" />
-          <Property Name="content" Type="varchar(max)" />
-          <Property Name="artistId" Type="int" />
-        </RowType>
-      </CollectionType>
-    </ReturnType>
-  </Function>
-  <Function Name="searchBySinger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="singerName" Type="varchar" Mode="In" />
-    <ReturnType>
-      <CollectionType>
-        <RowType>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="50" />
-          <Property Name="file_location" Type="varchar(max)" />
-          <Property Name="type" Type="varchar" MaxLength="50" />
-          <Property Name="date" Type="date" />
-          <Property Name="count" Type="bigint" />
-          <Property Name="singerId" Type="int" />
-          <Property Name="liked" Type="int" />
-          <Property Name="unliked" Type="int" />
-          <Property Name="tagsId" Type="int" />
-          <Property Name="albumId" Type="int" />
-          <Property Name="title" Type="varchar" MaxLength="150" />
-          <Property Name="subtitle" Type="varchar" MaxLength="200" />
-          <Property Name="image_location" Type="varchar(max)" />
-          <Property Name="content" Type="varchar(max)" />
-          <Property Name="artistId" Type="int" />
-        </RowType>
-      </CollectionType>
-    </ReturnType>
-  </Function>
-  <EntityContainer Name="Model1StoreContainer">
+  <EntityContainer Name="MusicOnlineModelStoreContainer">
     <EntitySet Name="AlbumsTBL" EntityType="Self.AlbumsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ArticlesBTL" EntityType="Self.ArticlesBTL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ArtistsNameTBL" EntityType="Self.ArtistsNameTBL" Schema="dbo" store:Type="Tables" />

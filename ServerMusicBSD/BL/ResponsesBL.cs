@@ -11,7 +11,7 @@ namespace BL
 {
     public class ResponsesBL
     {
-        static MusicOnlineEntities1 et = new MusicOnlineEntities1();
+        static MusicOnlineEntities et = new MusicOnlineEntities();
         public static void AddResponse(ResponsesTBL response)
         {
             et.ResponsesTBL.Add(response);
