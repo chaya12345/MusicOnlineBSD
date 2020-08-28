@@ -1,7 +1,4 @@
-mat-tab-group {
-    direction: rtl;
-}
-
-.wrap-container-favorite {
-    direction: rtl;
+.wrap-songs {
+    padding: 20px 50px;
+    padding-bottom: 0;
 }

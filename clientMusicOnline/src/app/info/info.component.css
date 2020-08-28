@@ -1,0 +1,45 @@
+.wrap-container-info {
+    padding-bottom: 35px;
+}
+
+.messange {
+    margin: 50px;
+    text-align: center;
+    color: #c7c7c7;
+}
+
+.messange h2 {
+    margin-bottom: 20px;
+    background-color: whitesmoke;
+    color: black;
+    font-family: fb shlager;
+    line-height: 35px;
+    transition: .4s;
+}
+
+.messange p {
+    line-height: 37px;
+    font-family: fb shlager;
+    font-size: 22px;
+    font-weight: 100;
+    padding-bottom: 15px !important;
+    border-bottom: solid 1px #c7c7c7;
+    transition: .4s;
+    padding: 0 35px;
+}
+
+.messange:hover h2 {
+    background-color: #c7c7c7;
+}
+
+.messange:hover p {
+    border-bottom-color: #2c8dfb !important;
+}
+
+mat-icon.mat-icon {
+    transition: .4s;
+}
+
+.messange:hover mat-icon {
+    color: #2c8dfb;
+}

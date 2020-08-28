@@ -1,0 +1,13 @@
+<div class="wrap-footer-song">
+    <div [class.yellow]="is_parent_hovered" class="play">
+        <mat-icon class="play">play_arrow</mat-icon>
+    </div>
+    <div class="status-song">
+        <mat-icon (mouseenter)="marking($event)"
+                (mouseleave)="reset_marking($event)"
+                (click)="sign($event)">favorite_border</mat-icon>
+        {{likes_amount}}
+        <mat-icon>speaker_notes</mat-icon>
+        {{like_responses}}
+    </div>
+</div>
