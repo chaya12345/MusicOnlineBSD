@@ -39,12 +39,12 @@ namespace DAL
         public Nullable<int> artistId { get; set; }
     
         public virtual AlbumsTBL AlbumsTBL { get; set; }
+        public virtual ArtistsTBL ArtistsTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReportsTBL> ReportsTBL { get; set; }
         public virtual SingersTBL SingersTBL { get; set; }
         public virtual TagsTBL TagsTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SongsToPlaylistsTBL> SongsToPlaylistsTBL { get; set; }
-        public virtual ArtistsTBL ArtistsTBL { get; set; }
     }
 }

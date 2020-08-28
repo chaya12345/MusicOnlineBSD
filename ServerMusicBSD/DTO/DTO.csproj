@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticlesDTO.cs" />
+    <Compile Include="ArtistsNamesDTO.cs" />
     <Compile Include="PlaylistsDTO.cs" />
     <Compile Include="ReportsDTO.cs" />
     <Compile Include="ResponsesDTO.cs" />

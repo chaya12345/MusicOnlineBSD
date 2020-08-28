@@ -11,7 +11,7 @@ namespace BL
 {
     public class SingersBL
     {
-        static MusicOnlineEntities et = new MusicOnlineEntities();
+        static MusicOnlineEntities1 et = new MusicOnlineEntities1();
         public static List<SingersDTO> GetSingers()
         {
             return Casts.ToSingersDTO.GetSingers(et.SingersTBL.ToList());
