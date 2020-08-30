@@ -137,12 +137,12 @@ namespace BL
         }
         public static List<ArticlesDTO> GetArticlesByTag(string tagName)
         {
-            int tagId = et.TagNameTBL.Where(t => t.name == tagName).FirstOrDefault().id;
+            TagNameTBL tagId = et.TagNameTBL.Where(t => t.name == tagName).FirstOrDefault();
             List<ArticlesDTO> AllArticles = GetArticles();
             List<ArticlesDTO> result = new List<ArticlesDTO>();
             foreach (ArticlesDTO article in AllArticles)
             {
-                if (IsArticleContainTag(article.tagsId, tagId))
+                if (article.tagsId!=null && tagId.id!=null && IsArticleContainTag(article.tagsId, tagId.id))
                 {
                     result.Add(article);
                 }
@@ -210,15 +210,16 @@ namespace BL
             List<ArticlesDTO> result = new List<ArticlesDTO>();
             foreach (ArticlesDTO song in allArticles)
             {
-                //בדיקה עבור כל שיר אם הוא מכיל את כל התגיות
+                //בדיקה עבור כל כתבה אם היא מכילה את כל התגיות
                 foreach (string t in tags)
                 {
-                    int tag = et.TagNameTBL.Where(a => a.name == t).FirstOrDefault().id;
-                    if (IsArticleContainTag(song.tagsId, tag))
+                    TagNameTBL tag = et.TagNameTBL.Where(a => a.name == t).FirstOrDefault();
+                    if (tag.id==null && song.tagsId==null && IsArticleContainTag(song.tagsId, tag.id))
                         mutchTag++;
                 }
                 if (mutchTag == tags.Count())
                     result.Add(song);
+                mutchTag = 0;
             }
             return result;
         }
