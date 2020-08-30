@@ -52,5 +52,9 @@ namespace ServerMusicBSD.Controllers
         {
             SongsBL.AddTagToSong(songId, tagId);
         }
+        public void PostArtistToSong(int songId, int artistId)
+        {
+            SongsBL.AddArtistToSong(songId, artistId);
+        }
     }
 }

@@ -12,7 +12,6 @@ namespace ServerMusicBSD.Controllers
 {
     public class ReportsController : ApiController
     {
-        MusicOnlineEntities et = new MusicOnlineEntities();
         public void PostReport([FromBody] ReportsTBL report)
         {
             ReportsBL.addReport(report);
