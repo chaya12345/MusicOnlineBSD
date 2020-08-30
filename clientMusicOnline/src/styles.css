@@ -1,12 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+/* html, body { height: 100%; } */
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
         Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
         "Segoe UI Emoji", "Segoe UI Symbol";
@@ -15,8 +19,13 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     user-select: none;
 }
 
-html, body {
-    overflow-x: hidden;
+button span {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+        "Segoe UI Emoji", "Segoe UI Symbol";
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
 }
 
 /* #region(collapsed) [Material-icons] */

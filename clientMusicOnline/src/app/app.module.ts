@@ -33,6 +33,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { SongComponent } from './song/song.component';
 import { FooterSongComponent } from './footer-song/footer-song.component';
 import { TopComponent } from './top/top.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { TopComponent } from './top/top.component';
     RegistrationComponent,
     SongComponent,
     FooterSongComponent,
-    TopComponent
+    TopComponent,
+    SideNavComponent
   ],
   imports: [
     BrowserModule,

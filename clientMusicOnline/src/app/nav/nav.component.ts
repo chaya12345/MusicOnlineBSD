@@ -23,6 +23,9 @@ export class NavComponent implements OnInit {
     }, {
       name: "חיפוש חכם",
       icon: "search"
+    }, {
+      name: "הופעות",
+      icon: "mic"
     }];
 
   constructor() { }

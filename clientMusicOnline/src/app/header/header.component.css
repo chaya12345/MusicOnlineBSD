@@ -2,6 +2,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: fit-content(40%) auto;
+    border-bottom: solid 1px #101010;
 }
 
 main-actions {

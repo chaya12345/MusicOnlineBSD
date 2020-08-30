@@ -8,6 +8,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const modules = [
     MatToolbarModule,
@@ -18,7 +19,8 @@ const modules = [
     MatAutocompleteModule,
     MatChipsModule,
     MatCardModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTooltipModule
 ];
 
 @NgModule({
