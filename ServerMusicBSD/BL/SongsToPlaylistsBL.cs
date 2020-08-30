@@ -11,7 +11,7 @@ namespace BL
 {
     public class SongsToPlaylistsBL
     {
-        static MusicOnlineEntities1 et = new MusicOnlineEntities1();
+        static MusicOnlineEntities et = new MusicOnlineEntities();
         public static void AddSongToPlaylist(SongsToPlaylistsTBL songToPlaylist)
         {
             et.SongsToPlaylistsTBL.Add(songToPlaylist);

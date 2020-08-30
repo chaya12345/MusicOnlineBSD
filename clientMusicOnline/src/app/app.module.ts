@@ -30,6 +30,9 @@ import { NowViewedComponent } from './now-viewed/now-viewed.component';
 import { CopyrightComponent } from './copyright/copyright.component';
 import { MiniSearchingComponent } from './mini-searching/mini-searching.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { SongComponent } from './song/song.component';
+import { FooterSongComponent } from './footer-song/footer-song.component';
+import { TopComponent } from './top/top.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,10 @@ import { RegistrationComponent } from './registration/registration.component';
     NowViewedComponent,
     CopyrightComponent,
     MiniSearchingComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    SongComponent,
+    FooterSongComponent,
+    TopComponent
   ],
   imports: [
     BrowserModule,

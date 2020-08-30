@@ -19,4 +19,3 @@ C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\DTO\bin\Debug\DTO.pdb
 C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\DTO\obj\Debug\DTO.dll
 C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\DTO\obj\Debug\DTO.pdb
-C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\DTO\obj\Debug\DTO.csprojAssemblyReference.cache

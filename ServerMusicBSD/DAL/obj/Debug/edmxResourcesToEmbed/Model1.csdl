@@ -715,7 +715,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="MusicOnlineEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="MusicOnlineEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="AlbumsTBL" EntityType="Self.AlbumsTBL" />
     <EntitySet Name="ArticlesBTL" EntityType="Self.ArticlesBTL" />
     <EntitySet Name="ArtistsNameTBL" EntityType="Self.ArtistsNameTBL" />

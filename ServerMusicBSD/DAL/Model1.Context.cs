@@ -13,10 +13,10 @@ namespace DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MusicOnlineEntities1 : DbContext
+    public partial class MusicOnlineEntities : DbContext
     {
-        public MusicOnlineEntities1()
-            : base("name=MusicOnlineEntities1")
+        public MusicOnlineEntities()
+            : base("name=MusicOnlineEntities")
         {
         }
     

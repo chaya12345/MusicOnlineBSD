@@ -1,1 +1,6 @@
-<p>viewed works!</p>
+<div class="wrap-container-viewed wrapper">
+    <top title="נצפים" icon="star"></top>
+    <div class="wrap-songs">
+        <song *ngFor="let song of viewedSongs" [song]="song"></song>
+    </div>
+</div>

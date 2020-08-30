@@ -10,7 +10,7 @@ namespace BL
 {
     public class UsersBL
     {
-        static MusicOnlineEntities1 et = new MusicOnlineEntities1();
+        static MusicOnlineEntities et = new MusicOnlineEntities();
         public static void AddUser(UsersTBL user)
         {
             et.UsersTBL.Add(user);

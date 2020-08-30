@@ -1,0 +1,42 @@
+.wrap-footer-song {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    text-align: center;
+    color: white;
+    display: grid;
+    grid-template-columns: fit-content(40%) auto;
+    width: 100%;
+}
+
+div.play {
+    display: inline-block;
+    background-color: #2c8dfb;
+    padding: 5px 10px;
+    transition: .4s;
+}
+
+mat-icon.play {
+    font-size: 30px;
+    height: auto;
+    width: auto;
+    padding: 5px 10px;
+}
+
+div.yellow {
+    background-color: #fbc02d;
+}
+
+.status-song {
+    height: 100%;
+    color: white;
+    padding: 15px;
+    text-align: right;
+}
+
+.status-song .mat-icon {
+    vertical-align: middle;
+    display: -webkit-inline-box;
+    margin: 0 10px;
+    transition: .4s;
+}
