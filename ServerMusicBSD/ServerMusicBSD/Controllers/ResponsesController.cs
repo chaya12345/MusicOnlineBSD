@@ -24,5 +24,9 @@ namespace ServerMusicBSD.Controllers
         {
             ResponsesBL.DeleteResponse(responseId);
         }
+        public List<ResponsesDTO> GetLastResponses()
+        {
+            return ResponsesBL.GetLastResponses();
+        }
     }
 }

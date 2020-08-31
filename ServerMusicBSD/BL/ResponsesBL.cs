@@ -27,5 +27,10 @@ namespace BL
             et.ResponsesTBL.Remove(response);
             et.SaveChanges();
         }
+        public static List<ResponsesDTO> GetLastResponses()
+        {
+            List<ResponsesTBL> list = et.ResponsesTBL.Where(r => r.date != null).OrderBy(r=>r.date).Distinct().ToList();
+            return Casts.ToResponseDTO.GetResponses(list);
+        }
     }
 }
