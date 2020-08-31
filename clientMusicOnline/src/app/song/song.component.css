@@ -12,6 +12,7 @@
     border: solid 1px #2c8dfb;
     box-shadow: 0 0 8px #00000030;
     transition: .4s;
+    background-position: center;
 }
 
 .wrap-song:hover .back-song {

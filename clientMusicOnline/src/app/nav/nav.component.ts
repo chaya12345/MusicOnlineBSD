@@ -21,6 +21,9 @@ export class NavComponent implements OnInit {
       name: "מגזין חדשות המוזיקה",
       icon: "queue_music"
     }, {
+      name: "הופעות",
+      icon: "mic"
+    }, {
       name: "חיפוש חכם",
       icon: "search"
     }];

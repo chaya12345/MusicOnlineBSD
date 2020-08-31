@@ -22,3 +22,11 @@ content {
 footer {
     grid-area: 4 / 1 / 5 / 14;
 }
+
+side-nav {
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    z-index: 999;
+}

@@ -1,1 +1,6 @@
-<p>newsic works!</p>
+<div class="wrap-container-newsic wrapper wrapper-main">
+    <top title="ניוזיק" icon="music_note"></top>
+    <div class="wrap-songs">
+        <song *ngFor="let song of newSongs" [song]="song"></song>
+    </div>
+</div>
