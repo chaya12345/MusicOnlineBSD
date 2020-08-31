@@ -75,6 +75,10 @@ div.mat-tab-label {
     padding-right: 70px;
 }
 
+mat-ink-bar {
+    left: auto !important;
+}
+
 .wrapper:hover .mat-tab-header {
     padding-right: 70px;
 }
@@ -106,6 +110,36 @@ info .mat-tab-nav-bar, info .mat-tab-header {
     padding: 40px 35px;
     padding-bottom: 0;
     direction: rtl;
+}
+
+.wrapper-main {
+    margin: 0 60px;
+}
+
+/* #endregion */
+
+/* #region(collapsed) [Swiper-Slide] */
+
+.swiper-pagination-bullet {
+    display: inline-block;
+    background: #000;
+    opacity: .2;
+    margin: 0 4px;
+    width: 30px;
+    height: 6px;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background-color: #2c8dfb;
+}
+
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 4px;
+}
+
+.swiper-pagination-clickable .swiper-pagination-bullet {
+    cursor: pointer;
 }
 
 /* #endregion */

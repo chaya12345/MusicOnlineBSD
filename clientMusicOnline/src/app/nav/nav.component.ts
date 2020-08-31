@@ -21,11 +21,11 @@ export class NavComponent implements OnInit {
       name: "מגזין חדשות המוזיקה",
       icon: "queue_music"
     }, {
-      name: "חיפוש חכם",
-      icon: "search"
-    }, {
       name: "הופעות",
       icon: "mic"
+    }, {
+      name: "חיפוש חכם",
+      icon: "search"
     }];
 
   constructor() { }

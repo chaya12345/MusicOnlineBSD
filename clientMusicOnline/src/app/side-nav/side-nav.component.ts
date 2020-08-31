@@ -16,17 +16,17 @@ export class SideNavComponent implements OnInit {
       name: "מיוזיקליפ",
       icon: "play_circle_filled"
     }, {
-      name: "ערוצי מוזיקה",
+      name: "פלייליסטים",
       icon: "equalizer"
     }, {
       name: "מגזין",
       icon: "queue_music"
     }, {
-      name: "חיפוש חכם",
-      icon: "search"
-    }, {
       name: "הופעות",
       icon: "mic"
+    }, {
+      name: "חיפוש חכם",
+      icon: "search"
     }, {
       name: "אהובים",
       icon: "favorite_border"

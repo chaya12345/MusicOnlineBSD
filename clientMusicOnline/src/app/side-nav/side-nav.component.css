@@ -6,7 +6,7 @@
     display: grid;
     grid-template-rows: fit-content(40%) auto;
     transition: .4s;
-    transform: translateX(103px);
+    transform: translateX(95px); /*103*/
 }
 
 .open-menu {
@@ -54,7 +54,7 @@
 }
 
 .close-menu-item:hover {
-    transform: translateX(-90px);
+    transform: translateX(-85px);
 }
 
 .side-nav-item:hover {
