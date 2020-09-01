@@ -9,6 +9,10 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRippleModule } from '@angular/material/core';
 
 const modules = [
     MatToolbarModule,
@@ -20,7 +24,11 @@ const modules = [
     MatChipsModule,
     MatCardModule,
     MatTabsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatStepperModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatRippleModule
 ];
 
 @NgModule({

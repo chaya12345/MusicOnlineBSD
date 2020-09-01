@@ -1,1 +1,32 @@
-<p>magazine works!</p>
+<div class="wrap-container-magazine wrapper wrapper-main">
+    <top title="מגזין" icon="queue_music"></top>
+    <div class="wrap-articles">
+        <mat-card class="article-card" *ngFor="let article of articlesList">
+            <mat-card-header>
+              <mat-card-title>{{article.title}}</mat-card-title>
+              <mat-card-subtitle>{{article.subtitle}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image [src]="article.imgSrc" [alt]="article.title">
+            <mat-card-content>
+              <p>{{article.content}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button matTooltip="לייק" matTooltipClass="blue-tooltip" mat-icon-button
+                        (mouseenter)="marking($event)"
+                        (mouseleave)="reset_marking($event, 'black')"
+                        (click)="sign($event)">
+                  <mat-icon>favorite_border</mat-icon>
+              </button>
+              <button matTooltip="לכתבה המלאה" matTooltipClass="blue-tooltip" mat-icon-button>
+                  <mat-icon>notes</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+          <p class="nav-button"
+          matRipple
+          matRippleRadius="40"
+          matRippleUnbounded="true">למגזין המלא
+              <mat-icon>chevron_left</mat-icon>
+          </p>
+    </div>
+</div>

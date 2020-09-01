@@ -1,6 +1,6 @@
 <div [class.open-menu]="open" [class.close-nav]="!show" class="wrap-container-side-nav">
     <button [matTooltip]="open ? 'סגור' : 'הרחב'"
-            matTooltipClass="toggle-button-tooltip"
+            matTooltipClass="blue-tooltip"
             mat-icon-button
             (click)="open_menu($event)">
         <mat-icon>add</mat-icon>
@@ -15,7 +15,7 @@
     </div>
     <div [class.open-nav]="!show">
         <button [matTooltip]="show ? 'הסתר תפריט' : 'הצג תפריט'"
-            matTooltipClass="toggle-button-tooltip" mat-icon-button
+            matTooltipClass="blue-tooltip" mat-icon-button
             (click)="close_nav($event)" [class.open-nav-button]="!show">
             <mat-icon>chevron_right</mat-icon>
         </button>

@@ -34,6 +34,8 @@ import { SongComponent } from './song/song.component';
 import { FooterSongComponent } from './footer-song/footer-song.component';
 import { TopComponent } from './top/top.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
+import { SearchSpesificSongComponent } from './search-spesific-song/search-spesific-song.component';
+import { SearchByComponent } from './search-by/search-by.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import { SideNavComponent } from './side-nav/side-nav.component';
     SongComponent,
     FooterSongComponent,
     TopComponent,
-    SideNavComponent
+    SideNavComponent,
+    SearchSpesificSongComponent,
+    SearchByComponent
   ],
   imports: [
     BrowserModule,

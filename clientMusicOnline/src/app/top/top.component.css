@@ -11,4 +11,6 @@ h2.title {
     width: 160px;
     transform: translateX(15px);
     width: fit-content;
+    font-family: fb Joker;
+    font-size: 32px;
 }

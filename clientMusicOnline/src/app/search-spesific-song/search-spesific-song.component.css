@@ -1,0 +1,13 @@
+.mat-form-field {
+    text-align: right;
+    margin: 15px;
+}
+
+.title-search {
+    display: flex;
+}
+
+.mat-option {
+    direction: rtl;
+    text-align: right !important;
+}

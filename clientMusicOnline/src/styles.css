@@ -62,6 +62,15 @@ mini-searching .mat-form-field-wrapper {
     margin-bottom: 15px !important;
 }
 
+.mat-option-pseudo-checkbox {
+    margin-left: 8px;
+}
+
+.mat-checkbox-inner-container {
+    margin-left: 8px !important;
+    margin-top: 8px !important;
+}
+
 /* #endregion */
 
 /* #region(collapsed) [Title + Tabs] */
@@ -114,6 +123,7 @@ info .mat-tab-nav-bar, info .mat-tab-header {
 
 .wrapper-main {
     margin: 0 60px;
+    margin-bottom: 20px;
 }
 
 /* #endregion */
@@ -140,6 +150,16 @@ info .mat-tab-nav-bar, info .mat-tab-header {
 
 .swiper-pagination-clickable .swiper-pagination-bullet {
     cursor: pointer;
+}
+
+/* #endregion */
+
+/* #region(collapsed) [Swiper-Slide] */
+
+.blue-tooltip {
+    background: #2c8dfb;
+    margin: 0 !important;
+    z-index: 9999;
 }
 
 /* #endregion */

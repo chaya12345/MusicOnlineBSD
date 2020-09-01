@@ -1,1 +1,6 @@
-<p>clips works!</p>
+<div class="wrap-container-clips wrapper wrapper-main">
+    <top title="קליפים" icon="play_circle_filled"></top>
+    <div class="wrap-songs">
+        <song *ngFor="let clip of clipsList" [song]="clip"></song>
+    </div>
+</div>

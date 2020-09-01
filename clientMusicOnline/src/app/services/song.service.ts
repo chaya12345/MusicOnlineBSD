@@ -16,8 +16,8 @@ export class SongService {
     event.target.style.color = "#F44336";
   }
 
-  reset_like_color(event): void {
-    event.target.style.color = "white";
+  reset_like_color(event, color: string): void {
+    event.target.style.color = color != null ? color : "white";
   }
 
   constructor() { }

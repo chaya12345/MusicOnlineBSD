@@ -1,1 +1,19 @@
-<p>searching works!</p>
+<div class="wrap-container-searching wrapper wrapper-main">
+    <top title="חיפוש חכם" icon="search"></top>
+    <div class="wrap-form-search">
+        <div class="searching-fields">
+            <search-spesific-song></search-spesific-song>
+            <search-by></search-by>
+        </div>
+        <p>
+            <mat-checkbox [formControl]="typeSearching">
+                אני רוצה שהשירים יהיו לפי כל הגדרות החיפוש.<br>
+                ברירת המחדל - שירים המכילים לפחות אחת מהגדרות החיפוש שנבחרו.
+            </mat-checkbox>
+        </p>
+        <button class="search-button" mat-flat-button>
+            חיפוש
+            <mat-icon>search</mat-icon>
+        </button>
+    </div>
+</div>

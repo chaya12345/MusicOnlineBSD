@@ -104,12 +104,6 @@
     font-family: fb joker;
 }
 
-.toggle-button-tooltip {
-    background: #2c8dfb;
-    margin: 0 !important;
-    z-index: 9999;
-}
-
 .open-nav {
     background-color: #101010;
     transform: translateX(-63px);
