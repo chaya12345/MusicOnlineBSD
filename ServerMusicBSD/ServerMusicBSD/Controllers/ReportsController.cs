@@ -7,9 +7,11 @@ using System.Web.Http;
 using DAL;
 using BL;
 using DTO;
+using System.Web.Http.Cors;
 
 namespace ServerMusicBSD.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ReportsController : ApiController
     {
         public void PostReport([FromBody] ReportsTBL report)

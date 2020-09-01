@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { SongService } from '../services/song.service';
+import { Song } from '../classes/song';
 
 @Component({
   selector: 'mini-searching',
@@ -31,12 +33,17 @@ export class MiniSearchingComponent implements OnInit {
   songsControl = new FormControl();
   singersControl = new FormControl();
 
-  constructor() {
+  songsList: Song[] = [];
+
+  constructor(private songService: SongService) {
     this.songsControl = new FormControl();
     this.singersControl = new FormControl();
   }
 
   ngOnInit() {
+    this.songService.getSongsList().subscribe(songs => this.songsList = songs);
+    // console.log(this.songsList);
+
     this.filteredSongs = this.songsControl.valueChanges
       .pipe(
         startWith(''),

@@ -14,5 +14,7 @@ namespace DTO
         public string content { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<int> tagsId { get; set; }
+        public string subtitle { get; set; }
+        public string credit { get; set; }
     }
 }

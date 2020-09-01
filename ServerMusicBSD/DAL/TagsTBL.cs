@@ -17,7 +17,7 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TagsTBL()
         {
-            this.ArticlesBTL = new HashSet<ArticlesBTL>();
+            this.ArticlesTBL = new HashSet<ArticlesTBL>();
             this.SongsTBL = new HashSet<SongsTBL>();
         }
     
@@ -44,7 +44,7 @@ namespace DAL
         public Nullable<int> tag20 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ArticlesBTL> ArticlesBTL { get; set; }
+        public virtual ICollection<ArticlesTBL> ArticlesTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SongsTBL> SongsTBL { get; set; }
         public virtual TagNameTBL TagNameTBL { get; set; }

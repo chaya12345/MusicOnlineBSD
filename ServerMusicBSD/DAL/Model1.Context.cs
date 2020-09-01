@@ -26,7 +26,7 @@ namespace DAL
         }
     
         public virtual DbSet<AlbumsTBL> AlbumsTBL { get; set; }
-        public virtual DbSet<ArticlesBTL> ArticlesBTL { get; set; }
+        public virtual DbSet<ArticlesTBL> ArticlesTBL { get; set; }
         public virtual DbSet<ArtistsNameTBL> ArtistsNameTBL { get; set; }
         public virtual DbSet<ArtistsTBL> ArtistsTBL { get; set; }
         public virtual DbSet<PlaylistsTBL> PlaylistsTBL { get; set; }

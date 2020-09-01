@@ -7,7 +7,7 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" />
   </EntityType>
-  <EntityType Name="ArticlesBTL">
+  <EntityType Name="ArticlesTBL">
     <Key>
       <PropertyRef Name="id" />
     </Key>
@@ -17,6 +17,8 @@
     <Property Name="content" Type="varchar(max)" />
     <Property Name="date" Type="date" />
     <Property Name="tagsId" Type="int" />
+    <Property Name="subtitle" Type="varchar" MaxLength="50" />
+    <Property Name="credit" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="ArtistsNameTBL">
     <Key>
@@ -157,12 +159,12 @@
   </EntityType>
   <Association Name="FK_ArticlesBTL_TagsTBL">
     <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="0..1" />
-    <End Role="ArticlesBTL" Type="Self.ArticlesBTL" Multiplicity="*" />
+    <End Role="ArticlesTBL" Type="Self.ArticlesTBL" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TagsTBL">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="ArticlesBTL">
+      <Dependent Role="ArticlesTBL">
         <PropertyRef Name="tagsId" />
       </Dependent>
     </ReferentialConstraint>
@@ -312,10 +314,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ResponsesTBL_ArticlesBTL">
-    <End Role="ArticlesBTL" Type="Self.ArticlesBTL" Multiplicity="0..1" />
+    <End Role="ArticlesTBL" Type="Self.ArticlesTBL" Multiplicity="0..1" />
     <End Role="ResponsesTBL" Type="Self.ResponsesTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ArticlesBTL">
+      <Principal Role="ArticlesTBL">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="ResponsesTBL">
@@ -637,7 +639,7 @@
   </Association>
   <EntityContainer Name="MusicOnlineModelStoreContainer">
     <EntitySet Name="AlbumsTBL" EntityType="Self.AlbumsTBL" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="ArticlesBTL" EntityType="Self.ArticlesBTL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ArticlesTBL" EntityType="Self.ArticlesTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ArtistsNameTBL" EntityType="Self.ArtistsNameTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ArtistsTBL" EntityType="Self.ArtistsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PlaylistsTBL" EntityType="Self.PlaylistsTBL" Schema="dbo" store:Type="Tables" />
@@ -651,7 +653,7 @@
     <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_ArticlesBTL_TagsTBL" Association="Self.FK_ArticlesBTL_TagsTBL">
       <End Role="TagsTBL" EntitySet="TagsTBL" />
-      <End Role="ArticlesBTL" EntitySet="ArticlesBTL" />
+      <End Role="ArticlesTBL" EntitySet="ArticlesTBL" />
     </AssociationSet>
     <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL">
       <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
@@ -702,7 +704,7 @@
       <End Role="ReportsTBL" EntitySet="ReportsTBL" />
     </AssociationSet>
     <AssociationSet Name="FK_ResponsesTBL_ArticlesBTL" Association="Self.FK_ResponsesTBL_ArticlesBTL">
-      <End Role="ArticlesBTL" EntitySet="ArticlesBTL" />
+      <End Role="ArticlesTBL" EntitySet="ArticlesTBL" />
       <End Role="ResponsesTBL" EntitySet="ResponsesTBL" />
     </AssociationSet>
     <AssociationSet Name="FK_SongsTBL_AlbumsTBL" Association="Self.FK_SongsTBL_AlbumsTBL">

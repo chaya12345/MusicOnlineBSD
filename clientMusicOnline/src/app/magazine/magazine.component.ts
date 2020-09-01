@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { SongService } from '../services/song.service';
+import { LikeService } from '../services/like.service';
 
 @Component({
   selector: 'magazine',
   templateUrl: './magazine.component.html',
   styleUrls: ['./magazine.component.css'],
-  providers: [SongService]
+  providers: [LikeService]
 })
 export class MagazineComponent implements OnInit {
 
@@ -29,7 +29,7 @@ export class MagazineComponent implements OnInit {
   }];
   like_functionality;
 
-  constructor(private song_service: SongService) { 
+  constructor(private song_service: LikeService) { 
     this.like_functionality = song_service;
   }
 

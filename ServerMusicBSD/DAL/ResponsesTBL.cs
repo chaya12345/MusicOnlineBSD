@@ -21,6 +21,6 @@ namespace DAL
         public string content { get; set; }
         public Nullable<System.DateTime> date { get; set; }
     
-        public virtual ArticlesBTL ArticlesBTL { get; set; }
+        public virtual ArticlesTBL ArticlesTBL { get; set; }
     }
 }

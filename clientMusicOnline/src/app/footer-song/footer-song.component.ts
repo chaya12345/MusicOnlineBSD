@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SongService } from '../services/song.service';
+import { LikeService } from '../services/like.service';
 
 @Component({
   selector: 'footer-song',
   templateUrl: './footer-song.component.html',
   styleUrls: ['./footer-song.component.css'],
-  providers: [SongService]
+  providers: [LikeService]
 })
 export class FooterSongComponent implements OnInit {
 
@@ -14,11 +14,11 @@ export class FooterSongComponent implements OnInit {
   @Input() is_parent_hovered: boolean;
   song_functionality;
   
-  constructor(private song_service: SongService) { 
-    this.song_functionality = song_service;
+  constructor(private song_service: LikeService) { 
   }
 
   ngOnInit() {
+    this.song_functionality = this.song_service;
   }
 
   sign(event): void {

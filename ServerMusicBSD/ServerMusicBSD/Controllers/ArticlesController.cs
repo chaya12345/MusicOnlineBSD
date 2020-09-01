@@ -7,9 +7,11 @@ using System.Web.Http;
 using DTO;
 using BL;
 using DAL;
+using System.Web.Http.Cors;
 
 namespace ServerMusicBSD.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ArticlesController : ApiController
     {
         public List<ArticlesDTO> GetArticles()
@@ -20,7 +22,7 @@ namespace ServerMusicBSD.Controllers
         {
             return ArticlesBL.GetArticleById(id);
         }
-        public void PostArticle([FromBody] ArticlesBTL article)
+        public void PostArticle([FromBody] ArticlesTBL article)
         {
             ArticlesBL.AddArticle(article);
         }

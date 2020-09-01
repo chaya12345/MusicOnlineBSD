@@ -10,7 +10,7 @@ namespace BL.Casts
 {
     public class ToArticlesDTO
     {
-        public static ArticlesDTO GetArticle(ArticlesBTL article)
+        public static ArticlesDTO GetArticle(ArticlesTBL article)
         {
             ArticlesDTO newArticle = new ArticlesDTO();
             newArticle.id = article.id;
@@ -19,12 +19,14 @@ namespace BL.Casts
             newArticle.content = article.content;
             newArticle.date = article.date;
             newArticle.tagsId = article.tagsId;
+            newArticle.subtitle = article.subtitle;
+            newArticle.credit = article.credit;
             return newArticle;
         }
-        public static List<ArticlesDTO> GetArticles(List<ArticlesBTL> articles)
+        public static List<ArticlesDTO> GetArticles(List<ArticlesTBL> articles)
         {
             List<ArticlesDTO> newArticles = new List<ArticlesDTO>();
-            foreach (ArticlesBTL article in articles)
+            foreach (ArticlesTBL article in articles)
             {
                 newArticles.Add(GetArticle(article));
             }

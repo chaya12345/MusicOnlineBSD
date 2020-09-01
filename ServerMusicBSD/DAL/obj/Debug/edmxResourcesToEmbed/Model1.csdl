@@ -8,7 +8,7 @@
     <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsTBL_AlbumsTBL" FromRole="AlbumsTBL" ToRole="SongsTBL" />
   </EntityType>
-  <EntityType Name="ArticlesBTL">
+  <EntityType Name="ArticlesTBL">
     <Key>
       <PropertyRef Name="id" />
     </Key>
@@ -18,8 +18,10 @@
     <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="date" Type="DateTime" Precision="0" />
     <Property Name="tagsId" Type="Int32" />
-    <NavigationProperty Name="TagsTBL" Relationship="Self.FK_ArticlesBTL_TagsTBL" FromRole="ArticlesBTL" ToRole="TagsTBL" />
-    <NavigationProperty Name="ResponsesTBL" Relationship="Self.FK_ResponsesTBL_ArticlesBTL" FromRole="ArticlesBTL" ToRole="ResponsesTBL" />
+    <Property Name="subtitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="credit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TagsTBL" Relationship="Self.FK_ArticlesBTL_TagsTBL" FromRole="ArticlesTBL" ToRole="TagsTBL" />
+    <NavigationProperty Name="ResponsesTBL" Relationship="Self.FK_ResponsesTBL_ArticlesBTL" FromRole="ArticlesTBL" ToRole="ResponsesTBL" />
   </EntityType>
   <EntityType Name="ArtistsNameTBL">
     <Key>
@@ -98,7 +100,7 @@
     <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="date" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="ArticlesBTL" Relationship="Self.FK_ResponsesTBL_ArticlesBTL" FromRole="ResponsesTBL" ToRole="ArticlesBTL" />
+    <NavigationProperty Name="ArticlesTBL" Relationship="Self.FK_ResponsesTBL_ArticlesBTL" FromRole="ResponsesTBL" ToRole="ArticlesTBL" />
   </EntityType>
   <EntityType Name="SingersTBL">
     <Key>
@@ -197,7 +199,7 @@
     <Property Name="tag18" Type="Int32" />
     <Property Name="tag19" Type="Int32" />
     <Property Name="tag20" Type="Int32" />
-    <NavigationProperty Name="ArticlesBTL" Relationship="Self.FK_ArticlesBTL_TagsTBL" FromRole="TagsTBL" ToRole="ArticlesBTL" />
+    <NavigationProperty Name="ArticlesTBL" Relationship="Self.FK_ArticlesBTL_TagsTBL" FromRole="TagsTBL" ToRole="ArticlesTBL" />
     <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsTBL_TagsTBL" FromRole="TagsTBL" ToRole="SongsTBL" />
     <NavigationProperty Name="TagNameTBL" Relationship="Self.FK_TagsTBL_TagNameTBL20" FromRole="TagsTBL" ToRole="TagNameTBL" />
     <NavigationProperty Name="TagNameTBL1" Relationship="Self.FK_TagsTBL_TagNameTBL21" FromRole="TagsTBL" ToRole="TagNameTBL" />
@@ -249,21 +251,21 @@
   </Association>
   <Association Name="FK_ArticlesBTL_TagsTBL">
     <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="0..1" />
-    <End Role="ArticlesBTL" Type="Self.ArticlesBTL" Multiplicity="*" />
+    <End Role="ArticlesTBL" Type="Self.ArticlesTBL" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TagsTBL">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="ArticlesBTL">
+      <Dependent Role="ArticlesTBL">
         <PropertyRef Name="tagsId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_ResponsesTBL_ArticlesBTL">
-    <End Role="ArticlesBTL" Type="Self.ArticlesBTL" Multiplicity="0..1" />
+    <End Role="ArticlesTBL" Type="Self.ArticlesTBL" Multiplicity="0..1" />
     <End Role="ResponsesTBL" Type="Self.ResponsesTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ArticlesBTL">
+      <Principal Role="ArticlesTBL">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="ResponsesTBL">
@@ -717,7 +719,7 @@
   </Association>
   <EntityContainer Name="MusicOnlineEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="AlbumsTBL" EntityType="Self.AlbumsTBL" />
-    <EntitySet Name="ArticlesBTL" EntityType="Self.ArticlesBTL" />
+    <EntitySet Name="ArticlesTBL" EntityType="Self.ArticlesTBL" />
     <EntitySet Name="ArtistsNameTBL" EntityType="Self.ArtistsNameTBL" />
     <EntitySet Name="ArtistsTBL" EntityType="Self.ArtistsTBL" />
     <EntitySet Name="PlaylistsTBL" EntityType="Self.PlaylistsTBL" />
@@ -735,10 +737,10 @@
     </AssociationSet>
     <AssociationSet Name="FK_ArticlesBTL_TagsTBL" Association="Self.FK_ArticlesBTL_TagsTBL">
       <End Role="TagsTBL" EntitySet="TagsTBL" />
-      <End Role="ArticlesBTL" EntitySet="ArticlesBTL" />
+      <End Role="ArticlesTBL" EntitySet="ArticlesTBL" />
     </AssociationSet>
     <AssociationSet Name="FK_ResponsesTBL_ArticlesBTL" Association="Self.FK_ResponsesTBL_ArticlesBTL">
-      <End Role="ArticlesBTL" EntitySet="ArticlesBTL" />
+      <End Role="ArticlesTBL" EntitySet="ArticlesTBL" />
       <End Role="ResponsesTBL" EntitySet="ResponsesTBL" />
     </AssociationSet>
     <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL">

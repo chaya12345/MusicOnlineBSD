@@ -7,9 +7,11 @@ using System.Web.Http;
 using DTO;
 using DAL;
 using BL;
+using System.Web.Http.Cors;
 
 namespace ServerMusicBSD.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class TagNameController : ApiController
     {
 

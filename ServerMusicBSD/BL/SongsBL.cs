@@ -44,7 +44,7 @@ namespace BL
             List<SongsDTO> result = new List<SongsDTO>();
             foreach (SongsDTO song in AllSong)
             {
-                if (song.tagsId!=null && tagId.id!=null && IsSongContainTag(song.tagsId, tagId.id))
+                if (song.tagsId!=null && IsSongContainTag(song.tagsId, tagId.id))
                 {
                     result.Add(song);
                 }
@@ -116,7 +116,7 @@ namespace BL
                 foreach (string tag in tags)
                 {
                     TagNameTBL tagId = et.TagNameTBL.Where(a => a.name == tag).FirstOrDefault();
-                    if (song.tagsId!=null && tagId.id!=null && IsSongContainTag(song.tagsId, tagId.id))
+                    if (song.tagsId!=null && IsSongContainTag(song.tagsId, tagId.id))
                         mutchTag++;
                 }
                 if (mutchTag == tags.Count())

@@ -9,15 +9,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ArticlesBTL">
-      <EntityTypeMapping TypeName="MusicOnlineModel.ArticlesBTL">
-        <MappingFragment StoreEntitySet="ArticlesBTL">
+    <EntitySetMapping Name="ArticlesTBL">
+      <EntityTypeMapping TypeName="MusicOnlineModel.ArticlesTBL">
+        <MappingFragment StoreEntitySet="ArticlesTBL">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="files" ColumnName="files" />
           <ScalarProperty Name="content" ColumnName="content" />
           <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="tagsId" ColumnName="tagsId" />
+          <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+          <ScalarProperty Name="credit" ColumnName="credit" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

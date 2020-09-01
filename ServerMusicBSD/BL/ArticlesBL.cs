@@ -13,26 +13,26 @@ namespace BL
         static MusicOnlineEntities et = new MusicOnlineEntities();
         public static List<ArticlesDTO> GetArticles()
         {
-            return Casts.ToArticlesDTO.GetArticles(et.ArticlesBTL.ToList());
+            return Casts.ToArticlesDTO.GetArticles(et.ArticlesTBL.ToList());
         }
         public static ArticlesDTO GetArticleById(int articleId)
         {
-            return Casts.ToArticlesDTO.GetArticle(et.ArticlesBTL.Where(a => a.id == articleId).FirstOrDefault());
+            return Casts.ToArticlesDTO.GetArticle(et.ArticlesTBL.Where(a => a.id == articleId).FirstOrDefault());
         }
-        public static void AddArticle(ArticlesBTL article)
+        public static void AddArticle(ArticlesTBL article)
         {
-            et.ArticlesBTL.Add(article);
+            et.ArticlesTBL.Add(article);
             et.SaveChanges();
         }
         public static void DeleteArticle(int articleId)
         {
-            ArticlesBTL article = et.ArticlesBTL.Where(a => a.id == articleId).FirstOrDefault();
-            et.ArticlesBTL.Remove(article);
+            ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == articleId).FirstOrDefault();
+            et.ArticlesTBL.Remove(article);
             et.SaveChanges();
         }
         public static void AddTagToAtricle(int articleId, int tagNameId)
         {
-            ArticlesBTL article = et.ArticlesBTL.Where(a => a.id == articleId).FirstOrDefault();
+            ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == articleId).FirstOrDefault();
             TagsTBL tags = et.TagsTBL.Where(t => t.id == article.tagsId).FirstOrDefault();
             if (tags.tag1 == null)
             {
@@ -142,7 +142,7 @@ namespace BL
             List<ArticlesDTO> result = new List<ArticlesDTO>();
             foreach (ArticlesDTO article in AllArticles)
             {
-                if (article.tagsId!=null && tagId.id!=null && IsArticleContainTag(article.tagsId, tagId.id))
+                if (article.tagsId != null && IsArticleContainTag(article.tagsId, tagId.id))
                 {
                     result.Add(article);
                 }
@@ -214,7 +214,7 @@ namespace BL
                 foreach (string t in tags)
                 {
                     TagNameTBL tag = et.TagNameTBL.Where(a => a.name == t).FirstOrDefault();
-                    if (tag.id==null && song.tagsId==null && IsArticleContainTag(song.tagsId, tag.id))
+                    if (song.tagsId != null && IsArticleContainTag(song.tagsId, tag.id))
                         mutchTag++;
                 }
                 if (mutchTag == tags.Count())

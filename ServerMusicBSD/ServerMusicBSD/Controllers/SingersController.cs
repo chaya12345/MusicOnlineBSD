@@ -7,9 +7,11 @@ using System.Web.Http;
 using BL;
 using DTO;
 using DAL;
+using System.Web.Http.Cors;
 
 namespace ServerMusicBSD.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SingersController : ApiController
     {
         public List<SingersDTO> GetSingers()

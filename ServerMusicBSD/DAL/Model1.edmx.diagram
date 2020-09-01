@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="272ad1f6da91485ebc63a7e69713b8b6" Name="Diagram1" ZoomLevel="43">
+      <Diagram DiagramId="c6a1d41074ea4f77b227a324aa39e2e0" Name="Diagram1">
         <EntityTypeShape EntityType="MusicOnlineModel.AlbumsTBL" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.ArticlesBTL" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.ArticlesTBL" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.ArtistsNameTBL" Width="1.5" PointX="0.75" PointY="19.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.ArtistsTBL" Width="1.5" PointX="3" PointY="18.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.PlaylistsTBL" Width="1.5" PointX="5.25" PointY="27.375" IsExpanded="true" />
