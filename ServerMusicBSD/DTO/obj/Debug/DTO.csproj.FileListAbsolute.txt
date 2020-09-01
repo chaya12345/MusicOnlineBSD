@@ -20,3 +20,4 @@ C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\DTO\obj\Debug\DTO.csproj.CoreCompile
 C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\DTO\obj\Debug\DTO.dll
 C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\DTO\obj\Debug\DTO.pdb
 C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
+C:\workspace1209\projectBSD\ServerMusicBSD\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
