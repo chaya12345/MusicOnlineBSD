@@ -8,7 +8,7 @@
                 <mat-icon>search</mat-icon>
             </button>
             <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete">
-                <mat-option *ngFor="let song of filteredSongs | async" [value]="song">
+                <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name">
                     {{song.name}}
                 </mat-option>
             </mat-autocomplete>

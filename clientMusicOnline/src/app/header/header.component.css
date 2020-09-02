@@ -2,7 +2,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: fit-content(40%) auto;
-    border-bottom: solid 1px #101010;
+    box-shadow: 0 0 8px 4px #00000012;
 }
 
 main-actions {
