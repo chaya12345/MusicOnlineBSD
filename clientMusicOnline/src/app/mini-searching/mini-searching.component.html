@@ -9,7 +9,7 @@
             </button>
             <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete">
                 <mat-option *ngFor="let song of filteredSongs | async" [value]="song">
-                    {{song}}
+                    {{song.name}}
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>

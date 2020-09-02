@@ -59,3 +59,7 @@ mat-card-actions {
     transform: translateX(-10px);
     color: #2c8dfb;
 }
+
+video {
+    object-fit: cover;
+}

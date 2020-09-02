@@ -17,7 +17,6 @@ export class SongComponent implements OnInit {
 
   toggle_hover(event) :void {
     this.isHover = !this.isHover;
-    console.log(this.isHover);
   }
 
 }
