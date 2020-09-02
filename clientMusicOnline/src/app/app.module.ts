@@ -37,6 +37,7 @@ import { TopComponent } from './top/top.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { SearchSpesificSongComponent } from './search-spesific-song/search-spesific-song.component';
 import { SearchByComponent } from './search-by/search-by.component';
+import { ForTryComponent } from './for-try/for-try.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { SearchByComponent } from './search-by/search-by.component';
     TopComponent,
     SideNavComponent,
     SearchSpesificSongComponent,
-    SearchByComponent
+    SearchByComponent,
+    ForTryComponent
   ],
   imports: [
     BrowserModule,

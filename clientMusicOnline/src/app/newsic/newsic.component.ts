@@ -77,7 +77,7 @@ export class NewsicComponent implements OnInit {
   songsList: Song[] = [];
 
   constructor(private songService: SongService) { 
-    this.songService.getSongsList().subscribe(songs => this.songsList = songs, err => { console.log(err); });
+    this.songService.getSongs().subscribe(songs => this.songsList = songs, err => { console.log(err); });
   }
 
   ngOnInit() {

@@ -10,9 +10,29 @@ export class SongService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getSongsList():Observable<Song[]>
-  {
+  getSongs(): Observable<Song[]> {
     return this.httpClient.get<Song[]>("https://localhost:44368/api/Songs/GetSongs");
   }
+  GetSongsBySinger(singerName: string): Observable<Song[]> {
+    return this.httpClient.get<Song[]>("https://localhost:44368/api/Songs/GetSongsBySinger?singerName=" + singerName);
+  }
+  GetSongsByAlbum(albumName: string): Observable<Song[]> {
+    return this.httpClient.get<Song[]>("https://localhost:44368/api/Songs/GetSongsByAlbum?albumName=" + albumName);
+  }
+  GetSongsByTag(tagName: string): Observable<Song[]> {
+    return this.httpClient.get<Song[]>("https://localhost:44368/api/Songs/GetSongsByTag?tagName=" + tagName);
+  }
+  GetSongsByTags(tags: object): Observable<Song[]> {
+    return this.httpClient.post<Song[]>("https://localhost:44368/api/Songs/PostSongsByTags", tags);
+  }
+  PostSong(song:Song):void{
+    this.httpClient.post("https://localhost:44368/api/Songs/PostSong",song);
+  }
+
+// יצירת קריאת סרבר עם הרשאות גישה
+//   const headers = { 'Authorization': 'Bearer my-token' }
+//   const body = { title: 'Angular POST Request Example' }
+//    this.http.post<any>('https://jsonplaceholder.typicode.com/posts', body, { headers });
+
 
 }

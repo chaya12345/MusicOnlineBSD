@@ -27,8 +27,8 @@ namespace BL
         }
         public static List<SongsDTO> GetSongsBySinger(string singerName)
         {
-            int singerId = et.SingersTBL.Where(s => s.name == singerName).FirstOrDefault().id;
-            List<SongsDTO> result= Casts.ToSongsDTO.GetSongs(et.SongsTBL.Where(s => s.singerId == singerId).ToList());
+            SingersTBL singerId = et.SingersTBL.Where(s => s.name == singerName).FirstOrDefault();
+            List<SongsDTO> result= Casts.ToSongsDTO.GetSongs(et.SongsTBL.Where(s => s.singerId == singerId.id).ToList());
             result.AddRange(GetSongsByTag(singerName));
             return result;
         }
@@ -44,7 +44,7 @@ namespace BL
             List<SongsDTO> result = new List<SongsDTO>();
             foreach (SongsDTO song in AllSong)
             {
-                if (song.tagsId!=null && IsSongContainTag(song.tagsId, tagId.id))
+                if (song.tagsId!=null && tagId!=null && IsSongContainTag(song.tagsId, tagId.id))
                 {
                     result.Add(song);
                 }
@@ -116,7 +116,7 @@ namespace BL
                 foreach (string tag in tags)
                 {
                     TagNameTBL tagId = et.TagNameTBL.Where(a => a.name == tag).FirstOrDefault();
-                    if (song.tagsId!=null && IsSongContainTag(song.tagsId, tagId.id))
+                    if (song.tagsId!=null && tagId!=null && IsSongContainTag(song.tagsId, tagId.id))
                         mutchTag++;
                 }
                 if (mutchTag == tags.Count())

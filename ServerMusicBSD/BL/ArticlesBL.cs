@@ -142,7 +142,7 @@ namespace BL
             List<ArticlesDTO> result = new List<ArticlesDTO>();
             foreach (ArticlesDTO article in AllArticles)
             {
-                if (article.tagsId != null && IsArticleContainTag(article.tagsId, tagId.id))
+                if (article.tagsId != null && tagId!=null && IsArticleContainTag(article.tagsId, tagId.id))
                 {
                     result.Add(article);
                 }
@@ -214,7 +214,7 @@ namespace BL
                 foreach (string t in tags)
                 {
                     TagNameTBL tag = et.TagNameTBL.Where(a => a.name == t).FirstOrDefault();
-                    if (song.tagsId != null && IsArticleContainTag(song.tagsId, tag.id))
+                    if (song.tagsId != null && tag!=null && IsArticleContainTag(song.tagsId, tag.id))
                         mutchTag++;
                 }
                 if (mutchTag == tags.Count())
