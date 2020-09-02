@@ -14,15 +14,14 @@ namespace DTO
         public string type { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<long> count { get; set; }
-        public Nullable<int> singerId { get; set; }
-        public Nullable<int> liked { get; set; }
-        public Nullable<int> unliked { get; set; }
-        public Nullable<int> tagsId { get; set; }
-        public Nullable<int> albumId { get; set; }
+        public Nullable<long> singerId { get; set; }
+        public Nullable<long> count_like { get; set; }
+        public Nullable<long> count_views { get; set; }
+        public Nullable<long> tagsId { get; set; }
+        public Nullable<long> albumId { get; set; }
         public string title { get; set; }
         public string subtitle { get; set; }
         public string image_location { get; set; }
         public string content { get; set; }
-        public Nullable<int> artistId { get; set; }
     }
 }

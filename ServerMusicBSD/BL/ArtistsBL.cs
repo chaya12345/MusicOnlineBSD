@@ -8,17 +8,17 @@ using DTO;
 
 namespace BL
 {
-    public class ArtistsNamesBL
+    public class ArtistsBL
     {
         static MusicOnlineEntities et = new MusicOnlineEntities();
-        public static void AddArtistName(ArtistsNameTBL artistsName)
+        public static void AddArtistName(ArtistsTBL artistsName)
         {
-            et.ArtistsNameTBL.Add(artistsName);
+            et.ArtistsTBL.Add(artistsName);
             et.SaveChanges();
         }
-        public static List<ArtistsNamesDTO> GetArtistsNames()
+        public static List<ArtistsDTO> GetArtistsNames()
         {
-            return Casts.ToArtistsNameDTO.GetArtistsNames(et.ArtistsNameTBL.ToList());
+            return Casts.ToArtistsDTO.GetArtistsNames(et.ArtistsTBL.ToList());
         }
     }
 }

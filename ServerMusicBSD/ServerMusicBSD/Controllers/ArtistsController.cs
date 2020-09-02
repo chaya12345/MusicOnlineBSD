@@ -12,15 +12,15 @@ using System.Web.Http.Cors;
 namespace ServerMusicBSD.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class ArtistsNamesController : ApiController
+    public class ArtistsController : ApiController
     {
-       public void PostArtistName([FromBody] ArtistsNameTBL artistsName)
+       public void PostArtistName([FromBody] ArtistsTBL artistsName)
        {
-            ArtistsNamesBL.AddArtistName(artistsName);
+            ArtistsBL.AddArtistName(artistsName);
        }
-       public List<ArtistsNamesDTO> GetArtistsNames()
+       public List<ArtistsDTO> GetArtistsNames()
        {
-            return ArtistsNamesBL.GetArtistsNames();
+            return ArtistsBL.GetArtistsNames();
        }
 
 

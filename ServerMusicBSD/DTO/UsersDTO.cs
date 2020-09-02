@@ -16,5 +16,6 @@ namespace DTO
         public Nullable<bool> repeat { get; set; }
         public Nullable<bool> coincidental { get; set; }
         public Nullable<bool> newsletter { get; set; }
+        public Nullable<bool> saveLike { get; set; }
     }
 }

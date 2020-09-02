@@ -15,12 +15,21 @@ namespace BL.Casts
             ArticlesDTO newArticle = new ArticlesDTO();
             newArticle.id = article.id;
             newArticle.title = article.title;
-            newArticle.files = article.files;
-            newArticle.content = article.content;
+            newArticle.subtitle = article.subtitle;
+            newArticle.dateHebrew = article.dateHebrew;
             newArticle.date = article.date;
             newArticle.tagsId = article.tagsId;
-            newArticle.subtitle = article.subtitle;
+            newArticle.content = article.content;
+            newArticle.main_image = article.main_image;
+            newArticle.image1 = article.image1;
+            newArticle.image2 = article.image2;
+            newArticle.image3 = article.image3;
+            newArticle.audio1 = article.audio1;
+            newArticle.audio2 = article.audio2;
+            newArticle.video = article.video;
             newArticle.credit = article.credit;
+            newArticle.count_views = article.count_views;
+            newArticle.count_like = article.count_like;
             return newArticle;
         }
         public static List<ArticlesDTO> GetArticles(List<ArticlesTBL> articles)

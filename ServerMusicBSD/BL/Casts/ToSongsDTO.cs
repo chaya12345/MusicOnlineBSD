@@ -20,15 +20,14 @@ namespace BL.Casts
             newSong.date = songs.date;
             newSong.count = songs.count;
             newSong.singerId = songs.singerId;
-            newSong.liked = songs.liked;
-            newSong.unliked = songs.unliked;
+            newSong.count_like = songs.count_like;
+            newSong.count_views = songs.count_views;
             newSong.tagsId = songs.tagsId;
             newSong.albumId = songs.albumId;
             newSong.title = songs.title;
             newSong.subtitle = songs.subtitle;
             newSong.image_location = songs.image_location;
             newSong.content = songs.content;
-            newSong.artistId = songs.artistId;
             return newSong;
         }
 

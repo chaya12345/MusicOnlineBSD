@@ -34,7 +34,7 @@ namespace BL
         }
         public static List<SongsDTO> GetSongsByAlbum(string albumName)
         {
-            int id = et.AlbumsTBL.Where(a => a.name == albumName).FirstOrDefault().id;
+            long id = et.AlbumsTBL.Where(a => a.name == albumName).FirstOrDefault().id;
             return Casts.ToSongsDTO.GetSongs(et.SongsTBL.Where(a => a.albumId == id).ToList());
         }
         public static List<SongsDTO> GetSongsByTag(string tagName)
@@ -51,7 +51,7 @@ namespace BL
             }
             return result;
         }
-        public static bool IsSongContainTag(Nullable<int> tagsId,int Tag)
+        public static bool IsSongContainTag(Nullable<long> tagsId,int Tag)
         {
             TagsTBL tags = et.TagsTBL.Where(t => t.id == tagsId).FirstOrDefault();
             if (tags.tag1 != null && tags.tag1 == Tag)
@@ -257,71 +257,6 @@ namespace BL
             if (tags.tag20 == null)
             {
                 tags.tag20 = tagNameId;
-                et.SaveChanges();
-                return;
-            }
-        }
-        public static void AddArtistToSong(int songId, int artistId)
-        {
-            SongsTBL song = et.SongsTBL.Where(s => s.id == songId).FirstOrDefault();
-            ArtistsTBL artist = et.ArtistsTBL.Where(a => a.id == song.artistId).FirstOrDefault();
-            if (artist.art1 == null)
-            {
-                artist.art1 = artistId;
-                et.SaveChanges();
-                return;
-            }
-            if (artist.art2 == null)
-            {
-                artist.art2 = artistId;
-                et.SaveChanges();
-                return;
-            }
-            if (artist.art3 == null)
-            {
-                artist.art3 = artistId;
-                et.SaveChanges();
-                return;
-            }
-            if (artist.art4 == null)
-            {
-                artist.art4 = artistId;
-                et.SaveChanges();
-                return;
-            }
-            if (artist.art5 == null)
-            {
-                artist.art5 = artistId;
-                et.SaveChanges();
-                return;
-            }
-            if (artist.art6 == null)
-            {
-                artist.art6 = artistId;
-                et.SaveChanges();
-                return;
-            }
-            if (artist.art7 == null)
-            {
-                artist.art7 = artistId;
-                et.SaveChanges();
-                return;
-            }
-            if (artist.art8 == null)
-            {
-                artist.art8 = artistId;
-                et.SaveChanges();
-                return;
-            }
-            if (artist.art9 == null)
-            {
-                artist.art9 = artistId;
-                et.SaveChanges();
-                return;
-            }
-            if (artist.art10 == null)
-            {
-                artist.art10 = artistId;
                 et.SaveChanges();
                 return;
             }

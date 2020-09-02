@@ -42,11 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticlesDTO.cs" />
-    <Compile Include="ArtistsNamesDTO.cs" />
+    <Compile Include="ArtistsDTO.cs" />
+    <Compile Include="ArtistsToSongsDTO.cs" />
+    <Compile Include="JobsDTO.cs" />
     <Compile Include="PlaylistsDTO.cs" />
     <Compile Include="ReportsDTO.cs" />
     <Compile Include="ResponsesDTO.cs" />
+    <Compile Include="SearchingToSingerDTO.cs" />
     <Compile Include="SingersDTO.cs" />
+    <Compile Include="SingerSearchingToUserDTO.cs" />
     <Compile Include="SongsDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SongsToPlaylistsDTO.cs" />

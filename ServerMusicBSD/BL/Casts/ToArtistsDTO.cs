@@ -8,19 +8,19 @@ using DTO;
 
 namespace BL.Casts
 {
-    public class ToArtistsNamesDTO
+    public class ToArtistsDTO
     {
-        public static ArtistsNamesDTO GetArtistName(ArtistsNameTBL artistsName)
+        public static ArtistsDTO GetArtistName(ArtistsTBL artistsName)
         {
-            ArtistsNamesDTO newArtist = new ArtistsNamesDTO();
+            ArtistsDTO newArtist = new ArtistsDTO();
             newArtist.id = artistsName.id;
             newArtist.name = artistsName.name;
             return newArtist;
         }
-        public static List<ArtistsNamesDTO> GetArtistsNames(List<ArtistsNameTBL> artistsNames)
+        public static List<ArtistsDTO> GetArtistsNames(List<ArtistsTBL> artistsNames)
         {
-            List<ArtistsNamesDTO> newArtists = new List<ArtistsNamesDTO>();
-            foreach (ArtistsNameTBL art in artistsNames)
+            List<ArtistsDTO> newArtists = new List<ArtistsDTO>();
+            foreach (ArtistsTBL art in artistsNames)
             {
                 newArtists.Add(GetArtistName(art));
             }

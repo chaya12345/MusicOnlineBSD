@@ -14,20 +14,21 @@
         <MappingFragment StoreEntitySet="ArticlesTBL">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="files" ColumnName="files" />
-          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+          <ScalarProperty Name="dateHebrew" ColumnName="dateHebrew" />
           <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="tagsId" ColumnName="tagsId" />
-          <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="main_image" ColumnName="main_image" />
+          <ScalarProperty Name="image1" ColumnName="image1" />
+          <ScalarProperty Name="image2" ColumnName="image2" />
+          <ScalarProperty Name="image3" ColumnName="image3" />
+          <ScalarProperty Name="audio1" ColumnName="audio1" />
+          <ScalarProperty Name="audio2" ColumnName="audio2" />
+          <ScalarProperty Name="video" ColumnName="video" />
           <ScalarProperty Name="credit" ColumnName="credit" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ArtistsNameTBL">
-      <EntityTypeMapping TypeName="MusicOnlineModel.ArtistsNameTBL">
-        <MappingFragment StoreEntitySet="ArtistsNameTBL">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="count_views" ColumnName="count_views" />
+          <ScalarProperty Name="count_like" ColumnName="count_like" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -35,16 +36,25 @@
       <EntityTypeMapping TypeName="MusicOnlineModel.ArtistsTBL">
         <MappingFragment StoreEntitySet="ArtistsTBL">
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="art1" ColumnName="art1" />
-          <ScalarProperty Name="art2" ColumnName="art2" />
-          <ScalarProperty Name="art3" ColumnName="art3" />
-          <ScalarProperty Name="art4" ColumnName="art4" />
-          <ScalarProperty Name="art5" ColumnName="art5" />
-          <ScalarProperty Name="art6" ColumnName="art6" />
-          <ScalarProperty Name="art7" ColumnName="art7" />
-          <ScalarProperty Name="art8" ColumnName="art8" />
-          <ScalarProperty Name="art9" ColumnName="art9" />
-          <ScalarProperty Name="art10" ColumnName="art10" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArtistsToSongsTBL">
+      <EntityTypeMapping TypeName="MusicOnlineModel.ArtistsToSongsTBL">
+        <MappingFragment StoreEntitySet="ArtistsToSongsTBL">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="songId" ColumnName="songId" />
+          <ScalarProperty Name="artistId" ColumnName="artistId" />
+          <ScalarProperty Name="jobId" ColumnName="jobId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobTBL">
+      <EntityTypeMapping TypeName="MusicOnlineModel.JobTBL">
+        <MappingFragment StoreEntitySet="JobTBL">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -82,6 +92,26 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="SearchingToSingerTBL">
+      <EntityTypeMapping TypeName="MusicOnlineModel.SearchingToSingerTBL">
+        <MappingFragment StoreEntitySet="SearchingToSingerTBL">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="singerId" ColumnName="singerId" />
+          <ScalarProperty Name="count_searching" ColumnName="count_searching" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SingerSearchingToUserTBL">
+      <EntityTypeMapping TypeName="MusicOnlineModel.SingerSearchingToUserTBL">
+        <MappingFragment StoreEntitySet="SingerSearchingToUserTBL">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="singerId" ColumnName="singerId" />
+          <ScalarProperty Name="count_searching" ColumnName="count_searching" />
+          <ScalarProperty Name="last_date" ColumnName="last_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="SingersTBL">
       <EntityTypeMapping TypeName="MusicOnlineModel.SingersTBL">
         <MappingFragment StoreEntitySet="SingersTBL">
@@ -100,15 +130,14 @@
           <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="count" ColumnName="count" />
           <ScalarProperty Name="singerId" ColumnName="singerId" />
-          <ScalarProperty Name="liked" ColumnName="liked" />
-          <ScalarProperty Name="unliked" ColumnName="unliked" />
+          <ScalarProperty Name="count_like" ColumnName="count_like" />
+          <ScalarProperty Name="count_views" ColumnName="count_views" />
           <ScalarProperty Name="tagsId" ColumnName="tagsId" />
           <ScalarProperty Name="albumId" ColumnName="albumId" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="subtitle" ColumnName="subtitle" />
           <ScalarProperty Name="image_location" ColumnName="image_location" />
           <ScalarProperty Name="content" ColumnName="content" />
-          <ScalarProperty Name="artistId" ColumnName="artistId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -118,6 +147,17 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="playlistId" ColumnName="playlistId" />
           <ScalarProperty Name="songId" ColumnName="songId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MusicOnlineModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

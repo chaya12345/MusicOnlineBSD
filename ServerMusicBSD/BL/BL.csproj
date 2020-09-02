@@ -58,22 +58,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticlesBL.cs" />
-    <Compile Include="ArtistsNamesBL.cs" />
+    <Compile Include="ArtistsBL.cs" />
+    <Compile Include="ArtistsToSongsBL.cs" />
     <Compile Include="Casts\ToArticlesDTO.cs" />
-    <Compile Include="Casts\ToArtistsNameDTO.cs" />
-    <Compile Include="Casts\ToArtistsNamesDTO.cs" />
+    <Compile Include="Casts\ToArtistsDTO.cs" />
+    <Compile Include="Casts\ToArtistsToSongsDTO.cs" />
+    <Compile Include="Casts\ToJobsDTO.cs" />
     <Compile Include="Casts\ToPlaylistsDTO.cs" />
     <Compile Include="Casts\ToReportsDTO.cs" />
     <Compile Include="Casts\ToResponseDTO.cs" />
+    <Compile Include="Casts\ToSearchingToSingerDTO.cs" />
     <Compile Include="Casts\ToSingersDTO.cs" />
+    <Compile Include="Casts\ToSingerSearchingToUserDTO.cs" />
     <Compile Include="Casts\ToSongsDTO.cs" />
     <Compile Include="Casts\ToSongsToPlaylistsDTO.cs" />
     <Compile Include="Casts\ToTagNameDTO.cs" />
     <Compile Include="Casts\ToUsersDTO.cs" />
+    <Compile Include="JobsBL.cs" />
     <Compile Include="PlaylistBL.cs" />
     <Compile Include="ReportsBL.cs" />
     <Compile Include="ResponsesBL.cs" />
+    <Compile Include="SearchingToSingerBL.cs" />
     <Compile Include="SingersBL.cs" />
+    <Compile Include="SingerSearchingToUserBL.cs" />
     <Compile Include="SongsBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SongsToPlaylistsBL.cs" />

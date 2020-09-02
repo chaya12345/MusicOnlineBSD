@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class SingersDTO
+    public class ArtistsDTO
     {
-        public long id { get; set; }
+        public int id { get; set; }
         public string name { get; set; }
     }
 }

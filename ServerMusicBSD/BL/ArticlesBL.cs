@@ -149,7 +149,7 @@ namespace BL
             }
             return result;
         }
-        public static bool IsArticleContainTag(Nullable<int> tagsId, int Tag)
+        public static bool IsArticleContainTag(Nullable<long> tagsId, int Tag)
         {
             TagsTBL tags = et.TagsTBL.Where(t => t.id == tagsId).FirstOrDefault();
             if (tags.tag1 != null && tags.tag1 == Tag)
