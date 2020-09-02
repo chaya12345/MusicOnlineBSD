@@ -12,16 +12,8 @@ import { Song } from '../classes/song';
 })
 export class MiniSearchingComponent implements OnInit {
 
-  filteredSongs: Observable<string[]>;
+  filteredSongs: Observable<Song[]>;
   filteredSingers: Observable<string[]>;
-  songs: string[] = [
-    'אנא',
-    'נכספתי',
-    'מלחמות',
-    'האמונה בוערת',
-    'אלוקי נשמה',
-    'כוכבים'
-  ];
   singers: string[] = [
     'איציק דדיה',
     'פיני איינהורן',
@@ -38,12 +30,10 @@ export class MiniSearchingComponent implements OnInit {
   constructor(private songService: SongService) {
     this.songsControl = new FormControl();
     this.singersControl = new FormControl();
+    this.songService.getSongsList().subscribe(songs => this.songsList = songs, err => { console.log(err); });
   }
 
   ngOnInit() {
-    this.songService.getSongsList().subscribe(songs => this.songsList = songs);
-    // console.log(this.songsList);
-
     this.filteredSongs = this.songsControl.valueChanges
       .pipe(
         startWith(''),
@@ -57,9 +47,9 @@ export class MiniSearchingComponent implements OnInit {
       );
   }
 
-  public _filterSongs(value: string): string[] {
+  public _filterSongs(value: string): Song[] {
     const filterValue = value.toLowerCase();
-    return this.songs.filter(client => client.toLowerCase().includes(filterValue));
+    return this.songsList.filter(song => song.name.toLowerCase().includes(filterValue));
   }
 
   public _filterSingers(value: string): string[] {

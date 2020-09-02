@@ -365,3 +365,5 @@ C:\workspace1209\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\System.Runtime.Com
 C:\workspace1209\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\System.Text.Encodings.Web.xml
 C:\workspace1209\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\System.Web.Cors.dll
 C:\workspace1209\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\System.Web.Http.Cors.xml
+C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\System.Web.Cors.dll
+C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\System.Web.Http.Cors.xml

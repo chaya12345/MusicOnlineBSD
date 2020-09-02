@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SongService } from '../services/song.service';
+import { Song } from '../classes/song';
 
 @Component({
   selector: 'newsic',
@@ -72,8 +74,11 @@ export class NewsicComponent implements OnInit {
     like: "6",
     responses: "1"
   }];
+  songsList: Song[] = [];
 
-  constructor() { }
+  constructor(private songService: SongService) { 
+    this.songService.getSongsList().subscribe(songs => this.songsList = songs, err => { console.log(err); });
+  }
 
   ngOnInit() {
   }
