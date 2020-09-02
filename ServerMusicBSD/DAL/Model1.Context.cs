@@ -27,11 +27,14 @@ namespace DAL
     
         public virtual DbSet<AlbumsTBL> AlbumsTBL { get; set; }
         public virtual DbSet<ArticlesTBL> ArticlesTBL { get; set; }
-        public virtual DbSet<ArtistsNameTBL> ArtistsNameTBL { get; set; }
         public virtual DbSet<ArtistsTBL> ArtistsTBL { get; set; }
+        public virtual DbSet<ArtistsToSongsTBL> ArtistsToSongsTBL { get; set; }
+        public virtual DbSet<JobTBL> JobTBL { get; set; }
         public virtual DbSet<PlaylistsTBL> PlaylistsTBL { get; set; }
         public virtual DbSet<ReportsTBL> ReportsTBL { get; set; }
         public virtual DbSet<ResponsesTBL> ResponsesTBL { get; set; }
+        public virtual DbSet<SearchingToSingerTBL> SearchingToSingerTBL { get; set; }
+        public virtual DbSet<SingerSearchingToUserTBL> SingerSearchingToUserTBL { get; set; }
         public virtual DbSet<SingersTBL> SingersTBL { get; set; }
         public virtual DbSet<SongsTBL> SongsTBL { get; set; }
         public virtual DbSet<SongsToPlaylistsTBL> SongsToPlaylistsTBL { get; set; }

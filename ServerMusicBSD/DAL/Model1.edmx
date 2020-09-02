@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ArticlesTBL">
@@ -17,36 +17,45 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="title" Type="varchar" MaxLength="50" />
-          <Property Name="files" Type="varchar(max)" />
+          <Property Name="title" Type="varchar(max)" />
+          <Property Name="subtitle" Type="varchar(max)" />
+          <Property Name="dateHebrew" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="tagsId" Type="bigint" />
           <Property Name="content" Type="varchar(max)" />
-          <Property Name="date" Type="date" />
-          <Property Name="tagsId" Type="int" />
-          <Property Name="subtitle" Type="varchar" MaxLength="50" />
-          <Property Name="credit" Type="varchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="ArtistsNameTBL">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="main_image" Type="varchar(max)" />
+          <Property Name="image1" Type="varchar(max)" />
+          <Property Name="image2" Type="varchar(max)" />
+          <Property Name="image3" Type="varchar(max)" />
+          <Property Name="audio1" Type="varchar(max)" />
+          <Property Name="audio2" Type="varchar(max)" />
+          <Property Name="video" Type="varchar(max)" />
+          <Property Name="credit" Type="varchar(max)" />
+          <Property Name="count_views" Type="bigint" />
+          <Property Name="count_like" Type="bigint" />
         </EntityType>
         <EntityType Name="ArtistsTBL">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="art1" Type="int" />
-          <Property Name="art2" Type="int" />
-          <Property Name="art3" Type="int" />
-          <Property Name="art4" Type="int" />
-          <Property Name="art5" Type="int" />
-          <Property Name="art6" Type="int" />
-          <Property Name="art7" Type="int" />
-          <Property Name="art8" Type="int" />
-          <Property Name="art9" Type="int" />
-          <Property Name="art10" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ArtistsToSongsTBL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="songId" Type="int" />
+          <Property Name="artistId" Type="int" />
+          <Property Name="jobId" Type="int" />
+        </EntityType>
+        <EntityType Name="JobTBL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="PlaylistsTBL">
           <Key>
@@ -79,11 +88,29 @@
           <Property Name="content" Type="nvarchar(max)" />
           <Property Name="date" Type="date" />
         </EntityType>
-        <EntityType Name="SingersTBL">
+        <EntityType Name="SearchingToSingerTBL">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="singerId" Type="int" />
+          <Property Name="count_searching" Type="bigint" />
+        </EntityType>
+        <EntityType Name="SingerSearchingToUserTBL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="int" />
+          <Property Name="singerId" Type="int" />
+          <Property Name="count_searching" Type="bigint" />
+          <Property Name="last_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SingersTBL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="SongsTBL">
@@ -91,21 +118,20 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
           <Property Name="file_location" Type="varchar(max)" />
           <Property Name="type" Type="varchar" MaxLength="50" />
-          <Property Name="date" Type="date" />
+          <Property Name="date" Type="datetime" />
           <Property Name="count" Type="bigint" />
-          <Property Name="singerId" Type="int" />
-          <Property Name="liked" Type="int" />
-          <Property Name="unliked" Type="int" />
-          <Property Name="tagsId" Type="int" />
-          <Property Name="albumId" Type="int" />
+          <Property Name="singerId" Type="bigint" />
+          <Property Name="count_like" Type="bigint" />
+          <Property Name="count_views" Type="bigint" />
+          <Property Name="tagsId" Type="bigint" />
+          <Property Name="albumId" Type="bigint" />
           <Property Name="title" Type="varchar" MaxLength="150" />
           <Property Name="subtitle" Type="varchar" MaxLength="200" />
           <Property Name="image_location" Type="varchar(max)" />
           <Property Name="content" Type="varchar(max)" />
-          <Property Name="artistId" Type="int" />
         </EntityType>
         <EntityType Name="SongsToPlaylistsTBL">
           <Key>
@@ -126,7 +152,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="tag1" Type="int" />
           <Property Name="tag2" Type="int" />
           <Property Name="tag3" Type="int" />
@@ -171,126 +197,6 @@
             </Principal>
             <Dependent Role="ArticlesTBL">
               <PropertyRef Name="tagsId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArtistsArrayTBL_ArtistsTBL">
-          <End Role="ArtistsNameTBL" Type="Self.ArtistsNameTBL" Multiplicity="0..1" />
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArtistsTBL">
-              <PropertyRef Name="art1" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArtistsArrayTBL_ArtistsTBL1">
-          <End Role="ArtistsNameTBL" Type="Self.ArtistsNameTBL" Multiplicity="0..1" />
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArtistsTBL">
-              <PropertyRef Name="art2" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArtistsArrayTBL_ArtistsTBL2">
-          <End Role="ArtistsNameTBL" Type="Self.ArtistsNameTBL" Multiplicity="0..1" />
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArtistsTBL">
-              <PropertyRef Name="art3" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArtistsArrayTBL_ArtistsTBL3">
-          <End Role="ArtistsNameTBL" Type="Self.ArtistsNameTBL" Multiplicity="0..1" />
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArtistsTBL">
-              <PropertyRef Name="art4" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArtistsArrayTBL_ArtistsTBL4">
-          <End Role="ArtistsNameTBL" Type="Self.ArtistsNameTBL" Multiplicity="0..1" />
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArtistsTBL">
-              <PropertyRef Name="art5" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArtistsArrayTBL_ArtistsTBL5">
-          <End Role="ArtistsNameTBL" Type="Self.ArtistsNameTBL" Multiplicity="0..1" />
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArtistsTBL">
-              <PropertyRef Name="art6" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArtistsArrayTBL_ArtistsTBL6">
-          <End Role="ArtistsNameTBL" Type="Self.ArtistsNameTBL" Multiplicity="0..1" />
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArtistsTBL">
-              <PropertyRef Name="art7" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArtistsArrayTBL_ArtistsTBL7">
-          <End Role="ArtistsNameTBL" Type="Self.ArtistsNameTBL" Multiplicity="0..1" />
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArtistsTBL">
-              <PropertyRef Name="art8" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArtistsArrayTBL_ArtistsTBL8">
-          <End Role="ArtistsNameTBL" Type="Self.ArtistsNameTBL" Multiplicity="0..1" />
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArtistsTBL">
-              <PropertyRef Name="art9" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArtistsArrayTBL_ArtistsTBL9">
-          <End Role="ArtistsNameTBL" Type="Self.ArtistsNameTBL" Multiplicity="0..1" />
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArtistsTBL">
-              <PropertyRef Name="art10" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -339,18 +245,6 @@
             </Principal>
             <Dependent Role="SongsTBL">
               <PropertyRef Name="albumId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SongsTBL_ArtistsArrayTBL">
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="0..1" />
-          <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="SongsTBL">
-              <PropertyRef Name="artistId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -645,11 +539,14 @@
         <EntityContainer Name="MusicOnlineModelStoreContainer">
           <EntitySet Name="AlbumsTBL" EntityType="Self.AlbumsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ArticlesTBL" EntityType="Self.ArticlesTBL" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ArtistsNameTBL" EntityType="Self.ArtistsNameTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ArtistsTBL" EntityType="Self.ArtistsTBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArtistsToSongsTBL" EntityType="Self.ArtistsToSongsTBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobTBL" EntityType="Self.JobTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlaylistsTBL" EntityType="Self.PlaylistsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReportsTBL" EntityType="Self.ReportsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ResponsesTBL" EntityType="Self.ResponsesTBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SearchingToSingerTBL" EntityType="Self.SearchingToSingerTBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SingerSearchingToUserTBL" EntityType="Self.SingerSearchingToUserTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SingersTBL" EntityType="Self.SingersTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SongsTBL" EntityType="Self.SongsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" Schema="dbo" store:Type="Tables" />
@@ -659,46 +556,6 @@
           <AssociationSet Name="FK_ArticlesBTL_TagsTBL" Association="Self.FK_ArticlesBTL_TagsTBL">
             <End Role="TagsTBL" EntitySet="TagsTBL" />
             <End Role="ArticlesTBL" EntitySet="ArticlesTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL">
-            <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL1" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL1">
-            <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL2" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL2">
-            <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL3" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL3">
-            <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL4" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL4">
-            <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL5" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL5">
-            <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL6" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL6">
-            <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL7" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL7">
-            <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL8" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL8">
-            <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL9" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL9">
-            <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
           </AssociationSet>
           <AssociationSet Name="FK_PlaylistsTBL_UsersTBL" Association="Self.FK_PlaylistsTBL_UsersTBL">
             <End Role="UsersTBL" EntitySet="UsersTBL" />
@@ -714,10 +571,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_SongsTBL_AlbumsTBL" Association="Self.FK_SongsTBL_AlbumsTBL">
             <End Role="AlbumsTBL" EntitySet="AlbumsTBL" />
-            <End Role="SongsTBL" EntitySet="SongsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SongsTBL_ArtistsArrayTBL" Association="Self.FK_SongsTBL_ArtistsArrayTBL">
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
             <End Role="SongsTBL" EntitySet="SongsTBL" />
           </AssociationSet>
           <AssociationSet Name="FK_SongsTBL_SingersTBL" Association="Self.FK_SongsTBL_SingersTBL">
@@ -826,7 +679,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsTBL_AlbumsTBL" FromRole="AlbumsTBL" ToRole="SongsTBL" />
         </EntityType>
@@ -835,59 +688,47 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="files" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="subtitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="dateHebrew" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="tagsId" Type="Int64" />
           <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="date" Type="DateTime" Precision="0" />
-          <Property Name="tagsId" Type="Int32" />
-          <Property Name="subtitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="credit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="main_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="image1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="image2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="image3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="audio1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="audio2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="video" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="credit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="count_views" Type="Int64" />
+          <Property Name="count_like" Type="Int64" />
           <NavigationProperty Name="TagsTBL" Relationship="Self.FK_ArticlesBTL_TagsTBL" FromRole="ArticlesTBL" ToRole="TagsTBL" />
           <NavigationProperty Name="ResponsesTBL" Relationship="Self.FK_ResponsesTBL_ArticlesBTL" FromRole="ArticlesTBL" ToRole="ResponsesTBL" />
-        </EntityType>
-        <EntityType Name="ArtistsNameTBL">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ArtistsTBL" Relationship="Self.FK_ArtistsArrayTBL_ArtistsTBL" FromRole="ArtistsNameTBL" ToRole="ArtistsTBL" />
-          <NavigationProperty Name="ArtistsTBL1" Relationship="Self.FK_ArtistsArrayTBL_ArtistsTBL1" FromRole="ArtistsNameTBL" ToRole="ArtistsTBL" />
-          <NavigationProperty Name="ArtistsTBL2" Relationship="Self.FK_ArtistsArrayTBL_ArtistsTBL2" FromRole="ArtistsNameTBL" ToRole="ArtistsTBL" />
-          <NavigationProperty Name="ArtistsTBL3" Relationship="Self.FK_ArtistsArrayTBL_ArtistsTBL3" FromRole="ArtistsNameTBL" ToRole="ArtistsTBL" />
-          <NavigationProperty Name="ArtistsTBL4" Relationship="Self.FK_ArtistsArrayTBL_ArtistsTBL4" FromRole="ArtistsNameTBL" ToRole="ArtistsTBL" />
-          <NavigationProperty Name="ArtistsTBL5" Relationship="Self.FK_ArtistsArrayTBL_ArtistsTBL5" FromRole="ArtistsNameTBL" ToRole="ArtistsTBL" />
-          <NavigationProperty Name="ArtistsTBL6" Relationship="Self.FK_ArtistsArrayTBL_ArtistsTBL6" FromRole="ArtistsNameTBL" ToRole="ArtistsTBL" />
-          <NavigationProperty Name="ArtistsTBL7" Relationship="Self.FK_ArtistsArrayTBL_ArtistsTBL7" FromRole="ArtistsNameTBL" ToRole="ArtistsTBL" />
-          <NavigationProperty Name="ArtistsTBL8" Relationship="Self.FK_ArtistsArrayTBL_ArtistsTBL8" FromRole="ArtistsNameTBL" ToRole="ArtistsTBL" />
-          <NavigationProperty Name="ArtistsTBL9" Relationship="Self.FK_ArtistsArrayTBL_ArtistsTBL9" FromRole="ArtistsNameTBL" ToRole="ArtistsTBL" />
         </EntityType>
         <EntityType Name="ArtistsTBL">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="art1" Type="Int32" />
-          <Property Name="art2" Type="Int32" />
-          <Property Name="art3" Type="Int32" />
-          <Property Name="art4" Type="Int32" />
-          <Property Name="art5" Type="Int32" />
-          <Property Name="art6" Type="Int32" />
-          <Property Name="art7" Type="Int32" />
-          <Property Name="art8" Type="Int32" />
-          <Property Name="art9" Type="Int32" />
-          <Property Name="art10" Type="Int32" />
-          <NavigationProperty Name="ArtistsNameTBL" Relationship="Self.FK_ArtistsArrayTBL_ArtistsTBL" FromRole="ArtistsTBL" ToRole="ArtistsNameTBL" />
-          <NavigationProperty Name="ArtistsNameTBL1" Relationship="Self.FK_ArtistsArrayTBL_ArtistsTBL1" FromRole="ArtistsTBL" ToRole="ArtistsNameTBL" />
-          <NavigationProperty Name="ArtistsNameTBL2" Relationship="Self.FK_ArtistsArrayTBL_ArtistsTBL2" FromRole="ArtistsTBL" ToRole="ArtistsNameTBL" />
-          <NavigationProperty Name="ArtistsNameTBL3" Relationship="Self.FK_ArtistsArrayTBL_ArtistsTBL3" FromRole="ArtistsTBL" ToRole="ArtistsNameTBL" />
-          <NavigationProperty Name="ArtistsNameTBL4" Relationship="Self.FK_ArtistsArrayTBL_ArtistsTBL4" FromRole="ArtistsTBL" ToRole="ArtistsNameTBL" />
-          <NavigationProperty Name="ArtistsNameTBL5" Relationship="Self.FK_ArtistsArrayTBL_ArtistsTBL5" FromRole="ArtistsTBL" ToRole="ArtistsNameTBL" />
-          <NavigationProperty Name="ArtistsNameTBL6" Relationship="Self.FK_ArtistsArrayTBL_ArtistsTBL6" FromRole="ArtistsTBL" ToRole="ArtistsNameTBL" />
-          <NavigationProperty Name="ArtistsNameTBL7" Relationship="Self.FK_ArtistsArrayTBL_ArtistsTBL7" FromRole="ArtistsTBL" ToRole="ArtistsNameTBL" />
-          <NavigationProperty Name="ArtistsNameTBL8" Relationship="Self.FK_ArtistsArrayTBL_ArtistsTBL8" FromRole="ArtistsTBL" ToRole="ArtistsNameTBL" />
-          <NavigationProperty Name="ArtistsNameTBL9" Relationship="Self.FK_ArtistsArrayTBL_ArtistsTBL9" FromRole="ArtistsTBL" ToRole="ArtistsNameTBL" />
-          <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsTBL_ArtistsArrayTBL" FromRole="ArtistsTBL" ToRole="SongsTBL" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ArtistsToSongsTBL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="songId" Type="Int32" />
+          <Property Name="artistId" Type="Int32" />
+          <Property Name="jobId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="JobTBL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PlaylistsTBL">
           <Key>
@@ -924,11 +765,29 @@
           <Property Name="date" Type="DateTime" Precision="0" />
           <NavigationProperty Name="ArticlesTBL" Relationship="Self.FK_ResponsesTBL_ArticlesBTL" FromRole="ResponsesTBL" ToRole="ArticlesTBL" />
         </EntityType>
-        <EntityType Name="SingersTBL">
+        <EntityType Name="SearchingToSingerTBL">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="singerId" Type="Int32" />
+          <Property Name="count_searching" Type="Int64" />
+        </EntityType>
+        <EntityType Name="SingerSearchingToUserTBL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="singerId" Type="Int32" />
+          <Property Name="count_searching" Type="Int64" />
+          <Property Name="last_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SingersTBL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsTBL_SingersTBL" FromRole="SingersTBL" ToRole="SongsTBL" />
         </EntityType>
@@ -937,23 +796,21 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="file_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="count" Type="Int64" />
-          <Property Name="singerId" Type="Int32" />
-          <Property Name="liked" Type="Int32" />
-          <Property Name="unliked" Type="Int32" />
-          <Property Name="tagsId" Type="Int32" />
-          <Property Name="albumId" Type="Int32" />
+          <Property Name="singerId" Type="Int64" />
+          <Property Name="count_like" Type="Int64" />
+          <Property Name="count_views" Type="Int64" />
+          <Property Name="tagsId" Type="Int64" />
+          <Property Name="albumId" Type="Int64" />
           <Property Name="title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="subtitle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="image_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="artistId" Type="Int32" />
           <NavigationProperty Name="AlbumsTBL" Relationship="Self.FK_SongsTBL_AlbumsTBL" FromRole="SongsTBL" ToRole="AlbumsTBL" />
-          <NavigationProperty Name="ArtistsTBL" Relationship="Self.FK_SongsTBL_ArtistsArrayTBL" FromRole="SongsTBL" ToRole="ArtistsTBL" />
           <NavigationProperty Name="ReportsTBL" Relationship="Self.FK_ReportsTBL_SongsTBL" FromRole="SongsTBL" ToRole="ReportsTBL" />
           <NavigationProperty Name="SingersTBL" Relationship="Self.FK_SongsTBL_SingersTBL" FromRole="SongsTBL" ToRole="SingersTBL" />
           <NavigationProperty Name="TagsTBL" Relationship="Self.FK_SongsTBL_TagsTBL" FromRole="SongsTBL" ToRole="TagsTBL" />
@@ -1000,7 +857,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="tag1" Type="Int32" />
           <Property Name="tag2" Type="Int32" />
           <Property Name="tag3" Type="Int32" />
@@ -1092,138 +949,6 @@
             </Principal>
             <Dependent Role="ResponsesTBL">
               <PropertyRef Name="articleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArtistsArrayTBL_ArtistsTBL">
-          <End Role="ArtistsNameTBL" Type="Self.ArtistsNameTBL" Multiplicity="0..1" />
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArtistsTBL">
-              <PropertyRef Name="art1" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArtistsArrayTBL_ArtistsTBL1">
-          <End Role="ArtistsNameTBL" Type="Self.ArtistsNameTBL" Multiplicity="0..1" />
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArtistsTBL">
-              <PropertyRef Name="art2" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArtistsArrayTBL_ArtistsTBL2">
-          <End Role="ArtistsNameTBL" Type="Self.ArtistsNameTBL" Multiplicity="0..1" />
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArtistsTBL">
-              <PropertyRef Name="art3" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArtistsArrayTBL_ArtistsTBL3">
-          <End Role="ArtistsNameTBL" Type="Self.ArtistsNameTBL" Multiplicity="0..1" />
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArtistsTBL">
-              <PropertyRef Name="art4" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArtistsArrayTBL_ArtistsTBL4">
-          <End Role="ArtistsNameTBL" Type="Self.ArtistsNameTBL" Multiplicity="0..1" />
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArtistsTBL">
-              <PropertyRef Name="art5" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArtistsArrayTBL_ArtistsTBL5">
-          <End Role="ArtistsNameTBL" Type="Self.ArtistsNameTBL" Multiplicity="0..1" />
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArtistsTBL">
-              <PropertyRef Name="art6" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArtistsArrayTBL_ArtistsTBL6">
-          <End Role="ArtistsNameTBL" Type="Self.ArtistsNameTBL" Multiplicity="0..1" />
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArtistsTBL">
-              <PropertyRef Name="art7" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArtistsArrayTBL_ArtistsTBL7">
-          <End Role="ArtistsNameTBL" Type="Self.ArtistsNameTBL" Multiplicity="0..1" />
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArtistsTBL">
-              <PropertyRef Name="art8" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArtistsArrayTBL_ArtistsTBL8">
-          <End Role="ArtistsNameTBL" Type="Self.ArtistsNameTBL" Multiplicity="0..1" />
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArtistsTBL">
-              <PropertyRef Name="art9" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArtistsArrayTBL_ArtistsTBL9">
-          <End Role="ArtistsNameTBL" Type="Self.ArtistsNameTBL" Multiplicity="0..1" />
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArtistsTBL">
-              <PropertyRef Name="art10" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SongsTBL_ArtistsArrayTBL">
-          <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="0..1" />
-          <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArtistsTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="SongsTBL">
-              <PropertyRef Name="artistId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1542,11 +1267,14 @@
         <EntityContainer Name="MusicOnlineEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AlbumsTBL" EntityType="Self.AlbumsTBL" />
           <EntitySet Name="ArticlesTBL" EntityType="Self.ArticlesTBL" />
-          <EntitySet Name="ArtistsNameTBL" EntityType="Self.ArtistsNameTBL" />
           <EntitySet Name="ArtistsTBL" EntityType="Self.ArtistsTBL" />
+          <EntitySet Name="ArtistsToSongsTBL" EntityType="Self.ArtistsToSongsTBL" />
+          <EntitySet Name="JobTBL" EntityType="Self.JobTBL" />
           <EntitySet Name="PlaylistsTBL" EntityType="Self.PlaylistsTBL" />
           <EntitySet Name="ReportsTBL" EntityType="Self.ReportsTBL" />
           <EntitySet Name="ResponsesTBL" EntityType="Self.ResponsesTBL" />
+          <EntitySet Name="SearchingToSingerTBL" EntityType="Self.SearchingToSingerTBL" />
+          <EntitySet Name="SingerSearchingToUserTBL" EntityType="Self.SingerSearchingToUserTBL" />
           <EntitySet Name="SingersTBL" EntityType="Self.SingersTBL" />
           <EntitySet Name="SongsTBL" EntityType="Self.SongsTBL" />
           <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" />
@@ -1564,50 +1292,6 @@
           <AssociationSet Name="FK_ResponsesTBL_ArticlesBTL" Association="Self.FK_ResponsesTBL_ArticlesBTL">
             <End Role="ArticlesTBL" EntitySet="ArticlesTBL" />
             <End Role="ResponsesTBL" EntitySet="ResponsesTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL">
-            <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL1" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL1">
-            <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL2" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL2">
-            <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL3" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL3">
-            <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL4" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL4">
-            <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL5" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL5">
-            <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL6" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL6">
-            <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL7" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL7">
-            <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL8" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL8">
-            <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArtistsArrayTBL_ArtistsTBL9" Association="Self.FK_ArtistsArrayTBL_ArtistsTBL9">
-            <End Role="ArtistsNameTBL" EntitySet="ArtistsNameTBL" />
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SongsTBL_ArtistsArrayTBL" Association="Self.FK_SongsTBL_ArtistsArrayTBL">
-            <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
-            <End Role="SongsTBL" EntitySet="SongsTBL" />
           </AssociationSet>
           <AssociationSet Name="FK_PlaylistsTBL_UsersTBL" Association="Self.FK_PlaylistsTBL_UsersTBL">
             <End Role="UsersTBL" EntitySet="UsersTBL" />
@@ -1733,20 +1417,21 @@
               <MappingFragment StoreEntitySet="ArticlesTBL">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="files" ColumnName="files" />
-                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+                <ScalarProperty Name="dateHebrew" ColumnName="dateHebrew" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="tagsId" ColumnName="tagsId" />
-                <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="main_image" ColumnName="main_image" />
+                <ScalarProperty Name="image1" ColumnName="image1" />
+                <ScalarProperty Name="image2" ColumnName="image2" />
+                <ScalarProperty Name="image3" ColumnName="image3" />
+                <ScalarProperty Name="audio1" ColumnName="audio1" />
+                <ScalarProperty Name="audio2" ColumnName="audio2" />
+                <ScalarProperty Name="video" ColumnName="video" />
                 <ScalarProperty Name="credit" ColumnName="credit" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ArtistsNameTBL">
-            <EntityTypeMapping TypeName="MusicOnlineModel.ArtistsNameTBL">
-              <MappingFragment StoreEntitySet="ArtistsNameTBL">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="count_views" ColumnName="count_views" />
+                <ScalarProperty Name="count_like" ColumnName="count_like" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1754,16 +1439,25 @@
             <EntityTypeMapping TypeName="MusicOnlineModel.ArtistsTBL">
               <MappingFragment StoreEntitySet="ArtistsTBL">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="art1" ColumnName="art1" />
-                <ScalarProperty Name="art2" ColumnName="art2" />
-                <ScalarProperty Name="art3" ColumnName="art3" />
-                <ScalarProperty Name="art4" ColumnName="art4" />
-                <ScalarProperty Name="art5" ColumnName="art5" />
-                <ScalarProperty Name="art6" ColumnName="art6" />
-                <ScalarProperty Name="art7" ColumnName="art7" />
-                <ScalarProperty Name="art8" ColumnName="art8" />
-                <ScalarProperty Name="art9" ColumnName="art9" />
-                <ScalarProperty Name="art10" ColumnName="art10" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArtistsToSongsTBL">
+            <EntityTypeMapping TypeName="MusicOnlineModel.ArtistsToSongsTBL">
+              <MappingFragment StoreEntitySet="ArtistsToSongsTBL">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="songId" ColumnName="songId" />
+                <ScalarProperty Name="artistId" ColumnName="artistId" />
+                <ScalarProperty Name="jobId" ColumnName="jobId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobTBL">
+            <EntityTypeMapping TypeName="MusicOnlineModel.JobTBL">
+              <MappingFragment StoreEntitySet="JobTBL">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1801,6 +1495,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SearchingToSingerTBL">
+            <EntityTypeMapping TypeName="MusicOnlineModel.SearchingToSingerTBL">
+              <MappingFragment StoreEntitySet="SearchingToSingerTBL">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="singerId" ColumnName="singerId" />
+                <ScalarProperty Name="count_searching" ColumnName="count_searching" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SingerSearchingToUserTBL">
+            <EntityTypeMapping TypeName="MusicOnlineModel.SingerSearchingToUserTBL">
+              <MappingFragment StoreEntitySet="SingerSearchingToUserTBL">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="singerId" ColumnName="singerId" />
+                <ScalarProperty Name="count_searching" ColumnName="count_searching" />
+                <ScalarProperty Name="last_date" ColumnName="last_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SingersTBL">
             <EntityTypeMapping TypeName="MusicOnlineModel.SingersTBL">
               <MappingFragment StoreEntitySet="SingersTBL">
@@ -1819,15 +1533,14 @@
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="count" ColumnName="count" />
                 <ScalarProperty Name="singerId" ColumnName="singerId" />
-                <ScalarProperty Name="liked" ColumnName="liked" />
-                <ScalarProperty Name="unliked" ColumnName="unliked" />
+                <ScalarProperty Name="count_like" ColumnName="count_like" />
+                <ScalarProperty Name="count_views" ColumnName="count_views" />
                 <ScalarProperty Name="tagsId" ColumnName="tagsId" />
                 <ScalarProperty Name="albumId" ColumnName="albumId" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="subtitle" ColumnName="subtitle" />
                 <ScalarProperty Name="image_location" ColumnName="image_location" />
                 <ScalarProperty Name="content" ColumnName="content" />
-                <ScalarProperty Name="artistId" ColumnName="artistId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

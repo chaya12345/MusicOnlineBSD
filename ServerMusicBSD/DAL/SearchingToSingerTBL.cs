@@ -12,9 +12,10 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class ArtistsTBL
+    public partial class SearchingToSingerTBL
     {
         public int id { get; set; }
-        public string name { get; set; }
+        public Nullable<int> singerId { get; set; }
+        public Nullable<long> count_searching { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace DAL
             this.SongsTBL = new HashSet<SongsTBL>();
         }
     
-        public int id { get; set; }
+        public long id { get; set; }
         public Nullable<int> tag1 { get; set; }
         public Nullable<int> tag2 { get; set; }
         public Nullable<int> tag3 { get; set; }
