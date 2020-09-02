@@ -125,5 +125,8 @@
       }
     }
   },
-  "defaultProject": "clientMusicOnline"
+  "defaultProject": "clientMusicOnline",
+  "cli": {
+    "analytics": "f992bdd9-00c2-4232-8a35-11ec2d3f55cb"
+  }
 }
