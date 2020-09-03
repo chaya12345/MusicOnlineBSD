@@ -3,14 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL;
+using DTO;
 
 namespace BL
 {
     public class JobsBL
     {
-        // 1. פונקציה שמחזירה את כל התפקידים
-
-        // 2. פונקציה שמוסיפה תפקיד
-
+        static MusicOnlineEntities et = new MusicOnlineEntities();
+        public static List<JobsDTO> GetJobs()
+        {
+           return Casts.ToJobsDTO.GetJobs(et.JobTBL.ToList());
+        }
+        public static void AddJob(JobTBL newJob)
+        {
+            et.JobTBL.Add(newJob);
+            et.SaveChanges();
+        }
     }
 }

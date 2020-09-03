@@ -151,10 +151,14 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\ArtistsController.cs" />
+    <Compile Include="Controllers\ArtistsToSongsController.cs" />
+    <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\PlaylistsController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\ResponsesController.cs" />
+    <Compile Include="Controllers\SearchingToSingerController.cs" />
     <Compile Include="Controllers\SingersController.cs" />
+    <Compile Include="Controllers\SingerSearchingToUserController.cs" />
     <Compile Include="Controllers\SongsController.cs" />
     <Compile Include="Controllers\SongsToPlaylistsController.cs" />
     <Compile Include="Controllers\TagNameController.cs" />

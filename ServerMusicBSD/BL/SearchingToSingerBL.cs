@@ -3,18 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL;
+using DTO;
 
 namespace BL
 {
     public class SearchingToSingerBL
     {
-        //1. פונקציה שמחזירה את כל החיפושים
-
-        //2. פונקציה שמחזירה כמות חיפושים לזמר - כלומר מקבלת מזהה של זמר
-
-        //3. פונקציה שמוסיפה זמר שלא מופיעה בטבלת חיפושים עם הערך אחד בכמות החיפושים
-
-        //4. פונקציה שמוסיפה אחד לכמות החיפושים של זמר - מקבלת מזהה זמר
-
+        static MusicOnlineEntities et = new MusicOnlineEntities();
+        public static List<SearchingToSingerDTO> GetAllSearching()
+        {
+            return Casts.ToSearchingToSingerDTO.GetsearchingToSingers(et.SearchingToSingerTBL.ToList());
+        }
+        public static long? GetCountOfSearchingToSinger(int singerId)
+        {
+            return et.SearchingToSingerTBL.Where(s => s.singerId == singerId).FirstOrDefault().count_searching;
+        }
+        public static void AddSearchingToSinger(int singerId)
+        {
+            SearchingToSingerTBL newSinger = new SearchingToSingerTBL();
+            newSinger.singerId = singerId;
+            newSinger.count_searching = 1;
+            et.SearchingToSingerTBL.Add(newSinger);
+            et.SaveChanges();
+        }
+        public static void UpdateSearchingToSinger(int singerId)
+        {
+            SearchingToSingerTBL searchingToSinger = et.SearchingToSingerTBL.Where(s => s.singerId == singerId).FirstOrDefault();
+            searchingToSinger.count_searching++;
+            et.SaveChanges();
+        }
     }
 }
