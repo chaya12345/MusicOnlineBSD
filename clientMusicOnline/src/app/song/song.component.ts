@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Song } from '../classes/song';
 
 @Component({
   selector: 'song',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SongComponent implements OnInit {
 
-  @Input() song: any;
+  @Input() song: Song;
   isHover:boolean = false;
 
   constructor() { }

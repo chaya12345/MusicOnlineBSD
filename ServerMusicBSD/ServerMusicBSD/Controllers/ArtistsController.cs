@@ -18,7 +18,7 @@ namespace ServerMusicBSD.Controllers
        {
             ArtistsBL.AddArtistName(artistsName);
        }
-       public List<ArtistsDTO> GetArtistsNames()
+       public List<ArtistsDTO> GetArtists()
        {
             return ArtistsBL.GetArtistsNames();
        }

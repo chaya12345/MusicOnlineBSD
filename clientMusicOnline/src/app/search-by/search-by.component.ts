@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { SingerService } from '../services/singer.service';
+import { Singer } from '../classes/singer';
+import { ArtistService } from '../services/artist.service';
+import { Artist } from '../classes/artist';
+import { TagService } from '../services/tag.service';
+import { Tag } from '../classes/tag';
 
 @Component({
   selector: 'search-by',
@@ -9,13 +15,17 @@ import { FormControl } from '@angular/forms';
 export class SearchByComponent implements OnInit {
 
   singers = new FormControl();
-  types = new FormControl();
+  tags = new FormControl();
   artists = new FormControl();
-  singersList: string[] = ['אברהם פריד', 'איציק דדיה', 'יעקב שוואקי', 'פיני איינהורן', 'רולי דיקמן', 'ישי ריבו'];
-  artistsList: string[] = ['אלי קליין', 'איצי ברי', 'איצי וולדנר', 'אלי לאופר', 'אלחנן אלחדד', 'יוסי גרין']
-  typesList: string[] = ['מזרחי', 'שירי נשמה', 'סינגל', 'שבת', 'רמיקס', 'חתונה'];
+  singersList: Singer[] = [];
+  artistsList: Artist[] = [];
+  tagsList: Tag[] = [];
 
-  constructor() { }
+  constructor(private singerService: SingerService, private artistService: ArtistService, private tagService: TagService) {
+    this.singerService.getSingers().subscribe(singer => {this.singersList = singer;}, err => { console.log(err); });
+    this.artistService.getArtists().subscribe(artist => {this.artistsList = artist;}, err => { console.log(err); });
+    this.tagService.getTags().subscribe(tag => {this.tagsList = tag;}, err => { console.log(err); });
+   }
 
   ngOnInit() {
   }

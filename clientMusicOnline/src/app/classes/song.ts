@@ -6,13 +6,12 @@ export class Song {
     date?: Date;
     count?: number;
     singerId?: number;
-    liked?: number;
-    unliked?: number;
+    count_like?: number;
+    count_views?: number;
     tagsId?: number;
     albumId?: number;
     title?: string;
     subtitle?: string;
     image_location?: string;
     content?: string;
-    artistId?: number;
 }

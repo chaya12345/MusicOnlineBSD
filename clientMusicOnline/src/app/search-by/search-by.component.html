@@ -5,18 +5,18 @@
 <mat-form-field appearance="fill">
     <mat-label>זמרים</mat-label>
     <mat-select [formControl]="singers" multiple>
-        <mat-option *ngFor="let singer of singersList" [value]="singer">{{singer}}</mat-option>
+        <mat-option *ngFor="let singer of singersList" [value]="singer.name">{{singer.name}}</mat-option>
     </mat-select>
 </mat-form-field>
 <mat-form-field appearance="fill">
     <mat-label>אומנים</mat-label>
     <mat-select [formControl]="artists" multiple>
-        <mat-option *ngFor="let artist of artistsList" [value]="artist">{{artist}}</mat-option>
+        <mat-option *ngFor="let artist of artistsList" [value]="artist.name">{{artist.name}}</mat-option>
     </mat-select>
 </mat-form-field>
 <mat-form-field appearance="fill">
     <mat-label>סגנונות וז'אנרים</mat-label>
-    <mat-select [formControl]="types" multiple>
-        <mat-option *ngFor="let type of typesList" [value]="type">{{type}}</mat-option>
+    <mat-select [formControl]="tags" multiple>
+        <mat-option *ngFor="let tag of tagsList" [value]="tag.name">{{tag.name}}</mat-option>
     </mat-select>
 </mat-form-field>

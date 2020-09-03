@@ -143,14 +143,14 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Content Include="src\images\for_songs\אבי אילסון\231862_tumb_750Xauto.jpg" />
-    <Content Include="src\images\for_songs\איציק דדיה\211576_tumb_750Xauto.jpg" />
-    <Content Include="src\images\for_songs\איציק דדיה\223388_tumb_750Xauto.jpg" />
-    <Content Include="src\images\for_songs\איציק דדיה\2784.jpg" />
-    <Content Include="src\images\for_songs\איציק דדיה\53646183_2533434770004335_7805584894150574080_o-560x315.jpg" />
-    <Content Include="src\images\for_songs\איציק דדיה\cover-27-560x373.jpg" />
-    <Content Include="src\images\for_songs\איציק דדיה\da-560x321.png" />
-    <Content Include="src\images\for_songs\איציק דדיה\אלוקי-נשמה-יוטיוב-560x316.jpeg" />
+    <Content Include="src\images\for_songs\אבי-אילסון\231862_tumb_750Xauto.jpg" />
+    <Content Include="src\images\for_songs\איציק-דדיה\211576_tumb_750Xauto.jpg" />
+    <Content Include="src\images\for_songs\איציק-דדיה\223388_tumb_750Xauto.jpg" />
+    <Content Include="src\images\for_songs\איציק-דדיה\2784.jpg" />
+    <Content Include="src\images\for_songs\איציק-דדיה\53646183_2533434770004335_7805584894150574080_o-560x315.jpg" />
+    <Content Include="src\images\for_songs\איציק-דדיה\cover-27-560x373.jpg" />
+    <Content Include="src\images\for_songs\איציק-דדיה\da-560x321.png" />
+    <Content Include="src\images\for_songs\איציק-דדיה\אלוקי-נשמה-יוטיוב-560x316.jpeg" />
     <Content Include="src\songs\איציק דדיה\47e1dbf051d404c3fda9f2219b2fa2b1.mp4" />
     <Content Include="src\songs\איציק דדיה\איציק דדיה - נכספתי.mp4" />
     <Content Include="src\songs\איציק דדיה\אלוקי נשמה.mp4" />

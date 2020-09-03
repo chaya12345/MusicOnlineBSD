@@ -21,7 +21,12 @@
             "aot": false,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+               "glob": "**/*",
+               "input": "../ServerMusicBSD/DAL/src/images",
+               "output": "./assets/images/"
+             }
             ],
             "styles": [
               "src/custom-theme.scss",
@@ -89,7 +94,12 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+               "glob": "**/*",
+               "input": "../ServerMusicBSD/DAL/src/images",
+               "output": "./assets/images/"
+             }
             ],
             "styles": [
               "src/styles.css"
