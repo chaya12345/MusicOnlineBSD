@@ -11,7 +11,8 @@ export class SongComponent implements OnInit {
   @Input() song: Song;
   isHover:boolean = false;
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit() {
   }

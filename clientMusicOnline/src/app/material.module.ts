@@ -13,6 +13,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRippleModule } from '@angular/material/core';
+import { MatSliderModule } from '@angular/material/slider';
 
 const modules = [
     MatToolbarModule,
@@ -28,7 +29,8 @@ const modules = [
     MatStepperModule,
     MatSelectModule,
     MatCheckboxModule,
-    MatRippleModule
+    MatRippleModule,
+    MatSliderModule
 ];
 
 @NgModule({

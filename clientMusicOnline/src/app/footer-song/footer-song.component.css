@@ -24,13 +24,14 @@ mat-icon.play {
 }
 
 div.yellow {
-    background-color: #fbc02d;
+    /* background-color: #fbc02d; */
+    background-color: #fbc02dd1;
 }
 
 .status-song {
     height: 100%;
     color: white;
-    padding: 15px;
+    padding: 15px 5px;
     text-align: right;
 }
 
@@ -39,4 +40,18 @@ div.yellow {
     display: -webkit-inline-box;
     margin: 0 10px;
     transition: .4s;
+}
+
+.songPlay {
+    grid-template-columns: auto;
+}
+
+.songPlay div.play {
+    display: grid;
+    grid-template-columns: fit-content(40%) auto;
+}
+
+.songPlay mat-icon.play {
+    height: fit-content;
+    margin: auto;
 }

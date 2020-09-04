@@ -26,7 +26,12 @@
                "glob": "**/*",
                "input": "../ServerMusicBSD/DAL/src/images",
                "output": "./assets/images/"
-             }
+             },
+             {
+              "glob": "**/*",
+              "input": "../ServerMusicBSD/DAL/src/songs",
+              "output": "./assets/songs/"
+            }
             ],
             "styles": [
               "src/custom-theme.scss",
@@ -99,7 +104,12 @@
                "glob": "**/*",
                "input": "../ServerMusicBSD/DAL/src/images",
                "output": "./assets/images/"
-             }
+             },
+             {
+              "glob": "**/*",
+              "input": "../ServerMusicBSD/DAL/src/songs",
+              "output": "./assets/songs/"
+            }
             ],
             "styles": [
               "src/styles.css"

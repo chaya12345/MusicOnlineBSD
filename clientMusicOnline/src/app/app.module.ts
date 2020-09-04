@@ -38,6 +38,7 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { SearchSpesificSongComponent } from './search-spesific-song/search-spesific-song.component';
 import { SearchByComponent } from './search-by/search-by.component';
 import { ForTryComponent } from './for-try/for-try.component';
+import { PlayerComponent } from './player/player.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { ForTryComponent } from './for-try/for-try.component';
     SideNavComponent,
     SearchSpesificSongComponent,
     SearchByComponent,
-    ForTryComponent
+    ForTryComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,

@@ -8,7 +8,6 @@ export class Song {
     singerId?: number;
     count_like?: number;
     count_views?: number;
-    tagsId?: number;
     albumId?: number;
     title?: string;
     subtitle?: string;

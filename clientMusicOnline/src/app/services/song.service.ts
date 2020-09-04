@@ -22,12 +22,12 @@ export class SongService {
   GetSongsByTag(tagName: string): Observable<Song[]> {
     return this.httpClient.get<Song[]>("https://localhost:44368/api/Songs/GetSongsByTag?tagName=" + tagName);
   }
-  GetSongsByTags(tags: object): Observable<Song[]> {
-    return this.httpClient.post<Song[]>("https://localhost:44368/api/Songs/PostSongsByTags", tags);
-  }
-  PostSong(song:Song):void{
-    this.httpClient.post("https://localhost:44368/api/Songs/PostSong",song);
-  }
+  // GetSongsByTags(tags: object): Observable<Song[]> {
+  //   return this.httpClient.post<Song[]>("https://localhost:44368/api/Songs/PostSongsByTags", tags);
+  // }
+  // PostSong(song:Song):void{
+  //   this.httpClient.post("https://localhost:44368/api/Songs/PostSong",song);
+  // }
 
 // יצירת קריאת סרבר עם הרשאות גישה
 //   const headers = { 'Authorization': 'Bearer my-token' }
