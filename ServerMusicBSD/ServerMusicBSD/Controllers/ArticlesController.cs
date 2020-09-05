@@ -30,22 +30,22 @@ namespace ServerMusicBSD.Controllers
         {
             ArticlesBL.DeleteArticle(articleId);
         }
-        public void PostTagToArticle(int articleId,int tagId)
-        {
-            ArticlesBL.AddTagToAtricle(articleId, tagId);
-        }
-        public List<ArticlesDTO> GetArticlesByTag(string tagName)
-        {
-            return ArticlesBL.GetArticlesByTag(tagName);
-        }
-        public List<ArticlesDTO> PostArticlesByTags([FromBody] TagsResponse tagsResponse)
-        {
-            return ArticlesBL.GetArticlesByTags(tagsResponse.tags);
-        }
-        public List<ArticlesDTO> PostArticlesByAllTags([FromBody] TagsResponse tagsResponse)
-        {
-            return ArticlesBL.GetArticlesByAllTags(tagsResponse.tags);
-        }
+        //public void PostTagToArticle(int articleId,int tagId)
+        //{
+        //    ArticlesBL.AddTagToAtricle(articleId, tagId);
+        //}
+        //public List<ArticlesDTO> GetArticlesByTag(string tagName)
+        //{
+        //    return ArticlesBL.GetArticlesByTag(tagName);
+        //}
+        //public List<ArticlesDTO> PostArticlesByTags([FromBody] TagsResponse tagsResponse)
+        //{
+        //    return ArticlesBL.GetArticlesByTags(tagsResponse.tags);
+        //}
+        //public List<ArticlesDTO> PostArticlesByAllTags([FromBody] TagsResponse tagsResponse)
+        //{
+        //    return ArticlesBL.GetArticlesByAllTags(tagsResponse.tags);
+        //}
        
     }
 }

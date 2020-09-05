@@ -22,7 +22,6 @@ namespace BL.Casts
             newSong.singerId = songs.singerId;
             newSong.count_like = songs.count_like;
             newSong.count_views = songs.count_views;
-            newSong.tagsId = songs.tagsId;
             newSong.albumId = songs.albumId;
             newSong.title = songs.title;
             newSong.subtitle = songs.subtitle;

@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="ArticlesTBL">
@@ -93,7 +93,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="singerId" Type="bigint" />
+          <Property Name="singerId" Type="int" />
           <Property Name="count_searching" Type="bigint" />
         </EntityType>
         <EntityType Name="SingerSearchingToUserTBL">
@@ -102,7 +102,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="userId" Type="int" />
-          <Property Name="singerId" Type="bigint" />
+          <Property Name="singerId" Type="int" />
           <Property Name="count_searching" Type="bigint" />
           <Property Name="last_date" Type="datetime" />
         </EntityType>
@@ -110,7 +110,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="SongsTBL">
@@ -123,11 +123,10 @@
           <Property Name="type" Type="varchar" MaxLength="50" />
           <Property Name="date" Type="datetime" />
           <Property Name="count" Type="bigint" />
-          <Property Name="singerId" Type="bigint" />
+          <Property Name="singerId" Type="int" />
           <Property Name="count_like" Type="bigint" />
           <Property Name="count_views" Type="bigint" />
-          <Property Name="tagsId" Type="bigint" />
-          <Property Name="albumId" Type="bigint" />
+          <Property Name="albumId" Type="int" />
           <Property Name="title" Type="varchar" MaxLength="150" />
           <Property Name="subtitle" Type="varchar" MaxLength="200" />
           <Property Name="image_location" Type="varchar(max)" />
@@ -151,38 +150,20 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <EntityType Name="TagNameTBL">
+        <EntityType Name="TagsTBL">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="TagsTBL">
+        <EntityType Name="TagsToSongsTBL">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="tag1" Type="int" />
-          <Property Name="tag2" Type="int" />
-          <Property Name="tag3" Type="int" />
-          <Property Name="tag4" Type="int" />
-          <Property Name="tag5" Type="int" />
-          <Property Name="tag6" Type="int" />
-          <Property Name="tag7" Type="int" />
-          <Property Name="tag8" Type="int" />
-          <Property Name="tag9" Type="int" />
-          <Property Name="tag10" Type="int" />
-          <Property Name="tag11" Type="int" />
-          <Property Name="tag12" Type="int" />
-          <Property Name="tag13" Type="int" />
-          <Property Name="tag14" Type="int" />
-          <Property Name="tag15" Type="int" />
-          <Property Name="tag16" Type="int" />
-          <Property Name="tag17" Type="int" />
-          <Property Name="tag18" Type="int" />
-          <Property Name="tag19" Type="int" />
-          <Property Name="tag20" Type="int" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="songId" Type="int" />
+          <Property Name="tagId" Type="int" />
         </EntityType>
         <EntityType Name="UsersTBL">
           <Key>
@@ -198,18 +179,6 @@
           <Property Name="newsletter" Type="bit" />
           <Property Name="saveLike" Type="bit" />
         </EntityType>
-        <Association Name="FK_ArticlesBTL_TagsTBL">
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="0..1" />
-          <End Role="ArticlesTBL" Type="Self.ArticlesTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagsTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArticlesTBL">
-              <PropertyRef Name="tagsId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ArtistsToSongsTBL_ArtistsTBL">
           <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="0..1" />
           <End Role="ArtistsToSongsTBL" Type="Self.ArtistsToSongsTBL" Multiplicity="*" />
@@ -234,7 +203,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ArtistsToSongsTBL_SongsTBL">
+        <Association Name="FK_ArtistsToSongsTBL_SongsTBL2">
           <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="0..1" />
           <End Role="ArtistsToSongsTBL" Type="Self.ArtistsToSongsTBL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -342,18 +311,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SongsTBL_TagsTBL">
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="0..1" />
-          <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagsTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="SongsTBL">
-              <PropertyRef Name="tagsId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SongsToPlaylistsTBL_PlaylistsTBL">
           <End Role="PlaylistsTBL" Type="Self.PlaylistsTBL" Multiplicity="0..1" />
           <End Role="SongsToPlaylistsTBL" Type="Self.SongsToPlaylistsTBL" Multiplicity="*" />
@@ -378,243 +335,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL20">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
+        <Association Name="FK_TagsToSongsTBL_SongsTBL">
+          <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="0..1" />
+          <End Role="TagsToSongsTBL" Type="Self.TagsToSongsTBL" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
+            <Principal Role="SongsTBL">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag1" />
+            <Dependent Role="TagsToSongsTBL">
+              <PropertyRef Name="songId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL21">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
+        <Association Name="FK_TagsToSongsTBL_TagNameTBL">
+          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="0..1" />
+          <End Role="TagsToSongsTBL" Type="Self.TagsToSongsTBL" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
+            <Principal Role="TagsTBL">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag2" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL22">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag3" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL23">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag4" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL24">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag5" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL25">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag6" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL26">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag7" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL27">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag8" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL28">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag9" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL29">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag10" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL30">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag11" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL31">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag12" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL32">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag13" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL33">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag14" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL34">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag15" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL35">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag16" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL36">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag17" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL37">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag18" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL38">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag19" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL39">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag20" />
+            <Dependent Role="TagsToSongsTBL">
+              <PropertyRef Name="tagId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -633,13 +374,9 @@
           <EntitySet Name="SongsTBL" EntityType="Self.SongsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TagNameTBL" EntityType="Self.TagNameTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TagsTBL" EntityType="Self.TagsTBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TagsToSongsTBL" EntityType="Self.TagsToSongsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_ArticlesBTL_TagsTBL" Association="Self.FK_ArticlesBTL_TagsTBL">
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-            <End Role="ArticlesTBL" EntitySet="ArticlesTBL" />
-          </AssociationSet>
           <AssociationSet Name="FK_ArtistsToSongsTBL_ArtistsTBL" Association="Self.FK_ArtistsToSongsTBL_ArtistsTBL">
             <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
             <End Role="ArtistsToSongsTBL" EntitySet="ArtistsToSongsTBL" />
@@ -648,7 +385,7 @@
             <End Role="JobTBL" EntitySet="JobTBL" />
             <End Role="ArtistsToSongsTBL" EntitySet="ArtistsToSongsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_ArtistsToSongsTBL_SongsTBL" Association="Self.FK_ArtistsToSongsTBL_SongsTBL">
+          <AssociationSet Name="FK_ArtistsToSongsTBL_SongsTBL2" Association="Self.FK_ArtistsToSongsTBL_SongsTBL2">
             <End Role="SongsTBL" EntitySet="SongsTBL" />
             <End Role="ArtistsToSongsTBL" EntitySet="ArtistsToSongsTBL" />
           </AssociationSet>
@@ -684,10 +421,6 @@
             <End Role="SingersTBL" EntitySet="SingersTBL" />
             <End Role="SongsTBL" EntitySet="SongsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_SongsTBL_TagsTBL" Association="Self.FK_SongsTBL_TagsTBL">
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-            <End Role="SongsTBL" EntitySet="SongsTBL" />
-          </AssociationSet>
           <AssociationSet Name="FK_SongsToPlaylistsTBL_PlaylistsTBL" Association="Self.FK_SongsToPlaylistsTBL_PlaylistsTBL">
             <End Role="PlaylistsTBL" EntitySet="PlaylistsTBL" />
             <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
@@ -696,85 +429,13 @@
             <End Role="SongsTBL" EntitySet="SongsTBL" />
             <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL20" Association="Self.FK_TagsTBL_TagNameTBL20">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          <AssociationSet Name="FK_TagsToSongsTBL_SongsTBL" Association="Self.FK_TagsToSongsTBL_SongsTBL">
+            <End Role="SongsTBL" EntitySet="SongsTBL" />
+            <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL21" Association="Self.FK_TagsTBL_TagNameTBL21">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+          <AssociationSet Name="FK_TagsToSongsTBL_TagNameTBL" Association="Self.FK_TagsToSongsTBL_TagNameTBL">
             <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL22" Association="Self.FK_TagsTBL_TagNameTBL22">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL23" Association="Self.FK_TagsTBL_TagNameTBL23">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL24" Association="Self.FK_TagsTBL_TagNameTBL24">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL25" Association="Self.FK_TagsTBL_TagNameTBL25">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL26" Association="Self.FK_TagsTBL_TagNameTBL26">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL27" Association="Self.FK_TagsTBL_TagNameTBL27">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL28" Association="Self.FK_TagsTBL_TagNameTBL28">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL29" Association="Self.FK_TagsTBL_TagNameTBL29">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL30" Association="Self.FK_TagsTBL_TagNameTBL30">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL31" Association="Self.FK_TagsTBL_TagNameTBL31">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL32" Association="Self.FK_TagsTBL_TagNameTBL32">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL33" Association="Self.FK_TagsTBL_TagNameTBL33">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL34" Association="Self.FK_TagsTBL_TagNameTBL34">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL35" Association="Self.FK_TagsTBL_TagNameTBL35">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL36" Association="Self.FK_TagsTBL_TagNameTBL36">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL37" Association="Self.FK_TagsTBL_TagNameTBL37">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL38" Association="Self.FK_TagsTBL_TagNameTBL38">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL39" Association="Self.FK_TagsTBL_TagNameTBL39">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
+            <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -786,7 +447,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsTBL_AlbumsTBL" FromRole="AlbumsTBL" ToRole="SongsTBL" />
         </EntityType>
@@ -811,7 +472,6 @@
           <Property Name="credit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="count_views" Type="Int64" />
           <Property Name="count_like" Type="Int64" />
-          <NavigationProperty Name="TagsTBL" Relationship="Self.FK_ArticlesBTL_TagsTBL" FromRole="ArticlesTBL" ToRole="TagsTBL" />
           <NavigationProperty Name="ResponsesTBL" Relationship="Self.FK_ResponsesTBL_ArticlesBTL" FromRole="ArticlesTBL" ToRole="ResponsesTBL" />
         </EntityType>
         <EntityType Name="ArtistsTBL">
@@ -832,7 +492,7 @@
           <Property Name="jobId" Type="Int32" />
           <NavigationProperty Name="ArtistsTBL" Relationship="Self.FK_ArtistsToSongsTBL_ArtistsTBL" FromRole="ArtistsToSongsTBL" ToRole="ArtistsTBL" />
           <NavigationProperty Name="JobTBL" Relationship="Self.FK_ArtistsToSongsTBL_JobTBL" FromRole="ArtistsToSongsTBL" ToRole="JobTBL" />
-          <NavigationProperty Name="SongsTBL" Relationship="Self.FK_ArtistsToSongsTBL_SongsTBL" FromRole="ArtistsToSongsTBL" ToRole="SongsTBL" />
+          <NavigationProperty Name="SongsTBL" Relationship="Self.FK_ArtistsToSongsTBL_SongsTBL2" FromRole="ArtistsToSongsTBL" ToRole="SongsTBL" />
         </EntityType>
         <EntityType Name="JobTBL">
           <Key>
@@ -882,7 +542,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="singerId" Type="Int64" />
+          <Property Name="singerId" Type="Int32" />
           <Property Name="count_searching" Type="Int64" />
           <NavigationProperty Name="SingersTBL" Relationship="Self.FK_SearchingToSingerTBL_SingersTBL" FromRole="SearchingToSingerTBL" ToRole="SingersTBL" />
         </EntityType>
@@ -892,7 +552,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userId" Type="Int32" />
-          <Property Name="singerId" Type="Int64" />
+          <Property Name="singerId" Type="Int32" />
           <Property Name="count_searching" Type="Int64" />
           <Property Name="last_date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="SingersTBL" Relationship="Self.FK_SingerSearchingToUserTBL_SingersTBL" FromRole="SingerSearchingToUserTBL" ToRole="SingersTBL" />
@@ -902,7 +562,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SearchingToSingerTBL" Relationship="Self.FK_SearchingToSingerTBL_SingersTBL" FromRole="SingersTBL" ToRole="SearchingToSingerTBL" />
           <NavigationProperty Name="SingerSearchingToUserTBL" Relationship="Self.FK_SingerSearchingToUserTBL_SingersTBL" FromRole="SingersTBL" ToRole="SingerSearchingToUserTBL" />
@@ -918,21 +578,20 @@
           <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="count" Type="Int64" />
-          <Property Name="singerId" Type="Int64" />
+          <Property Name="singerId" Type="Int32" />
           <Property Name="count_like" Type="Int64" />
           <Property Name="count_views" Type="Int64" />
-          <Property Name="tagsId" Type="Int64" />
-          <Property Name="albumId" Type="Int64" />
+          <Property Name="albumId" Type="Int32" />
           <Property Name="title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="subtitle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="image_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="AlbumsTBL" Relationship="Self.FK_SongsTBL_AlbumsTBL" FromRole="SongsTBL" ToRole="AlbumsTBL" />
-          <NavigationProperty Name="ArtistsToSongsTBL" Relationship="Self.FK_ArtistsToSongsTBL_SongsTBL" FromRole="SongsTBL" ToRole="ArtistsToSongsTBL" />
+          <NavigationProperty Name="ArtistsToSongsTBL" Relationship="Self.FK_ArtistsToSongsTBL_SongsTBL2" FromRole="SongsTBL" ToRole="ArtistsToSongsTBL" />
           <NavigationProperty Name="ReportsTBL" Relationship="Self.FK_ReportsTBL_SongsTBL" FromRole="SongsTBL" ToRole="ReportsTBL" />
           <NavigationProperty Name="SingersTBL" Relationship="Self.FK_SongsTBL_SingersTBL" FromRole="SongsTBL" ToRole="SingersTBL" />
-          <NavigationProperty Name="TagsTBL" Relationship="Self.FK_SongsTBL_TagsTBL" FromRole="SongsTBL" ToRole="TagsTBL" />
           <NavigationProperty Name="SongsToPlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToPlaylistsTBL" />
+          <NavigationProperty Name="TagsToSongsTBL" Relationship="Self.FK_TagsToSongsTBL_SongsTBL" FromRole="SongsTBL" ToRole="TagsToSongsTBL" />
         </EntityType>
         <EntityType Name="SongsToPlaylistsTBL">
           <Key>
@@ -954,80 +613,23 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="TagNameTBL">
+        <EntityType Name="TagsTBL">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="TagsTBL" Relationship="Self.FK_TagsTBL_TagNameTBL20" FromRole="TagNameTBL" ToRole="TagsTBL" />
-          <NavigationProperty Name="TagsTBL1" Relationship="Self.FK_TagsTBL_TagNameTBL21" FromRole="TagNameTBL" ToRole="TagsTBL" />
-          <NavigationProperty Name="TagsTBL2" Relationship="Self.FK_TagsTBL_TagNameTBL22" FromRole="TagNameTBL" ToRole="TagsTBL" />
-          <NavigationProperty Name="TagsTBL3" Relationship="Self.FK_TagsTBL_TagNameTBL23" FromRole="TagNameTBL" ToRole="TagsTBL" />
-          <NavigationProperty Name="TagsTBL4" Relationship="Self.FK_TagsTBL_TagNameTBL24" FromRole="TagNameTBL" ToRole="TagsTBL" />
-          <NavigationProperty Name="TagsTBL5" Relationship="Self.FK_TagsTBL_TagNameTBL25" FromRole="TagNameTBL" ToRole="TagsTBL" />
-          <NavigationProperty Name="TagsTBL6" Relationship="Self.FK_TagsTBL_TagNameTBL26" FromRole="TagNameTBL" ToRole="TagsTBL" />
-          <NavigationProperty Name="TagsTBL7" Relationship="Self.FK_TagsTBL_TagNameTBL27" FromRole="TagNameTBL" ToRole="TagsTBL" />
-          <NavigationProperty Name="TagsTBL8" Relationship="Self.FK_TagsTBL_TagNameTBL28" FromRole="TagNameTBL" ToRole="TagsTBL" />
-          <NavigationProperty Name="TagsTBL9" Relationship="Self.FK_TagsTBL_TagNameTBL29" FromRole="TagNameTBL" ToRole="TagsTBL" />
-          <NavigationProperty Name="TagsTBL10" Relationship="Self.FK_TagsTBL_TagNameTBL30" FromRole="TagNameTBL" ToRole="TagsTBL" />
-          <NavigationProperty Name="TagsTBL11" Relationship="Self.FK_TagsTBL_TagNameTBL31" FromRole="TagNameTBL" ToRole="TagsTBL" />
-          <NavigationProperty Name="TagsTBL12" Relationship="Self.FK_TagsTBL_TagNameTBL32" FromRole="TagNameTBL" ToRole="TagsTBL" />
-          <NavigationProperty Name="TagsTBL13" Relationship="Self.FK_TagsTBL_TagNameTBL33" FromRole="TagNameTBL" ToRole="TagsTBL" />
-          <NavigationProperty Name="TagsTBL14" Relationship="Self.FK_TagsTBL_TagNameTBL34" FromRole="TagNameTBL" ToRole="TagsTBL" />
-          <NavigationProperty Name="TagsTBL15" Relationship="Self.FK_TagsTBL_TagNameTBL35" FromRole="TagNameTBL" ToRole="TagsTBL" />
-          <NavigationProperty Name="TagsTBL16" Relationship="Self.FK_TagsTBL_TagNameTBL36" FromRole="TagNameTBL" ToRole="TagsTBL" />
-          <NavigationProperty Name="TagsTBL17" Relationship="Self.FK_TagsTBL_TagNameTBL37" FromRole="TagNameTBL" ToRole="TagsTBL" />
-          <NavigationProperty Name="TagsTBL18" Relationship="Self.FK_TagsTBL_TagNameTBL38" FromRole="TagNameTBL" ToRole="TagsTBL" />
-          <NavigationProperty Name="TagsTBL19" Relationship="Self.FK_TagsTBL_TagNameTBL39" FromRole="TagNameTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="TagsToSongsTBL" Relationship="Self.FK_TagsToSongsTBL_TagNameTBL" FromRole="TagsTBL" ToRole="TagsToSongsTBL" />
         </EntityType>
-        <EntityType Name="TagsTBL">
+        <EntityType Name="TagsToSongsTBL">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tag1" Type="Int32" />
-          <Property Name="tag2" Type="Int32" />
-          <Property Name="tag3" Type="Int32" />
-          <Property Name="tag4" Type="Int32" />
-          <Property Name="tag5" Type="Int32" />
-          <Property Name="tag6" Type="Int32" />
-          <Property Name="tag7" Type="Int32" />
-          <Property Name="tag8" Type="Int32" />
-          <Property Name="tag9" Type="Int32" />
-          <Property Name="tag10" Type="Int32" />
-          <Property Name="tag11" Type="Int32" />
-          <Property Name="tag12" Type="Int32" />
-          <Property Name="tag13" Type="Int32" />
-          <Property Name="tag14" Type="Int32" />
-          <Property Name="tag15" Type="Int32" />
-          <Property Name="tag16" Type="Int32" />
-          <Property Name="tag17" Type="Int32" />
-          <Property Name="tag18" Type="Int32" />
-          <Property Name="tag19" Type="Int32" />
-          <Property Name="tag20" Type="Int32" />
-          <NavigationProperty Name="ArticlesTBL" Relationship="Self.FK_ArticlesBTL_TagsTBL" FromRole="TagsTBL" ToRole="ArticlesTBL" />
-          <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsTBL_TagsTBL" FromRole="TagsTBL" ToRole="SongsTBL" />
-          <NavigationProperty Name="TagNameTBL" Relationship="Self.FK_TagsTBL_TagNameTBL20" FromRole="TagsTBL" ToRole="TagNameTBL" />
-          <NavigationProperty Name="TagNameTBL1" Relationship="Self.FK_TagsTBL_TagNameTBL21" FromRole="TagsTBL" ToRole="TagNameTBL" />
-          <NavigationProperty Name="TagNameTBL2" Relationship="Self.FK_TagsTBL_TagNameTBL22" FromRole="TagsTBL" ToRole="TagNameTBL" />
-          <NavigationProperty Name="TagNameTBL3" Relationship="Self.FK_TagsTBL_TagNameTBL23" FromRole="TagsTBL" ToRole="TagNameTBL" />
-          <NavigationProperty Name="TagNameTBL4" Relationship="Self.FK_TagsTBL_TagNameTBL24" FromRole="TagsTBL" ToRole="TagNameTBL" />
-          <NavigationProperty Name="TagNameTBL5" Relationship="Self.FK_TagsTBL_TagNameTBL25" FromRole="TagsTBL" ToRole="TagNameTBL" />
-          <NavigationProperty Name="TagNameTBL6" Relationship="Self.FK_TagsTBL_TagNameTBL26" FromRole="TagsTBL" ToRole="TagNameTBL" />
-          <NavigationProperty Name="TagNameTBL7" Relationship="Self.FK_TagsTBL_TagNameTBL27" FromRole="TagsTBL" ToRole="TagNameTBL" />
-          <NavigationProperty Name="TagNameTBL8" Relationship="Self.FK_TagsTBL_TagNameTBL28" FromRole="TagsTBL" ToRole="TagNameTBL" />
-          <NavigationProperty Name="TagNameTBL9" Relationship="Self.FK_TagsTBL_TagNameTBL29" FromRole="TagsTBL" ToRole="TagNameTBL" />
-          <NavigationProperty Name="TagNameTBL10" Relationship="Self.FK_TagsTBL_TagNameTBL30" FromRole="TagsTBL" ToRole="TagNameTBL" />
-          <NavigationProperty Name="TagNameTBL11" Relationship="Self.FK_TagsTBL_TagNameTBL31" FromRole="TagsTBL" ToRole="TagNameTBL" />
-          <NavigationProperty Name="TagNameTBL12" Relationship="Self.FK_TagsTBL_TagNameTBL32" FromRole="TagsTBL" ToRole="TagNameTBL" />
-          <NavigationProperty Name="TagNameTBL13" Relationship="Self.FK_TagsTBL_TagNameTBL33" FromRole="TagsTBL" ToRole="TagNameTBL" />
-          <NavigationProperty Name="TagNameTBL14" Relationship="Self.FK_TagsTBL_TagNameTBL34" FromRole="TagsTBL" ToRole="TagNameTBL" />
-          <NavigationProperty Name="TagNameTBL15" Relationship="Self.FK_TagsTBL_TagNameTBL35" FromRole="TagsTBL" ToRole="TagNameTBL" />
-          <NavigationProperty Name="TagNameTBL16" Relationship="Self.FK_TagsTBL_TagNameTBL36" FromRole="TagsTBL" ToRole="TagNameTBL" />
-          <NavigationProperty Name="TagNameTBL17" Relationship="Self.FK_TagsTBL_TagNameTBL37" FromRole="TagsTBL" ToRole="TagNameTBL" />
-          <NavigationProperty Name="TagNameTBL18" Relationship="Self.FK_TagsTBL_TagNameTBL38" FromRole="TagsTBL" ToRole="TagNameTBL" />
-          <NavigationProperty Name="TagNameTBL19" Relationship="Self.FK_TagsTBL_TagNameTBL39" FromRole="TagsTBL" ToRole="TagNameTBL" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="songId" Type="Int32" />
+          <Property Name="tagId" Type="Int32" />
+          <NavigationProperty Name="SongsTBL" Relationship="Self.FK_TagsToSongsTBL_SongsTBL" FromRole="TagsToSongsTBL" ToRole="SongsTBL" />
+          <NavigationProperty Name="TagsTBL" Relationship="Self.FK_TagsToSongsTBL_TagNameTBL" FromRole="TagsToSongsTBL" ToRole="TagsTBL" />
         </EntityType>
         <EntityType Name="UsersTBL">
           <Key>
@@ -1054,18 +656,6 @@
             </Principal>
             <Dependent Role="SongsTBL">
               <PropertyRef Name="albumId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ArticlesBTL_TagsTBL">
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="0..1" />
-          <End Role="ArticlesTBL" Type="Self.ArticlesTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagsTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ArticlesTBL">
-              <PropertyRef Name="tagsId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1105,7 +695,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ArtistsToSongsTBL_SongsTBL">
+        <Association Name="FK_ArtistsToSongsTBL_SongsTBL2">
           <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="0..1" />
           <End Role="ArtistsToSongsTBL" Type="Self.ArtistsToSongsTBL" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1201,18 +791,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SongsTBL_TagsTBL">
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="0..1" />
-          <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagsTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="SongsTBL">
-              <PropertyRef Name="tagsId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SongsToPlaylistsTBL_SongsTBL">
           <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="0..1" />
           <End Role="SongsToPlaylistsTBL" Type="Self.SongsToPlaylistsTBL" Multiplicity="*" />
@@ -1225,243 +803,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL20">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
+        <Association Name="FK_TagsToSongsTBL_SongsTBL">
+          <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="0..1" />
+          <End Role="TagsToSongsTBL" Type="Self.TagsToSongsTBL" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
+            <Principal Role="SongsTBL">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag1" />
+            <Dependent Role="TagsToSongsTBL">
+              <PropertyRef Name="songId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL21">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
+        <Association Name="FK_TagsToSongsTBL_TagNameTBL">
+          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="0..1" />
+          <End Role="TagsToSongsTBL" Type="Self.TagsToSongsTBL" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
+            <Principal Role="TagsTBL">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag2" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL22">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag3" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL23">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag4" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL24">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag5" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL25">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag6" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL26">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag7" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL27">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag8" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL28">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag9" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL29">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag10" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL30">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag11" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL31">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag12" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL32">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag13" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL33">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag14" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL34">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag15" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL35">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag16" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL36">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag17" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL37">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag18" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL38">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag19" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TagsTBL_TagNameTBL39">
-          <End Role="TagNameTBL" Type="Self.TagNameTBL" Multiplicity="0..1" />
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagNameTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsTBL">
-              <PropertyRef Name="tag20" />
+            <Dependent Role="TagsToSongsTBL">
+              <PropertyRef Name="tagId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1480,16 +842,12 @@
           <EntitySet Name="SongsTBL" EntityType="Self.SongsTBL" />
           <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="TagNameTBL" EntityType="Self.TagNameTBL" />
           <EntitySet Name="TagsTBL" EntityType="Self.TagsTBL" />
+          <EntitySet Name="TagsToSongsTBL" EntityType="Self.TagsToSongsTBL" />
           <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" />
           <AssociationSet Name="FK_SongsTBL_AlbumsTBL" Association="Self.FK_SongsTBL_AlbumsTBL">
             <End Role="AlbumsTBL" EntitySet="AlbumsTBL" />
             <End Role="SongsTBL" EntitySet="SongsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ArticlesBTL_TagsTBL" Association="Self.FK_ArticlesBTL_TagsTBL">
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-            <End Role="ArticlesTBL" EntitySet="ArticlesTBL" />
           </AssociationSet>
           <AssociationSet Name="FK_ResponsesTBL_ArticlesBTL" Association="Self.FK_ResponsesTBL_ArticlesBTL">
             <End Role="ArticlesTBL" EntitySet="ArticlesTBL" />
@@ -1503,7 +861,7 @@
             <End Role="JobTBL" EntitySet="JobTBL" />
             <End Role="ArtistsToSongsTBL" EntitySet="ArtistsToSongsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_ArtistsToSongsTBL_SongsTBL" Association="Self.FK_ArtistsToSongsTBL_SongsTBL">
+          <AssociationSet Name="FK_ArtistsToSongsTBL_SongsTBL2" Association="Self.FK_ArtistsToSongsTBL_SongsTBL2">
             <End Role="SongsTBL" EntitySet="SongsTBL" />
             <End Role="ArtistsToSongsTBL" EntitySet="ArtistsToSongsTBL" />
           </AssociationSet>
@@ -1535,93 +893,17 @@
             <End Role="SingersTBL" EntitySet="SingersTBL" />
             <End Role="SongsTBL" EntitySet="SongsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_SongsTBL_TagsTBL" Association="Self.FK_SongsTBL_TagsTBL">
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-            <End Role="SongsTBL" EntitySet="SongsTBL" />
-          </AssociationSet>
           <AssociationSet Name="FK_SongsToPlaylistsTBL_SongsTBL" Association="Self.FK_SongsToPlaylistsTBL_SongsTBL">
             <End Role="SongsTBL" EntitySet="SongsTBL" />
             <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL20" Association="Self.FK_TagsTBL_TagNameTBL20">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
+          <AssociationSet Name="FK_TagsToSongsTBL_SongsTBL" Association="Self.FK_TagsToSongsTBL_SongsTBL">
+            <End Role="SongsTBL" EntitySet="SongsTBL" />
+            <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL21" Association="Self.FK_TagsTBL_TagNameTBL21">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
+          <AssociationSet Name="FK_TagsToSongsTBL_TagNameTBL" Association="Self.FK_TagsToSongsTBL_TagNameTBL">
             <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL22" Association="Self.FK_TagsTBL_TagNameTBL22">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL23" Association="Self.FK_TagsTBL_TagNameTBL23">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL24" Association="Self.FK_TagsTBL_TagNameTBL24">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL25" Association="Self.FK_TagsTBL_TagNameTBL25">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL26" Association="Self.FK_TagsTBL_TagNameTBL26">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL27" Association="Self.FK_TagsTBL_TagNameTBL27">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL28" Association="Self.FK_TagsTBL_TagNameTBL28">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL29" Association="Self.FK_TagsTBL_TagNameTBL29">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL30" Association="Self.FK_TagsTBL_TagNameTBL30">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL31" Association="Self.FK_TagsTBL_TagNameTBL31">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL32" Association="Self.FK_TagsTBL_TagNameTBL32">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL33" Association="Self.FK_TagsTBL_TagNameTBL33">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL34" Association="Self.FK_TagsTBL_TagNameTBL34">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL35" Association="Self.FK_TagsTBL_TagNameTBL35">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL36" Association="Self.FK_TagsTBL_TagNameTBL36">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL37" Association="Self.FK_TagsTBL_TagNameTBL37">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL38" Association="Self.FK_TagsTBL_TagNameTBL38">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TagsTBL_TagNameTBL39" Association="Self.FK_TagsTBL_TagNameTBL39">
-            <End Role="TagNameTBL" EntitySet="TagNameTBL" />
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
+            <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -1761,7 +1043,6 @@
                 <ScalarProperty Name="singerId" ColumnName="singerId" />
                 <ScalarProperty Name="count_like" ColumnName="count_like" />
                 <ScalarProperty Name="count_views" ColumnName="count_views" />
-                <ScalarProperty Name="tagsId" ColumnName="tagsId" />
                 <ScalarProperty Name="albumId" ColumnName="albumId" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="subtitle" ColumnName="subtitle" />
@@ -1790,38 +1071,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TagNameTBL">
-            <EntityTypeMapping TypeName="MusicOnlineModel.TagNameTBL">
-              <MappingFragment StoreEntitySet="TagNameTBL">
+          <EntitySetMapping Name="TagsTBL">
+            <EntityTypeMapping TypeName="MusicOnlineModel.TagsTBL">
+              <MappingFragment StoreEntitySet="TagsTBL">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TagsTBL">
-            <EntityTypeMapping TypeName="MusicOnlineModel.TagsTBL">
-              <MappingFragment StoreEntitySet="TagsTBL">
+          <EntitySetMapping Name="TagsToSongsTBL">
+            <EntityTypeMapping TypeName="MusicOnlineModel.TagsToSongsTBL">
+              <MappingFragment StoreEntitySet="TagsToSongsTBL">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="tag1" ColumnName="tag1" />
-                <ScalarProperty Name="tag2" ColumnName="tag2" />
-                <ScalarProperty Name="tag3" ColumnName="tag3" />
-                <ScalarProperty Name="tag4" ColumnName="tag4" />
-                <ScalarProperty Name="tag5" ColumnName="tag5" />
-                <ScalarProperty Name="tag6" ColumnName="tag6" />
-                <ScalarProperty Name="tag7" ColumnName="tag7" />
-                <ScalarProperty Name="tag8" ColumnName="tag8" />
-                <ScalarProperty Name="tag9" ColumnName="tag9" />
-                <ScalarProperty Name="tag10" ColumnName="tag10" />
-                <ScalarProperty Name="tag11" ColumnName="tag11" />
-                <ScalarProperty Name="tag12" ColumnName="tag12" />
-                <ScalarProperty Name="tag13" ColumnName="tag13" />
-                <ScalarProperty Name="tag14" ColumnName="tag14" />
-                <ScalarProperty Name="tag15" ColumnName="tag15" />
-                <ScalarProperty Name="tag16" ColumnName="tag16" />
-                <ScalarProperty Name="tag17" ColumnName="tag17" />
-                <ScalarProperty Name="tag18" ColumnName="tag18" />
-                <ScalarProperty Name="tag19" ColumnName="tag19" />
-                <ScalarProperty Name="tag20" ColumnName="tag20" />
+                <ScalarProperty Name="songId" ColumnName="songId" />
+                <ScalarProperty Name="tagId" ColumnName="tagId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

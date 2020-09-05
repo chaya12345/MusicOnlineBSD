@@ -15,7 +15,7 @@ namespace DAL
     public partial class SearchingToSingerTBL
     {
         public int id { get; set; }
-        public Nullable<long> singerId { get; set; }
+        public Nullable<int> singerId { get; set; }
         public Nullable<long> count_searching { get; set; }
     
         public virtual SingersTBL SingersTBL { get; set; }

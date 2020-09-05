@@ -12,16 +12,16 @@ using System.Web.Http.Cors;
 namespace ServerMusicBSD.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class TagNameController : ApiController
+    public class TagsController : ApiController
     {
 
-        public List<TagNameDTO> GetTagNames()
+        public List<TagsDTO> GetTags()
         {
-            return TagNameBL.GetTagNames();
+            return TagsBL.GetTags();
         }
-        public void PostTag([FromBody] TagNameTBL tag)
+        public void PostTag([FromBody] TagsTBL tag)
         {
-            TagNameBL.AddTagName(tag);
+            TagsBL.AddTag(tag);
         }
     }
 }

@@ -38,7 +38,6 @@ namespace DAL
         public Nullable<long> count_views { get; set; }
         public Nullable<long> count_like { get; set; }
     
-        public virtual TagsTBL TagsTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ResponsesTBL> ResponsesTBL { get; set; }
     }

@@ -72,7 +72,8 @@
     <Compile Include="Casts\ToSingerSearchingToUserDTO.cs" />
     <Compile Include="Casts\ToSongsDTO.cs" />
     <Compile Include="Casts\ToSongsToPlaylistsDTO.cs" />
-    <Compile Include="Casts\ToTagNameDTO.cs" />
+    <Compile Include="Casts\ToTagsDTO.cs" />
+    <Compile Include="Casts\ToTagsToSongsDTO.cs" />
     <Compile Include="Casts\ToUsersDTO.cs" />
     <Compile Include="JobsBL.cs" />
     <Compile Include="PlaylistBL.cs" />
@@ -84,7 +85,8 @@
     <Compile Include="SongsBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SongsToPlaylistsBL.cs" />
-    <Compile Include="TagNameBL.cs" />
+    <Compile Include="TagsBL.cs" />
+    <Compile Include="TagsToSongsBL.cs" />
     <Compile Include="UsersBL.cs" />
   </ItemGroup>
   <ItemGroup>

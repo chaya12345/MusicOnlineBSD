@@ -16,7 +16,7 @@ namespace DAL
     {
         public int id { get; set; }
         public Nullable<int> userId { get; set; }
-        public Nullable<long> singerId { get; set; }
+        public Nullable<int> singerId { get; set; }
         public Nullable<long> count_searching { get; set; }
         public Nullable<System.DateTime> last_date { get; set; }
     

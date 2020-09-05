@@ -12,18 +12,13 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class AlbumsTBL
+    public partial class TagsToSongsTBL
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AlbumsTBL()
-        {
-            this.SongsTBL = new HashSet<SongsTBL>();
-        }
-    
         public int id { get; set; }
-        public string name { get; set; }
+        public Nullable<int> songId { get; set; }
+        public Nullable<int> tagId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SongsTBL> SongsTBL { get; set; }
+        public virtual SongsTBL SongsTBL { get; set; }
+        public virtual TagsTBL TagsTBL { get; set; }
     }
 }

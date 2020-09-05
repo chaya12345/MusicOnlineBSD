@@ -132,7 +132,6 @@
           <ScalarProperty Name="singerId" ColumnName="singerId" />
           <ScalarProperty Name="count_like" ColumnName="count_like" />
           <ScalarProperty Name="count_views" ColumnName="count_views" />
-          <ScalarProperty Name="tagsId" ColumnName="tagsId" />
           <ScalarProperty Name="albumId" ColumnName="albumId" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="subtitle" ColumnName="subtitle" />
@@ -161,38 +160,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TagNameTBL">
-      <EntityTypeMapping TypeName="MusicOnlineModel.TagNameTBL">
-        <MappingFragment StoreEntitySet="TagNameTBL">
+    <EntitySetMapping Name="TagsTBL">
+      <EntityTypeMapping TypeName="MusicOnlineModel.TagsTBL">
+        <MappingFragment StoreEntitySet="TagsTBL">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TagsTBL">
-      <EntityTypeMapping TypeName="MusicOnlineModel.TagsTBL">
-        <MappingFragment StoreEntitySet="TagsTBL">
+    <EntitySetMapping Name="TagsToSongsTBL">
+      <EntityTypeMapping TypeName="MusicOnlineModel.TagsToSongsTBL">
+        <MappingFragment StoreEntitySet="TagsToSongsTBL">
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="tag1" ColumnName="tag1" />
-          <ScalarProperty Name="tag2" ColumnName="tag2" />
-          <ScalarProperty Name="tag3" ColumnName="tag3" />
-          <ScalarProperty Name="tag4" ColumnName="tag4" />
-          <ScalarProperty Name="tag5" ColumnName="tag5" />
-          <ScalarProperty Name="tag6" ColumnName="tag6" />
-          <ScalarProperty Name="tag7" ColumnName="tag7" />
-          <ScalarProperty Name="tag8" ColumnName="tag8" />
-          <ScalarProperty Name="tag9" ColumnName="tag9" />
-          <ScalarProperty Name="tag10" ColumnName="tag10" />
-          <ScalarProperty Name="tag11" ColumnName="tag11" />
-          <ScalarProperty Name="tag12" ColumnName="tag12" />
-          <ScalarProperty Name="tag13" ColumnName="tag13" />
-          <ScalarProperty Name="tag14" ColumnName="tag14" />
-          <ScalarProperty Name="tag15" ColumnName="tag15" />
-          <ScalarProperty Name="tag16" ColumnName="tag16" />
-          <ScalarProperty Name="tag17" ColumnName="tag17" />
-          <ScalarProperty Name="tag18" ColumnName="tag18" />
-          <ScalarProperty Name="tag19" ColumnName="tag19" />
-          <ScalarProperty Name="tag20" ColumnName="tag20" />
+          <ScalarProperty Name="songId" ColumnName="songId" />
+          <ScalarProperty Name="tagId" ColumnName="tagId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -109,10 +109,10 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="TagNameTBL.cs">
+    <Compile Include="TagsTBL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="TagsTBL.cs">
+    <Compile Include="TagsToSongsTBL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="UsersTBL.cs">
@@ -151,22 +151,22 @@
     <Content Include="src\images\for_songs\איציק-דדיה\cover-27-560x373.jpg" />
     <Content Include="src\images\for_songs\איציק-דדיה\da-560x321.png" />
     <Content Include="src\images\for_songs\איציק-דדיה\אלוקי-נשמה-יוטיוב-560x316.jpeg" />
-    <Content Include="src\songs\איציק דדיה\47e1dbf051d404c3fda9f2219b2fa2b1.mp4" />
-    <Content Include="src\songs\איציק דדיה\איציק דדיה - נכספתי.mp4" />
-    <Content Include="src\songs\איציק דדיה\אלוקי נשמה.mp4" />
-    <Content Include="src\songs\איציק דדיה\בדרך-לאומן-I-איציק-דדיה-I-הקליפ-הרשמי-Baderech-LUman-I-Itzik-Dadya-I-Official-Video.mp4" />
-    <Content Include="src\songs\איציק דדיה\בדרך-לאומן.mp3" />
-    <Content Include="src\songs\איציק דדיה\האמונה בוערת.mp3" />
-    <Content Include="src\songs\איציק דדיה\מאט דאב &amp; איציק דדיה - אנא.mp4" />
-    <Content Include="src\songs\איציק דדיה\מלחמות.mp3" />
-    <Content Include="src\songs\אריק דביר\אריק דביר - נרקוד.mp3" />
-    <Content Include="src\songs\חיים ישראל\חיים ישראל - טעיתי.mp3" />
-    <Content Include="src\songs\יעקב שוואקי\יעקב שוואקי - מסיני בא.mp3" />
-    <Content Include="src\songs\ישי ריבו\ישי ריבו - כתר מלוכה.mp3" />
-    <Content Include="src\songs\נמואל הרוש\נמואל הרוש - אלוקים.mp3" />
-    <Content Include="src\songs\קובי ברומר\קובי ברומר - עולים לירושלים.mp3" />
-    <Content Include="src\songs\קובי ברומר\קובי ברומר - עם הנצח .mp3" />
-    <Content Include="src\songs\שמחה פרידמן\שמחה פרידמן - לא לפחד.mp3" />
+    <Content Include="src\songs\איציק-דדיה\47e1dbf051d404c3fda9f2219b2fa2b1.mp4" />
+    <Content Include="src\songs\איציק-דדיה\איציק דדיה - נכספתי.mp4" />
+    <Content Include="src\songs\איציק-דדיה\אלוקי נשמה.mp4" />
+    <Content Include="src\songs\איציק-דדיה\בדרך-לאומן-I-איציק-דדיה-I-הקליפ-הרשמי-Baderech-LUman-I-Itzik-Dadya-I-Official-Video.mp4" />
+    <Content Include="src\songs\איציק-דדיה\בדרך-לאומן.mp3" />
+    <Content Include="src\songs\איציק-דדיה\האמונה בוערת.mp3" />
+    <Content Include="src\songs\איציק-דדיה\מאט דאב &amp; איציק דדיה - אנא.mp4" />
+    <Content Include="src\songs\איציק-דדיה\מלחמות.mp3" />
+    <Content Include="src\songs\אריק-דביר\אריק דביר - נרקוד.mp3" />
+    <Content Include="src\songs\חיים-ישראל\חיים ישראל - טעיתי.mp3" />
+    <Content Include="src\songs\יעקב-שוואקי\יעקב שוואקי - מסיני בא.mp3" />
+    <Content Include="src\songs\ישי-ריבו\ישי ריבו - כתר מלוכה.mp3" />
+    <Content Include="src\songs\נמואל-הרוש\נמואל הרוש - אלוקים.mp3" />
+    <Content Include="src\songs\קובי-ברומר\קובי ברומר - עולים לירושלים.mp3" />
+    <Content Include="src\songs\קובי-ברומר\קובי ברומר - עם הנצח .mp3" />
+    <Content Include="src\songs\שמחה-פרידמן\שמחה פרידמן - לא לפחד.mp3" />
     <Content Include="src\text\songs_content\אבי אילסון\אבי אילסון בשיר חדש ומאיר עם קליפ מרהיב %27תן לי אור%27.txt" />
     <Content Include="src\text\songs_content\איציק דדיה\איציק דדיה בדרך לאומן – הקליפ הרשמי.txt" />
     <Content Include="src\text\songs_content\איציק דדיה\איציק דדיה בלהיט חדש – %27בדרך לאומן%27.txt" />
@@ -180,30 +180,30 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\songs\אבי אילסון\" />
-    <Folder Include="src\songs\אבי מן\" />
-    <Folder Include="src\songs\אברהם פריד\" />
-    <Folder Include="src\songs\אודי דוידי\" />
-    <Folder Include="src\songs\אוהד מושקוביץ\" />
-    <Folder Include="src\songs\בני פרידמן\" />
-    <Folder Include="src\songs\בערי וובר\" />
-    <Folder Include="src\songs\גד אלבז\" />
-    <Folder Include="src\songs\יואלי דיקמן\" />
-    <Folder Include="src\songs\יוסי גרין\" />
-    <Folder Include="src\songs\יניב בן משיח\" />
-    <Folder Include="src\songs\ישי לפידות\" />
-    <Folder Include="src\songs\מאיר מסוארי\" />
-    <Folder Include="src\songs\מוטי שטיינמץ\" />
-    <Folder Include="src\songs\מידד טסה\" />
-    <Folder Include="src\songs\מרדכי בן דוד\" />
-    <Folder Include="src\songs\משה קליין\" />
-    <Folder Include="src\songs\עוזיה צדוק\" />
-    <Folder Include="src\songs\עמירן דביר\" />
-    <Folder Include="src\songs\פיני איינהורן\" />
-    <Folder Include="src\songs\רולי דיקמן\" />
-    <Folder Include="src\songs\שלוימי גרטנר\" />
-    <Folder Include="src\songs\שלום ברנהולץ\" />
-    <Folder Include="src\songs\שלמה כהן\" />
+    <Folder Include="src\songs\אבי-אילסון\" />
+    <Folder Include="src\songs\אבי-מן\" />
+    <Folder Include="src\songs\אברהם-פריד\" />
+    <Folder Include="src\songs\אודי-דוידי\" />
+    <Folder Include="src\songs\אוהד-מושקוביץ\" />
+    <Folder Include="src\songs\בני-פרידמן\" />
+    <Folder Include="src\songs\בערי-וובר\" />
+    <Folder Include="src\songs\גד-אלבז\" />
+    <Folder Include="src\songs\יואלי-דיקמן\" />
+    <Folder Include="src\songs\יוסי-גרין\" />
+    <Folder Include="src\songs\יניב-בן-משיח\" />
+    <Folder Include="src\songs\ישי-לפידות\" />
+    <Folder Include="src\songs\מאיר-מסוארי\" />
+    <Folder Include="src\songs\מוטי-שטיינמץ\" />
+    <Folder Include="src\songs\מידד-טסה\" />
+    <Folder Include="src\songs\מרדכי-בן-דוד\" />
+    <Folder Include="src\songs\משה-קליין\" />
+    <Folder Include="src\songs\עוזיה-צדוק\" />
+    <Folder Include="src\songs\עמירן-דביר\" />
+    <Folder Include="src\songs\פיני-איינהורן\" />
+    <Folder Include="src\songs\רולי-דיקמן\" />
+    <Folder Include="src\songs\שלוימי-גרטנר\" />
+    <Folder Include="src\songs\שלום-ברנהולץ\" />
+    <Folder Include="src\songs\שלמה-כהן\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

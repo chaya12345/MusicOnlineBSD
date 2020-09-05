@@ -17,55 +17,13 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TagsTBL()
         {
-            this.ArticlesTBL = new HashSet<ArticlesTBL>();
-            this.SongsTBL = new HashSet<SongsTBL>();
+            this.TagsToSongsTBL = new HashSet<TagsToSongsTBL>();
         }
     
-        public long id { get; set; }
-        public Nullable<int> tag1 { get; set; }
-        public Nullable<int> tag2 { get; set; }
-        public Nullable<int> tag3 { get; set; }
-        public Nullable<int> tag4 { get; set; }
-        public Nullable<int> tag5 { get; set; }
-        public Nullable<int> tag6 { get; set; }
-        public Nullable<int> tag7 { get; set; }
-        public Nullable<int> tag8 { get; set; }
-        public Nullable<int> tag9 { get; set; }
-        public Nullable<int> tag10 { get; set; }
-        public Nullable<int> tag11 { get; set; }
-        public Nullable<int> tag12 { get; set; }
-        public Nullable<int> tag13 { get; set; }
-        public Nullable<int> tag14 { get; set; }
-        public Nullable<int> tag15 { get; set; }
-        public Nullable<int> tag16 { get; set; }
-        public Nullable<int> tag17 { get; set; }
-        public Nullable<int> tag18 { get; set; }
-        public Nullable<int> tag19 { get; set; }
-        public Nullable<int> tag20 { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ArticlesTBL> ArticlesTBL { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SongsTBL> SongsTBL { get; set; }
-        public virtual TagNameTBL TagNameTBL { get; set; }
-        public virtual TagNameTBL TagNameTBL1 { get; set; }
-        public virtual TagNameTBL TagNameTBL2 { get; set; }
-        public virtual TagNameTBL TagNameTBL3 { get; set; }
-        public virtual TagNameTBL TagNameTBL4 { get; set; }
-        public virtual TagNameTBL TagNameTBL5 { get; set; }
-        public virtual TagNameTBL TagNameTBL6 { get; set; }
-        public virtual TagNameTBL TagNameTBL7 { get; set; }
-        public virtual TagNameTBL TagNameTBL8 { get; set; }
-        public virtual TagNameTBL TagNameTBL9 { get; set; }
-        public virtual TagNameTBL TagNameTBL10 { get; set; }
-        public virtual TagNameTBL TagNameTBL11 { get; set; }
-        public virtual TagNameTBL TagNameTBL12 { get; set; }
-        public virtual TagNameTBL TagNameTBL13 { get; set; }
-        public virtual TagNameTBL TagNameTBL14 { get; set; }
-        public virtual TagNameTBL TagNameTBL15 { get; set; }
-        public virtual TagNameTBL TagNameTBL16 { get; set; }
-        public virtual TagNameTBL TagNameTBL17 { get; set; }
-        public virtual TagNameTBL TagNameTBL18 { get; set; }
-        public virtual TagNameTBL TagNameTBL19 { get; set; }
+        public virtual ICollection<TagsToSongsTBL> TagsToSongsTBL { get; set; }
     }
 }

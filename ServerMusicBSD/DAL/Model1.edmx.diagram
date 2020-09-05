@@ -4,30 +4,29 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="44f4e47488914de0bb43b87307b92990" Name="Diagram1">
-        <EntityTypeShape EntityType="MusicOnlineModel.AlbumsTBL" Width="1.5" PointX="4" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.ArticlesTBL" Width="1.5" PointX="4" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.ArtistsTBL" Width="1.5" PointX="5.75" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.ArtistsToSongsTBL" Width="1.5" PointX="7.625" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.JobTBL" Width="1.5" PointX="9.375" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.PlaylistsTBL" Width="1.5" PointX="9.375" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.ReportsTBL" Width="1.5" PointX="9.375" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.ResponsesTBL" Width="1.5" PointX="11.125" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.SearchingToSingerTBL" Width="1.5" PointX="11.125" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.SingerSearchingToUserTBL" Width="1.5" PointX="7.625" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.SingersTBL" Width="1.5" PointX="11.125" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.SongsTBL" Width="1.5" PointX="5.75" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.SongsToPlaylistsTBL" Width="1.5" PointX="11.125" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.sysdiagrams" Width="1.5" PointX="0.5" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.TagNameTBL" Width="1.5" PointX="0.5" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.TagsTBL" Width="1.5" PointX="2.25" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.UsersTBL" Width="1.5" PointX="7.625" PointY="0.5" IsExpanded="true" />
+      <Diagram DiagramId="229cd574cf104c248733701229277f76" Name="Diagram1">
+        <EntityTypeShape EntityType="MusicOnlineModel.AlbumsTBL" Width="1.5" PointX="5.875" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.ArticlesTBL" Width="1.5" PointX="9.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.ArtistsTBL" Width="1.5" PointX="2.375" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.ArtistsToSongsTBL" Width="1.5" PointX="4.125" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.JobTBL" Width="1.5" PointX="7.625" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.PlaylistsTBL" Width="1.5" PointX="4.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.ReportsTBL" Width="1.5" PointX="7.625" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.ResponsesTBL" Width="1.5" PointX="11.125" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.SearchingToSingerTBL" Width="1.5" PointX="2.375" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.SingerSearchingToUserTBL" Width="1.5" PointX="2.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.SingersTBL" Width="1.5" PointX="9.375" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.SongsTBL" Width="1.5" PointX="5.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.SongsToPlaylistsTBL" Width="1.5" PointX="7.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.sysdiagrams" Width="1.5" PointX="0.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.TagsTBL" Width="1.5" PointX="4.125" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.TagsToSongsTBL" Width="1.5" PointX="11.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.UsersTBL" Width="1.5" PointX="0.625" PointY="2.625" IsExpanded="true" />
         <AssociationConnector Association="MusicOnlineModel.FK_SongsTBL_AlbumsTBL" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_ArticlesBTL_TagsTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_ResponsesTBL_ArticlesBTL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_ArtistsToSongsTBL_ArtistsTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_ArtistsToSongsTBL_JobTBL" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_ArtistsToSongsTBL_SongsTBL" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicOnlineModel.FK_ArtistsToSongsTBL_SongsTBL2" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_PlaylistsTBL_UsersTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_SongsToPlaylistsTBL_PlaylistsTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_ReportsTBL_SongsTBL" ManuallyRouted="false" />
@@ -35,28 +34,9 @@
         <AssociationConnector Association="MusicOnlineModel.FK_SingerSearchingToUserTBL_SingersTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_SingerSearchingToUserTBL_UsersTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_SongsTBL_SingersTBL" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_SongsTBL_TagsTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_SongsToPlaylistsTBL_SongsTBL" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL20" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL21" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL22" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL23" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL24" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL25" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL26" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL27" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL28" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL29" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL30" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL31" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL32" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL33" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL34" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL35" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL36" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL37" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL38" ManuallyRouted="false" />
-        <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagNameTBL39" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicOnlineModel.FK_TagsToSongsTBL_SongsTBL" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicOnlineModel.FK_TagsToSongsTBL_TagNameTBL" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -8,16 +8,16 @@ using DTO;
 
 namespace BL
 {
-    public class TagNameBL
+    public class TagsBL
     {
         static MusicOnlineEntities et = new MusicOnlineEntities();
-        public static List<TagNameDTO> GetTagNames()
+        public static List<TagsDTO> GetTags()
         {
-            return Casts.ToTagNameDTO.GetTagNames(et.TagNameTBL.ToList());
+            return Casts.ToTagsDTO.GetTags(et.TagsTBL.ToList());
         }
-        public static void AddTagName(TagNameTBL tag)
+        public static void AddTag(TagsTBL tag)
         {
-            et.TagNameTBL.Add(tag);
+            et.TagsTBL.Add(tag);
             et.SaveChanges();
         }
 
