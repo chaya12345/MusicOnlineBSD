@@ -52,10 +52,17 @@ export class AboutComponent implements OnInit {
   }
 
   filter(): void {
-    var decoder = new TextDecoder('utf-8'), decodedMessage;
-    decodedMessage = decoder.decode(this.aboutContent.data);
-    this.aboutContent.append('Data', 'text/txt;charset=utf-8');
-    this.aboutContent.append("Accept-Charset", "charset=utf-8");
+    // var decoder = new TextDecoder('utf-8'), decodedMessage;
+    // decodedMessage = decoder.decode(this.aboutContent.data);
+    // this.aboutContent.append('Data', 'text/txt;charset=utf-8');
+    // this.aboutContent.append("Accept-Charset", "charset=utf-8");
+    // var words = encode_utf8('Marché')
+
+    // Original
+    // this.aboutContent = unescape(encodeURIComponent(this.aboutContent));
+    // this.aboutContent = decodeURIComponent(escape(this.aboutContent));
+    // this.aboutContent = escape(encodeURIComponent(this.aboutContent));
+    // this.aboutContent = escape(encodeURI((this.aboutContent)));
   }
 
 }

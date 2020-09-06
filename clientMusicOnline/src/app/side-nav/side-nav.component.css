@@ -54,6 +54,7 @@ margin: 0 20px;
 .close-menu-item {
     border-top-left-radius: 50px;
     border-bottom-left-radius: 50px;
+    box-shadow: 0 0 4px #00000036;
 }
 
 .close-menu-item:hover {

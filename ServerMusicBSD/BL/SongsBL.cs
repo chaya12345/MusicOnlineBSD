@@ -39,28 +39,15 @@ namespace BL
         }
         public static List<SongsDTO> GetSongsByTag(string tagName)
         {
-            List<SongsTBL> list = GetSongInListByTag(et.SongsTBL.ToList(), tagName);
-            if (list != null)
-                return Casts.ToSongsDTO.GetSongs(list);
-            return null;
-
-        }
-        private static List<SongsTBL> GetSongInListByTag(List<SongsTBL> songs, string tagName)
-        {
-            TagsTBL tag = et.TagsTBL.Where(t => t.name == tagName).FirstOrDefault();
-            List<SongsTBL> result = new List<SongsTBL>();
-            if (tag != null && songs != null)
+            int tagId = et.TagsTBL.Where(tag => tag.name == tagName).FirstOrDefault().id;
+            List<int?> songsId = et.TagsToSongsTBL.Where(tagToSong => tagToSong.tagId == tagId)
+                .Select(t => t.songId).ToList();
+            List<SongsTBL> songsIncludeTag = new List<SongsTBL>();
+            foreach (int? songId in songsId)
             {
-                List<TagsToSongsTBL> tagToSongs = et.TagsToSongsTBL.Where(t => t.tagId == tag.id).ToList();
-                foreach (TagsToSongsTBL song in tagToSongs)
-                {
-                    SongsTBL songIn = songs.Where(s => s.id == song.songId).FirstOrDefault();
-                    if(songIn!=null)
-                        result.Add(songIn);
-                }
-                return result;
+                songsIncludeTag.Add(et.SongsTBL.Where(song => song.id == songId).FirstOrDefault());
             }
-            return null;
+            return Casts.ToSongsDTO.GetSongs(songsIncludeTag);
         }
         public static List<SongsDTO> GetSongsByTags(List<string> tags)
         {
@@ -73,19 +60,27 @@ namespace BL
         }
         public static List<SongsDTO> GetSongsByAllTags(List<string> tags)
         {
-            List<SongsTBL> songs = et.SongsTBL.ToList();
-            List<SongsTBL> flag = et.SongsTBL.ToList();
-            foreach (string tag in tags)
-            {
-                flag = GetSongInListByTag(songs, tag);
-                if (flag != null)
-                    songs = flag;
-                else
-                    break;
+            List<SongsTBL> songsIncludeAllTags = new List<SongsTBL>();
+            if (tags != null) {
+                List<SongsTBL> songsList = et.SongsTBL.ToList();
+                foreach (SongsTBL song in songsList)
+                {
+                    List<TagsToSongsDTO> tagsToSong = TagsToSongsBL.GetTagsToSong(song.id);
+                    bool isContain = true;
+                    foreach (var tagName in tags)
+                    {
+                        int tagId = et.TagsTBL.Where(t => t.name == tagName).FirstOrDefault().id;
+                        if (tagsToSong.Select(tag => tag.tagId).Contains(tagId) == false)
+                        {
+                            isContain = false;
+                            break;
+                        }
+                    }
+                    if (isContain)
+                        songsIncludeAllTags.Add(song);
+                }
             }
-            if (flag != null)
-                return Casts.ToSongsDTO.GetSongs(songs);
-            return null;
+            return Casts.ToSongsDTO.GetSongs(songsIncludeAllTags);
         }
         public static void AddSong(SongsTBL song)
         {
