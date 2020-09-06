@@ -37,6 +37,7 @@
         <AssociationConnector Association="MusicOnlineModel.FK_SongsToPlaylistsTBL_SongsTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_TagsToSongsTBL_SongsTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_TagsToSongsTBL_TagNameTBL" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicOnlineModel.FK_TagsToSongsTBL_ArticlesTBL" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
