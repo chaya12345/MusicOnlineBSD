@@ -2,7 +2,9 @@
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
+
 // Plus imports for other components in your app.
+@import '../src/lib/core/theming/palette';
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -12,11 +14,12 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$clientMusicOnline-primary: mat-palette($mat-indigo);
-$clientMusicOnline-accent: mat-palette($mat-pink, A200, A100, A400);
+
+$clientMusicOnline-primary: mat-palette($app-orange-palette);
+$clientMusicOnline-accent: mat-palette($app-orange-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$clientMusicOnline-warn: mat-palette($mat-red);
+$clientMusicOnline-warn: mat-palette($app-orange-palette);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $clientMusicOnline-theme: mat-light-theme($clientMusicOnline-primary, $clientMusicOnline-accent, $clientMusicOnline-warn);
