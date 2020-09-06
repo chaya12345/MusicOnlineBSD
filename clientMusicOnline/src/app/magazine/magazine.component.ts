@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LikeService } from '../services/like.service';
+import { Article } from '../classes/article';
+import { ArticleService } from '../services/article.service';
 
 @Component({
   selector: 'magazine',
@@ -9,43 +11,31 @@ import { LikeService } from '../services/like.service';
 })
 export class MagazineComponent implements OnInit {
 
-  articlesList = [{
-    title: "צפו: גדולי הזמר על במה אחת בסוכות",
-    subtitle: " כ\"ח תשרי התשע\"ט | 07.10.18 10:14",
-    imgSrc: "../../assets/images/for-deleting/162576_tumb_750Xauto.jpg",
-    content: "גדולי הזמר שלוימי גרטנר, יידל ורדיגר, אלי הרצליך ונמואל הרוש על במה אחת, הרקידו את הציבור בשמחת בית השואבה"
-  },{
-    title: "אחים ושרים: ראיון משולש עם חיים ישראל, איציק ואבישי אשל",
-    subtitle: "ב' כסלו התשע\"ה | 24.11.14 08:29",
-    imgSrc: "../../assets/images/for-deleting/46849_tumb_750Xauto.jpg",
-    content: "שלושה יוצרים נושאים את המוזיקה המזרחית חסידית על הגב שלהם, כל הדרך מתימן לפולין ובחזרה. התוצאה: תחייה רוחנית לז'אנר שחשב ללכת לאיבוד. חיים ישראל, איציק אשל, אבישי אשל - אחים ממשפחה טובה." +
-      "הם דיברו ושרו וניגנו. 'בקהילה' לחצו על 'פליי' ומביאים את סיפורם "
-  },{
-    title: "הרגע ששבר את פיני איינהורן בתהלוכת המרפסות בירושלים • צפו והאזינו",
-    subtitle: "16:30 כ״ז באדר תש״פ 23.03.2020",
-    imgSrc: "../../assets/images/for-deleting/‏‏פיני-איינהורן-במשאית-השמחה-בירושלים.PNG",
-    content: " ביוזמתו של ראש עיריית ירושלים משה ליאון יצאה היום 'משאית השמחה' שתטייל בשכונות ובהמשך" + 
-      "גם בכל הארץ, היום היא היתה בבית וגן והיו עליה הזמר פיני איינהורן לצד אמן הקלידים איציק ויינגרטן ששימחו את התושבים, ב'זמן אוויר' סיפר פיני על הרגע הכי מרגש במהלך ההופעה הניידת"
-  }];
-  like_functionality;
+  articlesList: Article[] = [];
+  likeFunctionality;
 
-  constructor(private song_service: LikeService) { 
-    this.like_functionality = song_service;
+  constructor(private articleService: ArticleService, private likeService: LikeService) {
+    this.articleService.getArticles().subscribe(article => { this.articlesList = article; this.filter(); }, err => { console.log(err); });
   }
 
   ngOnInit() {
+    this.likeFunctionality = this.likeService;
   }
 
   sign(event): void {
-    this.like_functionality.toggle_like(event);
+    this.likeFunctionality.toggle_like(event);
   }
 
   marking(event): void {
-    this.like_functionality.change_like_color(event);
+    this.likeFunctionality.change_like_color(event);
   }
 
   reset_marking(event, color: string): void {
-    this.like_functionality.reset_like_color(event, color);
+    this.likeFunctionality.reset_like_color(event, color);
+  }
+
+  filter(): void {
+    this.articlesList = this.articlesList.slice(0, 3);
   }
 
 }

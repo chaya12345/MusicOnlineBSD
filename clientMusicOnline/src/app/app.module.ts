@@ -39,6 +39,10 @@ import { SearchSpesificSongComponent } from './search-spesific-song/search-spesi
 import { SearchByComponent } from './search-by/search-by.component';
 import { ForTryComponent } from './for-try/for-try.component';
 import { PlayerComponent } from './player/player.component';
+import { ArticleComponent } from './article/article.component';
+import { BottomRightTriangleComponent } from './bottom-right-triangle/bottom-right-triangle.component';
+import { TopRightTriangleComponent } from './top-right-triangle/top-right-triangle.component';
+import { TopFooterComponent } from './top-footer/top-footer.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +77,11 @@ import { PlayerComponent } from './player/player.component';
     SearchSpesificSongComponent,
     SearchByComponent,
     ForTryComponent,
-    PlayerComponent
+    PlayerComponent,
+    ArticleComponent,
+    BottomRightTriangleComponent,
+    TopRightTriangleComponent,
+    TopFooterComponent
   ],
   imports: [
     BrowserModule,

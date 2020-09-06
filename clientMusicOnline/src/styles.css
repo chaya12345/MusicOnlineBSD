@@ -122,8 +122,12 @@ info .mat-tab-nav-bar, info .mat-tab-header {
 }
 
 .wrapper-main {
-    margin: 0 60px;
-    margin-bottom: 20px;
+    padding: 40px 95px;
+    padding-bottom: 20px;
+}
+
+.wrapper-footer {
+    padding: 35px 40px;
 }
 
 /* #endregion */
