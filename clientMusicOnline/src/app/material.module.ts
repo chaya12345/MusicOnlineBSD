@@ -14,6 +14,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRippleModule } from '@angular/material/core';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 
 const modules = [
     MatToolbarModule,
@@ -30,7 +32,9 @@ const modules = [
     MatSelectModule,
     MatCheckboxModule,
     MatRippleModule,
-    MatSliderModule
+    MatSliderModule,
+    MatDialogModule,
+    MatDividerModule
 ];
 
 @NgModule({

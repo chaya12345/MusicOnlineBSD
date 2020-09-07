@@ -1,12 +1,7 @@
 <div class="wrap-container-magazine wrapper wrapper-main">
   <top title="מגזין" icon="queue_music"></top>
   <div class="wrap-articles">
-
     <article *ngFor="let article of articlesList" [article]="article"></article>
-
-    <p class="nav-button" matRipple matRippleRadius="40" matRippleUnbounded="true">למגזין המלא
-      <mat-icon>chevron_left</mat-icon>
-    </p>
-
+    <nav-button text="למגזין המלא"></nav-button>
   </div>
 </div>
