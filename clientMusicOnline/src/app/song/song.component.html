@@ -2,11 +2,8 @@
     <div class="back-song" [style.background-image]="'url(../../assets/images/'+song.image_location+')'">
         <div class="front-song">
             <div class="border-song"></div>
-            <!-- <footer-song [song]="song" [is_parent_hovered]="isHover"></footer-song> -->
-            <player [song]="song" [is_parent_hovered]="isHover"></player>
+            <player [song]="song"></player>
         </div>
     </div>
-    <div class="title-song">
-        <p>{{song.title}}</p>
-    </div>
+    <div class="title-song"><p>{{song.title}}</p></div>
 </div>

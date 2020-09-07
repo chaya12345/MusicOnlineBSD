@@ -41,6 +41,11 @@
     padding: 17px;
     text-align: center;
     line-height: 25px;
+    transition: .4s;
+}
+
+.wrap-song:hover .title-song {
+    transform: translateY(7px);
 }
 
 .title-song p {

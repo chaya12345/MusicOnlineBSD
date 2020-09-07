@@ -20,7 +20,7 @@ export class FavoriteComponent implements OnInit {
 
   filter(): void {
     this.favoriteSongsList.sort((a, b) => Math.round(b.count_like - a.count_like));
-    this.favoriteSongsList = this.favoriteSongsList.slice(0, 4);
+    this.favoriteSongsList = this.favoriteSongsList.slice(0, 5);
   }
 
 }

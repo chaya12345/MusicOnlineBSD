@@ -20,7 +20,7 @@ export class ViewedComponent implements OnInit {
 
   filter(): void {
     this.viewedSongsList.sort((a, b) => Math.round(b.count_views - a.count_views));
-    this.viewedSongsList = this.viewedSongsList.slice(0, 4);
+    this.viewedSongsList = this.viewedSongsList.slice(0, 5);
   }
 
 }

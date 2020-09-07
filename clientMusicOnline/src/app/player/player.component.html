@@ -1,10 +1,5 @@
-<!-- <div class="wrap-container-player">
-    <mat-icon *ngIf="!is_play" (click)="play($event)">play_arrow</mat-icon>
-    <mat-icon *ngIf="is_play" (click)="pause($event)">pause</mat-icon>
-    <mat-slider class="slider-audio" [max]="max" min="0" step="0.1" [(ngModel)]="value"></mat-slider>
-    <mat-icon *ngIf="!is_fullscreen" (click)="fullscreen($event)">fullscreen</mat-icon>
-    <mat-icon *ngIf="is_fullscreen" (click)="fullscreen($event)">fullscreen_exit</mat-icon>
-</div> -->
-<mat-basic-audio-player [audioUrl]="msbapAudioUrl" [title]="msbapTitle" [autoPlay]="false" muted="muted" (trackEnded)="onEnded($event)"
+<!-- <mat-basic-audio-player [audioUrl]="msbapAudioUrl" [title]="msbapTitle" [autoPlay]="false" muted="muted" (trackEnded)="onEnded($event)"
     [displayTitle]="msbapDisplayTitle" [displayVolumeControls]="msaapDisplayVolumeControls" 
-        [disablePositionSlider]="msbapDisablePositionSlider"></mat-basic-audio-player>
+        [disablePositionSlider]="msbapDisablePositionSlider"></mat-basic-audio-player> -->
+<mat-basic-audio-player [audioUrl]="msbapAudioUrl" [title]="msbapTitle" [autoPlay]="false" muted="muted" (trackEnded)="onEnded($event)"
+    [displayTitle]="msbapDisplayTitle"></mat-basic-audio-player>

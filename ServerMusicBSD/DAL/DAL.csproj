@@ -144,6 +144,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="src\images\for_songs\יעקב-שוואקי\211577_tumb_750Xauto.jpg" />
+    <Content Include="src\images\for_songs\אברהם-פריד\234162_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_articles\162576_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_articles\46849_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_articles\‏‏פיני-איינהורן-במשאית-השמחה-בירושלים.PNG" />
@@ -155,6 +157,9 @@
     <Content Include="src\images\for_songs\איציק-דדיה\cover-27-560x373.jpg" />
     <Content Include="src\images\for_songs\איציק-דדיה\da-560x321.png" />
     <Content Include="src\images\for_songs\איציק-דדיה\אלוקי-נשמה-יוטיוב-560x316.jpeg" />
+    <Content Include="src\images\for_songs\קובי-ברומר\‏‏כמה-טוב-ה.PNG" />
+    <Content Include="src\songs\אבי-אילסון\אבי אילסון - תן לי אור.mp3" />
+    <Content Include="src\songs\אברהם-פריד\אברהם-פריד-אוטוטו-Avraham-Fried-OhToToh.mp4" />
     <Content Include="src\songs\איציק-דדיה\47e1dbf051d404c3fda9f2219b2fa2b1.mp4" />
     <Content Include="src\songs\איציק-דדיה\איציק דדיה - נכספתי.mp4" />
     <Content Include="src\songs\איציק-דדיה\אלוקי נשמה.mp4" />
@@ -165,29 +170,30 @@
     <Content Include="src\songs\איציק-דדיה\מלחמות.mp3" />
     <Content Include="src\songs\אריק-דביר\אריק דביר - נרקוד.mp3" />
     <Content Include="src\songs\חיים-ישראל\חיים ישראל - טעיתי.mp3" />
-    <Content Include="src\songs\יעקב-שוואקי\יעקב שוואקי - מסיני בא.mp3" />
+    <Content Include="src\songs\יעקב-שוואקי\יעקב שוואקי - מסיני בא.mp4" />
     <Content Include="src\songs\ישי-ריבו\ישי ריבו - כתר מלוכה.mp3" />
     <Content Include="src\songs\נמואל-הרוש\נמואל הרוש - אלוקים.mp3" />
+    <Content Include="src\songs\קובי-ברומר\כמה-טוב-ה-I-קובי-ברומר-Kama-Tov-Hashem-I-Kobi-Brummer.mp4" />
     <Content Include="src\songs\קובי-ברומר\קובי ברומר - עולים לירושלים.mp3" />
     <Content Include="src\songs\קובי-ברומר\קובי ברומר - עם הנצח .mp3" />
     <Content Include="src\songs\שמחה-פרידמן\שמחה פרידמן - לא לפחד.mp3" />
-    <Content Include="src\text\songs_content\אבי אילסון\אבי אילסון בשיר חדש ומאיר עם קליפ מרהיב %27תן לי אור%27.txt" />
-    <Content Include="src\text\songs_content\איציק דדיה\איציק דדיה בדרך לאומן – הקליפ הרשמי.txt" />
-    <Content Include="src\text\songs_content\איציק דדיה\איציק דדיה בלהיט חדש – %27בדרך לאומן%27.txt" />
-    <Content Include="src\text\songs_content\איציק דדיה\איציק דדיה בסינגל חדש %27האמונה בוערת%27.txt" />
-    <Content Include="src\text\songs_content\איציק דדיה\איציק דדיה בסינגל חדש %27כוכבים נופלים%27.txt" />
-    <Content Include="src\text\songs_content\איציק דדיה\איציק דדיה ויניב בן משיח – אלוקי נשמה.txt" />
-    <Content Include="src\text\songs_content\איציק דדיה\איציק דדיה חוזר במוסיקה מקורית ובוגרת יותר %27נכספתי%27.txt" />
-    <Content Include="src\text\songs_content\איציק דדיה\מאט דאב ואיציק דדיה בדואט %27אנא%27.txt" />
+    <Content Include="src\text\songs_content\אבי-אילסון\אבי אילסון בשיר חדש ומאיר עם קליפ מרהיב %27תן לי אור%27.txt" />
+    <Content Include="src\text\songs_content\אברהם-פריד\אוטוטו.txt" />
+    <Content Include="src\text\songs_content\איציק-דדיה\איציק דדיה בדרך לאומן – הקליפ הרשמי.txt" />
+    <Content Include="src\text\songs_content\איציק-דדיה\איציק דדיה בלהיט חדש – %27בדרך לאומן%27.txt" />
+    <Content Include="src\text\songs_content\איציק-דדיה\איציק דדיה בסינגל חדש %27האמונה בוערת%27.txt" />
+    <Content Include="src\text\songs_content\איציק-דדיה\איציק דדיה בסינגל חדש %27כוכבים נופלים%27.txt" />
+    <Content Include="src\text\songs_content\איציק-דדיה\איציק דדיה ויניב בן משיח – אלוקי נשמה.txt" />
+    <Content Include="src\text\songs_content\איציק-דדיה\איציק דדיה חוזר במוסיקה מקורית ובוגרת יותר %27נכספתי%27.txt" />
+    <Content Include="src\text\songs_content\איציק-דדיה\מאט דאב ואיציק דדיה בדואט %27אנא%27.txt" />
+    <Content Include="src\text\songs_content\קובי-ברומר\כמה-טוב-ה.txt" />
     <Content Include="src\text\‏‏about-site.txt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\songs\אבי-אילסון\" />
     <Folder Include="src\songs\אבי-מן\" />
-    <Folder Include="src\songs\אברהם-פריד\" />
     <Folder Include="src\songs\אודי-דוידי\" />
     <Folder Include="src\songs\אוהד-מושקוביץ\" />
     <Folder Include="src\songs\בני-פרידמן\" />
