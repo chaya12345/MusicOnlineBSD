@@ -1,0 +1,17 @@
+.wrap-responses {
+    padding: 20px;
+    direction: rtl;
+}
+
+.response {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    line-height: 35px;
+}
+
+.response span {
+    color: white;
+}

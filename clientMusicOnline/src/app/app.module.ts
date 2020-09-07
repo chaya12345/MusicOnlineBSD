@@ -39,6 +39,14 @@ import { SearchSpesificSongComponent } from './search-spesific-song/search-spesi
 import { SearchByComponent } from './search-by/search-by.component';
 import { ForTryComponent } from './for-try/for-try.component';
 import { PlayerComponent } from './player/player.component';
+import { ArticleComponent } from './article/article.component';
+import { BottomRightTriangleComponent } from './bottom-right-triangle/bottom-right-triangle.component';
+import { TopRightTriangleComponent } from './top-right-triangle/top-right-triangle.component';
+import { TopFooterComponent } from './top-footer/top-footer.component';
+import { NavButtonComponent } from './nav-button/nav-button.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { RegistrationToNewsletterComponent } from './registration-to-newsletter/registration-to-newsletter.component';
+import { RegistrationToWebsiteComponent } from './registration-to-website/registration-to-website.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +81,15 @@ import { PlayerComponent } from './player/player.component';
     SearchSpesificSongComponent,
     SearchByComponent,
     ForTryComponent,
-    PlayerComponent
+    PlayerComponent,
+    ArticleComponent,
+    BottomRightTriangleComponent,
+    TopRightTriangleComponent,
+    TopFooterComponent,
+    NavButtonComponent,
+    HomePageComponent,
+    RegistrationToNewsletterComponent,
+    RegistrationToWebsiteComponent
   ],
   imports: [
     BrowserModule,

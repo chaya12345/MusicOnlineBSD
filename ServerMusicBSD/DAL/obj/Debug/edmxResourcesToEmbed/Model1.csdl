@@ -30,6 +30,7 @@
     <Property Name="count_views" Type="Int64" />
     <Property Name="count_like" Type="Int64" />
     <NavigationProperty Name="ResponsesTBL" Relationship="Self.FK_ResponsesTBL_ArticlesBTL" FromRole="ArticlesTBL" ToRole="ResponsesTBL" />
+    <NavigationProperty Name="TagsToSongsTBL" Relationship="MusicOnlineModel.FK_TagsToSongsTBL_ArticlesTBL" FromRole="ArticlesTBL" ToRole="TagsToSongsTBL" />
   </EntityType>
   <EntityType Name="ArtistsTBL">
     <Key>
@@ -187,6 +188,8 @@
     <Property Name="tagId" Type="Int32" />
     <NavigationProperty Name="SongsTBL" Relationship="Self.FK_TagsToSongsTBL_SongsTBL" FromRole="TagsToSongsTBL" ToRole="SongsTBL" />
     <NavigationProperty Name="TagsTBL" Relationship="Self.FK_TagsToSongsTBL_TagNameTBL" FromRole="TagsToSongsTBL" ToRole="TagsTBL" />
+    <Property Name="articleId" Type="Int32" />
+    <NavigationProperty Name="ArticlesTBL" Relationship="MusicOnlineModel.FK_TagsToSongsTBL_ArticlesTBL" FromRole="TagsToSongsTBL" ToRole="ArticlesTBL" />
   </EntityType>
   <EntityType Name="UsersTBL">
     <Key>
@@ -462,5 +465,21 @@
       <End Role="TagsTBL" EntitySet="TagsTBL" />
       <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
     </AssociationSet>
+    <AssociationSet Name="FK_TagsToSongsTBL_ArticlesTBL" Association="MusicOnlineModel.FK_TagsToSongsTBL_ArticlesTBL">
+      <End Role="ArticlesTBL" EntitySet="ArticlesTBL" />
+      <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
+    </AssociationSet>
   </EntityContainer>
+  <Association Name="FK_TagsToSongsTBL_ArticlesTBL">
+    <End Type="MusicOnlineModel.ArticlesTBL" Role="ArticlesTBL" Multiplicity="0..1" />
+    <End Type="MusicOnlineModel.TagsToSongsTBL" Role="TagsToSongsTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArticlesTBL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TagsToSongsTBL">
+        <PropertyRef Name="articleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

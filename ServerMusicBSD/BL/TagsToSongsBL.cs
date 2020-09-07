@@ -11,19 +11,11 @@ namespace BL
     public class TagsToSongsBL
     {
         static MusicOnlineEntities et = new MusicOnlineEntities();
-        public static List<string> GetTagsToSong(string songName)
+        public static List<TagsToSongsDTO> GetTagsToSong(int songId)
         {
-            int songId = et.SongsTBL.Where(song => song.name == songName).FirstOrDefault().id;
-            List<TagsToSongsDTO> tagsId = Casts.ToTagsToSongsDTO
-                .GetTagsToSongs(et.TagsToSongsTBL.Where(tag => tag.songId == songId).ToList());
-            List<string> tags = new List<string>();
-            foreach (TagsToSongsDTO tag in tagsId)
-            {
-                tags.Add(et.TagsTBL.Where(t => t.id == tag.tagId).FirstOrDefault().name);
-            }
-            return tags;
+           return  Casts.ToTagsToSongsDTO.GetTagsToSongs(et.TagsToSongsTBL.Where(t => t.songId == songId).ToList());
         }
-        public static void PostTagToSong(TagsToSongsTBL tagToSong)
+        public static void AddTagToSong(TagsToSongsTBL tagToSong)
         {
             et.TagsToSongsTBL.Add(tagToSong);
             et.SaveChanges();

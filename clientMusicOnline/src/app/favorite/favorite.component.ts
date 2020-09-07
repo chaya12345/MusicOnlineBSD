@@ -12,7 +12,7 @@ export class FavoriteComponent implements OnInit {
   favoriteSongsList: Song[] = [];
 
   constructor(private songService: SongService) { 
-    this.songService.getSongs().subscribe(songs => {this.favoriteSongsList = songs; this.filter();}, err => { console.log(err); });
+    this.songService.getSongs().subscribe(song => {this.favoriteSongsList = song; this.filter();}, err => { console.log(err); });
   }
 
   ngOnInit() {

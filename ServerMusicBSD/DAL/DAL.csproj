@@ -131,6 +131,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="src\text\about-site.utf-8" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model1.Context.tt">
@@ -143,6 +144,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="src\images\for_articles\162576_tumb_750Xauto.jpg" />
+    <Content Include="src\images\for_articles\46849_tumb_750Xauto.jpg" />
+    <Content Include="src\images\for_articles\‏‏פיני-איינהורן-במשאית-השמחה-בירושלים.PNG" />
     <Content Include="src\images\for_songs\אבי-אילסון\231862_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_songs\איציק-דדיה\211576_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_songs\איציק-דדיה\223388_tumb_750Xauto.jpg" />
@@ -175,6 +179,7 @@
     <Content Include="src\text\songs_content\איציק דדיה\איציק דדיה ויניב בן משיח – אלוקי נשמה.txt" />
     <Content Include="src\text\songs_content\איציק דדיה\איציק דדיה חוזר במוסיקה מקורית ובוגרת יותר %27נכספתי%27.txt" />
     <Content Include="src\text\songs_content\איציק דדיה\מאט דאב ואיציק דדיה בדואט %27אנא%27.txt" />
+    <Content Include="src\text\‏‏about-site.txt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

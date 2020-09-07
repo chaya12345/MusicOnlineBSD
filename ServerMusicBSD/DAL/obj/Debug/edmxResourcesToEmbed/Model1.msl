@@ -171,6 +171,7 @@
     <EntitySetMapping Name="TagsToSongsTBL">
       <EntityTypeMapping TypeName="MusicOnlineModel.TagsToSongsTBL">
         <MappingFragment StoreEntitySet="TagsToSongsTBL">
+          <ScalarProperty Name="articleId" ColumnName="articleId" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="songId" ColumnName="songId" />
           <ScalarProperty Name="tagId" ColumnName="tagId" />
