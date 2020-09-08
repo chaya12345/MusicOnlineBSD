@@ -23,7 +23,7 @@ export class AboutComponent implements OnInit {
     "כוכבים נופלים | מילים ולחן: אלחנן אלחדד | עיבוד והפקה מוזיקלית: אייל ויאיר שריקי";
 
   constructor(http: HttpClient) {
-    http.get('../../assets/text/about-site.utf-8', {
+    http.get('../../assets/text/about-site.utf-8.txt', {
       responseType: 'text', headers: {
         "Accept": "application/txt;charset=utf-8",
         "Accept-Charset": "charset=utf-8"
