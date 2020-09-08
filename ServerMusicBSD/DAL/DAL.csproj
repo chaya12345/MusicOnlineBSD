@@ -131,7 +131,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <None Include="src\text\about-site.utf-8" />
+    <Content Include="src\text\about-site.txt" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model1.Context.tt">
