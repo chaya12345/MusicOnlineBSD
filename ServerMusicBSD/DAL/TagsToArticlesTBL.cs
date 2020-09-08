@@ -12,12 +12,13 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class TagsToArticlesTBL
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int id { get; set; }
+        public Nullable<int> tagId { get; set; }
+        public Nullable<int> articleId { get; set; }
+    
+        public virtual ArticlesTBL ArticlesTBL { get; set; }
+        public virtual TagsTBL TagsTBL { get; set; }
     }
 }

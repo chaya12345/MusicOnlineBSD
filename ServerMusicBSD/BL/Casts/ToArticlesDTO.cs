@@ -18,7 +18,6 @@ namespace BL.Casts
             newArticle.subtitle = article.subtitle;
             newArticle.dateHebrew = article.dateHebrew;
             newArticle.date = article.date;
-            newArticle.tagsId = article.tagsId;
             newArticle.content = article.content;
             newArticle.main_image = article.main_image;
             newArticle.image1 = article.image1;

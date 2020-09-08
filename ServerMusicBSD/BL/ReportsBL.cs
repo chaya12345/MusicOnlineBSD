@@ -14,26 +14,26 @@ namespace BL
         
         public static void addReport(ReportsTBL report)
         {
-            et.ReportsTBL.Add(report);
+            et.ReportsTBLs.Add(report);
             et.SaveChanges();
         }
         public static List<ReportsDTO> GetReports()
         {
-            return Casts.ToReportsDTO.GetReports(et.ReportsTBL.ToList());
+            return Casts.ToReportsDTO.GetReports(et.ReportsTBLs.ToList());
         }
         public static ReportsDTO GetReportById(int reportId)
         {
-            return Casts.ToReportsDTO.GetReport(et.ReportsTBL.Where(r => r.id == reportId).FirstOrDefault());
+            return Casts.ToReportsDTO.GetReport(et.ReportsTBLs.Where(r => r.id == reportId).FirstOrDefault());
         }
         public static void ChangeReportStatus(int reportId, string status)
         {
-            ReportsTBL report = et.ReportsTBL.Where(r => r.id == reportId).FirstOrDefault();
+            ReportsTBL report = et.ReportsTBLs.Where(r => r.id == reportId).FirstOrDefault();
             report.status = status;
             et.SaveChanges();
         }
         public static List<ReportsDTO> GetAllUntreatedReports()
         {
-            return Casts.ToReportsDTO.GetReports(et.ReportsTBL.Where(r => r.status != "טופל").ToList());
+            return Casts.ToReportsDTO.GetReports(et.ReportsTBLs.Where(r => r.status != "טופל").ToList());
         }
     }
 }

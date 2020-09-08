@@ -13,12 +13,12 @@ namespace BL
         static MusicOnlineEntities et = new MusicOnlineEntities();
         public static void AddUser(UsersTBL user)
         {
-            et.UsersTBL.Add(user);
+            et.UsersTBLs.Add(user);
             et.SaveChanges();
         }
         public static void UpdateUser(int userId, UsersTBL updateUser)
         {
-            UsersTBL user = et.UsersTBL.Find(userId);
+            UsersTBL user = et.UsersTBLs.Find(userId);
             if (userId == user.id)
             {
                 if (updateUser.name != null)
@@ -42,7 +42,7 @@ namespace BL
 
         public static void UpdatePassword(int userId, string password)
         {
-            UsersTBL user = et.UsersTBL.Find(userId);
+            UsersTBL user = et.UsersTBLs.Find(userId);
             if (userId == user.id)
             {
                 if (password != null)
@@ -56,7 +56,7 @@ namespace BL
 
         public static void UpdateProfil(int userId, UsersTBL updateUser)
         {
-            UsersTBL user = et.UsersTBL.Find(userId);
+            UsersTBL user = et.UsersTBLs.Find(userId);
             if (userId == user.id)
             {
                 if (updateUser.name != null)
@@ -70,7 +70,7 @@ namespace BL
         }
         public static void UpdateDefinition(int userId, UsersTBL updateUser)
         {
-            UsersTBL user = et.UsersTBL.Find(userId);
+            UsersTBL user = et.UsersTBLs.Find(userId);
             if (userId == user.id)
             {
                 if (updateUser.type != null)
@@ -87,11 +87,11 @@ namespace BL
         }
         public static List<UsersDTO> GetUsers()
         {
-            return Casts.ToUsersDTO.GetUsers(et.UsersTBL.ToList());
+            return Casts.ToUsersDTO.GetUsers(et.UsersTBLs.ToList());
         }
         public static UsersDTO GetUser(string userName, string password)
         {
-            UsersTBL user = et.UsersTBL.Where(u => u.name == userName && u.password == password).FirstOrDefault();
+            UsersTBL user = et.UsersTBLs.Where(u => u.name == userName && u.password == password).FirstOrDefault();
             return Casts.ToUsersDTO.GetUser(user);
         }
     }
