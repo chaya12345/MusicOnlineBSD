@@ -18,7 +18,6 @@ namespace DAL
         public ArticlesTBL()
         {
             this.ResponsesTBL = new HashSet<ResponsesTBL>();
-            this.TagsToSongsTBL = new HashSet<TagsToSongsTBL>();
         }
     
         public int id { get; set; }
@@ -41,7 +40,5 @@ namespace DAL
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ResponsesTBL> ResponsesTBL { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TagsToSongsTBL> TagsToSongsTBL { get; set; }
     }
 }

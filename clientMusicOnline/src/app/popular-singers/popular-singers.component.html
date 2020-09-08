@@ -1,8 +1,4 @@
 <div class="wrap-container-popular-singers wrapper">
     <top title="זמרים פופולאריים" icon="person_pin"></top>
-    <div class="wrap-singers-chip-list">
-        <mat-chip-list aria-label="popular_singers selection">
-            <mat-chip *ngFor="let singer of popularSingers">{{singer}}</mat-chip>
-        </mat-chip-list>
-    </div>
+    <tags [tagsList]="popularSingers"></tags>
 </div>

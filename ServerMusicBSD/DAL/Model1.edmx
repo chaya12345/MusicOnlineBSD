@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MusicOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MusicOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AlbumsTBL">
           <Key>
             <PropertyRef Name="id" />
@@ -164,7 +164,6 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="songId" Type="int" />
           <Property Name="tagId" Type="int" />
-          <Property Name="articleId" Type="int" />
         </EntityType>
         <EntityType Name="UsersTBL">
           <Key>
@@ -336,18 +335,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TagsToSongsTBL_ArticlesTBL">
-          <End Role="ArticlesTBL" Type="Self.ArticlesTBL" Multiplicity="0..1" />
-          <End Role="TagsToSongsTBL" Type="Self.TagsToSongsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArticlesTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsToSongsTBL">
-              <PropertyRef Name="articleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TagsToSongsTBL_SongsTBL">
           <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="0..1" />
           <End Role="TagsToSongsTBL" Type="Self.TagsToSongsTBL" Multiplicity="*" />
@@ -442,10 +429,6 @@
             <End Role="SongsTBL" EntitySet="SongsTBL" />
             <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsToSongsTBL_ArticlesTBL" Association="Self.FK_TagsToSongsTBL_ArticlesTBL">
-            <End Role="ArticlesTBL" EntitySet="ArticlesTBL" />
-            <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
-          </AssociationSet>
           <AssociationSet Name="FK_TagsToSongsTBL_SongsTBL" Association="Self.FK_TagsToSongsTBL_SongsTBL">
             <End Role="SongsTBL" EntitySet="SongsTBL" />
             <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
@@ -455,7 +438,8 @@
             <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MusicOnlineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -489,7 +473,6 @@
           <Property Name="count_views" Type="Int64" />
           <Property Name="count_like" Type="Int64" />
           <NavigationProperty Name="ResponsesTBL" Relationship="Self.FK_ResponsesTBL_ArticlesBTL" FromRole="ArticlesTBL" ToRole="ResponsesTBL" />
-          <NavigationProperty Name="TagsToSongsTBL" Relationship="MusicOnlineModel.FK_TagsToSongsTBL_ArticlesTBL" FromRole="ArticlesTBL" ToRole="TagsToSongsTBL" />
         </EntityType>
         <EntityType Name="ArtistsTBL">
           <Key>
@@ -647,8 +630,6 @@
           <Property Name="tagId" Type="Int32" />
           <NavigationProperty Name="SongsTBL" Relationship="Self.FK_TagsToSongsTBL_SongsTBL" FromRole="TagsToSongsTBL" ToRole="SongsTBL" />
           <NavigationProperty Name="TagsTBL" Relationship="Self.FK_TagsToSongsTBL_TagNameTBL" FromRole="TagsToSongsTBL" ToRole="TagsTBL" />
-          <Property Name="articleId" Type="Int32" />
-          <NavigationProperty Name="ArticlesTBL" Relationship="MusicOnlineModel.FK_TagsToSongsTBL_ArticlesTBL" FromRole="TagsToSongsTBL" ToRole="ArticlesTBL" />
         </EntityType>
         <EntityType Name="UsersTBL">
           <Key>
@@ -924,23 +905,7 @@
             <End Role="TagsTBL" EntitySet="TagsTBL" />
             <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_TagsToSongsTBL_ArticlesTBL" Association="MusicOnlineModel.FK_TagsToSongsTBL_ArticlesTBL">
-            <End Role="ArticlesTBL" EntitySet="ArticlesTBL" />
-            <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK_TagsToSongsTBL_ArticlesTBL">
-          <End Type="MusicOnlineModel.ArticlesTBL" Role="ArticlesTBL" Multiplicity="0..1" />
-          <End Type="MusicOnlineModel.TagsToSongsTBL" Role="TagsToSongsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ArticlesTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="TagsToSongsTBL">
-              <PropertyRef Name="articleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1117,7 +1082,6 @@
           <EntitySetMapping Name="TagsToSongsTBL">
             <EntityTypeMapping TypeName="MusicOnlineModel.TagsToSongsTBL">
               <MappingFragment StoreEntitySet="TagsToSongsTBL">
-                <ScalarProperty Name="articleId" ColumnName="articleId" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="songId" ColumnName="songId" />
                 <ScalarProperty Name="tagId" ColumnName="tagId" />

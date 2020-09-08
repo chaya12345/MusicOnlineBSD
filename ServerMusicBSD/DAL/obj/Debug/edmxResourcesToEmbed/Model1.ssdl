@@ -159,7 +159,6 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="songId" Type="int" />
     <Property Name="tagId" Type="int" />
-    <Property Name="articleId" Type="int" />
   </EntityType>
   <EntityType Name="UsersTBL">
     <Key>
@@ -331,18 +330,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_TagsToSongsTBL_ArticlesTBL">
-    <End Role="ArticlesTBL" Type="Self.ArticlesTBL" Multiplicity="0..1" />
-    <End Role="TagsToSongsTBL" Type="Self.TagsToSongsTBL" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ArticlesTBL">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="TagsToSongsTBL">
-        <PropertyRef Name="articleId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_TagsToSongsTBL_SongsTBL">
     <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="0..1" />
     <End Role="TagsToSongsTBL" Type="Self.TagsToSongsTBL" Multiplicity="*" />
@@ -436,10 +423,6 @@
     <AssociationSet Name="FK_SongsToPlaylistsTBL_SongsTBL" Association="Self.FK_SongsToPlaylistsTBL_SongsTBL">
       <End Role="SongsTBL" EntitySet="SongsTBL" />
       <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TagsToSongsTBL_ArticlesTBL" Association="Self.FK_TagsToSongsTBL_ArticlesTBL">
-      <End Role="ArticlesTBL" EntitySet="ArticlesTBL" />
-      <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
     </AssociationSet>
     <AssociationSet Name="FK_TagsToSongsTBL_SongsTBL" Association="Self.FK_TagsToSongsTBL_SongsTBL">
       <End Role="SongsTBL" EntitySet="SongsTBL" />

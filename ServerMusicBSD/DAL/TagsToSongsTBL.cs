@@ -17,10 +17,8 @@ namespace DAL
         public int id { get; set; }
         public Nullable<int> songId { get; set; }
         public Nullable<int> tagId { get; set; }
-        public Nullable<int> articleId { get; set; }
     
         public virtual SongsTBL SongsTBL { get; set; }
         public virtual TagsTBL TagsTBL { get; set; }
-        public virtual ArticlesTBL ArticlesTBL { get; set; }
     }
 }

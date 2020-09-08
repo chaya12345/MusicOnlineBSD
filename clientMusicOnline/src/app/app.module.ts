@@ -48,6 +48,10 @@ import { NavButtonComponent } from './nav-button/nav-button.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RegistrationToNewsletterComponent } from './registration-to-newsletter/registration-to-newsletter.component';
 import { RegistrationToWebsiteComponent } from './registration-to-website/registration-to-website.component';
+import { FullSongComponent } from './full-song/full-song.component';
+import { SimilarResultsComponent } from './similar-results/similar-results.component';
+import { TagsComponent } from './tags/tags.component';
+import { InfoSongComponent } from './info-song/info-song.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +94,11 @@ import { RegistrationToWebsiteComponent } from './registration-to-website/regist
     NavButtonComponent,
     HomePageComponent,
     RegistrationToNewsletterComponent,
-    RegistrationToWebsiteComponent
+    RegistrationToWebsiteComponent,
+    FullSongComponent,
+    SimilarResultsComponent,
+    TagsComponent,
+    InfoSongComponent
   ],
   imports: [
     BrowserModule,

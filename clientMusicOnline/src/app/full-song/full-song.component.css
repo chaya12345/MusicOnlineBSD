@@ -1,0 +1,47 @@
+.wrap-container-full-song {
+    direction: rtl;
+    padding: 0 30px;
+}
+
+.wrap-full-song {
+    margin: 0 150px;
+    padding: 70px 20px;
+}
+
+.wrap-full-song h2 {
+    font-family: fb Joker;
+    font-size: 32px;
+}
+
+.wrap-full-song h3 {
+    font-weight: 400;
+    margin: 25px 0 35px 0;
+    line-height: 30px;
+}
+
+mat-divider {
+    margin-bottom: 30px;
+}
+
+.wrap-full-song img {
+    max-width: 750px;
+}
+
+.wrap-full-song p {
+    margin: 30px 0;
+    font-size: 18px;
+    line-height: 35px;
+}
+
+.date {
+    font-size: 18px;
+    font-weight: 100;
+}
+
+.info span {
+    display: flex;
+}
+
+.info span mat-icon {
+    margin: 0 25px 0 5px;
+}
