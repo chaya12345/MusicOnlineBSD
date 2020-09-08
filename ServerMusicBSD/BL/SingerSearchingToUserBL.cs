@@ -13,11 +13,11 @@ namespace BL
         static MusicOnlineEntities et = new MusicOnlineEntities();
         public static List<SingerSearchingToUserDTO> GetAllSingerSearching()
         {
-            return Casts.ToSingerSearchingToUserDTO.GetSearchingsToUser(et.SingerSearchingToUserTBL.ToList());
+            return Casts.ToSingerSearchingToUserDTO.GetSearchingsToUser(et.SingerSearchingToUserTBLs.ToList());
         }
         public static List<SingerSearchingToUserDTO> GetSingerSearchingToUser(int userId)
         {
-            return Casts.ToSingerSearchingToUserDTO.GetSearchingsToUser(et.SingerSearchingToUserTBL.Where(s => s.userId == userId).ToList());
+            return Casts.ToSingerSearchingToUserDTO.GetSearchingsToUser(et.SingerSearchingToUserTBLs.Where(s => s.userId == userId).ToList());
         }
         private static void AddLineToTable(int userId,int singerId)
         {
@@ -26,19 +26,19 @@ namespace BL
             newLine.singerId = singerId;
             newLine.count_searching = 1;
             newLine.last_date = DateTime.Today;
-            et.SingerSearchingToUserTBL.Add(newLine);
+            et.SingerSearchingToUserTBLs.Add(newLine);
             et.SaveChanges();
         }
         private static void UpdateLineInTable(int userId, int singerId)
         {
-            SingerSearchingToUserTBL updateLine= et.SingerSearchingToUserTBL.Where(s => s.userId == userId && s.singerId == singerId).FirstOrDefault();
+            SingerSearchingToUserTBL updateLine= et.SingerSearchingToUserTBLs.Where(s => s.userId == userId && s.singerId == singerId).FirstOrDefault();
             updateLine.count_searching++;
             updateLine.last_date = DateTime.Today;
             et.SaveChanges();
         }
         public static void AddSingerSearchingToUser(int userId,int singerId)
         {
-            if (et.SingerSearchingToUserTBL.Where(s => s.userId == userId && s.singerId == singerId).ToList() == null)
+            if (et.SingerSearchingToUserTBLs.Where(s => s.userId == userId && s.singerId == singerId).ToList() == null)
                 AddLineToTable(userId, singerId);
             else
                 UpdateLineInTable(userId, singerId);

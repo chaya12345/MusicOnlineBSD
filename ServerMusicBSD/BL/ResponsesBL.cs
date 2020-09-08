@@ -14,23 +14,27 @@ namespace BL
         static MusicOnlineEntities et = new MusicOnlineEntities();
         public static void AddResponse(ResponsesTBL response)
         {
-            et.ResponsesTBL.Add(response);
+            et.ResponsesTBLs.Add(response);
             et.SaveChanges();
         }
         public static List<ResponsesDTO> GetArticleResponses(int articleId)
         {
-           return Casts.ToResponseDTO.GetResponses(et.ResponsesTBL.Where(r => r.articleId == articleId).ToList());
+           return Casts.ToResponseDTO.GetResponses(et.ResponsesTBLs.Where(r => r.articleId == articleId).ToList());
         }
         public static void DeleteResponse(int responseId)
         {
-            ResponsesTBL response = et.ResponsesTBL.Where(r => r.id == responseId).FirstOrDefault();
-            et.ResponsesTBL.Remove(response);
+            ResponsesTBL response = et.ResponsesTBLs.Where(r => r.id == responseId).FirstOrDefault();
+            et.ResponsesTBLs.Remove(response);
             et.SaveChanges();
         }
         public static List<ResponsesDTO> GetLastResponses()
         {
-            List<ResponsesTBL> list = et.ResponsesTBL.Where(r => r.date != null).OrderBy(r=>r.date).Distinct().ToList();
+            List<ResponsesTBL> list = et.ResponsesTBLs.Where(r => r.date != null).OrderBy(r=>r.date).Distinct().ToList();
             return Casts.ToResponseDTO.GetResponses(list);
+        }
+        public static List<LastRespons> GetLast5Responses()
+        {
+          return et.LastResponses.ToList();
         }
     }
 }

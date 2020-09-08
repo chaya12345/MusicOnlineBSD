@@ -16,7 +16,6 @@
     <Property Name="subtitle" Type="varchar(max)" />
     <Property Name="dateHebrew" Type="varchar" MaxLength="50" />
     <Property Name="date" Type="datetime" />
-    <Property Name="tagsId" Type="bigint" />
     <Property Name="content" Type="varchar(max)" />
     <Property Name="main_image" Type="varchar(max)" />
     <Property Name="image1" Type="varchar(max)" />
@@ -152,6 +151,14 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="TagsToArticlesTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tagId" Type="int" />
+    <Property Name="articleId" Type="int" />
+  </EntityType>
   <EntityType Name="TagsToSongsTBL">
     <Key>
       <PropertyRef Name="id" />
@@ -173,6 +180,19 @@
     <Property Name="coincidental" Type="bit" />
     <Property Name="newsletter" Type="bit" />
     <Property Name="saveLike" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="LastResponses">
+    <Key>
+      <PropertyRef Name="responsId" />
+      <PropertyRef Name="articleId" />
+    </Key>
+    <Property Name="responsId" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="date" Type="date" />
+    <Property Name="articleId" Type="int" Nullable="false" />
+    <Property Name="title" Type="varchar(max)" />
   </EntityType>
   <Association Name="FK_ArtistsToSongsTBL_ArtistsTBL">
     <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="0..1" />
@@ -330,6 +350,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TagsToArticleTBL_ArticlesTBL">
+    <End Role="ArticlesTBL" Type="Self.ArticlesTBL" Multiplicity="0..1" />
+    <End Role="TagsToArticlesTBL" Type="Self.TagsToArticlesTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArticlesTBL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TagsToArticlesTBL">
+        <PropertyRef Name="articleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TagsToArticleTBL_TagsTBL">
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="0..1" />
+    <End Role="TagsToArticlesTBL" Type="Self.TagsToArticlesTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TagsTBL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TagsToArticlesTBL">
+        <PropertyRef Name="tagId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_TagsToSongsTBL_SongsTBL">
     <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="0..1" />
     <End Role="TagsToSongsTBL" Type="Self.TagsToSongsTBL" Multiplicity="*" />
@@ -370,8 +414,18 @@
     <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsTBL" EntityType="Self.TagsTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TagsToArticlesTBL" EntityType="Self.TagsToArticlesTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsToSongsTBL" EntityType="Self.TagsToSongsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LastResponses" EntityType="Self.LastResponses" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [LastResponses].[responsId] AS [responsId], 
+    [LastResponses].[name] AS [name], 
+    [LastResponses].[date] AS [date], 
+    [LastResponses].[articleId] AS [articleId], 
+    [LastResponses].[title] AS [title]
+    FROM [dbo].[LastResponses] AS [LastResponses]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK_ArtistsToSongsTBL_ArtistsTBL" Association="Self.FK_ArtistsToSongsTBL_ArtistsTBL">
       <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
       <End Role="ArtistsToSongsTBL" EntitySet="ArtistsToSongsTBL" />
@@ -423,6 +477,14 @@
     <AssociationSet Name="FK_SongsToPlaylistsTBL_SongsTBL" Association="Self.FK_SongsToPlaylistsTBL_SongsTBL">
       <End Role="SongsTBL" EntitySet="SongsTBL" />
       <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TagsToArticleTBL_ArticlesTBL" Association="Self.FK_TagsToArticleTBL_ArticlesTBL">
+      <End Role="ArticlesTBL" EntitySet="ArticlesTBL" />
+      <End Role="TagsToArticlesTBL" EntitySet="TagsToArticlesTBL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TagsToArticleTBL_TagsTBL" Association="Self.FK_TagsToArticleTBL_TagsTBL">
+      <End Role="TagsTBL" EntitySet="TagsTBL" />
+      <End Role="TagsToArticlesTBL" EntitySet="TagsToArticlesTBL" />
     </AssociationSet>
     <AssociationSet Name="FK_TagsToSongsTBL_SongsTBL" Association="Self.FK_TagsToSongsTBL_SongsTBL">
       <End Role="SongsTBL" EntitySet="SongsTBL" />
