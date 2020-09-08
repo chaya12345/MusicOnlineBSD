@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Song } from '../classes/song';
+import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'song',
@@ -9,6 +10,7 @@ import { Song } from '../classes/song';
 export class SongComponent implements OnInit {
 
   @Input() song: Song;
+  // @Output() openFullSong = new EventEmitter();
   isHover:boolean = false;
 
   constructor() { 
@@ -19,6 +21,10 @@ export class SongComponent implements OnInit {
 
   toggle_hover(event) :void {
     this.isHover = !this.isHover;
+  }
+
+  raiseFullSong(): void {
+    // this.openFullSong.emit(this.song.name);
   }
 
 }

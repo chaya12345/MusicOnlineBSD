@@ -18,6 +18,7 @@ export class FullSongComponent implements OnInit {
   httpClient;
   // _tagsToSongsService;
   tags: string[] = [];
+  workedSong: Song;
 
   constructor(private songService: SongService, http: HttpClient/*, tagsToSongsService = TagsToSongsService*/) {
     songService.getSongs().subscribe(song => { this.songsList = song; this.filter(); this.getContent(); this.getTags(); }, err => { console.log(err); });
@@ -49,6 +50,10 @@ export class FullSongComponent implements OnInit {
   getTags(): void {
     // this._tagsToSongsService.GetTagsNamesToSong().subscribe(tag => { this.tags = tag; }, err => { console.log(err); });
     this.tags = ["אברהם פריד", "סינגל", "קצבי", "חסידי", "קליפ"];
+  }
+
+  showFullSong(song: Song): void {
+    this.workedSong = song;
   }
 
 }

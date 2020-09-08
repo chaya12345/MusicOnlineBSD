@@ -1,4 +1,4 @@
-<div class="wrap-container-full-song">
+<div class="wrap-container-full-song" (openFullSong)="showFullSong($event)">
     <div class="wrap-full-song">
         <h2>{{song.title}}</h2>
         <h3>{{song.subtitle}}<span class="date"> • {{song.date | date: 'd/M/yyyy H:mm'}}</span></h3>

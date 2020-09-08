@@ -185,6 +185,9 @@ info .mat-tab-nav-bar, info .mat-tab-header {
     background: #2c8dfb;
     margin: 0 !important;
     z-index: 9999;
+    font-size: 12px;
+    font-weight: 400;
+    box-shadow: 0 0 5px #1010101f;
 }
 
 /* #endregion */
