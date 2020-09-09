@@ -13,12 +13,12 @@ namespace BL
         static MusicOnlineEntities et = new MusicOnlineEntities();
         public static void AddArtistName(ArtistsTBL artistsName)
         {
-            et.ArtistsTBLs.Add(artistsName);
+            et.ArtistsTBL.Add(artistsName);
             et.SaveChanges();
         }
         public static List<ArtistsDTO> GetArtistsNames()
         {
-            return Casts.ToArtistsDTO.GetArtistsNames(et.ArtistsTBLs.ToList());
+            return Casts.ToArtistsDTO.GetArtistsNames(et.ArtistsTBL.ToList());
         }
     }
 }

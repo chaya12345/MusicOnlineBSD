@@ -13,17 +13,17 @@ namespace BL
         static MusicOnlineEntities et = new MusicOnlineEntities();
         public static void AddPlaylist(PlaylistsTBL playlist)
         {
-            et.PlaylistsTBLs.Add(playlist);
+            et.PlaylistsTBL.Add(playlist);
             et.SaveChanges();
         }
         public static void DeletePlaylist(int id)
         {
-            PlaylistsTBL playlist = et.PlaylistsTBLs.Where(p => p.id == id).FirstOrDefault();
+            PlaylistsTBL playlist = et.PlaylistsTBL.Where(p => p.id == id).FirstOrDefault();
             if (playlist != null)
             {
-                et.PlaylistsTBLs.Remove(playlist);
+                et.PlaylistsTBL.Remove(playlist);
                 et.SaveChanges();
-                List<SongsToPlaylistsTBL> songsToDelet = et.SongsToPlaylistsTBLs.Where(s => s.playlistId == id).ToList();
+                List<SongsToPlaylistsTBL> songsToDelet = et.SongsToPlaylistsTBL.Where(s => s.playlistId == id).ToList();
                 foreach (SongsToPlaylistsTBL song in songsToDelet)
                 {
                     SongsToPlaylistsBL.DeleteSong(song.id);
@@ -32,7 +32,7 @@ namespace BL
         }
         public static List<PlaylistsDTO> GetPlaylistsByUserId(int userId)
         {
-            return Casts.ToPlaylistsDTO.GetPlaylists(et.PlaylistsTBLs.Where(p => p.userId == userId).ToList());
+            return Casts.ToPlaylistsDTO.GetPlaylists(et.PlaylistsTBL.Where(p => p.userId == userId).ToList());
         }
     }
 }

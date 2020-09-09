@@ -13,11 +13,11 @@ namespace BL
         static MusicOnlineEntities et = new MusicOnlineEntities();
         public static List<SingerSearchingToUserDTO> GetAllSingerSearching()
         {
-            return Casts.ToSingerSearchingToUserDTO.GetSearchingsToUser(et.SingerSearchingToUserTBLs.ToList());
+            return Casts.ToSingerSearchingToUserDTO.GetSearchingsToUser(et.SingerSearchingToUserTBL.ToList());
         }
         public static List<SingerSearchingToUserDTO> GetSingerSearchingToUser(int userId)
         {
-            return Casts.ToSingerSearchingToUserDTO.GetSearchingsToUser(et.SingerSearchingToUserTBLs.Where(s => s.userId == userId).ToList());
+            return Casts.ToSingerSearchingToUserDTO.GetSearchingsToUser(et.SingerSearchingToUserTBL.Where(s => s.userId == userId).ToList());
         }
         private static void AddLineToTable(int userId,int singerId)
         {
@@ -26,26 +26,26 @@ namespace BL
             newLine.singerId = singerId;
             newLine.count_searching = 1;
             newLine.last_date = DateTime.Today;
-            et.SingerSearchingToUserTBLs.Add(newLine);
+            et.SingerSearchingToUserTBL.Add(newLine);
             et.SaveChanges();
         }
         private static void UpdateLineInTable(int userId, int singerId)
         {
-            SingerSearchingToUserTBL updateLine= et.SingerSearchingToUserTBLs.Where(s => s.userId == userId && s.singerId == singerId).FirstOrDefault();
+            SingerSearchingToUserTBL updateLine= et.SingerSearchingToUserTBL.Where(s => s.userId == userId && s.singerId == singerId).FirstOrDefault();
             updateLine.count_searching++;
             updateLine.last_date = DateTime.Today;
             et.SaveChanges();
         }
         public static void AddSingerSearchingToUser(int userId,int singerId)
         {
-            if (et.SingerSearchingToUserTBLs.Where(s => s.userId == userId && s.singerId == singerId).ToList() == null)
+            if (et.SingerSearchingToUserTBL.Where(s => s.userId == userId && s.singerId == singerId).ToList() == null)
                 AddLineToTable(userId, singerId);
             else
                 UpdateLineInTable(userId, singerId);
         }
         public static SingerSearchingToUserDTO GetLastSearchingToUser(int userId)
         {
-            SingerSearchingToUserTBL lastSearching= et.SingerSearchingToUserTBLs.Where(s => s.userId == userId).OrderByDescending(s => s.last_date).FirstOrDefault();
+            SingerSearchingToUserTBL lastSearching= et.SingerSearchingToUserTBL.Where(s => s.userId == userId).OrderByDescending(s => s.last_date).FirstOrDefault();
             return Casts.ToSingerSearchingToUserDTO.GetSearchingToUser(lastSearching);
         }
     }

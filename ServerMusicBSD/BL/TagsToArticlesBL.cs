@@ -17,18 +17,18 @@ namespace BL
             List<string> tags = new List<string>();
             foreach (TagsToAtriclesDTO tag in tagsToArticle)
             {
-                tags.Add(et.TagsTBLs.Where(t => t.id == tag.tagId).FirstOrDefault().name);
+                tags.Add(et.TagsTBL.Where(t => t.id == tag.tagId).FirstOrDefault().name);
             }
             return tags;
         }
 
         public static List<TagsToAtriclesDTO> GetTagsToArticle(int articleId)
         {
-            return Casts.ToTagsToArticleDTO.GetTagsToArticles(et.TagsToArticlesTBLs.Where(t => t.articleId == articleId).ToList());
+            return Casts.ToTagsToArticleDTO.GetTagsToArticles(et.TagsToArticlesTBL.Where(t => t.articleId == articleId).ToList());
         }
         public static void AddTagToArticle(TagsToArticlesTBL tagsToArticle)
         {
-            et.TagsToArticlesTBLs.Add(tagsToArticle);
+            et.TagsToArticlesTBL.Add(tagsToArticle);
             et.SaveChanges();
         }
     }

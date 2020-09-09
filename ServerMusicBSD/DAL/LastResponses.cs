@@ -10,22 +10,14 @@
 namespace DAL
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class getSongs_Result
+    public partial class LastResponses
     {
-        public int id { get; set; }
+        public int responsId { get; set; }
         public string name { get; set; }
-        public string file_location { get; set; }
-        public string type { get; set; }
         public Nullable<System.DateTime> date { get; set; }
-        public Nullable<long> count_responses { get; set; }
-        public Nullable<int> singerId { get; set; }
-        public Nullable<long> count_like { get; set; }
-        public Nullable<long> count_views { get; set; }
-        public Nullable<int> albumId { get; set; }
+        public int articleId { get; set; }
         public string title { get; set; }
-        public string subtitle { get; set; }
-        public string image_location { get; set; }
-        public string content { get; set; }
     }
 }

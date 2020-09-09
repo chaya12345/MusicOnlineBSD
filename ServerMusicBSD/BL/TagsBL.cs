@@ -13,11 +13,11 @@ namespace BL
         static MusicOnlineEntities et = new MusicOnlineEntities();
         public static List<TagsDTO> GetTags()
         {
-            return Casts.ToTagsDTO.GetTags(et.TagsTBLs.ToList());
+            return Casts.ToTagsDTO.GetTags(et.TagsTBL.ToList());
         }
         public static void AddTag(TagsTBL tag)
         {
-            et.TagsTBLs.Add(tag);
+            et.TagsTBL.Add(tag);
             et.SaveChanges();
         }
 

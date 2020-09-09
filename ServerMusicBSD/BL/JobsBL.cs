@@ -13,11 +13,11 @@ namespace BL
         static MusicOnlineEntities et = new MusicOnlineEntities();
         public static List<JobsDTO> GetJobs()
         {
-           return Casts.ToJobsDTO.GetJobs(et.JobTBLs.ToList());
+           return Casts.ToJobsDTO.GetJobs(et.JobTBL.ToList());
         }
         public static void AddJob(JobTBL newJob)
         {
-            et.JobTBLs.Add(newJob);
+            et.JobTBL.Add(newJob);
             et.SaveChanges();
         }
     }

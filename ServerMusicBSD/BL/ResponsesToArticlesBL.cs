@@ -14,8 +14,8 @@ namespace BL
         static MusicOnlineEntities et = new MusicOnlineEntities();
         public static void AddResponse(ResponsesToArticlesTBL response)
         {
-            et.ResponsesToArticlesTBLs.Add(response);
-            ArticlesTBL article = et.ArticlesTBLs.Where(a => a.id == response.articleId).FirstOrDefault();
+            et.ResponsesToArticlesTBL.Add(response);
+            ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == response.articleId).FirstOrDefault();
             if (article.count_responses == null)
                 article.count_responses = 1;
             else article.count_responses++;
@@ -23,21 +23,21 @@ namespace BL
         }
         public static List<ResponsesToArticlesDTO> GetArticleResponses(int articleId)
         {
-           return Casts.ToResponsesToArticlesDTO.GetResponses(et.ResponsesToArticlesTBLs.Where(r => r.articleId == articleId).ToList());
+           return Casts.ToResponsesToArticlesDTO.GetResponses(et.ResponsesToArticlesTBL.Where(r => r.articleId == articleId).ToList());
         }
         public static void DeleteResponse(int responseId)
         {
-            ResponsesToArticlesTBL response = et.ResponsesToArticlesTBLs.Where(r => r.id == responseId).FirstOrDefault();
-            ArticlesTBL article = et.ArticlesTBLs.Where(a => a.id == response.articleId).FirstOrDefault();
+            ResponsesToArticlesTBL response = et.ResponsesToArticlesTBL.Where(r => r.id == responseId).FirstOrDefault();
+            ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == response.articleId).FirstOrDefault();
             if (article.count_responses == null || article.count_responses <= 0)
                 article.count_responses = 0;
             else article.count_responses--;
-            et.ResponsesToArticlesTBLs.Remove(response);
+            et.ResponsesToArticlesTBL.Remove(response);
             et.SaveChanges();
         }
         public static List<ResponsesToArticlesDTO> GetLastResponses()
         {
-            List<ResponsesToArticlesTBL> list = et.ResponsesToArticlesTBLs.Where(r => r.date != null).OrderBy(r=>r.date).Distinct().ToList();
+            List<ResponsesToArticlesTBL> list = et.ResponsesToArticlesTBL.Where(r => r.date != null).OrderBy(r=>r.date).Distinct().ToList();
             return Casts.ToResponsesToArticlesDTO.GetResponses(list);
         }
         public static List<LastResponsDTO> GetLast5Responses()

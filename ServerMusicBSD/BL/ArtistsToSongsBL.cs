@@ -13,7 +13,7 @@ namespace BL
         static MusicOnlineEntities et = new MusicOnlineEntities();
         public static List<ArtistsToSongsDTO> GetArtistsToSong(int songId)
         {
-            return Casts.ToArtistsToSongsDTO.GetArtistsToSongs(et.ArtistsToSongsTBLs.Where(a => a.songId == songId).ToList());
+            return Casts.ToArtistsToSongsDTO.GetArtistsToSongs(et.ArtistsToSongsTBL.Where(a => a.songId == songId).ToList());
 
             //ArtistsDTO- פונקציה שמחזירה את שמות האומנים ז"א  מחזירה 
             //List<ArtistsToSongsTBL> artistsToSong = new List<ArtistsToSongsTBL>();
@@ -28,7 +28,7 @@ namespace BL
         }
         public static List<ArtistsToSongsDTO> GetSongsToArtist(int artistId)
         {
-            return Casts.ToArtistsToSongsDTO.GetArtistsToSongs(et.ArtistsToSongsTBLs.Where(a => a.artistId == artistId).ToList());
+            return Casts.ToArtistsToSongsDTO.GetArtistsToSongs(et.ArtistsToSongsTBL.Where(a => a.artistId == artistId).ToList());
             //List<ArtistsToSongsTBL> artistsToSong = new List<ArtistsToSongsTBL>();
             //artistsToSong.AddRange(et.ArtistsToSongsTBL.Where(a => a.artistId == artistId).ToList());
             //List<SongsTBL> songs = new List<SongsTBL>();
@@ -41,7 +41,7 @@ namespace BL
         }
         public static void AddArtistToSong(ArtistsToSongsTBL artistToSong)
         {
-            et.ArtistsToSongsTBLs.Add(artistToSong);
+            et.ArtistsToSongsTBL.Add(artistToSong);
             et.SaveChanges();
         }
     }

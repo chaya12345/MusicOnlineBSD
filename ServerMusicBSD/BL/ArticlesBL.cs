@@ -13,26 +13,26 @@ namespace BL
         static MusicOnlineEntities et = new MusicOnlineEntities();
         public static List<ArticlesDTO> GetArticles()
         {
-            return Casts.ToArticlesDTO.GetArticles(et.ArticlesTBLs.ToList());
+            return Casts.ToArticlesDTO.GetArticles(et.ArticlesTBL.ToList());
         }
         public static ArticlesDTO GetArticleById(int articleId)
         {
-            return Casts.ToArticlesDTO.GetArticle(et.ArticlesTBLs.Where(a => a.id == articleId).FirstOrDefault());
+            return Casts.ToArticlesDTO.GetArticle(et.ArticlesTBL.Where(a => a.id == articleId).FirstOrDefault());
         }
         public static void AddArticle(ArticlesTBL article)
         {
-            et.ArticlesTBLs.Add(article);
+            et.ArticlesTBL.Add(article);
             et.SaveChanges();
         }
         public static void DeleteArticle(int articleId)
         {
-            ArticlesTBL article = et.ArticlesTBLs.Where(a => a.id == articleId).FirstOrDefault();
-            et.ArticlesTBLs.Remove(article);
+            ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == articleId).FirstOrDefault();
+            et.ArticlesTBL.Remove(article);
             et.SaveChanges();
         }
         public static List<ArticlesDTO> GetArticlesByTag(string tagName)
         {
-            List<ArticlesTBL> list = GetArticleInListByTag(et.ArticlesTBLs.ToList(), tagName);
+            List<ArticlesTBL> list = GetArticleInListByTag(et.ArticlesTBL.ToList(), tagName);
             if (list != null)
                 return Casts.ToArticlesDTO.GetArticles(list);
             return null;
@@ -40,11 +40,11 @@ namespace BL
         }
         private static List<ArticlesTBL> GetArticleInListByTag(List<ArticlesTBL> articles, string tagName)
         {
-            TagsTBL tag = et.TagsTBLs.Where(t => t.name == tagName).FirstOrDefault();
+            TagsTBL tag = et.TagsTBL.Where(t => t.name == tagName).FirstOrDefault();
             List<ArticlesTBL> result = new List<ArticlesTBL>();
             if (tag != null && articles != null)
             {
-                List<TagsToArticlesTBL> tagToArticles = et.TagsToArticlesTBLs.Where(t => t.tagId == tag.id).ToList();
+                List<TagsToArticlesTBL> tagToArticles = et.TagsToArticlesTBL.Where(t => t.tagId == tag.id).ToList();
                 foreach (TagsToArticlesTBL artic in tagToArticles)
                 {
                     ArticlesTBL articleIn = articles.Where(a => a.id == artic.articleId).FirstOrDefault();
@@ -66,8 +66,8 @@ namespace BL
         }
         public static List<ArticlesDTO> GetArticlesByAllTags(List<string> tags)
         {
-            List<ArticlesTBL> articles = et.ArticlesTBLs.ToList();
-            List<ArticlesTBL> flag = et.ArticlesTBLs.ToList();
+            List<ArticlesTBL> articles = et.ArticlesTBL.ToList();
+            List<ArticlesTBL> flag = et.ArticlesTBL.ToList();
             foreach (string tag in tags)
             {
                 flag = GetArticleInListByTag(articles, tag);
@@ -82,7 +82,7 @@ namespace BL
         }
         public static void InreaseLike(int articleId)
         {
-            ArticlesTBL article = et.ArticlesTBLs.Where(a => a.id == articleId).FirstOrDefault();
+            ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == articleId).FirstOrDefault();
             if (article != null)
             {
                 if (article.count_like == null)
@@ -93,7 +93,7 @@ namespace BL
         }
         public static void DecreaseLike(int articleId)
         {
-            ArticlesTBL article = et.ArticlesTBLs.Where(a => a.id == articleId).FirstOrDefault();
+            ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == articleId).FirstOrDefault();
             if (article != null)
             {
                 if (article.count_like == null)

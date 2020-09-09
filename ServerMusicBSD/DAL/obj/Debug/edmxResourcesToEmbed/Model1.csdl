@@ -1,58 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MusicOnlineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <ComplexType Name="getPlaylists_Result">
-    <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="playlistId" Type="Int32" />
-    <Property Name="songId" Type="Int32" />
-  </ComplexType>
-  <ComplexType Name="getSongs_Result">
-    <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="file_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="date" Type="DateTime" />
-    <Property Name="count_responses" Type="Int64" />
-    <Property Name="singerId" Type="Int32" />
-    <Property Name="count_like" Type="Int64" />
-    <Property Name="count_views" Type="Int64" />
-    <Property Name="albumId" Type="Int32" />
-    <Property Name="title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="subtitle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="image_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-  </ComplexType>
-  <ComplexType Name="searchByAlbum_Result">
-    <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="file_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="date" Type="DateTime" />
-    <Property Name="count_responses" Type="Int64" />
-    <Property Name="singerId" Type="Int32" />
-    <Property Name="count_like" Type="Int64" />
-    <Property Name="count_views" Type="Int64" />
-    <Property Name="albumId" Type="Int32" />
-    <Property Name="title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="subtitle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="image_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-  </ComplexType>
-  <ComplexType Name="searchBySinger_Result">
-    <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="file_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="date" Type="DateTime" />
-    <Property Name="count_responses" Type="Int64" />
-    <Property Name="singerId" Type="Int32" />
-    <Property Name="count_like" Type="Int64" />
-    <Property Name="count_views" Type="Int64" />
-    <Property Name="albumId" Type="Int32" />
-    <Property Name="title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-    <Property Name="subtitle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="image_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-  </ComplexType>
   <EntityType Name="AlbumsTBL">
     <Key>
       <PropertyRef Name="id" />
@@ -271,6 +218,17 @@
     <Property Name="saveLike" Type="Boolean" />
     <NavigationProperty Name="PlaylistsTBL" Relationship="Self.FK_PlaylistsTBL_UsersTBL" FromRole="UsersTBL" ToRole="PlaylistsTBL" />
     <NavigationProperty Name="SingerSearchingToUserTBL" Relationship="Self.FK_SingerSearchingToUserTBL_UsersTBL" FromRole="UsersTBL" ToRole="SingerSearchingToUserTBL" />
+  </EntityType>
+  <EntityType Name="LastResponses">
+    <Key>
+      <PropertyRef Name="responsId" />
+      <PropertyRef Name="articleId" />
+    </Key>
+    <Property Name="responsId" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="date" Type="DateTime" Precision="0" />
+    <Property Name="articleId" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_SongsTBL_AlbumsTBL">
     <End Role="AlbumsTBL" Type="Self.AlbumsTBL" Multiplicity="0..1" />
@@ -507,6 +465,7 @@
     <EntitySet Name="TagsToArticlesTBL" EntityType="Self.TagsToArticlesTBL" />
     <EntitySet Name="TagsToSongsTBL" EntityType="Self.TagsToSongsTBL" />
     <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" />
+    <EntitySet Name="LastResponses" EntityType="Self.LastResponses" />
     <AssociationSet Name="FK_SongsTBL_AlbumsTBL" Association="Self.FK_SongsTBL_AlbumsTBL">
       <End Role="AlbumsTBL" EntitySet="AlbumsTBL" />
       <End Role="SongsTBL" EntitySet="SongsTBL" />
@@ -579,15 +538,5 @@
       <End Role="TagsTBL" EntitySet="TagsTBL" />
       <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
     </AssociationSet>
-    <FunctionImport Name="getPlaylists" IsComposable="true" ReturnType="Collection(MusicOnlineModel.getPlaylists_Result)">
-      <Parameter Name="userId" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="getSongs" IsComposable="true" ReturnType="Collection(MusicOnlineModel.getSongs_Result)" />
-    <FunctionImport Name="searchByAlbum" IsComposable="true" ReturnType="Collection(MusicOnlineModel.searchByAlbum_Result)">
-      <Parameter Name="albumName" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="searchBySinger" IsComposable="true" ReturnType="Collection(MusicOnlineModel.searchBySinger_Result)">
-      <Parameter Name="singerName" Mode="In" Type="String" />
-    </FunctionImport>
   </EntityContainer>
 </Schema>
