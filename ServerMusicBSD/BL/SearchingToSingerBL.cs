@@ -39,10 +39,16 @@ namespace BL
             List<SingersTBL> popularSingers = new List<SingersTBL>();
             foreach (SearchingToSingerTBL sts in searchingToSingers)
             {
-                SingersTBL singer = et.SingersTBL.Where(s => s.id == sts.singerId).FirstOrDefault();
-                popularSingers.Add(singer);
+                if (sts.count_searching > 1000)
+                {
+                    SingersTBL singer = et.SingersTBL.Where(s => s.id == sts.singerId).FirstOrDefault();
+                    popularSingers.Add(singer);
+                }
+
             }
-            return Casts.ToSingersDTO.GetSingers(popularSingers);
+            if (popularSingers != null)
+                return Casts.ToSingersDTO.GetSingers(popularSingers);
+            return null;
         }
     }
 }

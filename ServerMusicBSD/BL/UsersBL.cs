@@ -16,6 +16,15 @@ namespace BL
             et.UsersTBL.Add(user);
             et.SaveChanges();
         }
+        public static void RemoveFromNewsletter(int userId)
+        {
+            UsersTBL user = et.UsersTBL.Where(u => u.id == userId).FirstOrDefault();
+            if (user != null)
+            {
+                user.newsletter = false;
+                et.SaveChanges();
+            }
+        }
         public static void UpdateUser(int userId, UsersTBL updateUser)
         {
             UsersTBL user = et.UsersTBL.Find(userId);

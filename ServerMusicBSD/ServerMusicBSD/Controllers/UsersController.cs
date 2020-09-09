@@ -16,12 +16,18 @@ namespace ServerMusicBSD.Controllers
     {
         public void PostRegistrationToWebsite([FromBody] UsersTBL newUser)
         {
+            newUser.type = true;
             UsersBL.AddUser(newUser);
         }
         public void PostRegistrationToNewsleter([FromBody] UsersTBL newUser)
         {
             newUser.newsletter = true;
+            newUser.type = false;
             UsersBL.AddUser(newUser);
+        }
+        public  void PutRemoveFromNewsletter(int userId)
+        {
+            UsersBL.RemoveFromNewsletter(userId);
         }
 
         public void PutUser(int userId,[FromBody] UsersTBL user)
