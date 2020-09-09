@@ -22,6 +22,9 @@ export class SongService {
   GetSongsByTag(tagName: string): Observable<Song[]> {
     return this.httpClient.get<Song[]>("https://localhost:44368/api/Songs/GetSongsByTag?tagName=" + tagName);
   }
+  GetSimilarSongs(songId: number): Observable<Song[]> {
+    return this.httpClient.get<Song[]>("https://localhost:44368/api/Songs/GetSimilarSongs?songId=" + songId);
+  }
   // GetSongsByTags(tags: object): Observable<Song[]> {
   //   return this.httpClient.post<Song[]>("https://localhost:44368/api/Songs/PostSongsByTags", tags);
   // }
@@ -29,10 +32,10 @@ export class SongService {
   //   this.httpClient.post("https://localhost:44368/api/Songs/PostSong",song);
   // }
 
-// יצירת קריאת סרבר עם הרשאות גישה
-//   const headers = { 'Authorization': 'Bearer my-token' }
-//   const body = { title: 'Angular POST Request Example' }
-//    this.http.post<any>('https://jsonplaceholder.typicode.com/posts', body, { headers });
+  // יצירת קריאת סרבר עם הרשאות גישה
+  //   const headers = { 'Authorization': 'Bearer my-token' }
+  //   const body = { title: 'Angular POST Request Example' }
+  //    this.http.post<any>('https://jsonplaceholder.typicode.com/posts', body, { headers });
 
 
 }
