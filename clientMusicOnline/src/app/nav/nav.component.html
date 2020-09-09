@@ -1,0 +1,13 @@
+<div class="wrap-container-nav">
+    <div class="navs" style="background-image: url(../../assets/images/cartoon\ non-mainstream\ musical\ instrument\ music_3594486.png);
+    background-attachment: fixed;
+    background-size: contain;">
+        <div style="visibility: hidden;" class="nav-item" *ngFor="let nav of navigations">
+            <button mat-button>
+                <mat-icon>{{nav.icon}}</mat-icon>
+                <br>
+                <span>{{nav.name}}</span>
+            </button>
+        </div>
+    </div>
+</div>

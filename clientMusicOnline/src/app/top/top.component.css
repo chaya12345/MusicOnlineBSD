@@ -1,0 +1,16 @@
+.wrap-container-top, mat-tab-group {
+    direction: rtl;
+}
+
+h2.title {
+    text-align: right;
+    transition: .5s cubic-bezier(.35,0,.25,1);
+    position: relative;
+    right: 22px;
+    top: 32px;
+    width: 160px;
+    transform: translateX(15px);
+    width: fit-content;
+    font-family: fb Joker;
+    font-size: 32px;
+}

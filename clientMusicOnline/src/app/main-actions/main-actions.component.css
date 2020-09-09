@@ -1,0 +1,21 @@
+.wrap-container-main-actions {
+    width: fit-content;
+    height: fit-content;
+    padding: 35px 20px;
+    direction: rtl;
+    text-align: center;
+}
+
+.wrap-container-main-actions > span {
+    color: #2c8dfb;
+    display: flex;
+    vertical-align: middle;
+    margin: 0 auto;
+    width: fit-content;
+    font-size: 14px;
+}
+
+.wrap-container-main-actions > span > mat-icon {
+    margin-left: 5px;
+    font-size: 22px;
+}

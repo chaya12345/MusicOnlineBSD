@@ -1,0 +1,13 @@
+<p class="title-search">
+    לחיפוש שיר
+    <mat-icon>keyboard_arrow_down</mat-icon>
+</p>
+<mat-form-field appearance="fill">
+    <mat-label>שם שיר</mat-label>
+    <input type="text" aria-label="Number" matInput [formControl]="songsControl" [matAutocomplete]="autoSongs">
+    <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete">
+        <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name">
+            {{song.name}}
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>

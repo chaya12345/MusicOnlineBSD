@@ -1,0 +1,11 @@
+<mat-divider></mat-divider>
+<div class="info">
+    <mat-icon>remove_red_eye</mat-icon>
+    <p>{{song.count_views}} צפיות</p>
+    <mat-icon>thumb_up_alt</mat-icon>
+    <p>{{song.count_like}} אנשים שאהבו</p>
+    <button mat-icon-button (click)="sign($event)" (mouseenter)="marking($event)" (mouseleave)="reset_marking($event,'black')">
+        <mat-icon>favorite_border</mat-icon>
+    </button>
+</div>
+<mat-divider></mat-divider>

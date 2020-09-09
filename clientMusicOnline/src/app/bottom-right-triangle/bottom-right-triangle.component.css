@@ -1,0 +1,6 @@
+.triangle {
+	position: relative;
+	width: 0;
+	border-left: 100vw solid transparent;
+	border-top: 100px solid whitesmoke;
+}

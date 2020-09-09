@@ -1,0 +1,27 @@
+.wrap-similar-results {
+    direction: rtl;
+    padding: 20px 30px;
+}
+
+.similar-results {
+    margin: 0 150px;
+    border: solid 1px #1010101f;
+    padding: 0 20px;
+}
+
+.wrap-song {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+song {
+    flex: 0 1 calc(33% - 20px);
+}
+
+.similar-results h3 {
+    font-family: fb Joker;
+    font-size: 32px;
+    margin: 40px 20px 10px;
+    display: flex;
+}
