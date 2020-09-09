@@ -129,5 +129,27 @@ namespace BL
             }
             return Casts.ToSongsDTO.GetSongs(result);
         }
+        public static void InreaseLike(int songId)
+        {
+            SongsTBL song = et.SongsTBLs.Where(s => s.id == songId).FirstOrDefault();
+            if (song != null)
+            {
+                if (song.count_like == null)
+                    song.count_like = 1;
+                else song.count_like++;
+                et.SaveChanges();
+            }
+        }
+        public static void DecreaseLike(int songId)
+        {
+            SongsTBL song = et.SongsTBLs.Where(s => s.id == songId).FirstOrDefault();
+            if (song != null)
+            {
+                if (song.count_like == null)
+                    song.count_like = 0;
+                else song.count_like--;
+                et.SaveChanges();
+            }
+        }
     }
 }

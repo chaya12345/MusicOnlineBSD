@@ -80,6 +80,27 @@ namespace BL
                 return Casts.ToArticlesDTO.GetArticles(articles);
             return null;
         }
-
+        public static void InreaseLike(int articleId)
+        {
+            ArticlesTBL article = et.ArticlesTBLs.Where(a => a.id == articleId).FirstOrDefault();
+            if (article != null)
+            {
+                if (article.count_like == null)
+                    article.count_like = 1;
+                else article.count_like++;
+                et.SaveChanges();
+            }
+        }
+        public static void DecreaseLike(int articleId)
+        {
+            ArticlesTBL article = et.ArticlesTBLs.Where(a => a.id == articleId).FirstOrDefault();
+            if (article != null)
+            {
+                if (article.count_like == null)
+                    article.count_like = 0;
+                else article.count_like--;
+                et.SaveChanges();
+            }
+        }
     }
 }

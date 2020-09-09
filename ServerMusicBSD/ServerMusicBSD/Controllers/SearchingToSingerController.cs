@@ -30,5 +30,9 @@ namespace ServerMusicBSD.Controllers
         {
             SearchingToSingerBL.UpdateSearchingToSinger(singerId);
         }
+        public List<SingersDTO> GetPopularSingers()
+        {
+            return SearchingToSingerBL.GetPopularSingers();
+        }
     }
 }

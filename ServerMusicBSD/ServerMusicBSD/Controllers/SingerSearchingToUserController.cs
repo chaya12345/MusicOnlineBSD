@@ -26,5 +26,9 @@ namespace ServerMusicBSD.Controllers
         {
             SingerSearchingToUserBL.AddSingerSearchingToUser(userId, singerId);
         }
+        public  SingerSearchingToUserDTO GetLastSearchingToUser(int userId)
+        {
+            return SingerSearchingToUserBL.GetLastSearchingToUser(userId);
+        }
     }
 }

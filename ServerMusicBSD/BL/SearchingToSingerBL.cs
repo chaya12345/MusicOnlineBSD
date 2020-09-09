@@ -33,5 +33,16 @@ namespace BL
             searchingToSinger.count_searching++;
             et.SaveChanges();
         }
+        public static List<SingersDTO> GetPopularSingers()
+        {
+            List<SearchingToSingerTBL> searchingToSingers = et.SearchingToSingerTBLs.OrderByDescending(s => s.count_searching).ToList();
+            List<SingersTBL> popularSingers = new List<SingersTBL>();
+            foreach (SearchingToSingerTBL sts in searchingToSingers)
+            {
+                SingersTBL singer = et.SingersTBLs.Where(s => s.id == sts.singerId).FirstOrDefault();
+                popularSingers.Add(singer);
+            }
+            return Casts.ToSingersDTO.GetSingers(popularSingers);
+        }
     }
 }

@@ -53,5 +53,13 @@ namespace ServerMusicBSD.Controllers
         {
            return SongsBL.GetSimilarSongs(songId);
         }
+        public void PutInreaseLike(int songId)
+        {
+            SongsBL.InreaseLike(songId);
+        }
+        public void PutDecreaseLike(int songId)
+        {
+            SongsBL.DecreaseLike(songId);
+        }
     }
 }

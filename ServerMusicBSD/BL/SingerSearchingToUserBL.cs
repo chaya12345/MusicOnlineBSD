@@ -43,5 +43,10 @@ namespace BL
             else
                 UpdateLineInTable(userId, singerId);
         }
+        public static SingerSearchingToUserDTO GetLastSearchingToUser(int userId)
+        {
+            SingerSearchingToUserTBL lastSearching= et.SingerSearchingToUserTBLs.Where(s => s.userId == userId).OrderByDescending(s => s.last_date).FirstOrDefault();
+            return Casts.ToSingerSearchingToUserDTO.GetSearchingToUser(lastSearching);
+        }
     }
 }
