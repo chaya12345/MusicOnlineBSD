@@ -30,7 +30,8 @@ mat-divider {
 .wrap-full-song p {
     margin: 30px 0;
     font-size: 18px;
-    line-height: 43px;
+    line-height: 34px;
+    white-space: pre-wrap;
 }
 
 .date {

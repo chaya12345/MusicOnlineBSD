@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Song } from '../classes/song';
-import { EventEmitter } from 'protractor';
+// import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'song',
@@ -10,7 +10,8 @@ import { EventEmitter } from 'protractor';
 export class SongComponent implements OnInit {
 
   @Input() song: Song;
-  // @Output() openFullSong = new EventEmitter();
+  @Output()
+  onShowFullSong: EventEmitter<Song> = new EventEmitter<Song>();
   isHover:boolean = false;
 
   constructor() { 
@@ -23,8 +24,10 @@ export class SongComponent implements OnInit {
     this.isHover = !this.isHover;
   }
 
-  raiseFullSong(): void {
-    // this.openFullSong.emit(this.song.name);
+  fullSong() {
+    console.log('click');
+    this.onShowFullSong.emit(this.song);
+    console.log('emit');
   }
 
 }

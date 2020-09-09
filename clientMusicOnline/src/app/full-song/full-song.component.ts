@@ -52,8 +52,8 @@ export class FullSongComponent implements OnInit {
     this.tags = ["אברהם פריד", "סינגל", "קצבי", "חסידי", "קליפ"];
   }
 
-  showFullSong(song: Song): void {
-    this.workedSong = song;
+  showFullSong(e: Song) {
+    console.log(e);
   }
 
 }

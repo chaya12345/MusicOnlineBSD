@@ -24,4 +24,8 @@ export class NewsicComponent implements OnInit {
     this.newSongsList = this.newSongsList.slice(0, 8);
   }
 
+  showFullSong(e: Song) {
+    console.log(e);
+  }
+
 }
