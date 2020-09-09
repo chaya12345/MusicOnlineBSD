@@ -28,29 +28,29 @@ namespace BL
         static MusicOnlineEntities et = new MusicOnlineEntities();
         public static List<SongsDTO> GetSongs()
         {
-            return Casts.ToSongsDTO.GetSongs(et.SongsTBLs.ToList());
+            return Casts.ToSongsDTO.GetSongs(et.SongsTBL.ToList());
         }
         public static List<SongsDTO> GetSongsBySinger(string singerName)
         {
-            SingersTBL singerId = et.SingersTBLs.Where(s => s.name == singerName).FirstOrDefault();
-            List<SongsDTO> result = Casts.ToSongsDTO.GetSongs(et.SongsTBLs.Where(s => s.singerId == singerId.id).ToList());
+            SingersTBL singerId = et.SingersTBL.Where(s => s.name == singerName).FirstOrDefault();
+            List<SongsDTO> result = Casts.ToSongsDTO.GetSongs(et.SongsTBL.Where(s => s.singerId == singerId.id).ToList());
             result.AddRange(GetSongsByTag(singerName));
             return result;
         }
         public static List<SongsDTO> GetSongsByAlbum(string albumName)
         {
-            long id = et.AlbumsTBLs.Where(a => a.name == albumName).FirstOrDefault().id;
-            return Casts.ToSongsDTO.GetSongs(et.SongsTBLs.Where(a => a.albumId == id).ToList());
+            long id = et.AlbumsTBL.Where(a => a.name == albumName).FirstOrDefault().id;
+            return Casts.ToSongsDTO.GetSongs(et.SongsTBL.Where(a => a.albumId == id).ToList());
         }
         public static List<SongsDTO> GetSongsByTag(string tagName)
         {
-            int tagId = et.TagsTBLs.Where(tag => tag.name == tagName).FirstOrDefault().id;
-            List<int?> songsId = et.TagsToSongsTBLs.Where(tagToSong => tagToSong.tagId == tagId)
+            int tagId = et.TagsTBL.Where(tag => tag.name == tagName).FirstOrDefault().id;
+            List<int?> songsId = et.TagsToSongsTBL.Where(tagToSong => tagToSong.tagId == tagId)
                 .Select(t => t.songId).ToList();
             List<SongsTBL> songsIncludeTag = new List<SongsTBL>();
             foreach (int? songId in songsId)
             {
-                songsIncludeTag.Add(et.SongsTBLs.Where(song => song.id == songId).FirstOrDefault());
+                songsIncludeTag.Add(et.SongsTBL.Where(song => song.id == songId).FirstOrDefault());
             }
             return Casts.ToSongsDTO.GetSongs(songsIncludeTag);
         }
@@ -67,14 +67,14 @@ namespace BL
         {
             List<SongsTBL> songsIncludeAllTags = new List<SongsTBL>();
             if (tags != null) {
-                List<SongsTBL> songsList = et.SongsTBLs.ToList();
+                List<SongsTBL> songsList = et.SongsTBL.ToList();
                 foreach (SongsTBL song in songsList)
                 {
                     List<TagsToSongsDTO> tagsToSong = TagsToSongsBL.GetTagsToSong(song.id);
                     bool isContain = true;
                     foreach (var tagName in tags)
                     {
-                        int tagId = et.TagsTBLs.Where(t => t.name == tagName).FirstOrDefault().id;
+                        int tagId = et.TagsTBL.Where(t => t.name == tagName).FirstOrDefault().id;
                         if (tagsToSong.Select(tag => tag.tagId).Contains(tagId) == false)
                         {
                             isContain = false;
@@ -89,22 +89,22 @@ namespace BL
         }
         public static void AddSong(SongsTBL song)
         {
-            et.SongsTBLs.Add(song);
+            et.SongsTBL.Add(song);
             et.SaveChanges();
         }
         public static void DeleteSong(int songId)
         {
-            SongsTBL song = et.SongsTBLs.Where(s => s.id == songId).FirstOrDefault();
-            et.SongsTBLs.Remove(song);
+            SongsTBL song = et.SongsTBL.Where(s => s.id == songId).FirstOrDefault();
+            et.SongsTBL.Remove(song);
             et.SaveChanges();
         }
         private static int GetCountOfSimilarTags(int? songId, List<string> tags)
         {
             int count = 0;
-            List<TagsToSongsDTO> tagsToSong = TagsToSongsBL.GetTagsToSong(int.Parse(songId+""));
+            List<TagsToSongsDTO> tagsToSong = TagsToSongsBL.GetTagsToSong(songId.Value);
             foreach (string tagName in tags)
             {
-                int tagId = et.TagsTBLs.Where(t => t.name == tagName).FirstOrDefault().id;
+                int tagId = et.TagsTBL.Where(t => t.name == tagName).FirstOrDefault().id;
                 if (tagsToSong.Select(tag => tag.tagId).Contains(tagId) == true)
                     count++;
             }
@@ -114,7 +114,7 @@ namespace BL
         {
             List<string> tags = TagsToSongsBL.GetTagsNamesToSong(songId);
             List<SimilarSongs> similarSongs = new List<SimilarSongs>();
-            List<SongsTBL> allSongs = et.SongsTBLs.ToList();
+            List<SongsTBL> allSongs = et.SongsTBL.ToList();
             foreach (SongsTBL song in allSongs)
             {
                 if (song.id != songId)
@@ -125,13 +125,13 @@ namespace BL
             foreach (SimilarSongs song in similarSongs)
             {
                 int IdSong = song.songId;
-                result.Add(et.SongsTBLs.Where(s => s.id == IdSong).FirstOrDefault());
+                result.Add(et.SongsTBL.Where(s => s.id == IdSong).FirstOrDefault());
             }
             return Casts.ToSongsDTO.GetSongs(result);
         }
         public static void InreaseLike(int songId)
         {
-            SongsTBL song = et.SongsTBLs.Where(s => s.id == songId).FirstOrDefault();
+            SongsTBL song = et.SongsTBL.Where(s => s.id == songId).FirstOrDefault();
             if (song != null)
             {
                 if (song.count_like == null)
@@ -142,7 +142,7 @@ namespace BL
         }
         public static void DecreaseLike(int songId)
         {
-            SongsTBL song = et.SongsTBLs.Where(s => s.id == songId).FirstOrDefault();
+            SongsTBL song = et.SongsTBL.Where(s => s.id == songId).FirstOrDefault();
             if (song != null)
             {
                 if (song.count_like == null)

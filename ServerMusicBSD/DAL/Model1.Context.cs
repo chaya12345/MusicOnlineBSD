@@ -12,6 +12,8 @@ namespace DAL
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class MusicOnlineEntities : DbContext
     {
@@ -25,25 +27,59 @@ namespace DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AlbumsTBL> AlbumsTBLs { get; set; }
-        public virtual DbSet<ArticlesTBL> ArticlesTBLs { get; set; }
-        public virtual DbSet<ArtistsTBL> ArtistsTBLs { get; set; }
-        public virtual DbSet<ArtistsToSongsTBL> ArtistsToSongsTBLs { get; set; }
-        public virtual DbSet<JobTBL> JobTBLs { get; set; }
-        public virtual DbSet<PlaylistsTBL> PlaylistsTBLs { get; set; }
-        public virtual DbSet<ReportsTBL> ReportsTBLs { get; set; }
-        public virtual DbSet<ResponsesToArticlesTBL> ResponsesToArticlesTBLs { get; set; }
-        public virtual DbSet<ResponsesToSongsTBL> ResponsesToSongsTBLs { get; set; }
-        public virtual DbSet<SearchingToSingerTBL> SearchingToSingerTBLs { get; set; }
-        public virtual DbSet<SingerSearchingToUserTBL> SingerSearchingToUserTBLs { get; set; }
-        public virtual DbSet<SingersTBL> SingersTBLs { get; set; }
-        public virtual DbSet<SongsTBL> SongsTBLs { get; set; }
-        public virtual DbSet<SongsToPlaylistsTBL> SongsToPlaylistsTBLs { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<TagsTBL> TagsTBLs { get; set; }
-        public virtual DbSet<TagsToArticlesTBL> TagsToArticlesTBLs { get; set; }
-        public virtual DbSet<TagsToSongsTBL> TagsToSongsTBLs { get; set; }
-        public virtual DbSet<UsersTBL> UsersTBLs { get; set; }
-        public virtual DbSet<LastRespons> LastResponses { get; set; }
+        public virtual DbSet<AlbumsTBL> AlbumsTBL { get; set; }
+        public virtual DbSet<ArticlesTBL> ArticlesTBL { get; set; }
+        public virtual DbSet<ArtistsTBL> ArtistsTBL { get; set; }
+        public virtual DbSet<ArtistsToSongsTBL> ArtistsToSongsTBL { get; set; }
+        public virtual DbSet<JobTBL> JobTBL { get; set; }
+        public virtual DbSet<PlaylistsTBL> PlaylistsTBL { get; set; }
+        public virtual DbSet<ReportsTBL> ReportsTBL { get; set; }
+        public virtual DbSet<ResponsesToArticlesTBL> ResponsesToArticlesTBL { get; set; }
+        public virtual DbSet<ResponsesToSongsTBL> ResponsesToSongsTBL { get; set; }
+        public virtual DbSet<SearchingToSingerTBL> SearchingToSingerTBL { get; set; }
+        public virtual DbSet<SingerSearchingToUserTBL> SingerSearchingToUserTBL { get; set; }
+        public virtual DbSet<SingersTBL> SingersTBL { get; set; }
+        public virtual DbSet<SongsTBL> SongsTBL { get; set; }
+        public virtual DbSet<SongsToPlaylistsTBL> SongsToPlaylistsTBL { get; set; }
+        public virtual DbSet<TagsTBL> TagsTBL { get; set; }
+        public virtual DbSet<TagsToArticlesTBL> TagsToArticlesTBL { get; set; }
+        public virtual DbSet<TagsToSongsTBL> TagsToSongsTBL { get; set; }
+        public virtual DbSet<UsersTBL> UsersTBL { get; set; }
+    
+        [DbFunction("MusicOnlineEntities", "getPlaylists")]
+        public virtual IQueryable<getPlaylists_Result> getPlaylists(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getPlaylists_Result>("[MusicOnlineEntities].[getPlaylists](@userId)", userIdParameter);
+        }
+    
+        [DbFunction("MusicOnlineEntities", "getSongs")]
+        public virtual IQueryable<getSongs_Result> getSongs()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getSongs_Result>("[MusicOnlineEntities].[getSongs]()");
+        }
+    
+        [DbFunction("MusicOnlineEntities", "searchByAlbum")]
+        public virtual IQueryable<searchByAlbum_Result> searchByAlbum(string albumName)
+        {
+            var albumNameParameter = albumName != null ?
+                new ObjectParameter("albumName", albumName) :
+                new ObjectParameter("albumName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<searchByAlbum_Result>("[MusicOnlineEntities].[searchByAlbum](@albumName)", albumNameParameter);
+        }
+    
+        [DbFunction("MusicOnlineEntities", "searchBySinger")]
+        public virtual IQueryable<searchBySinger_Result> searchBySinger(string singerName)
+        {
+            var singerNameParameter = singerName != null ?
+                new ObjectParameter("singerName", singerName) :
+                new ObjectParameter("singerName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<searchBySinger_Result>("[MusicOnlineEntities].[searchBySinger](@singerName)", singerNameParameter);
+        }
     }
 }

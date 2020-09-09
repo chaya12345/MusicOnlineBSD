@@ -44,4 +44,3 @@ C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\DAL\obj\Debug\DAL.csproj.CoreCompile
 C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\DAL\obj\Debug\DAL.dll
 C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\DAL\obj\Debug\DAL.pdb
-C:\MusicOnlineBsd\projectBSD\ServerMusicBSD\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
