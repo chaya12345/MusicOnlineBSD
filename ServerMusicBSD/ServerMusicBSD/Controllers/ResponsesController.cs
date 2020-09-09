@@ -30,7 +30,7 @@ namespace ServerMusicBSD.Controllers
         {
             return ResponsesBL.GetLastResponses();
         }
-        public  List<LastRespons> GetLast5Responses()
+        public  List<LastResponsDTO> GetLast5Responses()
         {
             return ResponsesBL.GetLast5Responses();
         }

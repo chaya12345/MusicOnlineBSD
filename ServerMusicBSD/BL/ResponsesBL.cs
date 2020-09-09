@@ -32,9 +32,9 @@ namespace BL
             List<ResponsesTBL> list = et.ResponsesTBLs.Where(r => r.date != null).OrderBy(r=>r.date).Distinct().ToList();
             return Casts.ToResponseDTO.GetResponses(list);
         }
-        public static List<LastRespons> GetLast5Responses()
+        public static List<LastResponsDTO> GetLast5Responses()
         {
-          return et.LastResponses.ToList();
+            return Casts.ToLastResponsDTO.GetLastResponses(et.LastResponses.ToList());
         }
     }
 }

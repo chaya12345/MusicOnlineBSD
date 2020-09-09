@@ -18,6 +18,11 @@ namespace BL
     {
         public List<string> tags;
     }
+    public class SimilarSongs
+    {
+        public int songId;
+        public int numberOfMatchingTags;
+    }
     public class SongsBL
     {
         static MusicOnlineEntities et = new MusicOnlineEntities();
@@ -93,26 +98,6 @@ namespace BL
             et.SongsTBLs.Remove(song);
             et.SaveChanges();
         }
-        //public static List<SongsDTO> Get3SimilarSongs(int songId)
-        //{
-        //    List<string> tags = TagsToSongsBL.GetTagsNamesToSong(songId);
-        //    List<SongsDTO> similarSong = GetSongsByAllTags(tags);
-        //    if (similarSong.Count == 3)
-        //        return similarSong;
-        //    if (similarSong.Count > 3)
-        //    {
-        //        similarSong.RemoveRange(4, similarSong.Count - 3);
-        //        return similarSong;
-        //    }
-        //   // List<SongsTBL> songsList = et.SongsTBLs.ToList();
-        //   //et.TagsToSongsTBLs.Where(t => t.songId != songId)
-        //   //       .OrderBy(t => GetCountOfSimilarTags(t.songId, tags)).GroupBy(t => t.songId).ToList();
-        //   // for (int i = similarSong.Count; i < 3; i++)
-        //   // {
-                
-        //   // }
-            
-        //} 
         private static int GetCountOfSimilarTags(int? songId, List<string> tags)
         {
             int count = 0;
@@ -125,6 +110,24 @@ namespace BL
             }
             return count;
         }
-
+        public static List<SongsDTO> GetSimilarSongs(int songId)
+        {
+            List<string> tags = TagsToSongsBL.GetTagsNamesToSong(songId);
+            List<SimilarSongs> similarSongs = new List<SimilarSongs>();
+            List<SongsTBL> allSongs = et.SongsTBLs.ToList();
+            foreach (SongsTBL song in allSongs)
+            {
+                if (song.id != songId)
+                    similarSongs.Add(new SimilarSongs() { songId = song.id, numberOfMatchingTags = GetCountOfSimilarTags(song.id, tags) });
+            }
+            similarSongs = similarSongs.OrderByDescending(s => s.numberOfMatchingTags).ToList();
+            List<SongsTBL> result = new List<SongsTBL>();
+            foreach (SimilarSongs song in similarSongs)
+            {
+                int IdSong = song.songId;
+                result.Add(et.SongsTBLs.Where(s => s.id == IdSong).FirstOrDefault());
+            }
+            return Casts.ToSongsDTO.GetSongs(result);
+        }
     }
 }

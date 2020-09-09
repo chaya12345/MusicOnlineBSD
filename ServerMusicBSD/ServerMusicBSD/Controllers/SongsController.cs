@@ -49,9 +49,9 @@ namespace ServerMusicBSD.Controllers
         {
             SongsBL.DeleteSong(songId);
         }
-        //public void PostTagToSong(int songId,int tagId)
-        //{
-        //    SongsBL.AddTagToSong(songId, tagId);
-        //}
+        public List<SongsDTO> GetSimilarSongs(int songId)
+        {
+           return SongsBL.GetSimilarSongs(songId);
+        }
     }
 }
