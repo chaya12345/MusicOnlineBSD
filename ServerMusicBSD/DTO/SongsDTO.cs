@@ -13,7 +13,7 @@ namespace DTO
         public string file_location { get; set; }
         public string type { get; set; }
         public Nullable<System.DateTime> date { get; set; }
-        public Nullable<long> count { get; set; }
+        public Nullable<long> count_responses { get; set; }
         public Nullable<long> singerId { get; set; }
         public Nullable<long> count_like { get; set; }
         public Nullable<long> count_views { get; set; }

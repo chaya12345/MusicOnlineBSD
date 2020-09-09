@@ -21,6 +21,7 @@ namespace DAL
             this.ReportsTBLs = new HashSet<ReportsTBL>();
             this.SongsToPlaylistsTBLs = new HashSet<SongsToPlaylistsTBL>();
             this.TagsToSongsTBLs = new HashSet<TagsToSongsTBL>();
+            this.ResponsesToSongsTBLs = new HashSet<ResponsesToSongsTBL>();
         }
     
         public int id { get; set; }
@@ -28,7 +29,7 @@ namespace DAL
         public string file_location { get; set; }
         public string type { get; set; }
         public Nullable<System.DateTime> date { get; set; }
-        public Nullable<long> count { get; set; }
+        public Nullable<long> count_responses { get; set; }
         public Nullable<int> singerId { get; set; }
         public Nullable<long> count_like { get; set; }
         public Nullable<long> count_views { get; set; }
@@ -48,5 +49,7 @@ namespace DAL
         public virtual ICollection<SongsToPlaylistsTBL> SongsToPlaylistsTBLs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TagsToSongsTBL> TagsToSongsTBLs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ResponsesToSongsTBL> ResponsesToSongsTBLs { get; set; }
     }
 }

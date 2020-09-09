@@ -12,7 +12,7 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class ResponsesTBL
+    public partial class ResponsesToArticlesTBL
     {
         public int id { get; set; }
         public Nullable<int> articleId { get; set; }

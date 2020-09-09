@@ -28,7 +28,8 @@
     <Property Name="credit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="count_views" Type="Int64" />
     <Property Name="count_like" Type="Int64" />
-    <NavigationProperty Name="ResponsesTBLs" Relationship="Self.FK_ResponsesTBL_ArticlesBTL" FromRole="ArticlesTBL" ToRole="ResponsesTBL" />
+    <Property Name="count_responses" Type="Int64" />
+    <NavigationProperty Name="ResponsesToArticlesTBLs" Relationship="Self.FK_ResponsesTBL_ArticlesBTL" FromRole="ArticlesTBL" ToRole="ResponsesToArticlesTBL" />
     <NavigationProperty Name="TagsToArticlesTBLs" Relationship="Self.FK_TagsToArticleTBL_ArticlesTBL" FromRole="ArticlesTBL" ToRole="TagsToArticlesTBL" />
   </EntityType>
   <EntityType Name="ArtistsTBL">
@@ -82,7 +83,7 @@
     <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="SongsTBL" Relationship="Self.FK_ReportsTBL_SongsTBL" FromRole="ReportsTBL" ToRole="SongsTBL" />
   </EntityType>
-  <EntityType Name="ResponsesTBL">
+  <EntityType Name="ResponsesToArticlesTBL">
     <Key>
       <PropertyRef Name="id" />
     </Key>
@@ -92,7 +93,19 @@
     <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="date" Type="DateTime" Precision="0" />
-    <NavigationProperty Name="ArticlesTBL" Relationship="Self.FK_ResponsesTBL_ArticlesBTL" FromRole="ResponsesTBL" ToRole="ArticlesTBL" />
+    <NavigationProperty Name="ArticlesTBL" Relationship="Self.FK_ResponsesTBL_ArticlesBTL" FromRole="ResponsesToArticlesTBL" ToRole="ArticlesTBL" />
+  </EntityType>
+  <EntityType Name="ResponsesToSongsTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="songId" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="SongsTBL" Relationship="MusicOnlineModel.FK_ResponsesToSongsTBL_SongsTBL" FromRole="ResponsesToSongsTBL" ToRole="SongsTBL" />
   </EntityType>
   <EntityType Name="SearchingToSingerTBL">
     <Key>
@@ -134,7 +147,7 @@
     <Property Name="file_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="date" Type="DateTime" Precision="3" />
-    <Property Name="count" Type="Int64" />
+    <Property Name="count_responses" Type="Int64" />
     <Property Name="singerId" Type="Int32" />
     <Property Name="count_like" Type="Int64" />
     <Property Name="count_views" Type="Int64" />
@@ -149,6 +162,7 @@
     <NavigationProperty Name="SingersTBL" Relationship="Self.FK_SongsTBL_SingersTBL" FromRole="SongsTBL" ToRole="SingersTBL" />
     <NavigationProperty Name="SongsToPlaylistsTBLs" Relationship="Self.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToPlaylistsTBL" />
     <NavigationProperty Name="TagsToSongsTBLs" Relationship="Self.FK_TagsToSongsTBL_SongsTBL" FromRole="SongsTBL" ToRole="TagsToSongsTBL" />
+    <NavigationProperty Name="ResponsesToSongsTBLs" Relationship="MusicOnlineModel.FK_ResponsesToSongsTBL_SongsTBL" FromRole="SongsTBL" ToRole="ResponsesToSongsTBL" />
   </EntityType>
   <EntityType Name="SongsToPlaylistsTBL">
     <Key>
@@ -215,6 +229,17 @@
     <NavigationProperty Name="PlaylistsTBLs" Relationship="Self.FK_PlaylistsTBL_UsersTBL" FromRole="UsersTBL" ToRole="PlaylistsTBL" />
     <NavigationProperty Name="SingerSearchingToUserTBLs" Relationship="Self.FK_SingerSearchingToUserTBL_UsersTBL" FromRole="UsersTBL" ToRole="SingerSearchingToUserTBL" />
   </EntityType>
+  <EntityType Name="LastRespons">
+    <Key>
+      <PropertyRef Name="responsId" />
+      <PropertyRef Name="articleId" />
+    </Key>
+    <Property Name="responsId" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="date" Type="DateTime" Precision="0" />
+    <Property Name="articleId" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
   <Association Name="FK_SongsTBL_AlbumsTBL">
     <End Role="AlbumsTBL" Type="Self.AlbumsTBL" Multiplicity="0..1" />
     <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="*" />
@@ -229,12 +254,12 @@
   </Association>
   <Association Name="FK_ResponsesTBL_ArticlesBTL">
     <End Role="ArticlesTBL" Type="Self.ArticlesTBL" Multiplicity="0..1" />
-    <End Role="ResponsesTBL" Type="Self.ResponsesTBL" Multiplicity="*" />
+    <End Role="ResponsesToArticlesTBL" Type="Self.ResponsesToArticlesTBL" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ArticlesTBL">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="ResponsesTBL">
+      <Dependent Role="ResponsesToArticlesTBL">
         <PropertyRef Name="articleId" />
       </Dependent>
     </ReferentialConstraint>
@@ -427,7 +452,8 @@
     <EntitySet Name="JobTBLs" EntityType="Self.JobTBL" />
     <EntitySet Name="PlaylistsTBLs" EntityType="Self.PlaylistsTBL" />
     <EntitySet Name="ReportsTBLs" EntityType="Self.ReportsTBL" />
-    <EntitySet Name="ResponsesTBLs" EntityType="Self.ResponsesTBL" />
+    <EntitySet Name="ResponsesToArticlesTBLs" EntityType="Self.ResponsesToArticlesTBL" />
+    <EntitySet Name="ResponsesToSongsTBLs" EntityType="Self.ResponsesToSongsTBL" />
     <EntitySet Name="SearchingToSingerTBLs" EntityType="Self.SearchingToSingerTBL" />
     <EntitySet Name="SingerSearchingToUserTBLs" EntityType="Self.SingerSearchingToUserTBL" />
     <EntitySet Name="SingersTBLs" EntityType="Self.SingersTBL" />
@@ -438,13 +464,14 @@
     <EntitySet Name="TagsToArticlesTBLs" EntityType="Self.TagsToArticlesTBL" />
     <EntitySet Name="TagsToSongsTBLs" EntityType="Self.TagsToSongsTBL" />
     <EntitySet Name="UsersTBLs" EntityType="Self.UsersTBL" />
+    <EntitySet Name="LastResponses" EntityType="Self.LastRespons" />
     <AssociationSet Name="FK_SongsTBL_AlbumsTBL" Association="Self.FK_SongsTBL_AlbumsTBL">
       <End Role="AlbumsTBL" EntitySet="AlbumsTBLs" />
       <End Role="SongsTBL" EntitySet="SongsTBLs" />
     </AssociationSet>
     <AssociationSet Name="FK_ResponsesTBL_ArticlesBTL" Association="Self.FK_ResponsesTBL_ArticlesBTL">
       <End Role="ArticlesTBL" EntitySet="ArticlesTBLs" />
-      <End Role="ResponsesTBL" EntitySet="ResponsesTBLs" />
+      <End Role="ResponsesToArticlesTBL" EntitySet="ResponsesToArticlesTBLs" />
     </AssociationSet>
     <AssociationSet Name="FK_TagsToArticleTBL_ArticlesTBL" Association="Self.FK_TagsToArticleTBL_ArticlesTBL">
       <End Role="ArticlesTBL" EntitySet="ArticlesTBLs" />
@@ -506,17 +533,21 @@
       <End Role="TagsTBL" EntitySet="TagsTBLs" />
       <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBLs" />
     </AssociationSet>
-    <EntitySet Name="LastResponses" EntityType="MusicOnlineModel.LastRespons" />
+    <AssociationSet Name="FK_ResponsesToSongsTBL_SongsTBL" Association="MusicOnlineModel.FK_ResponsesToSongsTBL_SongsTBL">
+      <End Role="SongsTBL" EntitySet="SongsTBLs" />
+      <End Role="ResponsesToSongsTBL" EntitySet="ResponsesToSongsTBLs" />
+    </AssociationSet>
   </EntityContainer>
-  <EntityType Name="LastRespons">
-    <Key>
-      <PropertyRef Name="responsId" />
-      <PropertyRef Name="articleId" />
-    </Key>
-    <Property Name="responsId" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="date" Type="DateTime" Precision="0" />
-    <Property Name="articleId" Type="Int32" Nullable="false" />
-    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-  </EntityType>
+  <Association Name="FK_ResponsesToSongsTBL_SongsTBL">
+    <End Type="MusicOnlineModel.SongsTBL" Role="SongsTBL" Multiplicity="0..1" />
+    <End Type="MusicOnlineModel.ResponsesToSongsTBL" Role="ResponsesToSongsTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SongsTBL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ResponsesToSongsTBL">
+        <PropertyRef Name="songId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

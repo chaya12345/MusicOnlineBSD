@@ -8,23 +8,23 @@ using DTO;
 
 namespace BL.Casts
 {
-    public class ToResponseDTO
+    public class ToResponsesToSongsDTO
     {
-        public static ResponsesDTO GetResponse(ResponsesTBL response)
+        public static ResponsesToSongsDTO GetResponse(ResponsesToSongsTBL response)
         {
-            ResponsesDTO newResponses = new ResponsesDTO();
+            ResponsesToSongsDTO newResponses = new ResponsesToSongsDTO();
             newResponses.id = response.id;
-            newResponses.articleId = response.articleId;
+            newResponses.songId = response.songId;
             newResponses.name = response.name;
             newResponses.title = response.title;
             newResponses.content = response.content;
             newResponses.date = response.date;
             return newResponses;
         }
-        public static List<ResponsesDTO> GetResponses(List<ResponsesTBL> responses)
+        public static List<ResponsesToSongsDTO> GetResponses(List<ResponsesToSongsTBL> responses)
         {
-            List<ResponsesDTO> newResponses = new List<ResponsesDTO>();
-            foreach (ResponsesTBL res in responses)
+            List<ResponsesToSongsDTO> newResponses = new List<ResponsesToSongsDTO>();
+            foreach (ResponsesToSongsTBL res in responses)
             {
                 newResponses.Add(GetResponse(res));
             }

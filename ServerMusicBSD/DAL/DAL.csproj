@@ -91,7 +91,10 @@
     <Compile Include="ReportsTBL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="ResponsesTBL.cs">
+    <Compile Include="ResponsesToArticlesTBL.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResponsesToSongsTBL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="SearchingToSingerTBL.cs">
@@ -137,9 +140,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <Content Include="src\text\about-site.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -150,6 +150,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="src\text\about-site.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="src\images\for_articles\221607_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_songs\יעקב-שוואקי\211577_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_songs\אברהם-פריד\234162_tumb_750Xauto.jpg" />

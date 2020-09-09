@@ -25,5 +25,6 @@ namespace DTO
         public string credit { get; set; }
         public Nullable<long> count_views { get; set; }
         public Nullable<long> count_like { get; set; }
+        public Nullable<long> count_responses { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ArticlesTBL()
         {
-            this.ResponsesTBLs = new HashSet<ResponsesTBL>();
+            this.ResponsesToArticlesTBLs = new HashSet<ResponsesToArticlesTBL>();
             this.TagsToArticlesTBLs = new HashSet<TagsToArticlesTBL>();
         }
     
@@ -37,9 +37,10 @@ namespace DAL
         public string credit { get; set; }
         public Nullable<long> count_views { get; set; }
         public Nullable<long> count_like { get; set; }
+        public Nullable<long> count_responses { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ResponsesTBL> ResponsesTBLs { get; set; }
+        public virtual ICollection<ResponsesToArticlesTBL> ResponsesToArticlesTBLs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TagsToArticlesTBL> TagsToArticlesTBLs { get; set; }
     }

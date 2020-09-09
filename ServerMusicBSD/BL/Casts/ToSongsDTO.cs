@@ -18,7 +18,7 @@ namespace BL.Casts
             newSong.file_location = songs.file_location;
             newSong.type = songs.type;
             newSong.date = songs.date;
-            newSong.count = songs.count;
+            newSong.count_responses = songs.count_responses;
             newSong.singerId = songs.singerId;
             newSong.count_like = songs.count_like;
             newSong.count_views = songs.count_views;

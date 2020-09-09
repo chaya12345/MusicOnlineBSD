@@ -32,7 +32,8 @@ namespace DAL
         public virtual DbSet<JobTBL> JobTBLs { get; set; }
         public virtual DbSet<PlaylistsTBL> PlaylistsTBLs { get; set; }
         public virtual DbSet<ReportsTBL> ReportsTBLs { get; set; }
-        public virtual DbSet<ResponsesTBL> ResponsesTBLs { get; set; }
+        public virtual DbSet<ResponsesToArticlesTBL> ResponsesToArticlesTBLs { get; set; }
+        public virtual DbSet<ResponsesToSongsTBL> ResponsesToSongsTBLs { get; set; }
         public virtual DbSet<SearchingToSingerTBL> SearchingToSingerTBLs { get; set; }
         public virtual DbSet<SingerSearchingToUserTBL> SingerSearchingToUserTBLs { get; set; }
         public virtual DbSet<SingersTBL> SingersTBLs { get; set; }

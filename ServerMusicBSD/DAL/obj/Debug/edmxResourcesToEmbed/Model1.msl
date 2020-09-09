@@ -28,6 +28,7 @@
           <ScalarProperty Name="credit" ColumnName="credit" />
           <ScalarProperty Name="count_views" ColumnName="count_views" />
           <ScalarProperty Name="count_like" ColumnName="count_like" />
+          <ScalarProperty Name="count_responses" ColumnName="count_responses" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -79,11 +80,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ResponsesTBLs">
-      <EntityTypeMapping TypeName="MusicOnlineModel.ResponsesTBL">
-        <MappingFragment StoreEntitySet="ResponsesTBL">
+    <EntitySetMapping Name="ResponsesToArticlesTBLs">
+      <EntityTypeMapping TypeName="MusicOnlineModel.ResponsesToArticlesTBL">
+        <MappingFragment StoreEntitySet="ResponsesToArticlesTBL">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="articleId" ColumnName="articleId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResponsesToSongsTBLs">
+      <EntityTypeMapping TypeName="MusicOnlineModel.ResponsesToSongsTBL">
+        <MappingFragment StoreEntitySet="ResponsesToSongsTBL">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="songId" ColumnName="songId" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="content" ColumnName="content" />
@@ -127,7 +140,7 @@
           <ScalarProperty Name="file_location" ColumnName="file_location" />
           <ScalarProperty Name="type" ColumnName="type" />
           <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="count_responses" ColumnName="count_responses" />
           <ScalarProperty Name="singerId" ColumnName="singerId" />
           <ScalarProperty Name="count_like" ColumnName="count_like" />
           <ScalarProperty Name="count_views" ColumnName="count_views" />
@@ -203,11 +216,11 @@
     <EntitySetMapping Name="LastResponses">
       <EntityTypeMapping TypeName="MusicOnlineModel.LastRespons">
         <MappingFragment StoreEntitySet="LastResponses">
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="articleId" ColumnName="articleId" />
-          <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="responsId" ColumnName="responsId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="articleId" ColumnName="articleId" />
+          <ScalarProperty Name="title" ColumnName="title" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class ResponsesDTO
+    public class ResponsesToArticlesDTO
     {
         public int id { get; set; }
         public Nullable<int> articleId { get; set; }

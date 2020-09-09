@@ -24,6 +24,7 @@ namespace ServerMusicBSD.Controllers
         }
         public void PostArticle([FromBody] ArticlesTBL article)
         {
+            article.date = DateTime.Today;
             ArticlesBL.AddArticle(article);
         }
         public void DeleteArticle(int articleId)

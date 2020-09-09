@@ -29,6 +29,7 @@ namespace BL.Casts
             newArticle.credit = article.credit;
             newArticle.count_views = article.count_views;
             newArticle.count_like = article.count_like;
+            newArticle.count_responses = article.count_responses;
             return newArticle;
         }
         public static List<ArticlesDTO> GetArticles(List<ArticlesTBL> articles)

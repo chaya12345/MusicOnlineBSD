@@ -48,7 +48,8 @@
     <Compile Include="LastResponsDTO.cs" />
     <Compile Include="PlaylistsDTO.cs" />
     <Compile Include="ReportsDTO.cs" />
-    <Compile Include="ResponsesDTO.cs" />
+    <Compile Include="ResponsesToArticlesDTO.cs" />
+    <Compile Include="ResponsesToSongsDTO.cs" />
     <Compile Include="SearchingToSingerDTO.cs" />
     <Compile Include="SingersDTO.cs" />
     <Compile Include="SingerSearchingToUserDTO.cs" />
