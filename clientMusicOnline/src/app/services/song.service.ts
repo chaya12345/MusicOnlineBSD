@@ -25,9 +25,9 @@ export class SongService {
   GetSimilarSongs(songId: number): Observable<Song[]> {
     return this.httpClient.get<Song[]>("https://localhost:44368/api/Songs/GetSimilarSongs?songId=" + songId);
   }
-  // GetSongsByTags(tags: object): Observable<Song[]> {
-  //   return this.httpClient.post<Song[]>("https://localhost:44368/api/Songs/PostSongsByTags", tags);
-  // }
+  GetSongsByTags(tags: object): Observable<Song[]> {
+    return this.httpClient.post<Song[]>("https://localhost:44368/api/Songs/PostSongsByTags", tags);
+  }
   // PostSong(song:Song):void{
   //   this.httpClient.post("https://localhost:44368/api/Songs/PostSong",song);
   // }

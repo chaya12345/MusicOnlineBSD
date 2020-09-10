@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponsesToArticlesService } from '../services/responsesToArticles.service';
+import { ResponsesToArticlesService } from '../services/responses-to-articles.service';
 import { ResponsesToArticles } from '../classes/responsesToArticles';
 
 @Component({
@@ -13,7 +13,7 @@ export class RecentCommentsComponent implements OnInit {
 
   constructor(private responseService: ResponsesToArticlesService) { 
     try {
-    this.responseService.getResponses().subscribe(response => {this.responsesList = response; this.filter();}, err => { console.log(err); });
+    this.responseService.get ().subscribe(response => {this.responsesList = response; this.filter();}, err => { console.log(err); });
     }
     catch { console.log('recent-comments'); }
    }

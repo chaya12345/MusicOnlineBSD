@@ -18,6 +18,7 @@ namespace BL
         }
         public static void RemoveFromNewsletter(int userId)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             UsersTBL user = et.UsersTBL.Where(u => u.id == userId).FirstOrDefault();
             if (user != null)
             {
