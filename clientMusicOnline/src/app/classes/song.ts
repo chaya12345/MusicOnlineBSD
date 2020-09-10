@@ -4,8 +4,8 @@ export class Song {
     file_location?: string;
     type?: string;
     date?: Date;
-    count?: number;
     singerId?: number;
+    count_responses?: number;
     count_like?: number;
     count_views?: number;
     albumId?: number;

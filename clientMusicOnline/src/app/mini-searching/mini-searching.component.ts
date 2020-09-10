@@ -25,8 +25,14 @@ export class MiniSearchingComponent implements OnInit {
   constructor(private songService: SongService, private singerService: SingerService) {
     this.songsControl = new FormControl();
     this.singersControl = new FormControl();
+    try {
     this.songService.getSongs().subscribe(songs => {this.songsList = songs; this.updateSongsList();}, err => { console.log(err); });
+    }
+    catch { console.log('mini-searching'); }
+    try {
     this.singerService.getSingers().subscribe(singers => {this.singersList = singers; this.updateSingersList();}, err => { console.log(err); });
+    }
+    catch { console.log('mini-searching'); }
   }
 
   ngOnInit() {

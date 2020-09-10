@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ResponseService } from '../services/response.service';
-import { Response } from '../classes/response';
-import { ArticleService } from '../services/article.service';
+import { ResponsesToArticlesService } from '../services/responsesToArticles.service';
+import { ResponsesToArticles } from '../classes/responsesToArticles';
 
 @Component({
   selector: 'recent-comments',
@@ -10,10 +9,13 @@ import { ArticleService } from '../services/article.service';
 })
 export class RecentCommentsComponent implements OnInit {
 
-  responsesList: Response[] = [];
+  responsesList: ResponsesToArticles[] = [];
 
-  constructor(private responseService: ResponseService) { 
+  constructor(private responseService: ResponsesToArticlesService) { 
+    try {
     this.responseService.getResponses().subscribe(response => {this.responsesList = response; this.filter();}, err => { console.log(err); });
+    }
+    catch { console.log('recent-comments'); }
    }
 
   ngOnInit() {

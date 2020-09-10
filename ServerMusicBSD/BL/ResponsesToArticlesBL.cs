@@ -11,9 +11,9 @@ namespace BL
 {
     public class ResponsesToArticlesBL
     {
-        static MusicOnlineEntities et = new MusicOnlineEntities();
         public static void AddResponse(ResponsesToArticlesTBL response)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             et.ResponsesToArticlesTBL.Add(response);
             ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == response.articleId).FirstOrDefault();
             if (article.count_responses == null)
@@ -23,10 +23,12 @@ namespace BL
         }
         public static List<ResponsesToArticlesDTO> GetArticleResponses(int articleId)
         {
-           return Casts.ToResponsesToArticlesDTO.GetResponses(et.ResponsesToArticlesTBL.Where(r => r.articleId == articleId).ToList());
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            return Casts.ToResponsesToArticlesDTO.GetResponses(et.ResponsesToArticlesTBL.Where(r => r.articleId == articleId).ToList());
         }
         public static void DeleteResponse(int responseId)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             ResponsesToArticlesTBL response = et.ResponsesToArticlesTBL.Where(r => r.id == responseId).FirstOrDefault();
             ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == response.articleId).FirstOrDefault();
             if (article.count_responses == null || article.count_responses <= 0)
@@ -37,11 +39,13 @@ namespace BL
         }
         public static List<ResponsesToArticlesDTO> GetLastResponses()
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             List<ResponsesToArticlesTBL> list = et.ResponsesToArticlesTBL.Where(r => r.date != null).OrderBy(r=>r.date).Distinct().ToList();
             return Casts.ToResponsesToArticlesDTO.GetResponses(list);
         }
         public static List<LastResponsDTO> GetLast5Responses()
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToLastResponsDTO.GetLastResponses(et.LastResponses.ToList());
         }
     }

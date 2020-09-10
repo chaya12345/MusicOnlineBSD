@@ -10,17 +10,19 @@ namespace BL
 {
     public class SingerSearchingToUserBL
     {
-        static MusicOnlineEntities et = new MusicOnlineEntities();
         public static List<SingerSearchingToUserDTO> GetAllSingerSearching()
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToSingerSearchingToUserDTO.GetSearchingsToUser(et.SingerSearchingToUserTBL.ToList());
         }
         public static List<SingerSearchingToUserDTO> GetSingerSearchingToUser(int userId)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToSingerSearchingToUserDTO.GetSearchingsToUser(et.SingerSearchingToUserTBL.Where(s => s.userId == userId).ToList());
         }
         private static void AddLineToTable(int userId,int singerId)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             SingerSearchingToUserTBL newLine = new SingerSearchingToUserTBL();
             newLine.userId = userId;
             newLine.singerId = singerId;
@@ -31,6 +33,7 @@ namespace BL
         }
         private static void UpdateLineInTable(int userId, int singerId)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             SingerSearchingToUserTBL updateLine= et.SingerSearchingToUserTBL.Where(s => s.userId == userId && s.singerId == singerId).FirstOrDefault();
             updateLine.count_searching++;
             updateLine.last_date = DateTime.Today;
@@ -38,6 +41,7 @@ namespace BL
         }
         public static void AddSingerSearchingToUser(int userId,int singerId)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             if (et.SingerSearchingToUserTBL.Where(s => s.userId == userId && s.singerId == singerId).ToList() == null)
                 AddLineToTable(userId, singerId);
             else
@@ -45,6 +49,7 @@ namespace BL
         }
         public static SingerSearchingToUserDTO GetLastSearchingToUser(int userId)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             SingerSearchingToUserTBL lastSearching= et.SingerSearchingToUserTBL.Where(s => s.userId == userId).OrderByDescending(s => s.last_date).FirstOrDefault();
             return Casts.ToSingerSearchingToUserDTO.GetSearchingToUser(lastSearching);
         }

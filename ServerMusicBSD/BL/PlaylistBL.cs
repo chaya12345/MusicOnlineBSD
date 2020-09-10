@@ -10,14 +10,15 @@ namespace BL
 {
     public class PlaylistBL
     {
-        static MusicOnlineEntities et = new MusicOnlineEntities();
         public static void AddPlaylist(PlaylistsTBL playlist)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             et.PlaylistsTBL.Add(playlist);
             et.SaveChanges();
         }
         public static void DeletePlaylist(int id)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             PlaylistsTBL playlist = et.PlaylistsTBL.Where(p => p.id == id).FirstOrDefault();
             if (playlist != null)
             {
@@ -32,6 +33,7 @@ namespace BL
         }
         public static List<PlaylistsDTO> GetPlaylistsByUserId(int userId)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToPlaylistsDTO.GetPlaylists(et.PlaylistsTBL.Where(p => p.userId == userId).ToList());
         }
     }

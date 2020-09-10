@@ -1,17 +1,20 @@
 <div class="wrap-container-full-song">
-    <div class="wrap-full-song">
+    <div class="wrap-full-song" *ngIf="song!=null&&song!=undefined">
         <h2>{{song.title}}</h2>
         <h3>{{song.subtitle}}<span class="date"> • {{song.date | date: 'd/M/yyyy H:mm'}}</span></h3>
 
         <mat-divider></mat-divider>
         <img [src]="'../../assets/images/'+song.image_location">
         <p>{{songContent}}</p>
-        <!-- <video width="320" height="240" controls>
+        <video width="320" height="240" controls controlsList="nodownload" oncontextmenu="return false;"
+        [poster]="'../../assets/images/'+song.image_location" height="360" width="640">
             <source [src]="'../../assets/songs/'+song.file_location" type="video/mp4">
-        </video> -->
-        <iframe width="598" height="360" src="https://www.youtube.com/embed/aS-4U5GgdjM"
-        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </video>
+        <!-- <iframe width="598" height="360" src="https://www.youtube.com/embed/aS-4U5GgdjM"
+        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
         <tags [tagsList]="tags"></tags>
         <info-song [song]="song"></info-song>
+        <responses></responses>
     </div>
+    <undefined *ngIf="song==null||song==undefined"></undefined>
 </div>

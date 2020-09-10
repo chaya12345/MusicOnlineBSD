@@ -1,6 +1,7 @@
 <div class="wrap-container-clips wrapper wrapper-main">
     <top title="קליפים" icon="play_circle_filled"></top>
-    <div class="wrap-songs">
+    <div class="wrap-songs" *ngIf="clipsList!=null&&clipsList!=undefined&&clipsList.length!=0">
         <song *ngFor="let clip of clipsList" [song]="clip"></song>
     </div>
+    <undefined *ngIf="clipsList==null||clipsList==undefined||clipsList.length==0"></undefined>
 </div>

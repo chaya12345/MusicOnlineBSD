@@ -1,0 +1,18 @@
+.wrap-response {
+    padding: 20px 0;
+}
+
+.wrap-response h3 {
+    padding: 10px 0;
+}
+
+.wrap-response p {
+    line-height: 32px;
+    font-size: 17px;
+}
+
+.wrap-response span {
+    color: #929292;
+    font-size: 17px;
+    line-height: 40px;
+}

@@ -12,7 +12,10 @@ export class ViewedComponent implements OnInit {
   viewedSongsList: Song[] = [];
 
   constructor(private songService: SongService) {
+    try {
     this.songService.getSongs().subscribe(songs => {this.viewedSongsList = songs; this.filter();}, err => { console.log(err); });
+    }
+    catch { console.log('viewed'); }
    }
 
   ngOnInit() {

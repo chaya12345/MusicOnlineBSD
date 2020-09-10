@@ -5,6 +5,7 @@ import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxAudioPlayerModule } from 'ngx-audio-player';
+import { PlyrModule } from 'ngx-plyr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -52,6 +53,9 @@ import { FullSongComponent } from './full-song/full-song.component';
 import { SimilarResultsComponent } from './similar-results/similar-results.component';
 import { TagsComponent } from './tags/tags.component';
 import { InfoSongComponent } from './info-song/info-song.component';
+import { UndefinedComponent } from './undefined/undefined.component';
+import { ResponsesComponent } from './responses/responses.component';
+import { ResponseComponent } from './response/response.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +102,10 @@ import { InfoSongComponent } from './info-song/info-song.component';
     FullSongComponent,
     SimilarResultsComponent,
     TagsComponent,
-    InfoSongComponent
+    InfoSongComponent,
+    UndefinedComponent,
+    ResponsesComponent,
+    ResponseComponent
   ],
   imports: [
     BrowserModule,
@@ -108,7 +115,8 @@ import { InfoSongComponent } from './info-song/info-song.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxAudioPlayerModule
+    NgxAudioPlayerModule,
+    PlyrModule
   ],
   providers: [],
   bootstrap: [AppComponent]

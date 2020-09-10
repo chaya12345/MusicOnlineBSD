@@ -14,7 +14,10 @@ export class ClipsComponent implements OnInit {
 
   constructor(private songService: SongService) {
     // this.songService.GetSongsByTag("קליפ").subscribe(songs => {this.clipsList = songs; this.filter();}, err => { console.log(err); });
+    try {
     this.songService.getSongs().subscribe(songs => { this.tempList = songs; this.filter(); }, err => { console.log(err); });
+    }
+    catch { console.log('clips'); }
   }
 
   ngOnInit() {

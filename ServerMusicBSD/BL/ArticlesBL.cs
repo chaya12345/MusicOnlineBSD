@@ -10,28 +10,32 @@ namespace BL
 {
     public class ArticlesBL
     {
-        static MusicOnlineEntities et = new MusicOnlineEntities();
         public static List<ArticlesDTO> GetArticles()
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToArticlesDTO.GetArticles(et.ArticlesTBL.ToList());
         }
         public static ArticlesDTO GetArticleById(int articleId)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToArticlesDTO.GetArticle(et.ArticlesTBL.Where(a => a.id == articleId).FirstOrDefault());
         }
         public static void AddArticle(ArticlesTBL article)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             et.ArticlesTBL.Add(article);
             et.SaveChanges();
         }
         public static void DeleteArticle(int articleId)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == articleId).FirstOrDefault();
             et.ArticlesTBL.Remove(article);
             et.SaveChanges();
         }
         public static List<ArticlesDTO> GetArticlesByTag(string tagName)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             List<ArticlesTBL> list = GetArticleInListByTag(et.ArticlesTBL.ToList(), tagName);
             if (list != null)
                 return Casts.ToArticlesDTO.GetArticles(list);
@@ -40,6 +44,7 @@ namespace BL
         }
         private static List<ArticlesTBL> GetArticleInListByTag(List<ArticlesTBL> articles, string tagName)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             TagsTBL tag = et.TagsTBL.Where(t => t.name == tagName).FirstOrDefault();
             List<ArticlesTBL> result = new List<ArticlesTBL>();
             if (tag != null && articles != null)
@@ -66,6 +71,7 @@ namespace BL
         }
         public static List<ArticlesDTO> GetArticlesByAllTags(List<string> tags)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             List<ArticlesTBL> articles = et.ArticlesTBL.ToList();
             List<ArticlesTBL> flag = et.ArticlesTBL.ToList();
             foreach (string tag in tags)
@@ -82,6 +88,7 @@ namespace BL
         }
         public static void InreaseLike(int articleId)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == articleId).FirstOrDefault();
             if (article != null)
             {
@@ -93,6 +100,7 @@ namespace BL
         }
         public static void DecreaseLike(int articleId)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == articleId).FirstOrDefault();
             if (article != null)
             {

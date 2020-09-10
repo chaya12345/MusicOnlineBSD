@@ -22,10 +22,19 @@ export class SearchByComponent implements OnInit {
   tagsList: Tag[] = [];
 
   constructor(private singerService: SingerService, private artistService: ArtistService, private tagService: TagService) {
-    this.singerService.getSingers().subscribe(singer => {this.singersList = singer;}, err => { console.log(err); });
-    this.artistService.getArtists().subscribe(artist => {this.artistsList = artist;}, err => { console.log(err); });
-    this.tagService.getTags().subscribe(tag => {this.tagsList = tag;}, err => { console.log(err); });
-   }
+    try {
+      this.singerService.getSingers().subscribe(singer => { this.singersList = singer; }, err => { console.log(err); });
+    }
+    catch { console.log('search-by'); }
+    try {
+      this.artistService.getArtists().subscribe(artist => { this.artistsList = artist; }, err => { console.log(err); });
+    }
+    catch { console.log('search-by'); }
+    try {
+      this.tagService.getTags().subscribe(tag => { this.tagsList = tag; }, err => { console.log(err); });
+    }
+    catch { console.log('search-by'); }
+  }
 
   ngOnInit() {
   }

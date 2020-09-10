@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NowViewedComponent implements OnInit {
 
+  nowViewedList: string[] = [];
+
   constructor() { 
   }
 

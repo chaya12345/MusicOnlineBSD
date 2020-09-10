@@ -13,7 +13,10 @@ export class NewsicComponent implements OnInit {
   newSongsList: Song[] = [];
 
   constructor(private songService: SongService) { 
+    try{
     this.songService.getSongs().subscribe(songs => {this.newSongsList = songs; this.filter();}, err => { console.log(err); });
+    }
+    catch { console.log('without song'); }
   }
 
   ngOnInit() {

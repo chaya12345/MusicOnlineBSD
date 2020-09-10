@@ -15,7 +15,10 @@ export class MagazineComponent implements OnInit {
   likeFunctionality;
 
   constructor(private articleService: ArticleService, private likeService: LikeService) {
+    try {
     this.articleService.getArticles().subscribe(article => { this.articlesList = article; this.filter(); }, err => { console.log(err); });
+    }
+    catch { console.log('magazine'); }
   }
 
   ngOnInit() {

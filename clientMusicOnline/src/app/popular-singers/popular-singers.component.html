@@ -1,4 +1,5 @@
 <div class="wrap-container-popular-singers wrapper">
     <top title="זמרים פופולאריים" icon="person_pin"></top>
-    <tags [tagsList]="popularSingers"></tags>
+    <tags  *ngIf="popularSingers!=null&&popularSingers!=undefined&&popularSingers.length!=0" [tagsList]="popularSingers"></tags>
+    <undefined *ngIf="popularSingers==null||popularSingers==undefined||popularSingers.length==0"></undefined>
 </div>

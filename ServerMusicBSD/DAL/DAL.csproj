@@ -147,6 +147,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="src\images\for_songs\יעקב-שוואקי\234472_tumb_750Xauto.jpg" />
     <Content Include="src\text\about-site.txt" />
   </ItemGroup>
   <ItemGroup>

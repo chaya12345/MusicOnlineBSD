@@ -40,10 +40,12 @@
             ],
             "styles": [
               "src/custom-theme.scss",
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/plyr/dist/plyr.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js"
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/plyr/dist/plyr.js"
             ]
           },
           "configurations": {
@@ -122,9 +124,12 @@
               }
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/plyr/dist/plyr.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/plyr/dist/plyr.js"
+            ]
           }
         },
         "lint": {

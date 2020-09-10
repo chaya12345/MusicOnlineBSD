@@ -29,11 +29,12 @@ button span {
 
 /* #region(collapsed) [Material-icons] */
 
-.material-icons {
+.material-icons, .mat-icon {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: 'liga';
+    font-family: 'Material Icons';
 }
 
 /* #endregion */
@@ -216,3 +217,16 @@ player mat-card {
 }
 
 /* #endregion */
+
+.mat-spinner, .mat-spinner svg {
+    height: 50px !important;
+    width: 50px !important;
+}
+
+.mat-spinner circle {
+    stroke-width: 5% !important;
+}
+
+.wrap-container-footer about .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #74aff3;
+}

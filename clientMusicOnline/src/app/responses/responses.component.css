@@ -1,0 +1,17 @@
+.wrap-container-responses {
+    padding: 35px 5px;
+}
+
+.wrap-container-responses h2 {
+    font-family: fb Joker;
+    font-size: 32px;
+}
+
+.addResponse {
+    margin: 30px 0;
+    width: 100%;
+    padding: 7px 25px;
+    text-align: right;
+    font-size: 17px;
+    font-weight: 400;
+}

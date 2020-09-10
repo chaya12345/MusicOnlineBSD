@@ -10,13 +10,14 @@ namespace BL
 {
     public class TagsBL
     {
-        static MusicOnlineEntities et = new MusicOnlineEntities();
         public static List<TagsDTO> GetTags()
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToTagsDTO.GetTags(et.TagsTBL.ToList());
         }
         public static void AddTag(TagsTBL tag)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             et.TagsTBL.Add(tag);
             et.SaveChanges();
         }

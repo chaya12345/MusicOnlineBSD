@@ -16,12 +16,15 @@ export class FullSongComponent implements OnInit {
   song: Song;
   songContent: string;
   httpClient;
-  // _tagsToSongsService;
+  _tagsToSongsService;
   tags: string[] = [];
   workedSong: Song;
 
   constructor(private songService: SongService, http: HttpClient/*, tagsToSongsService = TagsToSongsService*/) {
-    songService.getSongs().subscribe(song => { this.songsList = song; this.filter(); this.getContent(); this.getTags(); }, err => { console.log(err); });
+    try {
+      songService.getSongs().subscribe(song => { this.songsList = song; this.filter(); this.getContent(); this.getTags(); }, err => { console.log(err); });
+    }
+    catch { console.log('full-song'); }
     this.httpClient = http;
     // this._tagsToSongsService = tagsToSongsService;
   }
@@ -30,21 +33,27 @@ export class FullSongComponent implements OnInit {
   }
 
   filter(): void {
-    this.songsList.forEach(song => {
-      if (song.content != null && song.content != undefined)
-        this.songsWithContent.push(song);
-    });
-    console.log(this.songsWithContent);
-    this.song = this.songsWithContent[0];
+    try {
+      this.songsList.forEach(song => {
+        if (song.content != null && song.content != undefined)
+          this.songsWithContent.push(song);
+      });
+      console.log(this.songsWithContent);
+      this.song = this.songsWithContent[0];
+    }
+    catch { console.log('full-song'); }
   }
 
   getContent(): void {
-    this.httpClient.get('../../assets/text/'+this.song.content, {
-      responseType: 'text', headers: {
-        "Accept": "application/txt;charset=utf-8",
-        "Accept-Charset": "charset=utf-8"
-      }
-    }).subscribe(data => { this.songContent = data; console.log(data); this.filter() });
+    try {
+      this.httpClient.get('../../assets/text/' + this.song.content, {
+        responseType: 'text', headers: {
+          "Accept": "application/txt;charset=utf-8",
+          "Accept-Charset": "charset=utf-8"
+        }
+      }).subscribe(data => { this.songContent = data; console.log(data); this.filter() });
+    }
+    catch { console.log('full-song'); }
   }
 
   getTags(): void {

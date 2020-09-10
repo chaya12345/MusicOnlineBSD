@@ -9,30 +9,33 @@ using DTO;
 namespace BL
 {
     public class ReportsBL
-    {
-        static MusicOnlineEntities et = new MusicOnlineEntities();
-        
+    {        
         public static void addReport(ReportsTBL report)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             et.ReportsTBL.Add(report);
             et.SaveChanges();
         }
         public static List<ReportsDTO> GetReports()
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToReportsDTO.GetReports(et.ReportsTBL.ToList());
         }
         public static ReportsDTO GetReportById(int reportId)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToReportsDTO.GetReport(et.ReportsTBL.Where(r => r.id == reportId).FirstOrDefault());
         }
         public static void ChangeReportStatus(int reportId, string status)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             ReportsTBL report = et.ReportsTBL.Where(r => r.id == reportId).FirstOrDefault();
             report.status = status;
             et.SaveChanges();
         }
         public static List<ReportsDTO> GetAllUntreatedReports()
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToReportsDTO.GetReports(et.ReportsTBL.Where(r => r.status != "טופל").ToList());
         }
     }

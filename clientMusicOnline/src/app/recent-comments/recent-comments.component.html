@@ -1,6 +1,7 @@
 <div class="wrap-container-recent-comments wrapper-footer">
     <top-footer title="תגובות אחרונות" isLast="true"></top-footer>
-    <div class="wrap-responses">
+    <div class="wrap-responses" *ngIf="responsesList!=null&&responsesList!=undefined&&responsesList.length!=0">
         <p class="response" *ngFor="let response of responsesList"><span>{{response.name}}</span> על <span>אחים ושרים: ראיון משולש עם חיים ישראל, איציק ואבישי אשל</span></p>
     </div>
+    <undefined *ngIf="responsesList==null||responsesList==undefined||responsesList.length==0"></undefined>
 </div>

@@ -10,13 +10,14 @@ namespace BL
 {
     public class JobsBL
     {
-        static MusicOnlineEntities et = new MusicOnlineEntities();
         public static List<JobsDTO> GetJobs()
         {
-           return Casts.ToJobsDTO.GetJobs(et.JobTBL.ToList());
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            return Casts.ToJobsDTO.GetJobs(et.JobTBL.ToList());
         }
         public static void AddJob(JobTBL newJob)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             et.JobTBL.Add(newJob);
             et.SaveChanges();
         }

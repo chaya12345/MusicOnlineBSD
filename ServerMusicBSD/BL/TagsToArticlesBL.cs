@@ -10,9 +10,9 @@ namespace BL
 {
     public class TagsToArticlesBL
     {
-        static MusicOnlineEntities et = new MusicOnlineEntities();
         public static List<string> GetTagsNamesToArticle(int articleId)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             List<TagsToAtriclesDTO> tagsToArticle = GetTagsToArticle(articleId);
             List<string> tags = new List<string>();
             foreach (TagsToAtriclesDTO tag in tagsToArticle)
@@ -24,10 +24,12 @@ namespace BL
 
         public static List<TagsToAtriclesDTO> GetTagsToArticle(int articleId)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToTagsToArticleDTO.GetTagsToArticles(et.TagsToArticlesTBL.Where(t => t.articleId == articleId).ToList());
         }
         public static void AddTagToArticle(TagsToArticlesTBL tagsToArticle)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             et.TagsToArticlesTBL.Add(tagsToArticle);
             et.SaveChanges();
         }

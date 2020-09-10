@@ -10,14 +10,15 @@ namespace BL
 {
     public class UsersBL
     {
-        static MusicOnlineEntities et = new MusicOnlineEntities();
         public static void AddUser(UsersTBL user)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             et.UsersTBL.Add(user);
             et.SaveChanges();
         }
         public static void UpdateUser(int userId, UsersTBL updateUser)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             UsersTBL user = et.UsersTBL.Find(userId);
             if (userId == user.id)
             {
@@ -42,6 +43,7 @@ namespace BL
 
         public static void UpdatePassword(int userId, string password)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             UsersTBL user = et.UsersTBL.Find(userId);
             if (userId == user.id)
             {
@@ -56,6 +58,7 @@ namespace BL
 
         public static void UpdateProfil(int userId, UsersTBL updateUser)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             UsersTBL user = et.UsersTBL.Find(userId);
             if (userId == user.id)
             {
@@ -70,6 +73,7 @@ namespace BL
         }
         public static void UpdateDefinition(int userId, UsersTBL updateUser)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             UsersTBL user = et.UsersTBL.Find(userId);
             if (userId == user.id)
             {
@@ -87,10 +91,12 @@ namespace BL
         }
         public static List<UsersDTO> GetUsers()
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToUsersDTO.GetUsers(et.UsersTBL.ToList());
         }
         public static UsersDTO GetUser(string userName, string password)
         {
+            MusicOnlineEntities et = new MusicOnlineEntities();
             UsersTBL user = et.UsersTBL.Where(u => u.name == userName && u.password == password).FirstOrDefault();
             return Casts.ToUsersDTO.GetUser(user);
         }

@@ -17,7 +17,10 @@ export class SearchSpesificSongComponent implements OnInit {
   songsControl = new FormControl();
 
   constructor(private songService: SongService) { 
+    try {
     this.songService.getSongs().subscribe(songs => {this.songsList = songs; this.updateSongsList();}, err => { console.log(err); });
+    }
+    catch { console.log('search-spesific'); }
   }
 
   ngOnInit() {
