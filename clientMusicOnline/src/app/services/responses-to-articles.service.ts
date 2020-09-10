@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class ResponsesToArticlesService {
 
   constructor(private httpClient: HttpClient) { }
-  GetArticleResponses(articleId): Observable<ResponsesToArticles[]> {
+  public GetArticleResponses(articleId): Observable<ResponsesToArticles[]> {
     return this.httpClient.get<ResponsesToArticles[]>("https://localhost:44368/api/ResponsesToArticles/GetArticleResponses?articleId=" + articleId);
   }
   
