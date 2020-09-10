@@ -18,9 +18,9 @@ namespace ServerMusicBSD.Controllers
         {
             PlaylistBL.AddPlaylist(newPlaylist);
         }
-        public void DeletePlaylist(int id)
+        public void DeletePlaylist(int playlistId)
         {
-            PlaylistBL.DeletePlaylist(id);
+            PlaylistBL.DeletePlaylist(playlistId);
         }
         public List<PlaylistsDTO> GetPlaylistsByUserId(int userId)
         {

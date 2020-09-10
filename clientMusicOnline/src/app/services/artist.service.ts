@@ -10,8 +10,11 @@ export class ArtistService {
 
   constructor(private httpClient: HttpClient) { }
   
-  getArtists(): Observable<Artist[]> {
+  public getArtists(): Observable<Artist[]> {
     return this.httpClient.get<Artist[]>("https://localhost:44368/api/Artists/GetArtists");
+  }
+  public addArtist(artist:Artist):void{
+    this.httpClient.post("https://localhost:44368/api/Artists/PostArtist",artist);
   }
 
 }

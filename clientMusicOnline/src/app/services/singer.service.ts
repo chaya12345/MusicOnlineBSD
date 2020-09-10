@@ -10,8 +10,10 @@ export class SingerService {
 
   constructor(private httpClient: HttpClient) { }
   
-  getSingers(): Observable<Singer[]> {
+  public getSingers(): Observable<Singer[]> {
     return this.httpClient.get<Singer[]>("https://localhost:44368/api/Singers/GetSingers");
   }
-
+  public addSinger(singer:Singer):void{
+    this.httpClient.post("https://localhost:44368/api/Singers/PostSinger",singer);
+  }
 }

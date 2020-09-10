@@ -14,18 +14,17 @@ namespace ServerMusicBSD.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SongsToPlaylistsController : ApiController
     {
-        public void PostSong([FromBody] SongsToPlaylistsTBL songToPlaylist)
+        public void PostSongToPlaylists([FromBody] SongsToPlaylistsTBL songToPlaylist)
         {
             SongsToPlaylistsBL.AddSongToPlaylist(songToPlaylist);
         }
-        [AcceptVerbs("Put")]
-        public void PutSong(int id, int playlistId)
+        public void PutMoveSongToOtherPlaylist(int songId, int playlistId)
         {
-            SongsToPlaylistsBL.MoveSongToOtherPlaylist(id, playlistId);
+            SongsToPlaylistsBL.MoveSongToOtherPlaylist(songId, playlistId);
         }
-        public void DeleteSong(int id)
+        public void DeleteSongFromPlaylist(int songId)
         {
-            SongsToPlaylistsBL.DeleteSong(id);
+            SongsToPlaylistsBL.DeleteSong(songId);
         }
         public List<SongsToPlaylistsDTO> GetSongsToPlaylists(int playlistId)
         {

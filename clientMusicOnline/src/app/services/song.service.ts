@@ -10,28 +10,41 @@ export class SongService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getSongs(): Observable<Song[]> {
+  public getSongs(): Observable<Song[]> {
     return this.httpClient.get<Song[]>("https://localhost:44368/api/Songs/GetSongs");
   }
-  GetSongsBySinger(singerName: string): Observable<Song[]> {
+  public getSongsBySinger(singerName: string): Observable<Song[]> {
     return this.httpClient.get<Song[]>("https://localhost:44368/api/Songs/GetSongsBySinger?singerName=" + singerName);
   }
-  GetSongsByAlbum(albumName: string): Observable<Song[]> {
+  public getSongsByAlbum(albumName: string): Observable<Song[]> {
     return this.httpClient.get<Song[]>("https://localhost:44368/api/Songs/GetSongsByAlbum?albumName=" + albumName);
   }
-  GetSongsByTag(tagName: string): Observable<Song[]> {
+  public getSongsByTag(tagName: string): Observable<Song[]> {
     return this.httpClient.get<Song[]>("https://localhost:44368/api/Songs/GetSongsByTag?tagName=" + tagName);
   }
-  GetSimilarSongs(songId: number): Observable<Song[]> {
+  public getSimilarSongs(songId: number): Observable<Song[]> {
     return this.httpClient.get<Song[]>("https://localhost:44368/api/Songs/GetSimilarSongs?songId=" + songId);
   }
-  GetSongsByTags(tags: object): Observable<Song[]> {
-    return this.httpClient.post<Song[]>("https://localhost:44368/api/Songs/PostSongsByTags", tags);
+  public getSongsByTags(tags: string[]): Observable<Song[]> {
+    var obj={"tags":tags}
+    return this.httpClient.post<Song[]>("https://localhost:44368/api/Songs/PostSongsByTags", obj);
   }
-  // PostSong(song:Song):void{
-  //   this.httpClient.post("https://localhost:44368/api/Songs/PostSong",song);
-  // }
-
+  public getSongsByAllTags(tags: string[]): Observable<Song[]> {
+    var obj={"tags":tags}
+    return this.httpClient.post<Song[]>("https://localhost:44368/api/Songs/PostSongsByAllTags", obj);
+  }
+  public addSong(song:Song):void{
+    this.httpClient.post("https://localhost:44368/api/Songs/PostSong",song);
+  }
+  public deleteSong(songId:number):void{
+    this.httpClient.delete("https://localhost:44368/api/Songs/deleteSong?songId="+songId);
+  }
+  public inreaseLikeToSong(songId:number):void{
+    this.httpClient.delete("https://localhost:44368/api/Songs/PutInreaseLikeToSong?songId="+songId);
+  }
+  public decreaseLikeToSong(songId:number):void{
+    this.httpClient.delete("https://localhost:44368/api/Songs/PutDecreaseLikeToSong?songId="+songId);
+  }
   // יצירת קריאת סרבר עם הרשאות גישה
   //   const headers = { 'Authorization': 'Bearer my-token' }
   //   const body = { title: 'Angular POST Request Example' }

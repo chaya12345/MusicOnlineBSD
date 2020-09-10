@@ -18,9 +18,9 @@ namespace ServerMusicBSD.Controllers
         {
             return ArticlesBL.GetArticles();
         }
-        public ArticlesDTO GetArticleById(int id)
+        public ArticlesDTO GetArticleById(int articleid)
         {
-            return ArticlesBL.GetArticleById(id);
+            return ArticlesBL.GetArticleById(articleid);
         }
         public void PostArticle([FromBody] ArticlesTBL article)
         {

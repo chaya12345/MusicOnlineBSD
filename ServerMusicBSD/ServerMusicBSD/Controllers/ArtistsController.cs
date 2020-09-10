@@ -14,7 +14,7 @@ namespace ServerMusicBSD.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ArtistsController : ApiController
     {
-       public void PostArtistName([FromBody] ArtistsTBL artistsName)
+       public void PostArtist([FromBody] ArtistsTBL artistsName)
        {
             ArtistsBL.AddArtistName(artistsName);
        }
