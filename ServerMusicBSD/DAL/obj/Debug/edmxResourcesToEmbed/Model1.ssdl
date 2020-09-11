@@ -81,7 +81,7 @@
     <Property Name="name" Type="varchar" MaxLength="50" />
     <Property Name="title" Type="varchar" MaxLength="50" />
     <Property Name="content" Type="nvarchar(max)" />
-    <Property Name="date" Type="date" />
+    <Property Name="date" Type="datetime" />
   </EntityType>
   <EntityType Name="ResponsesToSongsTBL">
     <Key>
@@ -92,7 +92,7 @@
     <Property Name="name" Type="varchar" MaxLength="50" />
     <Property Name="title" Type="varchar" MaxLength="50" />
     <Property Name="content" Type="nvarchar(max)" />
-    <Property Name="date" Type="date" />
+    <Property Name="date" Type="datetime" />
   </EntityType>
   <EntityType Name="SearchingToSingerTBL">
     <Key>
