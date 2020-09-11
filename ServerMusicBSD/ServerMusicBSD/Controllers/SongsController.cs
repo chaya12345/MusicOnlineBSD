@@ -53,9 +53,9 @@ namespace ServerMusicBSD.Controllers
         {
            return SongsBL.GetSimilarSongs(songId);
         }
-        public void PutInreaseLikeToSong(int songId)
+        public void PutIncreaseLikeToSong(int songId)
         {
-            SongsBL.InreaseLike(songId);
+            SongsBL.IncreaseLike(songId);
         }
         public void PutDecreaseLikeToSong(int songId)
         {

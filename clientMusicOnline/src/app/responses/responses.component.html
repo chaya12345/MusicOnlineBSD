@@ -1,10 +1,30 @@
 <div class="wrap-container-responses">
     <h2>תגובות</h2>
-    <button mat-stroked-button class="addResponse" (click)="toggleResponse()">הוסיפו תגובה</button>
-    <p *ngIf="isWantToAdd">חכה..... לא גמרנו להכין לך טופס :)</p>
-    <response></response>
-    <response></response>
-    <response></response>
-    <response></response>
-    <response></response>
+    <!-- <button mat-stroked-button class="addResponse" (click)="toggleResponse()">הוסיפו תגובה</button>
+    <p *ngIf="isWantToAdd">חכה..... לא גמרנו להכין לך טופס :)</p> -->
+    <mat-accordion class="example-headers-align addingResponse" multi>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    הוסיפו תגובה
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-form-field>
+                <mat-label>שם מלא</mat-label>
+                <input matInput min="2">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>כותרת תגובה</mat-label>
+                <input matInput min="1">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>תוכן תגובה</mat-label>
+                <input matInput min="1">
+            </mat-form-field>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <response *ngFor="let response of responsesList" [response]="response"></response>
 </div>

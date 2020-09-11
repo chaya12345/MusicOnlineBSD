@@ -4,11 +4,11 @@
         <mat-form-field appearance="outline">
             <input type="text" placeholder="חפש שיר" aria-label="Number" matInput [formControl]="songsControl"
                 [matAutocomplete]="autoSongs">
-            <button mat-icon-button matPrefix>
+            <button mat-icon-button matPrefix (click)="fullSong()">
                 <mat-icon>search</mat-icon>
             </button>
             <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete">
-                <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name">
+                <mat-option *ngFor="let song of filteredSongs | async" [(ngModel)]="songName" [value]="song.name">
                     {{song.name}}
                 </mat-option>
             </mat-autocomplete>

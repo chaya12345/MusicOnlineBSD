@@ -137,7 +137,7 @@ namespace BL
             }
             return Casts.ToSongsDTO.GetSongs(result);
         }
-        public static void InreaseLike(int songId)
+        public static void IncreaseLike(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             SongsTBL song = et.SongsTBL.Where(s => s.id == songId).FirstOrDefault();
@@ -155,7 +155,7 @@ namespace BL
             SongsTBL song = et.SongsTBL.Where(s => s.id == songId).FirstOrDefault();
             if (song != null)
             {
-                if (song.count_like == null)
+                if (song.count_like == null || song.count_like == 0)
                     song.count_like = 0;
                 else song.count_like--;
                 et.SaveChanges();

@@ -5,7 +5,7 @@
     <mat-icon>thumb_up_alt</mat-icon>
     <p>{{song.count_like}} אנשים שאהבו</p>
     <mat-icon>speaker_notes</mat-icon>
-    <p>{{song.count_responses}} תגובות</p>
+    <p>{{responsesCount}} תגובות</p>
     <button mat-icon-button (click)="sign($event)" (mouseenter)="marking($event)" (mouseleave)="reset_marking($event,'black')">
         <mat-icon>favorite_border</mat-icon>
     </button>

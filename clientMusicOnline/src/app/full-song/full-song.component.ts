@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { SongService } from '../services/song.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Song } from '../classes/song';
 import { HttpClient } from '@angular/common/http';
+import { ShareDataService } from '../services/share-data.service';
+import { ResponseToSongsService } from '../services/response-to-songs.service';
+import { ResponsesToSongs } from '../classes/responsesToSongs';
 import { TagsToSongsService } from '../services/tags-to-songs.service';
 
 @Component({
@@ -11,58 +13,63 @@ import { TagsToSongsService } from '../services/tags-to-songs.service';
 })
 export class FullSongComponent implements OnInit {
 
-  songsList: Song[] = [];
-  songsWithContent: Song[] = [];
+  @Output() onSongSelected: EventEmitter<boolean> = new EventEmitter<boolean>();
   song: Song;
   songContent: string;
+  songSrc: string;
   httpClient;
-  _tagsToSongsService;
   tags: string[] = [];
-  workedSong: Song;
+  responses: ResponsesToSongs[] = [];
+  video: HTMLVideoElement;
 
-  constructor(private songService: SongService, http: HttpClient/*, tagsToSongsService = TagsToSongsService*/) {
-    try {
-      songService.getSongs().subscribe(song => { this.songsList = song; this.filter(); this.getContent(); this.getTags(); }, err => { console.log(err); });
-    }
-    catch { console.log('full-song'); }
+  constructor(private shareDataService: ShareDataService, http: HttpClient, private responseToSongsService: ResponseToSongsService,
+    private tagsToSongsService: TagsToSongsService) {
     this.httpClient = http;
-    // this._tagsToSongsService = tagsToSongsService;
+    this.song = shareDataService.currentSong;
   }
 
   ngOnInit() {
-  }
-
-  filter(): void {
-    try {
-      this.songsList.forEach(song => {
-        if (song.content != null && song.content != undefined)
-          this.songsWithContent.push(song);
-      });
-      console.log(this.songsWithContent);
-      this.song = this.songsWithContent[0];
-    }
-    catch { console.log('full-song'); }
+    this.shareDataService.childEventListner().subscribe(song => {
+      this.song = song;
+      try {
+        this.getContent();
+        this.setSongSrc();
+        this.getResponses();
+        this.getTags();
+        this.emit();
+        console.log(song);
+      }
+      catch { console.log('full-song'); }
+    });
   }
 
   getContent(): void {
-    try {
-      this.httpClient.get('../../assets/text/' + this.song.content, {
-        responseType: 'text', headers: {
-          "Accept": "application/txt;charset=utf-8",
-          "Accept-Charset": "charset=utf-8"
-        }
-      }).subscribe(data => { this.songContent = data; console.log(data); this.filter() });
-    }
-    catch { console.log('full-song'); }
+    this.httpClient.get('../../assets/text/' + this.song.content, {
+      responseType: 'text', headers: {
+        "Accept": "application/txt;charset=utf-8",
+        "Accept-Charset": "charset=utf-8"
+      }
+    }).subscribe(data => { this.songContent = data; });
+  }
+
+  setSongSrc(): void {
+    this.songSrc = '../../assets/songs/' + this.song.file_location;
+    this.video = document.querySelector('video');
+    this.video.load();
+  }
+
+  getResponses(): void {
+    this.responseToSongsService.getSongResponses(this.song.id)
+      .subscribe(response => { this.responses = response; }, err => { console.log(err); });
   }
 
   getTags(): void {
-    // this._tagsToSongsService.GetTagsNamesToSong().subscribe(tag => { this.tags = tag; }, err => { console.log(err); });
-    this.tags = ["אברהם פריד", "סינגל", "קצבי", "חסידי", "קליפ"];
+    this.tagsToSongsService.getTagsNamesToSong(this.song.id)
+      .subscribe(tag => { this.tags = tag; }, err => { console.log(err); });
   }
 
-  showFullSong(e: Song) {
-    console.log(e);
+  emit(): void {
+    this.onSongSelected.emit(true);
   }
 
 }

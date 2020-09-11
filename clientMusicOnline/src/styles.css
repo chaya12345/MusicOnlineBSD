@@ -218,6 +218,8 @@ player mat-card {
 
 /* #endregion */
 
+/* #region(collapsed) [spinner] */
+
 .mat-spinner, .mat-spinner svg {
     height: 50px !important;
     width: 50px !important;
@@ -230,3 +232,69 @@ player mat-card {
 .wrap-container-footer about .mat-progress-spinner circle, .mat-spinner circle {
     stroke: #74aff3;
 }
+
+/* #endregion */
+
+/* #region(collapsed) [accordion] */
+
+response .mat-expansion-panel:not([class*=mat-elevation-z]) {
+    margin: 0;
+}
+
+mat-panel-title {
+    margin-right: 0 !important;
+    font-weight: 600;
+    font-family: fb Joker;
+    padding: 0;
+    font-size: 25px;
+    line-height: 40px;
+}
+
+response .mat-expansion-panel-body, .mat-expansion-panel-header {
+    padding: 0 !important;
+    height: fit-content !important;
+}
+
+response .mat-expansion-panel-body p {
+    font-size: 23px;
+    line-height: 30px;
+    font-family: fb Joker;
+}
+
+response mat-accordion > span {
+    color: #929292;
+    font-size: 17px;
+    line-height: 40px;
+    font-weight: 300;
+}
+
+response .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
+    background: transparent !important;
+}
+
+response span.mat-expansion-indicator {
+    margin-left: 12px;
+}
+
+/*--- adding response ---*/
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: none;
+}
+
+.addingResponse mat-expansion-panel {
+    margin: 20px 0 25px !important;
+    border: solid 1px #eaeaea;
+}
+
+.addingResponse mat-panel-title {
+    font-weight: normal;
+    padding: 0 30px;
+}
+
+.mat-expansion-panel-body mat-form-field {
+    text-align: right;
+    margin-left: 10px;
+}
+
+/* #endregion */

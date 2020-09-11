@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ResponsesToSongs } from '../classes/responsesToSongs';
 
 @Component({
   selector: 'response',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResponseComponent implements OnInit {
 
+  @Input() response: ResponsesToSongs;
+  
   constructor() { }
 
   ngOnInit(): void {

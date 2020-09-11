@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Song } from '../classes/song';
+import { ShareDataService } from '../services/share-data.service';
 // import { EventEmitter } from 'protractor';
 
 @Component({
@@ -10,11 +11,11 @@ import { Song } from '../classes/song';
 export class SongComponent implements OnInit {
 
   @Input() song: Song;
-  @Output()
-  onShowFullSong: EventEmitter<Song> = new EventEmitter<Song>();
+  @Output() onShowFullSong = new EventEmitter<Song>();
   isHover:boolean = false;
 
-  constructor() { 
+  constructor(private shareDataService: ShareDataService) { 
+    shareDataService.currentSong = this.song;
   }
 
   ngOnInit() {
@@ -25,9 +26,11 @@ export class SongComponent implements OnInit {
   }
 
   fullSong() {
-    console.log('click');
-    this.onShowFullSong.emit(this.song);
-    console.log('emit');
+    // console.log('click');
+    // this.onShowFullSong.emit(this.song);
+    // console.log('emit');
+    this.shareDataService.emitChildEvent(this.song);
   }
+
 
 }

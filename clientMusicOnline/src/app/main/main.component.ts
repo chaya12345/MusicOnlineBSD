@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Song } from '../classes/song';
 
 @Component({
   selector: 'main',
@@ -8,9 +7,15 @@ import { Song } from '../classes/song';
 })
 export class MainComponent implements OnInit {
 
+  isShowFullSong: boolean = false;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  songSelected(isSongSelected: boolean): void {
+    this.isShowFullSong = isSongSelected;
+    console.log('show fullll bsd');
   }
 
 }

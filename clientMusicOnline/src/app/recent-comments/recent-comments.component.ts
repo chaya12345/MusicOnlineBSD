@@ -13,7 +13,7 @@ export class RecentCommentsComponent implements OnInit {
 
   constructor(private responseService: ResponsesToArticlesService) { 
     try {
-    this.responseService.get ().subscribe(response => {this.responsesList = response; this.filter();}, err => { console.log(err); });
+    // this.responseService.get ().subscribe(response => {this.responsesList = response; this.filter();}, err => { console.log(err); });
     }
     catch { console.log('recent-comments'); }
    }

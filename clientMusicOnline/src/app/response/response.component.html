@@ -1,6 +1,17 @@
-<div class="wrap-response">
-    <h3>שומע בלי סוףףף</h3>
-    <p>וואו! שיר מדהים של זמר ענקקק. אהבתי!</p>
-    <span>אוהב שירים | 10/06/2019 10:03</span>
-</div>
+<!-- <div class="wrap-response">
+    <h3>{{response.title}}</h3>
+    <p>{{response.content}}</p>
+    <span>{{response.name}} | {{response.date | date: 'd/M/yyyy H:mm'}}</span>
+</div> -->
+<mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{response.title}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>{{response.content}}</p>
+    </mat-expansion-panel>
+    <span>{{response.name}} • {{response.date | date: 'd/M/yyyy H:mm'}}</span>
+</mat-accordion>  
 <mat-divider></mat-divider>

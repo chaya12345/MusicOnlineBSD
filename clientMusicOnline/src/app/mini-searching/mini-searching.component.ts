@@ -6,6 +6,7 @@ import { SongService } from '../services/song.service';
 import { Song } from '../classes/song';
 import { Singer } from '../classes/singer';
 import { SingerService } from '../services/singer.service';
+import { ShareDataService } from '../services/share-data.service';
 
 @Component({
   selector: 'mini-searching',
@@ -19,10 +20,13 @@ export class MiniSearchingComponent implements OnInit {
   songsControl = new FormControl();
   singersControl = new FormControl();
 
+  songName: string;
+  currentSong: Song;
+
   songsList: Song[] = [];
   singersList: Singer[] = [];
 
-  constructor(private songService: SongService, private singerService: SingerService) {
+  constructor(private songService: SongService, private singerService: SingerService, private shareDataService: ShareDataService) {
     this.songsControl = new FormControl();
     this.singersControl = new FormControl();
     try {
@@ -62,6 +66,20 @@ export class MiniSearchingComponent implements OnInit {
   public _filterSingers(value: string): Singer[] {
     const filterValue = value.toLowerCase();
     return this.singersList.filter(singer => singer.name.toLowerCase().includes(filterValue));
+  }
+
+  fullSong() {
+    // console.log('click');
+    // this.onShowFullSong.emit(this.song);
+    // console.log('emit');
+    console.log('clicked');
+    console.log(this.songName);
+    this.songsList.forEach(song => {
+      if (song.name == this.songName)
+        this.currentSong = song;
+    });
+    console.log(this.currentSong);
+    this.shareDataService.emitChildEvent(this.currentSong);
   }
 
 }

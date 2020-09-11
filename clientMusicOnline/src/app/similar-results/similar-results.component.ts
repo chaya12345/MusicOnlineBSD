@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SongService } from '../services/song.service';
 import { Song } from '../classes/song';
 
@@ -9,24 +9,24 @@ import { Song } from '../classes/song';
 })
 export class SimilarResultsComponent implements OnInit {
 
-  songsList: Song[] = [];
+  @Input() currentSongId: number;
   similarSongs: Song[] = [];
 
   constructor(private songService: SongService) {
-    try {
-    songService.getSongs().subscribe(song => { this.songsList = song; this.filter(); }, err => { console.log(err); });
-    songService.GetSimilarSongs(65).subscribe(song => { this.similarSongs = song; this.filter(); }, err => { console.log(err); });
-    }
-    catch { console.log('similar-results'); }
    }
 
   ngOnInit() {
   }
 
+  
+  ngOnChanges() {
+    try {
+    this.songService.getSimilarSongs(this.currentSongId).subscribe(song => { this.similarSongs = song; this.filter(); }, err => { console.log(err); });
+    }
+    catch { console.log('similar-results'); }
+  }
+
   filter(): void {
-    this.songsList.sort((a, b) => Math.round(b.count_views - a.count_views));
-    this.songsList = this.songsList.slice(0, 3);
-    console.log(this.songsList);
     this.similarSongs = this.similarSongs.slice(0, 3);
   }
 
