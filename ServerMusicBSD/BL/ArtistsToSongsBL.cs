@@ -27,6 +27,18 @@ namespace BL
             //}
             //return Casts.ToArtistsDTO.GetArtistsNames(artists);
         }
+        public static List<string> GetArtistsNamesToSong(int songId){
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<ArtistsToSongsDTO> artists = GetArtistsToSong(songId);
+            List<string> artistsNames = new List<string>();
+            foreach (ArtistsToSongsDTO artist in artists)
+            {
+                string name = et.ArtistsTBL.Where(a => a.id == artist.artistId).FirstOrDefault().name;
+                if (!artistsNames.Contains(name))
+                    artistsNames.Add(name);
+            }
+            return artistsNames;
+        }
         public static List<ArtistsToSongsDTO> GetSongsToArtist(int artistId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();

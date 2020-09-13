@@ -17,7 +17,7 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PlaylistsTBL()
         {
-            this.SongsToPlaylistsTBLs = new HashSet<SongsToPlaylistsTBL>();
+            this.SongsToPlaylistsTBL = new HashSet<SongsToPlaylistsTBL>();
         }
     
         public int id { get; set; }
@@ -26,6 +26,6 @@ namespace DAL
     
         public virtual UsersTBL UsersTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SongsToPlaylistsTBL> SongsToPlaylistsTBLs { get; set; }
+        public virtual ICollection<SongsToPlaylistsTBL> SongsToPlaylistsTBL { get; set; }
     }
 }

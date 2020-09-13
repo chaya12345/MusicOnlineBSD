@@ -15,7 +15,6 @@ namespace BL.Casts
             ArtistsDTO newArtist = new ArtistsDTO();
             newArtist.id = artistsName.id;
             newArtist.name = artistsName.name;
-            newArtist.image = artistsName.image;
             return newArtist;
         }
         public static List<ArtistsDTO> GetArtistsNames(List<ArtistsTBL> artistsNames)

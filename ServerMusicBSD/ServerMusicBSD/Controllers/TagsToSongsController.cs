@@ -22,6 +22,10 @@ namespace ServerMusicBSD.Controllers
         {
             return TagsToSongsBL.GetTagsNamesToSong(songId);
         }
+        public List<string> GetTagsIncludeArtistsToSong(int songId)
+        {
+            return TagsToSongsBL.GetTagsIncludeArtistsToSong(songId);
+        }
         public static void PostTagToSong([FromBody] TagsToSongsTBL tagToSong)
         {
             TagsToSongsBL.AddTagToSong(tagToSong);

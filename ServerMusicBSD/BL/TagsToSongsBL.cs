@@ -21,7 +21,14 @@ namespace BL
             }
             return tags;
         }
-
+        public static List<string> GetTagsIncludeArtistsToSong(int songId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<string> tagsIncludeArtists = new List<string>();
+            tagsIncludeArtists.AddRange(GetTagsNamesToSong(songId));
+            tagsIncludeArtists.AddRange(ArtistsToSongsBL.GetArtistsNamesToSong(songId));
+            return tagsIncludeArtists;
+        }
         public static List<TagsToSongsDTO> GetTagsToSong(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();

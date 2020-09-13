@@ -12,7 +12,7 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class LastRespons
+    public partial class LastResponses
     {
         public int responsId { get; set; }
         public string name { get; set; }

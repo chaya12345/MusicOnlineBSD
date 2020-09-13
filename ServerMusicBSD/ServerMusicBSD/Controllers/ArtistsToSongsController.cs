@@ -18,6 +18,10 @@ namespace ServerMusicBSD.Controllers
         {
             return ArtistsToSongsBL.GetArtistsToSong(songId);
         }
+        public List<string> GetArtistsNamesToSong(int songId)
+        {
+            return ArtistsToSongsBL.GetArtistsNamesToSong(songId);
+        }
         public  List<ArtistsToSongsDTO> GetSongsToArtist(int artistId)
         {
             return ArtistsToSongsBL.GetSongsToArtist(artistId);
