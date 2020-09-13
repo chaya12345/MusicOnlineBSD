@@ -6,6 +6,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="image" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="ArticlesTBL">
     <Key>
@@ -35,6 +36,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="image" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="ArtistsToSongsTBL">
     <Key>
@@ -118,6 +120,7 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="image" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="SongsTBL">
     <Key>
@@ -192,7 +195,7 @@ warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a pri
     </Key>
     <Property Name="responsId" Type="int" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" />
-    <Property Name="date" Type="date" />
+    <Property Name="date" Type="datetime" />
     <Property Name="articleId" Type="int" Nullable="false" />
     <Property Name="title" Type="varchar(max)" />
   </EntityType>

@@ -4,13 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MusicOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MusicOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AlbumsTBL">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="image" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="ArticlesTBL">
           <Key>
@@ -40,6 +41,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="image" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="ArtistsToSongsTBL">
           <Key>
@@ -123,6 +125,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="image" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="SongsTBL">
           <Key>
@@ -197,7 +200,7 @@ warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a pri
           </Key>
           <Property Name="responsId" Type="int" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" />
-          <Property Name="date" Type="date" />
+          <Property Name="date" Type="datetime" />
           <Property Name="articleId" Type="int" Nullable="false" />
           <Property Name="title" Type="varchar(max)" />
         </EntityType>
@@ -518,8 +521,7 @@ warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a pri
             <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MusicOnlineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -530,6 +532,7 @@ warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a pri
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsTBL_AlbumsTBL" FromRole="AlbumsTBL" ToRole="SongsTBL" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ArticlesTBL">
           <Key>
@@ -562,6 +565,7 @@ warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a pri
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ArtistsToSongsTBL" Relationship="Self.FK_ArtistsToSongsTBL_ArtistsTBL" FromRole="ArtistsTBL" ToRole="ArtistsToSongsTBL" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="ArtistsToSongsTBL">
           <Key>
@@ -660,6 +664,7 @@ warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a pri
           <NavigationProperty Name="SearchingToSingerTBL" Relationship="Self.FK_SearchingToSingerTBL_SingersTBL" FromRole="SingersTBL" ToRole="SearchingToSingerTBL" />
           <NavigationProperty Name="SingerSearchingToUserTBL" Relationship="Self.FK_SingerSearchingToUserTBL_SingersTBL" FromRole="SingersTBL" ToRole="SingerSearchingToUserTBL" />
           <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsTBL_SingersTBL" FromRole="SingersTBL" ToRole="SongsTBL" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SongsTBL">
           <Key>
@@ -749,7 +754,7 @@ warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a pri
           </Key>
           <Property Name="responsId" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="articleId" Type="Int32" Nullable="false" />
           <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
@@ -1071,6 +1076,7 @@ warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a pri
           <EntitySetMapping Name="AlbumsTBL">
             <EntityTypeMapping TypeName="MusicOnlineModel.AlbumsTBL">
               <MappingFragment StoreEntitySet="AlbumsTBL">
+                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
@@ -1102,6 +1108,7 @@ warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a pri
           <EntitySetMapping Name="ArtistsTBL">
             <EntityTypeMapping TypeName="MusicOnlineModel.ArtistsTBL">
               <MappingFragment StoreEntitySet="ArtistsTBL">
+                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
@@ -1194,6 +1201,7 @@ warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a pri
           <EntitySetMapping Name="SingersTBL">
             <EntityTypeMapping TypeName="MusicOnlineModel.SingersTBL">
               <MappingFragment StoreEntitySet="SingersTBL">
+                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>

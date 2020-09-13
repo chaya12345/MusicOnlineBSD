@@ -4,6 +4,7 @@
     <EntitySetMapping Name="AlbumsTBL">
       <EntityTypeMapping TypeName="MusicOnlineModel.AlbumsTBL">
         <MappingFragment StoreEntitySet="AlbumsTBL">
+          <ScalarProperty Name="image" ColumnName="image" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
@@ -35,6 +36,7 @@
     <EntitySetMapping Name="ArtistsTBL">
       <EntityTypeMapping TypeName="MusicOnlineModel.ArtistsTBL">
         <MappingFragment StoreEntitySet="ArtistsTBL">
+          <ScalarProperty Name="image" ColumnName="image" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
@@ -127,6 +129,7 @@
     <EntitySetMapping Name="SingersTBL">
       <EntityTypeMapping TypeName="MusicOnlineModel.SingersTBL">
         <MappingFragment StoreEntitySet="SingersTBL">
+          <ScalarProperty Name="image" ColumnName="image" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
