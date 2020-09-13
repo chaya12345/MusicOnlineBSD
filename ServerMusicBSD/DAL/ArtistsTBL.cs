@@ -17,7 +17,7 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ArtistsTBL()
         {
-            this.ArtistsToSongsTBL = new HashSet<ArtistsToSongsTBL>();
+            this.ArtistsToSongsTBLs = new HashSet<ArtistsToSongsTBL>();
         }
     
         public int id { get; set; }
@@ -25,6 +25,6 @@ namespace DAL
         public string image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ArtistsToSongsTBL> ArtistsToSongsTBL { get; set; }
+        public virtual ICollection<ArtistsToSongsTBL> ArtistsToSongsTBLs { get; set; }
     }
 }

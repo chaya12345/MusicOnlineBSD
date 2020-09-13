@@ -25,24 +25,24 @@ namespace DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<AlbumsTBL> AlbumsTBL { get; set; }
-        public virtual DbSet<ArticlesTBL> ArticlesTBL { get; set; }
-        public virtual DbSet<ArtistsTBL> ArtistsTBL { get; set; }
-        public virtual DbSet<ArtistsToSongsTBL> ArtistsToSongsTBL { get; set; }
-        public virtual DbSet<JobTBL> JobTBL { get; set; }
-        public virtual DbSet<PlaylistsTBL> PlaylistsTBL { get; set; }
-        public virtual DbSet<ReportsTBL> ReportsTBL { get; set; }
-        public virtual DbSet<ResponsesToArticlesTBL> ResponsesToArticlesTBL { get; set; }
-        public virtual DbSet<ResponsesToSongsTBL> ResponsesToSongsTBL { get; set; }
-        public virtual DbSet<SearchingToSingerTBL> SearchingToSingerTBL { get; set; }
-        public virtual DbSet<SingerSearchingToUserTBL> SingerSearchingToUserTBL { get; set; }
-        public virtual DbSet<SingersTBL> SingersTBL { get; set; }
-        public virtual DbSet<SongsTBL> SongsTBL { get; set; }
-        public virtual DbSet<SongsToPlaylistsTBL> SongsToPlaylistsTBL { get; set; }
-        public virtual DbSet<TagsTBL> TagsTBL { get; set; }
-        public virtual DbSet<TagsToArticlesTBL> TagsToArticlesTBL { get; set; }
-        public virtual DbSet<TagsToSongsTBL> TagsToSongsTBL { get; set; }
-        public virtual DbSet<UsersTBL> UsersTBL { get; set; }
-        public virtual DbSet<LastResponses> LastResponses { get; set; }
+        public virtual DbSet<AlbumsTBL> AlbumsTBLs { get; set; }
+        public virtual DbSet<ArticlesTBL> ArticlesTBLs { get; set; }
+        public virtual DbSet<ArtistsTBL> ArtistsTBLs { get; set; }
+        public virtual DbSet<ArtistsToSongsTBL> ArtistsToSongsTBLs { get; set; }
+        public virtual DbSet<JobTBL> JobTBLs { get; set; }
+        public virtual DbSet<PlaylistsTBL> PlaylistsTBLs { get; set; }
+        public virtual DbSet<ReportsTBL> ReportsTBLs { get; set; }
+        public virtual DbSet<ResponsesToArticlesTBL> ResponsesToArticlesTBLs { get; set; }
+        public virtual DbSet<ResponsesToSongsTBL> ResponsesToSongsTBLs { get; set; }
+        public virtual DbSet<SearchingToSingerTBL> SearchingToSingerTBLs { get; set; }
+        public virtual DbSet<SingerSearchingToUserTBL> SingerSearchingToUserTBLs { get; set; }
+        public virtual DbSet<SingersTBL> SingersTBLs { get; set; }
+        public virtual DbSet<SongsTBL> SongsTBLs { get; set; }
+        public virtual DbSet<SongsToPlaylistsTBL> SongsToPlaylistsTBLs { get; set; }
+        public virtual DbSet<TagsTBL> TagsTBLs { get; set; }
+        public virtual DbSet<TagsToArticlesTBL> TagsToArticlesTBLs { get; set; }
+        public virtual DbSet<TagsToSongsTBL> TagsToSongsTBLs { get; set; }
+        public virtual DbSet<UsersTBL> UsersTBLs { get; set; }
+        public virtual DbSet<LastRespons> LastResponses { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace BL.Casts
 {
     public class ToLastResponsDTO
     {
-        public static LastResponsDTO GetLastRespons(LastResponses lastRespons)
+        public static LastResponsDTO GetLastRespons(LastRespons lastRespons)
         {
             LastResponsDTO newRespons = new LastResponsDTO();
             newRespons.responsId = lastRespons.responsId;
@@ -20,10 +20,10 @@ namespace BL.Casts
             newRespons.title = lastRespons.title;
             return newRespons;
         }
-        public static List<LastResponsDTO> GetLastResponses(List<LastResponses> lastResponses)
+        public static List<LastResponsDTO> GetLastResponses(List<LastRespons> lastResponses)
         {
             List<LastResponsDTO> list = new List<LastResponsDTO>();
-            foreach (LastResponses item in lastResponses)
+            foreach (LastRespons item in lastResponses)
             {
                 list.Add(GetLastRespons(item));
             }
