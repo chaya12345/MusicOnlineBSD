@@ -17,11 +17,11 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SongsTBL()
         {
-            this.ArtistsToSongsTBLs = new HashSet<ArtistsToSongsTBL>();
-            this.ReportsTBLs = new HashSet<ReportsTBL>();
-            this.ResponsesToSongsTBLs = new HashSet<ResponsesToSongsTBL>();
-            this.SongsToPlaylistsTBLs = new HashSet<SongsToPlaylistsTBL>();
-            this.TagsToSongsTBLs = new HashSet<TagsToSongsTBL>();
+            this.ArtistsToSongsTBL = new HashSet<ArtistsToSongsTBL>();
+            this.ReportsTBL = new HashSet<ReportsTBL>();
+            this.ResponsesToSongsTBL = new HashSet<ResponsesToSongsTBL>();
+            this.SongsToPlaylistsTBL = new HashSet<SongsToPlaylistsTBL>();
+            this.TagsToSongsTBL = new HashSet<TagsToSongsTBL>();
         }
     
         public int id { get; set; }
@@ -41,15 +41,15 @@ namespace DAL
     
         public virtual AlbumsTBL AlbumsTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ArtistsToSongsTBL> ArtistsToSongsTBLs { get; set; }
+        public virtual ICollection<ArtistsToSongsTBL> ArtistsToSongsTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReportsTBL> ReportsTBLs { get; set; }
+        public virtual ICollection<ReportsTBL> ReportsTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ResponsesToSongsTBL> ResponsesToSongsTBLs { get; set; }
+        public virtual ICollection<ResponsesToSongsTBL> ResponsesToSongsTBL { get; set; }
         public virtual SingersTBL SingersTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SongsToPlaylistsTBL> SongsToPlaylistsTBLs { get; set; }
+        public virtual ICollection<SongsToPlaylistsTBL> SongsToPlaylistsTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TagsToSongsTBL> TagsToSongsTBLs { get; set; }
+        public virtual ICollection<TagsToSongsTBL> TagsToSongsTBL { get; set; }
     }
 }

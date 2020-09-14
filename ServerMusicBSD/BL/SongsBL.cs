@@ -150,17 +150,18 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<string> tags = TagsToSongsBL.GetTagsNamesToSong(songId);
-            List<TagsTBL> tagsTBL = et.TagsTBLs.Where(t => tags.Contains(t.name)).ToList();
+            List<TagsTBL> tagsTBL = et.TagsTBL.Where(t => tags.Contains(t.name)).ToList();
             //קבלת סוג הג'אנר
-            int? janer = tagsTBL.Where(t => t.tagTypeId != null).FirstOrDefault().tagTypeId;
+            int? janer = tagsTBL.Where(t => t.tagTypeId != null).FirstOrDefault().id;
+            int janerInt = int.Parse(janer + "");
             //כל השירים שנמצאים בג'אנר הזה
-            List<TagsToSongsTBL> tagsToSong = et.TagsToSongsTBLs.Where(t => t.tagId == int.Parse(janer + "")).ToList();
+            List<TagsToSongsTBL> tagsToSong = et.TagsToSongsTBL.Where(t => t.tagId ==janerInt).ToList();
             List<SongsTBL> songsInJaner = new List<SongsTBL>();
             List<SimilarSongs> similarSongs = new List<SimilarSongs>();
             //הכנסה לרשימה של השירים את כל השירים ששיכים לג'אנר מסוים
             foreach (TagsToSongsTBL tagToSong in tagsToSong)
             {
-                SongsTBL song = et.SongsTBLs.Where(s => s.id == tagToSong.songId).FirstOrDefault();
+                SongsTBL song = et.SongsTBL.Where(s => s.id == tagToSong.songId).FirstOrDefault();
                 if (song != null)
                     songsInJaner.Add(song);
             }

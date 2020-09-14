@@ -17,13 +17,13 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TagsTypesTBL()
         {
-            this.TagsTBLs = new HashSet<TagsTBL>();
+            this.TagsTBL = new HashSet<TagsTBL>();
         }
     
         public int id { get; set; }
         public string name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TagsTBL> TagsTBLs { get; set; }
+        public virtual ICollection<TagsTBL> TagsTBL { get; set; }
     }
 }

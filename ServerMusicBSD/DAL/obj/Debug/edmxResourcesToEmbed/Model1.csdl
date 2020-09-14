@@ -134,10 +134,10 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="SearchingToSingerTBL" Relationship="Self.FK_SearchingToSingerTBL_SingersTBL" FromRole="SingersTBL" ToRole="SearchingToSingerTBL" />
     <NavigationProperty Name="SingerSearchingToUserTBL" Relationship="Self.FK_SingerSearchingToUserTBL_SingersTBL" FromRole="SingersTBL" ToRole="SingerSearchingToUserTBL" />
     <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsTBL_SingersTBL" FromRole="SingersTBL" ToRole="SongsTBL" />
-    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="SongsTBL">
     <Key>
@@ -175,12 +175,25 @@
     <NavigationProperty Name="PlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_PlaylistsTBL" FromRole="SongsToPlaylistsTBL" ToRole="PlaylistsTBL" />
     <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsToPlaylistsTBL" ToRole="SongsTBL" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
   <EntityType Name="TagsTBL">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tagTypeId" Type="Int32" />
+    <Property Name="isShow" Type="Boolean" />
+    <NavigationProperty Name="TagsTypesTBL" Relationship="Self.FK_TagsTBL_TagsTypesTBL" FromRole="TagsTBL" ToRole="TagsTypesTBL" />
     <NavigationProperty Name="TagsToArticlesTBL" Relationship="Self.FK_TagsToArticleTBL_TagsTBL" FromRole="TagsTBL" ToRole="TagsToArticlesTBL" />
     <NavigationProperty Name="TagsToSongsTBL" Relationship="Self.FK_TagsToSongsTBL_TagNameTBL" FromRole="TagsTBL" ToRole="TagsToSongsTBL" />
   </EntityType>
@@ -203,6 +216,14 @@
     <Property Name="tagId" Type="Int32" />
     <NavigationProperty Name="SongsTBL" Relationship="Self.FK_TagsToSongsTBL_SongsTBL" FromRole="TagsToSongsTBL" ToRole="SongsTBL" />
     <NavigationProperty Name="TagsTBL" Relationship="Self.FK_TagsToSongsTBL_TagNameTBL" FromRole="TagsToSongsTBL" ToRole="TagsTBL" />
+  </EntityType>
+  <EntityType Name="TagsTypesTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TagsTBL" Relationship="Self.FK_TagsTBL_TagsTypesTBL" FromRole="TagsTypesTBL" ToRole="TagsTBL" />
   </EntityType>
   <EntityType Name="UsersTBL">
     <Key>
@@ -227,7 +248,7 @@
     </Key>
     <Property Name="responsId" Type="Int32" Nullable="false" />
     <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="date" Type="DateTime" Precision="0" />
+    <Property Name="date" Type="DateTime" Precision="3" />
     <Property Name="articleId" Type="Int32" Nullable="false" />
     <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
@@ -423,6 +444,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TagsTBL_TagsTypesTBL">
+    <End Role="TagsTypesTBL" Type="Self.TagsTypesTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TagsTypesTBL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tagTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_TagsToArticleTBL_TagsTBL">
     <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="0..1" />
     <End Role="TagsToArticlesTBL" Type="Self.TagsToArticlesTBL" Multiplicity="*" />
@@ -462,9 +495,11 @@
     <EntitySet Name="SingersTBL" EntityType="Self.SingersTBL" />
     <EntitySet Name="SongsTBL" EntityType="Self.SongsTBL" />
     <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="TagsTBL" EntityType="Self.TagsTBL" />
     <EntitySet Name="TagsToArticlesTBL" EntityType="Self.TagsToArticlesTBL" />
     <EntitySet Name="TagsToSongsTBL" EntityType="Self.TagsToSongsTBL" />
+    <EntitySet Name="TagsTypesTBL" EntityType="Self.TagsTypesTBL" />
     <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" />
     <EntitySet Name="LastResponses" EntityType="Self.LastResponses" />
     <AssociationSet Name="FK_SongsTBL_AlbumsTBL" Association="Self.FK_SongsTBL_AlbumsTBL">
@@ -530,6 +565,10 @@
     <AssociationSet Name="FK_TagsToSongsTBL_SongsTBL" Association="Self.FK_TagsToSongsTBL_SongsTBL">
       <End Role="SongsTBL" EntitySet="SongsTBL" />
       <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TagsTBL_TagsTypesTBL" Association="Self.FK_TagsTBL_TagsTypesTBL">
+      <End Role="TagsTypesTBL" EntitySet="TagsTypesTBL" />
+      <End Role="TagsTBL" EntitySet="TagsTBL" />
     </AssociationSet>
     <AssociationSet Name="FK_TagsToArticleTBL_TagsTBL" Association="Self.FK_TagsToArticleTBL_TagsTBL">
       <End Role="TagsTBL" EntitySet="TagsTBL" />

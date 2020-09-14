@@ -147,12 +147,24 @@
     <Property Name="playlistId" Type="int" />
     <Property Name="songId" Type="int" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <EntityType Name="TagsTBL">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="tagTypeId" Type="int" />
+    <Property Name="isShow" Type="bit" />
   </EntityType>
   <EntityType Name="TagsToArticlesTBL">
     <Key>
@@ -169,6 +181,13 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="songId" Type="int" />
     <Property Name="tagId" Type="int" />
+  </EntityType>
+  <EntityType Name="TagsTypesTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="UsersTBL">
     <Key>
@@ -193,7 +212,7 @@ warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a pri
     </Key>
     <Property Name="responsId" Type="int" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" />
-    <Property Name="date" Type="date" />
+    <Property Name="date" Type="datetime" />
     <Property Name="articleId" Type="int" Nullable="false" />
     <Property Name="title" Type="varchar(max)" />
   </EntityType>
@@ -365,6 +384,18 @@ warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a pri
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TagsTBL_TagsTypesTBL">
+    <End Role="TagsTypesTBL" Type="Self.TagsTypesTBL" Multiplicity="0..1" />
+    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TagsTypesTBL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TagsTBL">
+        <PropertyRef Name="tagTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_TagsToArticleTBL_ArticlesTBL">
     <End Role="ArticlesTBL" Type="Self.ArticlesTBL" Multiplicity="0..1" />
     <End Role="TagsToArticlesTBL" Type="Self.TagsToArticlesTBL" Multiplicity="*" />
@@ -428,9 +459,11 @@ warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a pri
     <EntitySet Name="SingersTBL" EntityType="Self.SingersTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SongsTBL" EntityType="Self.SongsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsTBL" EntityType="Self.TagsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsToArticlesTBL" EntityType="Self.TagsToArticlesTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsToSongsTBL" EntityType="Self.TagsToSongsTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TagsTypesTBL" EntityType="Self.TagsTypesTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LastResponses" EntityType="Self.LastResponses" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -496,6 +529,10 @@ warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a pri
     <AssociationSet Name="FK_SongsToPlaylistsTBL_SongsTBL" Association="Self.FK_SongsToPlaylistsTBL_SongsTBL">
       <End Role="SongsTBL" EntitySet="SongsTBL" />
       <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TagsTBL_TagsTypesTBL" Association="Self.FK_TagsTBL_TagsTypesTBL">
+      <End Role="TagsTypesTBL" EntitySet="TagsTypesTBL" />
+      <End Role="TagsTBL" EntitySet="TagsTBL" />
     </AssociationSet>
     <AssociationSet Name="FK_TagsToArticleTBL_ArticlesTBL" Association="Self.FK_TagsToArticleTBL_ArticlesTBL">
       <End Role="ArticlesTBL" EntitySet="ArticlesTBL" />
