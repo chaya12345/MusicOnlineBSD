@@ -17,7 +17,7 @@ namespace BL
             List<string> tags = new List<string>();
             foreach (TagsToSongsDTO tag in tagsToSong)
             {
-                tags.Add(et.TagsTBL.Where(t => t.id == tag.tagId).FirstOrDefault().name);
+                tags.Add(et.TagsTBL.Where(t => t.id == tag.tagId && t.isShow==true).FirstOrDefault().name);
             }
             return tags;
         }
@@ -32,7 +32,7 @@ namespace BL
         public static List<TagsToSongsDTO> GetTagsToSong(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToTagsToSongsDTO.GetTagsToSongs(et.TagsToSongsTBL
+            return Casts.ToTagsToSongsDTO.GetTagsToSongs(et.TagsToSongsTBLs
                 .Where(t => t.songId == songId).ToList());
         }
         public static void AddTagToSong(TagsToSongsTBL tagToSong)

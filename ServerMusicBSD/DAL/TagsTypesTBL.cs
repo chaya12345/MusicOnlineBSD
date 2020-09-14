@@ -12,12 +12,18 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class LastResponses
+    public partial class TagsTypesTBL
     {
-        public int responsId { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TagsTypesTBL()
+        {
+            this.TagsTBLs = new HashSet<TagsTBL>();
+        }
+    
+        public int id { get; set; }
         public string name { get; set; }
-        public Nullable<System.DateTime> date { get; set; }
-        public int articleId { get; set; }
-        public string title { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TagsTBL> TagsTBLs { get; set; }
     }
 }

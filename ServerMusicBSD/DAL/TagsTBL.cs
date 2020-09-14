@@ -17,16 +17,19 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TagsTBL()
         {
-            this.TagsToArticlesTBL = new HashSet<TagsToArticlesTBL>();
-            this.TagsToSongsTBL = new HashSet<TagsToSongsTBL>();
+            this.TagsToArticlesTBLs = new HashSet<TagsToArticlesTBL>();
+            this.TagsToSongsTBLs = new HashSet<TagsToSongsTBL>();
         }
     
         public int id { get; set; }
         public string name { get; set; }
+        public Nullable<int> tagTypeId { get; set; }
+        public Nullable<bool> isShow { get; set; }
     
+        public virtual TagsTypesTBL TagsTypesTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TagsToArticlesTBL> TagsToArticlesTBL { get; set; }
+        public virtual ICollection<TagsToArticlesTBL> TagsToArticlesTBLs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TagsToSongsTBL> TagsToSongsTBL { get; set; }
+        public virtual ICollection<TagsToSongsTBL> TagsToSongsTBLs { get; set; }
     }
 }

@@ -10,5 +10,7 @@ namespace DTO
     {
         public int id { get; set; }
         public string name { get; set; }
+        public Nullable<int> tagTypeId { get; set; }
+        public Nullable<bool> isShow { get; set; }
     }
 }

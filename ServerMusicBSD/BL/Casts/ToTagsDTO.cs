@@ -15,6 +15,8 @@ namespace BL.Casts
             TagsDTO newTag = new TagsDTO();
             newTag.id = tag.id;
             newTag.name = tag.name;
+            newTag.tagTypeId = tag.tagTypeId;
+            newTag.isShow = tag.isShow;
             return newTag;
         }
         public static List<TagsDTO> GetTags(List<TagsTBL> tags)

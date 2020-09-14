@@ -1,4 +1,6 @@
 export class Tag {
     id: number;
-    name: string;
+    name?: string;
+    tagTypeId?:number;
+    isShow?:boolean;
 }
