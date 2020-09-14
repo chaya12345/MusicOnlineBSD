@@ -9,10 +9,26 @@ import { Article } from '../classes/article';
 export class ArticleDetailsComponent implements OnInit {
 
   @Input() article: Article;
+  videoSrc: string;
+  video: HTMLVideoElement;
+  msbapAudioUrl: string;
+  msbapTitle: string;
+  msbapDisplayTitle: boolean;
+  msbapDisplayVolumeControls: boolean;
+  msbapDisablePositionSlider: boolean;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.videoSrc = '../../assets/songs/' + this.article.video;
+    this.video = document.querySelector('video');
+    this.video.load();
+
+    this.msbapAudioUrl = '../../assets/songs/' + this.article.audio1;
+    this.msbapTitle = this.article.title;
+    this.msbapDisplayTitle = false;
+    this.msbapDisplayVolumeControls = true;
+    this.msbapDisablePositionSlider = true;
   }
 
 }

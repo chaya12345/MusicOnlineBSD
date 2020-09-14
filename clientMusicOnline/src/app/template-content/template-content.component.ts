@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'template-content',
@@ -7,9 +8,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TemplateContentComponent implements OnInit {
 
-  constructor() { }
+  href: string;
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.href = this.router.url;
   }
 
 }
