@@ -1,0 +1,32 @@
+<div class="wrap-container-responses">
+    <h2>תגובות</h2>
+    <mat-accordion class="example-headers-align addingResponse" multi>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    הוסיפו תגובה
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-form-field appearance="outline" class="fullName">
+                <input matInput placeholder="שם מלא" min="2" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="email">
+                <input matInput placeholder="אימייל - לא חובה">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="titleResponse">
+                <input matInput placeholder="כותרת" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="contentResponse">
+                <textarea matInput placeholder="תגובה" rows="3" maxlength="100"></textarea>
+            </mat-form-field>
+
+            <button mat-flat-button color="warn">שלח</button>
+            <button mat-stroked-button color="warn">בטל</button>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <response *ngFor="let response of responsesList" [response]="response"></response>
+</div>

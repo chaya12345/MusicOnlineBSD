@@ -15,6 +15,9 @@ export class TagsToSongsService {
   public getTagsNamesToSong(songId:number):Observable<string[]>{
     return this.httpClient.get<string[]>("https://localhost:44368/api/TagsToSongs/GetTagsNamesToSong?songId="+songId);
   }
+  public GetTagsIncludeArtistsToSong(songId:number):Observable<string[]>{
+    return this.httpClient.get<string[]>("https://localhost:44368/api/TagsToSongs/GetTagsIncludeArtistsToSong?songId="+songId);
+  }
   public addTagToSong(tagToSong:TagsToSong):void{
     this.httpClient.post("https://localhost:44368/api/TagsToSongs/PostTagToSong",tagToSong);
   }

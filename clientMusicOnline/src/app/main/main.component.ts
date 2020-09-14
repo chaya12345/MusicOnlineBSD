@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'main',
@@ -7,15 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  isShowFullSong: boolean = false;
-  constructor() { }
+  href: string = "";
+  
+  constructor(public router: Router) { }
 
   ngOnInit() {
-  }
-
-  songSelected(isSongSelected: boolean): void {
-    this.isShowFullSong = isSongSelected;
-    console.log('show fullll bsd');
+    this.href = this.router.url;
   }
 
 }

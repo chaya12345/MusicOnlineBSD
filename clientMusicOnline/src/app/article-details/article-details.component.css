@@ -1,0 +1,18 @@
+.wrap-article-details h2 {
+    font-family: fb Joker;
+    font-size: 32px;
+}
+
+.wrap-article-details h3 {
+    font-weight: 400;
+    margin: 25px 0 35px 0;
+    line-height: 30px;
+}
+
+mat-divider {
+    margin-bottom: 30px;
+}
+
+.wrap-article-details img {
+    max-width: 750px;
+}

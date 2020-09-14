@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card (click)="fullArticle()">
     <mat-card-header>
         <mat-card-title>{{article.title}}</mat-card-title>
         <mat-card-subtitle>{{article.dateHebrew}} | {{article.date | date: 'd/M/yyyy H:mm'}}</mat-card-subtitle>

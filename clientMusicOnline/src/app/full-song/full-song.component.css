@@ -8,7 +8,7 @@
     padding: 70px 20px;
 }
 
-.wrap-full-song h2 {
+/* .wrap-full-song h2 {
     font-family: fb Joker;
     font-size: 32px;
 }
@@ -37,18 +37,18 @@ mat-divider {
 .date {
     font-size: 18px;
     font-weight: 100;
-}
+} */
 
 .info span {
     display: flex;
+}
+
+.info span mat-icon {
+    margin: 0 25px 0 5px;
 }
 
 .undefined {
     padding: 100px 30px;
     width: fit-content;
     margin: 0 auto;
-}
-
-.info span mat-icon {
-    margin: 0 25px 0 5px;
 }

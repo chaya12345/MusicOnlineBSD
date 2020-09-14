@@ -1,0 +1,30 @@
+.wrap-song-details h2 {
+    font-family: fb Joker;
+    font-size: 32px;
+}
+
+.wrap-song-details h3 {
+    font-weight: 400;
+    margin: 25px 0 35px 0;
+    line-height: 30px;
+}
+
+mat-divider {
+    margin-bottom: 30px;
+}
+
+.wrap-song-details img {
+    max-width: 750px;
+}
+
+.wrap-song-details p {
+    margin: 30px 0;
+    font-size: 18px;
+    line-height: 34px;
+    white-space: pre-wrap;
+}
+
+.date {
+    font-size: 18px;
+    font-weight: 100;
+}

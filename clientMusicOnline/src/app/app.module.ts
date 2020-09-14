@@ -46,7 +46,6 @@ import { BottomRightTriangleComponent } from './bottom-right-triangle/bottom-rig
 import { TopRightTriangleComponent } from './top-right-triangle/top-right-triangle.component';
 import { TopFooterComponent } from './top-footer/top-footer.component';
 import { NavButtonComponent } from './nav-button/nav-button.component';
-import { HomePageComponent } from './home-page/home-page.component';
 import { RegistrationToNewsletterComponent } from './registration-to-newsletter/registration-to-newsletter.component';
 import { RegistrationToWebsiteComponent } from './registration-to-website/registration-to-website.component';
 import { FullSongComponent } from './full-song/full-song.component';
@@ -56,6 +55,16 @@ import { InfoSongComponent } from './info-song/info-song.component';
 import { UndefinedComponent } from './undefined/undefined.component';
 import { ResponsesComponent } from './responses/responses.component';
 import { ResponseComponent } from './response/response.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { TemplatePageComponent } from './template-page/template-page.component';
+import { SongPageComponent } from './song-page/song-page.component';
+import { TemplateContentComponent } from './template-content/template-content.component';
+import { FullSongBsdComponent } from './full-song-bsd/full-song-bsd.component';
+import { SongDetailsComponent } from './song-details/song-details.component';
+import { FullArticleComponent } from './full-article/full-article.component';
+import { ArticleDetailsComponent } from './article-details/article-details.component';
+import { ResponsesArticleComponent } from './responses-article/responses-article.component';
+import { ResponseArticleComponent } from './response-article/response-article.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +105,6 @@ import { ResponseComponent } from './response/response.component';
     TopRightTriangleComponent,
     TopFooterComponent,
     NavButtonComponent,
-    HomePageComponent,
     RegistrationToNewsletterComponent,
     RegistrationToWebsiteComponent,
     FullSongComponent,
@@ -105,7 +113,17 @@ import { ResponseComponent } from './response/response.component';
     InfoSongComponent,
     UndefinedComponent,
     ResponsesComponent,
-    ResponseComponent
+    ResponseComponent,
+    HomePageComponent,
+    TemplatePageComponent,
+    SongPageComponent,
+    TemplateContentComponent,
+    FullSongBsdComponent,
+    SongDetailsComponent,
+    FullArticleComponent,
+    ArticleDetailsComponent,
+    ResponsesArticleComponent,
+    ResponseArticleComponent
   ],
   imports: [
     BrowserModule,

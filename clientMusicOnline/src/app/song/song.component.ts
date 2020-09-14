@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { Song } from '../classes/song';
 import { ShareDataService } from '../services/share-data.service';
 // import { EventEmitter } from 'protractor';
@@ -12,16 +13,16 @@ export class SongComponent implements OnInit {
 
   @Input() song: Song;
   @Output() onShowFullSong = new EventEmitter<Song>();
-  isHover:boolean = false;
+  isHover: boolean = false;
 
-  constructor(private shareDataService: ShareDataService) { 
+  constructor(private shareDataService: ShareDataService, public router: Router) {
     shareDataService.currentSong = this.song;
   }
 
   ngOnInit() {
   }
 
-  toggle_hover(event) :void {
+  toggle_hover(event): void {
     this.isHover = !this.isHover;
   }
 
@@ -29,7 +30,14 @@ export class SongComponent implements OnInit {
     // console.log('click');
     // this.onShowFullSong.emit(this.song);
     // console.log('emit');
-    this.shareDataService.emitChildEvent(this.song);
+    // this.shareDataService.emitChildEvent(this.song);
+    this.router.navigateByUrl('/song/' + this.pad(this.song.id, 5));
+  }
+
+  pad(num, size): string {
+    var s = num + "";
+    while (s.length < size) s = "0" + s;
+    return s;
   }
 
 

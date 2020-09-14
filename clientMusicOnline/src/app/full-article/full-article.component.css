@@ -1,0 +1,15 @@
+.wrap-container-full-article {
+    direction: rtl;
+    padding: 0 30px;
+}
+
+.wrap-full-article {
+    margin: 0 150px;
+    padding: 70px 20px;
+}
+
+.undefined {
+    padding: 100px 30px;
+    width: fit-content;
+    margin: 0 auto;
+}

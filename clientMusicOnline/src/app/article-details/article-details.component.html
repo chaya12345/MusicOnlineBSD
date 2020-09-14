@@ -1,0 +1,6 @@
+<div class="wrap-article-details">
+    <h2>{{article.title}}</h2>
+    <h3>{{article.subtitle}}<span class="date"> • {{article.date | date: 'd/M/yyyy H:mm'}}</span></h3>
+    <mat-divider></mat-divider>
+    <img [src]="'../../assets/images/'+article.main_image">
+</div>

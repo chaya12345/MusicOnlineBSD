@@ -9,22 +9,23 @@
             </mat-expansion-panel-header>
 
             <mat-form-field appearance="outline" class="fullName">
-                <mat-label>שם מלא</mat-label>
-                <input matInput min="2">
+                <input matInput placeholder="שם מלא" min="2" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="email">
+                <input matInput placeholder="אימייל - לא חובה">
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="titleResponse">
-                <mat-label>כותרת תגובה</mat-label>
-                <input matInput min="1">
+                <input matInput placeholder="כותרת" required>
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="contentResponse">
-                <mat-label>תוכן תגובה</mat-label>
-                <input matInput min="1">
+                <textarea matInput placeholder="תגובה" rows="3" maxlength="100"></textarea>
             </mat-form-field>
 
-            <button mat-stroked-button>שלח</button>
-            <button mat-stroked-button>בטל</button>
+            <button mat-flat-button color="warn">שלח</button>
+            <button mat-stroked-button color="warn">בטל</button>
         </mat-expansion-panel>
     </mat-accordion>
     <response *ngFor="let response of responsesList" [response]="response"></response>

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Article } from '../classes/article';
 import { LikeService } from '../services/like.service';
 
@@ -12,7 +13,7 @@ export class ArticleComponent implements OnInit {
   @Input() article: Article;
   likeFunctionality;
 
-  constructor(private likeService: LikeService) { }
+  constructor(private likeService: LikeService, public router: Router) { }
 
   ngOnInit() {
     console.log(this.article);
@@ -29,6 +30,16 @@ export class ArticleComponent implements OnInit {
 
   reset_marking(event, color: string): void {
     this.likeFunctionality.reset_like_color(event, color);
+  }
+
+  fullArticle(): void {
+    this.router.navigateByUrl('/article/' + this.pad(this.article.id, 5));
+  }
+
+  pad(num, size): string {
+    var s = num + "";
+    while (s.length < size) s = "0" + s;
+    return s;
   }
 
 }

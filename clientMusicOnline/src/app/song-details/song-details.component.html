@@ -1,0 +1,15 @@
+<div class="wrap-song-details">
+    <h2>{{song.title}}</h2>
+    <h3>{{song.subtitle}}<span class="date"> • {{song.date | date: 'd/M/yyyy H:mm'}}</span></h3>
+    <mat-divider></mat-divider>
+    <img [src]="'../../assets/images/'+song.image_location">
+    <p>{{songContent}}</p>
+    <video *ngIf="song.type=='video'" width="320" height="240" controls controlsList="nodownload"
+        oncontextmenu="return false;" [poster]="'../../assets/images/'+song.image_location" height="360" width="640">
+        <source [src]="songSrc" type="video/mp4">
+    </video>
+    <div *ngIf="song.type=='audio'" width="300">
+        <mat-basic-audio-player [audioUrl]="msbapAudioUrl" [title]="msbapTitle" [autoPlay]="false" muted="muted"
+            (trackEnded)="onEnded($event)" [displayTitle]="msbapDisplayTitle"></mat-basic-audio-player>
+    </div>
+</div>

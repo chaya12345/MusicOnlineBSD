@@ -211,7 +211,7 @@ nav-button {
 
 /* #region(collapsed) [material-card] */
 
-player mat-card {
+player mat-card, full-song mat-card {
     background-color: #101010 !important;
     color: white !important;
 }
@@ -292,38 +292,50 @@ response span.mat-expansion-indicator {
     padding: 0 30px;
 }
 
-.mat-expansion-panel-body {
+.wrap-container-responses > mat-accordion .mat-expansion-panel-body {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: fit-content(50%) fit-content(50%) fit-content(50%) fit-content(50%);
 }
 
-mat-form-field.fullName {
+.wrap-container-responses > mat-accordion mat-form-field.fullName {
     grid-area: 1 / 1 / 2 / 5;
 }
 
-mat-form-field.titleResponse {
+.wrap-container-responses > mat-accordion mat-form-field.email {
     grid-area: 1 / 5 / 2 / 11;
 }
 
-mat-form-field.contentResponse {
+.wrap-container-responses > mat-accordion mat-form-field.titleResponse {
     grid-area: 2 / 1 / 3 / 11;
 }
 
-.mat-expansion-panel-body mat-form-field {
+.wrap-container-responses > mat-accordion mat-form-field.contentResponse {
+    grid-area: 3 / 1 / 4 / 11;
+}
+
+.wrap-container-responses > mat-accordion .mat-expansion-panel-body mat-form-field {
     text-align: right;
     margin-left: 35px;
     direction: ltr;
 }
 
-.mat-expansion-panel-body button:first-of-type {
-    grid-area: 3 / 9 / 4 / 10;
-    margin: 9px 3px;
+.wrap-container-responses > mat-accordion .mat-expansion-panel-body button:first-of-type {
+    grid-area: 4 / 9 / 5 / 10;
+    margin: 15px 3px;
 }
 
-.mat-expansion-panel-body button:last-of-type {
-    grid-area: 3 / 10 / 4 / 11;
-    margin: 9px 3px;
+.wrap-container-responses > mat-accordion .mat-expansion-panel-body button:last-of-type {
+    grid-area: 4 / 10 / 5 / 11;
+    margin: 15px 3px;
+}
+
+.wrap-container-responses > mat-accordion .mat-form-field-wrapper {
+    padding-bottom: 0;
+}
+
+.wrap-container-responses > mat-accordion .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 5px 0 !important;
 }
 
 /* #endregion */

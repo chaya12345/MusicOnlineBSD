@@ -30,6 +30,11 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToSongsDTO.GetSongs(et.SongsTBL.ToList());
         }
+        public static SongsDTO GetSongById(int songId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            return Casts.ToSongsDTO.GetSong(et.SongsTBL.Where(song => song.id == songId).FirstOrDefault());
+        }
         public static List<SongsDTO> GetSongsBySinger(string singerName)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();

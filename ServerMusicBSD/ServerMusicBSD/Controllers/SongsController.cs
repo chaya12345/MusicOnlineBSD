@@ -19,6 +19,11 @@ namespace ServerMusicBSD.Controllers
             return SongsBL.GetSongs();
         }
 
+        public SongsDTO GetSongById(int songId)
+        {
+            return SongsBL.GetSongById(songId);
+        }
+
         public List<SongsDTO> GetSongsBySinger(string singerName)
         {
             return SongsBL.GetSongsBySinger(singerName);
