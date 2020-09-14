@@ -8,32 +8,33 @@ import { Observable } from 'rxjs';
 })
 export class UsersService {
 
+  baseUrl:string="https://localhost:44368/api/Users/";
   constructor(private httpClient:HttpClient) { }
   public registrationToWebsite(user:User):void{
-    this.httpClient.post("https://localhost:44368/api/PostRegistrationToWebsite",user);
+    this.httpClient.post(this.baseUrl+"PostRegistrationToWebsite",user);
   }
   public RegistrationToNewsleter(user:User):void{
-    this.httpClient.post("https://localhost:44368/api/PostRegistrationToNewsleter",user);
+    this.httpClient.post(this.baseUrl+"PostRegistrationToNewsleter",user);
   }
   public removeFromNewsletter(userId:number):void{
-    this.httpClient.put("https://localhost:44368/api/PostRegistrationToNewsleter?userId="+userId,userId);
+    this.httpClient.put(this.baseUrl+"PostRegistrationToNewsleter?userId="+userId,userId);
   }
   public updateUser(userId:number,user:User):void{
-    this.httpClient.put("https://localhost:44368/api/PutUser?userId="+userId,user);
+    this.httpClient.put(this.baseUrl+"PutUser?userId="+userId,user);
   }
   public updateUserProfil(userId:number,user:User):void{
-    this.httpClient.put("https://localhost:44368/api/PutUserProfil?userId="+userId,user);
+    this.httpClient.put(this.baseUrl+"PutUserProfil?userId="+userId,user);
   }
   public updateUserPassword(userId:number,password:string):void{
-    this.httpClient.put("https://localhost:44368/api/PutUserPassword?userId="+userId+"&password="+password,password);
+    this.httpClient.put(this.baseUrl+"PutUserPassword?userId="+userId+"&password="+password,password);
   }
   public updateUserDefinition(userId:number,user:User):void{
-    this.httpClient.put("https://localhost:44368/api/PutUserDefinition?userId="+userId,user);
+    this.httpClient.put(this.baseUrl+"PutUserDefinition?userId="+userId,user);
   }
   public getUser(userName:number,password:string):Observable<User>{
-    return this.httpClient.get<User>("https://localhost:44368/api/GetUser?userName="+userName+"&password="+password);
+    return this.httpClient.get<User>(this.baseUrl+"GetUser?userName="+userName+"&password="+password);
   }
   public getUsers():Observable<User[]>{
-    return this.httpClient.get<User[]>("https://localhost:44368/api/GetUsers");
+    return this.httpClient.get<User[]>(this.baseUrl+"GetUsers");
   }
 }

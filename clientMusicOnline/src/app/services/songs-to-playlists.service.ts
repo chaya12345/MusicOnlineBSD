@@ -7,14 +7,15 @@ import { SongsToPlaylists } from '../classes/songsToPlaylists';
 })
 export class SongsToPlaylistsService {
 
+  baseUrl:string="https://localhost:44368/api/SongsToPlaylists/";
   constructor(private httpClient:HttpClient) { }
   public addSongToPlaylists(songToPlaylist:SongsToPlaylists):void{
-    this.httpClient.post("https://localhost:44368/api/SongsToPlaylists/PostSongToPlaylists",songToPlaylist);
+    this.httpClient.post(this.baseUrl+"PostSongToPlaylists",songToPlaylist);
   }
   public moveSongToOtherPlaylist(songId:number,playlistId:number){
-    this.httpClient.put("https://localhost:44368/api/SongsToPlaylists/PutMoveSongToOtherPlaylist?songId="+songId+"&playlistId="+playlistId,playlistId);
+    this.httpClient.put(this.baseUrl+"PutMoveSongToOtherPlaylist?songId="+songId+"&playlistId="+playlistId,playlistId);
   }
   public DeleteSongFromPlaylist(songId:number):void{
-    this.httpClient.delete("https://localhost:44368/api/SongsToPlaylists/DeleteSongFromPlaylist?songId="+songId);
+    this.httpClient.delete(this.baseUrl+"DeleteSongFromPlaylist?songId="+songId);
   }
 }

@@ -8,17 +8,18 @@ import { Observable } from 'rxjs';
 })
 export class ResponseToSongsService {
 
+  baseUrl:string="https://localhost:44368/api/ResponsesToSongs/";
   constructor(private httpClient:HttpClient) { }
   public addResponse(response:ResponsesToSongs):void{
-    this.httpClient.post("https://localhost:44368/api/ResponsesToSongs/PostResponse",response);
+    this.httpClient.post(this.baseUrl+"PostResponse",response);
   }
   public getSongResponses(songId:number):Observable<ResponsesToSongs[]>{
-    return this.httpClient.get<ResponsesToSongs[]>("https://localhost:44368/api/ResponsesToSongs/getSongResponses?songId="+songId);
+    return this.httpClient.get<ResponsesToSongs[]>(this.baseUrl+"getSongResponses?songId="+songId);
   }
   public deleteResponse(responseId:number):void{
-    this.httpClient.delete("https://localhost:44368/api/ResponsesToSongs/DeleteResponse?responseId?="+responseId);
+    this.httpClient.delete(this.baseUrl+"DeleteResponse?responseId?="+responseId);
   }
   public getLastResponses():Observable<ResponsesToSongs[]>{
-    return this.httpClient.get<ResponsesToSongs[]>("https://localhost:44368/api/ResponsesToSongs/GetLastResponses");
+    return this.httpClient.get<ResponsesToSongs[]>(this.baseUrl+"GetLastResponses");
   }
 }
