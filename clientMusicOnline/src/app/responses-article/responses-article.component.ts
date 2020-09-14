@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ResponsesToArticles } from '../classes/responsesToArticles';
 
 @Component({
   selector: 'responses-article',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./responses-article.component.css']
 })
 export class ResponsesArticleComponent implements OnInit {
+
+  @Input() responses: ResponsesToArticles[] = [];
 
   constructor() { }
 

@@ -33,16 +33,20 @@ export class FullArticleComponent implements OnInit {
 
   reloadData(): void {
     this.getTags();
+    this.getResponses();
   }
 
   getTags(): void {
     this.tagsToArticlesService.getTagsNamesToArticle(this.currentArticle.id)
-      .subscribe(article => { this.tags = article; this.reloadData(); }, err => { console.log(err); });
+      .subscribe(article => { this.tags = article; }, err => { console.log(err); });
   }
 
   getResponses(): void {
+    try {
     this.responsesToArticlesService.getArticleResponses(this.currentArticle.id)
-      .subscribe(response => { this.responses = response; console.log('res'); console.log(this.responses); }, err => { console.log(err); });
+      .subscribe(response => { this.responses = response; }, err => { console.log(err); });
+    }
+    catch { console.log('responses-failed'); }
   }
 
 }

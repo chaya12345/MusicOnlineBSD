@@ -276,6 +276,10 @@ response span.mat-expansion-indicator {
     margin-left: 12px;
 }
 
+response mat-accordion.without-content span.mat-expansion-indicator {
+    visibility: hidden;
+}
+
 /*--- adding response ---*/
 
 .mat-expansion-panel:not([class*=mat-elevation-z]) {
