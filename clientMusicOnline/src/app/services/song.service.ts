@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient , HttpHeaders } from '@angular/common/http';
+import { from, Observable } from 'rxjs';
 import { Song } from '../classes/song';
 
 @Injectable({
@@ -9,7 +9,6 @@ import { Song } from '../classes/song';
 export class SongService {
 
   baseUrl: string = "https://localhost:44368/api/Songs/";
-
   constructor(private httpClient: HttpClient) { }
 
   public getSongs(): Observable<Song[]> {
