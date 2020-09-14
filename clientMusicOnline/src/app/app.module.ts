@@ -48,7 +48,6 @@ import { TopFooterComponent } from './top-footer/top-footer.component';
 import { NavButtonComponent } from './nav-button/nav-button.component';
 import { RegistrationToNewsletterComponent } from './registration-to-newsletter/registration-to-newsletter.component';
 import { RegistrationToWebsiteComponent } from './registration-to-website/registration-to-website.component';
-import { FullSongComponent } from './full-song/full-song.component';
 import { SimilarResultsComponent } from './similar-results/similar-results.component';
 import { TagsComponent } from './tags/tags.component';
 import { InfoSongComponent } from './info-song/info-song.component';
@@ -65,6 +64,8 @@ import { FullArticleComponent } from './full-article/full-article.component';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { ResponsesArticleComponent } from './responses-article/responses-article.component';
 import { ResponseArticleComponent } from './response-article/response-article.component';
+import { ResponsesSongComponent } from './responses-song/responses-song.component';
+import { AddingResponseComponent } from './adding-response/adding-response.component';
 
 @NgModule({
   declarations: [
@@ -107,7 +108,6 @@ import { ResponseArticleComponent } from './response-article/response-article.co
     NavButtonComponent,
     RegistrationToNewsletterComponent,
     RegistrationToWebsiteComponent,
-    FullSongComponent,
     SimilarResultsComponent,
     TagsComponent,
     InfoSongComponent,
@@ -123,7 +123,9 @@ import { ResponseArticleComponent } from './response-article/response-article.co
     FullArticleComponent,
     ArticleDetailsComponent,
     ResponsesArticleComponent,
-    ResponseArticleComponent
+    ResponseArticleComponent,
+    ResponsesSongComponent,
+    AddingResponseComponent
   ],
   imports: [
     BrowserModule,

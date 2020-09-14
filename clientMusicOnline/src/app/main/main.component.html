@@ -1,5 +1,4 @@
 <div class="wrap-container-main">
-    <!-- <full-song *ngIf="href.includes('/song')"></full-song> -->
     <full-song-bsd *ngIf="href.includes('/song')"></full-song-bsd>
     <full-article *ngIf="href.includes('/article')"></full-article>
     <div class="home-page-content" *ngIf="!href.includes('/song')&&!href.includes('/article')">
@@ -12,4 +11,3 @@
         <magazine></magazine>
     </div>
 </div>
-<!-- <app-for-try></app-for-try> -->

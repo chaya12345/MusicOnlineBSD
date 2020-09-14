@@ -3,7 +3,7 @@
         <song-details [song]="currentSong"></song-details>
         <tags [tagsList]="tags"></tags>
         <info-song [song]="currentSong" [responsesCount]="responses.length"></info-song>
-        <responses [responsesList]="responses"></responses>
+        <responses type="song" [responsesSongList]="responses"></responses>
     </div>
     <undefined *ngIf="currentSong==null||currentSong==undefined"></undefined>
     <similar-results [currentSongId]="currentSong.id"></similar-results>

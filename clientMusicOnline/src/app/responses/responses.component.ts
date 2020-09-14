@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ResponsesToArticles } from '../classes/responsesToArticles';
 import { ResponsesToSongs } from '../classes/responsesToSongs';
-import { MatAccordion } from '@angular/material/expansion';
 
 @Component({
   selector: 'responses',
@@ -9,17 +9,13 @@ import { MatAccordion } from '@angular/material/expansion';
 })
 export class ResponsesComponent implements OnInit {
 
-  @Input() responsesList: ResponsesToSongs[] = [];
-  isWantToAdd: boolean = false;
-  @ViewChild(MatAccordion) accordion: MatAccordion;
+  @Input() responsesSongList?: ResponsesToSongs[] = [];
+  @Input() responsesArticleList?: ResponsesToArticles[] = [];
+  @Input() type: string;
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  toggleResponse(): void {
-    this.isWantToAdd = !this.isWantToAdd;
   }
 
 }

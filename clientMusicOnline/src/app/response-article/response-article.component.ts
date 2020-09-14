@@ -9,8 +9,8 @@ import { ResponsesToArticles } from '../classes/responsesToArticles';
 })
 export class ResponseArticleComponent implements OnInit {
 
-  @Input() responsesList: ResponsesToArticles[] = [];
-  isWantToAdd: boolean = false;
+  @Input() responses: ResponsesToArticles[] = [];
+  // isWantToAdd: boolean = false;
   @ViewChild(MatAccordion) accordion: MatAccordion;
 
   constructor() { }

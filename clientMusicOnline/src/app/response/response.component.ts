@@ -8,7 +8,7 @@ import { ResponsesToSongs } from '../classes/responsesToSongs';
 })
 export class ResponseComponent implements OnInit {
 
-  @Input() response: ResponsesToSongs;
+  @Input() response: any;
   
   constructor() { }
 
