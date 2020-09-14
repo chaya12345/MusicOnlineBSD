@@ -16,3 +16,10 @@ mat-divider {
 .wrap-article-details img {
     max-width: 750px;
 }
+
+.wrap-article-details p {
+    margin: 30px 0;
+    font-size: 18px;
+    line-height: 34px;
+    white-space: pre-wrap;
+}

@@ -5,6 +5,10 @@
     grid-template-columns: repeat(15, 1fr);
 }
 
+.wrap-container-content.non-divide-page {
+    grid-template-rows: fit-content(50%) fit-content(50%);
+}
+
 side {
     grid-area: 1 / 1 / 2 / 5;
     background-color: #101010;
@@ -12,6 +16,14 @@ side {
 
 main {
     grid-area: 1 / 5 / 2 / 16;
+}
+
+.wrap-container-content.non-divide-page side {
+    grid-area: 2 / 1 / 3 / 16 !important;
+}
+
+.wrap-container-content.non-divide-page main {
+    grid-area: 1 / 1 / 2 / 16 !important;
 }
 
 @media only screen and (max-width: 1500px) {
