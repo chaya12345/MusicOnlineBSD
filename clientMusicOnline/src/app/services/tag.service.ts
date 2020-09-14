@@ -8,12 +8,13 @@ import { Tag } from '../classes/tag';
 })
 export class TagService {
 
+  baseUrl:string="https://localhost:44368/api/Tags/";
   constructor(private httpClient: HttpClient) { }
   
   public getTags(): Observable<Tag[]> {
-    return this.httpClient.get<Tag[]>("https://localhost:44368/api/Tags/GetTags");
+    return this.httpClient.get<Tag[]>(this.baseUrl+"GetTags");
   }
   public addTags(tag:Tag): void {
-    this.httpClient.post("https://localhost:44368/api/Tags/PostTags",tag);
+    this.httpClient.post(this.baseUrl+"PostTags",tag);
   }
 }

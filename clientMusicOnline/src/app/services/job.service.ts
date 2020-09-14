@@ -8,11 +8,12 @@ import { Job } from '../classes/job';
 })
 export class JobService {
 
+  baseUrl:string="https://localhost:44368/api/Jobs/";
   constructor(private httpClient:HttpClient) { }
   public getJobs():Observable<Job[]>{
-    return this.httpClient.get<Job[]>("https://localhost:44368/api/Jobs/GetJobs");
+    return this.httpClient.get<Job[]>(this.baseUrl+"GetJobs");
   }
   public addJob(job:Job):void{
-    this.httpClient.post("https://localhost:44368/api/Jobs/PostJob",job);
+    this.httpClient.post(this.baseUrl+"PostJob",job);
   }
 }

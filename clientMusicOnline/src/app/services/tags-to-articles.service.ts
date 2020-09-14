@@ -8,14 +8,15 @@ import { TagsToArticle } from '../classes/tagsToArticle';
 })
 export class TagsToArticlesService {
 
+  baseUrl:string="https://localhost:44368/api/TagsToArticles/";
   constructor(private httpClient:HttpClient) { }
   public getTagsToArticle(articleId:number):Observable<TagsToArticle[]>{
-    return this.httpClient.get<TagsToArticle[]>("https://localhost:44368/api/TagsToArticles/GetTagsToArticle?articleId="+articleId);
+    return this.httpClient.get<TagsToArticle[]>(this.baseUrl+"GetTagsToArticle?articleId="+articleId);
   }
   public getTagsNamesToArticle(articleId:number):Observable<string[]>{
-    return this.httpClient.get<string[]>("https://localhost:44368/api/TagsToArticles/GetTagsNamesToArticle?articleId="+articleId);
+    return this.httpClient.get<string[]>(this.baseUrl+"GetTagsNamesToArticle?articleId="+articleId);
   }
   public addTagToArticle(tagToArticle:TagsToArticle):void{
-    this.httpClient.post("https://localhost:44368/api/TagsToArticles/PostTagToArticle",tagToArticle);
+    this.httpClient.post(this.baseUrl+"PostTagToArticle",tagToArticle);
   }
 }

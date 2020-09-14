@@ -10,20 +10,21 @@ import { LastResponsView } from '../classes/lastResponsView';
 })
 export class ResponsesToArticlesService {
 
+  baseUrl:string="https://localhost:44368/api/ResponsesToArticles/";
   constructor(private httpClient:HttpClient) { }
   public addResponse(response:ResponsesToArticles):void{
-    this.httpClient.post("https://localhost:44368/api/ResponsesToArticles/PostResponse",response);
+    this.httpClient.post(this.baseUrl+"PostResponse",response);
   }
   public getArticleResponses(articleId:number):Observable<ResponsesToArticles[]>{
-    return this.httpClient.get<ResponsesToArticles[]>("https://localhost:44368/api/ResponsesToArticles/GetArticleResponses?articleId="+articleId);
+    return this.httpClient.get<ResponsesToArticles[]>(this.baseUrl+"GetArticleResponses?articleId="+articleId);
   }
   public deleteResponse(responseId:number):void{
-    this.httpClient.delete("https://localhost:44368/api/ResponsesToArticles/DeleteResponse?responseId?="+responseId);
+    this.httpClient.delete(this.baseUrl+"DeleteResponse?responseId?="+responseId);
   }
   public getLastResponses():Observable<ResponsesToArticles[]>{
-    return this.httpClient.get<ResponsesToArticles[]>("https://localhost:44368/api/ResponsesToArticles/GetLastResponses");
+    return this.httpClient.get<ResponsesToArticles[]>(this.baseUrl+"GetLastResponses");
   }
   public getLast5Responses():Observable<LastResponsView[]>{
-    return this.httpClient.get<LastResponsView[]>("https://localhost:44368/api/ResponsesToArticles/GetLast5Responses")
+    return this.httpClient.get<LastResponsView[]>(this.baseUrl+"GetLast5Responses")
   }
 }

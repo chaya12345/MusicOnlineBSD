@@ -7,14 +7,14 @@ import { Artist } from '../classes/artist';
   providedIn: 'root'
 })
 export class ArtistService {
-
+  baseUrl: string ="https://localhost:44368/api/Artists/"
   constructor(private httpClient: HttpClient) { }
   
   public getArtists(): Observable<Artist[]> {
-    return this.httpClient.get<Artist[]>("https://localhost:44368/api/Artists/GetArtists");
+    return this.httpClient.get<Artist[]>(this.baseUrl+"GetArtists");
   }
   public addArtist(artist:Artist):void{
-    this.httpClient.post("https://localhost:44368/api/Artists/PostArtist",artist);
+    this.httpClient.post(this.baseUrl+"PostArtist",artist);
   }
 
 }

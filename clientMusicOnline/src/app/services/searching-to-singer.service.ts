@@ -8,17 +8,18 @@ import { SearchingToSinger } from '../classes/searchingToSinger';
 })
 export class SearchingToSingerService {
 
+  baseUrl:string="https://localhost:44368/api/SearchingToSinger/";
   constructor(private httpClient:HttpClient) { }
   public getAllSearching():Observable<SearchingToSinger[]>{
-    return this.httpClient.get<SearchingToSinger[]>("https://localhost:44368/api/SearchingToSinger/GetAllSearching");
+    return this.httpClient.get<SearchingToSinger[]>(this.baseUrl+"GetAllSearching");
   }
   public GetCountOfSearchingToSinger(singerId:number):Observable<number>{
-    return this.httpClient.get<number>("https://localhost:44368/api/SearchingToSinger/GetCountOfSearchingToSinger?singerId="+singerId);
+    return this.httpClient.get<number>(this.baseUrl+"GetCountOfSearchingToSinger?singerId="+singerId);
   }
   public addSearchingToSinger(singerId:number):void{
-    this.httpClient.post("https://localhost:44368/api/SearchingToSinger/PostSearchingToSinger?singerId="+singerId,singerId);
+    this.httpClient.post(this.baseUrl+"PostSearchingToSinger?singerId="+singerId,singerId);
   }
   public updateSearchingToSinger(singerId:number):void{
-    this.httpClient.put("https://localhost:44368/api/SearchingToSinger/PutSearchingToSinger?singerId="+singerId,singerId);
+    this.httpClient.put(this.baseUrl+"PutSearchingToSinger?singerId="+singerId,singerId);
   }
 }

@@ -8,12 +8,13 @@ import { Singer } from '../classes/singer';
 })
 export class SingerService {
 
+  baseUrl:string="https://localhost:44368/api/Singers/";
   constructor(private httpClient: HttpClient) { }
   
   public getSingers(): Observable<Singer[]> {
-    return this.httpClient.get<Singer[]>("https://localhost:44368/api/Singers/GetSingers");
+    return this.httpClient.get<Singer[]>(this.baseUrl+"GetSingers");
   }
   public addSinger(singer:Singer):void{
-    this.httpClient.post("https://localhost:44368/api/Singers/PostSinger",singer);
+    this.httpClient.post(this.baseUrl+"PostSinger",singer);
   }
 }

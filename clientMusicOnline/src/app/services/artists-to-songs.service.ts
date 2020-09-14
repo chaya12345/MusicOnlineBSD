@@ -8,14 +8,16 @@ import { AtristToSongs } from '../classes/artistsToSongs';
 })
 export class ArtistsToSongsService {
 
+  baseUrl: string ="https://localhost:44368/api/ArtistsToSongs/";
+
   constructor(private httpClient:HttpClient) { }
   public getArtistsToSong(songId:number):Observable<AtristToSongs[]>{
-    return this.httpClient.get<AtristToSongs[]>("https://localhost:44368/api/ArtistsToSongs/GetArtistsToSong?songId="+songId);
+    return this.httpClient.get<AtristToSongs[]>(this.baseUrl+"GetArtistsToSong?songId="+songId);
   }
   public getSongsToArtist(artistId:number):Observable<AtristToSongs[]>{
-    return this.httpClient.get<AtristToSongs[]>("https://localhost:44368/api/ArtistsToSongs/getSongsToArtist?artistId="+artistId);
+    return this.httpClient.get<AtristToSongs[]>(this.baseUrl+"getSongsToArtist?artistId="+artistId);
   }
   public addArtistToSong(artistsToSongs:AtristToSongs):void{
-    this.httpClient.post("https://localhost:44368/api/ArtistsToSongs/PostArtistToSong",artistsToSongs);
+    this.httpClient.post(this.baseUrl+"PostArtistToSong",artistsToSongs);
   }
 }
