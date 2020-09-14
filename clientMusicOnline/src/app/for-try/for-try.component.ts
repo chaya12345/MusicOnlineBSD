@@ -16,7 +16,7 @@ export class ForTryComponent implements OnInit {
     
     //לא עובד- יש שגיאה אי אפשר לעשות פוסט
     this.songService.getSongsByTags(this.tagsName).subscribe(
-      songs=>{this.songOfTags=songs; console.log("the function getSongsByTags works!"); } , err=>console.log("for-try-component"+err.message));
+      songs=>{this.songOfTags=songs; console.log("the function getSongsByTags works!"); } , err=>console.log(err));
   }
 
   ngOnInit() {
