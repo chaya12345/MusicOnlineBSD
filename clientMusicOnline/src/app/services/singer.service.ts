@@ -14,7 +14,7 @@ export class SingerService {
   public getSingers(): Observable<Singer[]> {
     return this.httpClient.get<Singer[]>(this.baseUrl+"GetSingers");
   }
-  public addSinger(singer:Singer):void{
-    this.httpClient.post(this.baseUrl+"PostSinger",singer);
+  public addSinger(singer:Singer):Observable<any>{
+   return this.httpClient.post(this.baseUrl+"PostSinger",singer);
   }
 }

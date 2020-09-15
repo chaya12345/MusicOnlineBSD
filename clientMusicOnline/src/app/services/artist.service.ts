@@ -13,8 +13,8 @@ export class ArtistService {
   public getArtists(): Observable<Artist[]> {
     return this.httpClient.get<Artist[]>(this.baseUrl+"GetArtists");
   }
-  public addArtist(artist:Artist):void{
-    this.httpClient.post(this.baseUrl+"PostArtist",artist);
+  public addArtist(artist:Artist):Observable<any>{
+   return this.httpClient.post(this.baseUrl+"PostArtist",artist);
   }
 
 }

@@ -17,7 +17,7 @@ export class ArtistsToSongsService {
   public getSongsToArtist(artistId:number):Observable<AtristToSongs[]>{
     return this.httpClient.get<AtristToSongs[]>(this.baseUrl+"getSongsToArtist?artistId="+artistId);
   }
-  public addArtistToSong(artistsToSongs:AtristToSongs):void{
-    this.httpClient.post(this.baseUrl+"PostArtistToSong",artistsToSongs);
+  public addArtistToSong(artistsToSongs:AtristToSongs):Observable<any>{
+   return this.httpClient.post(this.baseUrl+"PostArtistToSong",artistsToSongs);
   }
 }

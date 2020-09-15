@@ -35,7 +35,6 @@ export class InfoSongComponent implements OnInit {
 
   addLike(): void {
     this.songService.increaseLikeToSong(this.song.id).subscribe();
-    // לבדוק למה לא עובד..
   }
 
 }

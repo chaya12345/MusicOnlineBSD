@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient , HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { from, Observable } from 'rxjs';
 import { Song } from '../classes/song';
 
@@ -37,17 +37,17 @@ export class SongService {
     var obj = { "tags": tags }
     return this.httpClient.post<Song[]>(this.baseUrl + "PostSongsByAllTags", obj);
   }
-  public addSong(song: Song): void {
-    this.httpClient.post(this.baseUrl + "PostSong", song);
+  public addSong(song: Song): Observable<any> {
+    return this.httpClient.post(this.baseUrl + "PostSong", song);
   }
-  public deleteSong(songId: number): void {
-    this.httpClient.delete(this.baseUrl + "deleteSong?songId=" + songId);
+  public deleteSong(songId: number): Observable<any> {
+    return this.httpClient.delete(this.baseUrl + "deleteSong?songId=" + songId);
   }
   public increaseLikeToSong(songId: number): Observable<any> {
     return this.httpClient.put(this.baseUrl + "PutIncreaseLikeToSong?songId=" + songId, songId);
   }
-  public decreaseLikeToSong(songId: number): void {
-    this.httpClient.delete(this.baseUrl + "PutDecreaseLikeToSong?songId=" + songId);
+  public decreaseLikeToSong(songId: number): Observable<any> {
+    return this.httpClient.delete(this.baseUrl + "PutDecreaseLikeToSong?songId=" + songId);
   }
   // יצירת קריאת סרבר עם הרשאות גישה
   //   const headers = { 'Authorization': 'Bearer my-token' }

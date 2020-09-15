@@ -5,24 +5,25 @@
                 הוסיפו תגובה
             </mat-panel-title>
         </mat-expansion-panel-header>
+        <form [formGroup]='formRespons' (ngSubmit)='onSubmit()'>
+            <mat-form-field appearance="outline" class="fullName">
+                <input matInput placeholder="שם מלא" formControlName='fullName'>
+            </mat-form-field>
 
-        <mat-form-field appearance="outline" class="fullName">
-            <input matInput placeholder="שם מלא" min="2" required>
-        </mat-form-field>
+            <mat-form-field appearance="outline" class="email">
+                <input matInput type="email" placeholder="אימייל - לא חובה" formControlName='email'>
+            </mat-form-field>
 
-        <mat-form-field appearance="outline" class="email">
-            <input matInput type="email" placeholder="אימייל - לא חובה">
-        </mat-form-field>
+            <mat-form-field appearance="outline" class="titleResponse">
+                <input matInput placeholder="כותרת"  formControlName='title' >
+            </mat-form-field>
 
-        <mat-form-field appearance="outline" class="titleResponse">
-            <input matInput placeholder="כותרת" required>
-        </mat-form-field>
+            <mat-form-field appearance="outline" class="contentResponse">
+                <textarea matInput placeholder="תגובה" rows="3" formControlName='message' ></textarea>
+            </mat-form-field>
 
-        <mat-form-field appearance="outline" class="contentResponse">
-            <textarea matInput placeholder="תגובה" rows="3" maxlength="100"></textarea>
-        </mat-form-field>
-
-        <button mat-flat-button color="warn">שלח</button>
-        <button mat-stroked-button color="warn">בטל</button>
+            <button mat-flat-button color="warn" type="submit" [disabled]='formRespons.valid' >שלח</button>
+            <button mat-stroked-button color="warn" (click)='reset()'>בטל</button>
+        </form>
     </mat-expansion-panel>
 </mat-accordion>

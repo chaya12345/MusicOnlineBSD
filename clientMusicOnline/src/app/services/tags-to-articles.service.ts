@@ -16,7 +16,7 @@ export class TagsToArticlesService {
   public getTagsNamesToArticle(articleId:number):Observable<string[]>{
     return this.httpClient.get<string[]>(this.baseUrl+"GetTagsNamesToArticle?articleId="+articleId);
   }
-  public addTagToArticle(tagToArticle:TagsToArticle):void{
-    this.httpClient.post(this.baseUrl+"PostTagToArticle",tagToArticle);
+  public addTagToArticle(tagToArticle:TagsToArticle):Observable<any>{
+    return this.httpClient.post(this.baseUrl + "PostTagToArticle", tagToArticle);
   }
 }

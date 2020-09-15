@@ -13,7 +13,7 @@ export class JobService {
   public getJobs():Observable<Job[]>{
     return this.httpClient.get<Job[]>(this.baseUrl+"GetJobs");
   }
-  public addJob(job:Job):void{
-    this.httpClient.post(this.baseUrl+"PostJob",job);
+  public addJob(job:Job):Observable<any>{
+   return this.httpClient.post(this.baseUrl+"PostJob",job);
   }
 }

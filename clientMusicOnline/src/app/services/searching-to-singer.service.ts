@@ -8,18 +8,18 @@ import { SearchingToSinger } from '../classes/searchingToSinger';
 })
 export class SearchingToSingerService {
 
-  baseUrl:string="https://localhost:44368/api/SearchingToSinger/";
-  constructor(private httpClient:HttpClient) { }
-  public getAllSearching():Observable<SearchingToSinger[]>{
-    return this.httpClient.get<SearchingToSinger[]>(this.baseUrl+"GetAllSearching");
+  baseUrl: string = "https://localhost:44368/api/SearchingToSinger/";
+  constructor(private httpClient: HttpClient) { }
+  public getAllSearching(): Observable<SearchingToSinger[]> {
+    return this.httpClient.get<SearchingToSinger[]>(this.baseUrl + "GetAllSearching");
   }
-  public GetCountOfSearchingToSinger(singerId:number):Observable<number>{
-    return this.httpClient.get<number>(this.baseUrl+"GetCountOfSearchingToSinger?singerId="+singerId);
+  public GetCountOfSearchingToSinger(singerId: number): Observable<number> {
+    return this.httpClient.get<number>(this.baseUrl + "GetCountOfSearchingToSinger?singerId=" + singerId);
   }
-  public addSearchingToSinger(singerId:number):void{
-    this.httpClient.post(this.baseUrl+"PostSearchingToSinger?singerId="+singerId,singerId);
+  public addSearchingToSinger(singerId: number): Observable<any> {
+    return this.httpClient.post(this.baseUrl + "PostSearchingToSinger?singerId=" + singerId, singerId);
   }
-  public updateSearchingToSinger(singerId:number):void{
-    this.httpClient.put(this.baseUrl+"PutSearchingToSinger?singerId="+singerId,singerId);
+  public updateSearchingToSinger(singerId: number): Observable<any> {
+    return this.httpClient.put(this.baseUrl + "PutSearchingToSinger?singerId=" + singerId, singerId);
   }
 }

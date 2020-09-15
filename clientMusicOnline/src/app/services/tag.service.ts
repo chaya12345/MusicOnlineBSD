@@ -14,7 +14,7 @@ export class TagService {
   public getTags(): Observable<Tag[]> {
     return this.httpClient.get<Tag[]>(this.baseUrl+"GetTags");
   }
-  public addTags(tag:Tag): void {
-    this.httpClient.post(this.baseUrl+"PostTags",tag);
+  public addTags(tag:Tag): Observable<any> {
+    return this.httpClient.post(this.baseUrl + "PostTags", tag);
   }
 }
