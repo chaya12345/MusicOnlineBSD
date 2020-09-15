@@ -3,3 +3,21 @@
     background-color: #292929;
     padding: 65px 60px;
 }
+
+.wrap-clips {
+    display: flex;
+    height: fit-content;
+    padding: 20px 0;
+}
+
+latest-clip {
+    margin: auto;
+}
+
+latest-clip:first-of-type {
+    margin-right: 0;
+}
+
+latest-clip:last-of-type {
+    margin-left: 0;
+}
