@@ -10,9 +10,9 @@
                 <input matInput placeholder="שם מלא" formControlName='fullName'>
             </mat-form-field>
 
-            <mat-form-field appearance="outline" class="email">
+            <!-- <mat-form-field appearance="outline" class="email">
                 <input matInput type="email" placeholder="אימייל - לא חובה" formControlName='email'>
-            </mat-form-field>
+            </mat-form-field> -->
 
             <mat-form-field appearance="outline" class="titleResponse">
                 <input matInput placeholder="כותרת"  formControlName='title' >
@@ -22,8 +22,8 @@
                 <textarea matInput placeholder="תגובה" rows="3" formControlName='message' ></textarea>
             </mat-form-field>
 
-            <button mat-flat-button color="warn" type="submit" [disabled]='formRespons.valid' >שלח</button>
-            <button mat-stroked-button color="warn" (click)='reset()'>בטל</button>
+            <input mat-flat-button color="warn" type="submit" [disabled]='formRespons.invalid' value="שלח" >
+            <input type="button" value="בטל" mat-stroked-button color="warn" (click)='reset()'>
         </form>
     </mat-expansion-panel>
 </mat-accordion>
