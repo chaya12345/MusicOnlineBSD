@@ -1,3 +1,39 @@
 .wrap-header {
+    height: 200px;
+    padding: 10px 65px;
     display: flex;
+    background-color: #171717;
+    color: white !important;
+}
+
+.wrap-header img {
+    height: 100%;
+}
+
+.slogen {
+    display: inline-block;
+    margin: auto 120px;
+}
+
+.slogen p {
+    font-size: 32px;
+    font-family: fb Ogen;
+    font-weight: 600;
+}
+
+.slogen span {
+    font-size: 28px;
+    letter-spacing: 4px;
+    font-weight: 100;
+    font-family: calibri;
+}
+
+.search {
+    margin: auto auto auto 0;
+}
+
+.search mat-form-field {
+    margin: 15px;
+    direction: ltr;
+    text-align: right !important;
 }
