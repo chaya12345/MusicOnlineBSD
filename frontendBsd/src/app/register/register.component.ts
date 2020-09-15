@@ -46,10 +46,11 @@ export class RegisterComponent implements OnInit {
         data: { fullname: this.fullname, email: this.email, password: this.password, isNewsletterWanted: this.isNewsletterWanted }
       });
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-        this.fullname = result.slice(0, result.indexOf('|'));
+        if(result!=null){
+          this.fullname = result.slice(0, result.indexOf('|'));
         this.email = result.slice(result.indexOf('|') + 1, result.length);
-        console.log("res: " + this.fullname + " l; " + this.email);
+        }
+        
       });
     }
     catch { console.log('register'); }
