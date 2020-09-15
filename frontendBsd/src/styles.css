@@ -19,6 +19,34 @@ html, body {
     direction: rtl;
 }
 
+/* #region(collapsed) [Material-icons] */
+
+.material-icons, .mat-icon {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga';
+    font-family: 'Material Icons';
+}
+
+/* #endregion */
+
+/* #region(collapsed) [Scrollbar] */
+
+::-webkit-scrollbar-thumb {
+    width: 8px;
+    height: auto;
+    background-color: #fbc02d;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: auto;
+    background-color: whitesmoke;
+}
+
+/* #endregion */
+
 /* #region(collapsed) [accordion] */
 
 .search mat-label.ng-star-inserted {
@@ -69,6 +97,16 @@ html, body {
 
 .swiper-pagination-clickable .swiper-pagination-bullet {
     cursor: pointer;
+}
+
+/* #endregion */
+
+/* #region(collapsed) [register-button] */
+
+register button span {
+    font-family: calibri;
+    font-size: 17px;
+    color: #525252;
 }
 
 /* #endregion */

@@ -1,0 +1,24 @@
+.wrap-register {
+    height: 100px;
+    background-color: #fbc02d;
+    display: flex;
+    text-align: center;
+}
+
+.wrap-register * {
+    margin: auto 0;
+}
+
+.wrap-register p {
+    color: white;
+    margin-right: auto;
+    font-family: fb Ogen;
+    font-size: 23px;
+}
+
+.wrap-register button {
+    margin-left: auto;
+    margin-right: 55px;
+    border-radius: 50px;
+    padding: 7px 38px;
+}
