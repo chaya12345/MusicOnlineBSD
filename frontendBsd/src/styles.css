@@ -18,3 +18,30 @@ html, body {
     user-select: none;
     direction: rtl;
 }
+
+/* #region(collapsed) [accordion] */
+
+.search mat-label.ng-star-inserted {
+    color: white;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float 
+.mat-form-field-label {
+    transform: translate(-14px, -1.5937em) scale(0.75);
+}
+
+.search .mat-input-element.mat-form-field-autofill-control {
+    color: white;
+}
+
+.search .mat-form-field-appearance-outline 
+.mat-form-field-outline-thick {
+    color: rgb(255 255 255 / 87%);
+}
+
+.search .mat-form-field-appearance-outline 
+.mat-form-field-outline {
+    color: rgb(255 255 255 / 12%);
+}
+
+/* #endregion */
