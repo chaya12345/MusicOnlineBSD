@@ -1,0 +1,239 @@
+.wrap-all {
+    direction: rtl;
+}
+
+.top-header {
+    height: 200px;
+    padding: 10px 45px;
+    display: flex;
+    background-color: #171717;
+    color: white !important;
+}
+
+.top-header img {
+    height: 100%;
+}
+
+.slogen {
+    display: inline-block;
+    margin: auto 120px;
+}
+
+.slogen p {
+    font-size: 32px;
+    font-family: fb Ogen;
+    font-weight: 600;
+}
+
+.slogen span {
+    font-size: 28px;
+    letter-spacing: 4px;
+    font-weight: 100;
+    font-family: calibri;
+}
+
+.search {
+    margin: auto auto auto 0;
+}
+
+.search mat-form-field, .wide-search mat-form-field {
+    margin: 15px;
+    direction: ltr;
+    text-align: right !important;
+}
+
+.wrap-new-songs {
+    height: 600px;
+}
+
+.swiper-new-songs {
+    margin: 0 225px;
+    height: 550px;
+}
+
+.swiper-container {
+    height: 100%;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    font-size: 32px;
+    color: #5f5f5f;
+}
+
+.swiper-slide {
+    display: flex;
+}
+
+.swiper-slide * {
+    margin: auto;
+}
+
+/*--------- register to website ------------*/
+
+.register-to-website {
+    height: 100px;
+    background-color: #fbc02d;
+    display: flex;
+    text-align: center;
+}
+
+.register-to-website * {
+    margin: auto 0;
+}
+
+.register-to-website p {
+    color: white;
+    margin-right: auto;
+    font-family: fb Ogen;
+    font-size: 23px;
+}
+
+.register-to-website button {
+    margin-left: auto;
+    margin-right: 55px;
+    border-radius: 50px;
+    padding: 7px 38px;
+}
+
+/*---- new songs ----*/
+
+.wrap-part {
+    height: 530px;
+    background-color: #292929;
+    padding: 65px 60px;
+}
+
+.title-part {
+    height: fit-content;
+    font-size: 23px;
+    font-family: fb Ogen;
+    color: #fbc02d;
+    padding: 0 319px;
+}
+
+.wrap-clips, .wrap-articles, .wrap-playlists {
+    display: flex;
+    height: fit-content;
+    padding: 20px 0;
+    margin: 0 290px;
+}
+
+.wrap-clip {
+    background-color: white;
+    margin: auto;
+    height: 300px;
+    width: 350px;
+    display: flex;
+}
+
+/* .wrap-clip button {
+    margin: auto;
+} */
+
+.wrap-clip/* button*/ mat-icon {
+    color: #252525;
+    font-size: 56px;
+    height: auto;
+    width: auto;
+    margin: auto;
+}
+
+.reload-more-button {
+    margin: 15px 319px;
+    padding: 2px 0;
+    font-family: fb Ogen;
+    font-size: 22px;
+    text-align: center;
+    background-color: #3a3a3a;
+    color: white;
+    transition: .4s;
+}
+
+.reload-more-button:hover {
+    background-color: #101010;
+}
+
+.new-articles {
+    height: 600px;
+}
+
+.wrap-article {
+    background-color: white;
+    margin: auto;
+    height: 350px;
+    width: 300px;
+    padding: 5px;
+}
+
+.wrap-image {
+    width: 100%;
+    height: 200px;
+    background-color: black;
+}
+
+.wrap-info {
+    width: 100%;
+    height: 90px;
+}
+
+/*---- plalist -----*/
+
+.wrap-playlists-list {
+    background-color: white;
+    height: 585px;
+}
+
+.wrap-playlists-list .title-part {
+    color: #101010;
+}
+
+.wrap-playlist {
+    background-color: #101010;
+    margin: auto;
+    height: 350px;
+    width: 300px;
+}
+
+.wrap-playlist .title {
+    width: 100%;
+    height: 110px;
+    background-color: #252525;
+}
+
+/*------ search -------*/
+
+.wrap-searching {
+    height: 220px;
+    background-color: white;
+}
+
+.wide-search {
+    text-align: center;
+}
+
+.wrap-footer {
+    height: 480px;
+    background-color: #252525;
+    display: flex;
+}
+
+.copyright {
+    height: fit-content;
+    padding: 30px 0;
+    background-color: #252525;
+    font-family: calibri;
+    font-weight: 100;
+    font-size: 22px;
+    color: white;
+    direction: ltr;
+    display: flex;
+}
+
+.copyright span {
+    display: flex;
+    margin: auto;
+}
+
+.copyright span mat-icon {
+    margin: 0 5px;
+}

@@ -1,1 +1,223 @@
-<p>for-try works!</p>
+<div class="wrap-all">
+
+    <!-- header -->
+    <div class="wrap-header">
+
+        <div class="top-header">
+            <img src="../../assets/images/YellowRoundForBlack12.png">
+            <div class="slogen">
+                <p>עולם של מוזיקה חסידית</p>
+                <span>בכל סגנון שתבחרו.</span>
+            </div>
+            <div class="search">
+                <mat-form-field appearance="outline">
+                    <mat-label>חפש שיר</mat-label>
+                    <input type="text" aria-label="Number" matInput [formControl]="songsControl" [matAutocomplete]="autoSongs">
+                    <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete">
+                        <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name">
+                            {{song.name}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>חפש זמר</mat-label>
+                    <input type="text" aria-label="Number" matInput [formControl]="songsControl" [matAutocomplete]="autoSongs">
+                    <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete">
+                        <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name">
+                            {{song.name}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="wrap-new-songs">
+
+            <div class="swiper-new-songs">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide playlist soul-playlist">
+                            <div>
+                                <p>שירי נשמה</p><span>מיטב שירי הרגש לנשמה</span>
+                            </div>
+                        </div>
+                        <div class="swiper-slide playlist jingle-playlist">
+                            <div>
+                                <p>להיטים</p><span>להיטים בכל הסגנונות</span>
+                            </div>
+                        </div>
+                        <div class="swiper-slide playlist rhythmic-playlist">
+                            <div>
+                                <p>על הקצב</p><span>כנסו לקצב ותתחילו לרקוד :)</span>
+                            </div>
+                        </div>
+                        <div class="swiper-slide playlist oriental-playlist">
+                            <div>
+                                <p>מזרחי</p><span>מיטב השירים המזרחיים</span>
+                            </div>
+                        </div>
+                        <div class="swiper-slide playlist ways-playlist">
+                            <div>
+                                <p>על הדרך</p><span>נוסעים לטיול? הפלייסט בדיוק בשבילכם</span>
+                            </div>
+                        </div>
+                        <div class="swiper-slide playlist wedding-playlist">
+                            <div>
+                                <p>חתונה</p><span>פלייליסט לחתן וכלה במזל"ט</span>
+                            </div>
+                        </div>
+                        <div class="swiper-slide playlist morning-playlist">
+                            <div>
+                                <p>על הבוקר</p><span>פלייליסט לבוקר על רגל ימין</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- register to website -->
+    <div class="register-to-website">
+        <p>הצטרפו עכשיו למיוזיק אונליין.</p>
+        <button mat-flat-button>הרשמה</button>
+    </div>
+
+    <!-- new clips -->
+    <div class="wrap-part new-clips-list">
+
+        <div class="title-part">
+            <p>קליפים אחרונים.</p>
+        </div>
+        <div class="wrap-clips">
+            <div class="wrap-clip">
+                <!-- <button mat-icon-button> -->
+                    <mat-icon>play_circle_fill</mat-icon>
+                <!-- </button> -->
+            </div>
+            <div class="wrap-clip">
+                <!-- <button mat-button> -->
+                    <mat-icon>play_circle_fill</mat-icon>
+                <!-- </button> -->
+            </div>
+            <div class="wrap-clip">
+                <!-- <button mat-icon-button> -->
+                    <mat-icon>play_circle_fill</mat-icon>
+                <!-- </button> -->
+            </div>
+        </div>
+
+        <div class="reload-more-button">עוד...</div>
+
+    </div>
+
+    <!-- new articles -->
+    <div class="wrap-part new-articles">
+
+        <div class="title-part">
+            <p>האחרונים במגזין.</p>
+        </div>
+        <div class="wrap-articles">
+            <div class="wrap-article">
+                <div class="wrap-image"></div>
+                <div class="wrap-info"></div>
+            </div>
+            <div class="wrap-article">
+                <div class="wrap-image"></div>
+                <div class="wrap-info"></div>
+            </div>
+            <div class="wrap-article">
+                <div class="wrap-image"></div>
+                <div class="wrap-info"></div>
+            </div>
+        </div>
+
+        <div class="reload-more-button">עוד...</div>
+
+    </div>
+
+    <!-- playlists -->
+    <div class="wrap-part wrap-playlists-list">
+
+        <div class="title-part">
+            <p>הפלייליסטים הכי מושמעים.</p>
+        </div>
+        <div class="wrap-playlists">
+            <div class="wrap-playlist">
+                <div class="title"></div>
+            </div>
+            <div class="wrap-playlist">
+                <div class="title"></div>
+            </div>
+            <div class="wrap-playlist">
+                <div class="title"></div>
+            </div>
+        </div>
+
+        <div class="reload-more-button">עוד...</div>
+
+    </div>
+
+    <!-- register to newletter -->
+    <div class="register-to-website">
+        <p>הרשמו לניוזלטר ותהיו מעודכנים.</p>
+        <button mat-flat-button>הרשמה לניוזלטר</button>
+    </div>
+
+    <!-- search -->
+    <div class="wrap-part wrap-searching">
+        
+        <div class="title-part">
+            <p>מחפשים משהו?</p>
+        </div>
+
+        <div class="wide-search">
+            <mat-form-field appearance="outline">
+                <mat-label>חפש שיר</mat-label>
+                <input type="text" aria-label="Number" matInput [formControl]="songsControl" [matAutocomplete]="autoSongs">
+                <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete">
+                    <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name">
+                        {{song.name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>חפש זמר, אומן</mat-label>
+                <input type="text" aria-label="Number" matInput [formControl]="songsControl" [matAutocomplete]="autoSongs">
+                <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete">
+                    <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name">
+                        {{song.name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>חפש סגנון</mat-label>
+                <input type="text" aria-label="Number" matInput [formControl]="songsControl" [matAutocomplete]="autoSongs">
+                <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete">
+                    <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name">
+                        {{song.name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div>
+
+    </div>
+
+    <!-- footer -->
+    <div class="wrap-footer">
+
+        <div class="now-viewed"></div>
+
+    </div>
+
+    <!-- copyright -->
+    <div class="copyright">
+        <span><mat-icon>anchor</mat-icon> design by H&O website.</span>
+    </div>
+    
+</div>

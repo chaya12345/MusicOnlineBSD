@@ -43,8 +43,8 @@ export class SongService {
   public deleteSong(songId: number): void {
     this.httpClient.delete(this.baseUrl + "deleteSong?songId=" + songId);
   }
-  public increaseLikeToSong(songId: number): void {
-    this.httpClient.put(this.baseUrl + "PutIncreaseLikeToSong?songId=", songId);
+  public increaseLikeToSong(songId: number): Observable<any> {
+    return this.httpClient.put(this.baseUrl + "PutIncreaseLikeToSong?songId=" + songId, songId);
   }
   public decreaseLikeToSong(songId: number): void {
     this.httpClient.delete(this.baseUrl + "PutDecreaseLikeToSong?songId=" + songId);

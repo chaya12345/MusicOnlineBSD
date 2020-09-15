@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { SongService } from '../services/song.service';
 import { Song } from '../classes/song';
+import Swiper, { Navigation, Pagination } from 'swiper';
+Swiper.use([Navigation, Pagination]);
 
 @Component({
-  selector: 'app-for-try',
+  selector: 'for-try',
   templateUrl: './for-try.component.html',
-  styleUrls: ['./for-try.component.css']
+  styleUrls: ['./for-try.component.css', './swiper-bundle.min.css']
 })
 export class ForTryComponent implements OnInit {
   songOfTags:Song[]=[];
@@ -20,6 +22,30 @@ export class ForTryComponent implements OnInit {
   }
 
   ngOnInit() {
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      loop: true,
+      spaceBetween: 10,
+      centeredSlides: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    
+      scrollbar: {
+        el: '.swiper-scrollbar',
+      },
+    });
+
+
   }
 
 }

@@ -343,3 +343,43 @@ adding-response .mat-form-field-appearance-outline .mat-form-field-infix {
 }
 
 /* #endregion */
+
+/*--- for-delete ---*/
+
+for-try .search mat-label.ng-tns-c32-0.ng-star-inserted, .ng-tns-c32-1.ng-star-inserted {
+    color: white;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: translate(-14px, -1.5937em) scale(0.75);
+}
+
+for-try .search .mat-input-element.mat-form-field-autofill-control{
+    color: white;
+}
+
+for-try .search .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color: rgb(255 255 255 / 87%);
+}
+
+for-try .search .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: rgb(255 255 255 / 12%);
+}
+
+/*--- register to website ---*/
+
+for-try .register-to-website button span {
+    font-family: calibri;
+    font-size: 17px;
+}
+
+for-try .swiper-pagination-bullet {
+    margin: 0 6px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50px;
+}
+
+for-try .swiper-pagination-bullet-active {
+    background-color: #252525;
+}

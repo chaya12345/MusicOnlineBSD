@@ -3,15 +3,19 @@
 <div mat-dialog-content>
   <p>גם אני רוצה להתעדכן בחדשות המוזיקה אונליין</p>
   <mat-icon>expand_more</mat-icon>
-  <mat-form-field>
-    <mat-label>שם מלא</mat-label>
-    <input matInput [(ngModel)]="data.fullname">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>כתובת מייל</mat-label>
-    <input matInput [(ngModel)]="data.email">
-  </mat-form-field>
-  <p class="more"><mat-checkbox (click)="toggle($event)">הפעל עדכון חכם</mat-checkbox></p>
+  <form>
+    <mat-form-field>
+      <mat-label>שם מלא</mat-label>
+      <input matInput [(ngModel)]="data.fullname" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>כתובת מייל</mat-label>
+      <input matInput [(ngModel)]="data.email" [ngModelOptions]="{standalone: true}">
+    </mat-form-field>
+  </form>
+  <p class="more">
+    <mat-checkbox (click)="toggle($event)">הפעל עדכון חכם</mat-checkbox>
+  </p>
   <span id="smart-update">כדי להפעיל עדכון חכם תצטרך להירשם לאיזור האישי</span>
 </div>
 <div mat-dialog-actions>

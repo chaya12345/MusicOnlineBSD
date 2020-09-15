@@ -1,7 +1,7 @@
 <div class="wrap-footer-song" [class.songPlay]="isPlay">
     <div [class.yellow]="is_parent_hovered || isPlay" class="play">
         <mat-icon class="play" (click)="play($event)">play_arrow</mat-icon>
-        <mat-slider *ngIf="isPlay" class="slider-audio" [max]="max" min="0" step="0.1" [(ngModel)]="value" (click)="changeValue($event)"></mat-slider>
+        <mat-slider *ngIf="isPlay" class="slider-audio" [max]="max" min="0" step="0.1" [(ngModel)]="value" [ngModelOptions]="{standalone: true}" (click)="changeValue($event)"></mat-slider>
     </div>
     <div class="status-song" *ngIf="!isPlay">
         <mat-icon (mouseenter)="marking($event)" (mouseleave)="reset_marking($event)" (click)="sign($event)">
