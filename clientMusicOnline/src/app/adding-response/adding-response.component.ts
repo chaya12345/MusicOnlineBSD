@@ -17,7 +17,7 @@ export class AddingResponseComponent implements OnInit {
   formRespons: FormGroup;
   newResponse: ResponsesToArticles = new ResponsesToArticles;
 
-  constructor(private responsesToArticlesService: ResponsesToArticlesService,private router:Router) {
+  constructor(private responsesToArticlesService: ResponsesToArticlesService, private router: Router) {
     this.formRespons = new FormGroup({
       fullName: new FormControl("", [Validators.required, Validators.minLength(2)]),
       // email:new FormControl(""),
@@ -30,8 +30,9 @@ export class AddingResponseComponent implements OnInit {
   }
   onSubmit() {
     if (this.formRespons.valid) {
-      //צריך לחתוך את המחרוזת 
-     // this.newResponse.articleId = this.router.url.;
+      var str = this.router.url;
+      var res = str.split("/");
+      this.newResponse.articleId = Number(res[res.length - 1]);
       this.newResponse.name = this.formRespons.controls.fullName.value;
       this.newResponse.title = this.formRespons.controls.title.value;
       this.newResponse.content = this.formRespons.controls.message.value;
