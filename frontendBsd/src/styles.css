@@ -111,8 +111,16 @@ register button span {
 
 /* #endregion */
 
+/* #region(collapsed) [for-Home-Page] */
+
+.wrap-container {
+    height: 530px;
+    background-color: #292929;
+    padding: 65px 60px;
+}
+
 .center-content {
-    margin: 0 250px;
+    margin: 0 300px;
     height: 100%;
 }
 
@@ -121,3 +129,11 @@ p.title-part {
     font-family: fb Ogen;
     color: #fbc02d;
 }
+
+.center-object {
+    display: flex;
+    height: fit-content;
+    padding: 20px 0;
+}
+
+/* #endregion */

@@ -22,6 +22,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { RegisterToWebsiteComponent } from './register-to-website/register-to-website.component';
 import { RegisterToNewsletterComponent } from './register-to-newsletter/register-to-newsletter.component';
 import { LatestClipComponent } from './latest-clip/latest-clip.component';
+import { LatestArticleComponent } from './latest-article/latest-article.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { LatestClipComponent } from './latest-clip/latest-clip.component';
     HomePageComponent,
     RegisterToWebsiteComponent,
     RegisterToNewsletterComponent,
-    LatestClipComponent
+    LatestClipComponent,
+    LatestArticleComponent
   ],
   imports: [
     BrowserModule,

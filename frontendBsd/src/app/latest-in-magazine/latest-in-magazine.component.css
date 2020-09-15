@@ -1,0 +1,15 @@
+.wrap-latest-in-magazine {
+    height: 600px;
+}
+
+latest-article {
+    margin: auto;
+}
+
+latest-article:first-of-type {
+    margin-right: 0;
+}
+
+latest-article:last-of-type {
+    margin-left: 0;
+}
