@@ -153,6 +153,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="src\images\for_songs\איציק-דדיה\‏‏file.jpg" />
     <Content Include="src\images\for_songs\יעקב-שוואקי\234472_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_songs\מידד-טסה\232760_tumb_750Xauto.jpg" />
     <Content Include="src\songs\אבי-אילסון\אבי אילסון - שיבוא.mp3" />
@@ -168,7 +169,6 @@
     <Content Include="src\images\for_songs\אבי-אילסון\231862_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_songs\איציק-דדיה\211576_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_songs\איציק-דדיה\223388_tumb_750Xauto.jpg" />
-    <Content Include="src\images\for_songs\איציק-דדיה\2784.jpg" />
     <Content Include="src\images\for_songs\איציק-דדיה\53646183_2533434770004335_7805584894150574080_o-560x315.jpg" />
     <Content Include="src\images\for_songs\איציק-דדיה\cover-27-560x373.jpg" />
     <Content Include="src\images\for_songs\איציק-דדיה\da-560x321.png" />
