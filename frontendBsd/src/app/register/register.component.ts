@@ -1,4 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { RegisterToWebsiteComponent } from '../register-to-website/register-to-website.component';
+
+export interface DialogDataToWebsite {
+  animal: string;
+  name: string;
+  password: string;
+  isNewsletter: boolean;
+}
+
 
 @Component({
   selector: 'register',
@@ -6,12 +16,17 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  
+  fullname: string;
+  email: string;
+  password: string;
+  isNewsletterWanted: boolean;
 
   @Input() type: string;
   text: string;
   buttonText: string;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
     if (this.type == "website") {
@@ -22,6 +37,22 @@ export class RegisterComponent implements OnInit {
       this.text = "הרשמו לניוזלטר ותהיו מעודכנים.";
       this.buttonText = "הרשמה לניוזלטר";
     }
+  }
+  
+  openDialogToWebsite(): void {
+    try {
+      const dialogRef = this.dialog.open(RegisterToWebsiteComponent, {
+        width: '400px',
+        data: { fullname: this.fullname, email: this.email, password: this.password, isNewsletterWanted: this.isNewsletterWanted }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        this.fullname = result.slice(0, result.indexOf('|'));
+        this.email = result.slice(result.indexOf('|') + 1, result.length);
+        console.log("res: " + this.fullname + " l; " + this.email);
+      });
+    }
+    catch { console.log('register'); }
   }
 
 }

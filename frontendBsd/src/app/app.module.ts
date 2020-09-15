@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { MaterialModule } from './material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,8 @@ import { SearchComponent } from './search/search.component';
 import { LatestNewsComponent } from './latest-news/latest-news.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomePageComponent } from './home-page/home-page.component';
+import { RegisterToWebsiteComponent } from './register-to-website/register-to-website.component';
+import { RegisterToNewsletterComponent } from './register-to-newsletter/register-to-newsletter.component';
 
 @NgModule({
   declarations: [
@@ -33,13 +36,17 @@ import { HomePageComponent } from './home-page/home-page.component';
     PopularPlaylistsComponent,
     SearchComponent,
     LatestNewsComponent,
-    HomePageComponent
+    HomePageComponent,
+    RegisterToWebsiteComponent,
+    RegisterToNewsletterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

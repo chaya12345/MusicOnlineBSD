@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RegisterToWebsiteComponent } from './register-to-website/register-to-website.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'frontendBsd';
+  entryComponents: [RegisterToWebsiteComponent];
 }
