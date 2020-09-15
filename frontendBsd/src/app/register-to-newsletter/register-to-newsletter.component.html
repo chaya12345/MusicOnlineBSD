@@ -1,1 +1,31 @@
-<p>register-to-newsletter works!</p>
+<h1 mat-dialog-title>הרשמה לניוזלטר</h1>
+<mat-divider></mat-divider>
+<div mat-dialog-content>
+    <p>גם אני רוצה להתעדכן בחדשות המוזיקה אונליין</p>
+    <mat-icon>expand_more</mat-icon>
+
+    <form [formGroup]='formRegister' (ngSubmit)='onSubmit()'>
+
+        <mat-form-field>
+            <mat-label>שם מלא</mat-label>
+            <input matInput formControlName='fullname'>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>כתובת מייל</mat-label>
+            <input matInput formControlName='email'>
+        </mat-form-field>
+
+        <p class="more">
+            <mat-checkbox (click)="toggle($event)">הפעל עדכון חכם</mat-checkbox>
+        </p>
+        <span id="smart-update">כדי להפעיל עדכון חכם תצטרך להירשם לאיזור האישי</span>
+
+        <div mat-dialog-actions>
+            <button mat-button (click)="onNoClick()">ביטול</button>
+            <button mat-button [mat-dialog-close]="data.fullname+'|'+data.email" cdkFocusInitial
+                type="submit">הירשם</button>
+        </div>
+
+    </form>
+</div>
