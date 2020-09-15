@@ -115,7 +115,6 @@ register button span {
 
 .wrap-container {
     height: 530px;
-    background-color: #292929;
     padding: 65px 60px;
 }
 
@@ -134,6 +133,21 @@ p.title-part {
     display: flex;
     height: fit-content;
     padding: 20px 0;
+}
+
+.reload-more-button {
+    margin: 15px 0;
+    padding: 2px 0;
+    font-family: fb Ogen;
+    font-size: 22px;
+    text-align: center;
+    background-color: #3a3a3a;
+    color: white;
+    transition: .4s;
+}
+
+.reload-more-button:hover{
+    background-color: #101010;
 }
 
 /* #endregion */
