@@ -2,9 +2,17 @@
     <div class="center-content">
         <p class="title-part">קליפים אחרונים.</p>
         <div class="wrap-clips center-object">
-            <latest-clip></latest-clip>
-            <latest-clip></latest-clip>
-            <latest-clip></latest-clip>
+            <latest-clip *ngFor="let clip of clipsList" [song]="clip" ></latest-clip>
+            <!-- <latest-clip></latest-clip>
+            <latest-clip></latest-clip> -->
         </div>
     </div>
 </div>
+
+<!-- <div class="wrap-container-clips wrapper wrapper-main">
+    <top title="קליפים" icon="play_circle_filled"></top>
+    <div class="wrap-songs" *ngIf="clipsList!=null&&clipsList!=undefined&&clipsList.length!=0">
+        <song *ngFor="let clip of clipsList" [song]="clip"></song>
+    </div>
+    <undefined *ngIf="clipsList==null||clipsList==undefined||clipsList.length==0"></undefined>
+</div> -->
