@@ -20,9 +20,10 @@ export class LatestClipsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   filter(): void {
     this.clipsList.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
-    this.clipsList = this.clipsList.slice(0, 8);
+    this.clipsList = this.clipsList.slice(0, 3);
   }
 
 }
