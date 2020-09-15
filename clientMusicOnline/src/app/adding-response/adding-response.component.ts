@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatAccordion } from '@angular/material';
+import { Router } from '@angular/router';
 import { ResponsesToArticles } from '../classes/responsesToArticles';
 import { ResponsesToArticlesService } from '../services/responses-to-articles.service';
 
@@ -16,7 +17,7 @@ export class AddingResponseComponent implements OnInit {
   formRespons: FormGroup;
   newResponse: ResponsesToArticles = new ResponsesToArticles;
 
-  constructor(private responsesToArticlesService: ResponsesToArticlesService) {
+  constructor(private responsesToArticlesService: ResponsesToArticlesService,private router:Router) {
     this.formRespons = new FormGroup({
       fullName: new FormControl("", [Validators.required, Validators.minLength(2)]),
       // email:new FormControl(""),
@@ -29,7 +30,8 @@ export class AddingResponseComponent implements OnInit {
   }
   onSubmit() {
     if (this.formRespons.valid) {
-      this.newResponse.articleId = 1;
+      //צריך לחתוך את המחרוזת 
+     // this.newResponse.articleId = this.router.url.;
       this.newResponse.name = this.formRespons.controls.fullName.value;
       this.newResponse.title = this.formRespons.controls.title.value;
       this.newResponse.content = this.formRespons.controls.message.value;
