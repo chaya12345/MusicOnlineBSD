@@ -6,3 +6,11 @@
     height: 550px;
     text-align: center;
 }
+
+.swiper-slide {
+    display: flex;
+}
+
+.swiper-slide * {
+    margin: auto;
+}

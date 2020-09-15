@@ -29,7 +29,6 @@ export class NewSongsComponent implements OnInit {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       },
-    
       scrollbar: {
         el: '.swiper-scrollbar',
       },
