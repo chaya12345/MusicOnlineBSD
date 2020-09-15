@@ -110,3 +110,14 @@ register button span {
 }
 
 /* #endregion */
+
+.center-content {
+    margin: 0 250px;
+    height: 100%;
+}
+
+p.title-part {
+    font-size: 23px;
+    font-family: fb Ogen;
+    color: #fbc02d;
+}

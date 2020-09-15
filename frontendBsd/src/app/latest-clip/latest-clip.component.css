@@ -1,0 +1,15 @@
+.wrap-clip {
+    background-color: white;
+    margin: auto;
+    height: 300px;
+    width: 350px;
+    display: flex;
+}
+
+.wrap-clip mat-icon {
+    color: #252525;
+    font-size: 56px;
+    height: auto;
+    width: auto;
+    margin: auto;
+}

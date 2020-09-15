@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RegisterToWebsiteComponent } from './register-to-website/register-to-website.component';
 import { RegisterToNewsletterComponent } from './register-to-newsletter/register-to-newsletter.component';
+import { LatestClipComponent } from './latest-clip/latest-clip.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { RegisterToNewsletterComponent } from './register-to-newsletter/register
     LatestNewsComponent,
     HomePageComponent,
     RegisterToWebsiteComponent,
-    RegisterToNewsletterComponent
+    RegisterToNewsletterComponent,
+    LatestClipComponent
   ],
   imports: [
     BrowserModule,
