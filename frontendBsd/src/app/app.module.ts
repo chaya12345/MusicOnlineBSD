@@ -53,6 +53,10 @@ import { LatestArticleComponent } from './latest-article/latest-article.componen
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    RegisterToWebsiteComponent,
+    RegisterToNewsletterComponent
+  ]
 })
 export class AppModule { }
