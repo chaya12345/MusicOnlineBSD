@@ -45,3 +45,30 @@ html, body {
 }
 
 /* #endregion */
+
+/* #region(collapsed) [Swiper-Slide] */
+
+.swiper-pagination-bullet {
+    display: inline-block;
+    background: #000;
+    opacity: .2;
+    margin: 0 6px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50px;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background-color: #252525;
+}
+
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 4px;
+}
+
+.swiper-pagination-clickable .swiper-pagination-bullet {
+    cursor: pointer;
+}
+
+/* #endregion */
