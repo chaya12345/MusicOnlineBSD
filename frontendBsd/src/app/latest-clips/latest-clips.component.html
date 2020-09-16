@@ -2,9 +2,7 @@
     <div class="center-content">
         <p class="title-part">קליפים אחרונים.</p>
         <div class="wrap-clips center-object">
-            <latest-clip *ngFor="let clip of clipsList" [clip]="clip" ></latest-clip>
-            <!-- <latest-clip></latest-clip>
-            <latest-clip></latest-clip> -->
+            <latest-clip class="space-between" *ngFor="let clip of clipsList" [clip]="clip" ></latest-clip>
         </div>
         <div class="reload-more-button">עוד...</div>
     </div>

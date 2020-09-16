@@ -66,6 +66,7 @@
     <Compile Include="Casts\ToJobsDTO.cs" />
     <Compile Include="Casts\ToLastResponsDTO.cs" />
     <Compile Include="Casts\ToPlaylistsDTO.cs" />
+    <Compile Include="Casts\ToPlaylistsSystemDTO.cs" />
     <Compile Include="Casts\ToReportsDTO.cs" />
     <Compile Include="Casts\ToResponsesToArticlesDTO.cs" />
     <Compile Include="Casts\ToResponsesToSongsDTO.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Casts\ToUsersDTO.cs" />
     <Compile Include="JobsBL.cs" />
     <Compile Include="PlaylistBL.cs" />
+    <Compile Include="PlaylistsSystemBL.cs" />
     <Compile Include="ReportsBL.cs" />
     <Compile Include="ResponsesToArticlesBL.cs" />
     <Compile Include="ResponsesToSongsBL.cs" />

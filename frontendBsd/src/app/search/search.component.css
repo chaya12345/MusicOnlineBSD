@@ -1,0 +1,13 @@
+.wrap-search {
+    height: 220px;
+}
+
+.search-boxes {
+    text-align: center;
+}
+
+.search-boxes mat-form-field {
+    direction: ltr;
+    text-align: right;
+    margin: 0 15px;
+}

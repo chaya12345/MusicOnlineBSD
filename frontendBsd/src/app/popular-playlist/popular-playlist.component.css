@@ -1,0 +1,30 @@
+.wrap-popular-playlist {
+    background-color: #101010;
+    height: 350px;
+    width: 350px;
+    background-size: cover;
+    background-position: center;
+}
+
+.header-playlist {
+    width: 100%;
+    height: 110px;
+    background-color: #252525;
+    background-color: #fbc02dc2;
+    color: white;
+    text-align: center;
+    padding: 10px 15px;
+    font-family: fb Ogen;
+}
+
+.header-playlist p {
+    font-size: 39px;
+    color: #3a3a3a;
+    font-weight: 600;
+}
+
+.header-playlist span {
+    font-size: 22px;
+    font-family: calibri;
+    font-weight: 100;
+}

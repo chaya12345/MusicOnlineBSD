@@ -1,0 +1,11 @@
+.wrap-footer {
+    height: 500px;
+    background-color: #252525;
+    display: grid;
+    grid-template-columns: fit-content(50%) fit-content(50%) auto;
+    grid-template-rows: auto 50px;
+}
+
+copyrights {
+    grid-area: 2 / 1 / 3 / 4;
+}

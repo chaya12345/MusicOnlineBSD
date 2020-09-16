@@ -2,18 +2,52 @@
     background-color: white;
     margin: auto;
     height: 350px;
-    width: 300px;
-    padding: 5px;
+    width: 350px;
+    padding: 2px;
     display: grid;
     grid-template-rows: fit-content(50%) auto;
 }
 
 .wrap-image {
     width: 100%;
-    height: 200px;
+    height: 220px;
     background-color: black;
+    background-size: cover;
+    background-position: center;
 }
 
 .wrap-info {
     width: 100%;
+    padding: 20px 15px;
+    display: contents;
+}
+
+.wrap-info p {
+    padding: 7px 15px;
+    font-family: fb Ogen;
+    font-size: 23px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.footer {
+    margin-top: auto;
+    padding: 15px 35px;
+    font-weight: 100;
+    font-family: calibri;
+    font-size: 18px;
+}
+
+.footer span:last-of-type {
+    margin-right: auto;
+    float: left;
+    display: flex;
+}
+
+.footer span mat-icon {
+    margin-right: 7px;
+    color: #F44336;
 }

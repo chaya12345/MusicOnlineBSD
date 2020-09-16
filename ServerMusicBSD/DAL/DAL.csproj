@@ -63,6 +63,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="getPlaylists_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getSongs_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="JobTBL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -84,6 +90,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="PlaylistsSystemTBL.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="PlaylistsTBL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -95,6 +104,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="ResponsesToSongsTBL.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="searchByAlbum_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="searchBySinger_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="SearchingToSingerTBL.cs">
@@ -110,6 +125,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="SongsToPlaylistsTBL.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
@@ -153,6 +174,13 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="src\images\for_playlists\abstract-photo-music-piano-jazz-music_136559-247.jpg" />
+    <Content Include="src\images\for_playlists\acoustic-guitar-tree_1426-614.jpg" />
+    <Content Include="src\images\for_playlists\alphacolor-66JMudIjDTw-unsplash.jpg" />
+    <Content Include="src\images\for_playlists\colorful-bicycle-with-guitar-meadow_1150-7721.jpg" />
+    <Content Include="src\images\for_playlists\drums-cymbals-hi-hat-beautiful-recording-studio_169016-3801.jpg" />
+    <Content Include="src\images\for_playlists\flower-wedding-event_1150-5631.jpg" />
+    <Content Include="src\images\for_playlists\musical-percussion-instrument-drum-bongo_169016-302.jpg" />
     <Content Include="src\images\for_songs\איציק-דדיה\‏‏file.jpg" />
     <Content Include="src\images\for_songs\יעקב-שוואקי\234472_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_songs\מידד-טסה\232760_tumb_750Xauto.jpg" />

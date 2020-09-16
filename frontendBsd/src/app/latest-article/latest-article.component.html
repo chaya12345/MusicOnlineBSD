@@ -1,4 +1,13 @@
 <div class="wrap-latest-article">
-    <div class="wrap-image"></div>
-    <div class="wrap-info"></div>
+    <div class="wrap-image" [style.background-image]="'url(../../assets/images/'+article.main_image+')'"></div>
+    <div class="wrap-info">
+        <p>{{article.title}}</p>
+        <div class="footer">
+            <span>{{article.date | date: 'd/M/yyyy H:mm'}}</span>
+            <span>
+                {{article.count_like}}
+                <mat-icon>favorite_border</mat-icon>
+            </span>
+        </div>
+    </div>
 </div>

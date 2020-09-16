@@ -47,18 +47,18 @@ html, body {
 
 /* #endregion */
 
-/* #region(collapsed) [accordion] */
+/* #region(collapsed) [mat-form-field] */
 
-.search mat-label.ng-star-inserted {
+/* .search mat-label.ng-star-inserted {
     color: white;
-}
+} */
 
 .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float 
 .mat-form-field-label {
     transform: translate(-14px, -1.5937em) scale(0.75);
 }
 
-.search .mat-input-element.mat-form-field-autofill-control {
+/* .search .mat-input-element.mat-form-field-autofill-control {
     color: white;
 }
 
@@ -70,7 +70,7 @@ html, body {
 .search .mat-form-field-appearance-outline 
 .mat-form-field-outline {
     color: rgb(255 255 255 / 12%);
-}
+} */
 
 /* #endregion */
 
@@ -78,7 +78,7 @@ html, body {
 
 .swiper-pagination-bullet {
     display: inline-block;
-    background: #000;
+    background: #fff;
     opacity: .2;
     margin: 0 6px;
     width: 13px;
@@ -86,9 +86,13 @@ html, body {
     border-radius: 50px;
 }
 
+.swiper-pagination { 
+    margin: 0 0 23px;
+}
+
 .swiper-pagination-bullet-active {
     opacity: 1;
-    background-color: #252525;
+    background-color: #fff;
 }
 
 .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
@@ -97,6 +101,12 @@ html, body {
 
 .swiper-pagination-clickable .swiper-pagination-bullet {
     cursor: pointer;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    color: white !important;
+    margin: 0 180px;
+    font-size: 38px;
 }
 
 /* #endregion */
@@ -114,7 +124,6 @@ register button span {
 /* #region(collapsed) [for-Home-Page] */
 
 .wrap-container {
-    height: 530px;
     padding: 65px 60px;
 }
 
@@ -148,6 +157,18 @@ p.title-part {
 
 .reload-more-button:hover{
     background-color: #101010;
+}
+
+.space-between {
+    margin: auto;
+}
+
+.space-between:first-of-type {
+    margin-right: 0;
+}
+
+.space-between:last-of-type {
+    margin-left: 0;
 }
 
 /* #endregion */

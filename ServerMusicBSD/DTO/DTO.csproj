@@ -47,6 +47,7 @@
     <Compile Include="JobsDTO.cs" />
     <Compile Include="LastResponsDTO.cs" />
     <Compile Include="PlaylistsDTO.cs" />
+    <Compile Include="PlaylistsSystemDTO.cs" />
     <Compile Include="ReportsDTO.cs" />
     <Compile Include="ResponsesToArticlesDTO.cs" />
     <Compile Include="ResponsesToSongsDTO.cs" />

@@ -1,0 +1,37 @@
+.wrap-footer-song {
+    width: 100%;
+    color: white;
+}
+
+.wrap-footer-song p {
+    padding: 5px 15px;
+    font-size: 27px;
+    font-family: fb Joker;
+    font-weight: 600;
+    letter-spacing: .2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.info-song {
+    display: flex;
+    height: fit-content;
+    padding: 15px 35px;
+    border-top: solid 1px #ffffff69;
+}
+
+.info-song span {
+    display: flex;
+    margin-right: auto;
+    font-weight: 100;
+    font-family: calibri;
+    font-size: 18px;
+}
+
+.info-song span mat-icon {
+    margin-right: 7px;
+    color: #F44336;
+}

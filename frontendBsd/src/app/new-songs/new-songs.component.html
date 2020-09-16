@@ -1,19 +1,30 @@
 <div class="wrap-new-songs">
 
-    <div class="swiper-container">
+    <div class="swiper-container" style="height: 100%;">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
             <!-- Slides -->
             <div class="swiper-slide">
-                <p>Slide 1</p>
+                <div [style.background-image]="'url(../../assets/images/'+newSongsList[0].image_location+')'"></div>
+                <div><p>{{newSongsList[0].title}}</p><span>{{newSongsList[0].date | date: 'd/M/yyyy'}}</span></div>
             </div>
             <div class="swiper-slide">
-                <p>Slide 2</p>
+                <div [style.background-image]="'url(../../assets/images/'+newSongsList[1].image_location+')'"></div>
+                <div><p>{{newSongsList[1].title}}</p><span>{{newSongsList[1].date | date: 'd/M/yyyy'}}</span></div>
             </div>
             <div class="swiper-slide">
-                <p>Slide 3</p>
+                <div [style.background-image]="'url(../../assets/images/'+newSongsList[2].image_location+')'"></div>
+                <div><p>{{newSongsList[2].title}}</p><span>{{newSongsList[2].date | date: 'd/M/yyyy'}}</span></div>
             </div>
-            ...
+            <div class="swiper-slide">
+                <div [style.background-image]="'url(../../assets/images/'+newSongsList[3].image_location+')'"></div>
+                <div><p>{{newSongsList[3].title}}</p><span>{{newSongsList[3].date | date: 'd/M/yyyy'}}</span></div>
+            </div>
+            <div class="swiper-slide">
+                <div [style.background-image]="'url(../../assets/images/'+newSongsList[4].image_location+')'"></div>
+                <div><p>{{newSongsList[4].title}}</p><span>{{newSongsList[4].date | date: 'd/M/yyyy'}}</span></div>
+            </div>
+            
         </div>
         <!-- If we need pagination -->
         <div class="swiper-pagination"></div>

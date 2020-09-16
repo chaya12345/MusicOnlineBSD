@@ -2,8 +2,10 @@
     height: 200px;
     padding: 10px 65px;
     display: flex;
-    background-color: #171717;
-    color: white !important;
+    /* background-color: #171717;
+    color: white !important; */
+    background-color: white;
+    color: #171717 !important;
 }
 
 .wrap-header img {

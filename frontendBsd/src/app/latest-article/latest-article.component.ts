@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Article } from '../classes/article';
 
 @Component({
   selector: 'latest-article',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LatestArticleComponent implements OnInit {
 
+  @Input() article: Article;
+
   constructor() { }
 
   ngOnInit() {
+    console.log('url(../../assets/images/'+this.article.main_image+')');
   }
 
 }

@@ -2,15 +2,3 @@
     height: 530px;
     background-color: #292929;
 }
-
-latest-clip {
-    margin: auto;
-}
-
-latest-clip:first-of-type {
-    margin-right: 0;
-}
-
-latest-clip:last-of-type {
-    margin-left: 0;
-}

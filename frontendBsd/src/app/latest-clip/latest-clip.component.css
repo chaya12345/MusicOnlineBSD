@@ -3,21 +3,42 @@
     margin: auto;
     height: 300px;
     width: 350px;
-    display: flex;
     background-size: cover;
     background-position: center;
     transition: .4s;
-    opacity: 0.75;
+    display: flex;
 }
 
-.wrap-clip:hover {
+.wrap-clip:hover .wrap-play-icon {
+    background-color: #0000002a;
+}
+
+.wrap-clip:hover mat-icon {
     opacity: 1;
 }
 
-.wrap-clip mat-icon {
+.wrap-play-icon {
+    display: flex;
+    height: 300px;
+    position: absolute;
+    width: 350px;
+    background-color: #00000052;
+    transition: .4s;
+    z-index: 1;
+}
+
+.wrap-play-icon mat-icon {
     color: #252525;
-    font-size: 56px;
+    font-size: 84px;
     height: auto;
     width: auto;
     margin: auto;
+    opacity: 0.75;
+    transition: .4s;
+}
+
+footer-song {
+    margin-top: auto;
+    width: 100%;
+    z-index: 2;
 }

@@ -1,3 +1,6 @@
 <div class="wrap-clip" [style.background-image]="'url(../../assets/images/'+clip.image_location+')'">
-    <mat-icon>play_circle_fill</mat-icon>
+    <div class="wrap-play-icon">
+        <mat-icon>play_circle_fill</mat-icon>
+    </div>
+    <footer-song [song]="clip"></footer-song>
 </div>

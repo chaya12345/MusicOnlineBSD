@@ -154,6 +154,7 @@
     <Compile Include="Controllers\ArtistsToSongsController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\PlaylistsController.cs" />
+    <Compile Include="Controllers\PlaylistsSystemController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\ResponsesToArticlesController.cs" />
     <Compile Include="Controllers\ResponsesToSongsController.cs" />

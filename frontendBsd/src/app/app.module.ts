@@ -24,6 +24,12 @@ import { RegisterToWebsiteComponent } from './register-to-website/register-to-we
 import { RegisterToNewsletterComponent } from './register-to-newsletter/register-to-newsletter.component';
 import { LatestClipComponent } from './latest-clip/latest-clip.component';
 import { LatestArticleComponent } from './latest-article/latest-article.component';
+import { FooterSongComponent } from './footer-song/footer-song.component';
+import { PopularPlaylistComponent } from './popular-playlist/popular-playlist.component';
+import { NowViewedComponent } from './now-viewed/now-viewed.component';
+import { LatestCommitsComponent } from './latest-commits/latest-commits.component';
+import { InfoFooterComponent } from './info-footer/info-footer.component';
+import { CopyrightsComponent } from './copyrights/copyrights.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +49,13 @@ import { LatestArticleComponent } from './latest-article/latest-article.componen
     RegisterToWebsiteComponent,
     RegisterToNewsletterComponent,
     LatestClipComponent,
-    LatestArticleComponent
+    LatestArticleComponent,
+    FooterSongComponent,
+    PopularPlaylistComponent,
+    NowViewedComponent,
+    LatestCommitsComponent,
+    InfoFooterComponent,
+    CopyrightsComponent
   ],
   imports: [
     BrowserModule,

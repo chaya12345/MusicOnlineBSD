@@ -2,7 +2,8 @@
     <div class="center-content">
         <p class="title-part">הפלייליסטים הכי מושמעים.</p>
         <div class="wrap-playlists center-object">
-            
+            <popular-playlist class="space-between" *ngFor="let playlist of latestPlaylists" [playlist]="playlist"></popular-playlist>
         </div>
+        <div class="reload-more-button">עוד...</div>
     </div>
 </div>

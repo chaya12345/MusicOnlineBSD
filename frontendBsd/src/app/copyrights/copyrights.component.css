@@ -1,0 +1,17 @@
+.wrap-copyrights {
+    direction: ltr;
+    color: white;
+    display: flex;
+}
+
+.wrap-copyrights p {
+    display: flex;
+    margin: auto;
+    font-family: calibri;
+    font-weight: 100;
+    font-size: 22px;
+}
+
+.wrap-copyrights p mat-icon {
+    margin-right: 15px;
+}
