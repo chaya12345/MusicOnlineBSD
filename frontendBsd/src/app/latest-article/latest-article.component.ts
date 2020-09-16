@@ -13,9 +13,9 @@ export class LatestArticleComponent implements OnInit {
 
   @Input() article: Article;
   likeFunctionality;
-  num:number=1;
+  num: number = 1;
 
-  constructor(private likeService: LikeService,private articleServicer:ArticleService) { }
+  constructor(private likeService: LikeService, private articleServicer: ArticleService) { }
 
   ngOnInit() {
     this.likeFunctionality = this.likeService;
@@ -28,16 +28,18 @@ export class LatestArticleComponent implements OnInit {
   }
 
   marking(event, color: string): void {
-    this.likeFunctionality.change_like_color(event,color);
+    this.likeFunctionality.change_like_color(event, color);
   }
 
   reset_marking(event, color: string): void {
     this.likeFunctionality.reset_like_color(event, color);
   }
   addLike(): void {
+   this.article.count_like = this.article.count_like + 1;
     this.articleServicer.increaseLikeToArticle(this.article.id).subscribe();
   }
   MissLike(): void {
+    this.article.count_like=this.article.count_like-1;
     this.articleServicer.decreaseLikeToArticle(this.article.id).subscribe();
   }
 

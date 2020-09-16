@@ -14,6 +14,6 @@ export class Article {
     audio2?: string;
     video?: string;
     credit?: string;
-    count_views?: string;
-    count_like?: string;
+    count_views?: number;
+    count_like?: number;
 }
