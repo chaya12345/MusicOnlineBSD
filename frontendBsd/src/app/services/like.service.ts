@@ -12,12 +12,12 @@ export class LikeService {
       event.target.innerHTML = "favorite_border";
   }
 
-  change_like_color(event): void {
-    event.target.style.color = "#F44336";
+  change_like_color(event,color:string): void {
+    event.target.style.color =color!=null?color:"white" ;
   }
 
   reset_like_color(event, color: string): void {
-    event.target.style.color = color != null ? color : "white";
+    event.target.style.color = color != null ? color :"#F44336" ;
   }
 
   constructor() { }

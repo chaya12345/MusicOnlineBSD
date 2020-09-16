@@ -47,7 +47,7 @@ export class SongService {
     return this.httpClient.put(this.baseUrl + "PutIncreaseLikeToSong?songId=" + songId, songId);
   }
   public decreaseLikeToSong(songId: number): Observable<any> {
-    return this.httpClient.delete(this.baseUrl + "PutDecreaseLikeToSong?songId=" + songId);
+    return this.httpClient.put(this.baseUrl + "PutDecreaseLikeToSong?songId=" + songId,songId);
   }
   // יצירת קריאת סרבר עם הרשאות גישה
   //   const headers = { 'Authorization': 'Bearer my-token' }

@@ -43,6 +43,13 @@ namespace ServerMusicBSD.Controllers
         {
             return ArticlesBL.GetArticlesByAllTags(tagsResponse.tags);
         }
-
+        public void PutIncreaseLikeToArticle(int articleId)
+        {
+            ArticlesBL.InreaseLike(articleId);
+        }
+        public void PutDecreaseLikeToSongArticle(int articleId)
+        {
+            ArticlesBL.DecreaseLike(articleId);
+        }
     }
 }

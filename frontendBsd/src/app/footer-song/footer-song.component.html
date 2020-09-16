@@ -1,9 +1,10 @@
-<div class="wrap-footer-song">
+<div class="wrap-footer-song" [class.songPlay]="isPlay">
     <p>{{song.title}}</p>
     <div class="info-song">
         <span>
             {{song.count_like}}
-            <mat-icon>favorite_border</mat-icon>
+            <button mat-icon-button><mat-icon matTooltipClass="blue-tooltip" matTooltip="לייק"
+                (click)="sign($event)" (mouseenter)="marking($event)" (mouseleave)="reset_marking($event)">favorite_border</mat-icon></button>
         </span>
     </div>
 </div>

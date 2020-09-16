@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Article } from '../classes/article';
+import { ArticleService } from '../services/article.service';
+import { LikeService } from '../services/like.service';
 
 @Component({
   selector: 'latest-article',
@@ -9,11 +12,33 @@ import { Article } from '../classes/article';
 export class LatestArticleComponent implements OnInit {
 
   @Input() article: Article;
+  likeFunctionality;
+  num:number=1;
 
-  constructor() { }
+  constructor(private likeService: LikeService,private articleServicer:ArticleService) { }
 
   ngOnInit() {
-    console.log('url(../../assets/images/'+this.article.main_image+')');
+    this.likeFunctionality = this.likeService;
+  }
+
+  sign(event): void {
+    this.likeFunctionality.toggle_like(event);
+    this.num++;
+    this.num % 2 == 0 ? this.addLike() : this.MissLike();
+  }
+
+  marking(event, color: string): void {
+    this.likeFunctionality.change_like_color(event,color);
+  }
+
+  reset_marking(event, color: string): void {
+    this.likeFunctionality.reset_like_color(event, color);
+  }
+  addLike(): void {
+    this.articleServicer.increaseLikeToArticle(this.article.id).subscribe();
+  }
+  MissLike(): void {
+    this.articleServicer.decreaseLikeToArticle(this.article.id).subscribe();
   }
 
 }

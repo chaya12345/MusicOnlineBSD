@@ -93,9 +93,16 @@ namespace BL
             if (article != null)
             {
                 if (article.count_like == null)
+                {
                     article.count_like = 1;
-                else article.count_like++;
-                et.SaveChanges();
+                    et.SaveChanges();
+                }
+                else
+                {
+                    article.count_like++;
+                    et.SaveChanges();
+                }
+                
             }
         }
         public static void DecreaseLike(int articleId)
@@ -105,9 +112,15 @@ namespace BL
             if (article != null)
             {
                 if (article.count_like == null)
+                {
                     article.count_like = 0;
-                else article.count_like--;
-                et.SaveChanges();
+                    et.SaveChanges();
+                }
+                else
+                {
+                    article.count_like--;
+                    et.SaveChanges();
+                }
             }
         }
     }

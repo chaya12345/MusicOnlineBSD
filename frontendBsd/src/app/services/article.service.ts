@@ -34,4 +34,10 @@ export class ArticleService {
     var obj={"tags":tags};
     return this.httpClient.post<Article[]>(this.baseUrl+"PostArticlesByAllTags",obj);
   }
+  public increaseLikeToArticle(articleId: number): Observable<any> {
+    return this.httpClient.put(this.baseUrl + "PutIncreaseLikeToArticle?articleId=" + articleId, articleId);
+  }
+  public decreaseLikeToArticle(articleId: number): Observable<any> {
+    return this.httpClient.put(this.baseUrl + "PutDecreaseLikeToSongArticle?articleId=" + articleId,articleId);
+  }
 }

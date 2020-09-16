@@ -128,10 +128,16 @@ namespace BL
             SongsTBL song = et.SongsTBL.Where(s => s.id == songId).FirstOrDefault();
             if (song != null)
             {
-                if (song.count_like == null)
+                if (song.count_like == null || song.count_like == 0)
+                {
                     song.count_like = 1;
-                else song.count_like++;
-                et.SaveChanges();
+                    et.SaveChanges();
+                }
+                else
+                {
+                    song.count_like++;
+                    et.SaveChanges();
+                }
             }
         }
         public static void DecreaseLike(int songId)
@@ -141,9 +147,15 @@ namespace BL
             if (song != null)
             {
                 if (song.count_like == null || song.count_like == 0)
+                {
                     song.count_like = 0;
-                else song.count_like--;
-                et.SaveChanges();
+                    et.SaveChanges();
+                }
+                else
+                {
+                    song.count_like--;
+                    et.SaveChanges();
+                }
             }
         }
         public static List<SongsDTO> GetSimilarSongs(int songId)
