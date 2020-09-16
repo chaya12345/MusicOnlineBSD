@@ -24,7 +24,6 @@
 }
 
 .info-song span {
-    display: flex;
     margin-right: auto;
     font-weight: 100;
     font-family: calibri;
@@ -32,6 +31,5 @@
 }
 
 .info-song span mat-icon {
-    margin-right: 7px;
     color: #F44336;
 }
