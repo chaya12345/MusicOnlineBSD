@@ -1,26 +1,47 @@
 <div class="wrap-search  wrap-container">
-    <div class="center-content">
-        <p class="title-part">מחפשים משהו?</p>
-        <div class="search-boxes">
+  <div class="center-content">
+    <p class="title-part">מחפשים משהו?</p>
+    <div class="search-boxes">
 
-            <mat-form-field appearance="outline">
-                <mat-label>חפש שיר</mat-label>
-                <input matInput>
-                <mat-icon matPrefix>search</mat-icon>
-              </mat-form-field>
-    
-              <mat-form-field appearance="outline">
-                <mat-label>חפש זמר, אומן</mat-label>
-                <input matInput>
-                <mat-icon matPrefix>search</mat-icon>
-              </mat-form-field>
-    
-              <mat-form-field appearance="outline">
-                <mat-label>חפש סגנון</mat-label>
-                <input matInput>
-                <mat-icon matPrefix>search</mat-icon>
-              </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>שם שיר</mat-label>
+        <input type="text" matInput [formControl]="songsControl" [matAutocomplete]="autoSongs">
+        <mat-icon matPrefix>search</mat-icon>
+        <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete">
+          <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name">
+            {{song.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
 
-        </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label>חפש זמר, אומן</mat-label>
+        <input type="text" matInput [formControl]="singersControl" [matAutocomplete]="autoSingers">
+        <button mat-icon-button matPrefix>
+          <mat-icon>search</mat-icon>
+        </button>
+        <mat-autocomplete autoActiveFirstOption #autoSingers="matAutocomplete">
+          <mat-option *ngFor="let singer of filteredSingers | async" [value]="singer.name">
+            {{singer.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="outline">
+        <mat-label>חפש סגנון</mat-label>
+        <input type="text" matInput [formControl]="tagsControl" [matAutocomplete]="autoTags">
+        <button mat-icon-button matPrefix>
+          <mat-icon>search</mat-icon>
+        </button>
+        <mat-autocomplete autoActiveFirstOption #autoTags="matAutocomplete">
+          <mat-option *ngFor="let tag of filteredTags | async" [value]="tag.name">
+            {{tag.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
     </div>
+  </div>
 </div>
