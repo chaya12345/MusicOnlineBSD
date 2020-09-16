@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { RegisterToNewsletterComponent } from '../register-to-newsletter/register-to-newsletter.component';
 import { RegisterToWebsiteComponent } from '../register-to-website/register-to-website.component';
 
 export interface DialogDataToWebsite {
@@ -16,7 +17,7 @@ export interface DialogDataToWebsite {
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  
+
   fullname: string;
   email: string;
   password: string;
@@ -38,7 +39,14 @@ export class RegisterComponent implements OnInit {
       this.buttonText = "הרשמה לניוזלטר";
     }
   }
-  
+
+  openDialog(): void {
+    if (this.type == "website")
+      this.openDialogToWebsite();
+    else if (this.type == "newsletter")
+      this.openDialogToNewsletter();
+  }
+
   openDialogToWebsite(): void {
     try {
       const dialogRef = this.dialog.open(RegisterToWebsiteComponent, {
@@ -46,11 +54,28 @@ export class RegisterComponent implements OnInit {
         data: { fullname: this.fullname, email: this.email, password: this.password, isNewsletterWanted: this.isNewsletterWanted }
       });
       dialogRef.afterClosed().subscribe(result => {
-        if(result!=null){
+        if (result != null) {
           this.fullname = result.slice(0, result.indexOf('|'));
-        this.email = result.slice(result.indexOf('|') + 1, result.length);
+          this.email = result.slice(result.indexOf('|') + 1, result.length);
         }
-        
+
+      });
+    }
+    catch { console.log('register'); }
+  }
+
+  openDialogToNewsletter(): void {
+    try {
+      const dialogRef = this.dialog.open(RegisterToNewsletterComponent, {
+        width: '400px',
+        data: { email: this.email }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result != null) {
+          this.fullname = result.slice(0, result.indexOf('|'));
+          this.email = result.slice(result.indexOf('|') + 1, result.length);
+        }
+
       });
     }
     catch { console.log('register'); }

@@ -14,19 +14,19 @@ import { UsersService } from '../services/users.service';
 export class RegisterToNewsletterComponent implements OnInit {
 
   formRegister: FormGroup;
-  newUser: User = new User;
-  //constructor() { }
+  newUser: User = new User();
+
   constructor(public dialogRef: MatDialogRef<RegisterToWebsiteComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogDataToWebsite,
     private usersService: UsersService) {
     this.formRegister = new FormGroup({
-      fullname: new FormControl("", Validators.required),
       email: new FormControl("", Validators.required)
     })
   }
 
   ngOnInit() {
   }
+
   onSubmit() {
     if (this.formRegister.valid) {
       this.newUser.name = this.formRegister.controls.fullName.value;
@@ -36,6 +36,7 @@ export class RegisterToNewsletterComponent implements OnInit {
       this.newUser = null;
     }
   }
+  
   onNoClick(): void {
     this.dialogRef.close();
   }

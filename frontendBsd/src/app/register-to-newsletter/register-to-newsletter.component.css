@@ -1,0 +1,30 @@
+.wrap-dialog {
+    direction: rtl;
+}
+
+.wrap-dialog h1 {
+    font-family: fb Ogen;
+    font-size: 23px;
+}
+
+mat-divider {
+    margin-bottom: 8px;
+}
+
+.wrap-dialog > div {
+    display: grid;
+    text-align: center;
+}
+
+.wrap-dialog mat-icon {
+    transition: .4s;
+    margin: 9px auto 0;
+}
+
+mat-form-field {
+    text-align: right;
+}
+
+.wrap-dialog:hover mat-icon {
+    transform: translateY(7px);
+}

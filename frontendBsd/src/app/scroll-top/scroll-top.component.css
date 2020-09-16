@@ -1,0 +1,14 @@
+#scroll-top {
+    position: fixed;
+    bottom: 50px;
+    right: 48px;
+    text-align: center;
+    outline: none;
+    border: none;
+    z-index: 99;
+    height: 50px;
+    width: 50px;
+    transition: ease 0.4s;
+    padding: 4px;
+    fill: #fbc02d;
+}

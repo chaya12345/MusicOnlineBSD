@@ -30,6 +30,7 @@ import { NowViewedComponent } from './now-viewed/now-viewed.component';
 import { LatestCommitsComponent } from './latest-commits/latest-commits.component';
 import { InfoFooterComponent } from './info-footer/info-footer.component';
 import { CopyrightsComponent } from './copyrights/copyrights.component';
+import { ScrollTopComponent } from './scroll-top/scroll-top.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { CopyrightsComponent } from './copyrights/copyrights.component';
     NowViewedComponent,
     LatestCommitsComponent,
     InfoFooterComponent,
-    CopyrightsComponent
+    CopyrightsComponent,
+    ScrollTopComponent
   ],
   imports: [
     BrowserModule,
