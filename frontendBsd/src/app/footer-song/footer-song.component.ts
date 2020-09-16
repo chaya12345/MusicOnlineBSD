@@ -43,9 +43,11 @@ export class FooterSongComponent implements OnInit {
     this.song_functionality.reset_like_color(event);
   }
   addLike(): void {
+    this.song.count_like = this.song.count_like + 1;
     this.songService.increaseLikeToSong(this.song.id).subscribe();
   }
   MissLike(): void {
+    this.song.count_like=this.song.count_like-1;
     this.songService.decreaseLikeToSong(this.song.id).subscribe();
   }
 }
