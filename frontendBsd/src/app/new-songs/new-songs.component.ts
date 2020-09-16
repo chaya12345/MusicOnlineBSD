@@ -17,7 +17,7 @@ export class NewSongsComponent implements OnInit {
     try {
     this.songService.getSongs().subscribe(song => { this.newSongsList = song; this.filter(); }, err => { console.log(err); });
     }
-    catch { console.log('magazine'); }
+    catch { console.log('new-songs'); }
   }
 
   ngOnInit(): void {
@@ -32,7 +32,7 @@ export class NewSongsComponent implements OnInit {
       centeredSlides: true,
       autoplay: {
         delay: 2500,
-        // disableOnInteraction: false,
+        disableOnInteraction: false,
       },
       speed: 800,
       pagination: {
@@ -52,6 +52,7 @@ export class NewSongsComponent implements OnInit {
   filter(): void {
     this.newSongsList.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
     this.newSongsList = this.newSongsList.slice(0, 5);
+    console.log(this.newSongsList);
   }
 
 }
