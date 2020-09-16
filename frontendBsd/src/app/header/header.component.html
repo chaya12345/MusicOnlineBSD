@@ -6,16 +6,29 @@
     </div>
     <div class="search">
 
-        <mat-form-field appearance="outline">
-            <mat-label>חפש שיר</mat-label>
-            <input matInput>
+          <mat-form-field appearance="outline">
+            <mat-label>שם שיר</mat-label>
+            <input type="text" matInput [formControl]="songsControl" [matAutocomplete]="autoSongs">
             <mat-icon matPrefix>search</mat-icon>
-          </mat-form-field>
+            <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete">
+                <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name">
+                    {{song.name}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
 
           <mat-form-field appearance="outline">
-            <mat-label>חפש זמר</mat-label>
-            <input matInput>
-            <mat-icon matPrefix>search</mat-icon>
+            <mat-label>שם זמר</mat-label>
+              <input type="text" matInput [formControl]="singersControl"
+                  [matAutocomplete]="autoSingers">
+              <button mat-icon-button matPrefix>
+                  <mat-icon>search</mat-icon>
+              </button>
+              <mat-autocomplete autoActiveFirstOption #autoSingers="matAutocomplete">
+                  <mat-option *ngFor="let singer of filteredSingers | async" [value]="singer.name">
+                      {{singer.name}}
+                  </mat-option>
+              </mat-autocomplete>
           </mat-form-field>
 
     </div>

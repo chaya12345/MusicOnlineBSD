@@ -52,7 +52,6 @@ export class NewSongsComponent implements OnInit {
   filter(): void {
     this.newSongsList.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
     this.newSongsList = this.newSongsList.slice(0, 5);
-    console.log(this.newSongsList);
   }
 
 }
