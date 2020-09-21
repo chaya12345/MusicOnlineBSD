@@ -1,0 +1,124 @@
+.wrap-side-nav {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 999;
+    direction: ltr;
+    height: 100vh;
+    background-color: #101010;
+    color: white;
+    padding: 20px 0;
+    display: grid;
+    grid-template-rows: fit-content(40%) auto 10vh;
+    transition: .4s linear;
+    transform: translateX(115px);
+}
+
+.open-menu {
+    transform: translateX(0);
+}
+
+.close-nav {
+    transform: translateX(184px);
+}
+
+.open-nav-button {
+    transform: rotateZ(180deg);
+}
+
+.nav-content {
+    display: flex;
+    width: 100%;
+}
+
+.side-nav-items {
+    margin: auto;
+}
+
+.side-nav-item {
+    margin: 30px 0;
+    display: grid;
+    grid-template-columns: fit-content(40%) auto;
+    width: 100%;
+    padding: 8px 0;
+    transition: .4s;
+}
+.side-nav-item .mat-icon{
+    margin: 0 20px;
+}
+
+.side-nav-item * {
+    transition: .4s;
+}
+
+.close-menu-item {
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    box-shadow: 0 0 4px #00000036;
+}
+
+.close-menu-item:hover {
+    transform: translateX(-110px);
+}
+
+.side-nav-item:hover {
+    background-color: #2c8dfb;
+    padding: 8px 20px;
+
+}
+
+.side-nav-item:hover .mat-icon{
+    margin: 0;
+}
+
+/* .open-menu .side-nav-item:hover * {
+    transform: translateX(10px);
+} */
+
+.side-nav-item .mat-icon, button .mat-icon {
+    font-size: 28px;
+    width: fit-content;
+}
+
+.side-nav-item .mat-icon {
+    height: fit-content;
+}
+
+.wrap-side-nav .mat-icon-button {
+    width: 50px;
+    height: 50px;
+    /* color: #2c8dfb; */
+    color: white;
+    transition: .4s;
+    margin-left: 9px;
+}
+
+.wrap-side-nav .mat-icon-button:first-of-type:not(:only-child):hover {
+    transform: rotateZ(90deg);
+}
+
+.open-menu .mat-icon-button:first-of-type:not(:only-child) {
+    transform: rotateZ(45deg);
+}
+
+.open-menu .mat-icon-button:first-of-type:not(:only-child):hover {
+    transform: rotateZ(135deg);
+}
+
+.open-menu .mat-icon-button:last-of-type:hover {
+    transform: rotateZ(180deg);
+}
+
+.side-nav-item p {
+    padding: 5px 15px;
+    font-size: 21px;
+    font-family: fb joker;
+}
+
+.open-nav {
+    background-color: #00000042;
+    transform: translateX(-51px);
+    height: fit-content;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}

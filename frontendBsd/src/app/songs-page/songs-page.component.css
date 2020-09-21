@@ -1,4 +1,4 @@
-.wrap-home-page {
+.wrap-songs-page {
     transition: .4s linear;
     float: left;
     width: 100vw;
@@ -6,4 +6,9 @@
 
 .narrower {
     width: calc(100vw - 40px);
+}
+
+.specific-song {
+    display: grid;
+    grid-template-columns: fit-content(50%) auto;
 }

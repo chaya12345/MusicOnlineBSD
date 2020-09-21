@@ -1,0 +1,38 @@
+h3 {
+    font-family: fb Ogen;
+    font-size: 23px;
+    margin: 15px 0;
+    padding: 3px 15px;
+    border-right: solid 1px #444444;
+    color: #444444;
+}
+
+p {
+    font-family: fb Joker;
+    font-size: 23px;
+    color: #444444;
+}
+
+
+p span {
+    display: flex;
+    color: #fbc02d;
+    margin: 10px 0;
+    font-family: fb Joker;
+    font-size: 23px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: .4s;
+}
+
+p span mat-icon {
+    transition: .4s;
+}
+
+p span:hover mat-icon {
+    transform: translateX(-7px);
+}
+
+p span:hover {
+    color: #2c8dfb;
+}

@@ -1,0 +1,16 @@
+.wrap-side {
+    padding: 50px 0 50px 20px;
+}
+
+.wrap-side h2 {
+    font-size: 23px;
+    font-family: fb Ogen;
+    color: #fbc02d;
+    margin-bottom: 30px;
+}
+
+.similar-results {
+    width: fit-content;
+    height: 110vh;
+    display: grid;
+}

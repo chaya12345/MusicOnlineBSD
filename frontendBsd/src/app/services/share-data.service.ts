@@ -1,18 +1,15 @@
-// import { Injectable } from '@angular/core';
-import { Song } from '../classes/song';
-import { BehaviorSubject } from 'rxjs';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShareDataService {
 
-  currentSong: Song;
-  private childClickedEvent = new BehaviorSubject<Song>(null);
+  private childClickedEvent = new BehaviorSubject<boolean>(true);
 
-  emitChildEvent(song: Song){
-     this.childClickedEvent.next(song);
+  emitChildEvent(isNavOpened: boolean){
+     this.childClickedEvent.next(isNavOpened);
   }
   
   childEventListner(){

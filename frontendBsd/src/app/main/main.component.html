@@ -1,0 +1,8 @@
+<div class="wrap-main">
+    <span>{{song.date | date: 'd/M/yyyy H:mm'}}</span>
+    <div style="height: 450px;"></div>
+    <p>{{songContent}}</p>
+    <tags [tagsList]="tags"></tags>
+    <info [songId]="song.id" [viewsCnt]="song.count_views" [responsesCnt]="responses.length" [likesCnt]="song.count_like"></info>
+    <responses type="song" [responsesSongList]="responses"></responses>
+</div>

@@ -1,7 +1,7 @@
 #scroll-top {
     position: fixed;
     bottom: 50px;
-    right: 48px;
+    left: 48px;
     text-align: center;
     outline: none;
     border: none;

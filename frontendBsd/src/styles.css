@@ -172,3 +172,75 @@ p.title-part {
     direction: ltr !important;
 }
 /* #endregion */
+
+/* #region(collapsed) [Tooltip] */
+
+.blue-tooltip {
+    background: #2c8dfb;
+    margin: 10px 0 0 !important;
+    z-index: 9999;
+    font-size: 12px;
+    font-weight: 400;
+    box-shadow: 0 0 5px #1010101f;
+}
+
+/* #endregion */
+
+/* #region(collapsed) [Responses-Accordion] */
+
+mat-expansion-panel-header {
+    padding: 0 !important;
+}
+
+mat-panel-title {
+    font-family: fb Joker;
+    font-size: 23px;
+}
+
+response mat-panel-title {
+    font-weight: 600;
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+    box-shadow: none;
+}
+
+response mat-panel-title {
+    margin: 0 !important;
+}
+
+adding-response .mat-expansion-panel:not([class*=mat-elevation-z]) {
+    border: solid 1px #00000026;
+}
+
+adding-response mat-form-field {
+    direction: ltr;
+    margin: 0 10px;
+    text-align: right !important;
+}
+
+response .mat-expansion-panel .mat-expansion-panel-header.cdk-keyboard-focused:not([aria-disabled=true]), 
+response .mat-expansion-panel .mat-expansion-panel-header.cdk-program-focused:not([aria-disabled=true]), 
+response .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
+    background: transparent;
+}
+
+adding-response .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0.5em 0;
+}
+
+response .mat-expansion-panel-body {
+    font-family: fb Joker;
+    font-size: 23px;
+    padding: 0;
+}
+
+response span.mat-expansion-indicator {
+    margin-left: 15px;
+}
+
+response:first-of-type .mat-expansion-panel:not([class*=mat-elevation-z]) {
+    margin-top: 25px;
+}
+
+/* #endregion */

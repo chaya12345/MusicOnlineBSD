@@ -1,0 +1,12 @@
+<mat-accordion [class.without-content]="response.content==null">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            {{response.title}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>{{response.content}}</p>
+    </mat-expansion-panel>
+    <span>{{response.name}} • {{response.date | date: 'd/M/yyyy'}}</span>
+</mat-accordion>
+<mat-divider></mat-divider>

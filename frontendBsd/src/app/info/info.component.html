@@ -1,0 +1,13 @@
+<mat-divider></mat-divider>
+<div class="info">
+    <mat-icon>remove_red_eye</mat-icon>
+    <p>{{viewsCnt}} צפיות</p>
+    <mat-icon>thumb_up_alt</mat-icon>
+    <p>{{likesCnt}} אנשים שאהבו</p>
+    <mat-icon>speaker_notes</mat-icon>
+    <p>{{responsesCnt}} תגובות</p>
+    <button mat-icon-button (click)="sign($event)" (mouseenter)="marking($event,'#F44336')" (mouseleave)="reset_marking($event,'#F44336')">
+        <mat-icon>favorite_border</mat-icon>
+    </button>
+</div>
+<mat-divider></mat-divider>

@@ -12,35 +12,35 @@ import { LikeService } from '../services/like.service';
 export class LatestArticleComponent implements OnInit {
 
   @Input() article: Article;
-  likeFunctionality;
   num: number = 1;
 
-  constructor(private likeService: LikeService, private articleServicer: ArticleService) { }
+  constructor(private likeService: LikeService, private articleService: ArticleService) { }
 
   ngOnInit() {
-    this.likeFunctionality = this.likeService;
   }
 
   sign(event): void {
-    this.likeFunctionality.toggle_like(event);
+    this.likeService.toggle_like(event);
     this.num++;
     this.num % 2 == 0 ? this.addLike() : this.MissLike();
   }
 
-  marking(event, color: string): void {
-    this.likeFunctionality.change_like_color(event, color);
+  marking(event, color?: string): void {
+    this.likeService.change_like_color(event, color);
   }
 
   reset_marking(event, color: string): void {
-    this.likeFunctionality.reset_like_color(event, color);
+    this.likeService.reset_like_color(event, color);
   }
+
   addLike(): void {
    this.article.count_like = this.article.count_like + 1;
-    this.articleServicer.increaseLikeToArticle(this.article.id).subscribe();
+    this.articleService.increaseLikeToArticle(this.article.id).subscribe();
   }
+
   MissLike(): void {
     this.article.count_like=this.article.count_like-1;
-    this.articleServicer.decreaseLikeToArticle(this.article.id).subscribe();
+    this.articleService.decreaseLikeToArticle(this.article.id).subscribe();
   }
 
 }

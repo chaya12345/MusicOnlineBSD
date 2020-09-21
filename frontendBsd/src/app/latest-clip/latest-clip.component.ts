@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Song } from '../classes/song';
 
 @Component({
@@ -10,9 +11,13 @@ export class LatestClipComponent implements OnInit {
 
   @Input() clip: Song;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  openClip(): void {
+    this.router.navigateByUrl('/song/' + this.clip.id);
   }
 
 }

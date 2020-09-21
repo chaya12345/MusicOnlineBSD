@@ -1,0 +1,17 @@
+.wrap-main {
+    width: 73vw;
+    padding: 50px 140px;
+}
+
+.wrap-main span {
+    font-size: 17px;
+}
+
+.wrap-main p {
+    font-family: fb Joker;
+    font-size: 23px;
+    line-height: 35px;
+    white-space: pre-wrap;
+    padding: 0 0 0 50px;
+    margin-bottom: 25px;
+}

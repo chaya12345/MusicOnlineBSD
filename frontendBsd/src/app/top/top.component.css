@@ -1,0 +1,48 @@
+.top {
+    width: 100%;
+    height: 47vh;
+    position: relative;
+    overflow: hidden;
+}
+
+div.content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 74%);
+    color: white;
+    padding: 95px 130px;
+    display: flex;
+    z-index: 2;
+}
+
+.img {
+    transform: translateX(-3px);
+    -webkit-filter: blur(4px);
+    filter: blur(4px);
+    position: relative;
+    top: -530px;
+    z-index: 1;
+    height: 533px;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+div.content div {
+    margin-top: auto;
+}
+
+.content h3 {
+    font-family: fb Ogen;
+    font-size: 33px;
+    margin: 20px 0;
+    padding: 0 20px;
+    border-right: solid 1px white;
+}
+
+.content p {
+    font-family: fb Joker;
+    font-size: 28px;
+    line-height: 34px;
+}

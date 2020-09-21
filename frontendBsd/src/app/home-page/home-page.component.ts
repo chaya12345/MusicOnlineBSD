@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShareDataService } from '../services/share-data.service';
 
 @Component({
   selector: 'home-page',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  isNarrow: boolean = false;
+
+  constructor(private shareData: ShareDataService) { }
 
   ngOnInit() {
+    this.shareData.childEventListner().subscribe(isNavOpened =>{
+        this.isNarrow = isNavOpened;
+     });
   }
 
 }

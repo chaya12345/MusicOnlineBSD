@@ -31,6 +31,20 @@ import { LatestCommitsComponent } from './latest-commits/latest-commits.componen
 import { InfoFooterComponent } from './info-footer/info-footer.component';
 import { CopyrightsComponent } from './copyrights/copyrights.component';
 import { ScrollTopComponent } from './scroll-top/scroll-top.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
+import { SongsPageComponent } from './songs-page/songs-page.component';
+import { SongDetailsComponent } from './song-details/song-details.component';
+import { TopComponent } from './top/top.component';
+import { MainComponent } from './main/main.component';
+import { SideComponent } from './side/side.component';
+import { InfoComponent } from './info/info.component';
+import { TagsComponent } from './tags/tags.component';
+import { ResponsesComponent } from './responses/responses.component';
+import { ResponsesSongComponent } from './responses-song/responses-song.component';
+import { ResponsesArticleComponent } from './responses-article/responses-article.component';
+import { AddingResponseComponent } from './adding-response/adding-response.component';
+import { ResponseComponent } from './response/response.component';
+import { ReportingComponent } from './reporting/reporting.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +71,21 @@ import { ScrollTopComponent } from './scroll-top/scroll-top.component';
     LatestCommitsComponent,
     InfoFooterComponent,
     CopyrightsComponent,
-    ScrollTopComponent
+    ScrollTopComponent,
+    SideNavComponent,
+    SongsPageComponent,
+    SongDetailsComponent,
+    TopComponent,
+    MainComponent,
+    SideComponent,
+    InfoComponent,
+    TagsComponent,
+    ResponsesComponent,
+    ResponsesSongComponent,
+    ResponsesArticleComponent,
+    AddingResponseComponent,
+    ResponseComponent,
+    ReportingComponent
   ],
   imports: [
     BrowserModule,

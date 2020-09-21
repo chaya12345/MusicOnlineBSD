@@ -1,0 +1,16 @@
+.wrap-song-details {
+    width: 100vw;
+}
+
+top {
+    width: 100%;
+}
+
+.section {
+    display: grid;
+    grid-template-columns: fit-content(50%) auto;
+}
+
+side {
+    width: min-content;
+}

@@ -1,0 +1,7 @@
+<div class="wrap-song-details" *ngIf="song!=null&&song!=undefined">
+    <top [img]="'../../assets/images/'+song.image_location" [title]="song.title" [subtitle]="song.subtitle"></top>
+    <div class="section">
+        <main [song]="song"></main>
+        <side [similarSongs]="similarSongs"></side>
+    </div>
+</div>

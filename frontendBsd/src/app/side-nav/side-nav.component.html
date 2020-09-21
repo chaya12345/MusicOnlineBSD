@@ -1,0 +1,23 @@
+<div [class.open-menu]="open" [class.close-nav]="!show" class="wrap-side-nav">
+    <button [matTooltip]="open ? 'סגור' : 'הרחב'"
+            matTooltipClass="blue-tooltip"
+            mat-icon-button
+            (click)="open_menu($event)">
+        <mat-icon>add</mat-icon>
+    </button>
+    <div class="nav-content">
+        <div class="side-nav-items">
+            <div [class.close-menu-item]="!open" class="side-nav-item" *ngFor="let navigation of navigations">
+                <mat-icon>{{navigation.icon}}</mat-icon>
+                <p>{{navigation.name}}</p>
+            </div>
+        </div>
+    </div>
+    <div [class.open-nav]="!show">
+        <button [matTooltip]="show ? 'הסתר תפריט' : 'הצג תפריט'"
+            matTooltipClass="blue-tooltip" mat-icon-button
+            (click)="close_nav($event)" [class.open-nav-button]="!show">
+            <mat-icon>chevron_right</mat-icon>
+        </button>
+    </div>
+</div>
