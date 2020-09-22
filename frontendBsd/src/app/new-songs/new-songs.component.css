@@ -30,6 +30,15 @@
     background-position: center;
 }
 
+.swiper-slide div p {
+    transition: .4s;
+    cursor: pointer;
+}
+
+.swiper-slide div p:hover { 
+    transform: translateX(10px);
+}
+
 .swiper-slide div:last-of-type {
     z-index: 2;
 }

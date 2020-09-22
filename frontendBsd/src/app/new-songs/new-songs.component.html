@@ -6,23 +6,23 @@
             <!-- Slides -->
             <div class="swiper-slide" >
                 <div [style.background-image]="'url(../../assets/images/'+newSongsList[0].image_location+')'"></div>
-                <div><p>{{newSongsList[0].title}}</p><span>{{newSongsList[0].date | date: 'd/M/yyyy'}}</span></div>
+                <div><p (click)="openSong(newSongsList[0].id)">{{newSongsList[0].title}}</p><span>{{newSongsList[0].date | date: 'd/M/yyyy'}}</span></div>
             </div>
             <div class="swiper-slide">
                 <div [style.background-image]="'url(../../assets/images/'+newSongsList[1].image_location+')'"></div>
-                <div><p>{{newSongsList[1].title}}</p><span>{{newSongsList[1].date | date: 'd/M/yyyy'}}</span></div>
+                <div><p (click)="openSong(newSongsList[1].id)">{{newSongsList[1].title}}</p><span>{{newSongsList[1].date | date: 'd/M/yyyy'}}</span></div>
             </div>
             <div class="swiper-slide">
                 <div [style.background-image]="'url(../../assets/images/'+newSongsList[2].image_location+')'"></div>
-                <div><p>{{newSongsList[2].title}}</p><span>{{newSongsList[2].date | date: 'd/M/yyyy'}}</span></div>
+                <div><p (click)="openSong(newSongsList[2].id)">{{newSongsList[2].title}}</p><span>{{newSongsList[2].date | date: 'd/M/yyyy'}}</span></div>
             </div>
             <div class="swiper-slide">
                 <div [style.background-image]="'url(../../assets/images/'+newSongsList[3].image_location+')'"></div>
-                <div><p>{{newSongsList[3].title}}</p><span>{{newSongsList[3].date | date: 'd/M/yyyy'}}</span></div>
+                <div><p (click)="openSong(newSongsList[3].id)">{{newSongsList[3].title}}</p><span>{{newSongsList[3].date | date: 'd/M/yyyy'}}</span></div>
             </div>
             <div class="swiper-slide">
                 <div [style.background-image]="'url(../../assets/images/'+newSongsList[4].image_location+')'"></div>
-                <div><p>{{newSongsList[4].title}}</p><span>{{newSongsList[4].date | date: 'd/M/yyyy'}}</span></div>
+                <div><p (click)="openSong(newSongsList[4].id)">{{newSongsList[4].title}}</p><span>{{newSongsList[4].date | date: 'd/M/yyyy'}}</span></div>
             </div>
             
         </div>

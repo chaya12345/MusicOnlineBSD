@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatVideoModule } from 'mat-video';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -96,7 +97,8 @@ import { SmallSongComponent } from './small-song/small-song.component';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatVideoModule
   ],
   providers: [],
   bootstrap: [AppComponent],

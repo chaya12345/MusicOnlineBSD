@@ -31,8 +31,8 @@ export class AddingResponseComponent implements OnInit {
   
   onSubmit() {
     if (this.formRespons.valid) {
-      var str = this.router.url;
-      var res = str.split("/");
+      var href = this.router.url;
+      var res = href.split("/");
       this.newResponse.articleId = Number(res[res.length - 1]);
       this.newResponse.name = this.formRespons.controls.fullName.value;
       this.newResponse.title = this.formRespons.controls.title.value;
