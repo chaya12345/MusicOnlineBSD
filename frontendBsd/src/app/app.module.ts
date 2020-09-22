@@ -22,7 +22,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RegisterToWebsiteComponent } from './register-to-website/register-to-website.component';
 import { RegisterToNewsletterComponent } from './register-to-newsletter/register-to-newsletter.component';
-import { LatestClipComponent } from './latest-clip/latest-clip.component';
 import { LatestArticleComponent } from './latest-article/latest-article.component';
 import { FooterSongComponent } from './footer-song/footer-song.component';
 import { PopularPlaylistComponent } from './popular-playlist/popular-playlist.component';
@@ -45,6 +44,7 @@ import { ResponsesArticleComponent } from './responses-article/responses-article
 import { AddingResponseComponent } from './adding-response/adding-response.component';
 import { ResponseComponent } from './response/response.component';
 import { ReportingComponent } from './reporting/reporting.component';
+import { SongComponent } from './song/song.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +63,6 @@ import { ReportingComponent } from './reporting/reporting.component';
     HomePageComponent,
     RegisterToWebsiteComponent,
     RegisterToNewsletterComponent,
-    LatestClipComponent,
     LatestArticleComponent,
     FooterSongComponent,
     PopularPlaylistComponent,
@@ -85,7 +84,8 @@ import { ReportingComponent } from './reporting/reporting.component';
     ResponsesArticleComponent,
     AddingResponseComponent,
     ResponseComponent,
-    ReportingComponent
+    ReportingComponent,
+    SongComponent
   ],
   imports: [
     BrowserModule,

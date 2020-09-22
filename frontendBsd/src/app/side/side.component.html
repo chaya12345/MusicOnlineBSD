@@ -1,7 +1,7 @@
 <div class="wrap-side">
     <h2>תוצאות דומות.</h2>
     <div class="similar-results">
-        <latest-clip *ngFor="let song of similarSongs" [clip]="song"></latest-clip>
+        <song *ngFor="let song of similarSongs" [clip]="song"></song>
     </div>
     <reporting></reporting>
 </div>

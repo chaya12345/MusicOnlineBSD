@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { Song } from '../classes/song';
 
 @Component({
-  selector: 'latest-clip',
-  templateUrl: './latest-clip.component.html',
-  styleUrls: ['./latest-clip.component.css']
+  selector: 'song',
+  templateUrl: './song.component.html',
+  styleUrls: ['./song.component.css']
 })
-export class LatestClipComponent implements OnInit {
+export class SongComponent implements OnInit {
 
   @Input() clip: Song;
 
