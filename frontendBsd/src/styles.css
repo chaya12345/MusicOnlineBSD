@@ -116,14 +116,64 @@ register button span {
 }
 
 .center-content {
-    margin: 0 300px;
+    margin: 0 15.5vw;
     height: 100%;
 }
+
+/* #region(collapsed) [for-smaller-screens] */
+
+@media only screen and (max-width: 1830px) {
+    .center-content {
+        margin: 0 14vw;
+    }
+}
+
+@media only screen and (max-width: 1760px) {
+    .center-content {
+        margin: 0 12vw;
+    }
+}
+
+@media only screen and (max-width: 1680px) {
+    .center-content {
+        margin: 0 10vw;
+    }
+}
+
+@media only screen and (max-width: 1590px) {
+    .center-content {
+        margin: 0 9vw;
+    }
+}
+
+@media only screen and (max-width: 1550px) {
+    .center-content {
+        margin: 0 8vw;
+    }
+}
+
+@media only screen and (max-width: 1500px) {
+    .center-content {
+        margin: 0 6vw;
+    }
+}
+
+@media only screen and (max-width: 1450px) {
+    .center-content {
+        margin: 0 4vw;
+    }
+}
+
+/* #endregion */
 
 p.title-part {
     font-size: 23px;
     font-family: fb Ogen;
     color: #fbc02d;
+}
+
+footer p.title-part {
+    color: white;
 }
 
 .center-object {
