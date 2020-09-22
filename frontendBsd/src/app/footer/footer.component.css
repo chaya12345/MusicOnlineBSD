@@ -1,9 +1,9 @@
 .wrap-footer {
-    height: 500px;
     background-color: #252525;
     display: grid;
     grid-template-columns: fit-content(50%) fit-content(50%) auto;
     grid-template-rows: auto 50px;
+    padding: 80px 120px 25px 80px;
 }
 
 copyrights {

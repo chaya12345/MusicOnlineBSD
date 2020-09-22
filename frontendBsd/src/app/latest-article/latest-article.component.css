@@ -39,6 +39,12 @@
     font-weight: 100;
     font-family: calibri;
     font-size: 18px;
+    display: flex;
+}
+
+.footer span:first-of-type {
+    margin: auto;
+    margin-right: 0;
 }
 
 .footer span:last-of-type {

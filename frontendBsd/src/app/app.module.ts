@@ -45,6 +45,7 @@ import { AddingResponseComponent } from './adding-response/adding-response.compo
 import { ResponseComponent } from './response/response.component';
 import { ReportingComponent } from './reporting/reporting.component';
 import { SongComponent } from './song/song.component';
+import { SmallSongComponent } from './small-song/small-song.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { SongComponent } from './song/song.component';
     AddingResponseComponent,
     ResponseComponent,
     ReportingComponent,
-    SongComponent
+    SongComponent,
+    SmallSongComponent
   ],
   imports: [
     BrowserModule,

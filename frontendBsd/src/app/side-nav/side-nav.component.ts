@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { $ } from 'protractor';
 import { Song } from '../classes/song';
 import { ShareDataService } from '../services/share-data.service';
 
@@ -15,7 +17,7 @@ export class SideNavComponent implements OnInit {
       icon: "dashboard"
     }, {
       name: "חדש במוזיקה",
-      icon: "play_circle_filled"
+      icon: "headset"
     }, {
       name: "פלייליסטים",
       icon: "equalizer"
@@ -31,10 +33,22 @@ export class SideNavComponent implements OnInit {
     }];
   open: boolean = false;
   show: boolean = true;
+  href: string = ""
+  navigate: string = "";
 
-  constructor(private shareDate: ShareDataService) { }
+  constructor(private shareData: ShareDataService, private router: Router) { }
 
   ngOnInit() {
+    this.href = this.router.url;
+    if (this.href.includes("home"))
+      this.navigate = "ראשי";
+    else if (this.href.includes("song"))
+      this.navigate = "חדש במוזיקה";
+    else if (this.href.includes("article"))
+      this.navigate = "מגזין";
+    else if (this.href.includes("playlist"))
+      this.navigate = "פלייליסטים";
+    else this.navigate = "ראשי";
   }
 
   open_menu(): void {
@@ -45,7 +59,7 @@ export class SideNavComponent implements OnInit {
     this.show = !this.show;
     if (!this.show)
       this.open = false;
-    this.shareDate.emitChildEvent(this.show);
+    this.shareData.emitChildEvent(this.show);
   }
 
 }

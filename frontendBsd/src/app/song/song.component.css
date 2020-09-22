@@ -7,6 +7,7 @@
     background-position: center;
     transition: .4s;
     display: flex;
+    cursor: pointer;
 }
 
 .wrap-clip:hover .wrap-play-icon {
@@ -28,7 +29,7 @@
 }
 
 .wrap-play-icon mat-icon {
-    color: #252525;
+    color: white;
     font-size: 84px;
     height: auto;
     width: auto;

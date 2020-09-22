@@ -25,9 +25,7 @@ export class SongDetailsComponent implements OnInit {
 
   onRefresh() {
     this.router.routeReuseStrategy.shouldReuseRoute = function () { return false; };
-
     let currentUrl = this.router.url + '?';
-
     this.router.navigateByUrl(currentUrl)
       .then(() => {
         this.router.navigated = false;
@@ -36,10 +34,9 @@ export class SongDetailsComponent implements OnInit {
   }
 
   ngOnChanges(): void {
-    this.onRefresh();
     try {
-    this.getContent();
-    this.getSimilarResults();
+      this.getContent();
+      this.getSimilarResults();
     } catch { }
   }
 
@@ -52,7 +49,7 @@ export class SongDetailsComponent implements OnInit {
   getSimilarResults(): void {
     try {
       this.songService.getSimilarSongs(this.song.id)
-      .subscribe(song => { this.similarSongs = song; this.filter(); }, err => { console.log(err); });
+        .subscribe(song => { this.similarSongs = song; this.filter(); }, err => { console.log(err); });
     }
     catch { console.log('playlist'); }
   }
