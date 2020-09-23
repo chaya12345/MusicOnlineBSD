@@ -2,9 +2,6 @@
     <h1 mat-dialog-title>דיווח על השיר {{name}}</h1>
     <div mat-dialog-content>
         <p>נא למלא פרטים מלאים ולפרט את הקשר שלכם לשיר.</p>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
         <mat-form-field appearance="fill">
             <input matInput [(ngModel)]="data.name" placeholder="שם" required>
         </mat-form-field>
@@ -25,11 +22,6 @@
     <div mat-dialog-actions>
         <button mat-button (click)="onNoClick()">בטל</button>
         <button mat-button [mat-dialog-close]="data.mail" cdkFocusInitial>שלח דיווח</button>
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         <form [formGroup]='formReport' (ngSubmit)='onSubmit()'>
             <mat-form-field appearance="fill">
                 <input matInput [(ngModel)]="data.name" placeholder="שם" formControlName='name'>
@@ -53,12 +45,4 @@
                 <button mat-button [mat-dialog-close]="data.mail" cdkFocusInitial type="submit" [disabled]='formRespons.invalid'>שלח דיווח</button>
             </div>
         </form>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-    </div>
 </div>
