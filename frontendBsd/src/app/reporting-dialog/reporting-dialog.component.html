@@ -2,6 +2,7 @@
     <h1 mat-dialog-title>דיווח על השיר {{name}}</h1>
     <div mat-dialog-content>
         <p>נא למלא פרטים מלאים ולפרט את הקשר שלכם לשיר.</p>
+<<<<<<< Updated upstream
         <mat-form-field appearance="fill">
             <input matInput [(ngModel)]="data.name" placeholder="שם" required>
         </mat-form-field>
@@ -22,5 +23,30 @@
     <div mat-dialog-actions>
         <button mat-button (click)="onNoClick()">בטל</button>
         <button mat-button [mat-dialog-close]="data.mail" cdkFocusInitial>שלח דיווח</button>
+=======
+        <form [formGroup]='formReport' (ngSubmit)='onSubmit()'>
+            <mat-form-field appearance="fill">
+                <input matInput [(ngModel)]="data.name" placeholder="שם" formControlName='name'>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <input matInput [(ngModel)]="data.phone" placeholder="טלפון זמין" formControlName='phone'>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <input matInput [(ngModel)]="data.mail" placeholder="מייל" formControlName='mail' >
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <textarea matInput [(ngModel)]="data.messange" placeholder="תוכן ההודעה..." formControlName='messange'></textarea>
+            </mat-form-field>
+            <p>לתשומת לבכם! דיווח עם פרטים חסרים או שאינם מדוייקים לא יטופל.</p>
+
+            <div mat-dialog-actions>
+                <button mat-button (click)="onNoClick()">בטל</button>
+                <button mat-button [mat-dialog-close]="data.mail" cdkFocusInitial type="submit" [disabled]='formRespons.invalid'>שלח דיווח</button>
+            </div>
+        </form>
+>>>>>>> Stashed changes
     </div>
 </div>

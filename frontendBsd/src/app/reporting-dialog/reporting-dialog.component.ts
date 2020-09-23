@@ -1,8 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Report } from '../classes/report';
 import { DialogData } from '../reporting/reporting.component';
 import { ArticleService } from '../services/article.service';
+import { ReportsService } from '../services/reports.service';
 import { SongService } from '../services/song.service';
 
 @Component({
@@ -13,17 +16,40 @@ import { SongService } from '../services/song.service';
 export class ReportingDialogComponent implements OnInit {
 
   name: string = "";
+  songId:number;
+  formReport:FormGroup;
+  newReport:Report=new Report;
 
   constructor(public dialogRef: MatDialogRef<ReportingDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, private router: Router,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private activatedRoute: ActivatedRoute, private songService: SongService,
-    private articleService: ArticleService) { }
+    private articleService: ArticleService,private reportsService:ReportsService) {
+      this.formReport=new FormGroup({
+        name:new FormControl("",[Validators.required,Validators.minLength(2)]),
+        phone:new FormControl("",Validators.required),
+        mail:new FormControl("",[Validators.email,Validators.required]),
+        messange:new FormControl("",[Validators.required,Validators.minLength(4)])
+      })
+     }
 
   ngOnInit() {
-    this.songService.getSongById(parseInt(this.data.songId)).subscribe(song => this.name = song.name, err => console.log(err));
+    this.songService.getSongById(parseInt(this.data.songId)).subscribe(song => {this.name = song.name;this.songId=song.id;}, err => console.log(err));
+  };
+  onSubmit(){
+    if(this.formReport.valid){
+      this.newReport.name=this.formReport.controls.name.value;
+      this.newReport.mail=this.formReport.controls.mail.value;
+      this.newReport.phone=this.formReport.controls.phone.value;
+      this.newReport.songId=this.songId;
+      this.newReport.message=this.formReport.controls.message.value;
+      this.newReport.status='לא טופל';
+      this.reportsService.addReport(this.newReport).subscribe();
+      this.newReport=null;
+      this.onNoClick();
+    }
   }
-
   onNoClick(): void {
+    this.formReport.reset({value:""});
     this.dialogRef.close();
   }
 

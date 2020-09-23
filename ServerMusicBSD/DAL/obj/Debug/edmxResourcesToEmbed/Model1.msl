@@ -50,6 +50,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="FollowUpTBL">
+      <EntityTypeMapping TypeName="MusicOnlineModel.FollowUpTBL">
+        <MappingFragment StoreEntitySet="FollowUpTBL">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="songId" ColumnName="songId" />
+          <ScalarProperty Name="articleId" ColumnName="articleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="JobTBL">
       <EntityTypeMapping TypeName="MusicOnlineModel.JobTBL">
         <MappingFragment StoreEntitySet="JobTBL">
@@ -174,6 +185,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MusicOnlineModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="TagsTBL">
       <EntityTypeMapping TypeName="MusicOnlineModel.TagsTBL">
         <MappingFragment StoreEntitySet="TagsTBL">
@@ -257,74 +279,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionName="MusicOnlineModel.Store.getPlaylists" FunctionImportName="getPlaylists">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MusicOnlineModel.getPlaylists_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="playlistId" ColumnName="playlistId" />
-          <ScalarProperty Name="songId" ColumnName="songId" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionName="MusicOnlineModel.Store.getSongs" FunctionImportName="getSongs">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MusicOnlineModel.getSongs_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="file_location" ColumnName="file_location" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="count_responses" ColumnName="count_responses" />
-          <ScalarProperty Name="singerId" ColumnName="singerId" />
-          <ScalarProperty Name="count_like" ColumnName="count_like" />
-          <ScalarProperty Name="count_views" ColumnName="count_views" />
-          <ScalarProperty Name="albumId" ColumnName="albumId" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="subtitle" ColumnName="subtitle" />
-          <ScalarProperty Name="image_location" ColumnName="image_location" />
-          <ScalarProperty Name="content" ColumnName="content" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionName="MusicOnlineModel.Store.searchByAlbum" FunctionImportName="searchByAlbum">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MusicOnlineModel.searchByAlbum_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="file_location" ColumnName="file_location" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="count_responses" ColumnName="count_responses" />
-          <ScalarProperty Name="singerId" ColumnName="singerId" />
-          <ScalarProperty Name="count_like" ColumnName="count_like" />
-          <ScalarProperty Name="count_views" ColumnName="count_views" />
-          <ScalarProperty Name="albumId" ColumnName="albumId" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="subtitle" ColumnName="subtitle" />
-          <ScalarProperty Name="image_location" ColumnName="image_location" />
-          <ScalarProperty Name="content" ColumnName="content" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionName="MusicOnlineModel.Store.searchBySinger" FunctionImportName="searchBySinger">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MusicOnlineModel.searchBySinger_Result">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="file_location" ColumnName="file_location" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="count_responses" ColumnName="count_responses" />
-          <ScalarProperty Name="singerId" ColumnName="singerId" />
-          <ScalarProperty Name="count_like" ColumnName="count_like" />
-          <ScalarProperty Name="count_views" ColumnName="count_views" />
-          <ScalarProperty Name="albumId" ColumnName="albumId" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="subtitle" ColumnName="subtitle" />
-          <ScalarProperty Name="image_location" ColumnName="image_location" />
-          <ScalarProperty Name="content" ColumnName="content" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -21,11 +21,9 @@
             <mat-form-field appearance="fill" class="contentResponse">
                 <textarea matInput placeholder="תגובה" rows="3" formControlName='message' ></textarea>
             </mat-form-field>
-
-            <!-- <button mat-flat-button color="warn" type="submit" [disabled]='formRespons.invalid' value="שלח"></button>
-            <button type="button" value="בטל" mat-stroked-button color="warn" (click)='reset()'></button> -->
-            <button mat-flat-button color="warn">שלח</button>
-            <button mat-stroked-button color="warn">בטל</button>
+            
+            <button mat-flat-button color="warn" type="submit" [disabled]='formRespons.invalid' >שלח</button>
+            <button mat-stroked-button color="warn"  (click)='reset()'>בטל</button>
         </form>
     </mat-expansion-panel>
 </mat-accordion>

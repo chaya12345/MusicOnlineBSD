@@ -12,8 +12,6 @@ namespace DAL
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.Core.Objects;
-    using System.Linq;
     
     public partial class MusicOnlineEntities : DbContext
     {
@@ -31,6 +29,7 @@ namespace DAL
         public virtual DbSet<ArticlesTBL> ArticlesTBL { get; set; }
         public virtual DbSet<ArtistsTBL> ArtistsTBL { get; set; }
         public virtual DbSet<ArtistsToSongsTBL> ArtistsToSongsTBL { get; set; }
+        public virtual DbSet<FollowUpTBL> FollowUpTBL { get; set; }
         public virtual DbSet<JobTBL> JobTBL { get; set; }
         public virtual DbSet<PlaylistsSystemTBL> PlaylistsSystemTBL { get; set; }
         public virtual DbSet<PlaylistsTBL> PlaylistsTBL { get; set; }
@@ -42,6 +41,7 @@ namespace DAL
         public virtual DbSet<SingersTBL> SingersTBL { get; set; }
         public virtual DbSet<SongsTBL> SongsTBL { get; set; }
         public virtual DbSet<SongsToPlaylistsTBL> SongsToPlaylistsTBL { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TagsTBL> TagsTBL { get; set; }
         public virtual DbSet<TagsToArticlesTBL> TagsToArticlesTBL { get; set; }
         public virtual DbSet<TagsToSongsTBL> TagsToSongsTBL { get; set; }
@@ -49,41 +49,5 @@ namespace DAL
         public virtual DbSet<UsersTBL> UsersTBL { get; set; }
         public virtual DbSet<LastResponses> LastResponses { get; set; }
         public virtual DbSet<similarSongs> similarSongs { get; set; }
-    
-        [DbFunction("MusicOnlineEntities", "getPlaylists")]
-        public virtual IQueryable<getPlaylists_Result> getPlaylists(Nullable<int> userId)
-        {
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("userId", userId) :
-                new ObjectParameter("userId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getPlaylists_Result>("[MusicOnlineEntities].[getPlaylists](@userId)", userIdParameter);
-        }
-    
-        [DbFunction("MusicOnlineEntities", "getSongs")]
-        public virtual IQueryable<getSongs_Result> getSongs()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getSongs_Result>("[MusicOnlineEntities].[getSongs]()");
-        }
-    
-        [DbFunction("MusicOnlineEntities", "searchByAlbum")]
-        public virtual IQueryable<searchByAlbum_Result> searchByAlbum(string albumName)
-        {
-            var albumNameParameter = albumName != null ?
-                new ObjectParameter("albumName", albumName) :
-                new ObjectParameter("albumName", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<searchByAlbum_Result>("[MusicOnlineEntities].[searchByAlbum](@albumName)", albumNameParameter);
-        }
-    
-        [DbFunction("MusicOnlineEntities", "searchBySinger")]
-        public virtual IQueryable<searchBySinger_Result> searchBySinger(string singerName)
-        {
-            var singerNameParameter = singerName != null ?
-                new ObjectParameter("singerName", singerName) :
-                new ObjectParameter("singerName", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<searchBySinger_Result>("[MusicOnlineEntities].[searchBySinger](@singerName)", singerNameParameter);
-        }
     }
 }
