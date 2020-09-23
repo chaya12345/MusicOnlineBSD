@@ -1,10 +1,17 @@
-.wrap-container-responses {
+.wrap-responses {
     padding: 35px 5px;
 }
 
-.wrap-container-responses h2 {
+.wrap-responses h2 {
     font-size: 23px;
     font-family: fb Ogen;
     color: #fbc02d;
     margin-bottom: 20px;
+}
+
+.wrap-responses > div {
+    text-align: center;
+    padding: 50px;
+    font-family: fb Joker;
+    font-size: 21px;
 }

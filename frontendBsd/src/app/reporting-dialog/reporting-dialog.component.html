@@ -3,19 +3,19 @@
     <div mat-dialog-content>
         <p>נא למלא פרטים מלאים ולפרט את הקשר שלכם לשיר.</p>
         <mat-form-field appearance="fill">
-            <input matInput [(ngModel)]="data.name" placeholder="שם">
+            <input matInput [(ngModel)]="data.name" placeholder="שם" required>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
-            <input matInput [(ngModel)]="data.phone" placeholder="טלפון זמין">
+            <input matInput [(ngModel)]="data.phone" placeholder="טלפון זמין" required>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
-            <input matInput [(ngModel)]="data.mail" placeholder="מייל">
+            <input matInput [(ngModel)]="data.mail" placeholder="מייל" required>
         </mat-form-field>
         <br>
         <mat-form-field appearance="fill">
-          <textarea matInput [(ngModel)]="data.messange" placeholder="תוכן ההודעה..."></textarea>
+          <textarea matInput [(ngModel)]="data.messange" placeholder="תוכן ההודעה..." required></textarea>
         </mat-form-field>      
         <p>לתשומת לבכם! דיווח עם פרטים חסרים או שאינם מדוייקים לא יטופל.</p>
     </div>
