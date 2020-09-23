@@ -73,7 +73,7 @@ adding-response mat-form-field {
     text-align: right !important;
 }
 
-.mat-form-field-infix {
+reporting-dialog .mat-form-field-infix, adding-response .mat-form-field-infix {
     padding-top: 0 !important;
 }
 
