@@ -47,6 +47,7 @@ import { ResponseComponent } from './response/response.component';
 import { ReportingComponent } from './reporting/reporting.component';
 import { SongComponent } from './song/song.component';
 import { SmallSongComponent } from './small-song/small-song.component';
+import { ReportingDialogComponent } from './reporting-dialog/reporting-dialog.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { SmallSongComponent } from './small-song/small-song.component';
     ResponseComponent,
     ReportingComponent,
     SongComponent,
-    SmallSongComponent
+    SmallSongComponent,
+    ReportingDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -104,7 +106,8 @@ import { SmallSongComponent } from './small-song/small-song.component';
   bootstrap: [AppComponent],
   entryComponents: [
     RegisterToWebsiteComponent,
-    RegisterToNewsletterComponent
+    RegisterToNewsletterComponent,
+    ReportingDialogComponent
   ]
 })
 export class AppModule { }

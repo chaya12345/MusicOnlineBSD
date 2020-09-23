@@ -5,6 +5,8 @@ mat-divider {
 .info {
     display: flex;
     padding: 0 7px;
+    font-family: fb Joker;
+    font-size: 21px;
 }
 
 .info > * {

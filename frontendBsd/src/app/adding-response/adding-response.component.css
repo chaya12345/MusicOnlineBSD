@@ -1,11 +1,11 @@
 textarea {
     font-size: 19px !important;
-    font-family: calibri light !important;
+    font-family: fb Joker !important;
 }
 
 input {
   font-size: 19px !important;
-  font-family: calibri light !important;
+  font-family: fb Joker !important;
   padding-bottom: 5px !important;
 }
 
@@ -34,11 +34,8 @@ mat-form-field.contentResponse {
 button {
   margin: 0 10px;
   padding: 4px 0;
-}
-
-button span {
   font-family: fb Joker;
-  font-size: 21px;
+  font-size: 19px;
 }
 
 button:first-of-type {

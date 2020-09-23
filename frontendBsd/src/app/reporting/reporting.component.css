@@ -26,11 +26,13 @@ p span {
 }
 
 p span mat-icon {
+    color: #252525;
     transition: .4s;
+    transform: translateX(-7px);
 }
 
 p span:hover mat-icon {
-    transform: translateX(-7px);
+    transform: translateX(-7px) scale(1.2);
 }
 
 p span:hover {

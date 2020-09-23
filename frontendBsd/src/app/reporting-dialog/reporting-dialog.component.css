@@ -1,0 +1,16 @@
+.wrap-dialog {
+    direction: rtl;
+}
+
+mat-form-field {
+    text-align: right;
+    width: 100%;
+}
+
+.mat-dialog-content p:first-of-type {
+    margin-bottom: 20px;
+}
+
+textarea {
+    height: 100px;
+}

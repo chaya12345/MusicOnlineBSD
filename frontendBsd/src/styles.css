@@ -60,6 +60,14 @@ mat-option {
     text-align: right !important;
 }
 
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    padding-top: 0 !important;
+}
+
+.mat-form-field-underline {
+    display: none;
+}
+
 /* #endregion */
 
 /* #region(collapsed) [Swiper-Slide] */
@@ -244,7 +252,7 @@ mat-expansion-panel-header {
 
 mat-panel-title {
     font-family: fb Joker;
-    font-size: 23px;
+    font-size: 21px;
 }
 
 response mat-panel-title {
