@@ -2,7 +2,7 @@
     padding: 50px 0 50px 20px;
 }
 
-.wrap-side h2 {
+.wrap-side p.title-part {
     font-size: 23px;
     font-family: fb Ogen;
     color: #fbc02d;
@@ -13,4 +13,8 @@
     width: fit-content;
     height: 1030px;
     display: grid;
+}
+
+.latest-in-magazine {
+    padding: 35px 0 25px;
 }

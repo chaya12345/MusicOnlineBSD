@@ -1,7 +1,13 @@
 <div class="wrap-side">
-    <h2>תוצאות דומות.</h2>
+    <p class="title-part">תוצאות דומות.</p>
     <div class="similar-results">
         <song *ngFor="let song of similarSongs" [clip]="song"></song>
+    </div>
+    <div class="latest-in-magazine">
+        <p class="title-part">אחרונים במגזין.</p>
+        <div class="wrap-articles">
+            <latest-article *ngFor="let article of latestArticles" [article]="article" dark="true" vertical="true"></latest-article>
+        </div>
     </div>
     <reporting></reporting>
 </div>

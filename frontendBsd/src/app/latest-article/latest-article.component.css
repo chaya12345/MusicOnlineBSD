@@ -8,6 +8,15 @@
     grid-template-rows: fit-content(50%) auto;
 }
 
+.dark {
+    background-color: #252525;
+    color: white;
+}
+
+.vertical {
+    margin-bottom: 50px;
+}
+
 .wrap-image {
     width: 100%;
     height: 220px;

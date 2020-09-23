@@ -12,6 +12,8 @@ import { LikeService } from '../services/like.service';
 export class LatestArticleComponent implements OnInit {
 
   @Input() article: Article;
+  @Input() dark?: boolean = false;
+  @Input() vertical?: boolean = false;
   num: number = 1;
 
   constructor(private likeService: LikeService, private articleService: ArticleService) { }
