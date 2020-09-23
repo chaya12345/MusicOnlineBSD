@@ -68,6 +68,19 @@ mat-option {
     display: none;
 }
 
+adding-response mat-form-field {
+    margin: 0 10px;
+    text-align: right !important;
+}
+
+.mat-form-field-infix {
+    padding-top: 0 !important;
+}
+
+.mat-form-field-wrapper {
+    padding-bottom: 17px;
+}
+
 /* #endregion */
 
 /* #region(collapsed) [Swiper-Slide] */
@@ -269,12 +282,6 @@ response mat-panel-title {
 
 adding-response .mat-expansion-panel:not([class*=mat-elevation-z]) {
     border: solid 1px #00000026;
-}
-
-adding-response mat-form-field {
-    direction: ltr;
-    margin: 0 10px;
-    text-align: right !important;
 }
 
 response .mat-expansion-panel .mat-expansion-panel-header.cdk-keyboard-focused:not([aria-disabled=true]), 
