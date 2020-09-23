@@ -54,7 +54,7 @@ namespace ServerMusicBSD.Controllers
         {
             SongsBL.DeleteSong(songId);
         }
-        public List<SongsDTO> GetSimilarSongs(int songId)
+        public List<similarSongs> GetSimilarSongs(int songId)
         {
            return SongsBL.GetSimilarSongs(songId);
         }

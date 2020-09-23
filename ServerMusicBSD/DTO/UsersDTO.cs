@@ -17,5 +17,6 @@ namespace DTO
         public Nullable<bool> coincidental { get; set; }
         public Nullable<bool> newsletter { get; set; }
         public Nullable<bool> saveLike { get; set; }
+        public string image_location { get; set; }
     }
 }

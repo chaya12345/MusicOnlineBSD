@@ -22,6 +22,7 @@ namespace BL.Casts
             newUser.coincidental = user.coincidental;
             newUser.newsletter = user.newsletter;
             newUser.saveLike = user.saveLike;
+            newUser.image_location = user.image_location;
             return newUser;
         }
         public static List<UsersDTO> GetUsers(List<UsersTBL> users)
