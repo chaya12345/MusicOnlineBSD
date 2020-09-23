@@ -203,6 +203,7 @@
     <Property Name="coincidental" Type="bit" />
     <Property Name="newsletter" Type="bit" />
     <Property Name="saveLike" Type="bit" />
+    <Property Name="image_location" Type="varchar(max)" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->

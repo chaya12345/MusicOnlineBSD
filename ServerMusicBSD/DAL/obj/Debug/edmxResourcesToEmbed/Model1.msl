@@ -213,6 +213,7 @@
     <EntitySetMapping Name="UsersTBL">
       <EntityTypeMapping TypeName="MusicOnlineModel.UsersTBL">
         <MappingFragment StoreEntitySet="UsersTBL">
+          <ScalarProperty Name="image_location" ColumnName="image_location" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="mail" ColumnName="mail" />
