@@ -10,6 +10,7 @@ using System.Data.Entity.Core.Objects.DataClasses;
 using System.Data.SqlClient;
 using System.Data;
 using Newtonsoft.Json;
+using System.Data.Entity.Validation;
 
 namespace BL
 {
@@ -99,8 +100,20 @@ namespace BL
         public static void AddSong(SongsTBL song)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
+            try { 
             et.SongsTBL.Add(song);
             et.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
         }
         public static void DeleteSong(int songId)
         {

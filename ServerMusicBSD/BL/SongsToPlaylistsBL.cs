@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,8 +15,20 @@ namespace BL
         public static void AddSongToPlaylist(SongsToPlaylistsTBL songToPlaylist)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
+            try { 
             et.SongsToPlaylistsTBL.Add(songToPlaylist);
             et.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
         }
         public static void MoveSongToOtherPlaylist(int id, int playlistId)
         {

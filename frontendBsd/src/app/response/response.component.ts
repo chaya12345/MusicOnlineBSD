@@ -12,6 +12,7 @@ export class ResponseComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.response.content == '');
   }
 
 }

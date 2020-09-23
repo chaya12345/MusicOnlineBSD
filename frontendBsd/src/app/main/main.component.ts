@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
+import { ChangeDetectorRef } from '@angular/core';
 import { Component, Input, OnInit } from '@angular/core';
+import { concatMap, startWith } from 'rxjs/operators';
 import { ResponsesToSongs } from '../classes/responsesToSongs';
 import { Song } from '../classes/song';
 import { ResponseToSongsService } from '../services/response-to-songs.service';
+import { ShareDataService } from '../services/share-data.service';
 import { TagsToSongsService } from '../services/tags-to-songs.service';
 
 @Component({
@@ -16,6 +19,7 @@ export class MainComponent implements OnInit {
   songContent: string;
   tags: string[] = [];
   responses: ResponsesToSongs[] = [];
+  refresh: boolean = false;
 
   constructor(private httpClient: HttpClient, private responseToSongsService: ResponseToSongsService, 
     private tagsToSongsService: TagsToSongsService) { }
@@ -44,7 +48,11 @@ export class MainComponent implements OnInit {
 
   getResponses(): void {
     this.responseToSongsService.getSongResponses(this.song.id)
-      .subscribe(response => { this.responses = response; }, err => { console.log(err); });
+      .subscribe(response => { this.responses = response; this.orderResponses(); }, err => { console.log(err); });
+  }
+
+  orderResponses(): void {
+    this.responses.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
   }
 
 }

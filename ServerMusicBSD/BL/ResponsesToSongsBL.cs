@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,12 +14,28 @@ namespace BL
         public static void AddResponse(ResponsesToSongsTBL response)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            et.ResponsesToSongsTBL.Add(response);
-            SongsTBL song = et.SongsTBL.Where(s => s.id == response.songId).FirstOrDefault();
-            if (song.count_responses == null)
-                song.count_responses = 1;
-            else song.count_responses++;
-            et.SaveChanges();
+            if (response.content == "") {
+                response.content = null;
+            }
+            try
+            {
+                et.ResponsesToSongsTBL.Add(response);
+                et.SaveChanges();
+                //SongsTBL song = et.SongsTBL.Where(s => s.id == response.songId).FirstOrDefault();
+                //if (song.count_responses == null)
+                //    song.count_responses = 1;
+                //else song.count_responses++;
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
         }
         public static List<ResponsesToSongsDTO> GetSongResponses(int songId)
         {

@@ -278,6 +278,7 @@ response mat-panel-title {
 
 response mat-panel-title {
     margin: 0 !important;
+    color: rgba(0, 0, 0, 0.87) !important;
 }
 
 adding-response .mat-expansion-panel:not([class*=mat-elevation-z]) {

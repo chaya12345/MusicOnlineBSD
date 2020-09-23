@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DTO;
 using DAL;
+using System.Data.Entity.Validation;
 
 namespace BL
 {
@@ -23,8 +24,20 @@ namespace BL
         public static void AddArticle(ArticlesTBL article)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
+            try { 
             et.ArticlesTBL.Add(article);
             et.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
         }
         public static void DeleteArticle(int articleId)
         {

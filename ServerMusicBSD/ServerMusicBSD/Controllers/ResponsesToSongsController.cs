@@ -16,7 +16,7 @@ namespace ServerMusicBSD.Controllers
     {
         public void PostResponse(ResponsesToSongsTBL response)
         {
-            response.date = DateTime.Today;
+            response.date = DateTime.Now;
             ResponsesToSongsBL.AddResponse(response);
         }
         public List<ResponsesToSongsDTO> GetSongResponses(int songId)

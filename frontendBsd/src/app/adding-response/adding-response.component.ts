@@ -18,13 +18,13 @@ export class AddingResponseComponent implements OnInit {
   isWantToAdd: boolean = false;
   formRespons: FormGroup;
   newResponsesToArticles: ResponsesToArticles = new ResponsesToArticles;
-  newResponsesToSongs:ResponsesToSongs=new ResponsesToSongs;
+  newResponsesToSongs: ResponsesToSongs = new ResponsesToSongs;
 
   constructor(private responsesToArticlesService: ResponsesToArticlesService, private activatedRoute: ActivatedRoute,
-    private responseToSongsService:ResponseToSongsService ) { 
+    private responseToSongsService: ResponseToSongsService) {
     this.formRespons = new FormGroup({
       fullName: new FormControl("", [Validators.required, Validators.minLength(2)]),
-      email:new FormControl("",Validators.email),
+      email: new FormControl("", Validators.email),
       title: new FormControl("", Validators.required),
       message: new FormControl("", Validators.maxLength(100))
     });
@@ -32,11 +32,11 @@ export class AddingResponseComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
   onSubmit() {
     if (this.formRespons.valid) {
-      if(this.activatedRoute.snapshot.routeConfig.path.includes('song')==true){
-        this.newResponsesToSongs.songId =Number(this.activatedRoute.snapshot.paramMap.get('id'));
+      if (this.activatedRoute.snapshot.routeConfig.path.includes('song') == true) {
+        this.newResponsesToSongs.songId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
         this.newResponsesToSongs.name = this.formRespons.controls.fullName.value;
         this.newResponsesToSongs.title = this.formRespons.controls.title.value;
         this.newResponsesToSongs.content = this.formRespons.controls.message.value;
@@ -44,8 +44,8 @@ export class AddingResponseComponent implements OnInit {
         this.newResponsesToSongs = null;
         this.reset();
       }
-      else if(this.activatedRoute.snapshot.routeConfig.path.includes('article')==true){
-        this.newResponsesToArticles.articleId =Number(this.activatedRoute.snapshot.paramMap.get('id'));
+      else if (this.activatedRoute.snapshot.routeConfig.path.includes('article') == true) {
+        this.newResponsesToArticles.articleId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
         this.newResponsesToArticles.name = this.formRespons.controls.fullName.value;
         this.newResponsesToArticles.title = this.formRespons.controls.title.value;
         this.newResponsesToArticles.content = this.formRespons.controls.message.value;

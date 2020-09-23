@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,11 +24,23 @@ namespace BL
         public static void AddSearchingToSinger(int singerId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
+            try { 
             SearchingToSingerTBL newSinger = new SearchingToSingerTBL();
             newSinger.singerId = singerId;
             newSinger.count_searching = 1;
             et.SearchingToSingerTBL.Add(newSinger);
             et.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
         }
         public static void UpdateSearchingToSinger(int singerId)
         {

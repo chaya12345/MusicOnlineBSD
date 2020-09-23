@@ -8,12 +8,14 @@ export class ShareDataService {
 
   private childClickedEvent = new BehaviorSubject<boolean>(true);
 
-  emitChildEvent(isNavOpened: boolean){
-     this.childClickedEvent.next(isNavOpened);
+
+  emitChildEvent(isNavOpened: boolean) {
+    this.childClickedEvent.next(isNavOpened);
   }
-  
-  childEventListner(){
-     return this.childClickedEvent.asObservable();
-   } 
+
+  childEventListner() {
+    return this.childClickedEvent.asObservable();
+  }
+
   constructor() { }
 }

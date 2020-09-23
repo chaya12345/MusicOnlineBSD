@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,10 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToSingerSearchingToUserDTO.GetSearchingsToUser(et.SingerSearchingToUserTBL.Where(s => s.userId == userId).ToList());
         }
-        private static void AddLineToTable(int userId,int singerId)
+        private static void AddRecord(int userId,int singerId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
+            try { 
             SingerSearchingToUserTBL newLine = new SingerSearchingToUserTBL();
             newLine.userId = userId;
             newLine.singerId = singerId;
@@ -30,8 +32,19 @@ namespace BL
             newLine.last_date = DateTime.Today;
             et.SingerSearchingToUserTBL.Add(newLine);
             et.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
         }
-        private static void UpdateLineInTable(int userId, int singerId)
+        private static void UpdateRecord(int userId, int singerId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             SingerSearchingToUserTBL updateLine= et.SingerSearchingToUserTBL.Where(s => s.userId == userId && s.singerId == singerId).FirstOrDefault();
@@ -43,9 +56,9 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             if (et.SingerSearchingToUserTBL.Where(s => s.userId == userId && s.singerId == singerId).ToList() == null)
-                AddLineToTable(userId, singerId);
+                AddRecord(userId, singerId);
             else
-                UpdateLineInTable(userId, singerId);
+                UpdateRecord(userId, singerId);
         }
         public static SingerSearchingToUserDTO GetLastSearchingToUser(int userId)
         {
