@@ -158,16 +158,6 @@
     <Property Name="playlistId" Type="int" />
     <Property Name="songId" Type="int" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="TagsTBL">
     <Key>
       <PropertyRef Name="id" />
@@ -226,6 +216,27 @@ warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a pri
     <Property Name="date" Type="datetime" />
     <Property Name="articleId" Type="int" Nullable="false" />
     <Property Name="title" Type="varchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MusicOnline.dbo.similarSongs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="similarSongs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="file_location" Type="varchar(max)" />
+    <Property Name="type" Type="varchar" MaxLength="50" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="count_responses" Type="bigint" />
+    <Property Name="singerName" Type="varchar" MaxLength="50" />
+    <Property Name="count_like" Type="bigint" />
+    <Property Name="count_views" Type="bigint" />
+    <Property Name="albumId" Type="int" />
+    <Property Name="title" Type="varchar" MaxLength="150" />
+    <Property Name="subtitle" Type="varchar" MaxLength="200" />
+    <Property Name="image_location" Type="varchar(max)" />
+    <Property Name="content" Type="varchar(max)" />
   </EntityType>
   <Association Name="FK_ArtistsToSongsTBL_ArtistsTBL">
     <End Role="ArtistsTBL" Type="Self.ArtistsTBL" Multiplicity="0..1" />
@@ -467,117 +478,6 @@ warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a pri
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-  <Function Name="getPlaylists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="userId" Type="int" Mode="In" />
-    <ReturnType>
-      <CollectionType>
-        <RowType>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="playlistId" Type="int" />
-          <Property Name="songId" Type="int" />
-        </RowType>
-      </CollectionType>
-    </ReturnType>
-  </Function>
-  <Function Name="getSongs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <ReturnType>
-      <CollectionType>
-        <RowType>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="100" />
-          <Property Name="file_location" Type="varchar(max)" />
-          <Property Name="type" Type="varchar" MaxLength="50" />
-          <Property Name="date" Type="datetime" />
-          <Property Name="count_responses" Type="bigint" />
-          <Property Name="singerId" Type="int" />
-          <Property Name="count_like" Type="bigint" />
-          <Property Name="count_views" Type="bigint" />
-          <Property Name="albumId" Type="int" />
-          <Property Name="title" Type="varchar" MaxLength="150" />
-          <Property Name="subtitle" Type="varchar" MaxLength="200" />
-          <Property Name="image_location" Type="varchar(max)" />
-          <Property Name="content" Type="varchar(max)" />
-        </RowType>
-      </CollectionType>
-    </ReturnType>
-  </Function>
-  <Function Name="searchByAlbum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="albumName" Type="varchar" Mode="In" />
-    <ReturnType>
-      <CollectionType>
-        <RowType>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="100" />
-          <Property Name="file_location" Type="varchar(max)" />
-          <Property Name="type" Type="varchar" MaxLength="50" />
-          <Property Name="date" Type="datetime" />
-          <Property Name="count_responses" Type="bigint" />
-          <Property Name="singerId" Type="int" />
-          <Property Name="count_like" Type="bigint" />
-          <Property Name="count_views" Type="bigint" />
-          <Property Name="albumId" Type="int" />
-          <Property Name="title" Type="varchar" MaxLength="150" />
-          <Property Name="subtitle" Type="varchar" MaxLength="200" />
-          <Property Name="image_location" Type="varchar(max)" />
-          <Property Name="content" Type="varchar(max)" />
-        </RowType>
-      </CollectionType>
-    </ReturnType>
-  </Function>
-  <Function Name="searchBySinger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="singerName" Type="varchar" Mode="In" />
-    <ReturnType>
-      <CollectionType>
-        <RowType>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="100" />
-          <Property Name="file_location" Type="varchar(max)" />
-          <Property Name="type" Type="varchar" MaxLength="50" />
-          <Property Name="date" Type="datetime" />
-          <Property Name="count_responses" Type="bigint" />
-          <Property Name="singerId" Type="int" />
-          <Property Name="count_like" Type="bigint" />
-          <Property Name="count_views" Type="bigint" />
-          <Property Name="albumId" Type="int" />
-          <Property Name="title" Type="varchar" MaxLength="150" />
-          <Property Name="subtitle" Type="varchar" MaxLength="200" />
-          <Property Name="image_location" Type="varchar(max)" />
-          <Property Name="content" Type="varchar(max)" />
-        </RowType>
-      </CollectionType>
-    </ReturnType>
-  </Function>
-  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="version" Type="int" Mode="In" />
-    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-  </Function>
-  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="version" Type="int" Mode="In" />
-    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-  </Function>
-  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="MusicOnlineModelStoreContainer">
     <EntitySet Name="AlbumsTBL" EntityType="Self.AlbumsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ArticlesTBL" EntityType="Self.ArticlesTBL" Schema="dbo" store:Type="Tables" />
@@ -594,7 +494,6 @@ warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a pri
     <EntitySet Name="SingersTBL" EntityType="Self.SingersTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SongsTBL" EntityType="Self.SongsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsTBL" EntityType="Self.TagsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsToArticlesTBL" EntityType="Self.TagsToArticlesTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsToSongsTBL" EntityType="Self.TagsToSongsTBL" Schema="dbo" store:Type="Tables" />
@@ -608,6 +507,24 @@ warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a pri
     [LastResponses].[articleId] AS [articleId], 
     [LastResponses].[title] AS [title]
     FROM [dbo].[LastResponses] AS [LastResponses]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="similarSongs" EntityType="Self.similarSongs" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [similarSongs].[id] AS [id], 
+    [similarSongs].[name] AS [name], 
+    [similarSongs].[file_location] AS [file_location], 
+    [similarSongs].[type] AS [type], 
+    [similarSongs].[date] AS [date], 
+    [similarSongs].[count_responses] AS [count_responses], 
+    [similarSongs].[singerName] AS [singerName], 
+    [similarSongs].[count_like] AS [count_like], 
+    [similarSongs].[count_views] AS [count_views], 
+    [similarSongs].[albumId] AS [albumId], 
+    [similarSongs].[title] AS [title], 
+    [similarSongs].[subtitle] AS [subtitle], 
+    [similarSongs].[image_location] AS [image_location], 
+    [similarSongs].[content] AS [content]
+    FROM [dbo].[similarSongs] AS [similarSongs]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_ArtistsToSongsTBL_ArtistsTBL" Association="Self.FK_ArtistsToSongsTBL_ArtistsTBL">
       <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />

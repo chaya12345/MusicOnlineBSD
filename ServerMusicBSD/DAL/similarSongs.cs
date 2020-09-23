@@ -10,8 +10,9 @@
 namespace DAL
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class getSongs_Result
+    public partial class similarSongs
     {
         public int id { get; set; }
         public string name { get; set; }
@@ -19,7 +20,7 @@ namespace DAL
         public string type { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<long> count_responses { get; set; }
-        public Nullable<int> singerId { get; set; }
+        public string singerName { get; set; }
         public Nullable<long> count_like { get; set; }
         public Nullable<long> count_views { get; set; }
         public Nullable<int> albumId { get; set; }

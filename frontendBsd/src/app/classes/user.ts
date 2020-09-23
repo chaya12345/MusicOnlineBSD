@@ -8,4 +8,5 @@ export class User {
     coincidental?: boolean;
     newsletter?: boolean;
     saveLike?: boolean;
+    image_location?:string;
 }
