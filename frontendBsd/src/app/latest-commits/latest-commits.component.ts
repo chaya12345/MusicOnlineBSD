@@ -8,10 +8,12 @@ import { ResponsesToArticlesService } from '../services/responses-to-articles.se
   styleUrls: ['./latest-commits.component.css']
 })
 export class LatestCommitsComponent implements OnInit {
-  lastResponsView: LastResponsView[];
-  constructor(private responsesToArticlesService: ResponsesToArticlesService) {
+
+  lastResponsesView: LastResponsView[];
+
+  constructor(private resToArticlesService: ResponsesToArticlesService) {
     try {
-      responsesToArticlesService.getLast5Responses().subscribe(LastRespons =>{ this.lastResponsView = LastRespons;/*console.log(this.lastResponsView);*/}, err => console.log(err));
+      this.resToArticlesService.getLast5Responses().subscribe(LastRespons =>{ this.lastResponsesView = LastRespons; }, err => console.log(err));
     }
     catch { console.log("erroe in latestCommitsComponent") }
   }

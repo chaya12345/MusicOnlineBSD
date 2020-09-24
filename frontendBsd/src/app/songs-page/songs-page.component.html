@@ -2,4 +2,13 @@
     <div class="specific-song" *ngIf="songId!=null">
         <song-details [song]="song"></song-details>
     </div>
+
+    <div ng-app="myapp" ng-controller="ctrl1" *ngIf="songId==null">
+        <ul id="myList">
+          <li ng-repeat="offre in offres" ng-show="$index < loadIndex">{{offre}}</li>
+        </ul>
+        <div id="loadMore" ng-click="showMore()">Load more</div>
+        <div id="showLess" ng-click="showLess()">Show less</div>
+      </div>
+
 </div>
