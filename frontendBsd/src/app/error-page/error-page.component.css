@@ -1,0 +1,18 @@
+.wrap-error {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    padding-bottom: 15vh;
+}
+
+.wrap-error div {
+    margin: auto;
+    text-align: center;
+    font-family: fb Joker;
+    font-size: 23px;
+}
+
+.wrap-error div > span {
+    color: #fbc02d;
+    cursor: pointer;
+}

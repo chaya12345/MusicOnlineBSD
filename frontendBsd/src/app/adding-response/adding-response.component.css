@@ -36,6 +36,7 @@ button {
   padding: 4px 0;
   font-family: fb Joker;
   font-size: 19px;
+  transition: .4s;
 }
 
 button:first-of-type {

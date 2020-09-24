@@ -15,6 +15,7 @@ import { SongService } from '../services/song.service';
 })
 export class ReportingDialogComponent implements OnInit {
 
+  songName: string = "";
   name: string = "";
   songId:number;
   formReport:FormGroup;
@@ -33,7 +34,8 @@ export class ReportingDialogComponent implements OnInit {
      }
 
   ngOnInit() {
-    this.songService.getSongById(parseInt(this.data.songId)).subscribe(song => {this.name = song.name;this.songId=song.id;}, err => console.log(err));
+    console.log(this.data.songId +" g");
+    this.songService.getSongById(parseInt(this.data.songId)).subscribe(song => {this.songName = song.name; console.log(this.songName); }, err => console.log(err));
   };
   onSubmit(){
     if(this.formReport.valid){

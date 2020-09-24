@@ -8,3 +8,8 @@ mat-accordion > span {
   font-size: 23px;
   font-weight: 300;
 }
+
+p {
+  white-space: pre-wrap;
+  line-height: 30px;
+}

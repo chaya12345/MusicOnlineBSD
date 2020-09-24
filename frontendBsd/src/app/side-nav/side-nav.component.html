@@ -1,4 +1,4 @@
-<div [class.open-menu]="open" [class.close-nav]="!show" class="wrap-side-nav">
+<div [class.open-menu]="open" [class.close-nav]="!show" class="wrap-side-nav" *ngIf="navigate!='שגיאה'">
     <button [matTooltip]="open ? 'סגור' : 'הרחב'"
             matTooltipClass="blue-tooltip"
             mat-icon-button

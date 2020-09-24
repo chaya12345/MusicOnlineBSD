@@ -48,6 +48,7 @@ import { ReportingComponent } from './reporting/reporting.component';
 import { SongComponent } from './song/song.component';
 import { SmallSongComponent } from './small-song/small-song.component';
 import { ReportingDialogComponent } from './reporting-dialog/reporting-dialog.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { ReportingDialogComponent } from './reporting-dialog/reporting-dialog.co
     ReportingComponent,
     SongComponent,
     SmallSongComponent,
-    ReportingDialogComponent
+    ReportingDialogComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,

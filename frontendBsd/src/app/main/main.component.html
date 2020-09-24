@@ -7,5 +7,6 @@
     <p>{{songContent}}</p>
     <tags [tagsList]="tags"></tags>
     <info [songId]="song.id" [viewsCnt]="song.count_views" [responsesCnt]="responses.length" [likesCnt]="song.count_like"></info>
-    <responses type="song" [responsesSongList]="responses"></responses>
+    <responses type="song"></responses>
 </div>
+ <!-- [responsesSongList]="responses" -->

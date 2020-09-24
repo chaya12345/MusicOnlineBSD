@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Song } from '../classes/song';
 import { ShareDataService } from '../services/share-data.service';
 import { SongService } from '../services/song.service';
@@ -15,7 +15,8 @@ export class SongsPageComponent implements OnInit {
   songId: number = null;
   song: Song;
 
-  constructor(private shareData: ShareDataService, private activatedRoute: ActivatedRoute, private songService: SongService) { }
+  constructor(private shareData: ShareDataService, private activatedRoute: ActivatedRoute,
+    private songService: SongService, private router: Router) { }
 
   ngOnInit() {
     this.shareData.childEventListner().subscribe(isNavOpened => {
@@ -37,9 +38,16 @@ export class SongsPageComponent implements OnInit {
 
   getSongById(): void {
     try {
-      this.songService.getSongById(this.songId).subscribe(song => { this.song = song; }, err => { console.log(err); });
+      this.songService.getSongById(this.songId).subscribe(song => { this.song = song; this.checkIsFound(); }, err => { console.log(err); });
     }
     catch { console.log('song-details'); }
+  }
+
+  checkIsFound(): void {
+    if (this.song == null) {
+      console.log("the song disappeared");
+      this.router.navigateByUrl('/error');
+    }
   }
 
 }

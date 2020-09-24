@@ -22,14 +22,16 @@ export class MainComponent implements OnInit {
   refresh: boolean = false;
 
   constructor(private httpClient: HttpClient, private responseToSongsService: ResponseToSongsService, 
-    private tagsToSongsService: TagsToSongsService) { }
+    private tagsToSongsService: TagsToSongsService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
   }
 
   ngOnChanges(): void {
     try {
+      /*------ for deleting -------*/
     this.getContent();
+    /*------ end -------*/
     this.getTags();
     this.getResponses();
     } catch { }
@@ -46,13 +48,16 @@ export class MainComponent implements OnInit {
       .subscribe(tag => { this.tags = tag; }, err => { console.log(err); });
   }
 
+  /*------ for deleting -------*/
   getResponses(): void {
     this.responseToSongsService.getSongResponses(this.song.id)
-      .subscribe(response => { this.responses = response; this.orderResponses(); }, err => { console.log(err); });
+      .subscribe(response => { this.responses = response; this.orderResponses(); 
+        this.cdr.detectChanges(); }, err => { console.log(err); });
   }
 
   orderResponses(): void {
     this.responses.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
   }
+  /*------ end -------*/
 
 }

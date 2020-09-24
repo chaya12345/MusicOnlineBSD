@@ -1,6 +1,9 @@
+import { ChangeDetectorRef } from '@angular/core';
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ResponsesToArticles } from '../classes/responsesToArticles';
 import { ResponsesToSongs } from '../classes/responsesToSongs';
+import { ResponseToSongsService } from '../services/response-to-songs.service';
 
 @Component({
   selector: 'responses',
@@ -9,13 +12,31 @@ import { ResponsesToSongs } from '../classes/responsesToSongs';
 })
 export class ResponsesComponent implements OnInit {
   
-  @Input() responsesSongList?: ResponsesToSongs[] = [];
+  // @Input() responsesSongList?: ResponsesToSongs[] = [];
   @Input() responsesArticleList?: ResponsesToArticles[] = [];
   @Input() type: string;
+  responses: any;
 
-  constructor() { }
+  constructor(private responseToSongsService: ResponseToSongsService, private activatedRoute: ActivatedRoute,
+    private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(): void {
+    try {
+    this.getResponses();
+    } catch { }
+  }
+
+  getResponses(): void {
+    this.responseToSongsService.getSongResponses(parseInt(this.activatedRoute.snapshot.paramMap.get('id')))
+      .subscribe(response => { this.responses = response; this.orderResponses(); 
+        this.cdr.detectChanges(); }, err => { console.log(err); });
+  }
+
+  orderResponses(): void {
+    this.responses.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
   }
 
 }
