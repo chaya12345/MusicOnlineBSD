@@ -43,8 +43,7 @@
 
             <div mat-dialog-actions>
                 <button mat-button (click)="onNoClick()">בטל</button>
-                <button mat-button [mat-dialog-close]="data.mail" cdkFocusInitial type="submit"
-                    [disabled]='formRespons.invalid'>שלח דיווח</button>
+                <button mat-button [mat-dialog-close]="data.mail" cdkFocusInitial type="submit" [disabled]='formRespons.invalid'>שלח דיווח</button>
             </div>
         </form>
     </div>

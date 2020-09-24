@@ -27,7 +27,7 @@ export class ReportingDialogComponent implements OnInit {
     private articleService: ArticleService,private reportsService:ReportsService) {
       this.formReport=new FormGroup({
         name:new FormControl("",[Validators.required,Validators.minLength(2)]),
-        phone:new FormControl("",Validators.required),
+        phone:new FormControl("",[Validators.required,Validators.minLength(7),Validators.maxLength(12)]),
         mail:new FormControl("",[Validators.email,Validators.required]),
         messange:new FormControl("",[Validators.required,Validators.minLength(4)])
       })
@@ -42,7 +42,7 @@ export class ReportingDialogComponent implements OnInit {
       this.newReport.name=this.formReport.controls.name.value;
       this.newReport.mail=this.formReport.controls.mail.value;
       this.newReport.phone=this.formReport.controls.phone.value;
-      this.newReport.songId=this.songId;
+      this.newReport.songId= 65; //Number(this.activatedRoute.snapshot.paramMap.get('id'));
       this.newReport.message=this.formReport.controls.message.value;
       this.newReport.status='לא טופל';
       this.reportsService.addReport(this.newReport).subscribe();

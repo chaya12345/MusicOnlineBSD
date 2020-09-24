@@ -2,8 +2,10 @@ import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/cor
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatAccordion } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FollowUp } from '../classes/followUp';
 import { ResponsesToArticles } from '../classes/responsesToArticles';
 import { ResponsesToSongs } from '../classes/responsesToSongs';
+import { FollowUpService } from '../services/follow-up.service';
 import { ResponseToSongsService } from '../services/response-to-songs.service';
 import { ResponsesToArticlesService } from '../services/responses-to-articles.service';
 
@@ -20,9 +22,10 @@ export class AddingResponseComponent implements OnInit {
   formRespons: FormGroup;
   newResponsesToArticles: ResponsesToArticles;
   newResponsesToSongs: ResponsesToSongs;
+  newFollowUp: FollowUp = new FollowUp;
 
   constructor(private responsesToArticlesService: ResponsesToArticlesService, private activatedRoute: ActivatedRoute,
-    private responseToSongsService: ResponseToSongsService) {
+    private responseToSongsService: ResponseToSongsService, private followUpService: FollowUpService) {
     this.formRespons = new FormGroup({
       fullName: new FormControl("", [Validators.required, Validators.minLength(2)]),
       email: new FormControl("", Validators.email),
@@ -43,6 +46,12 @@ export class AddingResponseComponent implements OnInit {
         this.newResponsesToSongs.title = this.formRespons.controls.title.value;
         this.newResponsesToSongs.content = this.formRespons.controls.message.value;
         this.responseToSongsService.addResponse(this.newResponsesToSongs).subscribe();
+        if (this.formRespons.controls.email.value != null) {
+          this.newFollowUp.mail = this.formRespons.controls.email.value;
+          this.newFollowUp.songId = this.newResponsesToSongs.songId;
+          this.followUpService.addFollowUp(this.newFollowUp).subscribe();
+          this.newFollowUp=null;
+        }
         this.onSend.emit(this.newResponsesToSongs);
         this.newResponsesToSongs = null;
         this.reset();
@@ -54,6 +63,12 @@ export class AddingResponseComponent implements OnInit {
         this.newResponsesToArticles.title = this.formRespons.controls.title.value;
         this.newResponsesToArticles.content = this.formRespons.controls.message.value;
         this.responsesToArticlesService.addResponse(this.newResponsesToArticles).subscribe();
+        if (this.formRespons.controls.email.value != null) {
+          this.newFollowUp.mail = this.formRespons.controls.email.value;
+          this.newFollowUp.articleId = this.newResponsesToArticles.articleId;
+          this.followUpService.addFollowUp(this.newFollowUp).subscribe();
+          this.newFollowUp=null;
+        }
         this.newResponsesToArticles = null;
         this.reset();
       }
