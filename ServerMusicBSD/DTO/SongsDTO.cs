@@ -17,7 +17,7 @@ namespace DTO
         public Nullable<long> singerId { get; set; }
         public Nullable<long> count_like { get; set; }
         public Nullable<long> count_views { get; set; }
-        public Nullable<long> albumId { get; set; }
+        public Nullable<int> albumId { get; set; }
         public string title { get; set; }
         public string subtitle { get; set; }
         public string image_location { get; set; }

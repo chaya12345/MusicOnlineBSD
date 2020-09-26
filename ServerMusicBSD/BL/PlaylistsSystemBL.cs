@@ -22,5 +22,11 @@ namespace BL
             return Casts.ToPlaylistsSystemDTO.GetPlaylistSystem(
                 et.PlaylistsSystemTBL.Where(p => p.id == playlistId).FirstOrDefault());
         }
+        public static void AddPlaylistSystem(PlaylistsSystemTBL playlistsSystem)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            et.PlaylistsSystemTBL.Add(playlistsSystem);
+            et.SaveChanges();
+        }
     }
 }

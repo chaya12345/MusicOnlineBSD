@@ -171,7 +171,7 @@ namespace BL
                 }
             }
         }
-        public static List<similarSongs> GetSimilarSongs(int songId)
+        public static List<songsDetails> GetSimilarSongs(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<string> tags = TagsToSongsBL.GetTagsNamesToSong(songId);
@@ -205,10 +205,10 @@ namespace BL
                 result.Add(et.SongsTBL.Where(s => s.id == IdSong).FirstOrDefault());
             }
             //המרה לטבלה מדומה- בשביל שיהיה השם של הזמר
-            List<similarSongs> similars = new List<similarSongs>();
-            foreach (SongsTBL item in result)
+            List<songsDetails> similars = new List<songsDetails>();
+            foreach (SongsDTO item in Casts.ToSongsDTO.GetSongs(result))
             {
-                similars.Add(Casts.ToSongsDTO.comperSongToSimilarSong(item));
+                similars.Add(Casts.ToSongsDetailsDTO.comperSongToSongsDetails(item));
             }
             return similars;
         }

@@ -168,16 +168,6 @@
     <Property Name="playlistId" Type="int" />
     <Property Name="songId" Type="int" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="TagsTBL">
     <Key>
       <PropertyRef Name="id" />
@@ -239,8 +229,8 @@ warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a pri
     <Property Name="title" Type="varchar(max)" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'MusicOnline.dbo.similarSongs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="similarSongs">
+warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="songsDetails">
     <Key>
       <PropertyRef Name="id" />
     </Key>
@@ -552,7 +542,6 @@ warning 6002: The table/view 'MusicOnline.dbo.similarSongs' does not have a prim
     <EntitySet Name="SingersTBL" EntityType="Self.SingersTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SongsTBL" EntityType="Self.SongsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsTBL" EntityType="Self.TagsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsToArticlesTBL" EntityType="Self.TagsToArticlesTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsToSongsTBL" EntityType="Self.TagsToSongsTBL" Schema="dbo" store:Type="Tables" />
@@ -567,23 +556,23 @@ warning 6002: The table/view 'MusicOnline.dbo.similarSongs' does not have a prim
     [LastResponses].[title] AS [title]
     FROM [dbo].[LastResponses] AS [LastResponses]</DefiningQuery>
     </EntitySet>
-    <EntitySet Name="similarSongs" EntityType="Self.similarSongs" store:Type="Views" store:Schema="dbo">
+    <EntitySet Name="songsDetails" EntityType="Self.songsDetails" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-    [similarSongs].[id] AS [id], 
-    [similarSongs].[name] AS [name], 
-    [similarSongs].[file_location] AS [file_location], 
-    [similarSongs].[type] AS [type], 
-    [similarSongs].[date] AS [date], 
-    [similarSongs].[count_responses] AS [count_responses], 
-    [similarSongs].[singerName] AS [singerName], 
-    [similarSongs].[count_like] AS [count_like], 
-    [similarSongs].[count_views] AS [count_views], 
-    [similarSongs].[albumId] AS [albumId], 
-    [similarSongs].[title] AS [title], 
-    [similarSongs].[subtitle] AS [subtitle], 
-    [similarSongs].[image_location] AS [image_location], 
-    [similarSongs].[content] AS [content]
-    FROM [dbo].[similarSongs] AS [similarSongs]</DefiningQuery>
+    [songsDetails].[id] AS [id], 
+    [songsDetails].[name] AS [name], 
+    [songsDetails].[file_location] AS [file_location], 
+    [songsDetails].[type] AS [type], 
+    [songsDetails].[date] AS [date], 
+    [songsDetails].[count_responses] AS [count_responses], 
+    [songsDetails].[singerName] AS [singerName], 
+    [songsDetails].[count_like] AS [count_like], 
+    [songsDetails].[count_views] AS [count_views], 
+    [songsDetails].[albumId] AS [albumId], 
+    [songsDetails].[title] AS [title], 
+    [songsDetails].[subtitle] AS [subtitle], 
+    [songsDetails].[image_location] AS [image_location], 
+    [songsDetails].[content] AS [content]
+    FROM [dbo].[songsDetails] AS [songsDetails]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_ArtistsToSongsTBL_ArtistsTBL" Association="Self.FK_ArtistsToSongsTBL_ArtistsTBL">
       <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />

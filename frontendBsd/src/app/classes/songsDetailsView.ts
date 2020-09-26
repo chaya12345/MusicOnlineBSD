@@ -1,4 +1,4 @@
-export class SimilarSongsView {
+export class SongsDetailsView {
     id: number;
     name?: string;
     file_location?: string;

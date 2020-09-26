@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { from, Observable } from 'rxjs';
 import { Song } from '../classes/song';
-import { SimilarSongsView } from '../classes/similarSongsView';
+import { SongsDetailsView } from '../classes/songsDetailsView';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,7 @@ export class SongService {
   public getSongsByTag(tagName: string): Observable<Song[]> {
     return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsByTag?tagName=" + tagName);
   }
-  public getSimilarSongs(songId: number): Observable<SimilarSongsView[]> {
+  public getSimilarSongs(songId: number): Observable<SongsDetailsView[]> {
     return this.httpClient.get<Song[]>(this.baseUrl + "GetSimilarSongs?songId=" + songId);
   }
   public getSongsByTags(tags: string[]): Observable<Song[]> {

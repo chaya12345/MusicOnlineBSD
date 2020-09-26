@@ -42,27 +42,5 @@ namespace BL.Casts
             }
             return songsDTO;
         }
-
-        public static similarSongs comperSongToSimilarSong(SongsTBL songs)
-        {
-            MusicOnlineEntities et = new MusicOnlineEntities();
-            similarSongs newSong = new similarSongs();
-            newSong.id = songs.id;
-            newSong.name = songs.name;
-            newSong.file_location = songs.file_location;
-            newSong.type = songs.type;
-            newSong.date = songs.date;
-            newSong.count_responses = songs.count_responses;
-            SingersTBL s1 = et.SingersTBL.Where(s => s.id == songs.singerId).FirstOrDefault();
-            newSong.singerName = s1!=null?s1.name:null;
-            newSong.count_like = songs.count_like;
-            newSong.count_views = songs.count_views;
-            newSong.albumId = songs.albumId;
-            newSong.title = songs.title;
-            newSong.subtitle = songs.subtitle;
-            newSong.image_location = songs.image_location;
-            newSong.content = songs.content;
-            return newSong;
-        }
     }
 }

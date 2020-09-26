@@ -12,7 +12,7 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class similarSongs
+    public partial class songsDetails
     {
         public int id { get; set; }
         public string name { get; set; }

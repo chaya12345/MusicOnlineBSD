@@ -6,9 +6,12 @@ using System.Net.Http;
 using System.Web.Http;
 using DTO;
 using BL;
+using DAL;
+using System.Web.Http.Cors;
 
 namespace ServerMusicBSD.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class PlaylistsSystemController : ApiController
     {
         public List<PlaylistsSystemDTO> GetPlaylists()
@@ -18,6 +21,10 @@ namespace ServerMusicBSD.Controllers
         public PlaylistsSystemDTO GetPlaylistById(int playlistId)
         {
             return PlaylistsSystemBL.GetPlaylistById(playlistId);
+        }
+        public  void PostPlaylistSystem([FromBody] PlaylistsSystemTBL playlistsSystem)
+        {
+            PlaylistsSystemBL.AddPlaylistSystem(playlistsSystem);
         }
     }
 }

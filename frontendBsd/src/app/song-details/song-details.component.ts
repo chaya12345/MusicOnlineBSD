@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SimilarSongsView } from '../classes/similarSongsView';
+import { SongsDetailsView } from '../classes/songsDetailsView';
 import { Song } from '../classes/song';
 import { SongService } from '../services/song.service';
 
@@ -15,7 +15,7 @@ export class SongDetailsComponent implements OnInit {
   songId: number;
   @Input() song: Song;
   songContent: string = "";
-  similarSongs: SimilarSongsView[] = [];
+  similarSongs: SongsDetailsView[] = [];
 
   constructor(private httpClient: HttpClient, private songService: SongService,
     private router: Router) {
