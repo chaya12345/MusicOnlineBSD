@@ -8,6 +8,7 @@ using BL;
 using DTO;
 using DAL;
 using System.Web.Http.Cors;
+using System.Net.Mail;
 
 namespace ServerMusicBSD.Controllers
 {

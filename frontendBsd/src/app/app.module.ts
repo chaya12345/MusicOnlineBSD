@@ -42,13 +42,13 @@ import { TagsComponent } from './tags/tags.component';
 import { ResponsesComponent } from './responses/responses.component';
 import { ResponsesSongComponent } from './responses-song/responses-song.component';
 import { ResponsesArticleComponent } from './responses-article/responses-article.component';
-import { AddingResponseComponent } from './adding-response/adding-response.component';
 import { ResponseComponent } from './response/response.component';
 import { ReportingComponent } from './reporting/reporting.component';
 import { SongComponent } from './song/song.component';
 import { SmallSongComponent } from './small-song/small-song.component';
 import { ReportingDialogComponent } from './reporting-dialog/reporting-dialog.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { ResponseAddingComponent } from './response-adding/response-adding.component';
 
 @NgModule({
   declarations: [
@@ -86,13 +86,13 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     ResponsesComponent,
     ResponsesSongComponent,
     ResponsesArticleComponent,
-    AddingResponseComponent,
     ResponseComponent,
     ReportingComponent,
     SongComponent,
     SmallSongComponent,
     ReportingDialogComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    ResponseAddingComponent
   ],
   imports: [
     BrowserModule,

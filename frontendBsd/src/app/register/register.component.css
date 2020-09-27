@@ -1,6 +1,6 @@
 .wrap-register {
     height: 100px;
-    background-color: #fbc02d;
+    background-color: #f1b729; /* #fbc02d;*/
     display: flex;
     text-align: center;
 }

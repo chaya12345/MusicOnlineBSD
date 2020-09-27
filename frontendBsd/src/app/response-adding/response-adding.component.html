@@ -1,0 +1,32 @@
+<mat-accordion class="example-headers-align addingResponse" multi>
+    <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                הוסיפו תגובה
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form [formGroup]="responseForm" (ngSubmit)="onSubmit()">
+
+            <mat-form-field appearance="fill" class="fullName">
+                <input matInput placeholder="שם" formControlName="fullName" required minlength="2" maxlength="30">
+                <mat-error *ngIf="responseForm.controls.fullName.invalid">{{getNameErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="email">
+                <input matInput placeholder="מייל" formControlName="email">
+                <mat-error *ngIf="responseForm.controls.email.invalid">{{getMailErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="title">
+                <input matInput placeholder="כותרת" formControlName="title" required>
+                <mat-error *ngIf="responseForm.controls.title.invalid">{{getTitleErrorMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="content">
+                <textarea matInput placeholder="תוכן תגובה" formControlName="messange" maxlength="500" rows="3"></textarea>
+                <mat-hint [class.max]="responseForm.controls.messange.value?.length==500" align="end">{{responseForm.controls.messange.value?.length || 0}}/500</mat-hint>
+            </mat-form-field>
+
+            <button mat-flat-button color="warn" type="submit">פרסם</button>
+            <button mat-stroked-button color="warn" (click)="accordion.closeAll()">בטל</button>
+
+        </form>
+    </mat-expansion-panel>
+</mat-accordion>
