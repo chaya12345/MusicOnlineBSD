@@ -51,6 +51,10 @@
         <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagsTypesTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_TagsToArticleTBL_TagsTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_TagsToSongsTBL_TagNameTBL" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MusicOnlineModel.SubscriptionTBL" Width="1.5" PointX="4.5" PointY="4.375" />
+        <EntityTypeShape EntityType="MusicOnlineModel.sysdiagrams" Width="1.5" PointX="8.375" PointY="6.75" />
+        <AssociationConnector Association="MusicOnlineModel.FK_SubscriptionTBL_SingersTBL" />
+        <AssociationConnector Association="MusicOnlineModel.FK_SubscriptionTBL_UsersTBL" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

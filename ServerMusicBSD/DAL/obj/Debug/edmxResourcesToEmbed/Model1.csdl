@@ -164,6 +164,7 @@
     <NavigationProperty Name="SearchingToSingerTBL" Relationship="Self.FK_SearchingToSingerTBL_SingersTBL" FromRole="SingersTBL" ToRole="SearchingToSingerTBL" />
     <NavigationProperty Name="SingerSearchingToUserTBL" Relationship="Self.FK_SingerSearchingToUserTBL_SingersTBL" FromRole="SingersTBL" ToRole="SingerSearchingToUserTBL" />
     <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsTBL_SingersTBL" FromRole="SingersTBL" ToRole="SongsTBL" />
+    <NavigationProperty Name="SubscriptionTBL" Relationship="MusicOnlineModel.FK_SubscriptionTBL_SingersTBL" FromRole="SingersTBL" ToRole="SubscriptionTBL" />
   </EntityType>
   <EntityType Name="SongsTBL">
     <Key>
@@ -260,6 +261,7 @@
     <NavigationProperty Name="FollowUpTBL" Relationship="Self.FK_FollowUpTBL_UsersTBL" FromRole="UsersTBL" ToRole="FollowUpTBL" />
     <NavigationProperty Name="PlaylistsTBL" Relationship="Self.FK_PlaylistsTBL_UsersTBL" FromRole="UsersTBL" ToRole="PlaylistsTBL" />
     <NavigationProperty Name="SingerSearchingToUserTBL" Relationship="Self.FK_SingerSearchingToUserTBL_UsersTBL" FromRole="UsersTBL" ToRole="SingerSearchingToUserTBL" />
+    <NavigationProperty Name="SubscriptionTBL" Relationship="MusicOnlineModel.FK_SubscriptionTBL_UsersTBL" FromRole="UsersTBL" ToRole="SubscriptionTBL" />
   </EntityType>
   <EntityType Name="LastResponses">
     <Key>
@@ -683,5 +685,59 @@
       <End Role="TagsTBL" EntitySet="TagsTBL" />
       <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
     </AssociationSet>
+    <EntitySet Name="SubscriptionTBL" EntityType="MusicOnlineModel.SubscriptionTBL" />
+    <EntitySet Name="sysdiagrams" EntityType="MusicOnlineModel.sysdiagrams" />
+    <AssociationSet Name="FK_SubscriptionTBL_SingersTBL" Association="MusicOnlineModel.FK_SubscriptionTBL_SingersTBL">
+      <End Role="SingersTBL" EntitySet="SingersTBL" />
+      <End Role="SubscriptionTBL" EntitySet="SubscriptionTBL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubscriptionTBL_UsersTBL" Association="MusicOnlineModel.FK_SubscriptionTBL_UsersTBL">
+      <End Role="UsersTBL" EntitySet="UsersTBL" />
+      <End Role="SubscriptionTBL" EntitySet="SubscriptionTBL" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="SubscriptionTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" />
+    <Property Name="singerId" Type="Int32" />
+    <NavigationProperty Name="SingersTBL" Relationship="MusicOnlineModel.FK_SubscriptionTBL_SingersTBL" FromRole="SubscriptionTBL" ToRole="SingersTBL" />
+    <NavigationProperty Name="UsersTBL" Relationship="MusicOnlineModel.FK_SubscriptionTBL_UsersTBL" FromRole="SubscriptionTBL" ToRole="UsersTBL" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_SubscriptionTBL_SingersTBL">
+    <End Type="MusicOnlineModel.SingersTBL" Role="SingersTBL" Multiplicity="0..1" />
+    <End Type="MusicOnlineModel.SubscriptionTBL" Role="SubscriptionTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SingersTBL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SubscriptionTBL">
+        <PropertyRef Name="singerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubscriptionTBL_UsersTBL">
+    <End Type="MusicOnlineModel.UsersTBL" Role="UsersTBL" Multiplicity="0..1" />
+    <End Type="MusicOnlineModel.SubscriptionTBL" Role="SubscriptionTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsersTBL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SubscriptionTBL">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

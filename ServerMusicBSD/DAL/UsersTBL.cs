@@ -20,6 +20,7 @@ namespace DAL
             this.FollowUpTBL = new HashSet<FollowUpTBL>();
             this.PlaylistsTBL = new HashSet<PlaylistsTBL>();
             this.SingerSearchingToUserTBL = new HashSet<SingerSearchingToUserTBL>();
+            this.SubscriptionTBL = new HashSet<SubscriptionTBL>();
         }
     
         public int id { get; set; }
@@ -39,5 +40,7 @@ namespace DAL
         public virtual ICollection<PlaylistsTBL> PlaylistsTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SingerSearchingToUserTBL> SingerSearchingToUserTBL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SubscriptionTBL> SubscriptionTBL { get; set; }
     }
 }
