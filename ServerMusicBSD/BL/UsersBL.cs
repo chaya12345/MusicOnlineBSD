@@ -120,8 +120,10 @@ namespace BL
         public static UsersDTO GetUser(string userName, string password)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            UsersTBL user = et.UsersTBL.Where(u => u.name == userName && u.password == password).FirstOrDefault();
-            return Casts.ToUsersDTO.GetUser(user);
+            UsersTBL user = et.UsersTBL.Where(u =>u.password == password).FirstOrDefault();
+            if (user!=null && (user.name == userName || user.mail == userName))
+                return Casts.ToUsersDTO.GetUser(user);
+            return null;
         }
     }
 }
