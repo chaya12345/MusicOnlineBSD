@@ -6,6 +6,18 @@
     padding: 2px;
     display: grid;
     grid-template-rows: fit-content(50%) auto;
+    transition: .4s;
+    animation-duration: .6s;
+    animation-timing-function: ease linear;
+}
+
+@keyframes bigger {
+    from {
+        transform: scale(0.85);
+    }
+    to {
+        transform: scale(1);
+    }
 }
 
 .dark {

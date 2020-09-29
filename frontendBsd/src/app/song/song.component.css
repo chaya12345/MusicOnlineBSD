@@ -8,6 +8,18 @@
     transition: .4s;
     display: flex;
     cursor: pointer;
+    transition: .4s;
+    animation-duration: .6s;
+    animation-timing-function: ease linear;
+}
+
+@keyframes bigger {
+    from {
+        transform: scale(0.85);
+    }
+    to {
+        transform: scale(1);
+    }
 }
 
 .wrap-clip:hover .wrap-play-icon {

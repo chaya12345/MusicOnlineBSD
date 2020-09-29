@@ -4,6 +4,18 @@
     width: 350px;
     background-size: cover;
     background-position: center;
+    transition: .4s;
+    animation-duration: .6s;
+    animation-timing-function: ease linear;
+}
+
+@keyframes bigger {
+    from {
+        transform: scale(0.85);
+    }
+    to {
+        transform: scale(1);
+    }
 }
 
 .header-playlist {

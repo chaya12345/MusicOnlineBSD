@@ -13,18 +13,6 @@
     display: inline-block;
     flex: 0 1 calc(33% - 25px);
     margin: 25px 0;
-    animation-name: bigger;
-    animation-duration: .45s;
-    animation-timing-function: ease linear;
-}
-
-@keyframes bigger {
-    from {
-        transform: scale(0.85);
-    }
-    to {
-        transform: scale(1);
-    }
 }
 
 button.reloadMore {
