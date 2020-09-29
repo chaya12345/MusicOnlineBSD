@@ -1,0 +1,14 @@
+<div class="all-songs">
+    <top img="../../assets/images/3782176.jpg" title="חדש במוזיקה" subtitle="כל מה שחדש במוזיקה היהודית."></top>
+    <current-nav [navs]="navs"></current-nav>
+    <div class="wrap-songs">
+      <div class="wrap-song" *ngFor="let item of items">
+        <song [clip]="item" *ngIf="item!=null"></song>
+      </div>
+    </div>
+    <button class="reloadMore" color="primary" mat-flat-button (click)="LoadMore($event)">
+      <mat-spinner></mat-spinner>
+      טען עוד
+    </button>
+    <footer></footer>
+</div>

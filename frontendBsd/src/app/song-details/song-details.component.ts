@@ -14,11 +14,13 @@ export class SongDetailsComponent implements OnInit {
 
   songId: number;
   @Input() song: Song;
+  navs: string[] = [];
   songContent: string = "";
   similarSongs: SongsDetailsView[] = [];
 
   constructor(private httpClient: HttpClient, private songService: SongService,
     private router: Router) {
+      this.navs.push("חדש במוזיקה");
   }
 
   ngOnInit() {
@@ -36,6 +38,7 @@ export class SongDetailsComponent implements OnInit {
 
   ngOnChanges(): void {
     try {
+      this.navs.push(this.song.title);
       this.getContent();
       this.getSimilarResults();
     } catch { }

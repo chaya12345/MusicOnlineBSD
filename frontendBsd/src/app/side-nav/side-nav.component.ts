@@ -34,7 +34,7 @@ export class SideNavComponent implements OnInit {
   open: boolean = false;
   show: boolean = true;
   href: string = ""
-  navigate: string = "";
+  navigateStr: string = "";
 
   constructor(private shareData: ShareDataService, private router: Router) { }
 
@@ -43,18 +43,18 @@ export class SideNavComponent implements OnInit {
     console.log(this.href);
     console.log(this.href.includes("error"));
     if (this.href.includes("home"))
-      this.navigate = "ראשי";
+      this.navigateStr = "ראשי";
     else if (this.href.includes("song"))
-      this.navigate = "חדש במוזיקה";
+      this.navigateStr = "חדש במוזיקה";
     else if (this.href.includes("article"))
-      this.navigate = "מגזין";
+      this.navigateStr = "מגזין";
     else if (this.href.includes("playlist"))
-      this.navigate = "פלייליסטים";
+      this.navigateStr = "פלייליסטים";
     else if (this.href.includes("error")) {
-      this.navigate = "שגיאה";
+      this.navigateStr = "שגיאה";
       console.log("errorrrrrrrr");
     }
-    else this.navigate = "ראשי";
+    else this.navigateStr = "ראשי";
   }
 
   open_menu(): void {
@@ -66,6 +66,15 @@ export class SideNavComponent implements OnInit {
     if (!this.show)
       this.open = false;
     this.shareData.emitChildEvent(this.show);
+  }
+
+  navigate(event): void {
+    if (event.target.innerHTML.includes("ראשי")) {
+      this.router.navigateByUrl("home");
+    }
+    else if (event.target.innerHTML.includes("חדש במוזיקה")) {
+      this.router.navigateByUrl("song");
+    }
   }
 
 }

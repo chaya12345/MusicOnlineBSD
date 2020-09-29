@@ -1,0 +1,22 @@
+.wrap-list {
+    margin: 40px 8vw 0;
+    font-family: fb Joker;
+    font-size: 21px;
+}
+
+span {
+    display: inline-flex;
+    cursor: pointer;
+}
+
+span mat-icon {
+    color: #d4d4d4;
+}
+
+span:last-of-type mat-icon {
+    display: none;
+}
+
+span:last-of-type {
+    color: #0d8ac3;
+}

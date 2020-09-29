@@ -49,6 +49,8 @@ import { SmallSongComponent } from './small-song/small-song.component';
 import { ReportingDialogComponent } from './reporting-dialog/reporting-dialog.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ResponseAddingComponent } from './response-adding/response-adding.component';
+import { CurrentNavComponent } from './current-nav/current-nav.component';
+import { AllSongsComponent } from './all-songs/all-songs.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +94,9 @@ import { ResponseAddingComponent } from './response-adding/response-adding.compo
     SmallSongComponent,
     ReportingDialogComponent,
     ErrorPageComponent,
-    ResponseAddingComponent
+    ResponseAddingComponent,
+    CurrentNavComponent,
+    AllSongsComponent
   ],
   imports: [
     BrowserModule,
