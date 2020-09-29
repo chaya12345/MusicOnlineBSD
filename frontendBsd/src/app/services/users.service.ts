@@ -8,33 +8,37 @@ import { Observable } from 'rxjs';
 })
 export class UsersService {
 
-  baseUrl:string="https://localhost:44368/api/Users/";
-  constructor(private httpClient:HttpClient) { }
-  public registrationToWebsite(user:User):Observable<any>{
+  baseUrl: string = "https://localhost:44368/api/Users/";
+  res: any;
+  constructor(private httpClient: HttpClient) { }
+  public signUp(user: User): Observable<any> {
+    this.logIn(user.name, user.password).subscribe(end => this.res = end);
+    if (this.res == null)//אם לא קיים כזה משתמש
     return this.httpClient.post(this.baseUrl + "PostRegistrationToWebsite", user);
+    //אי אפשר לעחזיר ערכים בוליאנים בגלל הבפונקציה מחזירה רק ערכים מסוג קריאת סרבר
   }
-  public RegistrationToNewsleter(user:User):Observable<any>{
+  public RegistrationToNewsleter(user: User): Observable<any> {
     return this.httpClient.post(this.baseUrl + "PostRegistrationToNewsleter", user);
   }
-  public removeFromNewsletter(userId:number):Observable<any>{
+  public removeFromNewsletter(userId: number): Observable<any> {
     return this.httpClient.put(this.baseUrl + "PostRegistrationToNewsleter?userId=" + userId, userId);
   }
-  public updateUser(userId:number,user:User):Observable<any>{
+  public updateUser(userId: number, user: User): Observable<any> {
     return this.httpClient.put(this.baseUrl + "PutUser?userId=" + userId, user);
   }
-  public updateUserProfil(userId:number,user:User):Observable<any>{
+  public updateUserProfil(userId: number, user: User): Observable<any> {
     return this.httpClient.put(this.baseUrl + "PutUserProfil?userId=" + userId, user);
   }
-  public updateUserPassword(userId:number,password:string):Observable<any>{
+  public updateUserPassword(userId: number, password: string): Observable<any> {
     return this.httpClient.put(this.baseUrl + "PutUserPassword?userId=" + userId + "&password=" + password, password);
   }
-  public updateUserDefinition(userId:number,user:User):Observable<any>{
+  public updateUserDefinition(userId: number, user: User): Observable<any> {
     return this.httpClient.put(this.baseUrl + "PutUserDefinition?userId=" + userId, user);
   }
-  public getUser(userName:number,password:string):Observable<User>{
-    return this.httpClient.get<User>(this.baseUrl+"GetUser?userName="+userName+"&password="+password);
+  public logIn(userName: string, password: string): Observable<User> {
+    return this.httpClient.get<User>(this.baseUrl + "GetUser?userName=" + userName + "&password=" + password);
   }
-  public getUsers():Observable<User[]>{
-    return this.httpClient.get<User[]>(this.baseUrl+"GetUsers");
+  public getUsers(): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.baseUrl + "GetUsers");
   }
 }
