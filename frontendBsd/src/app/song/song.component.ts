@@ -27,7 +27,7 @@ export class SongComponent implements OnInit {
   };
 
   openClip(): void {
-    this.router.navigateByUrl('/song/' + this.clip.id);
+    this.router.navigateByUrl('song/' + this.clip.id);
   }
   
   elementInViewport(el) {
@@ -41,12 +41,6 @@ export class SongComponent implements OnInit {
       top += el.offsetTop;
       left += el.offsetLeft;
     }
-
-    var res = top < (window.pageYOffset + window.innerHeight) &&
-    left < (window.pageXOffset + window.innerWidth) &&
-    (top + height) > window.pageYOffset &&
-    (left + width) > window.pageXOffset;
-    console.log(res);
   
     return (
       top < (window.pageYOffset + window.innerHeight) &&

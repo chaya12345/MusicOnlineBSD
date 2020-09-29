@@ -6,30 +6,29 @@
     </div>
     <div class="search">
 
-          <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline">
             <mat-label>שם שיר</mat-label>
             <input type="text" matInput [formControl]="songsControl" [matAutocomplete]="autoSongs">
             <mat-icon matPrefix>search</mat-icon>
             <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete">
-                <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name">
+                <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name" (click)="openSong(song)">
                     {{song.name}}
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
 
-          <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline">
             <mat-label>שם זמר</mat-label>
-              <input type="text" matInput [formControl]="singersControl"
-                  [matAutocomplete]="autoSingers">
-              <button mat-icon-button matPrefix>
-                  <mat-icon>search</mat-icon>
-              </button>
-              <mat-autocomplete autoActiveFirstOption #autoSingers="matAutocomplete">
-                  <mat-option *ngFor="let singer of filteredSingers | async" [value]="singer.name">
-                      {{singer.name}}
-                  </mat-option>
-              </mat-autocomplete>
-          </mat-form-field>
+            <input type="text" matInput [formControl]="singersControl" [matAutocomplete]="autoSingers">
+            <button mat-icon-button matPrefix>
+                <mat-icon>search</mat-icon>
+            </button>
+            <mat-autocomplete autoActiveFirstOption #autoSingers="matAutocomplete">
+                <mat-option *ngFor="let singer of filteredSingers | async" [value]="singer.name" (click)="openSongsBySinger(singer)">
+                    {{singer.name}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
 
     </div>
 </div>

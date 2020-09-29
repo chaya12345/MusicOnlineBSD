@@ -57,10 +57,10 @@ namespace BL
         }
         public static void AddArtistToSong(ArtistsToSongsTBL artistToSong)
         {
-            try { 
             MusicOnlineEntities et = new MusicOnlineEntities();
-            et.ArtistsToSongsTBL.Add(artistToSong);
-            et.SaveChanges();
+            try { 
+                et.ArtistsToSongsTBL.Add(artistToSong);
+                et.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
             {

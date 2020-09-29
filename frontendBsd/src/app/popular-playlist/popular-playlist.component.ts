@@ -10,8 +10,7 @@ export class PopularPlaylistComponent implements OnInit {
 
   @Input() playlist: PlaylistSystem;
 
-  constructor() {
-   }
+  constructor() { }
 
   ngOnInit() {
     window.addEventListener('scroll', this.scroll, true);
@@ -37,12 +36,6 @@ export class PopularPlaylistComponent implements OnInit {
       top += el.offsetTop;
       left += el.offsetLeft;
     }
-
-    var res = top < (window.pageYOffset + window.innerHeight) &&
-    left < (window.pageXOffset + window.innerWidth) &&
-    (top + height) > window.pageYOffset &&
-    (left + width) > window.pageXOffset;
-    console.log(res);
   
     return (
       top < (window.pageYOffset + window.innerHeight) &&

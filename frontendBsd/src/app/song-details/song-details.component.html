@@ -1,5 +1,5 @@
 <div class="wrap-song-details" *ngIf="song!=null&&song!=undefined">
-    <top [img]="'../../assets/images/'+song.image_location" [title]="song.title" [subtitle]="song.subtitle"></top>
+    <top [img]="'../../assets/images/'+song.image_location" [_title]="song.title" [subtitle]="song.subtitle"></top>
     <current-nav [navs]="navs"></current-nav>
     <div class="section">
         <main [song]="song"></main>

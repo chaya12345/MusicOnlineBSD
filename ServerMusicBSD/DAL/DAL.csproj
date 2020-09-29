@@ -173,8 +173,11 @@
     <Content Include="src\images\for_playlists\flower-wedding-event_1150-5631.jpg" />
     <Content Include="src\images\for_playlists\musical-percussion-instrument-drum-bongo_169016-302.jpg" />
     <Content Include="src\images\for_songs\default.jpg" />
+    <Content Include="src\images\for_songs\אבי-אילסון\אבי-אילסון-שיבוא.jpg" />
+    <Content Include="src\images\for_songs\אברהם-פריד\189747_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_songs\איציק-דדיה\240204_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_songs\איציק-דדיה\‏‏file.jpg" />
+    <Content Include="src\images\for_songs\בני-פרידמן\בני-פרידמן-בידיים-טובות-ווקאלי.jpg" />
     <Content Include="src\images\for_songs\יעקב-שוואקי\234472_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_songs\מידד-טסה\232760_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_songs\מאיר-גרין\מאיר-גרין-ימי-הרחמים.PNG" />
@@ -210,7 +213,6 @@
     <Content Include="src\songs\מרדכי-בן-דוד\13 - הבל הבלים.mp3" />
     <Content Include="src\songs\מרדכי-בן-דוד\דייייי מרדכי בן דוד.mp3" />
     <Content Include="src\songs\מרדכי-בן-דוד\מרדכי בן דוד - כדאי הוא רבי שמעון.mp3" />
-    <Content Include="src\text\about-site.txt" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\images\for_articles\221607_tumb_750Xauto.jpg" />
@@ -258,10 +260,11 @@
     <Content Include="src\text\songs_content\איציק-דדיה\איציק דדיה חוזר במוסיקה מקורית ובוגרת יותר %27נכספתי%27.txt" />
     <Content Include="src\text\songs_content\איציק-דדיה\מאט דאב ואיציק דדיה בדואט %27אנא%27.txt" />
     <Content Include="src\text\songs_content\איציק-דדיה\נושא תפילה איציק דדיה.txt" />
+    <Content Include="src\text\songs_content\בני-פרידמן\בידיים-טובות.txt" />
+    <Content Include="src\text\songs_content\יעקב-שוואקי\מסיני-בא.txt" />
     <Content Include="src\text\songs_content\מאיר-גרין\ימי הרחמים - מאיר גרין.txt" />
     <Content Include="src\text\songs_content\מידד-טסה\נעשה-שמח.txt" />
     <Content Include="src\text\songs_content\קובי-ברומר\כמה-טוב-ה.txt" />
-    <Content Include="src\text\‏‏about-site.txt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

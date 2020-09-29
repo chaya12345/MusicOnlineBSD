@@ -21,8 +21,8 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try { 
-            et.SingersTBL.Add(name);
-            et.SaveChanges();
+                et.SingersTBL.Add(name);
+                et.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
             {

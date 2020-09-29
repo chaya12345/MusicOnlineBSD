@@ -6,6 +6,7 @@ import { Song } from '../classes/song';
 import { SongService } from '../services/song.service';
 import { Singer } from '../classes/singer';
 import { SingerService } from '../services/singer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'header',
@@ -22,15 +23,17 @@ export class HeaderComponent implements OnInit {
   singersControl = new FormControl();
   singersList: Singer[] = [];
 
-  constructor(private songService: SongService, private singerService: SingerService) { 
+  constructor(private songService: SongService, private singerService: SingerService, private router: Router) { 
     this.songsControl = new FormControl();
     this.singersControl = new FormControl();
     try {
-    this.songService.getSongs().subscribe(songs => {this.songsList = songs; this.updateSongsList();}, err => { console.log(err); });
+    this.songService.getSongs()
+    .subscribe(songs => {this.songsList = songs; this.orderByName(this.songsList); this.updateSongsList();}, err => { console.log(err); });
     }
     catch { console.log('search-spesific'); }
     try {
-    this.singerService.getSingers().subscribe(singers => {this.singersList = singers; this.updateSingersList();}, err => { console.log(err); });
+    this.singerService.getSingers()
+    .subscribe(singers => {this.singersList = singers; this.orderByName(this.singersList); this.updateSingersList();}, err => { console.log(err); });
     }
     catch { console.log('mini-searching'); }
   }
@@ -62,6 +65,19 @@ export class HeaderComponent implements OnInit {
   public _filterSingers(value: string): Singer[] {
     const filterValue = value.toLowerCase();
     return this.singersList.filter(singer => singer.name.toLowerCase().includes(filterValue));
+  }
+
+  openSong(currentSong: Song) {
+    console.log(currentSong);
+    this.router.navigateByUrl("song/" + currentSong.id);
+  }
+
+  openSongsBySinger(singer: Singer) {
+    this.router.navigateByUrl("songs/" + singer.name);
+  }
+
+  orderByName(list: any[]): void {
+    list.sort((a, b) => a.name.localeCompare(b.name));
   }
 
 }

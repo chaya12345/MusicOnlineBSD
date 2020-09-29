@@ -41,7 +41,11 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             SingersTBL singerId = et.SingersTBL.Where(s => s.name == singerName).FirstOrDefault();
             List<SongsDTO> result = Casts.ToSongsDTO.GetSongs(et.SongsTBL.Where(s => s.singerId == singerId.id).ToList());
-            result.AddRange(GetSongsByTag(singerName));
+            var songsByTag = GetSongsByTag(singerName);
+            if (songsByTag != null)
+            {
+                result.AddRange(songsByTag);
+            }
             return result;
         }
         public static List<SongsDTO> GetSongsByAlbum(string albumName)
@@ -53,15 +57,20 @@ namespace BL
         public static List<SongsDTO> GetSongsByTag(string tagName)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            int tagId = et.TagsTBL.Where(tag => tag.name == tagName).FirstOrDefault().id;
-            List<int?> songsId = et.TagsToSongsTBL.Where(tagToSong => tagToSong.tagId == tagId)
-                .Select(t => t.songId).ToList();
-            List<SongsTBL> songsIncludeTag = new List<SongsTBL>();
-            foreach (int? songId in songsId)
+            var tag = et.TagsTBL.Where(t => t.name == tagName).FirstOrDefault();
+            if (tag != null)
             {
-                songsIncludeTag.Add(et.SongsTBL.Where(song => song.id == songId).FirstOrDefault());
+                int tagId = tag.id;
+                List<int?> songsId = et.TagsToSongsTBL.Where(tagToSong => tagToSong.tagId == tagId)
+                    .Select(t => t.songId).ToList();
+                List<SongsTBL> songsIncludeTag = new List<SongsTBL>();
+                foreach (int? songId in songsId)
+                {
+                    songsIncludeTag.Add(et.SongsTBL.Where(song => song.id == songId).FirstOrDefault());
+                }
+                return Casts.ToSongsDTO.GetSongs(songsIncludeTag);
             }
-            return Casts.ToSongsDTO.GetSongs(songsIncludeTag);
+            return null;
         }
         public static List<SongsDTO> GetSongsByTags(List<string> tags)
         {
@@ -76,7 +85,8 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<SongsTBL> songsIncludeAllTags = new List<SongsTBL>();
-            if (tags != null) {
+            if (tags != null)
+            {
                 List<SongsTBL> songsList = et.SongsTBL.ToList();
                 foreach (SongsTBL song in songsList)
                 {
@@ -100,9 +110,10 @@ namespace BL
         public static void AddSong(SongsTBL song)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            try { 
-            et.SongsTBL.Add(song);
-            et.SaveChanges();
+            try
+            {
+                et.SongsTBL.Add(song);
+                et.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -180,7 +191,7 @@ namespace BL
             int? janer = tagsTBL.Where(t => t.tagTypeId != null).FirstOrDefault().id;
             int janerInt = int.Parse(janer + "");
             //כל השירים שנמצאים בג'אנר הזה
-            List<TagsToSongsTBL> tagsToSong = et.TagsToSongsTBL.Where(t => t.tagId ==janerInt).ToList();
+            List<TagsToSongsTBL> tagsToSong = et.TagsToSongsTBL.Where(t => t.tagId == janerInt).ToList();
             List<SongsTBL> songsInJaner = new List<SongsTBL>();
             List<SimilarSongs> similarSongs = new List<SimilarSongs>();
             //הכנסה לרשימה של השירים את כל השירים ששיכים לג'אנר מסוים
@@ -213,5 +224,5 @@ namespace BL
             return similars;
         }
     }
-    
+
 }

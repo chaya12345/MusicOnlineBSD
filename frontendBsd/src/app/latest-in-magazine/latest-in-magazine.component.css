@@ -2,3 +2,7 @@
     height: 600px;
     background-color: #292929;
 }
+
+.wrap-latest-in-magazine.not-home {
+    background-color: white;
+}

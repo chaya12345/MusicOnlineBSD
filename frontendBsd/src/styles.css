@@ -57,6 +57,7 @@ html, body {
 
 mat-option {
     text-align: right !important;
+    direction: rtl !important;
 }
 
 .mat-form-field-appearance-fill .mat-form-field-flex {

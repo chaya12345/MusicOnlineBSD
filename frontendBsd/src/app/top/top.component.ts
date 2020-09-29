@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TopComponent implements OnInit {
 
   @Input() img: string;
-  @Input() title: string;
+  @Input() _title: string;
   @Input() subtitle: string;
 
   constructor() { }

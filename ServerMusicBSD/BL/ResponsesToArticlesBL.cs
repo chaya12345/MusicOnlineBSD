@@ -16,12 +16,12 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try { 
-            et.ResponsesToArticlesTBL.Add(response);
-            ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == response.articleId).FirstOrDefault();
-            if (article.count_responses == null)
-                article.count_responses = 1;
-            else article.count_responses++;
-            et.SaveChanges();
+                et.ResponsesToArticlesTBL.Add(response);
+                ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == response.articleId).FirstOrDefault();
+                if (article.count_responses == null)
+                    article.count_responses = 1;
+                else article.count_responses++;
+                et.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
             {

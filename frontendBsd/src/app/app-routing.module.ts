@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { SongsBySingerComponent } from './songs-by-singer/songs-by-singer.component';
 import { SongsPageComponent } from './songs-page/songs-page.component';
 
 
@@ -17,6 +18,9 @@ const routes: Routes = [{
 }, {
   path: "song/:id",
   component: SongsPageComponent
+}, {
+  path: "songs/:singerName",
+  component: SongsBySingerComponent
 }, {
   path: "error",
   component: ErrorPageComponent

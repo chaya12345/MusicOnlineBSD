@@ -25,11 +25,11 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try { 
-            SearchingToSingerTBL newSinger = new SearchingToSingerTBL();
-            newSinger.singerId = singerId;
-            newSinger.count_searching = 1;
-            et.SearchingToSingerTBL.Add(newSinger);
-            et.SaveChanges();
+                SearchingToSingerTBL newSinger = new SearchingToSingerTBL();
+                newSinger.singerId = singerId;
+                newSinger.count_searching = 1;
+                et.SearchingToSingerTBL.Add(newSinger);
+                et.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
             {

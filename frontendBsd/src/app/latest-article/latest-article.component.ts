@@ -66,12 +66,6 @@ export class LatestArticleComponent implements OnInit {
       top += el.offsetTop;
       left += el.offsetLeft;
     }
-
-    var res = top < (window.pageYOffset + window.innerHeight) &&
-    left < (window.pageXOffset + window.innerWidth) &&
-    (top + height) > window.pageYOffset &&
-    (left + width) > window.pageXOffset;
-    console.log(res);
   
     return (
       top < (window.pageYOffset + window.innerHeight) &&

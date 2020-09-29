@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Article } from '../classes/article';
 import { ArticleService } from '../services/article.service';
 
@@ -9,6 +9,7 @@ import { ArticleService } from '../services/article.service';
 })
 export class LatestInMagazineComponent implements OnInit {
 
+  @Input() isHome?: boolean = true;
   latestArticles: Article[] = [];
 
   constructor(private articleService: ArticleService) { 
@@ -19,6 +20,7 @@ export class LatestInMagazineComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("isHome: " + this.isHome);
   }
 
   filter(): void {

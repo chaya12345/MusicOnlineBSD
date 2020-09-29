@@ -2,8 +2,8 @@
     <div class="center-content">
         <p class="title-part">אחרונים במגזין.</p>
         <div class="wrap-articles center-object">
-            <latest-article class="space-between" *ngFor="let article of latestArticles" [article]="article"></latest-article>
+            <latest-article dark="true" class="space-between" *ngFor="let article of latestArticles" [article]="article"></latest-article>
         </div>
-        <div class="reload-more-button">עוד...</div>
+        <div *ngIf="isHome==true" class="reload-more-button">עוד...</div>
     </div>
 </div>

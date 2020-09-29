@@ -51,6 +51,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { ResponseAddingComponent } from './response-adding/response-adding.component';
 import { CurrentNavComponent } from './current-nav/current-nav.component';
 import { AllSongsComponent } from './all-songs/all-songs.component';
+import { SongsListComponent } from './songs-list/songs-list.component';
+import { SongsBySingerComponent } from './songs-by-singer/songs-by-singer.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +98,9 @@ import { AllSongsComponent } from './all-songs/all-songs.component';
     ErrorPageComponent,
     ResponseAddingComponent,
     CurrentNavComponent,
-    AllSongsComponent
+    AllSongsComponent,
+    SongsListComponent,
+    SongsBySingerComponent
   ],
   imports: [
     BrowserModule,

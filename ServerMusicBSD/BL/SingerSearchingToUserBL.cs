@@ -25,13 +25,13 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try { 
-            SingerSearchingToUserTBL newLine = new SingerSearchingToUserTBL();
-            newLine.userId = userId;
-            newLine.singerId = singerId;
-            newLine.count_searching = 1;
-            newLine.last_date = DateTime.Today;
-            et.SingerSearchingToUserTBL.Add(newLine);
-            et.SaveChanges();
+                SingerSearchingToUserTBL newLine = new SingerSearchingToUserTBL();
+                newLine.userId = userId;
+                newLine.singerId = singerId;
+                newLine.count_searching = 1;
+                newLine.last_date = DateTime.Today;
+                et.SingerSearchingToUserTBL.Add(newLine);
+                et.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
             {
