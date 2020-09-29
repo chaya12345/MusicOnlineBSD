@@ -25,10 +25,6 @@ export class SongComponent implements OnInit {
   scroll = (event): void => {
     this.addAnimation();
   };
-
-  openClip(): void {
-    this.router.navigateByUrl('song/' + this.clip.id);
-  }
   
   elementInViewport(el) {
     var top = el.offsetTop;

@@ -139,6 +139,7 @@ register button span {
 .center-content {
     margin: 0 15.5vw;
     height: 100%;
+    display: grid;
 }
 
 /* #region(collapsed) [for-smaller-screens] */
@@ -324,6 +325,24 @@ all-songs mat-spinner svg {
 
 all-songs .mat-progress-spinner circle, .mat-spinner circle {
     stroke: #2c8dfb;
+}
+
+/* #endregion */
+
+/* #region(collapsed) [Others] */
+
+button.primary-style {
+    margin: 0 auto 50px;
+    font-family: fb Joker;
+    font-size: 21px;
+    background: #fbc02d;
+    color: white !important;
+    padding: 7px 35px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 /* #endregion */

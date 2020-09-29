@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Article } from '../classes/article';
 import { ArticleService } from '../services/article.service';
 
@@ -9,10 +10,11 @@ import { ArticleService } from '../services/article.service';
 })
 export class LatestInMagazineComponent implements OnInit {
 
-  @Input() isHome?: boolean = true;
+  @Input() dark: boolean = false;
+  anotherVersion: boolean = false;
   latestArticles: Article[] = [];
 
-  constructor(private articleService: ArticleService) { 
+  constructor(private articleService: ArticleService, private router:Router) { 
     try {
     this.articleService.getArticles().subscribe(article => { this.latestArticles = article; this.filter(); }, err => { console.log(err); });
     }
@@ -20,9 +22,8 @@ export class LatestInMagazineComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("isHome: " + this.isHome);
-    if (this.isHome == false) {
-      (document.getElementsByClassName("wrap-latest-in-magazine")[0] as HTMLElement).style.backgroundColor = "white !important";
+    if (this.router.url.includes("song")) {
+      this.anotherVersion = true;
     }
   }
 

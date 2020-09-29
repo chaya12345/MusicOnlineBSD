@@ -67,15 +67,6 @@ export class HeaderComponent implements OnInit {
     return this.singersList.filter(singer => singer.name.toLowerCase().includes(filterValue));
   }
 
-  openSong(currentSong: Song) {
-    console.log(currentSong);
-    this.router.navigateByUrl("song/" + currentSong.id);
-  }
-
-  openSongsBySinger(singer: Singer) {
-    this.router.navigateByUrl("songs/" + singer.name);
-  }
-
   orderByName(list: any[]): void {
     list.sort((a, b) => a.name.localeCompare(b.name));
   }

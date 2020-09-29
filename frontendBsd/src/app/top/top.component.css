@@ -46,3 +46,10 @@ div.content div {
     font-size: 28px;
     line-height: 34px;
 }
+
+.serach-box {
+    position: relative;
+    top: -600px;
+    right: 85vw;
+    z-index: 99;
+}

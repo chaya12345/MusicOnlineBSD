@@ -30,12 +30,15 @@
     background-position: center;
 }
 
-.swiper-slide div p {
+.swiper-slide div a {
     transition: .4s;
     cursor: pointer;
+    padding-bottom: 15px;
+    border-bottom: solid 1px #ffffff8c;
+    display: block;
 }
 
-.swiper-slide div p:hover { 
+.swiper-slide div a:hover { 
     transform: translateX(10px);
 }
 
@@ -50,9 +53,4 @@
     color: #ffffff8c;
     float: left;
     margin-top: 30px;
-}
-
-.swiper-slide div p {
-    padding-bottom: 15px;
-    border-bottom: solid 1px #ffffff8c;
 }

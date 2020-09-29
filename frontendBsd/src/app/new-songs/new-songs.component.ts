@@ -55,8 +55,4 @@ export class NewSongsComponent implements OnInit {
     this.newSongsList = this.newSongsList.slice(0, 5);
   }
 
-  openSong(songId: number): void {
-    this.router.navigateByUrl('song/' + songId);
-  }
-
 }

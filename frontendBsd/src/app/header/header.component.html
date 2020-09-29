@@ -11,8 +11,8 @@
             <input type="text" matInput [formControl]="songsControl" [matAutocomplete]="autoSongs">
             <mat-icon matPrefix>search</mat-icon>
             <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete">
-                <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name" (click)="openSong(song)">
-                    {{song.name}}
+                <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name">
+                    <a [href]="'song/'+song.id">{{song.name}}</a>
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
@@ -24,8 +24,8 @@
                 <mat-icon>search</mat-icon>
             </button>
             <mat-autocomplete autoActiveFirstOption #autoSingers="matAutocomplete">
-                <mat-option *ngFor="let singer of filteredSingers | async" [value]="singer.name" (click)="openSongsBySinger(singer)">
-                    {{singer.name}}
+                <mat-option *ngFor="let singer of filteredSingers | async" [value]="singer.name">
+                    <a [href]="'songs/'+singer.name">{{singer.name}}</a>
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>

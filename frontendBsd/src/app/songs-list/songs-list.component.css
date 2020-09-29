@@ -14,15 +14,6 @@
     margin: 25px 12px;
 }
 
-button.reloadMore {
-    margin: 0 auto 50px;
-    font-family: fb Joker;
-    font-size: 21px;
-    background: #fbc02d;
-    color: white;
-    padding: 7px 35px;
-}
-
 mat-spinner {
     height: 20px !important;
     width: 20px !important;

@@ -1,4 +1,4 @@
-<div class="wrap-small-song" (click)="openClip()">
+<a class="wrap-small-song" [href]="'song/'+song.id">
     <div class="img" [style.background-image]="'url(../../assets/images/'+song.image_location+')'">
         <div class="above"><mat-icon>play_circle_fill</mat-icon></div>
     </div>
@@ -6,4 +6,4 @@
         <p>{{song.title}}</p>
         <span>{{song.name}}</span>
     </div>
-</div>
+</a>
