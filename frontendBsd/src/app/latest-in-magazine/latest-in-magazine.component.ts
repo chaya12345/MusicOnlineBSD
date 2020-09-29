@@ -21,6 +21,9 @@ export class LatestInMagazineComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("isHome: " + this.isHome);
+    if (this.isHome == false) {
+      (document.getElementsByClassName("wrap-latest-in-magazine")[0] as HTMLElement).style.backgroundColor = "white !important";
+    }
   }
 
   filter(): void {
