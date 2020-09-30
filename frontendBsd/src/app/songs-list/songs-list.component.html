@@ -1,7 +1,7 @@
 <div class="wrap-songs-list">
     <div class="wrap-songs">
         <div class="wrap-song" *ngFor="let item of items">
-          <song [clip]="item" *ngIf="item!=null"></song>
+          <song [song]="item" *ngIf="item!=null"></song>
         </div>
         <span *ngIf="songsList==null||songsList.length==0">- לא נמצאו שירים בסינון הנוכחי -</span>
       </div>

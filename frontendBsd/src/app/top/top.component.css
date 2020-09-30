@@ -47,9 +47,35 @@ div.content div {
     line-height: 34px;
 }
 
-.serach-box {
+.tool-box {
     position: relative;
-    top: -600px;
-    right: 85vw;
+    top: -656px;
     z-index: 99;
+    right: 80vw;
+    display: flex;
+}
+
+.serach-box {
+    background: #ffffff38;
+    padding: 13px 18px;
+    border-radius: 50px;
+    width: 200px;
+    font-family: fb Joker;
+    font-size: 21px;
+    margin-right: 6px;
+    transition: .4s;
+}
+
+.serach-box:hover {
+    background-color: #ffffff5c;
+}
+
+.serach-box:focus-within {
+    background: white;
+}
+
+.follow-up-button {
+    color: white;
+    transform: scale(1.4);
+    margin: 6px 15px;
 }

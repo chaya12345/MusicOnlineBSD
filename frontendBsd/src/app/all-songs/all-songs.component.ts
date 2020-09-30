@@ -1,4 +1,3 @@
-import { ChangeDetectorRef } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Song } from '../classes/song';
 import { SongService } from '../services/song.service';

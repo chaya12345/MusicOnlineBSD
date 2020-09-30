@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Song } from '../classes/song';
 import { LikeService } from '../services/like.service';
+import { ResponseToSongsService } from '../services/response-to-songs.service';
 import { SongService } from '../services/song.service';
 
 @Component({
@@ -14,6 +15,8 @@ export class FooterSongComponent implements OnInit {
   @Input() song: Song;
   @Input() is_parent_hovered: boolean;
   song_functionality;
+  countRes: number = 0;
+
   isPlay: boolean = false;
   audio: any = new Audio();
   max: number = 0;
@@ -21,12 +24,14 @@ export class FooterSongComponent implements OnInit {
   intervalSlide;
   num: number = 1;
 
-  constructor(private song_service: LikeService, private songService: SongService) { }
+  constructor(private song_service: LikeService, private songService: SongService,
+    private resToSongsService: ResponseToSongsService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.song_functionality = this.song_service;
+    this.getCountResponses();
     this.audio.src = '../../assets/songs/' + this.song.file_location;
-    this.max = this.audio.duration
+    this.max = this.audio.duration;
   }
 
   sign(event): void {
@@ -50,4 +55,12 @@ export class FooterSongComponent implements OnInit {
     this.song.count_like=this.song.count_like-1;
     this.songService.decreaseLikeToSong(this.song.id).subscribe();
   }
+
+  getCountResponses(): void {
+    try {
+      this.resToSongsService.getCountResponsesToSong(this.song.id)
+      .subscribe(count => { this.countRes = count; this.cdr.detectChanges(); console.log(this.countRes) }, err => { console.log(err); }); }
+    catch { console.log("count resopnses failed"); }
+  }
+
 }

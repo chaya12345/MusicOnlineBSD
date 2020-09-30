@@ -17,6 +17,9 @@ export class ResponseToSongsService {
   public getSongResponses(songId: number): Observable<ResponsesToSongs[]> {
     return this.httpClient.get<ResponsesToSongs[]>(this.baseUrl + "getSongResponses?songId=" + songId);
   }
+  public getCountResponsesToSong(songId: number): Observable<number> {
+    return this.httpClient.get<number>(this.baseUrl + "GetCountResponsesToSong?songId=" + songId);
+  }
   public deleteResponse(responseId: number): Observable<any> {
     return this.httpClient.delete(this.baseUrl + "DeleteResponse?responseId?=" + responseId);
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
+  // @ViewChild('option', {static: true}) option: ElementRef<HTMLElement>;
   
   filteredSongs: Observable<Song[]>;
   songsList: Song[] = [];
@@ -69,6 +71,18 @@ export class HeaderComponent implements OnInit {
 
   orderByName(list: any[]): void {
     list.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  triggerClick() {
+    // console.log(this.option);
+      // let el: HTMLElement = this.option.nativeElement;
+      let el: HTMLElement = document.querySelector('a.search-song')[0];
+      console.log(el);
+      el.click();
+  }
+
+  search(value: string) {
+    console.log(value);
   }
 
 }

@@ -18,19 +18,36 @@
 }
 
 .info-song {
-    display: flex;
     height: fit-content;
-    padding: 15px 35px;
+    padding: 15px 17px;
     border-top: solid 1px #ffffff69;
+    display: grid;
+    grid-template-columns: fit-content(40%) fit-content(40%) auto;
 }
 
 .info-song span {
-    margin-right: auto;
     font-weight: 100;
     font-family: calibri;
-    font-size: 18px;
+    display: table;
 }
 
-.info-song span mat-icon {
+.info-song span.likes mat-icon {
     color: #F44336;
+}
+
+span.responses {
+    margin-right: 6px !important;
+}
+
+span.responses, span.views {
+    transition: .4s;
+    opacity: 0;
+}
+
+.wrap-footer-song:hover span.responses, .wrap-footer-song:hover span.views {
+    opacity: 1;
+}
+
+span.likes {
+    margin-right: auto;
 }

@@ -9,7 +9,7 @@ import { Song } from '../classes/song';
 })
 export class SongComponent implements OnInit {
 
-  @Input() clip: Song;
+  @Input() song: Song;
 
   constructor(private router: Router) { }
 

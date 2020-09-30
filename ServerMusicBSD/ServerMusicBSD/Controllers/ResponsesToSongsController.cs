@@ -23,6 +23,10 @@ namespace ServerMusicBSD.Controllers
         {
             return ResponsesToSongsBL.GetSongResponses(songId);
         }
+        public int GetCountResponsesToSong(int songId)
+        {
+            return ResponsesToSongsBL.GetCountResponsesToSong(songId);
+        }
         public void DeleteResponse(int responseId)
         {
             ResponsesToSongsBL.DeleteResponse(responseId);

@@ -18,6 +18,9 @@ export class ResponsesToArticlesService {
   public getArticleResponses(articleId: number): Observable<ResponsesToArticles[]> {
     return this.httpClient.get<ResponsesToArticles[]>(this.baseUrl + "GetArticleResponses?articleId=" + articleId);
   }
+  public getCountResponsesToArticle(articleId: number): Observable<number> {
+    return this.httpClient.get<number>(this.baseUrl + "GetCountResponsesToArticle?articleId=" + articleId);
+  }
   public deleteResponse(responseId: number): Observable<any> {
     return this.httpClient.delete(this.baseUrl + "DeleteResponse?responseId?=" + responseId);
   }

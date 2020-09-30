@@ -1,4 +1,4 @@
-.wrap-clip {
+.wrap-song {
     background-color: white;
     margin: auto;
     height: 300px;
@@ -22,11 +22,11 @@
     }
 }
 
-.wrap-clip:hover .wrap-play-icon {
+.wrap-song:hover .wrap-play-icon {
     background-color: #0000002a;
 }
 
-.wrap-clip:hover mat-icon {
+.wrap-song:hover mat-icon {
     opacity: 1;
 }
 

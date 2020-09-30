@@ -42,6 +42,11 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToResponsesToSongsDTO.GetResponses(et.ResponsesToSongsTBL.Where(r => r.songId == songId).ToList());
         }
+        public static int GetCountResponsesToSong(int songId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            return et.ResponsesToSongsTBL.Count(res => res.songId == songId);
+        }
         public static void DeleteResponse(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
