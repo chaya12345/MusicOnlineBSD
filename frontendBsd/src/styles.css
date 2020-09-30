@@ -346,3 +346,37 @@ a {
 }
 
 /* #endregion */
+
+/* #region(collapsed) [Tools] */
+
+tools .mat-input-element {
+    color: #252525;
+    border: none;
+    font-family: fb Joker;
+    font-size: 21px;
+}
+
+tools mat-menu {
+    direction: rtl;
+    text-align: right;
+}
+
+.mat-menu-content button {
+    text-align: right;
+    font-family: fb Joker;
+    font-size: 19px;
+    padding: 0 22px;
+}
+
+mat-slide-toggle {
+    direction: rtl;
+    width: fit-content;
+    margin: 0 20px;
+    height: fit-content !important;
+}
+
+span.mat-slide-toggle-content {
+    margin-right: 8px;
+}
+
+/* #endregion */

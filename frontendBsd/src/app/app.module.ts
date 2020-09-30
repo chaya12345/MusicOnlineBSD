@@ -53,6 +53,7 @@ import { CurrentNavComponent } from './current-nav/current-nav.component';
 import { AllSongsComponent } from './all-songs/all-songs.component';
 import { SongsListComponent } from './songs-list/songs-list.component';
 import { SongsBySingerComponent } from './songs-by-singer/songs-by-singer.component';
+import { ToolsComponent } from './tools/tools.component';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import { SongsBySingerComponent } from './songs-by-singer/songs-by-singer.compon
     CurrentNavComponent,
     AllSongsComponent,
     SongsListComponent,
-    SongsBySingerComponent
+    SongsBySingerComponent,
+    ToolsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,17 +1,5 @@
 <div class="wrap-main">
-    <div class="tools">
-        <div class="search-box">
-            <input matInput placeholder="חפש...">
-            <mat-icon matPrefix>search</mat-icon>
-        </div>
-        <button mat-icon-button matTooltip="הוסף למעקב שלי" matTooltipClass="blue-tooltip">
-            <mat-icon>notifications</mat-icon>
-        </button>
-        <button mat-icon-button matTooltip="שמור בפלייליסט שלי" matTooltipClass="blue-tooltip">
-            <mat-icon>star_border</mat-icon>
-        </button>
-        <span>{{song.date | date: 'd/M/yyyy H:mm'}}</span>
-    </div>
+    <tools searchBox="true" followUp="true" addToPlaylist="true" [sideText]="song.date | date: 'd/M/yyyy H:mm'"></tools>
     <div class="wrap-video" [ngSwitch]="song.type">
         <mat-video *ngSwitchCase="'video'" [src]="'../../assets/songs/'+song.file_location" [keyboard]="false">
         </mat-video>

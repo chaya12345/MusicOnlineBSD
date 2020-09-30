@@ -3,11 +3,6 @@
     padding: 50px 140px;
 }
 
-.wrap-main .tools span {
-    font-size: 17px;
-    margin-left: auto;
-}
-
 .wrap-main p {
     font-family: fb Joker;
     font-size: 23px;
@@ -23,30 +18,4 @@
     box-shadow: 0 0 7px #0000000f;
     margin: 40px 0;
     direction: ltr;
-}
-
-.tools {
-    display: grid;
-    grid-template-columns: fit-content(50%) fit-content(50%) fit-content(50%) auto;
-    direction: ltr;
-    padding: 7px 0 7px 30px;
-    color: #252525;
-    margin: 7px 0 60px;
-}
-
-.search-box {
-    border-bottom: dashed 1px #252525;
-    direction: rtl;
-    padding: 8px 7px;
-    font-family: fb Joker;
-    font-size: 21px;
-    margin: 0 20px;
-    display: flex;
-    color: #252525;
-    width: 200px;
-    transition: .4s;
-}
-
-.search-box:hover {
-    background: whitesmoke;
 }

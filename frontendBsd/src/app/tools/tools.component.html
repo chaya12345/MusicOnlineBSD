@@ -1,0 +1,35 @@
+<div class="wrap-tools">
+
+    <div class="search-box" *ngIf="searchBox">
+        <input id="search-input" matInput placeholder="חפש...">
+        <mat-icon matPrefix>search</mat-icon>
+    </div>
+
+    <button mat-icon-button matTooltip="הוסף למעקב" matTooltipClass="blue-tooltip" *ngIf="followUp">
+        <mat-icon>notifications</mat-icon>
+    </button>
+
+    <button mat-icon-button matTooltip="הוסף לרשימת השמעה" matTooltipClass="blue-tooltip" *ngIf="addToPlaylist">
+        <mat-icon>star_border</mat-icon>
+    </button>
+
+    <div class="order-by-menu" *ngIf="orderBy">
+        <button mat-stroked-button [matMenuTriggerFor]="menu" class="order-by-button">
+            <mat-icon>arrow_drop_down</mat-icon>סדר לפי
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item disabled>מוגדר: סדר יורד</button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item>שם שיר</button>
+            <button mat-menu-item>תאריך</button>
+            <button mat-menu-item>כמות צפיות</button>
+            <button mat-menu-item>כמות לייקים</button>
+            <button mat-menu-item>כמות תגובות</button>
+        </mat-menu>
+    </div>
+
+    <mat-slide-toggle *ngIf="orderBy" color="primary">סדר עולה</mat-slide-toggle>
+
+    <span *ngIf="sideText!=''&&sideText!=null">{{sideText}}</span>
+
+</div>
