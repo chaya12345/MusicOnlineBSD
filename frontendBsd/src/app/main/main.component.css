@@ -27,7 +27,7 @@
 
 .tools {
     display: grid;
-    grid-template-columns: fit-content(50%) fit-content(50%) auto;
+    grid-template-columns: fit-content(50%) fit-content(50%) fit-content(50%) auto;
     direction: ltr;
     padding: 7px 0 7px 30px;
     color: #252525;

@@ -7,6 +7,9 @@
         <button mat-icon-button matTooltip="הוסף למעקב שלי" matTooltipClass="blue-tooltip">
             <mat-icon>notifications</mat-icon>
         </button>
+        <button mat-icon-button matTooltip="שמור בפלייליסט שלי" matTooltipClass="blue-tooltip">
+            <mat-icon>star_border</mat-icon>
+        </button>
         <span>{{song.date | date: 'd/M/yyyy H:mm'}}</span>
     </div>
     <div class="wrap-video" [ngSwitch]="song.type">
@@ -21,4 +24,3 @@
         [likesCnt]="song.count_like"></info>
     <responses type="song"></responses>
 </div>
-<!-- [responsesSongList]="responses" -->

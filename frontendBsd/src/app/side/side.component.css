@@ -1,5 +1,5 @@
 .wrap-side {
-    padding: 50px 0 50px 20px;
+    padding: 70px 0 50px 20px;
 }
 
 .wrap-side p.title-part {
@@ -17,4 +17,8 @@
 
 .latest-in-magazine {
     padding: 35px 0 25px;
+}
+
+.title-part {
+    color: #252525 !important;
 }
