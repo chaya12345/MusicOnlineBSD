@@ -1,7 +1,0 @@
-<div class="wrap-container-viewed wrapper">
-    <top title="נצפים" icon="star"></top>
-    <div class="wrap-songs" *ngIf="viewedSongsList!=null&&viewedSongsList!=undefined&&viewedSongsList.length!=0">
-        <song *ngFor="let song of viewedSongsList" [song]="song"></song>
-    </div>
-    <undefined *ngIf="viewedSongsList==null||viewedSongsList==undefined||viewedSongsList.length==0"></undefined>
-</div>

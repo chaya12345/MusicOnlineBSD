@@ -1,7 +1,0 @@
-<div class="wrap-container-favorite wrapper">
-    <top title="אהובים" icon="thumb_up_alt"></top>
-    <div class="wrap-songs" *ngIf="favoriteSongsList!=null&&favoriteSongsList!=undefined&&favoriteSongsList.length!=0">
-        <song *ngFor="let song of favoriteSongsList" [song]="song"></song>
-    </div>
-    <undefined *ngIf="favoriteSongsList==null||favoriteSongsList==undefined||favoriteSongsList.length==0"></undefined>
-</div>

@@ -1,8 +1,0 @@
-<div class="wrap-container-magazine wrapper wrapper-main">
-  <top title="מגזין" icon="queue_music"></top>
-  <div class="wrap-articles" *ngIf="articlesList!=null&&articlesList!=undefined&&articlesList.length!=0">
-    <article *ngFor="let article of articlesList" [article]="article"></article>
-    <nav-button text="למגזין המלא"></nav-button>
-  </div>
-  <undefined *ngIf="articlesList==null||articlesList==undefined||articlesList.length==0"></undefined>
-</div>

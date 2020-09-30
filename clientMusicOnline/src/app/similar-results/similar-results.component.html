@@ -1,9 +1,0 @@
-<div class="wrap-similar-results">
-    <div class="similar-results">
-        <h3>תוצאות דומות</h3>
-        <div class="wrap-song" *ngIf="similarSongs!=null&&similarSongs!=undefined&&similarSongs.length!=0">
-            <song *ngFor="let song of similarSongs" [song]="song"></song>
-        </div>
-        <undefined *ngIf="similarSongs==null||similarSongs==undefined||similarSongs.length==0"></undefined>
-    </div>
-</div>
