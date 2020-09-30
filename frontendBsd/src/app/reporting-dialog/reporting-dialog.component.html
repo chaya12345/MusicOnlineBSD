@@ -22,29 +22,31 @@
             <button mat-button (click)="onNoClick()">בטל</button>
             <button mat-button [mat-dialog-close]="data.mail" cdkFocusInitial>שלח דיווח</button>
         </div> -->
-        <form [formGroup]='formReport' (ngSubmit)='onSubmit()'>
+        <form>
             <mat-form-field appearance="fill">
-                <input matInput [(ngModel)]="data.name" placeholder="שם" formControlName='name'>
+                <input matInput placeholder="שם">
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill">
-                <input matInput [(ngModel)]="data.phone" placeholder="טלפון זמין" formControlName='phone'>
+                <input matInputplaceholder="טלפון זמין">
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill">
-                <input matInput [(ngModel)]="data.mail" placeholder="מייל" formControlName='mail'>
+                <input matInput placeholder="מייל">
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill">
-                <textarea matInput [(ngModel)]="data.messange" placeholder="תוכן ההודעה..."
-                    formControlName='messange'></textarea>
+                <textarea matInput placeholder="תוכן ההודעה..."></textarea>
             </mat-form-field>
             <p>לתשומת לבכם! דיווח עם פרטים חסרים או שאינם מדוייקים לא יטופל.</p>
 
             <div mat-dialog-actions>
-                <button mat-button (click)="onNoClick()">בטל</button>
-                <button mat-button [mat-dialog-close]="data.mail" cdkFocusInitial type="submit" [disabled]='formRespons.invalid'>שלח דיווח</button>
+                <button mat-button>בטל</button>
+                <button mat-button cdkFocusInitial type="submit">שלח דיווח</button>
             </div>
+             <!-- [disabled]='formRespons.invalid' (click)="onNoClick()" [(ngModel)]="data.messange" [(ngModel)]="data.mail" -->
+             <!-- formControlName='mail' formControlName='messange' [(ngModel)]="data.phone" formControlName='phone' -->
+             <!-- [(ngModel)]="data.name" formControlName='name' [mat-dialog-close]="data.mail" [formGroup]='formReport' (ngSubmit)='onSubmit()' -->
         </form>
     </div>
 </div>

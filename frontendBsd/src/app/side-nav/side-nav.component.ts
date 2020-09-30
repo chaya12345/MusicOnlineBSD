@@ -57,11 +57,11 @@ export class SideNavComponent implements OnInit {
     else this.navigateStr = "ראשי";
   }
 
-  open_menu(): void {
+  open_menu(e): void {
     this.open = !this.open;
   }
 
-  close_nav(): void {
+  close_nav(e): void {
     this.show = !this.show;
     if (!this.show)
       this.open = false;

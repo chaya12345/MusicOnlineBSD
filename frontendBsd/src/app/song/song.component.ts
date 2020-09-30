@@ -47,7 +47,7 @@ export class SongComponent implements OnInit {
   }
 
   addAnimation(): void {
-    var wrappers = document.getElementsByClassName("wrap-clip");
+    var wrappers = document.getElementsByClassName("wrap-song");
     for (var i = 0; i < wrappers.length; i++) {
       if (this.elementInViewport(wrappers[i]) == true) {
       (wrappers[i] as HTMLElement).style.animationName = "bigger";

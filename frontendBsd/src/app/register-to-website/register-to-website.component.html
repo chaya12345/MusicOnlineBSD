@@ -5,18 +5,18 @@
         <p>גם אני רוצה להתעדכן בחדשות המוזיקה אונליין</p>
         <mat-icon>expand_more</mat-icon>
 
-        <form [formGroup]='formRegister' (ngSubmit)='onSubmit()'>
+        <form>
 
             <mat-form-field>
                 <mat-label>כתובת מייל</mat-label>
-                <input placeholder="example@gmail.com" matInput formControlName='email'>
+                <input placeholder="example@gmail.com" matInput>
             </mat-form-field>
 
             <div mat-dialog-actions>
-                <button mat-button (click)="onNoClick()">ביטול</button>
-                <button mat-button [mat-dialog-close]="data.email" cdkFocusInitial type="submit">הירשם</button>
+                <button mat-button>ביטול</button>
+                <button mat-button cdkFocusInitial type="submit">הירשם</button>
             </div>
-
+            <!-- [formGroup]='formRegister'  formControlName='email' (click)="onNoClick()" (ngSubmit)='onSubmit()' [mat-dialog-close]="data.email" -->
         </form>
     </div>
 </div>
