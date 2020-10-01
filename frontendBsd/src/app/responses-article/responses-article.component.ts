@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { MatAccordion } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { ResponsesToArticles } from '../classes/responsesToArticles';

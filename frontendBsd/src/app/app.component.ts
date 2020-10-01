@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +12,6 @@ export class AppComponent {
     document.querySelector("html").addEventListener("mousewheel", this.wheelDistance.bind(this));
   }
 
-  // @ViewChild('scroll', { read: ElementRef, static: true }) public scroll: ElementRef<any>;
-
-  // @HostListener('window:scroll')
   wheelDistance(evt) {
     var w = evt.wheelDelta;
     console.log('scrolling');

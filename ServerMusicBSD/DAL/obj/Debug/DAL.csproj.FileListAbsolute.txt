@@ -57,3 +57,14 @@ C:\BsdMusicOnline\ServerMusicBSD\DAL\obj\Debug\DAL.dll
 C:\BsdMusicOnline\ServerMusicBSD\DAL\obj\Debug\DAL.pdb
 C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
 C:\BsdMusicOnline\ServerMusicBSD\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+D:\projectBSD\ServerMusicBSD\DAL\bin\Debug\DAL.dll.config
+D:\projectBSD\ServerMusicBSD\DAL\bin\Debug\DAL.dll
+D:\projectBSD\ServerMusicBSD\DAL\bin\Debug\DAL.pdb
+D:\projectBSD\ServerMusicBSD\DAL\bin\Debug\EntityFramework.dll
+D:\projectBSD\ServerMusicBSD\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\projectBSD\ServerMusicBSD\DAL\bin\Debug\EntityFramework.xml
+D:\projectBSD\ServerMusicBSD\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\projectBSD\ServerMusicBSD\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+D:\projectBSD\ServerMusicBSD\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\projectBSD\ServerMusicBSD\DAL\obj\Debug\DAL.dll
+D:\projectBSD\ServerMusicBSD\DAL\obj\Debug\DAL.pdb

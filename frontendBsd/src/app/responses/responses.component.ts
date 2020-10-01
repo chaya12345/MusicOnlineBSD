@@ -16,7 +16,7 @@ export class ResponsesComponent implements OnInit {
   @Input() responsesArticleList?: ResponsesToArticles[] = [];
   responses: any;
 
-  constructor(private responseToSongsService: ResponseToSongsService, private activatedRoute: ActivatedRoute,
+  constructor(private responseToSongsService: ResponseToSongsService, public activatedRoute: ActivatedRoute,
     private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
