@@ -18,7 +18,10 @@ namespace BL
             List<string> tags = new List<string>();
             foreach (TagsToAtriclesDTO tag in tagsToArticle)
             {
-                tags.Add(et.TagsTBL.Where(t => t.id == tag.tagId && t.isShow == true).FirstOrDefault().name);
+                try
+                {
+                    tags.Add(et.TagsTBL.Where(t => t.id == tag.tagId && t.isShow == true).FirstOrDefault().name);
+                } catch { }
             }
             return tags;
         }

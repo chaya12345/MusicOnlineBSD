@@ -72,7 +72,7 @@ export class MainComponent implements OnInit {
       this.views = this.article.count_views;
       this.likes = this.article.count_like;
       if (this.article.video != null) {
-        this.file = this.article.video;
+        this.file = '../../assets/songs/' + this.article.video;
         this.type = "video";
       }
       if (this.article.audio1 != null) {
