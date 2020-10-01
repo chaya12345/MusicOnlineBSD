@@ -18,7 +18,7 @@ export class ResponseAddingComponent implements OnInit {
 
   @Output() onSendToSong: EventEmitter<ResponsesToSongs> = new EventEmitter<ResponsesToSongs>()
   @Output() onSendToArticle: EventEmitter<ResponsesToArticles> = new EventEmitter<ResponsesToArticles>()
-  @ViewChild(MatAccordion) accordion: MatAccordion;
+  @ViewChild(MatAccordion, { static: true }) accordion: MatAccordion;
   isWantToAdd: boolean = false;
   responseForm: FormGroup;
   newResponseToSong: ResponsesToSongs;
