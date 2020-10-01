@@ -11,21 +11,21 @@ namespace BL
 {
     public class TagsToArticlesBL
     {
-        public static List<string> GetTagsNamesToArticle(int articleId)
+        public static List<string> GetTagsNamesToArticle(int articleId, bool? all)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<TagsToAtriclesDTO> tagsToArticle = GetTagsToArticle(articleId);
             List<string> tags = new List<string>();
             foreach (TagsToAtriclesDTO tag in tagsToArticle)
             {
-                try
+                TagsTBL currentTag = et.TagsTBL.Where(t => t.id == tag.tagId && (t.isShow == true || all == true)).FirstOrDefault();
+                if (currentTag != null)
                 {
-                    tags.Add(et.TagsTBL.Where(t => t.id == tag.tagId && t.isShow == true).FirstOrDefault().name);
-                } catch { }
+                    tags.Add(currentTag.name);
+                }
             }
             return tags;
         }
-
         public static List<TagsToAtriclesDTO> GetTagsToArticle(int articleId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();

@@ -89,7 +89,7 @@ export class MainComponent implements OnInit {
         .subscribe(tag => { this.tags = tag; this.cdr.detectChanges(); }, err => console.log(err));
     }
     else if (this.navigate == "article") {
-      this.tagsToArticlesService.getTagsNamesToArticle(this.article.id)
+      this.tagsToArticlesService.getTagsNamesToArticle(this.article.id, true)
         .subscribe(tag => { this.tags = tag; this.cdr.detectChanges(); }, err => console.log(err));
     }
   }

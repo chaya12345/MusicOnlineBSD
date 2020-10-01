@@ -51,7 +51,11 @@ namespace BL
         public static List<SongsDTO> GetSongsByAlbum(string albumName)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            long id = et.AlbumsTBL.Where(a => a.name == albumName).FirstOrDefault().id;
+            long id = 0;
+            AlbumsTBL currentAlbum = et.AlbumsTBL.Where(a => a.name == albumName).FirstOrDefault();
+            if (currentAlbum != null) {
+                id = currentAlbum.id;
+            }
             return Casts.ToSongsDTO.GetSongs(et.SongsTBL.Where(a => a.albumId == id).ToList());
         }
         public static List<SongsDTO> GetSongsByTag(string tagName)
@@ -94,7 +98,12 @@ namespace BL
                     bool isContain = true;
                     foreach (var tagName in tags)
                     {
-                        int tagId = et.TagsTBL.Where(t => t.name == tagName).FirstOrDefault().id;
+                        TagsTBL currntTag = et.TagsTBL.Where(t => t.name == tagName).FirstOrDefault();
+                        int tagId = 0;
+                        if (currntTag != null)
+                        {
+                            tagId = currntTag.id;
+                        }
                         if (tagsToSong.Select(tag => tag.tagId).Contains(tagId) == false)
                         {
                             isContain = false;
@@ -140,7 +149,11 @@ namespace BL
             List<TagsToSongsDTO> tagsToSong = TagsToSongsBL.GetTagsToSong(songId.Value);
             foreach (string tagName in tags)
             {
-                int tagId = et.TagsTBL.Where(t => t.name == tagName).FirstOrDefault().id;
+                var currentTag = et.TagsTBL.Where(t => t.name == tagName).FirstOrDefault();
+                int tagId = 0;
+                if (currentTag != null) {
+                    tagId = currentTag.id;
+                }
                 if (tagsToSong.Select(tag => tag.tagId).Contains(tagId) == true)
                     count++;
             }

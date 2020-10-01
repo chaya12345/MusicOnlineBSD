@@ -14,10 +14,10 @@ export class AppComponent {
 
   wheelDistance(evt) {
     var w = evt.wheelDelta;
-    console.log('scrolling');
-    console.log(w);
+    // console.log('scrolling');
+    // console.log(w);
     var pos = document.documentElement.scrollTop || document.body.scrollTop;
-    console.log(pos);
+    // console.log(pos);
     if (pos <= 300 && w > 0) {
       this.gotoTop();
     }
@@ -30,6 +30,6 @@ export class AppComponent {
       left: 0,
       behavior: 'smooth'
     });
-    console.log('bsd');
+    // console.log('bsd');
   }
 }

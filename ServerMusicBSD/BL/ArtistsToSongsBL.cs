@@ -34,7 +34,12 @@ namespace BL
             List<string> artistsNames = new List<string>();
             foreach (ArtistsToSongsDTO artist in artists)
             {
-                string name = et.ArtistsTBL.Where(a => a.id == artist.artistId).FirstOrDefault().name;
+                string name = null;
+                ArtistsTBL currentArtist = et.ArtistsTBL.Where(a => a.id == artist.artistId).FirstOrDefault();
+                if (currentArtist != null)
+                {
+                    name = currentArtist.name;
+                }
                 if (!artistsNames.Contains(name))
                     artistsNames.Add(name);
             }

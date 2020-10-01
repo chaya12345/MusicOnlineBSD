@@ -19,7 +19,12 @@ namespace BL
         public static long? GetCountOfSearchingToSinger(int singerId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return et.SearchingToSingerTBL.Where(s => s.singerId == singerId).FirstOrDefault().count_searching;
+            SearchingToSingerTBL currentSearch = et.SearchingToSingerTBL.Where(s => s.singerId == singerId).FirstOrDefault();
+            if (currentSearch != null)
+            {
+                return currentSearch.count_searching;
+            }
+            return 0;
         }
         public static void AddSearchingToSinger(int singerId)
         {

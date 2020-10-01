@@ -13,8 +13,8 @@ export class TagsToArticlesService {
   public getTagsToArticle(articleId:number):Observable<TagsToArticle[]>{
     return this.httpClient.get<TagsToArticle[]>(this.baseUrl+"GetTagsToArticle?articleId="+articleId);
   }
-  public getTagsNamesToArticle(articleId:number):Observable<string[]>{
-    return this.httpClient.get<string[]>(this.baseUrl+"GetTagsNamesToArticle?articleId="+articleId);
+  public getTagsNamesToArticle(articleId:number, all?:boolean):Observable<string[]>{
+    return this.httpClient.get<string[]>(this.baseUrl+"GetTagsNamesToArticle?articleId="+articleId+"&all="+all);
   }
   public addTagToArticle(tagToArticle:TagsToArticle):Observable<any>{
     return this.httpClient.post(this.baseUrl + "PostTagToArticle", tagToArticle);

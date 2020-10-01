@@ -18,9 +18,9 @@ namespace ServerMusicBSD.Controllers
         {
             return TagsToArticlesBL.GetTagsToArticle(ArticleId);
         }
-        public List<string> GetTagsNamesToArticle(int ArticleId)
+        public List<string> GetTagsNamesToArticle(int ArticleId, bool? all = false)
         {
-            return TagsToArticlesBL.GetTagsNamesToArticle(ArticleId);
+            return TagsToArticlesBL.GetTagsNamesToArticle(ArticleId, all);
         }
         public static void PostTagToArticle([FromBody] TagsToArticlesTBL tagToArticle)
         {
