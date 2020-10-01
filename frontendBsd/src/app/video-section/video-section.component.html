@@ -1,4 +1,4 @@
-<div class="wrap-video" [ngSwitch]="type">
+<div class="wrap-video" [ngSwitch]="type" [class.wrapNotFound]="type==''">
     <mat-video *ngSwitchCase="'video'" [src]="src" [keyboard]="false">
     </mat-video>
     <mat-video *ngSwitchCase="'audio'" [src]="src" [keyboard]="false" [poster]="img"></mat-video>

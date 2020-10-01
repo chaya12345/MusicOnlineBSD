@@ -4,6 +4,9 @@
     box-shadow: 0 0 7px #0000000f;
     margin: 40px 0;
     direction: ltr;
+}
+
+.wrap-video.wrapNotFound {
     display: flex;
 }
 
