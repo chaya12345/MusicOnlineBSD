@@ -2,20 +2,3 @@
     width: 73vw;
     padding: 50px 140px;
 }
-
-.wrap-main p {
-    font-family: fb Joker;
-    font-size: 23px;
-    line-height: 35px;
-    white-space: pre-wrap;
-    padding: 0 0 0 50px;
-    margin-bottom: 25px;
-}
-
-.wrap-video {
-    height: 450px;
-    width: 800px;
-    box-shadow: 0 0 7px #0000000f;
-    margin: 40px 0;
-    direction: ltr;
-}

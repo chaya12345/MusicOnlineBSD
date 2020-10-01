@@ -14,7 +14,6 @@ export class ResponsesComponent implements OnInit {
   
   // @Input() responsesSongList?: ResponsesToSongs[] = [];
   @Input() responsesArticleList?: ResponsesToArticles[] = [];
-  @Input() type: string;
   responses: any;
 
   constructor(private responseToSongsService: ResponseToSongsService, private activatedRoute: ActivatedRoute,

@@ -1,14 +1,8 @@
 <div class="wrap-main">
-    <tools searchBox="true" followUp="true" addToPlaylist="true" [sideText]="song.date | date: 'd/M/yyyy H:mm'"></tools>
-    <div class="wrap-video" [ngSwitch]="song.type">
-        <mat-video *ngSwitchCase="'video'" [src]="'../../assets/songs/'+song.file_location" [keyboard]="false">
-        </mat-video>
-        <mat-video *ngSwitchCase="'audio'" [src]="'../../assets/songs/'+song.file_location" [keyboard]="false"
-            [poster]="'../../assets/images/'+song.image_location"></mat-video>
-    </div>
-    <p>{{songContent}}</p>
-    <tags [tagsList]="tags"></tags>
-    <info [songId]="song.id" [viewsCnt]="song.count_views" [responsesCnt]="responses.length"
-        [likesCnt]="song.count_like"></info>
-    <responses type="song"></responses>
+    <tools searchBox="true" followUp="true" addToPlaylist="true" [sideText]="date | date: 'd/M/yyyy H:mm'"></tools>
+    <video-section [src]="file" [img]="img" [type]="type" *ngIf="loaded"></video-section>
+    <text [file]="text" *ngIf="loaded"></text>
+    <tags [tagsList]="tags" *ngIf="loaded"></tags>
+    <info [viewsCnt]="views" [responsesCnt]="responsesCnt" [likesCnt]="likes" *ngIf="loaded"></info>
+    <responses></responses>
 </div>

@@ -12,6 +12,7 @@ export class ToolsComponent implements OnInit {
   @Input() addToPlaylist?: boolean = false;
   @Input() orderBy?: boolean = false;
   @Input() sideText?: string = "";
+  isChecked: boolean = false;
 
   constructor() { }
 

@@ -13,16 +13,9 @@ import { SongService } from '../services/song.service';
 export class FooterSongComponent implements OnInit {
 
   @Input() song: Song;
-  @Input() is_parent_hovered: boolean;
   song_functionality;
   countRes: number = 0;
-
-  isPlay: boolean = false;
-  audio: any = new Audio();
-  max: number = 0;
-  value: number = 5;
-  intervalSlide;
-  num: number = 1;
+  toggle: boolean = false;
 
   constructor(private song_service: LikeService, private songService: SongService,
     private resToSongsService: ResponseToSongsService, private cdr: ChangeDetectorRef) { }
@@ -30,14 +23,12 @@ export class FooterSongComponent implements OnInit {
   ngOnInit() {
     this.song_functionality = this.song_service;
     this.getCountResponses();
-    this.audio.src = '../../assets/songs/' + this.song.file_location;
-    this.max = this.audio.duration;
   }
 
   sign(event): void {
     this.song_functionality.toggle_like(event);
-    this.num++;
-    this.num % 2 == 0 ? this.addLike() : this.MissLike();
+    this.toggle == false? this.addLike() : this.MissLike();
+    this.toggle = !this.toggle;
   }
 
   marking(event): void {
@@ -47,10 +38,12 @@ export class FooterSongComponent implements OnInit {
   reset_marking(event): void {
     this.song_functionality.reset_like_color(event);
   }
+  
   addLike(): void {
     this.song.count_like = this.song.count_like + 1;
     this.songService.increaseLikeToSong(this.song.id).subscribe();
   }
+
   MissLike(): void {
     this.song.count_like=this.song.count_like-1;
     this.songService.decreaseLikeToSong(this.song.id).subscribe();

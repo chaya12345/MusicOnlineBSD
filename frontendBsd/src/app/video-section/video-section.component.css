@@ -1,0 +1,16 @@
+.wrap-video {
+    height: 450px;
+    width: 800px;
+    box-shadow: 0 0 7px #0000000f;
+    margin: 40px 0;
+    direction: ltr;
+    display: flex;
+}
+
+.notFound {
+    margin: auto;
+    font-family: fb Joker;
+    font-size: 21px;
+    text-align: center;
+    display: grid;
+}

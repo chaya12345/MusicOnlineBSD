@@ -10,7 +10,8 @@ import { ArticleService } from '../services/article.service';
 })
 export class SideComponent implements OnInit {
 
-  @Input() similarSongs: Song[] = [];
+  @Input() similarSongs?: Song[] = [];
+  @Input() similarArticles?: Article[] = [];
   latestArticles: Article[] = [];
 
   constructor(private articleService: ArticleService) { 

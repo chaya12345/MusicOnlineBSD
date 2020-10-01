@@ -1,4 +1,4 @@
 <div class="wrap-container-responses">
-    <responses-song *ngIf="type=='song'"></responses-song>
-    <responses-article *ngIf="type=='article'" [responses]="responses"></responses-article>
+    <responses-song *ngIf="activatedRoute.snapshot.routeConfig.path.includes('song')"></responses-song>
+    <responses-article *ngIf="activatedRoute.snapshot.routeConfig.path.includes('article')"></responses-article>
 </div>

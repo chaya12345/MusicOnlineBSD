@@ -54,6 +54,10 @@ import { AllSongsComponent } from './all-songs/all-songs.component';
 import { SongsListComponent } from './songs-list/songs-list.component';
 import { SongsBySingerComponent } from './songs-by-singer/songs-by-singer.component';
 import { ToolsComponent } from './tools/tools.component';
+import { ArticleDetailsComponent } from './article-details/article-details.component';
+import { MagazineComponent } from './magazine/magazine.component';
+import { TextComponent } from './text/text.component';
+import { VideoSectionComponent } from './video-section/video-section.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +106,11 @@ import { ToolsComponent } from './tools/tools.component';
     AllSongsComponent,
     SongsListComponent,
     SongsBySingerComponent,
-    ToolsComponent
+    ToolsComponent,
+    ArticleDetailsComponent,
+    MagazineComponent,
+    TextComponent,
+    VideoSectionComponent
   ],
   imports: [
     BrowserModule,

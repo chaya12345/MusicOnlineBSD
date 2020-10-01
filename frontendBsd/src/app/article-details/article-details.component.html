@@ -1,0 +1,9 @@
+<div class="wrap-article-details">
+    <top [_title]="article.title" [subtitle]="article.subtitle" [img]="'../../assets/images/'+article.main_image"></top>
+    <current-nav [navs]="navs"></current-nav>
+    <div class="section">
+        <main [article]="article"></main>
+        <side [similarArticles]="similarArticles"></side>
+    </div>
+    <footer></footer>
+</div>

@@ -18,7 +18,8 @@
             <mat-icon>arrow_drop_down</mat-icon>סדר לפי
         </button>
         <mat-menu #menu="matMenu">
-            <button mat-menu-item disabled>מוגדר: סדר יורד</button>
+            <button mat-menu-item disabled *ngIf="!isChecked">מוגדר: סדר יורד</button>
+            <button mat-menu-item disabled *ngIf="isChecked">מוגדר: סדר עולה</button>
             <mat-divider></mat-divider>
             <button mat-menu-item>שם שיר</button>
             <button mat-menu-item>תאריך</button>
@@ -28,7 +29,7 @@
         </mat-menu>
     </div>
 
-    <mat-slide-toggle *ngIf="orderBy" color="primary">סדר עולה</mat-slide-toggle>
+    <mat-slide-toggle [(ngModel)]="isChecked" *ngIf="orderBy" color="primary">סדר עולה</mat-slide-toggle>
 
     <span *ngIf="sideText!=''&&sideText!=null">{{sideText}}</span>
 

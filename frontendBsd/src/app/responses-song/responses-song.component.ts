@@ -10,7 +10,6 @@ import { ResponseToSongsService } from '../services/response-to-songs.service';
 })
 export class ResponsesSongComponent implements OnInit {
   
-  // @Input() responses: ResponsesToSongs[] = [];
   responses: ResponsesToSongs[] = [];
 
   constructor(private responseToSongsService: ResponseToSongsService, private activatedRoute: ActivatedRoute,

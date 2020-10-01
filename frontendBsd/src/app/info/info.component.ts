@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { LikeService } from '../services/like.service';
 import { SongService } from '../services/song.service';
 
@@ -9,21 +10,24 @@ import { SongService } from '../services/song.service';
 })
 export class InfoComponent implements OnInit {
 
-  @Input() songId: number;
   @Input() viewsCnt: number = 0;
   @Input() responsesCnt: number = 0;
   @Input() likesCnt: number = 0;
-  num: number = 1;
+  songId: number;
+  toggle: boolean = false;
 
-  constructor(private likeService: LikeService, private songService: SongService) { }
+  constructor(private likeService: LikeService, private songService: SongService,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    // this.activatedRoute.snapshot.routeConfig.path.includes("song")
+    this.songId = Number(this.activatedRoute.snapshot.paramMap.get("id"));
   }
 
   sign(event): void {
     this.likeService.toggle_like(event);
-    this.num++;
-    this.num % 2 == 0 ? this.addLike() : this.MissLike();
+    this.toggle == false ? this.addLike() : this.MissLike();
+    this.toggle = !this.toggle;
   }
 
   marking(event, color: string): void {

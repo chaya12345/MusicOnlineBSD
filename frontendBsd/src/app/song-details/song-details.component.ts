@@ -39,16 +39,16 @@ export class SongDetailsComponent implements OnInit {
   ngOnChanges(): void {
     try {
       this.navs.push(this.song.title);
-      this.getContent();
+      // this.getContent();
       this.getSimilarResults();
     } catch { }
   }
 
-  getContent(): void {
-    this.httpClient.get('../../assets/text/' + this.song.content, {
-      responseType: 'text'
-    }).subscribe(data => { this.songContent = data; });
-  }
+  // getContent(): void {
+  //   this.httpClient.get('../../assets/text/' + this.song.content, {
+  //     responseType: 'text'
+  //   }).subscribe(data => { this.songContent = data; });
+  // }
 
   getSimilarResults(): void {
     try {
