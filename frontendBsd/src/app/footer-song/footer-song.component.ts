@@ -52,7 +52,7 @@ export class FooterSongComponent implements OnInit {
   getCountResponses(): void {
     try {
       this.resToSongsService.getCountResponsesToSong(this.song.id)
-      .subscribe(count => { this.countRes = count; this.cdr.detectChanges(); console.log(this.countRes) }, err => { console.log(err); }); }
+      .subscribe(count => { this.countRes = count; this.cdr.detectChanges(); }, err => { console.log(err); }); }
     catch { console.log("count resopnses failed"); }
   }
 

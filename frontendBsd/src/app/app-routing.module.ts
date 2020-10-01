@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { MagazineComponent } from './magazine/magazine.component';
 import { SongsBySingerComponent } from './songs-by-singer/songs-by-singer.component';
 import { SongsPageComponent } from './songs-page/songs-page.component';
 
@@ -22,6 +23,9 @@ const routes: Routes = [{
 }, {
   path: "songs/:singerName",
   component: SongsBySingerComponent
+}, {
+  path: "magazine",
+  component: MagazineComponent
 }, {
   path: "article/:id",
   component: ArticleDetailsComponent

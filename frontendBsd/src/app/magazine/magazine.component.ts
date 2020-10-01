@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MagazineComponent implements OnInit {
 
-  constructor() { }
+  navs: string[] = [];
+
+  constructor() {
+    this.navs.push("מגזין");
+  }
 
   ngOnInit() {
   }

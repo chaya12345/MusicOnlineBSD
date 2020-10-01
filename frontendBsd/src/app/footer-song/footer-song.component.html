@@ -1,18 +1,4 @@
 <div class="wrap-footer-song">
     <p>{{song.title}}</p>
-    <div class="info-song">
-        <span class="views">
-            {{song.count_views}}
-            <button mat-icon-button><mat-icon matTooltipClass="blue-tooltip" matTooltip="צפיות">remove_red_eye</mat-icon></button>
-        </span>
-        <span class="responses">
-            {{countRes}}
-            <button mat-icon-button><mat-icon matTooltipClass="blue-tooltip" matTooltip="תגובות">speaker_notes</mat-icon></button>
-        </span>
-        <span class="likes">
-            {{song.count_like}}
-            <button mat-icon-button><mat-icon matTooltipClass="blue-tooltip" matTooltip="לייק"
-                (click)="sign($event)" (mouseenter)="marking($event)" (mouseleave)="reset_marking($event)">favorite_border</mat-icon></button>
-        </span>
-    </div>
+    <rating [likes]="song.count_like" [views]="song.count_views" [responses]="countRes"></rating>
 </div>

@@ -58,6 +58,9 @@ import { ArticleDetailsComponent } from './article-details/article-details.compo
 import { MagazineComponent } from './magazine/magazine.component';
 import { TextComponent } from './text/text.component';
 import { VideoSectionComponent } from './video-section/video-section.component';
+import { AllArticlesComponent } from './all-articles/all-articles.component';
+import { ArticleComponent } from './article/article.component';
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -110,7 +113,10 @@ import { VideoSectionComponent } from './video-section/video-section.component';
     ArticleDetailsComponent,
     MagazineComponent,
     TextComponent,
-    VideoSectionComponent
+    VideoSectionComponent,
+    AllArticlesComponent,
+    ArticleComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,

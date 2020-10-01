@@ -1,0 +1,15 @@
+<div class="wrap-rating">
+    <span class="views">
+        {{views}}
+        <button mat-icon-button><mat-icon matTooltipClass="blue-tooltip" matTooltip="צפיות">remove_red_eye</mat-icon></button>
+    </span>
+    <span class="responses">
+        {{responses}}
+        <button mat-icon-button><mat-icon matTooltipClass="blue-tooltip" matTooltip="תגובות">speaker_notes</mat-icon></button>
+    </span>
+    <span class="likes">
+        {{likes}}
+        <button mat-icon-button><mat-icon matTooltipClass="blue-tooltip" matTooltip="לייק"
+            (click)="sign($event)" (mouseenter)="marking($event)" (mouseleave)="reset_marking($event)">favorite_border</mat-icon></button>
+    </span>
+</div>

@@ -1,7 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { $ } from 'protractor';
-import { Song } from '../classes/song';
 import { ShareDataService } from '../services/share-data.service';
 
 @Component({
@@ -74,6 +72,9 @@ export class SideNavComponent implements OnInit {
     }
     else if (event.target.innerHTML.includes("חדש במוזיקה")) {
       this.router.navigateByUrl("song");
+    }
+    else if (event.target.innerHTML.includes("מגזין")) {
+      this.router.navigateByUrl("magazine");
     }
   }
 

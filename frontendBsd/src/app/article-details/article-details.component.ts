@@ -19,7 +19,7 @@ export class ArticleDetailsComponent implements OnInit {
     private httpClient: HttpClient, private router: Router) {
     try {
       this.articleService.getArticleById(Number(this.activatedRoute.snapshot.paramMap.get('id')))
-      .subscribe(article => this.article = article, err => console.log(err));
+        .subscribe(article => { this.article = article; this.navs.push(this.article.title); }, err => console.log(err));
     } catch { console.log("article-details failed"); }
     this.navs.push("מגזין");
   }
@@ -38,8 +38,8 @@ export class ArticleDetailsComponent implements OnInit {
   }
 
   ngOnChanges(): void {
+    this.navs.push(this.article.title);
     try {
-      this.navs.push(this.article.title);
       this.getSimilarResults();
     } catch { }
   }

@@ -1,0 +1,11 @@
+<a class="wrap-article" [href]="'article/'+article.id">
+    <div class="img" [style.background-image]="'url(../../assets/images/'+article.main_image+')'">
+        <div class="over-img"></div>
+    </div>
+    <div class="content">
+        <h3>{{article.title}}</h3>
+        <span>{{article.date | date: 'd/M/yyyy H:mm'}} | {{article.dateHebrew}}</span>
+        <p>{{article.subtitle}}</p>
+        <div><rating *ngIf="countRes!=null" [likes]="article.count_like" [views]="article.count_views" [responses]="countRes"></rating></div>
+    </div>
+</a>

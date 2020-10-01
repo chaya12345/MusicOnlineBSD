@@ -26,6 +26,9 @@ export class CurrentNavComponent implements OnInit {
     else if (event.target.innerHTML.includes("חדש במוזיקה")) {
       this.router.navigateByUrl("song");
     }
+    else if (event.target.innerHTML.includes("מגזין")) {
+      this.router.navigateByUrl("magazine");
+    }
   }
 
 }
