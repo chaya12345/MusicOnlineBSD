@@ -1,0 +1,19 @@
+<div class="wrap-song-in-playlist">
+    <div class="playing" [ngSwitch]="isPlay">
+        <mat-icon *ngSwitchCase="false" (click)="play()">play_arrow</mat-icon>
+        <mat-icon *ngSwitchCase="true" (click)="pause()">pause</mat-icon>
+    </div>
+    <p><b>{{song.name}}</b> - {{song.title}}</p>
+    <div class="actions">
+        <div class="rating"><rating [likes]="song.count_like" [views]="song.count_views" [responses]="'5'"></rating></div>
+        <div class="menu">
+            <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>הוסף לפלייליסט שלי<mat-icon>star_border</mat-icon></button>
+                <button mat-menu-item>הוסף תגובה<mat-icon>speaker_notes</mat-icon></button>
+                <button mat-menu-item>השבת שיר<mat-icon>music_off</mat-icon></button>
+            </mat-menu>
+        </div>
+        <a [href]="'song/'+song.id" matTooltip="פתח שיר בחלון מלא" matTooltipClass="tooltip" class="left-floating"><button mat-icon-button><mat-icon>open_in_new</mat-icon></button></a>
+    </div>
+</div>

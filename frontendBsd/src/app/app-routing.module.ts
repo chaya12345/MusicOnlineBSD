@@ -4,6 +4,8 @@ import { ArticleDetailsComponent } from './article-details/article-details.compo
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MagazineComponent } from './magazine/magazine.component';
+import { PlaylistSectionComponent } from './playlist-section/playlist-section.component';
+import { PlaylistsComponent } from './playlists/playlists.component';
 import { SongsBySingerComponent } from './songs-by-singer/songs-by-singer.component';
 import { SongsPageComponent } from './songs-page/songs-page.component';
 
@@ -29,6 +31,12 @@ const routes: Routes = [{
 }, {
   path: "article/:id",
   component: ArticleDetailsComponent
+}, {
+  path: "playlists",
+  component: PlaylistsComponent
+}, {
+  path: "playlist/:id",
+  component: PlaylistSectionComponent
 }, {
   path: "error",
   component: ErrorPageComponent

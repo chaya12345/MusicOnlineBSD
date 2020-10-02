@@ -249,6 +249,9 @@ footer p.title-part {
 
 .blue-tooltip {
     background: #2c8dfb;
+}
+
+.tooltip {
     margin: 10px 0 0 !important;
     z-index: 9999;
     font-size: 12px;
@@ -348,6 +351,10 @@ a {
 /* #endregion */
 
 /* #region(collapsed) [Tools] */
+
+.wrap-tool-box {
+    margin: 0 19vw;
+}
 
 tools .mat-input-element {
     color: #252525;

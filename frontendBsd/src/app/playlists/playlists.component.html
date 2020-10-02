@@ -1,0 +1,13 @@
+<div class="wrap-playlists">
+    <top _title="הפלייליסטים" subtitle="פלייליסטים בכל סגנון ולכל זמן"
+        icon="equalizer" isMain="true" img="../../assets/images/piano-keys-made-with-black-white-paper-yellow-backdrop_23-2147926855.jpg"></top>
+    <current-nav [navs]="navs"></current-nav>
+    <div class="wrap-tool-box"><tools searchBox="true" followUp="true" orderBy="true"></tools></div>
+    <div *ngIf="playlists.length!=0&&playlists!=null" class="all-playlists">
+        <div class="wrap-playlist" *ngFor="let playlist of playlists">
+            <popular-playlist [playlist]="playlist"></popular-playlist>
+        </div>
+    </div>
+    <div *ngIf="playlists.length==0||playlists==null" class="empty-list"><p>- לא נמצאו פלייליסטים -</p></div>
+    <footer></footer>
+</div>

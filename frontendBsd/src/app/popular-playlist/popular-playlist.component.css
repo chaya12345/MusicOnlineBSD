@@ -7,6 +7,8 @@
     transition: .4s;
     animation-duration: .6s;
     animation-timing-function: ease linear;
+    display: grid;
+    grid-template-rows: fit-content(50%) auto fit-content(50%);
 }
 
 @keyframes bigger {
@@ -39,4 +41,8 @@
     font-size: 22px;
     font-family: calibri;
     font-weight: 100;
+}
+
+.bottom {
+    color: white;
 }

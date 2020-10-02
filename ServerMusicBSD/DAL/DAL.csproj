@@ -165,6 +165,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="src\images\for_playlists\microphone-conference_1232-1150.jpg" />
+    <Content Include="src\images\for_songs\ישי-ריבו\236650_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_playlists\abstract-photo-music-piano-jazz-music_136559-247.jpg" />
     <Content Include="src\images\for_playlists\acoustic-guitar-tree_1426-614.jpg" />
     <Content Include="src\images\for_playlists\alphacolor-66JMudIjDTw-unsplash.jpg" />
@@ -179,6 +181,7 @@
     <Content Include="src\images\for_songs\יעקב-שוואקי\234472_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_songs\מידד-טסה\232760_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_songs\מאיר-גרין\מאיר-גרין-ימי-הרחמים.PNG" />
+    <Content Include="src\images\for_songs\שמחה-פרידמן\שמחה פרידמן - לא לפחד.jpg" />
     <Content Include="src\songs\אבי-אילסון\אבי אילסון - שיבוא.mp3" />
     <Content Include="src\songs\אברהם-פריד\אברהם פריד &amp; ארי היל - אבא.mp3" />
     <Content Include="src\songs\איציק-דדיה\איציק-דדיה-נושא-תפילה-Itzik-Dadya-Nose-Tfila %281%29.mp4" />
@@ -262,6 +265,7 @@
     <Content Include="src\text\songs_content\מאיר-גרין\ימי הרחמים - מאיר גרין.txt" />
     <Content Include="src\text\songs_content\מידד-טסה\נעשה-שמח.txt" />
     <Content Include="src\text\songs_content\קובי-ברומר\כמה-טוב-ה.txt" />
+    <Content Include="src\text\songs_content\שמחה-פרידמן\לא לפחד.txt" />
     <Content Include="src\text\‏‏about-site.txt" />
   </ItemGroup>
   <ItemGroup>

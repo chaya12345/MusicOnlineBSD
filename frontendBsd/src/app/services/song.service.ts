@@ -27,6 +27,9 @@ export class SongService {
   public getSongsByTag(tagName: string): Observable<Song[]> {
     return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsByTag?tagName=" + tagName);
   }
+  public getSongsByTagId(tagId: number): Observable<Song[]> {
+    return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsByTagId?tagId=" + tagId);
+  }
   public getSimilarSongs(songId: number): Observable<SongsDetailsView[]> {
     return this.httpClient.get<Song[]>(this.baseUrl + "GetSimilarSongs?songId=" + songId);
   }

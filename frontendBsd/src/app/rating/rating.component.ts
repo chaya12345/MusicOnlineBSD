@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'rating',
@@ -11,9 +12,15 @@ export class RatingComponent implements OnInit {
   @Input() views?: number = 0;
   @Input() responses?: number = 0;
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    if (this.activatedRoute.snapshot.routeConfig.path.includes("playlist")) {
+      var elements = document.getElementsByClassName("wrap-rating");
+      for (let i = 0; i < elements.length; i++) {
+        (elements[i] as HTMLElement).style.padding = "8px 17px";
+      }
+    }
   }
 
 }

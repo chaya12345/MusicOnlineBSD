@@ -39,6 +39,10 @@ namespace ServerMusicBSD.Controllers
         {
             return SongsBL.GetSongsByTag(tagName);
         }
+        public List<SongsDTO> GetSongsByTagId(int tagId)
+        {
+            return SongsBL.GetSongsByTagId(tagId);
+        }
         public List<SongsDTO> PostSongsByTags([FromBody] TagsResponse tagsResponse)
         {
             return SongsBL.GetSongsByTags(tagsResponse.tags);

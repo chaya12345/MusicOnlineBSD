@@ -1,0 +1,14 @@
+.wrap-songs-in-playlist {
+    padding: 30px 0;
+}
+
+.songs {
+    padding: 30px 17vw;
+}
+
+.empty-list {
+    text-align: center;
+    padding: 50px;
+    font-family: fb Joker;
+    font-size: 21px;
+}

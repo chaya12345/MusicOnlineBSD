@@ -1,0 +1,82 @@
+.wrap-song-in-playlist {
+    display: flex;
+    border: solid 1px #e6e6e6;
+    margin: 25px 50px;
+    font-family: fb Joker;
+    font-size: 21px;
+    height: 60px;
+    border-radius: 4px;
+    transition: .4s;
+}
+
+.wrap-song-in-playlist:hover {
+    background-color: whitesmoke;
+}
+
+.wrap-song-in-playlist > * {
+    margin: auto 0;
+}
+
+.playing {
+    height: 100%;
+    background-color: #252525;
+    color: white;
+    display: flex;
+    width: 60px;
+    margin-left: 30px !important;
+}
+
+.checked {
+    width: 40px;
+    background-color: white;
+    height: 100%;
+    display: flex;
+}
+
+.checked > * {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.playing mat-icon {
+    cursor: pointer;
+    font-size: 32px;
+    margin: auto;
+    height: fit-content;
+    width: fit-content;
+}
+
+.actions {
+    margin-right: auto !important;
+    display: flex;
+    height: 100%;
+}
+
+.actions > * {
+    margin: auto 0;
+    margin-right: 15px;
+}
+
+.rating {
+    width: 285px;
+    font-size: 16px !important;
+    height: 100% !important;
+}
+
+.left-floating {
+    height: 100%;
+    background-color: #fbc02d;
+    width: 60px;
+    color: white;
+    display: flex;
+    margin-right: 20px !important;
+}
+
+.left-floating button {
+    margin: auto;
+}
+
+.mat-menu-item mat-icon {
+    margin-left: 15px;
+    margin-right: 0 !important;
+}

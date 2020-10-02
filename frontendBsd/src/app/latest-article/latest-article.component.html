@@ -6,7 +6,7 @@
             <span>{{article.date | date: 'd/M/yyyy H:mm'}}</span>
             <span>
                 {{article.count_like}}
-                <button mat-icon-button><mat-icon matTooltipClass="blue-tooltip" matTooltip="לייק"
+                <button mat-icon-button><mat-icon matTooltipClass="blue-tooltip tooltip" matTooltip="לייק"
                     (click)="sign($event)" (mouseenter)="marking($event,'#F44336')" (mouseleave)="reset_marking($event,'#F44336')">favorite_border</mat-icon></button>
             </span>
         </div>

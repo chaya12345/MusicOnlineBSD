@@ -11,7 +11,7 @@ export class SongComponent implements OnInit {
 
   @Input() song: Song;
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
     window.addEventListener('scroll', this.scroll, true);

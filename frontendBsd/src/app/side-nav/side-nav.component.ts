@@ -38,8 +38,6 @@ export class SideNavComponent implements OnInit {
 
   ngOnInit() {
     this.href = this.router.url;
-    console.log(this.href);
-    console.log(this.href.includes("error"));
     if (this.href.includes("home"))
       this.navigateStr = "ראשי";
     else if (this.href.includes("song"))
@@ -75,6 +73,9 @@ export class SideNavComponent implements OnInit {
     }
     else if (event.target.innerHTML.includes("מגזין")) {
       this.router.navigateByUrl("magazine");
+    }
+    else if (event.target.innerHTML.includes("פלייליסטים")) {
+      this.router.navigateByUrl("playlists");
     }
   }
 

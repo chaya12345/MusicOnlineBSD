@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'top',
@@ -13,9 +14,12 @@ export class TopComponent implements OnInit {
   @Input() icon?: string;
   @Input() isMain?: boolean = false;
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    if (this.activatedRoute.snapshot.routeConfig.path.includes("playlist")) {
+      (document.querySelector(".img") as HTMLElement).style.backgroundPosition = "bottom";
+    }
   }
 
 }

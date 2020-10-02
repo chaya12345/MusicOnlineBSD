@@ -61,6 +61,10 @@ import { VideoSectionComponent } from './video-section/video-section.component';
 import { AllArticlesComponent } from './all-articles/all-articles.component';
 import { ArticleComponent } from './article/article.component';
 import { RatingComponent } from './rating/rating.component';
+import { PlaylistsComponent } from './playlists/playlists.component';
+import { PlaylistSectionComponent } from './playlist-section/playlist-section.component';
+import { SongsInPlaylistComponent } from './songs-in-playlist/songs-in-playlist.component';
+import { SongInPlaylistComponent } from './song-in-playlist/song-in-playlist.component';
 
 @NgModule({
   declarations: [
@@ -116,7 +120,11 @@ import { RatingComponent } from './rating/rating.component';
     VideoSectionComponent,
     AllArticlesComponent,
     ArticleComponent,
-    RatingComponent
+    RatingComponent,
+    PlaylistsComponent,
+    PlaylistSectionComponent,
+    SongsInPlaylistComponent,
+    SongInPlaylistComponent
   ],
   imports: [
     BrowserModule,

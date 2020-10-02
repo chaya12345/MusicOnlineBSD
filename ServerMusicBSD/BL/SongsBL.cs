@@ -76,6 +76,10 @@ namespace BL
             }
             return null;
         }
+        public static List<SongsDTO> GetSongsByTagId(int tagId)
+        {
+            return GetSongsByTag(TagsBL.GetName(tagId));
+        }
         public static List<SongsDTO> GetSongsByTags(List<string> tags)
         {
             List<SongsDTO> songs = new List<SongsDTO>();
@@ -201,7 +205,12 @@ namespace BL
             List<string> tags = TagsToSongsBL.GetTagsNamesToSong(songId);
             List<TagsTBL> tagsTBL = et.TagsTBL.Where(t => tags.Contains(t.name)).ToList();
             //קבלת סוג הג'אנר
-            int? janer = tagsTBL.Where(t => t.tagTypeId != null).FirstOrDefault().id;
+            var tagType = tagsTBL.Where(t => t.tagTypeId != null).FirstOrDefault();
+            int? janer = 0;
+            if (tagType != null)
+            {
+                janer = tagType.id;
+            }
             int janerInt = int.Parse(janer + "");
             //כל השירים שנמצאים בג'אנר הזה
             List<TagsToSongsTBL> tagsToSong = et.TagsToSongsTBL.Where(t => t.tagId == janerInt).ToList();

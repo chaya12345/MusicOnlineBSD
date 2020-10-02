@@ -1,0 +1,18 @@
+.all-playlists {
+    display: flex;
+    padding: 30px 17vw;
+    flex-wrap: wrap;
+}
+
+.wrap-playlist {
+    display: inline-block;
+    flex: 0 1 calc(33% - 25px);
+    margin: 25px 12px;
+}
+
+.empty-list {
+    text-align: center;
+    padding: 50px;
+    font-family: fb Joker;
+    font-size: 21px;
+}

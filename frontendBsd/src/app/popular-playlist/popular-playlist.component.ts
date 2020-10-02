@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PlaylistSystem } from '../classes/playlistSystem';
 
 @Component({
@@ -10,7 +11,7 @@ export class PopularPlaylistComponent implements OnInit {
 
   @Input() playlist: PlaylistSystem;
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     window.addEventListener('scroll', this.scroll, true);

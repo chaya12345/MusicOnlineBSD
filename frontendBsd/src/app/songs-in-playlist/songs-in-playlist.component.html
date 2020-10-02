@@ -1,0 +1,6 @@
+<div class="wrap-songs-in-playlist">
+    <div *ngIf="songsList!=null&&songsList.length!=0" class="songs">
+        <song-in-playlist *ngFor="let song of songsList" [song]="song"></song-in-playlist>
+    </div>
+    <div class="empty-list" *ngIf="songsList==null||songsList.length==0"><p>- לא נמצאו שירים בפלייליסט זה -</p></div>
+</div>

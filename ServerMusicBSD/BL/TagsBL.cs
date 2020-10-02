@@ -34,6 +34,16 @@ namespace BL
                 }
             }
         }
-
+        public static string GetName(int id)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            string name = "";
+            var currentTag = et.TagsTBL.Where(tag => tag.id == id).FirstOrDefault();
+            if (currentTag != null)
+            {
+                name = currentTag.name;
+            }
+            return name;
+        }
     }
 }
