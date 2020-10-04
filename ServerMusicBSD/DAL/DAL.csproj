@@ -166,6 +166,7 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="src\images\for_playlists\microphone-conference_1232-1150.jpg" />
+    <Content Include="src\images\for_songs\איציק-אשל\סוכה-ולולב-איציק-אשל-וישי-לפידות.PNG" />
     <Content Include="src\images\for_songs\ישי-ריבו\236650_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_playlists\abstract-photo-music-piano-jazz-music_136559-247.jpg" />
     <Content Include="src\images\for_playlists\acoustic-guitar-tree_1426-614.jpg" />
@@ -181,10 +182,16 @@
     <Content Include="src\images\for_songs\יעקב-שוואקי\234472_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_songs\מידד-טסה\232760_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_songs\מאיר-גרין\מאיר-גרין-ימי-הרחמים.PNG" />
+    <Content Include="src\images\for_songs\מרדכי-שפירא\אין-עוד-מלבדו-מרדכי-שפירא.PNG" />
     <Content Include="src\images\for_songs\שמחה-פרידמן\שמחה פרידמן - לא לפחד.jpg" />
+    <Content Include="src\images\for_topics\3782176.jpg" />
+    <Content Include="src\images\for_topics\magazines2.png" />
+    <Content Include="src\images\for_topics\piano-keys-made-with-black-white-paper-yellow-backdrop_23-2147926855.jpg" />
     <Content Include="src\songs\אבי-אילסון\אבי אילסון - שיבוא.mp3" />
     <Content Include="src\songs\אברהם-פריד\אברהם פריד &amp; ארי היל - אבא.mp3" />
+    <Content Include="src\songs\איציק-אשל\1231.mp4" />
     <Content Include="src\songs\איציק-דדיה\איציק-דדיה-נושא-תפילה-Itzik-Dadya-Nose-Tfila %281%29.mp4" />
+    <Content Include="src\songs\בני-פרידמן\בני-פרידמן-בידיים-טובות-ווקאלי.mp3" />
     <Content Include="src\songs\יעקב-שוואקי\01 - נצח ישראל.mp3" />
     <Content Include="src\songs\יעקב-שוואקי\02 - תפילת השל%27%27ה.mp3" />
     <Content Include="src\songs\יעקב-שוואקי\03 - ישתבח שמו.mp3" />
@@ -199,6 +206,7 @@
     <Content Include="src\songs\יעקב-שוואקי\12 - A Mother Promise.mp3" />
     <Content Include="src\songs\יעקב-שוואקי\13 - לב אחד.mp3" />
     <Content Include="src\songs\מאיר-גרין\מאיר-גרין-ימי-רחמים5.mp4" />
+    <Content Include="src\songs\מידד-טסה\מידד טסה - נעשה שמח.mp4" />
     <Content Include="src\songs\מרדכי-בן-דוד\01 - קול הנשמה.mp3" />
     <Content Include="src\songs\מרדכי-בן-דוד\02 - פתח לנו שער.mp3" />
     <Content Include="src\songs\מרדכי-בן-דוד\03 - צעקה.mp3" />
@@ -214,7 +222,7 @@
     <Content Include="src\songs\מרדכי-בן-דוד\13 - הבל הבלים.mp3" />
     <Content Include="src\songs\מרדכי-בן-דוד\דייייי מרדכי בן דוד.mp3" />
     <Content Include="src\songs\מרדכי-בן-דוד\מרדכי בן דוד - כדאי הוא רבי שמעון.mp3" />
-    <Content Include="src\text\about-site.txt" />
+    <Content Include="src\songs\מרדכי-שפירא\1215.mp4" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\images\for_articles\221607_tumb_750Xauto.jpg" />
@@ -254,6 +262,7 @@
     <Content Include="src\text\songs_content\אבי-אילסון\אבי אילסון בשיר חדש ומאיר עם קליפ מרהיב %27תן לי אור%27.txt" />
     <Content Include="src\text\songs_content\אבי-אילסון\שיבוא.txt" />
     <Content Include="src\text\songs_content\אברהם-פריד\אוטוטו.txt" />
+    <Content Include="src\text\songs_content\איציק-אשל\סוכה-ולולב.txt" />
     <Content Include="src\text\songs_content\איציק-דדיה\איציק דדיה בדרך לאומן – הקליפ הרשמי.txt" />
     <Content Include="src\text\songs_content\איציק-דדיה\איציק דדיה בלהיט חדש – %27בדרך לאומן%27.txt" />
     <Content Include="src\text\songs_content\איציק-דדיה\איציק דדיה בסינגל חדש %27האמונה בוערת%27.txt" />
@@ -264,9 +273,9 @@
     <Content Include="src\text\songs_content\איציק-דדיה\נושא תפילה איציק דדיה.txt" />
     <Content Include="src\text\songs_content\מאיר-גרין\ימי הרחמים - מאיר גרין.txt" />
     <Content Include="src\text\songs_content\מידד-טסה\נעשה-שמח.txt" />
+    <Content Include="src\text\songs_content\מרדכי-שפירא\אין-עוד-מלבדו.txt" />
     <Content Include="src\text\songs_content\קובי-ברומר\כמה-טוב-ה.txt" />
     <Content Include="src\text\songs_content\שמחה-פרידמן\לא לפחד.txt" />
-    <Content Include="src\text\‏‏about-site.txt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -275,7 +284,6 @@
     <Folder Include="src\songs\אבי-מן\" />
     <Folder Include="src\songs\אודי-דוידי\" />
     <Folder Include="src\songs\אוהד-מושקוביץ\" />
-    <Folder Include="src\songs\בני-פרידמן\" />
     <Folder Include="src\songs\בערי-וובר\" />
     <Folder Include="src\songs\גד-אלבז\" />
     <Folder Include="src\songs\יואלי-דיקמן\" />
@@ -284,7 +292,6 @@
     <Folder Include="src\songs\ישי-לפידות\" />
     <Folder Include="src\songs\מאיר-מסוארי\" />
     <Folder Include="src\songs\מוטי-שטיינמץ\" />
-    <Folder Include="src\songs\מידד-טסה\" />
     <Folder Include="src\songs\משה-קליין\" />
     <Folder Include="src\songs\עוזיה-צדוק\" />
     <Folder Include="src\songs\עמירן-דביר\" />
