@@ -15,7 +15,7 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToTopicsDTO.GetTopics(et.TopicsTBL.ToList());
         }
-        public static void updateTopic(int topicId,TopicsTBL updateTopic)
+        public static void UpdateTopic(int topicId,TopicsTBL updateTopic)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             TopicsTBL topic = et.TopicsTBL.Where(t => t.id == topicId).FirstOrDefault();

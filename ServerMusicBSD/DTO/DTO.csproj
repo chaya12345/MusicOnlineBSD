@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticlesDTO.cs" />
+    <Compile Include="ArtistsAndSingersDTO.cs" />
     <Compile Include="ArtistsDTO.cs" />
     <Compile Include="ArtistsToSongsDTO.cs" />
     <Compile Include="FollowUpDTO.cs" />

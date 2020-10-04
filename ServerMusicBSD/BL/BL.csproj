@@ -58,9 +58,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticlesBL.cs" />
+    <Compile Include="ArtistsAndSingersBL.cs" />
     <Compile Include="ArtistsBL.cs" />
     <Compile Include="ArtistsToSongsBL.cs" />
     <Compile Include="Casts\ToArticlesDTO.cs" />
+    <Compile Include="Casts\ToArtistsAndSingersDTO.cs" />
     <Compile Include="Casts\ToArtistsDTO.cs" />
     <Compile Include="Casts\ToArtistsToSongsDTO.cs" />
     <Compile Include="Casts\ToFollowUpDTO.cs" />

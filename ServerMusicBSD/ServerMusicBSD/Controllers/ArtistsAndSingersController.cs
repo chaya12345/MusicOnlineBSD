@@ -5,22 +5,18 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using BL;
 using DAL;
 using DTO;
-using BL;
 
 namespace ServerMusicBSD.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class TopicsController : ApiController
+    public class ArtistsAndSingersController : ApiController
     {
-        public  List<TopicsDTO> GetTopics()
+        public  List<ArtistsAndSingersDTO> GetArtistsAndSingers()
         {
-            return TopicsBL.GetTopics();
-        }
-        public  void PutTopic(int topicId, [FromBody] TopicsTBL updateTopic)
-        {
-            TopicsBL.UpdateTopic(topicId, updateTopic);
+            return ArtistsAndSingersBL.GetArtistsAndSingers();
         }
     }
 }
