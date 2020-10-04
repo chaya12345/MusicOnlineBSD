@@ -110,8 +110,8 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="songId" Type="int" />
-    <Property Name="name" Type="varchar" MaxLength="50" />
-    <Property Name="title" Type="varchar" MaxLength="50" />
+    <Property Name="name" Type="nvarchar(max)" />
+    <Property Name="title" Type="nvarchar(max)" />
     <Property Name="content" Type="nvarchar(max)" />
     <Property Name="date" Type="datetime" />
   </EntityType>
@@ -176,16 +176,6 @@
     <Property Name="userId" Type="int" />
     <Property Name="singerId" Type="int" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="TagsTBL">
     <Key>
       <PropertyRef Name="id" />
@@ -217,6 +207,16 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TopicsTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="150" />
+    <Property Name="subtitle" Type="varchar" MaxLength="150" />
+    <Property Name="img" Type="varchar(max)" />
+    <Property Name="href" Type="varchar(max)" />
   </EntityType>
   <EntityType Name="UsersTBL">
     <Key>
@@ -585,11 +585,11 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     <EntitySet Name="SongsTBL" EntityType="Self.SongsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SubscriptionTBL" EntityType="Self.SubscriptionTBL" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsTBL" EntityType="Self.TagsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsToArticlesTBL" EntityType="Self.TagsToArticlesTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsToSongsTBL" EntityType="Self.TagsToSongsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsTypesTBL" EntityType="Self.TagsTypesTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TopicsTBL" EntityType="Self.TopicsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LastResponses" EntityType="Self.LastResponses" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 

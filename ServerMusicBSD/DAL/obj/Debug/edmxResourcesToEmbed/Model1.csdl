@@ -127,8 +127,8 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="songId" Type="Int32" />
-    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="date" Type="DateTime" Precision="3" />
     <NavigationProperty Name="SongsTBL" Relationship="Self.FK_ResponsesToSongsTBL_SongsTBL" FromRole="ResponsesToSongsTBL" ToRole="SongsTBL" />
@@ -203,6 +203,16 @@
     <NavigationProperty Name="PlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_PlaylistsTBL" FromRole="SongsToPlaylistsTBL" ToRole="PlaylistsTBL" />
     <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsToPlaylistsTBL" ToRole="SongsTBL" />
   </EntityType>
+  <EntityType Name="SubscriptionTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" />
+    <Property Name="singerId" Type="Int32" />
+    <NavigationProperty Name="SingersTBL" Relationship="MusicOnlineModel.FK_SubscriptionTBL_SingersTBL" FromRole="SubscriptionTBL" ToRole="SingersTBL" />
+    <NavigationProperty Name="UsersTBL" Relationship="MusicOnlineModel.FK_SubscriptionTBL_UsersTBL" FromRole="SubscriptionTBL" ToRole="UsersTBL" />
+  </EntityType>
   <EntityType Name="TagsTBL">
     <Key>
       <PropertyRef Name="id" />
@@ -243,6 +253,16 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="TagsTBL" Relationship="Self.FK_TagsTBL_TagsTypesTBL" FromRole="TagsTypesTBL" ToRole="TagsTBL" />
+  </EntityType>
+  <EntityType Name="TopicsTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="subtitle" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="href" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="UsersTBL">
     <Key>
@@ -586,10 +606,12 @@
     <EntitySet Name="SingersTBL" EntityType="Self.SingersTBL" />
     <EntitySet Name="SongsTBL" EntityType="Self.SongsTBL" />
     <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" />
+    <EntitySet Name="SubscriptionTBL" EntityType="Self.SubscriptionTBL" />
     <EntitySet Name="TagsTBL" EntityType="Self.TagsTBL" />
     <EntitySet Name="TagsToArticlesTBL" EntityType="Self.TagsToArticlesTBL" />
     <EntitySet Name="TagsToSongsTBL" EntityType="Self.TagsToSongsTBL" />
     <EntitySet Name="TagsTypesTBL" EntityType="Self.TagsTypesTBL" />
+    <EntitySet Name="TopicsTBL" EntityType="Self.TopicsTBL" />
     <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" />
     <EntitySet Name="LastResponses" EntityType="Self.LastResponses" />
     <EntitySet Name="songsDetails" EntityType="Self.songsDetails" />
@@ -685,8 +707,6 @@
       <End Role="TagsTBL" EntitySet="TagsTBL" />
       <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
     </AssociationSet>
-    <EntitySet Name="SubscriptionTBL" EntityType="MusicOnlineModel.SubscriptionTBL" />
-    <EntitySet Name="sysdiagrams" EntityType="MusicOnlineModel.sysdiagrams" />
     <AssociationSet Name="FK_SubscriptionTBL_SingersTBL" Association="MusicOnlineModel.FK_SubscriptionTBL_SingersTBL">
       <End Role="SingersTBL" EntitySet="SingersTBL" />
       <End Role="SubscriptionTBL" EntitySet="SubscriptionTBL" />
@@ -696,26 +716,6 @@
       <End Role="SubscriptionTBL" EntitySet="SubscriptionTBL" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="SubscriptionTBL">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="userId" Type="Int32" />
-    <Property Name="singerId" Type="Int32" />
-    <NavigationProperty Name="SingersTBL" Relationship="MusicOnlineModel.FK_SubscriptionTBL_SingersTBL" FromRole="SubscriptionTBL" ToRole="SingersTBL" />
-    <NavigationProperty Name="UsersTBL" Relationship="MusicOnlineModel.FK_SubscriptionTBL_UsersTBL" FromRole="SubscriptionTBL" ToRole="UsersTBL" />
-  </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <Association Name="FK_SubscriptionTBL_SingersTBL">
     <End Type="MusicOnlineModel.SingersTBL" Role="SingersTBL" Multiplicity="0..1" />
     <End Type="MusicOnlineModel.SubscriptionTBL" Role="SubscriptionTBL" Multiplicity="*" />

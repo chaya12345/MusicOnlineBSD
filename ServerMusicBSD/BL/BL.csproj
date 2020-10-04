@@ -82,6 +82,7 @@
     <Compile Include="Casts\ToTagsToArticleDTO.cs" />
     <Compile Include="Casts\ToTagsToSongsDTO.cs" />
     <Compile Include="Casts\ToTagsTypesDTO.cs" />
+    <Compile Include="Casts\ToTopicsDTO.cs" />
     <Compile Include="Casts\ToUsersDTO.cs" />
     <Compile Include="FollowUpBL.cs" />
     <Compile Include="JobsBL.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="TagsToArticlesBL.cs" />
     <Compile Include="TagsToSongsBL.cs" />
     <Compile Include="TagsTypesBL.cs" />
+    <Compile Include="TopicsBL.cs" />
     <Compile Include="UsersBL.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -41,14 +41,14 @@ namespace DAL
         public virtual DbSet<SingersTBL> SingersTBL { get; set; }
         public virtual DbSet<SongsTBL> SongsTBL { get; set; }
         public virtual DbSet<SongsToPlaylistsTBL> SongsToPlaylistsTBL { get; set; }
+        public virtual DbSet<SubscriptionTBL> SubscriptionTBL { get; set; }
         public virtual DbSet<TagsTBL> TagsTBL { get; set; }
         public virtual DbSet<TagsToArticlesTBL> TagsToArticlesTBL { get; set; }
         public virtual DbSet<TagsToSongsTBL> TagsToSongsTBL { get; set; }
         public virtual DbSet<TagsTypesTBL> TagsTypesTBL { get; set; }
+        public virtual DbSet<TopicsTBL> TopicsTBL { get; set; }
         public virtual DbSet<UsersTBL> UsersTBL { get; set; }
         public virtual DbSet<LastResponses> LastResponses { get; set; }
         public virtual DbSet<songsDetails> songsDetails { get; set; }
-        public virtual DbSet<SubscriptionTBL> SubscriptionTBL { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }
