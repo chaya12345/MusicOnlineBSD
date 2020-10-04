@@ -14,13 +14,13 @@ namespace ServerMusicBSD.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class TopicsController : ApiController
     {
-        public static List<TopicsDTO> GetTopics()
+        public  List<TopicsDTO> GetTopics()
         {
             return TopicsBL.GetTopics();
         }
-        public static void updateTopic(int topicId, [FromBody] TopicsTBL updateTopic)
+        public  void PutTopic(int topicId, [FromBody] TopicsTBL updateTopic)
         {
-            TopicsBL.updateTopic(topicId, updateTopic);
+            TopicsBL.UpdateTopic(topicId, updateTopic);
         }
     }
 }
