@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Article } from '../classes/article';
 import { ArticleService } from '../services/article.service';
 import { LikeService } from '../services/like.service';
@@ -12,7 +11,6 @@ import { LikeService } from '../services/like.service';
 export class LatestArticleComponent implements OnInit {
 
   @Input() article: Article;
-  @Input() dark?: boolean = false;
   @Input() vertical?: boolean = false;
   num: number = 1;
 

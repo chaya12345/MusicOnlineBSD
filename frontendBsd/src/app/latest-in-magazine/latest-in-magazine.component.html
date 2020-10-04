@@ -2,7 +2,7 @@
     <div class="center-content">
         <p class="title-part">אחרונים במגזין.</p>
         <div class="wrap-articles center-object">
-            <latest-article [dark]="dark" class="space-between" *ngFor="let article of latestArticles" [article]="article"></latest-article>
+            <latest-article class="space-between" *ngFor="let article of latestArticles" [article]="article"></latest-article>
         </div>
         <div *ngIf="!anotherVersion" class="reload-more-button">עוד...</div>
         <button class="primary-style" *ngIf="anotherVersion" mat-flat-button color="primary">למגזין המלא</button>

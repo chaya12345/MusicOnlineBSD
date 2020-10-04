@@ -1,14 +1,14 @@
 .wrap-latest-article {
-    background-color: white;
     margin: auto;
     height: 350px;
     width: 350px;
-    padding: 2px;
     display: grid;
     grid-template-rows: fit-content(50%) auto;
     transition: .4s;
     animation-duration: .6s;
     animation-timing-function: ease linear;
+    background-color: whitesmoke;
+    color: #252525;
 }
 
 @keyframes bigger {
@@ -18,11 +18,6 @@
     to {
         transform: scale(1);
     }
-}
-
-.dark {
-    background-color: #252525;
-    color: white;
 }
 
 .vertical {
@@ -44,7 +39,8 @@
 }
 
 .wrap-info p {
-    padding: 7px 15px;
+    padding: 1px 15px;
+    margin-top: 15px;
     font-family: fb Ogen;
     font-size: 23px;
     overflow: hidden;

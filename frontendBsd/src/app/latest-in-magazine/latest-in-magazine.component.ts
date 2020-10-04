@@ -10,7 +10,6 @@ import { ArticleService } from '../services/article.service';
 })
 export class LatestInMagazineComponent implements OnInit {
 
-  @Input() dark: boolean = false;
   anotherVersion: boolean = false;
   latestArticles: Article[] = [];
 
