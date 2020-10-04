@@ -134,6 +134,7 @@ namespace BL
             List<SongsDTO> orderSongs = new List<SongsDTO>();
             orderSongs.AddRange(suitableSongs);
             orderSongs.AddRange(nonSuitableSongs);
+            orderSongs = clearDuplicate(orderSongs);
             return orderSongs;
         }
         public static List<SongsDTO> clearDuplicate(List<SongsDTO> songs)
@@ -141,7 +142,7 @@ namespace BL
             List<SongsDTO> clearList = new List<SongsDTO>();
             foreach (SongsDTO song in songs)
             {
-                if (!clearList.Contains(song)) { clearList.Add(song); }
+                if (clearList.Where(s => s.id == song.id).FirstOrDefault() == null) { clearList.Add(song); bool b = clearList.Contains(song); }
             }
             return clearList;
         }

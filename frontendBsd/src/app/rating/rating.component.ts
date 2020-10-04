@@ -7,7 +7,8 @@ import { SongService } from '../services/song.service';
 @Component({
   selector: 'rating',
   templateUrl: './rating.component.html',
-  styleUrls: ['./rating.component.css']
+  styleUrls: ['./rating.component.css'],
+  providers: [LikeService]
 })
 export class RatingComponent implements OnInit {
 
