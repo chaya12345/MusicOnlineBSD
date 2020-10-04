@@ -9,7 +9,7 @@
         <mat-icon matPrefix>search</mat-icon>
         <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete">
           <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name">
-            {{song.name}}
+            <a [href]="'song/'+song.id">{{song.name}}</a>
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
@@ -37,7 +37,7 @@
         </button>
         <mat-autocomplete autoActiveFirstOption #autoTags="matAutocomplete">
           <mat-option *ngFor="let tag of filteredTags | async" [value]="tag.name">
-            {{tag.name}}
+            <a [href]="'songs/filterByTag/'+tag.name">{{tag.name}}</a>
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>

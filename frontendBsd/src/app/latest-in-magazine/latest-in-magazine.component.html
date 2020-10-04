@@ -1,10 +1,12 @@
 <div class="wrap-latest-in-magazine wrap-container">
     <div class="center-content">
         <p class="title-part">אחרונים במגזין.</p>
-        <div class="wrap-articles center-object">
-            <latest-article class="space-between" *ngFor="let article of latestArticles" [article]="article"></latest-article>
+        <div class="wrap-articles">
+            <!-- <latest-article class="space-between" *ngFor="let article of latestArticles" [article]="article"></latest-article> -->
+            <article *ngFor="let article of latestArticles" [article]="article"></article>
         </div>
-        <div *ngIf="!anotherVersion" class="reload-more-button">עוד...</div>
-        <button class="primary-style" *ngIf="anotherVersion" mat-flat-button color="primary">למגזין המלא</button>
+        <a href="magazine" class="reload-more-button light-button">למגזין המלא</a>
+        <!--  *ngIf="!anotherVersion" -->
+        <!-- <button class="primary-style" *ngIf="anotherVersion" mat-flat-button color="primary"><a href="magazine">למגזין המלא</a></button> -->
     </div>
 </div>

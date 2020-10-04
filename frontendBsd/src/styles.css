@@ -206,7 +206,7 @@ footer p.title-part {
 
 .reload-more-button {
     margin: 15px 0;
-    padding: 2px 0;
+    padding: 4px 0;
     font-family: fb Ogen;
     font-size: 22px;
     text-align: center;
@@ -216,7 +216,16 @@ footer p.title-part {
 }
 
 .reload-more-button:hover{
-    background-color: #101010;
+    background-color: #212121;
+}
+
+.reload-more-button.light-button {
+    background-color: #eaeaea;
+    color: #252525;
+}
+
+.reload-more-button.light-button:hover {
+    background-color: #d8d8d8;
 }
 
 .space-between {

@@ -1,5 +1,6 @@
 .wrap-latest-in-magazine {
-    height: 600px;
+    height: 1300px;
+    background-color: white;
 }
 
 .wrap-latest-in-magazine.not-home {
@@ -8,4 +9,8 @@
 
 button {
     margin-top: 20px;
+}
+
+.title-part {
+    color: #252525;
 }

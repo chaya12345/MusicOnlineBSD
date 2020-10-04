@@ -24,16 +24,31 @@ export class SongsBySingerComponent implements OnInit {
   }
 
   initialiseState(): void {
-    if (this.activatedRoute.snapshot.paramMap.get('singerName') != null) {
-      this.singerName = this.activatedRoute.snapshot.paramMap.get('singerName');
-      this.getSongsBySinger();
+    if (this.activatedRoute.snapshot.paramMap.get('filter') == "filterBySinger") {
+      if (this.activatedRoute.snapshot.paramMap.get('value') != null) {
+        this.singerName = this.activatedRoute.snapshot.paramMap.get('value');
+        this.getSongsBySinger();
+      }
+    }
+    else if (this.activatedRoute.snapshot.paramMap.get('filter') == "filterByTag") {
+      if (this.activatedRoute.snapshot.paramMap.get('value') != null) {
+        this.singerName = this.activatedRoute.snapshot.paramMap.get('value');
+        this.getSongsByTag();
+      }
     }
   }
 
   getSongsBySinger() {
     try {
-    this.songService.getSongsBySinger(this.singerName)
-    .subscribe(songs => { this.songsList = songs; this.orderByDate(); }, err => { console.log(err); });
+      this.songService.getSongsBySinger(this.singerName)
+        .subscribe(songs => { this.songsList = songs; this.orderByDate(); }, err => { console.log(err); });
+    } catch { console.log("songs by singer failed"); }
+  }
+
+  getSongsByTag() {
+    try {
+      this.songService.getSongsByTag(this.singerName)
+        .subscribe(songs => { this.songsList = songs; this.orderByDate(); }, err => { console.log(err); });
     } catch { console.log("songs by singer failed"); }
   }
 

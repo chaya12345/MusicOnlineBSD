@@ -23,7 +23,7 @@ const routes: Routes = [{
   path: "song/:id",
   component: SongsPageComponent
 }, {
-  path: "songs/:singerName",
+  path: "songs/:filter/:value",
   component: SongsBySingerComponent
 }, {
   path: "magazine",
