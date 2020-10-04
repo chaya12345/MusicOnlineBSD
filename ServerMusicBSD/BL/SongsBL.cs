@@ -24,8 +24,26 @@ namespace BL
         public int songId;
         public int numberOfMatchingTags;
     }
+    enum eNecessityLevel { HARD, FLEXIBLE };
+    struct Necessity
+    {
+        public eNecessityLevel level { get; set; }
+        public string tag { get; set; }
+        public Necessity(eNecessityLevel level, string tag)
+        {
+            this.level = level;
+            this.tag = tag;
+        }
+    }
     public class SongsBL
     {
+        static List<Necessity> necessity = new List<Necessity>() {
+            new Necessity(eNecessityLevel.HARD, "ג'אנר"),
+            new Necessity(eNecessityLevel.HARD, "מקצב"),
+            new Necessity(eNecessityLevel.HARD, "ווקאלי"),
+            new Necessity(eNecessityLevel.FLEXIBLE, "סגנון"),
+            new Necessity(eNecessityLevel.FLEXIBLE, "נושא")
+        };
         public static List<SongsDTO> GetSongs()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
@@ -76,18 +94,66 @@ namespace BL
             }
             return null;
         }
+        public static List<SongsDTO> GetSongsByTag(List<SongsDTO> songs, string tagName)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<SongsDTO> suitableSongs = new List<SongsDTO>();
+            TagsDTO tag = Casts.ToTagsDTO.GetTag(et.TagsTBL.Where(t => t.name == tagName).FirstOrDefault());
+            foreach (SongsDTO song in songs)
+            {
+                List<TagsDTO> tags = Casts.ToTagsDTO.GetTagsFromTagsToSong(TagsToSongsBL.GetTagsToSong(song.id).ToList());
+                if (tags.Where(t => t.id ==tag.id).FirstOrDefault() != null) { suitableSongs.Add(song); }
+            }
+            return suitableSongs;
+        }
         public static List<SongsDTO> GetSongsByTagId(int tagId)
         {
             return GetSongsByTag(TagsBL.GetName(tagId));
         }
         public static List<SongsDTO> GetSongsByTags(List<string> tags)
         {
-            List<SongsDTO> songs = new List<SongsDTO>();
+            List<SongsDTO> suitableSongs = new List<SongsDTO>();
             foreach (string tag in tags)
             {
-                songs.AddRange(GetSongsByTag(tag));
+                suitableSongs.AddRange(GetSongsByTag(tag));
             }
-            return songs;
+            return suitableSongs;
+        }
+        public static List<SongsDTO> OrderSongsByTags(List<SongsDTO> songs, List<string> tags)
+        {
+            List<SongsDTO> suitableSongs = new List<SongsDTO>();
+            List<SongsDTO> nonSuitableSongs = new List<SongsDTO>();
+            foreach (string tag in tags)
+            {
+                suitableSongs.AddRange(GetSongsByTag(songs, tag));
+            }
+            foreach (SongsDTO song in songs)
+            {
+                if (!suitableSongs.Contains(song)) { nonSuitableSongs.Add(song); }
+            }
+            List<SongsDTO> orderSongs = new List<SongsDTO>();
+            orderSongs.AddRange(suitableSongs);
+            orderSongs.AddRange(nonSuitableSongs);
+            return orderSongs;
+        }
+        public static List<SongsDTO> clearDuplicate(List<SongsDTO> songs)
+        {
+            List<SongsDTO> clearList = new List<SongsDTO>();
+            foreach (SongsDTO song in songs)
+            {
+                if (!clearList.Contains(song)) { clearList.Add(song); }
+            }
+            return clearList;
+        }
+        public static List<SongsDTO> GetSongsByTags(List<SongsDTO> songs, List<string> tags)
+        {
+            List<SongsDTO> suitableSongs = new List<SongsDTO>();
+            foreach (string tag in tags)
+            {
+                suitableSongs.AddRange(GetSongsByTag(songs, tag));
+            }
+            suitableSongs = clearDuplicate(suitableSongs);
+            return suitableSongs;
         }
         public static List<SongsDTO> GetSongsByAllTags(List<string> tags)
         {
@@ -120,6 +186,16 @@ namespace BL
             }
             return Casts.ToSongsDTO.GetSongs(songsIncludeAllTags);
         }
+        public static List<SongsDTO> GetSongsByAllTypes(List<TagsDTO>[] tags)
+        {
+            List<SongsDTO> songs = new List<SongsDTO>();
+            songs.AddRange(GetSongsByTags(tags[0].Select(tag => tag.name).ToList()));
+            for (int i = 1; tags[i] != null && tags[i].Count > 0; i++)
+            {
+                songs = GetSongsByTags(songs, tags[i].Select(tag => tag.name).ToList());
+            }
+            return songs;
+        }
         public static void AddSong(SongsTBL song)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
@@ -146,23 +222,23 @@ namespace BL
             et.SongsTBL.Remove(song);
             et.SaveChanges();
         }
-        private static int GetCountOfSimilarTags(int? songId, List<string> tags)
-        {
-            MusicOnlineEntities et = new MusicOnlineEntities();
-            int count = 0;
-            List<TagsToSongsDTO> tagsToSong = TagsToSongsBL.GetTagsToSong(songId.Value);
-            foreach (string tagName in tags)
-            {
-                var currentTag = et.TagsTBL.Where(t => t.name == tagName).FirstOrDefault();
-                int tagId = 0;
-                if (currentTag != null) {
-                    tagId = currentTag.id;
-                }
-                if (tagsToSong.Select(tag => tag.tagId).Contains(tagId) == true)
-                    count++;
-            }
-            return count;
-        }
+        //private static int GetCountOfSimilarTags(int? songId, List<string> tags)
+        //{
+        //    MusicOnlineEntities et = new MusicOnlineEntities();
+        //    int count = 0;
+        //    List<TagsToSongsDTO> tagsToSong = TagsToSongsBL.GetTagsToSong(songId.Value);
+        //    foreach (string tagName in tags)
+        //    {
+        //        var currentTag = et.TagsTBL.Where(t => t.name == tagName).FirstOrDefault();
+        //        int tagId = 0;
+        //        if (currentTag != null) {
+        //            tagId = currentTag.id;
+        //        }
+        //        if (tagsToSong.Select(tag => tag.tagId).Contains(tagId) == true)
+        //            count++;
+        //    }
+        //    return count;
+        //}
         public static void IncreaseLike(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
@@ -199,52 +275,100 @@ namespace BL
                 }
             }
         }
+        //public static List<songsDetails> GetSimilarSongs(int songId)
+        //{
+        //    MusicOnlineEntities et = new MusicOnlineEntities();
+        //    List<string> tags = TagsToSongsBL.GetTagsNamesToSong(songId);
+        //    List<TagsTBL> tagsTBL = et.TagsTBL.Where(t => tags.Contains(t.name)).ToList();
+        //    //קבלת סוג הג'אנר
+        //    var tagType = tagsTBL.Where(t => t.tagTypeId != null).FirstOrDefault();
+        //    int? janer = 0;
+        //    if (tagType != null)
+        //    {
+        //        janer = tagType.id;
+        //    }
+        //    int janerInt = int.Parse(janer + "");
+        //    //כל השירים שנמצאים בג'אנר הזה
+        //    List<TagsToSongsTBL> tagsToSong = et.TagsToSongsTBL.Where(t => t.tagId == janerInt).ToList();
+        //    List<SongsTBL> songsInJaner = new List<SongsTBL>();
+        //    List<SimilarSongs> similarSongs = new List<SimilarSongs>();
+        //    //הכנסה לרשימה של השירים את כל השירים ששיכים לג'אנר מסוים
+        //    foreach (TagsToSongsTBL tagToSong in tagsToSong)
+        //    {
+        //        SongsTBL song = et.SongsTBL.Where(s => s.id == tagToSong.songId).FirstOrDefault();
+        //        if (song != null)
+        //            songsInJaner.Add(song);
+        //    }
+        //    //מכניסים את כל השירים לרשימה מסוג שירים דומים
+        //    foreach (SongsTBL song in songsInJaner)
+        //    {
+        //        if (song.id != songId)
+        //            similarSongs.Add(new SimilarSongs() { songId = song.id, numberOfMatchingTags = GetCountOfSimilarTags(song.id, tags) });
+        //    }
+        //    //ממינים את השירים מאותו ג'אנר לפי השיר המתאים ביותר
+        //    similarSongs = similarSongs.OrderByDescending(s => s.numberOfMatchingTags).ToList();
+        //    List<SongsTBL> result = new List<SongsTBL>();
+        //    foreach (SimilarSongs song in similarSongs)
+        //    {
+        //        int IdSong = song.songId;
+        //        result.Add(et.SongsTBL.Where(s => s.id == IdSong).FirstOrDefault());
+        //    }
+        //    //המרה לטבלה מדומה- בשביל שיהיה השם של הזמר
+        //    List<songsDetails> similars = new List<songsDetails>();
+        //    foreach (SongsDTO item in Casts.ToSongsDTO.GetSongs(result))
+        //    {
+        //        similars.Add(Casts.ToSongsDetailsDTO.comperSongToSongsDetails(item));
+        //    }
+        //    return similars;
+        //}
+        public static List<SongsDTO> clearVocalSongs(List<SongsDTO> songs)
+        {
+            List<SongsDTO> nonVocalSongs = new List<SongsDTO>();
+            foreach (SongsDTO song in songs)
+            {
+                List<string> tags = TagsToSongsBL.GetTagsNamesToSong(song.id);
+                if (!tags.Contains("ווקאלי") && !tags.Contains("אקפלה"))
+                {
+                    nonVocalSongs.Add(song);
+                }
+            }
+            return nonVocalSongs;
+        }
         public static List<songsDetails> GetSimilarSongs(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<string> tags = TagsToSongsBL.GetTagsNamesToSong(songId);
-            List<TagsTBL> tagsTBL = et.TagsTBL.Where(t => tags.Contains(t.name)).ToList();
-            //קבלת סוג הג'אנר
-            var tagType = tagsTBL.Where(t => t.tagTypeId != null).FirstOrDefault();
-            int? janer = 0;
-            if (tagType != null)
+            List<TagsDTO> tags = Casts.ToTagsDTO.GetTagsFromTagsToSong(TagsToSongsBL.GetTagsToSong(songId));
+            List<SongsDTO> possibleSongs = new List<SongsDTO>();
+            List<SongsDTO> songs = new List<SongsDTO>();
+            List<TagsDTO>[] hardTags = new List<TagsDTO>[necessity.Count];
+            List<TagsDTO> flexibleTags = new List<TagsDTO>();
+            int index = 0;
+            foreach (Necessity nec in necessity)
             {
-                janer = tagType.id;
+                TagsDTO tagType = new TagsDTO();
+                List<TagsDTO> tagsType = new List<TagsDTO>();
+                if (nec.level == eNecessityLevel.HARD)
+                {
+                    tagsType = TagsTypesBL.GetTagByType(tags, nec.tag);
+                    if (tagType != null) {
+                        hardTags[index] = new List<TagsDTO>();
+                        hardTags[index++].AddRange(tagsType); 
+                    }
+                }
+                else if (nec.level == eNecessityLevel.FLEXIBLE)
+                {
+                    tagType = TagsTypesBL.GetTagByType(tags, nec.tag).FirstOrDefault();
+                    if (tagType != null) { flexibleTags.Add(tagType); }
+                }
             }
-            int janerInt = int.Parse(janer + "");
-            //כל השירים שנמצאים בג'אנר הזה
-            List<TagsToSongsTBL> tagsToSong = et.TagsToSongsTBL.Where(t => t.tagId == janerInt).ToList();
-            List<SongsTBL> songsInJaner = new List<SongsTBL>();
-            List<SimilarSongs> similarSongs = new List<SimilarSongs>();
-            //הכנסה לרשימה של השירים את כל השירים ששיכים לג'אנר מסוים
-            foreach (TagsToSongsTBL tagToSong in tagsToSong)
+            possibleSongs.AddRange(GetSongsByAllTypes(hardTags));
+            if (tags.Where(tag => tag.name == "ווקאלי" || tag.name == "אקפלה").FirstOrDefault() == null)
             {
-                SongsTBL song = et.SongsTBL.Where(s => s.id == tagToSong.songId).FirstOrDefault();
-                if (song != null)
-                    songsInJaner.Add(song);
+                possibleSongs = clearVocalSongs(possibleSongs);
             }
-            //מכניסים את כל השירים לרשימה מסוג שירים דומים
-            foreach (SongsTBL song in songsInJaner)
-            {
-                if (song.id != songId)
-                    similarSongs.Add(new SimilarSongs() { songId = song.id, numberOfMatchingTags = GetCountOfSimilarTags(song.id, tags) });
-            }
-            //ממינים את השירים מאותו ג'אנר לפי השיר המתאים ביותר
-            similarSongs = similarSongs.OrderByDescending(s => s.numberOfMatchingTags).ToList();
-            List<SongsTBL> result = new List<SongsTBL>();
-            foreach (SimilarSongs song in similarSongs)
-            {
-                int IdSong = song.songId;
-                result.Add(et.SongsTBL.Where(s => s.id == IdSong).FirstOrDefault());
-            }
-            //המרה לטבלה מדומה- בשביל שיהיה השם של הזמר
-            List<songsDetails> similars = new List<songsDetails>();
-            foreach (SongsDTO item in Casts.ToSongsDTO.GetSongs(result))
-            {
-                similars.Add(Casts.ToSongsDetailsDTO.comperSongToSongsDetails(item));
-            }
-            return similars;
+            songs.AddRange(OrderSongsByTags(possibleSongs, flexibleTags.Select(tag => tag.name).ToList()));
+            bool isFound = songs.Remove(songs.Where(song =>song.id == songId).FirstOrDefault());
+            return Casts.ToSongsDetailsDTO.GetSongsDetails(songs);
         }
     }
-
 }

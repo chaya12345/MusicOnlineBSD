@@ -28,5 +28,19 @@ namespace BL.Casts
             }
             return newTags;
         }
+        public static TagsDTO GetTagFromTagsToSong(TagsToSongsDTO tag)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            return Casts.ToTagsDTO.GetTag(et.TagsTBL.Where(t => t.id == tag.tagId).FirstOrDefault());
+        }
+        public static List<TagsDTO> GetTagsFromTagsToSong(List<TagsToSongsDTO> tags)
+        {
+            List<TagsDTO> currentTags = new List<TagsDTO>();
+            foreach (TagsToSongsDTO tag in tags)
+            {
+                currentTags.Add(GetTagFromTagsToSong(tag));
+            }
+            return currentTags;
+        }
     }
 }
