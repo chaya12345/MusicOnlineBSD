@@ -45,7 +45,7 @@ export class ReportingComponent implements OnInit {
     try {
     this.songService.getSongById(this._songId).subscribe(song => { this.song = song; }, err => { console.log(err); });
     }
-    catch { console.log('reporting'); }
+    catch (err) { console.log(err); }
   }
 
   openDialog(): void {

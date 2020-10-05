@@ -18,7 +18,7 @@ export class NewSongsComponent implements OnInit {
     try {
       this.songService.getSongs().subscribe(song => { this.newSongsList = song; this.filter(); }, err => { console.log(err); });
     }
-    catch { console.log('new-songs'); }
+    catch (err) { console.log(err); }
   }
 
   ngOnInit(): void {

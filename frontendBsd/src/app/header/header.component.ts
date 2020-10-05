@@ -32,12 +32,12 @@ export class HeaderComponent implements OnInit {
     this.songService.getSongs()
     .subscribe(songs => {this.songsList = songs; this.orderByName(this.songsList); this.updateSongsList();}, err => { console.log(err); });
     }
-    catch { console.log('search-spesific'); }
+    catch (err) { console.log(err); }
     try {
     this.singerService.getSingers()
     .subscribe(singers => {this.singersList = singers; this.orderByName(this.singersList); this.updateSingersList();}, err => { console.log(err); });
     }
-    catch { console.log('mini-searching'); }
+    catch (err) { console.log(err); }
   }
 
   ngOnInit(): void {

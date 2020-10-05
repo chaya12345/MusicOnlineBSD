@@ -29,7 +29,7 @@ export class SongsInPlaylistComponent implements OnInit {
     try {
       this.songService.getSongsByTagId(this.playlist.tagId)
       .subscribe(songs => { this.songsList = songs; this.cdr.detectChanges(); }, err => console.log(err));
-    } catch { console.log("get songs failed"); }
+    } catch (err) { console.log(err); }
   }
 
 }

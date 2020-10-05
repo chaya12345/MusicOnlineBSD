@@ -41,7 +41,7 @@ export class SongsPageComponent implements OnInit {
     try {
       this.songService.getSongById(this.songId).subscribe(song => { this.song = song; this.checkIsFound(); }, err => { console.log(err); });
     }
-    catch { console.log('song-details'); }
+    catch (err) { console.log(err); }
   }
 
   checkIsFound(): void {

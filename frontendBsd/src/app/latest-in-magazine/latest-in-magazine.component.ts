@@ -17,7 +17,7 @@ export class LatestInMagazineComponent implements OnInit {
     try {
     this.articleService.getArticles().subscribe(article => { this.latestArticles = article; this.filter(); }, err => { console.log(err); });
     }
-    catch { console.log('magazine'); }
+    catch (err) { console.log(err); }
   }
 
   ngOnInit(): void {

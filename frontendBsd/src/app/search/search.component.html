@@ -17,13 +17,13 @@
 
       <mat-form-field appearance="outline">
         <mat-label>חפש זמר, אומן</mat-label>
-        <input type="text" matInput [formControl]="singersControl" [matAutocomplete]="autoSingers">
+        <input type="text" matInput [formControl]="artistsControl" [matAutocomplete]="autoArtists">
         <button mat-icon-button matPrefix>
           <mat-icon>search</mat-icon>
         </button>
-        <mat-autocomplete autoActiveFirstOption #autoSingers="matAutocomplete">
-          <mat-option *ngFor="let singer of filteredSingers | async" [value]="singer.name">
-            {{singer.name}}
+        <mat-autocomplete autoActiveFirstOption #autoArtists="matAutocomplete">
+          <mat-option *ngFor="let artist of filteredArtists | async" [value]="artist.name">
+            {{artist.name}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>

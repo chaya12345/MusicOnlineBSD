@@ -25,7 +25,7 @@ export class PlaylistsComponent implements OnInit {
     try {
       this.playlistsSystemService.getPlaylists()
       .subscribe(playlists => { this.playlists = playlists; this.cdr.detectChanges(); }, err => console.log(err));
-    } catch { console.log("get playlists failed"); }
+    } catch (err) { console.log(err); }
   }
 
 }

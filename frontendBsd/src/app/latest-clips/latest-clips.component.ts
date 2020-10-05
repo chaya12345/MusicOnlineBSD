@@ -15,7 +15,7 @@ export class LatestClipsComponent implements OnInit {
     try {
       this.songService.getSongsByTag('קליפ').subscribe(songs => { this.clipsList = songs; this.filter(); }, err => { console.log(err); });
     }
-    catch { console.log('clips'); }
+    catch (err) { console.log(err); }
   }
 
   ngOnInit(): void {

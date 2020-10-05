@@ -25,7 +25,7 @@ export class ArticleComponent implements OnInit {
     try {
       this.resToArticlesService.getCountResponsesToArticle(this.article.id)
       .subscribe(cnt => { this.countRes = cnt; this.cdr.detectChanges(); }, err => console.log(err));
-    } catch { console.log("count responses failed"); }
+    } catch (err) { console.log(err); }
   }
 
   ngOnDestroy() {

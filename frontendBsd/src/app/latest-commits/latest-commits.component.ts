@@ -15,7 +15,7 @@ export class LatestCommitsComponent implements OnInit {
     try {
       this.resToArticlesService.getLast5Responses().subscribe(LastRespons =>{ this.lastResponsesView = LastRespons; }, err => console.log(err));
     }
-    catch { console.log("erroe in latestCommitsComponent") }
+    catch (err) { console.log(err); }
   }
 
   ngOnInit() {
