@@ -49,7 +49,7 @@ export class MainComponent implements OnInit {
       this.getData();
       this.getTags();
       this.getResponsesCnt();
-    } catch { console.log("load song failed"); }
+    } catch (err) { console.log(err); }
   }
 
   getData(): void {

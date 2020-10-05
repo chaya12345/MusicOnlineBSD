@@ -61,7 +61,7 @@ export class RegisterComponent implements OnInit {
 
       });
     }
-    catch { console.log('register'); }
+    catch (err) { console.log(err); }
   }
 
   openDialogToNewsletter(): void {
@@ -78,7 +78,7 @@ export class RegisterComponent implements OnInit {
 
       });
     }
-    catch { console.log('register'); }
+    catch (err) { console.log(err); }
   }
 
 }

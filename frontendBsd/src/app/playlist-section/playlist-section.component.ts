@@ -20,7 +20,7 @@ export class PlaylistSectionComponent implements OnInit {
       this.playlistSystemService.getPlaylistById(Number(this.activatedRoute.snapshot.paramMap.get("id")))
       .subscribe(playlist => { this.playlist = playlist; this.cdr.detectChanges(); this.loaded = true; this.navs.push(this.playlist.name); }, 
       err => console.log(err));
-    } catch { console.log("get plalist failed"); }
+    } catch (err) { console.log(err); }
     this.navs.push("הפלייליסטים");
   }
 

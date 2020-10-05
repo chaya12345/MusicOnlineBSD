@@ -24,7 +24,7 @@ export class FooterSongComponent implements OnInit {
     try {
       this.resToSongsService.getCountResponsesToSong(this.song.id)
       .subscribe(count => { this.countRes = count; this.cdr.detectChanges(); }, err => { console.log(err); }); }
-    catch { console.log("count resopnses failed"); }
+      catch (err) { console.log(err); }
   }
 
 }

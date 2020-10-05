@@ -15,7 +15,7 @@ export class NowViewedComponent implements OnInit {
     try {
     this.songService.getSongs().subscribe(song => { this.songsList = song; this.filter(); }, err => { console.log(err); });
     }
-    catch { console.log('small-song'); }
+    catch (err) { console.log(err); }
   }
 
   ngOnInit() {

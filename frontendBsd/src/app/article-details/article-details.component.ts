@@ -20,7 +20,7 @@ export class ArticleDetailsComponent implements OnInit {
     try {
       this.articleService.getArticleById(Number(this.activatedRoute.snapshot.paramMap.get('id')))
         .subscribe(article => { this.article = article; this.navs.push(this.article.title); }, err => console.log(err));
-    } catch { console.log("article-details failed"); }
+    } catch (err) { console.log(err); }
     this.navs.push("מגזין");
   }
 
@@ -49,7 +49,7 @@ export class ArticleDetailsComponent implements OnInit {
       this.articleService.getArticles()
         .subscribe(article => { this.similarArticles = article; this.filter(); }, err => { console.log(err); });
     }
-    catch { console.log('playlist'); }
+    catch (err) { console.log(err); }
   }
 
   filter(): void {

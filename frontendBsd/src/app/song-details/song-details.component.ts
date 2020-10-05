@@ -55,7 +55,7 @@ export class SongDetailsComponent implements OnInit {
       this.songService.getSimilarSongs(this.song.id)
         .subscribe(song => { this.similarSongs = song; this.filter(); }, err => { console.log(err); });
     }
-    catch { console.log('playlist'); }
+    catch (err) { console.log(err); }
   }
 
   filter(): void {

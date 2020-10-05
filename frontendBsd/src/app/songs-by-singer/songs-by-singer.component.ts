@@ -42,14 +42,14 @@ export class SongsBySingerComponent implements OnInit {
     try {
       this.songService.getSongsBySinger(this.singerName)
         .subscribe(songs => { this.songsList = songs; this.orderByDate(); }, err => { console.log(err); });
-    } catch { console.log("songs by singer failed"); }
+    } catch (err) { console.log(err); }
   }
 
   getSongsByTag() {
     try {
       this.songService.getSongsByTag(this.singerName)
         .subscribe(songs => { this.songsList = songs; this.orderByDate(); }, err => { console.log(err); });
-    } catch { console.log("songs by singer failed"); }
+    } catch (err) { console.log(err); }
   }
 
   orderByDate() {

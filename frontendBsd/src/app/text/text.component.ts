@@ -16,7 +16,7 @@ export class TextComponent implements OnInit {
   ngOnInit() {
     try {
       this.getText();
-    } catch { console.log("read file failed"); }
+    } catch (err) { console.log(err); }
   }
 
   getText(): void {

@@ -16,7 +16,7 @@ export class AllArticlesComponent implements OnInit {
     try {
       this.articleService.getArticles().subscribe(articles => { this.articlesList = articles; this.orderByDate(); }, err => console.log(err));
     }
-    catch { console.log("all songs in songs-page") }
+    catch (err) { console.log(err); }
     this.navs.push("מגזין");
   }
 

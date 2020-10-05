@@ -18,7 +18,7 @@ export class SideComponent implements OnInit {
     try {
     this.articleService.getArticles().subscribe(article => { this.latestArticles = article; this.filter(); }, err => { console.log(err); });
     }
-    catch { console.log('small-song'); }
+    catch (err) { console.log(err); }
   }
 
   ngOnInit() {

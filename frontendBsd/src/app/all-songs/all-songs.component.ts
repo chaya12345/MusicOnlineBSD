@@ -16,7 +16,7 @@ export class AllSongsComponent implements OnInit {
     try {
       this.songService.getSongs().subscribe(songs => { this.songsList = songs; this.orderByDate(); }, err => console.log(err));
     }
-    catch { console.log("all songs in songs-page") }
+    catch (err) { console.log(err); }
     this.navs.push("חדש במוזיקה");
   }
 

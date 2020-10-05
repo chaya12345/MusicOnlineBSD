@@ -4,10 +4,7 @@ import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Song } from '../classes/song';
 import { SongService } from '../services/song.service';
-import { ArtistService } from '../services/artist.service';
 import { Singer } from '../classes/singer';
-import { SingerService } from '../services/singer.service';
-import { Artist } from '../classes/artist';
 import { TagService } from '../services/tag.service';
 import { Tag } from '../classes/tag';
 import { ArtistsAndSingersService } from '../services/artists-and-singers.service';
@@ -24,10 +21,8 @@ export class SearchComponent implements OnInit {
   songsList: Song[] = [];
   songsControl = new FormControl();
 
-  filteredSingers: Observable<Singer[]>;
-  singersControl = new FormControl();
-  singersList: Singer[] = [];
-  artistsList: Artist[] = [];
+  filteredArtists: Observable<ArtistsAndSingers[]>;
+  artistsControl = new FormControl();
   artistsIncludeSingers: ArtistsAndSingers[] = [];
 
   filteredTags: Observable<Tag[]>;
@@ -35,31 +30,23 @@ export class SearchComponent implements OnInit {
   tags: Tag[] = [];
   tagsList: Tag[] = [];
 
-  constructor(private songService: SongService, private singerService: SingerService, private artistService: ArtistService,
+  constructor(private songService: SongService,
     private tagService: TagService, private artistsAndSingersService: ArtistsAndSingersService) {
     this.songsControl = new FormControl();
-    this.singersControl = new FormControl();
+    this.artistsControl = new FormControl();
     this.tagsControl = new FormControl();
     try {
       this.songService.getSongs().subscribe(songs => { this.songsList = songs; this.updateSongsList(); }, err => { console.log(err); });
     }
-    catch { console.log('search-spesific'); }
-    try {
-      this.singerService.getSingers().subscribe(singers => { this.singersList = singers; this.updateSingersList(); }, err => { console.log(err); });
-    }
-    catch { console.log('mini-searching'); }
-    try {
-      this.artistService.getArtists().subscribe(artists => { this.artistsList = artists; this.updateArtistsList(); }, err => { console.log(err); });
-    }
-    catch { console.log('mini-searching'); }
+    catch (err) { console.log(err); }
     try {
       this.tagService.getTags().subscribe(tags => { this.tags = tags; this.filter(); this.updateTagsList(); }, err => { console.log(err); });
     }
-    catch { console.log('mini-searching'); }
+    catch (err) { console.log(err); }
     try {
-      this.artistsAndSingersService.getArtistsAndSingers().subscribe(artist => { this.artistsIncludeSingers = artist; this.filter(); this.updateTagsList(); }, err => { console.log(err); });
+      this.artistsAndSingersService.getArtistsAndSingers().subscribe(artist => { this.artistsIncludeSingers = artist; this.filter(); this.updateArtistsList(); }, err => { console.log(err); });
     }
-    catch { console.log('mini-searching'); }
+    catch (err) { console.log(err); }
   }
 
   ngOnInit(): void {
@@ -78,30 +65,17 @@ export class SearchComponent implements OnInit {
     return this.songsList.filter(song => song.name.toLowerCase().includes(filterValue));
   }
 
-  public updateSingersList(): void {
-    this.filteredSingers = this.singersControl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filterSingers(value))
-      );
-  }
-
-  public _filterSingers(value: string): Singer[] {
-    const filterValue = value.toLowerCase();
-    return this.singersList.filter(singer => singer.name.toLowerCase().includes(filterValue));
-  }
-
   public updateArtistsList(): void {
-    this.filteredSingers = this.singersControl.valueChanges
+    this.filteredArtists = this.artistsControl.valueChanges
       .pipe(
         startWith(''),
         map(value => this._filterArtists(value))
       );
   }
 
-  public _filterArtists(value: string): Singer[] {
+  public _filterArtists(value: string): ArtistsAndSingers[] {
     const filterValue = value.toLowerCase();
-    return this.artistsList.filter(artist => artist.name.toLowerCase().includes(filterValue));
+    return this.artistsIncludeSingers.filter(artist => artist.name.toLowerCase().includes(filterValue));
   }
 
   public updateTagsList(): void {
