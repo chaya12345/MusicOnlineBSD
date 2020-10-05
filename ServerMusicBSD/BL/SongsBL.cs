@@ -335,8 +335,17 @@ namespace BL
         }
         public static List<SongsDTO> GetSongsByArtistsAndSingers(string name)
         {
-            List<SongsDTO> list = GetSongsBySinger(name);
-            list.AddRange(GetSongsByArtist(name));
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<SongsDTO> list = new List<SongsDTO>();
+            if (et.SingersTBL.Where(singer => singer.name == name).FirstOrDefault() != null)
+            {
+                list.AddRange(GetSongsBySinger(name));
+            }
+            if (et.ArtistsTBL.Where(artist => artist.name == name).FirstOrDefault() != null)
+            {
+                list.AddRange(GetSongsByArtist(name));
+            }
+            list = clearDuplicate(list);
             return list;
         }
     }

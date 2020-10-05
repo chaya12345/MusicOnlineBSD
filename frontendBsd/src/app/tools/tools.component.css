@@ -41,9 +41,17 @@
     margin: 0 20px;
     font-family: fb Joker;
     font-size: 19px;
+    padding: 5px 12px;
 }
 
 .wrap-tools * {
     margin-top: auto !important;
     margin-bottom: auto !important;
+}
+
+button.mat-stroked-button.mat-button-base.ng-star-inserted {
+    margin-left: 14px;
+    padding: 5px 12px;
+    font-family: fb Joker;
+    font-size: 19px;
 }

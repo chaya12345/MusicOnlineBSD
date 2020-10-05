@@ -23,7 +23,7 @@
         </button>
         <mat-autocomplete autoActiveFirstOption #autoArtists="matAutocomplete">
           <mat-option *ngFor="let artist of filteredArtists | async" [value]="artist.name">
-            {{artist.name}}
+            <a [href]="'songs/filterByArtist/'+artist.name">{{artist.name}}</a>
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
