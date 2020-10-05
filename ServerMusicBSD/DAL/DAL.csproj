@@ -200,6 +200,7 @@
     <Content Include="src\songs\איציק-אשל\1231.mp4" />
     <Content Include="src\songs\איציק-דדיה\איציק-דדיה-נושא-תפילה-Itzik-Dadya-Nose-Tfila %281%29.mp4" />
     <Content Include="src\songs\בני-פרידמן\בני-פרידמן-בידיים-טובות-ווקאלי.mp3" />
+    <Content Include="src\songs\גד-אלבז\גד אלבז - אבאלה.mp3" />
     <Content Include="src\songs\יעקב-שוואקי\01 - נצח ישראל.mp3" />
     <Content Include="src\songs\יעקב-שוואקי\02 - תפילת השל%27%27ה.mp3" />
     <Content Include="src\songs\יעקב-שוואקי\04 - עולם מושלם.mp3" />
@@ -297,7 +298,6 @@
     <Folder Include="src\songs\אודי-דוידי\" />
     <Folder Include="src\songs\אוהד-מושקוביץ\" />
     <Folder Include="src\songs\בערי-וובר\" />
-    <Folder Include="src\songs\גד-אלבז\" />
     <Folder Include="src\songs\יואלי-דיקמן\" />
     <Folder Include="src\songs\יוסי-גרין\" />
     <Folder Include="src\songs\יניב-בן-משיח\" />
