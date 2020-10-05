@@ -5,11 +5,13 @@
         <mat-icon matPrefix>search</mat-icon>
     </div>
 
-    <button mat-icon-button matTooltip="הוסף למעקב" matTooltipClass="blue-tooltip tooltip" *ngIf="followUp">
+    <button mat-stroked-button *ngIf="followUp" (click)="toggleFollowUp()">
+        הוסף מעקב
         <mat-icon>notifications</mat-icon>
     </button>
 
-    <button mat-icon-button matTooltip="הוסף לרשימת השמעה" matTooltipClass="blue-tooltip tooltip" *ngIf="addToPlaylist">
+    <button mat-stroked-button *ngIf="addToPlaylist">
+        שמור לפלייליסטים שלי
         <mat-icon>star_border</mat-icon>
     </button>
 
