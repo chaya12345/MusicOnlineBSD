@@ -191,7 +191,11 @@
     <Content Include="src\images\for_songs\מידד-טסה\232760_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_songs\מאיר-גרין\מאיר-גרין-ימי-הרחמים.PNG" />
     <Content Include="src\images\for_songs\מרדכי-שפירא\אין-עוד-מלבדו-מרדכי-שפירא.PNG" />
+    <Content Include="src\images\for_songs\שמחה-פרידמן\נשמה-שמחה פרידמן.jpg" />
     <Content Include="src\images\for_songs\שמחה-פרידמן\שמחה פרידמן - לא לפחד.jpg" />
+    <Content Include="src\images\for_songs\שמחה-פרידמן\שמחה פרידמן- בקרוב.jpg" />
+    <Content Include="src\images\for_songs\שמחה-פרידמן\שמחה פרידמן- עוד יבוא היום.jpg" />
+    <Content Include="src\images\for_songs\שמחה-פרידמן\שמחה פרידמן-חתן כלה.jpg" />
     <Content Include="src\images\for_topics\3782176.jpg" />
     <Content Include="src\images\for_topics\magazines2.png" />
     <Content Include="src\images\for_topics\piano-keys-made-with-black-white-paper-yellow-backdrop_23-2147926855.jpg" />
@@ -268,7 +272,12 @@
     <Content Include="src\songs\קובי-ברומר\כמה-טוב-ה-I-קובי-ברומר-Kama-Tov-Hashem-I-Kobi-Brummer.mp4" />
     <Content Include="src\songs\קובי-ברומר\קובי ברומר - עולים לירושלים.mp3" />
     <Content Include="src\songs\קובי-ברומר\קובי ברומר - עם הנצח .mp3" />
+    <Content Include="src\songs\שמחה-פרידמן\שמחה פרידמן - בקרוב %28יתגדל%29  .mp4" />
+    <Content Include="src\songs\שמחה-פרידמן\שמחה פרידמן - חתן כלה .mp4" />
+    <Content Include="src\songs\שמחה-פרידמן\שמחה פרידמן - לא לפחד  .mp4" />
     <Content Include="src\songs\שמחה-פרידמן\שמחה פרידמן - לא לפחד.mp3" />
+    <Content Include="src\songs\שמחה-פרידמן\שמחה פרידמן - נשמה .mp4" />
+    <Content Include="src\songs\שמחה-פרידמן\שמחה פרידמן - עוד יבוא היום .mp4" />
     <Content Include="src\text\songs_content\יעקב-שוואקי\I-Can-Be.txt" />
     <Content Include="src\text\songs_content\יעקב-שוואקי\א-ב-ג.txt" />
     <Content Include="src\text\songs_content\אבי-אילסון\אבי אילסון בשיר חדש ומאיר עם קליפ מרהיב %27תן לי אור%27.txt" />
