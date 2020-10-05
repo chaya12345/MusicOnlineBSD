@@ -165,8 +165,15 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="src\images\for_articles\216402_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_playlists\microphone-conference_1232-1150.jpg" />
     <Content Include="src\images\for_songs\איציק-אשל\סוכה-ולולב-איציק-אשל-וישי-לפידות.PNG" />
+    <Content Include="src\images\for_songs\אריק-דביר\157438_tumb_750Xauto.jpg" />
+    <Content Include="src\images\for_songs\חיים-ישראל\טעיתי-חיים-ישראל.PNG" />
+    <Content Include="src\images\for_songs\יעקב-שוואקי\146812_tumb_750Xauto.jpg" />
+    <Content Include="src\images\for_songs\יעקב-שוואקי\225464_tumb_750Xauto.jpg" />
+    <Content Include="src\images\for_songs\יעקב-שוואקי\main_image.jpg" />
+    <Content Include="src\images\for_songs\יעקב-שוואקי\PIC-8-1-560x373.jpg" />
     <Content Include="src\images\for_songs\ישי-ריבו\236650_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_playlists\abstract-photo-music-piano-jazz-music_136559-247.jpg" />
     <Content Include="src\images\for_playlists\acoustic-guitar-tree_1426-614.jpg" />
@@ -187,6 +194,7 @@
     <Content Include="src\images\for_topics\3782176.jpg" />
     <Content Include="src\images\for_topics\magazines2.png" />
     <Content Include="src\images\for_topics\piano-keys-made-with-black-white-paper-yellow-backdrop_23-2147926855.jpg" />
+    <Content Include="src\songs\for_articles\swkey-corona.mp4" />
     <Content Include="src\songs\אבי-אילסון\אבי אילסון - שיבוא.mp3" />
     <Content Include="src\songs\אברהם-פריד\אברהם פריד &amp; ארי היל - אבא.mp3" />
     <Content Include="src\songs\איציק-אשל\1231.mp4" />
@@ -194,17 +202,17 @@
     <Content Include="src\songs\בני-פרידמן\בני-פרידמן-בידיים-טובות-ווקאלי.mp3" />
     <Content Include="src\songs\יעקב-שוואקי\01 - נצח ישראל.mp3" />
     <Content Include="src\songs\יעקב-שוואקי\02 - תפילת השל%27%27ה.mp3" />
-    <Content Include="src\songs\יעקב-שוואקי\03 - ישתבח שמו.mp3" />
     <Content Include="src\songs\יעקב-שוואקי\04 - עולם מושלם.mp3" />
     <Content Include="src\songs\יעקב-שוואקי\05 - אש.mp3" />
     <Content Include="src\songs\יעקב-שוואקי\06 - Your time.mp3" />
     <Content Include="src\songs\יעקב-שוואקי\07 - מוזיקה.mp3" />
     <Content Include="src\songs\יעקב-שוואקי\08 - הרי את.mp3" />
-    <Content Include="src\songs\יעקב-שוואקי\09 - א ב ג.mp3" />
     <Content Include="src\songs\יעקב-שוואקי\10 - שויתי.mp3" />
     <Content Include="src\songs\יעקב-שוואקי\11 - כל הנשמה.mp3" />
     <Content Include="src\songs\יעקב-שוואקי\12 - A Mother Promise.mp3" />
     <Content Include="src\songs\יעקב-שוואקי\13 - לב אחד.mp3" />
+    <Content Include="src\songs\יעקב-שוואקי\Shwekey.mp4" />
+    <Content Include="src\songs\יעקב-שוואקי\ישתבח שמו.mp3" />
     <Content Include="src\songs\מאיר-גרין\מאיר-גרין-ימי-רחמים5.mp4" />
     <Content Include="src\songs\מידד-טסה\מידד טסה - נעשה שמח.mp4" />
     <Content Include="src\songs\מרדכי-בן-דוד\01 - קול הנשמה.mp3" />
@@ -259,6 +267,8 @@
     <Content Include="src\songs\קובי-ברומר\קובי ברומר - עולים לירושלים.mp3" />
     <Content Include="src\songs\קובי-ברומר\קובי ברומר - עם הנצח .mp3" />
     <Content Include="src\songs\שמחה-פרידמן\שמחה פרידמן - לא לפחד.mp3" />
+    <Content Include="src\text\songs_content\יעקב-שוואקי\I-Can-Be.txt" />
+    <Content Include="src\text\songs_content\יעקב-שוואקי\א-ב-ג.txt" />
     <Content Include="src\text\songs_content\אבי-אילסון\אבי אילסון בשיר חדש ומאיר עם קליפ מרהיב %27תן לי אור%27.txt" />
     <Content Include="src\text\songs_content\אבי-אילסון\שיבוא.txt" />
     <Content Include="src\text\songs_content\אברהם-פריד\אוטוטו.txt" />
@@ -271,6 +281,8 @@
     <Content Include="src\text\songs_content\איציק-דדיה\איציק דדיה חוזר במוסיקה מקורית ובוגרת יותר %27נכספתי%27.txt" />
     <Content Include="src\text\songs_content\איציק-דדיה\מאט דאב ואיציק דדיה בדואט %27אנא%27.txt" />
     <Content Include="src\text\songs_content\איציק-דדיה\נושא תפילה איציק דדיה.txt" />
+    <Content Include="src\text\songs_content\חיים-ישראל\טעיתי.txt" />
+    <Content Include="src\text\songs_content\יעקב-שוואקי\מסיני-בא.txt" />
     <Content Include="src\text\songs_content\מאיר-גרין\ימי הרחמים - מאיר גרין.txt" />
     <Content Include="src\text\songs_content\מידד-טסה\נעשה-שמח.txt" />
     <Content Include="src\text\songs_content\מרדכי-שפירא\אין-עוד-מלבדו.txt" />
