@@ -10,6 +10,8 @@ import { SingerService } from '../services/singer.service';
 import { Artist } from '../classes/artist';
 import { TagService } from '../services/tag.service';
 import { Tag } from '../classes/tag';
+import { ArtistsAndSingersService } from '../services/artists-and-singers.service';
+import { ArtistsAndSingers } from '../classes/artistsAndSingers';
 
 @Component({
   selector: 'search',
@@ -26,6 +28,7 @@ export class SearchComponent implements OnInit {
   singersControl = new FormControl();
   singersList: Singer[] = [];
   artistsList: Artist[] = [];
+  artistsIncludeSingers: ArtistsAndSingers[] = [];
 
   filteredTags: Observable<Tag[]>;
   tagsControl = new FormControl();
@@ -33,7 +36,7 @@ export class SearchComponent implements OnInit {
   tagsList: Tag[] = [];
 
   constructor(private songService: SongService, private singerService: SingerService, private artistService: ArtistService,
-    private tagService: TagService) {
+    private tagService: TagService, private artistsAndSingersService: ArtistsAndSingersService) {
     this.songsControl = new FormControl();
     this.singersControl = new FormControl();
     this.tagsControl = new FormControl();
@@ -51,6 +54,10 @@ export class SearchComponent implements OnInit {
     catch { console.log('mini-searching'); }
     try {
       this.tagService.getTags().subscribe(tags => { this.tags = tags; this.filter(); this.updateTagsList(); }, err => { console.log(err); });
+    }
+    catch { console.log('mini-searching'); }
+    try {
+      this.artistsAndSingersService.getArtistsAndSingers().subscribe(artist => { this.artistsIncludeSingers = artist; this.filter(); this.updateTagsList(); }, err => { console.log(err); });
     }
     catch { console.log('mini-searching'); }
   }
