@@ -15,7 +15,8 @@ namespace BL
         public static void AddSongToPlaylist(SongsToPlaylistsTBL songToPlaylist)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            try { 
+            try
+            {
                 et.SongsToPlaylistsTBL.Add(songToPlaylist);
                 et.SaveChanges();
             }
@@ -52,6 +53,24 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToSongsToPlaylistsDTO.GetSongsToPlaylists(et.SongsToPlaylistsTBL
                 .Where(s => s.playlistId == playlistId).ToList());
+        }
+        public static void AddLikedSong(int songId, int userId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            PlaylistsTBL playlist = et.PlaylistsTBL.Where(p => p.userId == userId && p.name == "שירים שאהבתי").FirstOrDefault();
+            if (playlist == null)
+            {
+                PlaylistBL.AddPlaylist(new PlaylistsTBL() { name = "שירים שאהבתי", userId = userId });
+                playlist = et.PlaylistsTBL.Where(p => p.userId == userId && p.name == "שירים שאהבתי").FirstOrDefault();
+            }
+            if (playlist != null)
+            {
+                SongsToPlaylistsTBL songsToPlaylist = new SongsToPlaylistsTBL();
+                songsToPlaylist.playlistId = playlist.id;
+                songsToPlaylist.songId = songId;
+                AddSongToPlaylist(songsToPlaylist);
+            }
+
         }
     }
 }

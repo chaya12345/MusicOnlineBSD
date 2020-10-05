@@ -53,6 +53,12 @@ export class SongService {
   public decreaseLikeToSong(songId: number): Observable<any> {
     return this.httpClient.put(this.baseUrl + "PutDecreaseLikeToSong?songId=" + songId,songId);
   }
+  public getSongsByArtist(artistName: string): Observable<Song[]> {
+    return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsByArtist?artistName=" + artistName);
+  }
+  public getSongsByArtistsAndSingers(name: string): Observable<Song[]> {
+    return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsByArtistsAndSingers?name=" + name);
+  }
   // יצירת קריאת סרבר עם הרשאות גישה
   //   const headers = { 'Authorization': 'Bearer my-token' }
   //   const body = { title: 'Angular POST Request Example' }

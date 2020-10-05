@@ -19,4 +19,7 @@ export class SongsToPlaylistsService {
   public deleteSongFromPlaylist(songId: number): Observable<any> {
     return this.httpClient.delete(this.baseUrl + "DeleteSongFromPlaylist?songId=" + songId);
   }
+  public addLikedSong(songId: number,userId:number): Observable<any> {
+    return this.httpClient.post(this.baseUrl + "PostLikedSong?songId="+songId+"&userId="+userId, songId);
+  }
 }
