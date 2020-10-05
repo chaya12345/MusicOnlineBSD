@@ -19,22 +19,18 @@ namespace ServerMusicBSD.Controllers
         {
             return SongsBL.GetSongs();
         }
-
         public SongsDTO GetSongById(int songId)
         {
             return SongsBL.GetSongById(songId);
         }
-
         public List<SongsDTO> GetSongsBySinger(string singerName)
         {
             return SongsBL.GetSongsBySinger(singerName);
         }
-
         public List<SongsDTO> GetSongsByAlbum(string albumName)
         {
             return SongsBL.GetSongsByAlbum(albumName);
         }
-
         public List<SongsDTO> GetSongsByTag(string tagName)
         {
             return SongsBL.GetSongsByTag(tagName);
@@ -71,5 +67,14 @@ namespace ServerMusicBSD.Controllers
         {
             SongsBL.DecreaseLike(songId);
         }
+        public  List<SongsDTO> GetSongsByArtist(string artistName)
+        {
+            return SongsBL.GetSongsByArtist(artistName);
+        }
+        public  List<SongsDTO> GetSongsByArtistsAndSingers(string name)
+        {
+            return SongsBL.GetSongsByArtistsAndSingers(name);
+        }
+
     }
 }

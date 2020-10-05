@@ -30,6 +30,10 @@ namespace ServerMusicBSD.Controllers
         {
             return SongsToPlaylistsBL.GetSongsToPlaylists(playlistId);
         }
+        public void PostLikedSong(int songId, int userId)
+        {
+            SongsToPlaylistsBL.AddLikedSong(songId, userId);
+        }
 
     }
 }
