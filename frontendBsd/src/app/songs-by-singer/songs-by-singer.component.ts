@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Song } from '../classes/song';
+import { ArtistsAndSingersService } from '../services/artists-and-singers.service';
 import { SongService } from '../services/song.service';
 
 @Component({
@@ -36,6 +37,12 @@ export class SongsBySingerComponent implements OnInit {
         this.getSongsByTag();
       }
     }
+    else if (this.activatedRoute.snapshot.paramMap.get('filter') == "filterByArtist") {
+      if (this.activatedRoute.snapshot.paramMap.get('value') != null) {
+        this.singerName = this.activatedRoute.snapshot.paramMap.get('value');
+        this.getSongsByArtist();
+      }
+    }
   }
 
   getSongsBySinger() {
@@ -48,6 +55,13 @@ export class SongsBySingerComponent implements OnInit {
   getSongsByTag() {
     try {
       this.songService.getSongsByTag(this.singerName)
+        .subscribe(songs => { this.songsList = songs; this.orderByDate(); }, err => { console.log(err); });
+    } catch (err) { console.log(err); }
+  }
+
+  getSongsByArtist() {
+    try {
+      this.songService.getSongsByArtistsAndSingers(this.singerName)
         .subscribe(songs => { this.songsList = songs; this.orderByDate(); }, err => { console.log(err); });
     } catch (err) { console.log(err); }
   }
