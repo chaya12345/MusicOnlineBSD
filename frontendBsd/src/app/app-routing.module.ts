@@ -8,6 +8,7 @@ import { PlaylistSectionComponent } from './playlist-section/playlist-section.co
 import { PlaylistsComponent } from './playlists/playlists.component';
 import { SongsBySingerComponent } from './songs-by-singer/songs-by-singer.component';
 import { SongsPageComponent } from './songs-page/songs-page.component';
+import { SongsComponent } from './songs/songs.component';
 
 
 const routes: Routes = [{
@@ -16,7 +17,7 @@ const routes: Routes = [{
 }, {
   path: "home",
   component: HomePageComponent
-}, {
+},/* {
   path: "song",
   component: SongsPageComponent
 }, {
@@ -25,6 +26,18 @@ const routes: Routes = [{
 }, {
   path: "songs/:filter/:value",
   component: SongsBySingerComponent
+},*/ {
+  path: "song",
+  component: SongsComponent
+}, {
+  path: "song/:id",
+  component: SongsComponent
+}, {
+  path: "song/:filter/:value",
+  component: SongsComponent
+}, {
+  path: "song/:filter/:value/:order/:dir",
+  component: SongsComponent
 }, {
   path: "magazine",
   component: MagazineComponent

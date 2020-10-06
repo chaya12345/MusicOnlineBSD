@@ -65,6 +65,7 @@ import { PlaylistsComponent } from './playlists/playlists.component';
 import { PlaylistSectionComponent } from './playlist-section/playlist-section.component';
 import { SongsInPlaylistComponent } from './songs-in-playlist/songs-in-playlist.component';
 import { SongInPlaylistComponent } from './song-in-playlist/song-in-playlist.component';
+import { SongsComponent } from './songs/songs.component';
 
 @NgModule({
   declarations: [
@@ -124,7 +125,8 @@ import { SongInPlaylistComponent } from './song-in-playlist/song-in-playlist.com
     PlaylistsComponent,
     PlaylistSectionComponent,
     SongsInPlaylistComponent,
-    SongInPlaylistComponent
+    SongInPlaylistComponent,
+    SongsComponent
   ],
   imports: [
     BrowserModule,

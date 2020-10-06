@@ -1,5 +1,6 @@
 import { ChangeDetectorRef } from '@angular/core';
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Song } from '../classes/song';
 
 @Component({
@@ -14,21 +15,49 @@ export class SongsListComponent implements OnInit {
   currentIndex = 12;
   items: Song[] = [];
 
-  constructor(private crd: ChangeDetectorRef) { }
+  constructor(private cdr: ChangeDetectorRef, public activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
   }
 
   ngOnChanges() {
+    this.orderByDate();
     this.loadData();
   }
 
   loadData(): void {
-    for (let i = 0; i < this.currentIndex; i++) {
-      this.items.push(this.songsList[i]);
+    if (this.songsList != null && this.songsList.length != 0) {
+      for (let i = 0; i < this.currentIndex; i++) {
+        this.items.push(this.songsList[i]);
+      }
+      this.cdr.detectChanges();
+      this.fixDisplaying();
     }
-    this.crd.detectChanges();
-    this.fixDisplaying();
+  }
+
+  orderByDate(): void {
+    if (this.activatedRoute.snapshot.paramMap.get("order")) {
+      let order = this.activatedRoute.snapshot.paramMap.get("order");
+      if (order == "order-by-song") {
+        this.songsList.sort((a, b) => Math.round(b.name.localeCompare(a.name)));
+      }
+      else if (order == "order-by-likes") {
+        this.songsList.sort((a, b) => Math.round(b.count_like - a.count_like));
+      }
+      else if (order == "order-by-views") {
+        this.songsList.sort((a, b) => Math.round(b.count_views - a.count_views));
+      }
+      else if (order == "order-by-res") {
+        // this.songsList.sort((a, b) => Math.round(b.count_views - a.count_views));
+      }
+      else if (order == "order-by-date") {
+        this.songsList.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
+      }
+      this.cdr.detectChanges();
+    }
+    else {
+      this.songsList.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
+    }
   }
 
   LoadMore(event) {
@@ -40,7 +69,7 @@ export class SongsListComponent implements OnInit {
       this.items.push(this.songsList[i]);
     }
     this.currentIndex += rangeLoading;
-    this.crd.detectChanges();
+    this.cdr.detectChanges();
     event.currentTarget.classList.remove("loading");
     this.fixDisplaying();
     // document.documentElement.scrollTop = position;

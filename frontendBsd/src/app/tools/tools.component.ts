@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'tools',
@@ -14,13 +15,13 @@ export class ToolsComponent implements OnInit {
   @Input() sideText?: string = "";
   isChecked: boolean = false;
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
   }
 
   toggleFollowUp() {
-    
+
   }
 
 }
