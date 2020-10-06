@@ -25,4 +25,8 @@ export class SongInPlaylistComponent implements OnInit {
     this.isPlay = false;
   }
 
+  toggle(): void {
+    this.isPlay == true ? this.pause() : this.play();
+  }
+
 }

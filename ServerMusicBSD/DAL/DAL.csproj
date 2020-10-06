@@ -167,8 +167,11 @@
     </Content>
     <Content Include="src\images\for_articles\216402_tumb_750Xauto.jpg" />
     <Content Include="src\images\for_playlists\microphone-conference_1232-1150.jpg" />
+    <Content Include="src\images\for_songs\אבי-מן\השבעתי.jpg" />
+    <Content Include="src\images\for_songs\אבי-מן\לשמח כלה.jpg" />
     <Content Include="src\images\for_songs\איציק-אשל\סוכה-ולולב-איציק-אשל-וישי-לפידות.PNG" />
     <Content Include="src\images\for_songs\אריק-דביר\157438_tumb_750Xauto.jpg" />
+    <Content Include="src\images\for_songs\בני-פרידמן\בני-פרידמן-בידיים-טובות-ווקאלי.jpg" />
     <Content Include="src\images\for_songs\גד-אלבז\גד אלבז- אבאלה.jpg" />
     <Content Include="src\images\for_songs\חיים-ישראל\טעיתי-חיים-ישראל.PNG" />
     <Content Include="src\images\for_songs\יעקב-שוואקי\146812_tumb_750Xauto.jpg" />
@@ -201,6 +204,8 @@
     <Content Include="src\images\for_topics\piano-keys-made-with-black-white-paper-yellow-backdrop_23-2147926855.jpg" />
     <Content Include="src\songs\for_articles\swkey-corona.mp4" />
     <Content Include="src\songs\אבי-אילסון\אבי אילסון - שיבוא.mp3" />
+    <Content Include="src\songs\אבי-מן\השבעתי.mp4" />
+    <Content Include="src\songs\אבי-מן\לשמח כלה .mp4" />
     <Content Include="src\songs\אברהם-פריד\אברהם פריד &amp; ארי היל - אבא.mp3" />
     <Content Include="src\songs\איציק-אשל\1231.mp4" />
     <Content Include="src\songs\איציק-דדיה\איציק-דדיה-נושא-תפילה-Itzik-Dadya-Nose-Tfila %281%29.mp4" />
@@ -278,6 +283,10 @@
     <Content Include="src\songs\שמחה-פרידמן\שמחה פרידמן - לא לפחד.mp3" />
     <Content Include="src\songs\שמחה-פרידמן\שמחה פרידמן - נשמה .mp4" />
     <Content Include="src\songs\שמחה-פרידמן\שמחה פרידמן - עוד יבוא היום .mp4" />
+    <Content Include="src\text\songs_content\אבי-מן\השבעתי.txt" />
+    <Content Include="src\text\songs_content\אבי-מן\לשמח כלה.txt" />
+    <Content Include="src\text\songs_content\בני-פרידמן\בידיים-טובות.txt" />
+    <Content Include="src\text\songs_content\גד-אלבז\אבאלה.txt" />
     <Content Include="src\text\songs_content\יעקב-שוואקי\I-Can-Be.txt" />
     <Content Include="src\text\songs_content\יעקב-שוואקי\א-ב-ג.txt" />
     <Content Include="src\text\songs_content\אבי-אילסון\אבי אילסון בשיר חדש ומאיר עם קליפ מרהיב %27תן לי אור%27.txt" />
@@ -304,7 +313,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\songs\אבי-מן\" />
     <Folder Include="src\songs\אודי-דוידי\" />
     <Folder Include="src\songs\אוהד-מושקוביץ\" />
     <Folder Include="src\songs\בערי-וובר\" />

@@ -1,4 +1,4 @@
-<div class="wrap-song-in-playlist">
+<div class="wrap-song-in-playlist" (click)="toggle()">
     <div class="playing" [ngSwitch]="isPlay">
         <mat-icon *ngSwitchCase="false" (click)="play()">play_arrow</mat-icon>
         <mat-icon *ngSwitchCase="true" (click)="pause()">pause</mat-icon>

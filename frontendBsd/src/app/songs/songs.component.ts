@@ -22,6 +22,7 @@ export class SongsComponent implements OnInit {
   isAddToPlaylist: boolean = false;
   isSideText: boolean = false;
   isSingular: boolean = false;
+  orderBy: string = "";
   
   navs: string[] = [];
   songs: Song[] = [];
@@ -57,6 +58,7 @@ export class SongsComponent implements OnInit {
           this.songService.getSongsBySinger(value)
           .subscribe(songs => { this.songs = songs; this.cdr.detectChanges(); 
             this.updateDataForList(); this.orderByDate(); }, err => console.log(err));
+          this.navs.push(value);
         } catch (err) { console.log(err); }
         this.isSingular = false;
       }
@@ -66,6 +68,7 @@ export class SongsComponent implements OnInit {
           this.songService.getSongsByTag(value)
           .subscribe(songs => { this.songs = songs; this.cdr.detectChanges(); 
             this.updateDataForList(); this.orderByDate(); }, err => console.log(err));
+            this.navs.push(value);
         } catch (err) { console.log(err); }
         this.isSingular = false;
       }
@@ -75,16 +78,17 @@ export class SongsComponent implements OnInit {
           this.songService.getSongsByArtistsAndSingers(value)
           .subscribe(songs => { this.songs = songs; this.cdr.detectChanges(); 
            this.updateDataForList(); this.orderByDate(); }, err => console.log(err));
+           this.navs.push(value);
         } catch (err) { console.log(err); }
         this.isSingular = false;
       }
-      if (this.activatedRoute.snapshot.paramMap.get("order")) {
-        let order = this.activatedRoute.snapshot.paramMap.get("order");
-        if (order == "order-by-song") {
-          this.songs.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
-          this.cdr.detectChanges();
-        }
-      }
+      // if (this.activatedRoute.snapshot.paramMap.get("order")) {
+      //   let order = this.activatedRoute.snapshot.paramMap.get("order");
+      //   if (order == "order-by-song") {
+      //     this.songs.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
+      //     this.cdr.detectChanges();
+      //   }
+      // }
     }
   }
 
@@ -111,6 +115,15 @@ export class SongsComponent implements OnInit {
 
   orderByDate(): void {
     this.songs.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
+  }
+
+  order(type: string): void {
+    console.log(type);
+    // if (type == "song") {
+    //   this.songs.sort((a, b) => Math.round(a.name.localeCompare(b.name)));
+    //   this.cdr.detectChanges();
+    // }
+    // this.orderBy = type;
   }
 
 }

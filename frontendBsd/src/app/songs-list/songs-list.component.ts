@@ -11,6 +11,7 @@ import { Song } from '../classes/song';
 export class SongsListComponent implements OnInit {
 
   @Input() songsList: Song[] = [];
+  @Input() orderBy: string = "";
 
   currentIndex = 12;
   items: Song[] = [];
@@ -18,11 +19,16 @@ export class SongsListComponent implements OnInit {
   constructor(private cdr: ChangeDetectorRef, public activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    document.getElementsByTagName("span")[0].innerHTML = "טוען...";
   }
 
   ngOnChanges() {
     this.orderByDate();
     this.loadData();
+    if (this.orderBy == "song") {
+      this.songsList.sort((a, b) => Math.round(a.name.localeCompare(b.name)));
+    }
+    console.log("change");
   }
 
   loadData(): void {
