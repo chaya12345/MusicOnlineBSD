@@ -24,7 +24,7 @@ export class LogInComponent implements OnInit {
     public dialog: MatDialog) {
     this.formLogIn = new FormGroup({
       name: new FormControl("", [Validators.required, Validators.minLength(2)]),
-      password: new FormControl("", [Validators.required, Validators.minLength(2)])
+      password: new FormControl("", [Validators.required, Validators.minLength(6)])
     })
   }
 
