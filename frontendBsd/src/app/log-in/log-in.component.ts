@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { User } from '../classes/user';
+import { RegisterToWebsiteComponent } from '../register-to-website/register-to-website.component';
 import { DialogDataToWebsite } from '../register/register.component';
 import { UsersService } from '../services/users.service';
 
@@ -19,7 +20,8 @@ export class LogInComponent implements OnInit {
   user:User;
 
   constructor(public dialogRef: MatDialogRef<LogInComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogDataToWebsite,private usersService: UsersService) {
+    @Inject(MAT_DIALOG_DATA) public data: DialogDataToWebsite,private usersService: UsersService,
+    public dialog: MatDialog) {
     this.formLogIn = new FormGroup({
       name: new FormControl("", [Validators.required, Validators.minLength(2)]),
       password: new FormControl("", [Validators.required, Validators.minLength(2)])
@@ -42,4 +44,17 @@ export class LogInComponent implements OnInit {
     this.dialogRef.close();
     this.formLogIn.reset({ value: "" });
   }
+  openRegisterDialog(){
+    try {
+      this.onNoClick();
+      const dialogRef = this.dialog.open(RegisterToWebsiteComponent, {
+        width: '400px',
+        data: {  }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+      });
+    }
+    catch (err) { console.log(err); }
+  }
+  
 }
