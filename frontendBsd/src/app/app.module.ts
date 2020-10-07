@@ -145,7 +145,8 @@ import { LogInComponent } from './log-in/log-in.component';
   entryComponents: [
     RegisterToWebsiteComponent,
     RegisterToNewsletterComponent,
-    ReportingDialogComponent
+    ReportingDialogComponent,
+    LogInComponent
   ]
 })
 export class AppModule { }
