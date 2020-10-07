@@ -330,6 +330,7 @@
     <Folder Include="src\songs\שלוימי-גרטנר\" />
     <Folder Include="src\songs\שלום-ברנהולץ\" />
     <Folder Include="src\songs\שלמה-כהן\" />
+    <Folder Include="src\text\articles_content\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

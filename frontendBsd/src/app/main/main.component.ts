@@ -67,8 +67,8 @@ export class MainComponent implements OnInit {
     }
     else if (this.navigate == "article") {
       this.date = this.article.date;
-      this.img = this.article.main_image;
-      this.text = this.article.content;
+      this.img = '../../assets/images/' + this.article.main_image;
+      this.text = '../../assets/text/' + this.article.content;
       this.views = this.article.count_views;
       this.likes = this.article.count_like;
       if (this.article.video != null) {
