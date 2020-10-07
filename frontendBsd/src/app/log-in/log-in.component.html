@@ -8,6 +8,7 @@
             <mat-form-field>
                 <mat-label>שם משתמש:</mat-label>
                 <input placeholder="מייל, שם משתמש " matInput formControlName='name'>
+                <mat-error *ngIf="formLogIn.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
             </mat-form-field>
 
             <mat-form-field>
@@ -17,6 +18,7 @@
                     [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
+                <mat-error *ngIf="formLogIn.controls.password.invalid">{{getPasswordErrorMessage()}}</mat-error>
             </mat-form-field>
 
             <br />

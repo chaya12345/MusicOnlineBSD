@@ -8,7 +8,8 @@
 
         <mat-form-field appearance="outline">
             <mat-label>שם שיר</mat-label>
-            <input type="text" matInput [formControl]="songsControl" [matAutocomplete]="autoSongs" (keydown.enter)="search($event.target.value)">
+            <input type="text" matInput [formControl]="songsControl" [matAutocomplete]="autoSongs"
+                (keydown.enter)="search($event.target.value)">
             <mat-icon matPrefix (click)="triggerClick()">search</mat-icon>
             <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete">
                 <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name">
@@ -30,7 +31,12 @@
             </mat-autocomplete>
         </mat-form-field>
 
-        <button mat-stroked-button (click)="openDialog()"><mat-icon>login</mat-icon>התחבר</button>
-       
+        <button *ngIf='isLogin' mat-stroked-button (click)="openDialog()">
+            <mat-icon>login</mat-icon>התחבר
+        </button>
+        <button *ngIf="!isLogin" mat-stroked-button (click)='logout()'>
+            <mat-icon>logout</mat-icon>התנתק
+        </button>
+
     </div>
 </div>

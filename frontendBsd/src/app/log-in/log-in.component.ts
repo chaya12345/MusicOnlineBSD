@@ -24,7 +24,7 @@ export class LogInComponent implements OnInit {
     public dialog: MatDialog) {
     this.formLogIn = new FormGroup({
       name: new FormControl("", [Validators.required, Validators.minLength(2)]),
-      password: new FormControl("", [Validators.required, Validators.minLength(2)])
+      password: new FormControl("", [Validators.required, Validators.minLength(6)])
     })
   }
 
@@ -57,5 +57,20 @@ export class LogInComponent implements OnInit {
     }
     catch (err) { console.log(err); }
   }
-  
+  getNameErrorMessage() {
+    if (this.formLogIn.controls.name.hasError("required")) {
+      return "זהו שדה חובה.";
+    }
+    else if (this.formLogIn.controls.name.hasError("minlength")) {
+      return "שם לא תקין. (פחות מ-2 תווים)"
+    }
+  }
+  getPasswordErrorMessage(){
+    if (this.formLogIn.controls.password.hasError("required")) {
+      return "זהו שדה חובה.";
+    }
+    else if (this.formLogIn.controls.password.hasError("minlength")) {
+      return "סיסמה לא תקינה. (פחות מ-6 תווים)"
+    }
+  }
 }
