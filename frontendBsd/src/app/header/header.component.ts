@@ -18,7 +18,7 @@ import { LogInComponent } from '../log-in/log-in.component';
 export class HeaderComponent implements OnInit {
 
   // @ViewChild('option', {static: true}) option: ElementRef<HTMLElement>;
-  
+  isLogin: boolean = true;
   filteredSongs: Observable<Song[]>;
   songsList: Song[] = [];
   songsControl = new FormControl();
@@ -27,24 +27,33 @@ export class HeaderComponent implements OnInit {
   singersControl = new FormControl();
   singersList: Singer[] = [];
 
-  constructor(private songService: SongService, private singerService: SingerService, private router: Router,public dialog: MatDialog) { 
+  constructor(private songService: SongService, private singerService: SingerService, private router: Router, public dialog: MatDialog) {
     this.songsControl = new FormControl();
     this.singersControl = new FormControl();
+    this.islogIn();
     try {
-    this.songService.getSongs()
-    .subscribe(songs => {this.songsList = songs; this.orderByName(this.songsList); this.updateSongsList();}, err => { console.log(err); });
+      this.songService.getSongs()
+        .subscribe(songs => { this.songsList = songs; this.orderByName(this.songsList); this.updateSongsList(); }, err => { console.log(err); });
     }
     catch (err) { console.log(err); }
     try {
-    this.singerService.getSingers()
-    .subscribe(singers => {this.singersList = singers; this.orderByName(this.singersList); this.updateSingersList();}, err => { console.log(err); });
+      this.singerService.getSingers()
+        .subscribe(singers => { this.singersList = singers; this.orderByName(this.singersList); this.updateSingersList(); }, err => { console.log(err); });
     }
     catch (err) { console.log(err); }
   }
 
   ngOnInit(): void {
+    this.islogIn();
   }
-
+  islogIn() {
+    if (localStorage.getItem('userId') == (null || undefined)) {
+      this.isLogin = true;
+    }
+    else {
+      this.isLogin = false;
+    }
+  }
   public updateSongsList(): void {
     this.filteredSongs = this.songsControl.valueChanges
       .pipe(
@@ -77,28 +86,33 @@ export class HeaderComponent implements OnInit {
 
   triggerClick() {
     // console.log(this.option);
-      // let el: HTMLElement = this.option.nativeElement;
-      let el: HTMLElement = document.querySelector('a.search-song')[0];
-      console.log(el);
-      el.click();
+    // let el: HTMLElement = this.option.nativeElement;
+    let el: HTMLElement = document.querySelector('a.search-song')[0];
+    console.log(el);
+    el.click();
   }
 
   search(value: string) {
     console.log(value);
   }
 
-  openDialog(){
+  openDialog() {
     try {
       const dialogRef = this.dialog.open(LogInComponent, {
         width: '400px',
-        data: {  }
+        data: {}
       });
       dialogRef.afterClosed().subscribe(result => {
+        this.islogIn();
         if (result != null) {
         }
 
       });
     }
     catch (err) { console.log(err); }
+  }
+  logout() {
+    localStorage.removeItem('userId');
+    this.islogIn();
   }
 }
