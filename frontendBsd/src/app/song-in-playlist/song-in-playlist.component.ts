@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSliderChange } from '@angular/material';
 import { Song } from '../classes/song';
 
 @Component({
@@ -12,19 +13,26 @@ export class SongInPlaylistComponent implements OnInit {
   isPlay: boolean = false;
   checked: boolean = true;
   src: HTMLAudioElement;
+  volume: number = 10;
+  showSlider: boolean = false;
 
-  constructor() { 
-    }
+  constructor() {
+  }
 
   ngOnInit() {
     localStorage.setItem('isPlay', 'false');
     this.src = new Audio("../../assets/songs/" + this.song.file_location);
+    this.src.addEventListener('ended', () => {
+      this.pause();
+    });
+    // this.src.volume = this.volume;
   }
 
   play(): void {
     if (localStorage.getItem('isPlay') == 'false') {
       if (localStorage.getItem('previousSong') != this.song.id.toString()) {
         this.src.load();
+        this.src.onended;
       }
       this.isPlay = true;
       this.src.play();
@@ -43,6 +51,17 @@ export class SongInPlaylistComponent implements OnInit {
 
   toggle(): void {
     this.isPlay == true ? this.pause() : this.play();
+  }
+
+  onInputChange(event: MatSliderChange) {
+    console.log("This is emitted as the thumb slides");
+    console.log(event.value);
+    this.src.volume = event.value;
+  }
+
+  toggleShowing(): void {
+    this.showSlider = !this.showSlider;
+    console.log(this.showSlider);
   }
 
 }

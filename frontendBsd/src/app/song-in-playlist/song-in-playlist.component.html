@@ -1,4 +1,4 @@
-<div class="wrap-song-in-playlist" (click)="toggle()">
+<div class="wrap-song-in-playlist" (click)="toggle()" [class.active]="isPlay">
     <div class="playing" [ngSwitch]="isPlay">
         <mat-icon *ngSwitchCase="false" (click)="play()">play_arrow</mat-icon>
         <mat-icon *ngSwitchCase="true" (click)="pause()">pause</mat-icon>
@@ -13,6 +13,10 @@
                 <button mat-menu-item>הוסף תגובה<mat-icon>speaker_notes</mat-icon></button>
                 <button mat-menu-item>השבת שיר<mat-icon>music_off</mat-icon></button>
             </mat-menu>
+        </div>
+        <div>
+            <mat-icon (mouseenter)="toggleShowing()" *ngIf="!showSlider">volume_up</mat-icon>
+            <mat-slider (mouseleave)="toggleShowing()" *ngIf="showSlider" color="primary" min="0" max="1" step="0.05" [(ngModel)]="volume" (input)="onInputChange($event)"></mat-slider>
         </div>
         <a [href]="'song/'+song.id" matTooltip="פתח שיר בחלון מלא" matTooltipClass="tooltip" class="left-floating"><button mat-icon-button><mat-icon>open_in_new</mat-icon></button></a>
     </div>
