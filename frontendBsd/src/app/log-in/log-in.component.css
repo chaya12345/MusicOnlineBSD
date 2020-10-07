@@ -1,0 +1,48 @@
+.wrap-dialog {
+    direction: rtl;
+}
+
+.wrap-dialog h1 {
+    font-family: fb Ogen;
+    font-size: 23px;
+}
+
+mat-divider {
+    margin-bottom: 8px;
+}
+
+.wrap-dialog > div {
+    display: grid;
+    text-align: center;
+}
+
+.wrap-dialog mat-icon {
+    transition: .4s;
+    margin: 9px auto 0;
+}
+
+mat-form-field {
+    text-align: right;
+}
+
+.wrap-dialog:hover mat-icon {
+    transform: translateY(7px);
+}
+span {
+    display: flex;
+    color: #fbc02d;
+    margin: 10px 0;
+    font-family: fb Joker;
+    font-size: 23px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: .4s;
+}
+span:hover {
+    color: #2c8dfb;
+}
+p span:last-child{
+    position: fixed;
+    right: 53%;
+    bottom: 32.5%;
+}

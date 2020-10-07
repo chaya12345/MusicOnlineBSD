@@ -7,6 +7,8 @@ import { SongService } from '../services/song.service';
 import { Singer } from '../classes/singer';
 import { SingerService } from '../services/singer.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { LogInComponent } from '../log-in/log-in.component';
 
 @Component({
   selector: 'header',
@@ -25,7 +27,7 @@ export class HeaderComponent implements OnInit {
   singersControl = new FormControl();
   singersList: Singer[] = [];
 
-  constructor(private songService: SongService, private singerService: SingerService, private router: Router) { 
+  constructor(private songService: SongService, private singerService: SingerService, private router: Router,public dialog: MatDialog) { 
     this.songsControl = new FormControl();
     this.singersControl = new FormControl();
     try {
@@ -85,4 +87,18 @@ export class HeaderComponent implements OnInit {
     console.log(value);
   }
 
+  openDialog(){
+    try {
+      const dialogRef = this.dialog.open(LogInComponent, {
+        width: '400px',
+        data: {  }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result != null) {
+        }
+
+      });
+    }
+    catch (err) { console.log(err); }
+  }
 }

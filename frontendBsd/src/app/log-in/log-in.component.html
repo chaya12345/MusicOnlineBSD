@@ -1,0 +1,38 @@
+<div class="wrap-dialog">
+    <h1 mat-dialog-title>כניסה</h1>
+    <mat-divider></mat-divider>
+    <div mat-dialog-content>
+        <mat-icon>expand_more</mat-icon>
+
+        <form [formGroup]='formLogIn' (ngSubmit)='onSubmit()'>
+            <mat-form-field>
+                <mat-label>שם משתמש:</mat-label>
+                <input placeholder="מייל, שם משתמש " matInput formControlName='name'>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>סיסמה:</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName='password'>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <br />
+            <!-- צריך להוסיף אופציה של זכור אותי -->
+            <br />
+
+            <div mat-dialog-actions>
+                <button mat-button (click)="onNoClick()">ביטול</button>
+                <button mat-button cdkFocusInitial type="submit">הירשם</button>
+            </div>
+
+            <br />
+            <p>
+                <span>שכחת סיסמה?</span> <span>משתמש חדש?</span>
+            </p>
+            <!--(click)="openRegisterDialog()" -->
+        </form>
+    </div>
+</div>
