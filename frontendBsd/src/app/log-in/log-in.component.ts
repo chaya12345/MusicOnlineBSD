@@ -35,7 +35,8 @@ export class LogInComponent implements OnInit {
     if (this.formLogIn.valid) {
       this.name = this.formLogIn.controls.name.value;
       this.password = this.formLogIn.controls.password.value;
-      this.usersService.logIn(this.name,this.password).subscribe(res=>console.log(res));
+      this.usersService.logIn(this.name,this.password).subscribe(res=>{this.user=res;
+         console.log(this.user);localStorage.setItem('userId',this.user.id+'')});
       this.onNoClick();
     }
   }
