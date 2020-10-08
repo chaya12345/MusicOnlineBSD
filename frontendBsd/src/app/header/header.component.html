@@ -31,10 +31,10 @@
             </mat-autocomplete>
         </mat-form-field>
 
-        <button *ngIf='isLogin' mat-stroked-button (click)="openDialog()">
+        <button *ngIf="!connected" mat-stroked-button (click)="openLoginDialog()">
             <mat-icon>login</mat-icon>התחבר
         </button>
-        <button *ngIf="!isLogin" mat-stroked-button (click)='logout()'>
+        <button *ngIf="connected" mat-stroked-button (click)='logout()'>
             <mat-icon>logout</mat-icon>התנתק
         </button>
 

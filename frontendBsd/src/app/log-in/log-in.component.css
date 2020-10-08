@@ -25,9 +25,14 @@ mat-form-field {
     text-align: right;
 }
 
-.wrap-dialog:hover mat-icon {
+mat-form-field-label {
+    display: none;
+}
+
+.wrap-dialog:hover mat-icon.animate-icon {
     transform: translateY(7px);
 }
+
 span {
     display: flex;
     color: #fbc02d;
@@ -38,9 +43,11 @@ span {
     cursor: pointer;
     transition: .4s;
 }
+
 span:hover {
     color: #2c8dfb;
 }
+
 p span:last-child{
     position: fixed;
     right: 53%;

@@ -17,12 +17,21 @@ export class ToolsComponent implements OnInit {
   @Input() sideText?: string = "";
   isChecked: boolean = false;
 
+  followedUp: boolean = false;
+
   constructor(public router: Router) { }
 
   ngOnInit() {
+    // לבדוק אם המשתמש מחובר - הפרטים שלו בסשן
+    // אם כן - לבדוק בטבלת מעקבים אם הוא במעקב על מה שדלוק (בניתוב לבדוק אם זה מאמר/שיר ולבדוק לפי מזהה)
+    // אם הוא עוקב אחריו
+    // this.followed = true;
   }
 
   toggleFollowUp() {
+    // לבדוק אם המשתמש מחובר - הפרטים שלו בסשן
+    // אם הוא מחובר והוא לא עוקב - להוסיף מעקב אם הוא עוקב - להסיר מעקב
+    // אם הוא לא מחובר - להציג לו הודעה - התחבר 
   }
 
   order(value: string): void {

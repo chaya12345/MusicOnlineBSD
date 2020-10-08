@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -18,7 +18,7 @@ import { LogInComponent } from '../log-in/log-in.component';
 export class HeaderComponent implements OnInit {
 
   // @ViewChild('option', {static: true}) option: ElementRef<HTMLElement>;
-  isLogin: boolean = true;
+  connected: boolean = true;
   filteredSongs: Observable<Song[]>;
   songsList: Song[] = [];
   songsControl = new FormControl();
@@ -30,7 +30,6 @@ export class HeaderComponent implements OnInit {
   constructor(private songService: SongService, private singerService: SingerService, private router: Router, public dialog: MatDialog) {
     this.songsControl = new FormControl();
     this.singersControl = new FormControl();
-    this.islogIn();
     try {
       this.songService.getSongs()
         .subscribe(songs => { this.songsList = songs; this.orderByName(this.songsList); this.updateSongsList(); }, err => { console.log(err); });
@@ -44,16 +43,16 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.islogIn();
+    this.isConnected();
   }
-  islogIn() {
-    if (localStorage.getItem('userId') == (null || undefined)) {
-      this.isLogin = true;
+
+  isConnected() {
+    if (sessionStorage.getItem('user') != null && sessionStorage.getItem('user') != undefined) {
+      this.connected = true;
     }
-    else {
-      this.isLogin = false;
-    }
+    else { this.connected = false; }
   }
+
   public updateSongsList(): void {
     this.filteredSongs = this.songsControl.valueChanges
       .pipe(
@@ -96,23 +95,20 @@ export class HeaderComponent implements OnInit {
     console.log(value);
   }
 
-  openDialog() {
+  openLoginDialog() {
     try {
       const dialogRef = this.dialog.open(LogInComponent, {
         width: '400px',
         data: {}
       });
       dialogRef.afterClosed().subscribe(result => {
-        this.islogIn();
-        if (result != null) {
-        }
-
+        this.isConnected();
       });
-    }
-    catch (err) { console.log(err); }
+    } catch (err) { console.log(err); }
   }
+
   logout() {
-    localStorage.removeItem('userId');
-    this.islogIn();
+    sessionStorage.removeItem('user');
+    this.connected = false;
   }
 }

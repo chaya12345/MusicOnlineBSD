@@ -82,6 +82,16 @@ export class SongsComponent implements OnInit {
         } catch (err) { console.log(err); }
         this.isSingular = false;
       }
+      else if (filter == "by-all") {
+        try {
+          let value = this.activatedRoute.snapshot.paramMap.get("value");
+          this.songService.getSongsByTagOrArtist(value)
+          .subscribe(songs => { this.songs = songs; this.cdr.detectChanges(); 
+           this.updateDataForList(); this.orderByDate(); }, err => console.log(err));
+           this.navs.push(value);
+        } catch (err) { console.log(err); }
+        this.isSingular = false;
+      }
       // if (this.activatedRoute.snapshot.paramMap.get("order")) {
       //   let order = this.activatedRoute.snapshot.paramMap.get("order");
       //   if (order == "order-by-song") {

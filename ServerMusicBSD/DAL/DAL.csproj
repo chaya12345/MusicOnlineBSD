@@ -283,6 +283,7 @@
     <Content Include="src\songs\שמחה-פרידמן\שמחה פרידמן - לא לפחד.mp3" />
     <Content Include="src\songs\שמחה-פרידמן\שמחה פרידמן - נשמה .mp4" />
     <Content Include="src\songs\שמחה-פרידמן\שמחה פרידמן - עוד יבוא היום .mp4" />
+    <Content Include="src\text\articles_content\אחים-ושרים.txt" />
     <Content Include="src\text\songs_content\אבי-מן\השבעתי.txt" />
     <Content Include="src\text\songs_content\אבי-מן\לשמח כלה.txt" />
     <Content Include="src\text\songs_content\בני-פרידמן\בידיים-טובות.txt" />
@@ -330,7 +331,6 @@
     <Folder Include="src\songs\שלוימי-גרטנר\" />
     <Folder Include="src\songs\שלום-ברנהולץ\" />
     <Folder Include="src\songs\שלמה-כהן\" />
-    <Folder Include="src\text\articles_content\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

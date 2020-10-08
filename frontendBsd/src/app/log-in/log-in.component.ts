@@ -17,60 +17,53 @@ export class LogInComponent implements OnInit {
   formLogIn: FormGroup;
   name: string;
   password: string;
-  user:User;
 
   constructor(public dialogRef: MatDialogRef<LogInComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogDataToWebsite,private usersService: UsersService,
+    @Inject(MAT_DIALOG_DATA) public data: DialogDataToWebsite, private usersService: UsersService,
     public dialog: MatDialog) {
     this.formLogIn = new FormGroup({
-      name: new FormControl("", [Validators.required, Validators.minLength(2)]),
-      password: new FormControl("", [Validators.required, Validators.minLength(6)])
-    })
+      name: new FormControl("", [Validators.required]),
+      password: new FormControl("", [Validators.required])
+    });
   }
 
   ngOnInit(): void {
- 
   }
+
   onSubmit() {
     if (this.formLogIn.valid) {
       this.name = this.formLogIn.controls.name.value;
       this.password = this.formLogIn.controls.password.value;
-      this.usersService.logIn(this.name,this.password).subscribe(res=>{this.user=res;
-         console.log(this.user);localStorage.setItem('userId',this.user.id+'')});
+      this.usersService.logIn(this.name, this.password)
+        .subscribe(user => sessionStorage.setItem('user', JSON.stringify(user)), err => console.log(err));
       this.onNoClick();
     }
   }
-  
+
   onNoClick(): void {
     this.dialogRef.close();
     this.formLogIn.reset({ value: "" });
   }
-  openRegisterDialog(){
+
+  openRegisterDialog() {
     try {
       this.onNoClick();
       const dialogRef = this.dialog.open(RegisterToWebsiteComponent, {
         width: '400px',
-        data: {  }
+        data: {}
       });
       dialogRef.afterClosed().subscribe(result => {
       });
-    }
-    catch (err) { console.log(err); }
+    } catch (err) { console.log(err); }
   }
   getNameErrorMessage() {
     if (this.formLogIn.controls.name.hasError("required")) {
       return "זהו שדה חובה.";
     }
-    else if (this.formLogIn.controls.name.hasError("minlength")) {
-      return "שם לא תקין. (פחות מ-2 תווים)"
-    }
   }
-  getPasswordErrorMessage(){
+  getPasswordErrorMessage() {
     if (this.formLogIn.controls.password.hasError("required")) {
       return "זהו שדה חובה.";
-    }
-    else if (this.formLogIn.controls.password.hasError("minlength")) {
-      return "סיסמה לא תקינה. (פחות מ-6 תווים)"
     }
   }
 }

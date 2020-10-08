@@ -120,6 +120,25 @@ namespace BL
             }
             return suitableSongs;
         }
+        public static List<SongsDTO> GetSongsByTagOrArtist(string name)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<SongsDTO> songs = new List<SongsDTO>();
+            if (et.TagsTBL.Where(tag => tag.name == name).FirstOrDefault() != null)
+            {
+                songs.AddRange(GetSongsByTag(name));
+            }
+            if (et.ArtistsTBL.Where(artist => artist.name == name).FirstOrDefault() != null)
+            {
+                songs.AddRange(GetSongsByArtist(name));
+            }
+            if (et.SingersTBL.Where(singer => singer.name == name).FirstOrDefault() !=  null)
+            {
+                songs.AddRange(GetSongsBySinger(name));
+            }
+            songs = clearDuplicate(songs);
+            return songs;
+        }
         public static List<SongsDTO> OrderSongsByTags(List<SongsDTO> songs, List<string> tags)
         {
             List<SongsDTO> suitableSongs = new List<SongsDTO>();

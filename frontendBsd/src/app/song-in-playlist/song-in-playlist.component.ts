@@ -62,6 +62,7 @@ export class SongInPlaylistComponent implements OnInit {
   toggleShowing(): void {
     this.showSlider = !this.showSlider;
     console.log(this.showSlider);
+    (document.querySelector("mat-slider") as HTMLElement).style.minWidth = "128px !important";
   }
 
 }

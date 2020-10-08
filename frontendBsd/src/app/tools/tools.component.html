@@ -5,15 +5,24 @@
         <mat-icon matPrefix>search</mat-icon>
     </div>
 
-    <button mat-stroked-button *ngIf="followUp" (click)="toggleFollowUp()">
+    <button mat-stroked-button *ngIf="followUp&&!followedUp" (click)="toggleFollowUp()">
         הוסף מעקב
         <mat-icon>notifications</mat-icon>
     </button>
+    <button mat-stroked-button *ngIf="followUp&&followedUp" (click)="toggleFollowUp()">
+        הסר מעקב
+        <mat-icon>notifications_off</mat-icon>
+    </button>
 
-    <button mat-stroked-button *ngIf="addToPlaylist">
+    <button mat-stroked-button *ngIf="addToPlaylist" [matMenuTriggerFor]="playlists">
         שמור לפלייליסטים שלי
         <mat-icon>star_border</mat-icon>
     </button>
+    <mat-menu #playlists="matMenu" style="width: fit-content;">
+        <button mat-menu-item>שם שיר</button>
+        <button mat-menu-item>תאריך</button>
+        <button mat-menu-item>כמות צפיות</button>
+    </mat-menu>
 
     <div class="order-by-menu" *ngIf="orderBy">
         <button mat-stroked-button [matMenuTriggerFor]="menu" class="order-by-button">

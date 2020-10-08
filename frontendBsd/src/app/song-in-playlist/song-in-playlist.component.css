@@ -85,3 +85,8 @@
     margin-left: 15px;
     margin-right: 0 !important;
 }
+
+mat-slider {
+    min-width: 0px !important;
+    transition: .4s;
+}
