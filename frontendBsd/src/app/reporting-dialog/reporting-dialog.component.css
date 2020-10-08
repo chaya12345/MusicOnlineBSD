@@ -7,7 +7,7 @@
 mat-form-field {
     text-align: right;
     width: 100%;
-    font-family: fb Joker;
+    font-family: fb Joker, calibri;
 }
 
 .mat-dialog-content p {
@@ -21,15 +21,15 @@ textarea {
 .mat-dialog-title {
     font-family: fb Ogen;
     font-size: 23px;
-    color: #fbc02d;
+    color: #2196f3;
     text-align: center;
     margin: 15px 0;
 }
 
 button {
     font-family: fb Joker !important;
-    font-size: 21px !important;
-    padding: 6px 20px;
-    margin-bottom: 10px;
-    background-color: #fbc02d;
+    font-size: 19px !important;
+    padding: 2px 20px;
+    margin-bottom: 16px;
+    margin-right: 5px;
 }

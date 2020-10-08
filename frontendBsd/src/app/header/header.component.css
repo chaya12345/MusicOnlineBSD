@@ -40,16 +40,14 @@
     text-align: right !important;
 }
 
-button.mat-stroked-button {
+button.mat-flat-button {
     padding: 11px 17px;
     font-size: 21px;
     font-family: fb Joker, calibri;
     transform: translateY(-4px);
-    background-color: #bdbdbd;
-    color: white;
     margin-right: 15px;
 }
 
-button.mat-stroked-button mat-icon {
+button.mat-flat-button mat-icon {
     margin-left: 8px;
 }

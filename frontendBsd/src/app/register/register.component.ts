@@ -3,13 +3,15 @@ import { MatDialog } from '@angular/material';
 import { RegisterToNewsletterComponent } from '../register-to-newsletter/register-to-newsletter.component';
 import { RegisterToWebsiteComponent } from '../register-to-website/register-to-website.component';
 
-export interface DialogDataToWebsite {
-  animal: string;
-  name: string;
-  password: string;
-  isNewsletter: boolean;
+export interface DialogDataToNewletter {
+  mail: string;
 }
 
+export interface DialogDataToWebsite {
+  name: string;
+  mail: string;
+  password: string;
+}
 
 @Component({
   selector: 'register',
@@ -18,10 +20,9 @@ export interface DialogDataToWebsite {
 })
 export class RegisterComponent implements OnInit {
 
-  fullname: string;
-  email: string;
+  name: string;
+  mail: string;
   password: string;
-  isNewsletterWanted: boolean;
 
   @Input() type: string;
   text: string;
@@ -51,13 +52,13 @@ export class RegisterComponent implements OnInit {
     try {
       const dialogRef = this.dialog.open(RegisterToWebsiteComponent, {
         width: '400px',
-        data: { fullname: this.fullname, email: this.email, password: this.password, isNewsletterWanted: this.isNewsletterWanted }
+        data: { /*fullname: this.fullname, email: this.email, password: this.password, isNewsletterWanted: this.isNewsletterWanted*/ }
       });
       dialogRef.afterClosed().subscribe(result => {
-        if (result != null) {
+        /*if (result != null) {
           this.fullname = result.slice(0, result.indexOf('|'));
           this.email = result.slice(result.indexOf('|') + 1, result.length);
-        }
+        }*/
 
       });
     }
@@ -68,13 +69,13 @@ export class RegisterComponent implements OnInit {
     try {
       const dialogRef = this.dialog.open(RegisterToNewsletterComponent, {
         width: '400px',
-        data: { email: this.email }
+        data: { /*email: this.email*/ }
       });
       dialogRef.afterClosed().subscribe(result => {
-        if (result != null) {
+        /*if (result != null) {
           this.fullname = result.slice(0, result.indexOf('|'));
           this.email = result.slice(result.indexOf('|') + 1, result.length);
-        }
+        }*/
 
       });
     }

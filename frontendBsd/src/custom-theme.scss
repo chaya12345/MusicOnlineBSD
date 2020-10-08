@@ -15,10 +15,10 @@
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $frontendBsd-primary: mat-palette($app-orange-palette);
-$frontendBsd-accent: mat-palette($app-orange-palette, A200, A100, A400);
+$frontendBsd-accent: mat-palette($app-blue-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$frontendBsd-warn: mat-palette($app-orange-palette);
+$frontendBsd-warn: mat-palette($app-blue-palette);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $frontendBsd-theme: mat-light-theme($frontendBsd-primary, $frontendBsd-accent, $frontendBsd-warn);

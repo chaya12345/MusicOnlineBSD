@@ -5,6 +5,7 @@
 .wrap-dialog h1 {
     font-family: fb Ogen;
     font-size: 23px;
+    margin: 2px 10px;
 }
 
 mat-divider {

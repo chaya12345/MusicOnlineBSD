@@ -1,4 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { DialogDataToWebsite } from '../register/register.component';
 
 @Component({
   selector: 'register-to-website',
@@ -7,11 +10,14 @@ import { Component, Inject, OnInit } from '@angular/core';
 })
 export class RegisterToWebsiteComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<RegisterToWebsiteComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogDataToWebsite) { }
 
   ngOnInit() {
   }
-
   
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 
 }
