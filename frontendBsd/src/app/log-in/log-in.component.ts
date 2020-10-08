@@ -35,7 +35,12 @@ export class LogInComponent implements OnInit {
       this.name = this.formLogIn.controls.name.value;
       this.password = this.formLogIn.controls.password.value;
       this.usersService.logIn(this.name, this.password)
-        .subscribe(user => sessionStorage.setItem('user', JSON.stringify(user)), err => console.log(err));
+        .subscribe(user => {//חובה לבדוק שהוא אכן מצא משתמש כזה, כי גם אם הוא לא מצא הקריאה עדיין הצליחה
+          if (user != null || user != undefined) {
+            sessionStorage.setItem('user', JSON.stringify(user));
+          }
+        }
+          , err => console.log(err));
       this.onNoClick();
     }
   }
