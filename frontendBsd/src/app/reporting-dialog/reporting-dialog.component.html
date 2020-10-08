@@ -28,7 +28,7 @@
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill">
-                <input matInputplaceholder="טלפון זמין">
+                <input matInput placeholder="טלפון זמין">
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill">
@@ -41,8 +41,8 @@
             <p>לתשומת לבכם! דיווח עם פרטים חסרים או שאינם מדוייקים לא יטופל.</p>
 
             <div mat-dialog-actions>
-                <button mat-button>בטל</button>
-                <button mat-button cdkFocusInitial type="submit">שלח דיווח</button>
+                <button color="warn" mat-stroked-button>בטל</button>
+                <button color="warn" mat-flat-button cdkFocusInitial>שלח דיווח</button>
             </div>
              <!-- [disabled]='formRespons.invalid' (click)="onNoClick()" [(ngModel)]="data.messange" [(ngModel)]="data.mail" -->
              <!-- formControlName='mail' formControlName='messange' [(ngModel)]="data.phone" formControlName='phone' -->

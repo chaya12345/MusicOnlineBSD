@@ -1,30 +1,36 @@
 .wrap-dialog {
     direction: rtl;
-}
-
-.wrap-dialog h1 {
-    font-family: fb Ogen;
-    font-size: 23px;
-}
-
-mat-divider {
-    margin-bottom: 8px;
-}
-
-.wrap-dialog > div {
-    display: grid;
-    text-align: center;
-}
-
-.wrap-dialog mat-icon {
-    transition: .4s;
-    margin: 9px auto 0;
+    font-family: fb Joker;
+    font-size: 21px;
 }
 
 mat-form-field {
     text-align: right;
+    width: 100%;
+    font-family: fb Joker, calibri;
+    font-size: 19px;
 }
 
-.wrap-dialog:hover mat-icon {
-    transform: translateY(7px);
+.mat-dialog-content p {
+    margin-bottom: 20px;
+}
+
+textarea {
+    height: 100px;
+}
+
+.mat-dialog-title {
+    font-family: fb Ogen;
+    font-size: 23px;
+    color: #2196f3;
+    text-align: center;
+    margin: 15px 0;
+}
+
+button {
+    font-family: fb Joker !important;
+    font-size: 19px !important;
+    padding: 2px 20px;
+    margin-bottom: 16px;
+    margin-right: 5px;
 }
