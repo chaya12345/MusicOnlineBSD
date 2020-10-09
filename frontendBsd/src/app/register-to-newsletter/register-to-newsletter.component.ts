@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 import { User } from '../classes/user';
 import { DialogDataToNewletter } from '../register/register.component';
 import { UsersService } from '../services/users.service';
@@ -14,10 +14,11 @@ export class RegisterToNewsletterComponent implements OnInit {
 
   registerForm: FormGroup;
   newUser: User;
+  success: boolean;
 
   constructor(public dialogRef: MatDialogRef<RegisterToNewsletterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogDataToNewletter,
-    private usersService: UsersService) {
+    private usersService: UsersService, private _snackBar: MatSnackBar) {
     this.registerForm = new FormGroup({
       email: new FormControl("", [Validators.required, Validators.email])
     });
@@ -28,13 +29,22 @@ export class RegisterToNewsletterComponent implements OnInit {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      this.newUser = new User();
-      this.newUser.mail = this.registerForm.controls.email.value;
-      this.usersService.RegistrationToNewsleter(this.newUser).subscribe();
+      console.log(this.newUser);
+      try {
+      this.usersService.RegistrationToNewsleter(this.registerForm.controls.email.value)
+      .subscribe(res => { this.success = res; this.showMessage(); }, err => console.log(err));
+      } catch (err) { console.log(err); }
       this.onNoClick();
-      this.newUser = null;
-      console.log("register is successfully bsd!!");
       /* TODO send email */
+    }
+  }
+
+  showMessage(): void {
+    if (this.success == true) {
+      this.openSnackBar('נרשמת בהצלחה');
+    }
+    else {
+      this.openSnackBar('כתובת המייל שהוזנה כבר רשומה');
     }
   }
   
@@ -50,4 +60,11 @@ export class RegisterToNewsletterComponent implements OnInit {
       return "זהו שדה חובה.";
     }
   }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, '', {
+      duration: 2000,
+    });
+  }
+
 }

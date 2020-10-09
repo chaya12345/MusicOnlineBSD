@@ -15,10 +15,10 @@ export class UsersService {
     this.logIn(user.name, user.password).subscribe(end => this.res = end);
     if (this.res == null)//אם לא קיים כזה משתמש
     return this.httpClient.post(this.baseUrl + "PostRegistrationToWebsite", user);
-    //אי אפשר לעחזיר ערכים בוליאנים בגלל הבפונקציה מחזירה רק ערכים מסוג קריאת סרבר
+    //אי אפשר להחזיר ערכים בוליאנים בגלל הבפונקציה מחזירה רק ערכים מסוג קריאת סרבר
   }
-  public RegistrationToNewsleter(user: User): Observable<any> {
-    return this.httpClient.post(this.baseUrl + "PostRegistrationToNewsleter", user);
+  public RegistrationToNewsleter(mail: string): Observable<boolean> {
+    return this.httpClient.post<boolean>(this.baseUrl + "PostRegistrationToNewsletter?mail=" + mail, mail);
   }
   public removeFromNewsletter(userId: number): Observable<any> {
     return this.httpClient.put(this.baseUrl + "PostRegistrationToNewsleter?userId=" + userId, userId);

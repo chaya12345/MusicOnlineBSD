@@ -2,15 +2,23 @@
     <h1 mat-dialog-title>הרשמה לאתר</h1>
     <div mat-dialog-content>
         <p>גם אני רוצה להתעדכן בחדשות המוזיקה אונליין</p>
-        <form>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            
+            <mat-form-field appearance="fill" formControlName="name">
+                <input matInput placeholder="שם משתמש">
+            </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" formControlName="email">
                 <input matInput placeholder="example@gmail.com">
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill" formControlName="password">
+                <input matInput placeholder="סיסמה">
             </mat-form-field>
 
             <div mat-dialog-actions>
-                <button mat-stroked-button color="warn">בטל</button>
-                <button mat-flat-button color="warn">הירשם</button>
+                <button mat-stroked-button color="warn" (click)="onNoClick()">בטל</button>
+                <button mat-flat-button color="warn" type="submit">הירשם</button>
             </div>
 
         </form>
