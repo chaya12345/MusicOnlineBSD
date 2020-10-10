@@ -53,7 +53,7 @@ export class ToolsComponent implements OnInit {
 
   toggleFollowUp() {
     if (sessionStorage.getItem('user') != (null || undefined)) {
-      if (this.followUp&&!this.followedUp) {
+      if (this.followUp&&!this.followedUp) {//כאן - לבדוק את התנאי
         this.addFollowUp();
       }
       else this.deleteFollowUp();
