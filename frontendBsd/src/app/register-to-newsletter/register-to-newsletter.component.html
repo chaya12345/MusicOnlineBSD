@@ -6,7 +6,7 @@
 
             <mat-form-field appearance="fill">
                 <input matInput placeholder="example@gmail.com" formControlName="email">
-                <mat-error *ngIf="responseForm.controls.email.invalid">{{getMailErrorMessage()}}</mat-error>
+                <mat-error *ngIf="registerForm.controls.email.invalid">{{getMailErrorMessage()}}</mat-error>
             </mat-form-field>
 
             <div mat-dialog-actions>

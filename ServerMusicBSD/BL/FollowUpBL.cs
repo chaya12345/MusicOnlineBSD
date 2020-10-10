@@ -34,12 +34,21 @@ namespace BL
                 }
             }
         }
-        public static void DeleteFollowUp(int followUpId)
+        public static void DeleteFollowUp(int userId,int id,string type)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            FollowUpTBL followUp = et.FollowUpTBL.Where(f => f.id == followUpId).FirstOrDefault();
-            et.FollowUpTBL.Remove(followUp);
-            et.SaveChanges();
+            if (type == "article")
+            {
+                FollowUpTBL followUp = et.FollowUpTBL.Where(f => f.userId == userId && f.articleId == id).FirstOrDefault();
+                et.FollowUpTBL.Remove(followUp);
+                et.SaveChanges();
+            }
+            if (type == "song")
+            {
+                FollowUpTBL followUp = et.FollowUpTBL.Where(f => f.userId == userId && f.songId == id).FirstOrDefault();
+                et.FollowUpTBL.Remove(followUp);
+                et.SaveChanges();
+            }
         }
         public static List<string> GetSongsNameYouFollowUp(int? userId, string mail)
         {
@@ -129,6 +138,20 @@ namespace BL
                     mails.Add(item.mail);
             }
             return mails;
+        }
+        public static Boolean IsUserFollowUpSong(int userId, int songId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            if (et.FollowUpTBL.Where(f => f.userId == userId && f.songId == songId).FirstOrDefault() != null)
+                return true;
+            return false;
+        }
+        public static Boolean IsUserFollowUpArticle(int userId, int articleId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            if (et.FollowUpTBL.Where(f => f.userId == userId && f.articleId == articleId).FirstOrDefault() != null)
+                return true;
+            return false;
         }
     }
 }

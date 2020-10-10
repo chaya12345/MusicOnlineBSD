@@ -19,9 +19,9 @@ namespace ServerMusicBSD.Controllers
         {
             FollowUpBL.AddFollowUp(followUp);
         }
-        public void DeleteFollowUp(int followUpId)
+        public void DeleteFollowUp(int userId, int id, string type)
         {
-            FollowUpBL.DeleteFollowUp(followUpId);
+            FollowUpBL.DeleteFollowUp(userId,id,type);
         }
         public List<string> GetSongsNameYouFollowUp(int? userId,string mail)
         {
@@ -60,6 +60,14 @@ namespace ServerMusicBSD.Controllers
             smtpClient.UseDefaultCredentials = true;
             smtpClient.Send("bsd.odaya@gmail.com", "dasi1020@gmail.com", "work only bsd!!", "baruch-hashem:)");
             //smtpClient.Send(mailMessage);
+        }
+        public  Boolean GetIsUserFollowUpSong(int userId, int songId)
+        {
+            return FollowUpBL.IsUserFollowUpSong(userId, songId);
+        }
+        public Boolean GetIsUserFollowUpArticle(int userId, int articleId)
+        {
+            return FollowUpBL.IsUserFollowUpArticle(userId, articleId);
         }
     }
 }

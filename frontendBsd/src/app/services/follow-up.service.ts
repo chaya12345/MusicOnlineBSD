@@ -15,8 +15,8 @@ export class FollowUpService {
   addFollowUp(followUp: FollowUp): Observable<any> {
     return this.httpClient.post(this.baseUrl + 'PostFollowUp', followUp);
   }
-  deleteFollowUp(followUpId:number):Observable<any>{
-    return this.httpClient.delete(this.baseUrl+'DeleteFollowUp?followUpId='+followUpId);
+  deleteFollowUp(userId:number,id:number,type:string):Observable<any>{
+    return this.httpClient.delete(this.baseUrl+'DeleteFollowUp?userId='+userId+'id='+id+'type='+type);
   }
   getSongsNameYouFollowUp(userId?:number,mail?:string):Observable<string[]>{
     return this.httpClient.get<string[]>(this.baseUrl+'GetSongsNameYouFollowUp?userId='+userId+'&mail='+mail);
@@ -24,12 +24,17 @@ export class FollowUpService {
   getArticlesNameYouFollowUp(userId?:number,mail?:string):Observable<string[]>{
     return this.httpClient.get<string[]>(this.baseUrl+'GetArticlesNameYouFollowUp?userId='+userId+'&mail='+mail);
   }
-  getMailsOfSongFollowUp(songId:number):Observable<string[]>{
-    return this.httpClient.get<string[]>(this.baseUrl+'GetMailsOfSongFollowUp?songId='+songId);
-  }
   getMailsOfArticleFollowUp(articleId:number):Observable<string[]>{
     return this.httpClient.get<string[]>(this.baseUrl+'GetMailsOfArticleFollowUp?articleId='+articleId);
   }
-
+  getMailsOfSongFollowUp(songId:number):Observable<string[]>{
+    return this.httpClient.get<string[]>(this.baseUrl+'GetMailsOfSongFollowUp?songId='+songId);
+  }
+  getIsUserFollowUpSong(userId:number,songId:number):Observable<boolean>{
+    return this.httpClient.get<boolean>(this.baseUrl+'GetIsUserFollowUpSong?userId='+ userId+'songId='+songId);
+  }
+  getIsUserFollowUpArticle(userId:number,articleId:number):Observable<boolean>{
+    return this.httpClient.get<boolean>(this.baseUrl+'GetIsUserFollowUpArticle?userId='+ userId+'articleId='+articleId);
+  }
 
 }
