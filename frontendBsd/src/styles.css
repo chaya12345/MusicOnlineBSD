@@ -396,3 +396,28 @@ span.mat-slide-toggle-content {
 }
 
 /* #endregion */
+
+/* #region(collapsed) [Snack-bar] */
+
+snack-bar-container {
+    direction: rtl;
+    background-color: #2196f3 !important;
+    color: white !important;
+}
+
+.mat-simple-snackbar {
+    font-family: fb Joker !important;
+    font-size: 21px !important;
+}
+
+.mat-simple-snackbar span {
+    margin: auto;
+}
+
+.mat-simple-snackbar span:before{      
+    font-family: "FontAwesome";
+    content: "\266A";
+    margin-left: 7px;
+}
+
+/* #endregion */

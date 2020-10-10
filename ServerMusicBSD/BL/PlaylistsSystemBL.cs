@@ -14,8 +14,7 @@ namespace BL
         public static List<PlaylistsSystemDTO> GetPlaylists()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToPlaylistsSystemDTO.GetPlaylistsSystem(
-                et.PlaylistsSystemTBL.ToList());
+            return Casts.ToPlaylistsSystemDTO.GetPlaylistsSystem(et.PlaylistsSystemTBL.ToList());
         }
         public static PlaylistsSystemDTO GetPlaylistById(int playlistId)
         {

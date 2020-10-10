@@ -15,8 +15,8 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try { 
-            et.UsersTBL.Add(user);
-            et.SaveChanges();
+                et.UsersTBL.Add(user);
+                et.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -28,6 +28,52 @@ namespace BL
                     }
                 }
             }
+        }
+        public static bool AddToNewsletter(UsersTBL user)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            if (et.UsersTBL.Where(usr => usr.mail == user.mail).FirstOrDefault() == null)
+            {
+                user.newsletter = true;
+                user.type = false;
+                AddUser(user);
+                return true;
+            }
+            else
+            {
+                UsersTBL currentUser = et.UsersTBL.Where(usr => usr.mail == user.mail).FirstOrDefault();
+                if (currentUser.newsletter == null || currentUser.newsletter == false)
+                {
+                    currentUser.newsletter = true;
+                    return true;
+                }
+            }
+            return false;
+        }
+        public static bool AddToNewsletter(string mail)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            if (et.UsersTBL.Where(usr => usr.mail == mail).FirstOrDefault() == null)
+            {
+                UsersTBL user = new UsersTBL();
+                user.mail = mail;
+                user.newsletter = true;
+                user.type = false;
+                AddUser(user);
+                et.SaveChanges();
+                return true;
+            }
+            else
+            {
+                UsersTBL currentUser = et.UsersTBL.Where(usr => usr.mail == mail).FirstOrDefault();
+                if (currentUser.newsletter == null || currentUser.newsletter == false)
+                {
+                    currentUser.newsletter = true;
+                    et.SaveChanges();
+                    return true;
+                }
+            }
+            return false;
         }
         public static void RemoveFromNewsletter(int userId)
         {
