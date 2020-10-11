@@ -10,7 +10,8 @@ export class MassageComponent implements OnInit {
 
   dialogText: string;
 
-  constructor(public dialogRef: MatDialogRef<MassageComponent>, @Inject(MAT_DIALOG_DATA) public data: MassageComponent) { }
+  constructor(public dialogRef: MatDialogRef<MassageComponent>, 
+    @Inject(MAT_DIALOG_DATA) public data: MassageComponent) { }
 
   ngOnInit(): void {
     this.dialogText = this.data.dialogText;
