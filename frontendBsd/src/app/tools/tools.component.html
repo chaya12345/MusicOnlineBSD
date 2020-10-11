@@ -5,11 +5,11 @@
         <mat-icon matPrefix>search</mat-icon>
     </div>
 
-    <button mat-stroked-button *ngIf="followUp&&!followedUp" (click)="toggleFollowUp()">
+    <button mat-stroked-button *ngIf="followUp&&!followedUp" (click)="addFollowUp()">
         הוסף מעקב
         <mat-icon>notifications</mat-icon>
     </button>
-    <button mat-stroked-button *ngIf="followUp&&followedUp" (click)="toggleFollowUp()">
+    <button mat-stroked-button *ngIf="followUp&&followedUp" (click)="deleteFollowUp()">
         הסר מעקב
         <mat-icon>notifications_off</mat-icon>
     </button>

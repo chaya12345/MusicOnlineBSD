@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FollowUp } from '../classes/followUp';
 import { User } from '../classes/user';
+import { LogInComponent } from '../log-in/log-in.component';
 import { RegisterToWebsiteComponent } from '../register-to-website/register-to-website.component';
 import { FollowUpService } from '../services/follow-up.service';
 
@@ -28,7 +29,6 @@ export class ToolsComponent implements OnInit {
 
   constructor(public router: Router, private followUpService: FollowUpService, private activatedRoute: ActivatedRoute,
     public dialog: MatDialog) {
-    this.ngOnInit();
   }
 
   ngOnInit() {
@@ -36,61 +36,68 @@ export class ToolsComponent implements OnInit {
       this.user = JSON.parse(sessionStorage.getItem('user'));
       this.id = Number(this.activatedRoute.snapshot.paramMap.get("id"));
       if (this.activatedRoute.snapshot.routeConfig.path.includes("article") == true) {
-        this.followUpService.getIsUserFollowUpArticle(this.user.id, this.id).subscribe(res => {
-          if (res = true)
+        this.followUpService.IsUserFollowUpArticle(this.user.id, this.id).subscribe(res => {
+          if (res == true)
             this.followedUp = true;
+          else
+            this.followedUp = false;
         })
       }
       if (this.activatedRoute.snapshot.routeConfig.path.includes("song") == true) {
-        this.followUpService.getIsUserFollowUpSong(this.user.id, this.id).subscribe(res => {
-          if (res = true)
+        this.followUpService.IsUserFollowUpSong(this.user.id, this.id).subscribe(res => {
+          if (res == true)
             this.followedUp = true;
+          else
+            this.followedUp = false;
         })
       }
     }
 
   }
 
-  toggleFollowUp() {
-    if (sessionStorage.getItem('user') != (null || undefined)) {
-      if (this.followUp&&!this.followedUp) {//כאן - לבדוק את התנאי
-        this.addFollowUp();
-      }
-      else this.deleteFollowUp();
-    }
-    else {
-      try {
-        const dialogRef = this.dialog.open(RegisterToWebsiteComponent, {
-          width: '400px',
-          data: {}
-        });
-        dialogRef.afterClosed().subscribe(result => {
-          if (sessionStorage.getItem('user') != (null || undefined))
-            this.toggleFollowUp();
-        });
-      } catch (err) { console.log(err); }
-    }
+  logIn(num: number) {
+    try {
+      const dialogRef = this.dialog.open(LogInComponent, {
+        width: '400px',
+        data: {}
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (sessionStorage.getItem('user') != (null || undefined))
+          num == 1 ? this.addFollowUp() : this.deleteFollowUp();
+      });
+    } catch (err) { console.log(err); }
   }
 
   order(value: string): void {
     this.onOrder.emit(value);
   }
+
   addFollowUp() {
-    this.user = JSON.parse(sessionStorage.getItem('user'));
-    this.id = Number(this.activatedRoute.snapshot.paramMap.get("id"));
-    this.newFollow.userId = this.user.id;
-    if (this.activatedRoute.snapshot.routeConfig.path.includes("article") == true)
-      this.newFollow.articleId = this.id;
-    else this.newFollow.songId = this.id;
-    this.followUpService.addFollowUp(this.newFollow).subscribe();
-    this.followedUp=false;
+    if (sessionStorage.getItem('user') != (null || undefined)) {
+      this.user = JSON.parse(sessionStorage.getItem('user'));
+      this.id = Number(this.activatedRoute.snapshot.paramMap.get("id"));
+      this.newFollow.userId = this.user.id;
+      if (this.activatedRoute.snapshot.routeConfig.path.includes("article") == true)
+        this.newFollow.articleId = this.id;
+      else this.newFollow.songId = this.id;
+      this.followUpService.addFollowUp(this.newFollow).subscribe();
+      this.followedUp = true;
+    }
+    else
+      this.logIn(1);
   }
   deleteFollowUp() {
-    this.user = JSON.parse(sessionStorage.getItem('user'));
-    this.id = Number(this.activatedRoute.snapshot.paramMap.get("id"));
-    if (this.activatedRoute.snapshot.routeConfig.path.includes("article") == true)
-      this.followUpService.deleteFollowUp(this.user.id, this.id, 'article');
-    else this.followUpService.deleteFollowUp(this.user.id, this.id, 'song');
-    this.followedUp=true;
+    if (sessionStorage.getItem('user') != (null || undefined)) {
+      this.user = JSON.parse(sessionStorage.getItem('user'));
+      this.id = Number(this.activatedRoute.snapshot.paramMap.get("id"));
+      if (this.activatedRoute.snapshot.routeConfig.path.includes("article") == true)
+        this.followUpService.deleteFollowUp(this.user.id, this.id, 'article').subscribe();
+      else
+        this.followUpService.deleteFollowUp(this.user.id, this.id, 'song').subscribe();
+      this.followedUp = false;
+    }
+    else {
+      this.logIn(2);
+    }
   }
 }
