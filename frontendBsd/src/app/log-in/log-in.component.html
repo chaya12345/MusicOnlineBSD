@@ -16,7 +16,6 @@
                     <mat-icon>{{hide?'visibility_off':'visibility'}}</mat-icon>
                 </button>
                 <mat-error *ngIf="formLogIn.controls.password.invalid">{{getPasswordErrorMessage()}}</mat-error>
-                
             </mat-form-field>
             <div style="text-align: left; transform: translateY(-22px); padding: 0 13px;"><span class="link-span">שכחת סיסמה?</span></div>
 
@@ -31,4 +30,17 @@
 
         </form>
     </div>
+    <!-- <div mat-dialog-content>
+
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="מייל" formControlName='mail' required>
+            <mat-error *ngIf="formLogIn.controls.name.invalid">{{getMailErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <div mat-dialog-actions>
+            <button class="action-button" mat-stroked-button color="warn" (click)="onNoClick()">בטל</button>
+            <button class="action-button" mat-flat-button color="warn" type="submit">התחבר</button>
+        </div>
+
+    </div> -->
 </div>
