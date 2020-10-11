@@ -14,15 +14,10 @@ namespace ServerMusicBSD.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UsersController : ApiController
     {
-        public void PostRegistrationToWebsite([FromBody] UsersTBL newUser)
+        public bool PostRegistrationToWebsite([FromBody] UsersTBL newUser)
         {
-            newUser.type = true;
-            UsersBL.AddUser(newUser);
+            return UsersBL.signUp(newUser);
         }
-        //public bool PostRegistrationToNewsleter([FromBody] UsersTBL newUser)
-        //{
-        //    return UsersBL.AddToNewsletter(newUser);
-        //}
         public bool PostRegistrationToNewsletter(string mail)
         {
             return UsersBL.AddToNewsletter(mail);

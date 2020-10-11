@@ -29,7 +29,6 @@ export class RegisterToNewsletterComponent implements OnInit {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      console.log(this.newUser);
       try {
       this.usersService.RegistrationToNewsleter(this.registerForm.controls.email.value)
       .subscribe(res => { this.success = res; this.showMessage(); }, err => console.log(err));

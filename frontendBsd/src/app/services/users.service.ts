@@ -11,10 +11,10 @@ export class UsersService {
   baseUrl: string = "https://localhost:44368/api/Users/";
   res: any;
   constructor(private httpClient: HttpClient) { }
-  public signUp(user: User): Observable<any> {
-    this.logIn(user.name, user.password).subscribe(end => this.res = end);
-    if (this.res == null)//אם לא קיים כזה משתמש
-    return this.httpClient.post(this.baseUrl + "PostRegistrationToWebsite", user);
+  public signUp(user: User): Observable<boolean> {
+    // this.logIn(user.name, user.password).subscribe(end => this.res = end);
+    // if (this.res == null)//אם לא קיים כזה משתמש
+    return this.httpClient.post<boolean>(this.baseUrl + "PostRegistrationToWebsite", user);
     //אי אפשר להחזיר ערכים בוליאנים בגלל הבפונקציה מחזירה רק ערכים מסוג קריאת סרבר
   }
   public RegistrationToNewsleter(mail: string): Observable<boolean> {

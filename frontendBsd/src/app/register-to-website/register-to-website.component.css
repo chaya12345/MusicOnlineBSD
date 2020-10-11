@@ -27,10 +27,14 @@ textarea {
     margin: 15px 0;
 }
 
-button {
+button.action-button {
     font-family: fb Joker !important;
     font-size: 19px !important;
     padding: 2px 20px;
     margin-bottom: 16px;
     margin-right: 5px;
+}
+
+mat-form-field button {
+    transform: scale(0.75) translateY(8px);
 }

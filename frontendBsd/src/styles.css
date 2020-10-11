@@ -81,6 +81,10 @@ reporting-dialog .mat-form-field-infix, response-adding .mat-form-field-infix {
     padding-bottom: 17px;
 }
 
+mat-checkbox span {
+    margin-right: 8px;
+}
+
 /* #endregion */
 
 /* #region(collapsed) [Swiper-Slide] */

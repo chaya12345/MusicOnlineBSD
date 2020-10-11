@@ -29,23 +29,34 @@ namespace BL
                 }
             }
         }
-        public static bool AddToNewsletter(UsersTBL user)
+        public static bool signUp(UsersTBL user)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            if (et.UsersTBL.Where(usr => usr.mail == user.mail).FirstOrDefault() == null)
+            if (et.UsersTBL.Where(usr => usr.mail == user.mail).FirstOrDefault() == null/* && mail is valid... */)
             {
-                user.newsletter = true;
-                user.type = false;
-                AddUser(user);
-                return true;
-            }
-            else
-            {
-                UsersTBL currentUser = et.UsersTBL.Where(usr => usr.mail == user.mail).FirstOrDefault();
-                if (currentUser.newsletter == null || currentUser.newsletter == false)
+                if (user.newsletter == null)
                 {
-                    currentUser.newsletter = true;
+                    user.newsletter = false;
+                }
+                user.type = true;
+                user.repeat = false;
+                user.coincidental = false;
+                user.saveLike = true;
+                try
+                {
+                    et.UsersTBL.Add(user);
+                    et.SaveChanges();
                     return true;
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
+                    }
                 }
             }
             return false;

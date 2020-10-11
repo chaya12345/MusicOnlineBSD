@@ -1,39 +1,34 @@
 <div class="wrap-dialog">
-    <h1 mat-dialog-title>כניסה</h1>
-    <mat-divider></mat-divider>
+    <h1 mat-dialog-title>התחברות</h1>
     <div mat-dialog-content>
-        <mat-icon class="animate-icon">expand_more</mat-icon>
-
+        <!-- <p>גם אני רוצה להתעדכן בחדשות המוזיקה אונליין</p> -->
         <form [formGroup]='formLogIn' (ngSubmit)='onSubmit()'>
 
             <mat-form-field appearance="fill">
-                <input matInput placeholder="שם או מייל" formControlName='name' required maxlength="20">
+                <input matInput placeholder="שם או מייל" formControlName='name' required>
                 <mat-error *ngIf="formLogIn.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
             </mat-form-field>
 
-            <mat-form-field>
-                <input matInput placeholder="סיסמה" [type]="hide?'password':'text'" formControlName='password' required maxlength="25">
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="סיסמה" [type]="hide?'password':'text'" formControlName='password' required>
                 <button mat-icon-button matSuffix (click)="hide=!hide" [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hide">
                     <mat-icon>{{hide?'visibility_off':'visibility'}}</mat-icon>
                 </button>
                 <mat-error *ngIf="formLogIn.controls.password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+                
             </mat-form-field>
+            <div style="text-align: left; transform: translateY(-22px); padding: 0 13px;"><span class="link-span">שכחת סיסמה?</span></div>
 
-            <br />
-            <!-- צריך להוסיף אופציה של זכור אותי -->
-            <br />
+            <mat-checkbox color="warn">זכור אותי</mat-checkbox>
+
+            <div style="text-align: left; margin-bottom: 12px;"><span>חדש באתר? לחץ <a (click)="openRegisterDialog()">כאן</a></span></div>
 
             <div mat-dialog-actions>
-                <button mat-button (click)="onNoClick()">ביטול</button>
-                <button mat-button cdkFocusInitial type="submit">הירשם</button>
+                <button class="action-button" mat-stroked-button color="warn" (click)="onNoClick()">בטל</button>
+                <button class="action-button" mat-flat-button color="warn" type="submit">התחבר</button>
             </div>
 
-            <br/>
-            <p>
-                <span>שכחת סיסמה?</span><span (click)="openRegisterDialog()">משתמש חדש?</span>
-            </p>
-            <!-- -->
         </form>
     </div>
 </div>
