@@ -11,6 +11,11 @@ import { MatDialog } from '@angular/material';
 import { LogInComponent } from '../log-in/log-in.component';
 import { MassageComponent } from '../massage/massage.component';
 
+
+export interface messange {
+  text: string;
+}
+
 @Component({
   selector: 'header',
   templateUrl: './header.component.html',
@@ -27,7 +32,9 @@ export class HeaderComponent implements OnInit {
   filteredSingers: Observable<Singer[]>;
   singersControl = new FormControl();
   singersList: Singer[] = [];
-  @Output() sendMassage: EventEmitter<string> = new EventEmitter<string>()
+  @Output() sendMassage: EventEmitter<string> = new EventEmitter<string>();
+
+  text: string = "האם אתה בטוח שברצונך להתנתק?";
 
   constructor(private songService: SongService, private singerService: SingerService, private router: Router, public dialog: MatDialog) {
     this.songsControl = new FormControl();
@@ -113,11 +120,11 @@ export class HeaderComponent implements OnInit {
     sessionStorage.removeItem('user');
     this.connected = false;
   }
-  openMassageDialog() {
+  openMassageDialog(text: string) {
     try {
       const dialogRef = this.dialog.open(MassageComponent, {
         width: '400px',
-        data: {massage:"האם אתה בטוח שברצונך להיתנתק?" }
+        data: { dialogText: text }
       });
       dialogRef.afterClosed().subscribe(result => {
       this.isConnected();

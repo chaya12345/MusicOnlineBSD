@@ -1,5 +1,5 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { Component, Inject, Input, OnInit, Output } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-massage',
@@ -8,16 +8,19 @@ import { MatDialogRef } from '@angular/material';
 })
 export class MassageComponent implements OnInit {
 
-  @Input() massage:string;
-  constructor(public dialogRef: MatDialogRef<MassageComponent>) { }
+  dialogText: string;
+
+  constructor(public dialogRef: MatDialogRef<MassageComponent>, @Inject(MAT_DIALOG_DATA) public data: MassageComponent) { }
 
   ngOnInit(): void {
+    this.dialogText = this.data.dialogText;
   }
+
   close(){
     sessionStorage.removeItem('user');
     this.dialogRef.close();
-    
   }
+
   onNoClick(): void {
     this.dialogRef.close();
   }
