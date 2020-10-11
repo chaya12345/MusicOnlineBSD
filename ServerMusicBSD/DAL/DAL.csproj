@@ -207,6 +207,11 @@
     <Content Include="src\images\for_topics\3782176.jpg" />
     <Content Include="src\images\for_topics\magazines2.png" />
     <Content Include="src\images\for_topics\piano-keys-made-with-black-white-paper-yellow-backdrop_23-2147926855.jpg" />
+    <Content Include="src\images\singers\אברהם-פריד.bmp" />
+    <Content Include="src\images\singers\איציק-דדיה.jpg" />
+    <Content Include="src\images\singers\יעקב-שוואקי.jpg" />
+    <Content Include="src\images\singers\ישי-ריבו.jpg" />
+    <Content Include="src\images\singers\מרדכי-בן-דוד.jpg" />
     <Content Include="src\songs\for_articles\swkey-corona.mp4" />
     <Content Include="src\songs\אבי-אילסון\אבי אילסון - שיבוא.mp3" />
     <Content Include="src\songs\אבי-מן\השבעתי.mp4" />
