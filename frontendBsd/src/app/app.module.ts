@@ -67,6 +67,7 @@ import { SongsInPlaylistComponent } from './songs-in-playlist/songs-in-playlist.
 import { SongInPlaylistComponent } from './song-in-playlist/song-in-playlist.component';
 import { SongsComponent } from './songs/songs.component';
 import { LogInComponent } from './log-in/log-in.component';
+import { MassageComponent } from './massage/massage.component';
 
 @NgModule({
   declarations: [
@@ -128,7 +129,8 @@ import { LogInComponent } from './log-in/log-in.component';
     SongsInPlaylistComponent,
     SongInPlaylistComponent,
     SongsComponent,
-    LogInComponent
+    LogInComponent,
+    MassageComponent
   ],
   imports: [
     BrowserModule,
@@ -146,7 +148,8 @@ import { LogInComponent } from './log-in/log-in.component';
     RegisterToWebsiteComponent,
     RegisterToNewsletterComponent,
     ReportingDialogComponent,
-    LogInComponent
+    LogInComponent,
+    MassageComponent
   ]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -9,6 +9,7 @@ import { SingerService } from '../services/singer.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { LogInComponent } from '../log-in/log-in.component';
+import { MassageComponent } from '../massage/massage.component';
 
 @Component({
   selector: 'header',
@@ -26,6 +27,7 @@ export class HeaderComponent implements OnInit {
   filteredSingers: Observable<Singer[]>;
   singersControl = new FormControl();
   singersList: Singer[] = [];
+  @Output() sendMassage: EventEmitter<string> = new EventEmitter<string>()
 
   constructor(private songService: SongService, private singerService: SingerService, private router: Router, public dialog: MatDialog) {
     this.songsControl = new FormControl();
@@ -110,5 +112,16 @@ export class HeaderComponent implements OnInit {
   logout() {
     sessionStorage.removeItem('user');
     this.connected = false;
+  }
+  openMassageDialog() {
+    try {
+      const dialogRef = this.dialog.open(MassageComponent, {
+        width: '400px',
+        data: {massage:"האם אתה בטוח שברצונך להיתנתק?" }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+      this.isConnected();
+      });
+    } catch (err) { console.log(err); }
   }
 }
