@@ -28,15 +28,17 @@
                 <mat-option *ngFor="let singer of filteredSingers | async" [value]="singer.name">
                     <a class="search-singer" [href]="'song/by-singer/'+singer.name">{{singer.name}}</a>
                 </mat-option>
+
             </mat-autocomplete>
         </mat-form-field>
 
         <button *ngIf="!connected" mat-flat-button (click)="openLoginDialog()">
             <mat-icon>login</mat-icon>התחבר
         </button>
-        <button *ngIf="connected" mat-flat-button (click)='logout()'>
+        <button *ngIf="connected" mat-flat-button (click)='openMassageDialog()'>
             <mat-icon>logout</mat-icon>התנתק
         </button>
-
+        
     </div>
 </div>
+<!-- <app-massage [massage]="האם אתה בטוח שברצונך להיתנתק?"></app-massage> -->
