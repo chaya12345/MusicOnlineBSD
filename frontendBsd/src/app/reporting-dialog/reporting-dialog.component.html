@@ -2,51 +2,28 @@
     <h1 mat-dialog-title *ngIf="songName!=null">דיווח על השיר {{songName}}</h1>
     <div mat-dialog-content>
         <p>נא למלא פרטים מלאים ולפרט את הקשר שלכם לשיר.</p>
-        <!-- <mat-form-field appearance="fill">
-            <input matInput [(ngModel)]="data.name" placeholder="שם" required>
-        </mat-form-field>
-        <br>
-        <mat-form-field appearance="fill">
-            <input matInput [(ngModel)]="data.phone" placeholder="טלפון זמין" required>
-        </mat-form-field>
-        <br>
-        <mat-form-field appearance="fill">
-            <input matInput [(ngModel)]="data.mail" placeholder="מייל" required>
-        </mat-form-field>
-        <br>
-        <mat-form-field appearance="fill">
-            <textarea matInput [(ngModel)]="data.messange" placeholder="תוכן ההודעה..." required></textarea>
-        </mat-form-field>
-        <p>לתשומת לבכם! דיווח עם פרטים חסרים או שאינם מדוייקים לא יטופל.</p>
-        <div mat-dialog-actions>
-            <button mat-button (click)="onNoClick()">בטל</button>
-            <button mat-button [mat-dialog-close]="data.mail" cdkFocusInitial>שלח דיווח</button>
-        </div> -->
-        <form>
+        <form [formGroup]="reportingForm" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="fill">
-                <input matInput placeholder="שם">
+                <input matInput placeholder="שם" formControlName="name" required minlength="2">
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill">
-                <input matInput placeholder="טלפון זמין">
+                <input matInput placeholder="טלפון זמין" formControlName="phone" required>
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill">
-                <input matInput placeholder="מייל">
+                <input matInput placeholder="מייל" formControlName="mail" required>
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill">
-                <textarea matInput placeholder="תוכן ההודעה..."></textarea>
+                <textarea matInput placeholder="תוכן ההודעה..." formControlName="message" required></textarea>
             </mat-form-field>
             <p>לתשומת לבכם! דיווח עם פרטים חסרים או שאינם מדוייקים לא יטופל.</p>
 
             <div mat-dialog-actions>
-                <button color="warn" mat-stroked-button>בטל</button>
-                <button color="warn" mat-flat-button cdkFocusInitial>שלח דיווח</button>
+                <button class="action-button" mat-stroked-button color="warn" (click)="onNoClick()">בטל</button>
+                <button class="action-button" mat-flat-button color="warn" type="submit">התחבר</button>
             </div>
-             <!-- [disabled]='formRespons.invalid' (click)="onNoClick()" [(ngModel)]="data.messange" [(ngModel)]="data.mail" -->
-             <!-- formControlName='mail' formControlName='messange' [(ngModel)]="data.phone" formControlName='phone' -->
-             <!-- [(ngModel)]="data.name" formControlName='name' [mat-dialog-close]="data.mail" [formGroup]='formReport' (ngSubmit)='onSubmit()' -->
         </form>
     </div>
 </div>
