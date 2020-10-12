@@ -64,6 +64,7 @@
     <Compile Include="TagsToSongsDTO.cs" />
     <Compile Include="TagsTypesDTO.cs" />
     <Compile Include="TopicsDTO.cs" />
+    <Compile Include="UpdatesDTO.cs" />
     <Compile Include="UsersDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

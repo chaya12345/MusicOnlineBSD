@@ -136,6 +136,9 @@
     <Compile Include="TopicsTBL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="UpdatesTBL.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="UsersTBL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

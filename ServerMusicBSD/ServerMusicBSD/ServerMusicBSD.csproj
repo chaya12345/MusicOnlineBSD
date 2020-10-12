@@ -170,6 +170,7 @@
     <Compile Include="Controllers\TagsToArticlesController.cs" />
     <Compile Include="Controllers\TagsToSongsController.cs" />
     <Compile Include="Controllers\TopicsController.cs" />
+    <Compile Include="Controllers\UpdatesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

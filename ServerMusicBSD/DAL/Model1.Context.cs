@@ -49,5 +49,6 @@ namespace DAL
         public virtual DbSet<UsersTBL> UsersTBL { get; set; }
         public virtual DbSet<LastResponses> LastResponses { get; set; }
         public virtual DbSet<songsDetails> songsDetails { get; set; }
+        public virtual DbSet<UpdatesTBL> UpdatesTBL { get; set; }
     }
 }
