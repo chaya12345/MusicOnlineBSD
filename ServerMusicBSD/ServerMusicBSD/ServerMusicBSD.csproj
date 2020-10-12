@@ -160,7 +160,6 @@
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\ResponsesToArticlesController.cs" />
     <Compile Include="Controllers\ResponsesToSongsController.cs" />
-    <Compile Include="Controllers\SearchingToSingerController.cs" />
     <Compile Include="Controllers\SingersController.cs" />
     <Compile Include="Controllers\SingerSearchingToUserController.cs" />
     <Compile Include="Controllers\SongsController.cs" />

@@ -127,15 +127,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SearchingToSingerTBL">
-      <EntityTypeMapping TypeName="MusicOnlineModel.SearchingToSingerTBL">
-        <MappingFragment StoreEntitySet="SearchingToSingerTBL">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="singerId" ColumnName="singerId" />
-          <ScalarProperty Name="count_searching" ColumnName="count_searching" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="SingerSearchingToUserTBL">
       <EntityTypeMapping TypeName="MusicOnlineModel.SingerSearchingToUserTBL">
         <MappingFragment StoreEntitySet="SingerSearchingToUserTBL">
@@ -153,6 +144,7 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="searchings" ColumnName="searchings" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -164,7 +156,6 @@
           <ScalarProperty Name="file_location" ColumnName="file_location" />
           <ScalarProperty Name="type" ColumnName="type" />
           <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="count_responses" ColumnName="count_responses" />
           <ScalarProperty Name="singerId" ColumnName="singerId" />
           <ScalarProperty Name="count_like" ColumnName="count_like" />
           <ScalarProperty Name="count_views" ColumnName="count_views" />

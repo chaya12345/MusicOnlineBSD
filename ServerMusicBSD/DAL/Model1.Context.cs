@@ -36,7 +36,6 @@ namespace DAL
         public virtual DbSet<ReportsTBL> ReportsTBL { get; set; }
         public virtual DbSet<ResponsesToArticlesTBL> ResponsesToArticlesTBL { get; set; }
         public virtual DbSet<ResponsesToSongsTBL> ResponsesToSongsTBL { get; set; }
-        public virtual DbSet<SearchingToSingerTBL> SearchingToSingerTBL { get; set; }
         public virtual DbSet<SingerSearchingToUserTBL> SingerSearchingToUserTBL { get; set; }
         public virtual DbSet<SingersTBL> SingersTBL { get; set; }
         public virtual DbSet<SongsTBL> SongsTBL { get; set; }

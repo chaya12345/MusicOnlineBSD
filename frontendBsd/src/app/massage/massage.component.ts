@@ -18,12 +18,11 @@ export class MassageComponent implements OnInit {
   }
 
   close(){
-    sessionStorage.removeItem('user');
-    this.dialogRef.close();
+    this.dialogRef.close(true);
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(false);
   }
 
 

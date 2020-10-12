@@ -103,9 +103,6 @@
     <Compile Include="ResponsesToSongsTBL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="SearchingToSingerTBL.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="SingerSearchingToUserTBL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

@@ -53,7 +53,6 @@
     <Compile Include="ReportsDTO.cs" />
     <Compile Include="ResponsesToArticlesDTO.cs" />
     <Compile Include="ResponsesToSongsDTO.cs" />
-    <Compile Include="SearchingToSingerDTO.cs" />
     <Compile Include="SingersDTO.cs" />
     <Compile Include="SingerSearchingToUserDTO.cs" />
     <Compile Include="SongsDTO.cs" />

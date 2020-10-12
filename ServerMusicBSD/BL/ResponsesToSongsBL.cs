@@ -51,10 +51,6 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             ResponsesToSongsTBL response = et.ResponsesToSongsTBL.Where(r => r.id == songId).FirstOrDefault();
-            SongsTBL song = et.SongsTBL.Where(a => a.id == response.songId).FirstOrDefault();
-            if (song.count_responses == null || song.count_responses <= 0)
-                song.count_responses = 0;
-            else song.count_responses--;
             et.ResponsesToSongsTBL.Remove(response);
             et.SaveChanges();
         }

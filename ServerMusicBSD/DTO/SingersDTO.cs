@@ -8,8 +8,9 @@ namespace DTO
 {
     public class SingersDTO
     {
-        public long id { get; set; }
+        public int id { get; set; }
         public string name { get; set; }
         public string image { get; set; }
+        public Nullable<long> searchings { get; set; }
     }
 }
