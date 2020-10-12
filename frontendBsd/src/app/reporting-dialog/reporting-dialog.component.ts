@@ -18,18 +18,18 @@ export class ReportingDialogComponent implements OnInit {
   songName: string = "";
   name: string = "";
   songId:number;
-  formReport:FormGroup;
+  reportingForm:FormGroup;
   newReport:Report=new Report;
 
   constructor(public dialogRef: MatDialogRef<ReportingDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private activatedRoute: ActivatedRoute, private songService: SongService,
     private articleService: ArticleService,private reportsService:ReportsService) {
-      this.formReport=new FormGroup({
-        name:new FormControl("",[Validators.required,Validators.minLength(2)]),
-        phone:new FormControl("",[Validators.required,Validators.minLength(7),Validators.maxLength(12)]),
-        mail:new FormControl("",[Validators.email,Validators.required]),
-        messange:new FormControl("",[Validators.required,Validators.minLength(4)])
+      this.reportingForm=new FormGroup({
+        name:new FormControl("",[Validators.required, Validators.minLength(2)]),
+        phone:new FormControl("",[Validators.required, Validators.minLength(7), Validators.maxLength(12), Validators.pattern("/(0)\d{9}/")]),
+        mail:new FormControl("",[Validators.email, Validators.required]),
+        message:new FormControl("",[Validators.required, Validators.minLength(4)])
       })
      }
 
@@ -38,20 +38,24 @@ export class ReportingDialogComponent implements OnInit {
     this.songService.getSongById(parseInt(this.data.songId)).subscribe(song => {this.songName = song.name; console.log(this.songName); }, err => console.log(err));
   };
   onSubmit(){
-    if(this.formReport.valid){
-      this.newReport.name=this.formReport.controls.name.value;
-      this.newReport.mail=this.formReport.controls.mail.value;
-      this.newReport.phone=this.formReport.controls.phone.value;
-      this.newReport.songId= 65; //Number(this.activatedRoute.snapshot.paramMap.get('id'));
-      this.newReport.message=this.formReport.controls.message.value;
-      this.newReport.status='לא טופל';
-      this.reportsService.addReport(this.newReport).subscribe();
-      this.newReport=null;
-      this.onNoClick();
+    if(this.reportingForm.valid){
+      // this.newReport.name=this.reportingForm.controls.name.value;
+      // this.newReport.mail=this.reportingForm.controls.mail.value;
+      // this.newReport.phone=this.reportingForm.controls.phone.value;
+      // this.newReport.songId= 65; //Number(this.activatedRoute.snapshot.paramMap.get('id'));
+      // this.newReport.message=this.reportingForm.controls.message.value;
+      // this.newReport.status='לא טופל';
+      // this.reportsService.addReport(this.newReport).subscribe();
+      // this.newReport=null;
+      // this.onNoClick();
+      console.log("valid");
+    }
+    else {
+      console.log("invalid");
     }
   }
   onNoClick(): void {
-    this.formReport.reset({value:""});
+    this.reportingForm.reset({value:""});
     this.dialogRef.close();
   }
 
