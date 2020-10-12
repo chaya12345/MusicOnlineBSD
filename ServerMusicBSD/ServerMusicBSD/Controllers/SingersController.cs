@@ -18,6 +18,10 @@ namespace ServerMusicBSD.Controllers
         {
             return SingersBL.GetSingers();
         }
+        public SingersDTO GetSingerByName(string name)
+        {
+            return SingersBL.GetSingerByName(name);
+        }
         public void PostSinger([FromBody]SingersTBL name)
         {
             SingersBL.AddSinger(name);

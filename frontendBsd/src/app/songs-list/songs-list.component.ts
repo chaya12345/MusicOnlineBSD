@@ -19,7 +19,7 @@ export class SongsListComponent implements OnInit {
   constructor(private cdr: ChangeDetectorRef, public activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    document.getElementsByTagName("span")[0].innerHTML = "טוען...";
+    // document.getElementsByTagName("span")[0].innerHTML = "טוען...";
   }
 
   ngOnChanges() {
