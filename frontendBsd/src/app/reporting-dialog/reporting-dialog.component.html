@@ -5,24 +5,28 @@
         <form [formGroup]="reportingForm" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="fill">
                 <input matInput placeholder="שם" formControlName="name" required minlength="2">
+                <mat-error *ngIf="reportingForm.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill">
                 <input matInput placeholder="טלפון זמין" formControlName="phone" required>
+                <mat-error *ngIf="reportingForm.controls.phone.invalid">{{getPhoneErrorMessage()}}</mat-error>
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill">
                 <input matInput placeholder="מייל" formControlName="mail" required>
+                <mat-error *ngIf="reportingForm.controls.mail.invalid">{{getMailErrorMessage()}}</mat-error>
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill">
                 <textarea matInput placeholder="תוכן ההודעה..." formControlName="message" required></textarea>
+                <mat-error *ngIf="reportingForm.controls.message.invalid">{{getMessageErrorMessage()}}</mat-error>
             </mat-form-field>
             <p>לתשומת לבכם! דיווח עם פרטים חסרים או שאינם מדוייקים לא יטופל.</p>
 
             <div mat-dialog-actions>
                 <button class="action-button" mat-stroked-button color="warn" (click)="onNoClick()">בטל</button>
-                <button class="action-button" mat-flat-button color="warn" type="submit">התחבר</button>
+                <button class="action-button" mat-flat-button color="warn" type="submit">דווח</button>
             </div>
         </form>
     </div>

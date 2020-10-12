@@ -26,12 +26,9 @@ namespace BL.Casts
             newSinger.type = "singer";
             return newSinger;
         }
-        public static List<ArtistsAndSingersDTO> GetArtistsAndSingers()
+        public static List<ArtistsAndSingersDTO> GetArtistsAndSingers(List<SingersTBL> singers, List<ArtistsTBL> artists)
         {
-            MusicOnlineEntities et = new MusicOnlineEntities();
             List<ArtistsAndSingersDTO> list = new List<ArtistsAndSingersDTO>();
-            List<SingersTBL> singers = et.SingersTBL.ToList();
-            List<ArtistsTBL> artists = et.ArtistsTBL.ToList();
             foreach (ArtistsTBL item in artists)
             {
                 list.Add(GetArtist(item));

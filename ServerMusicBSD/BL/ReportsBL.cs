@@ -14,7 +14,8 @@ namespace BL
         public static void addReport(ReportsTBL report)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            try { 
+            try {
+                report.status = "לא טופל";
                 et.ReportsTBL.Add(report);
                 et.SaveChanges();
             }

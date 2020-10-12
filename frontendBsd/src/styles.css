@@ -217,6 +217,7 @@ footer p.title-part {
     background-color: #3a3a3a;
     color: white;
     transition: .4s;
+    height: fit-content;
 }
 
 .reload-more-button:hover{

@@ -52,14 +52,9 @@ export class RegisterComponent implements OnInit {
     try {
       const dialogRef = this.dialog.open(RegisterToWebsiteComponent, {
         width: '400px',
-        data: { /*fullname: this.fullname, email: this.email, password: this.password, isNewsletterWanted: this.isNewsletterWanted*/ }
+        data: { }
       });
       dialogRef.afterClosed().subscribe(result => {
-        /*if (result != null) {
-          this.fullname = result.slice(0, result.indexOf('|'));
-          this.email = result.slice(result.indexOf('|') + 1, result.length);
-        }*/
-
       });
     }
     catch (err) { console.log(err); }
@@ -69,14 +64,9 @@ export class RegisterComponent implements OnInit {
     try {
       const dialogRef = this.dialog.open(RegisterToNewsletterComponent, {
         width: '400px',
-        data: { /*email: this.email*/ }
+        data: { }
       });
       dialogRef.afterClosed().subscribe(result => {
-        /*if (result != null) {
-          this.fullname = result.slice(0, result.indexOf('|'));
-          this.email = result.slice(result.indexOf('|') + 1, result.length);
-        }*/
-
       });
     }
     catch (err) { console.log(err); }

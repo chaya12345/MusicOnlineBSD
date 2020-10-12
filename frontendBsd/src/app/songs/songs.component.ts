@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Song } from '../classes/song';
 import { Topics } from '../classes/topics';
+import { ArtistsAndSingersService } from '../services/artists-and-singers.service';
 import { SingerService } from '../services/singer.service';
 import { SongService } from '../services/song.service';
 import { TopicsService } from '../services/topics.service';
@@ -31,7 +32,8 @@ export class SongsComponent implements OnInit {
   topic: Topics;
 
   constructor(private activatedRoute: ActivatedRoute, private songService: SongService,
-    private cdr: ChangeDetectorRef, private topicsService: TopicsService, private singerService: SingerService) { 
+    private cdr: ChangeDetectorRef, private topicsService: TopicsService, private singerService: SingerService,
+    private artsAndSingsService: ArtistsAndSingersService) { 
     this.navs.push("חדש במוזיקה");
   }
 
@@ -118,15 +120,16 @@ export class SongsComponent implements OnInit {
   }
 
   updateTop() {
-    if (this.activatedRoute.snapshot.paramMap.get("filter")) {
-      let filter = this.activatedRoute.snapshot.paramMap.get("filter");
-      if (filter == "by-singer") {
-        let name = this.activatedRoute.snapshot.paramMap.get("value");
-        try {
-          this.singerService.GetSingerByName(name)
-          .subscribe(singer => { this.img = "../../assets/images/" + singer.image; this.title = singer.name; }, err => console.log(err));
-        } catch (err) { console.log(err); }
-      }
+    let filter = this.activatedRoute.snapshot.paramMap.get("filter");
+    let name = this.activatedRoute.snapshot.paramMap.get("value");
+    if (filter == "by-artist") {
+      try {
+        this.artsAndSingsService.getArtistOrSingerByName(name)
+        .subscribe(art => { this.updateDataToArtists(name, art.type); }, err => console.log(err));
+      } catch (err) { console.log(err); }
+    }
+    if (filter == "by-singer" || filter == "") {
+      this.getDetailsOfSinger(name);
       this.subtitle = "כל השירים, הקליפים, ההופעות והכתבות";
       this.isMain = true;
     }
@@ -136,6 +139,19 @@ export class SongsComponent implements OnInit {
       this.subtitle = this.topic.subtitle;
       this.isMain = false;
     }
+  }
+
+  updateDataToArtists(name: string, type: string) {
+    if (type == "singer") {
+      this.getDetailsOfSinger(name);
+    }
+  }
+
+  getDetailsOfSinger(name: string) {
+    try {
+      this.singerService.GetSingerByName(name)
+        .subscribe(singer => { this.img = "../../assets/images/" + singer.image; this.title = singer.name; }, err => console.log(err));
+    } catch (err) { console.log(err); }
   }
 
   orderByDate(): void {

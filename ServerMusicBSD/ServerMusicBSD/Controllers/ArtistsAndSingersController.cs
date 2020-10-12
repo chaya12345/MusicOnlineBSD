@@ -18,5 +18,9 @@ namespace ServerMusicBSD.Controllers
         {
             return ArtistsAndSingersBL.GetArtistsAndSingers();
         }
+        public ArtistsAndSingersDTO GetArtistOrSingerByName(string name)
+        {
+            return ArtistsAndSingersBL.GetArtistOrSingerByName(name);
+        }
     }
 }
