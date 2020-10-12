@@ -53,6 +53,7 @@
         <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagsTypesTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_TagsToArticleTBL_TagsTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_TagsToSongsTBL_TagNameTBL" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MusicOnlineModel.UpdatesTBL" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
