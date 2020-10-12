@@ -73,7 +73,6 @@
     <Compile Include="Casts\ToReportsDTO.cs" />
     <Compile Include="Casts\ToResponsesToArticlesDTO.cs" />
     <Compile Include="Casts\ToResponsesToSongsDTO.cs" />
-    <Compile Include="Casts\ToSearchingToSingerDTO.cs" />
     <Compile Include="Casts\ToSingersDTO.cs" />
     <Compile Include="Casts\ToSingerSearchingToUserDTO.cs" />
     <Compile Include="Casts\ToSongsDetailsDTO.cs" />
@@ -93,7 +92,6 @@
     <Compile Include="ReportsBL.cs" />
     <Compile Include="ResponsesToArticlesBL.cs" />
     <Compile Include="ResponsesToSongsBL.cs" />
-    <Compile Include="SearchingToSingerBL.cs" />
     <Compile Include="SingersBL.cs" />
     <Compile Include="SingerSearchingToUserBL.cs" />
     <Compile Include="SongsBL.cs" />

@@ -19,7 +19,6 @@ namespace BL.Casts
             newSong.file_location = songs.file_location;
             newSong.type = songs.type;
             newSong.date = songs.date;
-            newSong.count_responses = songs.count_responses;
             SingersTBL s1 = et.SingersTBL.Where(s => s.id == songs.singerId).FirstOrDefault();
             newSong.singerName = s1 != null ? s1.name : null;
             newSong.count_like = songs.count_like;

@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
   text: string = "האם אתה בטוח שברצונך להתנתק?";
 
   constructor(private songService: SongService, private singerService: SingerService, private router: Router,
-     public dialog: MatDialog) {
+    public dialog: MatDialog) {
     this.songsControl = new FormControl();
     this.singersControl = new FormControl();
     try {
@@ -126,7 +126,9 @@ export class HeaderComponent implements OnInit {
         data: { dialogText: text }
       });
       dialogRef.afterClosed().subscribe(result => {
-      this.isConnected();
+        if (result == true)
+          this.logout();
+        else this.isConnected();
       });
     } catch (err) { console.log(err); }
   }

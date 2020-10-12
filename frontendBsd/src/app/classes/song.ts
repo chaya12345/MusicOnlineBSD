@@ -5,7 +5,6 @@ export class Song {
     type?: string;
     date?: Date;
     singerId?: number;
-    count_responses?: number;
     count_like?: number;
     count_views?: number;
     albumId?: number;

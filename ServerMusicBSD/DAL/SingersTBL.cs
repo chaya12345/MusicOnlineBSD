@@ -17,7 +17,6 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SingersTBL()
         {
-            this.SearchingToSingerTBL = new HashSet<SearchingToSingerTBL>();
             this.SingerSearchingToUserTBL = new HashSet<SingerSearchingToUserTBL>();
             this.SongsTBL = new HashSet<SongsTBL>();
             this.SubscriptionTBL = new HashSet<SubscriptionTBL>();
@@ -26,9 +25,8 @@ namespace DAL
         public int id { get; set; }
         public string name { get; set; }
         public string image { get; set; }
+        public Nullable<long> searchings { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SearchingToSingerTBL> SearchingToSingerTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SingerSearchingToUserTBL> SingerSearchingToUserTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -16,6 +16,7 @@ namespace BL.Casts
             newSinger.id = singer.id;
             newSinger.name = singer.name;
             newSinger.image = singer.image;
+            newSinger.searchings = singer.searchings;
             return newSinger;
         }
         public static List<SingersDTO> GetSingers(List<SingersTBL> singers)
