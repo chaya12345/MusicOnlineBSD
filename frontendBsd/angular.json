@@ -21,22 +21,7 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              {
-                "glob": "**/*",
-                "input": "../ServerMusicBSD/DAL/src/images",
-                "output": "./assets/images/"
-              },
-              {
-                "glob": "**/*",
-                "input": "../ServerMusicBSD/DAL/src/songs",
-                "output": "./assets/songs/"
-              },
-              {
-                "glob": "**/*",
-                "input": "../ServerMusicBSD/DAL/src/text",
-                "output": "./assets/text/"
-              }
+              "src/assets"
             ],
             "styles": [
               "src/custom-theme.scss",

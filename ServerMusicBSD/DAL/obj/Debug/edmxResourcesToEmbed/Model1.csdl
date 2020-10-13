@@ -712,5 +712,15 @@
       <End Role="TagsTBL" EntitySet="TagsTBL" />
       <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
     </AssociationSet>
+    <EntitySet Name="UpdatesTBL" EntityType="MusicOnlineModel.UpdatesTBL" />
   </EntityContainer>
+  <EntityType Name="UpdatesTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>
