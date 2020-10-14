@@ -28,6 +28,7 @@ namespace BL.Casts
                 newSong.subtitle = song.subtitle;
                 newSong.image_location = song.image_location;
                 newSong.content = song.content;
+                newSong.isPerformance = song.isPerformance;
                 return newSong;
             }
             return null;

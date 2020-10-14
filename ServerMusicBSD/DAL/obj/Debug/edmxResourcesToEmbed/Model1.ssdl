@@ -210,6 +210,15 @@
     <Property Name="img" Type="varchar(max)" />
     <Property Name="href" Type="varchar(max)" />
   </EntityType>
+  <EntityType Name="UpdatesTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="200" />
+    <Property Name="message" Type="nvarchar(max)" />
+    <Property Name="status" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="UsersTBL">
     <Key>
       <PropertyRef Name="id" />
@@ -569,6 +578,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     <EntitySet Name="TagsToSongsTBL" EntityType="Self.TagsToSongsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsTypesTBL" EntityType="Self.TagsTypesTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TopicsTBL" EntityType="Self.TopicsTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UpdatesTBL" EntityType="Self.UpdatesTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LastResponses" EntityType="Self.LastResponses" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 

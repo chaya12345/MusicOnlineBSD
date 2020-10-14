@@ -12,4 +12,5 @@ export class Song {
     subtitle?: string;
     image_location?: string;
     content?: string;
+    isPerformance?:boolean;
 }

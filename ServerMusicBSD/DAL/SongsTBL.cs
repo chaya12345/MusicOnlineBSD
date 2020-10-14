@@ -38,6 +38,7 @@ namespace DAL
         public string subtitle { get; set; }
         public string image_location { get; set; }
         public string content { get; set; }
+        public Nullable<bool> isPerformance { get; set; }
     
         public virtual AlbumsTBL AlbumsTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

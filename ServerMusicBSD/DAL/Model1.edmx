@@ -156,6 +156,7 @@
           <Property Name="subtitle" Type="varchar" MaxLength="300" />
           <Property Name="image_location" Type="varchar(max)" />
           <Property Name="content" Type="varchar(max)" />
+          <Property Name="isPerformance" Type="bit" />
         </EntityType>
         <EntityType Name="SongsToPlaylistsTBL">
           <Key>
@@ -895,6 +896,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <NavigationProperty Name="SingersTBL" Relationship="Self.FK_SongsTBL_SingersTBL" FromRole="SongsTBL" ToRole="SingersTBL" />
           <NavigationProperty Name="SongsToPlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToPlaylistsTBL" />
           <NavigationProperty Name="TagsToSongsTBL" Relationship="Self.FK_TagsToSongsTBL_SongsTBL" FromRole="SongsTBL" ToRole="TagsToSongsTBL" />
+          <Property Name="isPerformance" Type="Boolean" />
         </EntityType>
         <EntityType Name="SongsToPlaylistsTBL">
           <Key>
@@ -1592,6 +1594,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <EntitySetMapping Name="SongsTBL">
             <EntityTypeMapping TypeName="MusicOnlineModel.SongsTBL">
               <MappingFragment StoreEntitySet="SongsTBL">
+                <ScalarProperty Name="isPerformance" ColumnName="isPerformance" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="file_location" ColumnName="file_location" />
