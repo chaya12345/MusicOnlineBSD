@@ -426,3 +426,15 @@ snack-bar-container {
 }
 
 /* #endregion */
+
+mat-spinner.small-spinner {
+    height: 20px !important;
+    width: 20px !important;
+    display: inline-block !important;
+    margin: 0px 10px;
+}
+
+mat-spinner.small-spinner svg {
+    height: 20px !important;
+    width: 20px !important;
+}

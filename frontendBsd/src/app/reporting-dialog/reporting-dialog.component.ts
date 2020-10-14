@@ -38,8 +38,8 @@ export class ReportingDialogComponent implements OnInit {
     this.songService.getSongById(parseInt(this.data.songId)).subscribe(song => this.songName = song.name, err => console.log(err));
   };
 
-  onSubmit(){
-    if (this.reportingForm.valid){
+  onSubmit() {
+    if (this.reportingForm.valid) {
       this.report = new Report();
       this.report.name = this.reportingForm.controls.name.value;
       this.report.mail = this.reportingForm.controls.mail.value;
