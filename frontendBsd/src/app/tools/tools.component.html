@@ -5,13 +5,15 @@
         <mat-icon matPrefix>search</mat-icon>
     </div>
 
-    <button mat-stroked-button *ngIf="followUp&&!followedUp" (click)="addFollowUp()">
+    <button mat-stroked-button *ngIf="followUp&&!followedUp" (click)="addFollowUp()" class="min-width-button">
         הוסף מעקב
-        <mat-icon>notifications</mat-icon>
+        <mat-icon *ngIf="!loading">notifications</mat-icon>
+        <mat-spinner *ngIf="loading" class="small-spinner"></mat-spinner>
     </button>
-    <button mat-stroked-button *ngIf="followUp&&followedUp" (click)="deleteFollowUp()">
+    <button mat-stroked-button *ngIf="followUp&&followedUp" (click)="deleteFollowUp()" class="min-width-button">
         הסר מעקב
-        <mat-icon>notifications_off</mat-icon>
+        <mat-icon *ngIf="!loading">notifications_off</mat-icon>
+        <mat-spinner *ngIf="loading" class="small-spinner"></mat-spinner>
     </button>
 
     <button mat-stroked-button *ngIf="addToPlaylist" [matMenuTriggerFor]="playlists">
