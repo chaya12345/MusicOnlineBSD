@@ -26,7 +26,7 @@ export class SideComponent implements OnInit {
 
   filter(): void {
     this.latestArticles.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
-    this.latestArticles = this.latestArticles.slice(0, 3);
+    this.latestArticles = this.latestArticles.slice(0, 5);
   }
 
 }

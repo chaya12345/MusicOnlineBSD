@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Topics } from '../classes/topics';
 import { ShareDataService } from '../services/share-data.service';
+import { TopicsService } from '../services/topics.service';
 
 @Component({
   selector: 'side-nav',
@@ -29,12 +31,18 @@ export class SideNavComponent implements OnInit {
       name: "חיפוש חכם",
       icon: "search"
     }];
+  topics: Topics[] = [];
   open: boolean = false;
   show: boolean = true;
   href: string = ""
   navigateStr: string = "";
 
-  constructor(private shareData: ShareDataService, private router: Router) { }
+  constructor(private shareData: ShareDataService, private router: Router,
+    private topicsService: TopicsService) {
+      try {
+        this.topicsService.getTopics().subscribe(topics => this.topics = topics, err => console.log(err));
+      } catch (err) { console.log(err); }
+    }
 
   ngOnInit() {
     this.href = this.router.url;
