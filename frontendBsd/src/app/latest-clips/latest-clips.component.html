@@ -4,6 +4,7 @@
         <div class="wrap-clips center-object">
             <song class="space-between" *ngFor="let clip of clipsList" [song]="clip"></song>
         </div>
-        <a href="songs" class="reload-more-button">לכל הקליפים</a>
+        <!-- <a href="songs" class="reload-more-button">לכל הקליפים</a> -->
+        <nav-button navigate="songs" text="לכל הקליפים" dark="true"></nav-button>
     </div>
 </div>

@@ -6,8 +6,7 @@ import { FollowUp } from '../classes/followUp';
 import { Update } from '../classes/update';
 import { User } from '../classes/user';
 import { LogInComponent } from '../log-in/log-in.component';
-import { MassageComponent } from '../massage/massage.component';
-import { RegisterToWebsiteComponent } from '../register-to-website/register-to-website.component';
+import { MessageComponent } from '../message/message.component';
 import { FollowUpService } from '../services/follow-up.service';
 import { UpdateService } from '../services/update.service';
 
@@ -98,7 +97,7 @@ export class ToolsComponent implements OnInit {
   }
 
   deleteFollowUp() {
-    this.openMassageDialog("האם אתה בטוח שברצונך להסיר מעקב?");
+    this.openMessageDialog("האם אתה בטוח שברצונך להסיר מעקב?");
   }
 
   delete() {
@@ -128,9 +127,9 @@ export class ToolsComponent implements OnInit {
     });
   }
 
-  openMassageDialog(text: string) {
+  openMessageDialog(text: string) {
     try {
-      const dialogRef = this.dialog.open(MassageComponent, {
+      const dialogRef = this.dialog.open(MessageComponent, {
         width: '400px',
         data: { dialogText: text }
       });
@@ -159,7 +158,7 @@ export class ToolsComponent implements OnInit {
         type = "כתבה";
       else
         type == "-זיהוי נכשל-"
-      update.massage = " נכשלה פעולת " + matter + " ל " + type + " מספר " + itemId + ". " +
+      update.message = " נכשלה פעולת " + matter + " ל " + type + " מספר " + itemId + ". " +
         " הפעולה בוצעה ע\"י משתמש מספר" + usreId + " בתאריך " + new Date().toLocaleDateString() + " ,בשעה " + new Date().toLocaleTimeString();
     }
     try {

@@ -1,0 +1,41 @@
+a {
+    display: grid;
+    padding: 6px 0;
+    grid-template-columns: auto fit-content(50%);
+    cursor: pointer;
+}
+
+a.dark {
+    color: white;
+}
+
+a.dark mat-divider {
+    border-top-color: #ffffff1f;
+}
+
+mat-divider {
+    grid-area: 1 / 1 / 2 / 2;
+    border-top-style: dashed;
+    margin: auto 0;
+}
+
+span {
+    grid-area: 1 / 1 / 2 / 2;
+    margin: 0 auto 0 140px;
+    font-family: fb Ogen;
+    font-size: 19px;
+    padding: 0 10px;
+    letter-spacing: 3.5px;
+    background-color: white;
+    width: fit-content;
+    transition: 1s;
+}
+
+a.dark span {
+    background-color: #292929;
+}
+
+a:hover span {
+    margin: 0 auto 0 170px;
+    color: #4da0fd;
+}

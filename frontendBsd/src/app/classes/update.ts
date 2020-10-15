@@ -1,6 +1,6 @@
 export class Update{
     id?:number;
     title?:string;
-    massage?:string;
+    message?:string;
     status?:string;
 }

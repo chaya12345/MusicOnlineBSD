@@ -35,7 +35,7 @@
         <button *ngIf="!connected" mat-flat-button (click)="openLoginDialog()">
             <mat-icon>login</mat-icon>התחבר
         </button>
-        <button *ngIf="connected" mat-flat-button (click)="openMassageDialog('האם אתה בטוח שברצונך להתנתק?')">
+        <button *ngIf="connected" mat-flat-button (click)="openMessageDialog('האם אתה בטוח שברצונך להתנתק?')">
             <mat-icon>logout</mat-icon>התנתק
         </button>
         <button mat-fab color="warn"><mat-icon>person</mat-icon></button>

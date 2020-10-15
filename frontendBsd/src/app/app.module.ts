@@ -67,7 +67,8 @@ import { SongsInPlaylistComponent } from './songs-in-playlist/songs-in-playlist.
 import { SongInPlaylistComponent } from './song-in-playlist/song-in-playlist.component';
 import { SongsComponent } from './songs/songs.component';
 import { LogInComponent } from './log-in/log-in.component';
-import { MassageComponent } from './massage/massage.component';
+import { MessageComponent } from './message/message.component';
+import { NavButtonComponent } from './nav-button/nav-button.component';
 
 @NgModule({
   declarations: [
@@ -130,7 +131,8 @@ import { MassageComponent } from './massage/massage.component';
     SongInPlaylistComponent,
     SongsComponent,
     LogInComponent,
-    MassageComponent
+    MessageComponent,
+    NavButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -149,7 +151,7 @@ import { MassageComponent } from './massage/massage.component';
     RegisterToNewsletterComponent,
     ReportingDialogComponent,
     LogInComponent,
-    MassageComponent
+    MessageComponent
   ]
 })
 export class AppModule { }

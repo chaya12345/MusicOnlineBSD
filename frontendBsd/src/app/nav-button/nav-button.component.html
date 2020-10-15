@@ -1,0 +1,5 @@
+<a class="wrap-nav-button" [href]="navigate" [class.dark]="dark">
+    <mat-divider></mat-divider>
+    <span *ngIf="text!=null&&text!=undefined">{{text}}</span>
+    <span *ngIf="text==null||text==undefined">טוען...</span>
+</a>

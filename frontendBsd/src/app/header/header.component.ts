@@ -9,7 +9,7 @@ import { SingerService } from '../services/singer.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { LogInComponent } from '../log-in/log-in.component';
-import { MassageComponent } from '../massage/massage.component';
+import { MessageComponent } from '../message/message.component';
 
 
 export interface messange {
@@ -119,9 +119,9 @@ export class HeaderComponent implements OnInit {
     sessionStorage.removeItem('user');
     this.connected = false;
   }
-  openMassageDialog(text: string) {
+  openMessageDialog(text: string) {
     try {
-      const dialogRef = this.dialog.open(MassageComponent, {
+      const dialogRef = this.dialog.open(MessageComponent, {
         width: '400px',
         data: { dialogText: text }
       });

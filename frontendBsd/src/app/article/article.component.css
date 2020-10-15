@@ -1,6 +1,6 @@
 .wrap-article {
     height: 317px;
-    margin: 50px;
+    margin: 50px 50px 0;
     display: grid;
     grid-template-columns: fit-content(50%) auto;
     border: solid 1px #e6e5e5;
