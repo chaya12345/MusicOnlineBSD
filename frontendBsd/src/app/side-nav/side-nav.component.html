@@ -7,11 +7,17 @@
     </button>
     <div class="nav-content">
         <div class="side-nav-items">
-            <div [class.close-menu-item]="!open" class="side-nav-item" *ngFor="let navigation of navigations"
+            <!-- <div [class.close-menu-item]="!open" class="side-nav-item" *ngFor="let navigation of navigations"
                 (click)="navigate($event)">
                 <mat-icon>{{navigation.icon}}</mat-icon>
                 <p>{{navigation.name}}</p>
-            </div>
+            </div> -->
+            <a [class.close-menu-item]="!open" class="side-nav-item" *ngFor="let topic of topics"
+            [href]="topic.href">
+                <mat-icon>headset</mat-icon>
+                <!-- <mat-icon>{{topic.icon}}</mat-icon> -->
+                <p>{{topic.title}}</p>
+            </a>
         </div>
     </div>
     <div [class.open-nav]="!show">

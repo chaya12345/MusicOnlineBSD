@@ -151,6 +151,7 @@
     <Property Name="subtitle" Type="varchar" MaxLength="300" />
     <Property Name="image_location" Type="varchar(max)" />
     <Property Name="content" Type="varchar(max)" />
+    <Property Name="isPerformance" Type="bit" />
   </EntityType>
   <EntityType Name="SongsToPlaylistsTBL">
     <Key>

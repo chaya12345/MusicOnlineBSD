@@ -151,6 +151,7 @@
     <EntitySetMapping Name="SongsTBL">
       <EntityTypeMapping TypeName="MusicOnlineModel.SongsTBL">
         <MappingFragment StoreEntitySet="SongsTBL">
+          <ScalarProperty Name="isPerformance" ColumnName="isPerformance" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="file_location" ColumnName="file_location" />
