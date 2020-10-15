@@ -2,12 +2,9 @@
     <div class="center-content">
         <p class="title-part">אחרונים במגזין.</p>
         <div class="wrap-articles">
-            <!-- <latest-article class="space-between" *ngFor="let article of latestArticles" [article]="article"></latest-article> -->
             <article *ngFor="let article of latestArticles" [article]="article"></article>
         </div>
         <!-- <a href="magazine" class="reload-more-button light-button">למגזין המלא</a> -->
         <nav-button navigate="magazine" text="למגזין המלא"></nav-button>
-        <!--  *ngIf="!anotherVersion" -->
-        <!-- <button class="primary-style" *ngIf="anotherVersion" mat-flat-button color="primary"><a href="magazine">למגזין המלא</a></button> -->
     </div>
 </div>
