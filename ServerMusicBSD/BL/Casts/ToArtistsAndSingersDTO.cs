@@ -37,7 +37,20 @@ namespace BL.Casts
             {
                 list.Add(GetSinger(item));
             }
-            return list;
+            return clearDuplicate(list);
+        }
+        public static List<ArtistsAndSingersDTO> clearDuplicate(List<ArtistsAndSingersDTO> artistsAndSingers)
+        {
+            List<ArtistsAndSingersDTO> clearList = new List<ArtistsAndSingersDTO>();
+            foreach (ArtistsAndSingersDTO item in artistsAndSingers)
+            {
+                if (clearList.Where(a => a.name == item.name).FirstOrDefault() == null)
+                {
+                    clearList.Add(item);
+                    bool b = clearList.Contains(item);
+                }
+            }
+            return clearList;
         }
     }
 }

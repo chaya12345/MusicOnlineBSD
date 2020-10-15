@@ -162,7 +162,11 @@ namespace BL
             List<SongsDTO> clearList = new List<SongsDTO>();
             foreach (SongsDTO song in songs)
             {
-                if (clearList.Where(s => s.id == song.id).FirstOrDefault() == null) { clearList.Add(song); bool b = clearList.Contains(song); }
+                if (clearList.Where(s => s.id == song.id).FirstOrDefault() == null)
+                { 
+                    clearList.Add(song);
+                    bool b = clearList.Contains(song); 
+                }
             }
             return clearList;
         }

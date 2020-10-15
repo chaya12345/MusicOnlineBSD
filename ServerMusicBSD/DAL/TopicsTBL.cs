@@ -19,5 +19,6 @@ namespace DAL
         public string subtitle { get; set; }
         public string img { get; set; }
         public string href { get; set; }
+        public string icon { get; set; }
     }
 }

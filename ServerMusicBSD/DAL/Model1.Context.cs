@@ -46,9 +46,9 @@ namespace DAL
         public virtual DbSet<TagsToSongsTBL> TagsToSongsTBL { get; set; }
         public virtual DbSet<TagsTypesTBL> TagsTypesTBL { get; set; }
         public virtual DbSet<TopicsTBL> TopicsTBL { get; set; }
+        public virtual DbSet<UpdatesTBL> UpdatesTBL { get; set; }
         public virtual DbSet<UsersTBL> UsersTBL { get; set; }
         public virtual DbSet<LastResponses> LastResponses { get; set; }
         public virtual DbSet<songsDetails> songsDetails { get; set; }
-        public virtual DbSet<UpdatesTBL> UpdatesTBL { get; set; }
     }
 }

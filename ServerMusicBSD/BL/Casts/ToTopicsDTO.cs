@@ -18,6 +18,7 @@ namespace BL.Casts
             newTopic.subtitle = topic.subtitle;
             newTopic.img = topic.img;
             newTopic.href = topic.href;
+            newTopic.icon = topic.icon;
             return newTopic;
         }
         public static List<TopicsDTO> GetTopics(List<TopicsTBL> topics)

@@ -4,4 +4,5 @@ export class Topics{
     subtitle?:string;
     img?:string;
     href?:string;
+    icon?:string;
 }
