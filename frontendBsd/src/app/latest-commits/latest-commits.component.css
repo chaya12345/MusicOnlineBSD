@@ -1,3 +1,33 @@
 .wrap-latest-commits {
-    padding: 0 30px;
+    padding: 80px 30px 0;
+    max-width: 550px;
+    width: 550px;
+}
+
+p.title-part {
+    margin-bottom: 30px;
+}
+
+a p {
+    display: block;
+    color: white;
+    font-family: fb Joker;
+    font-size: 21px;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: .4s;
+    padding-right: 0px;
+    border-right: solid transparent 1px;
+}
+
+a:hover p {
+    border-right-color: #fbc02d;
+    padding-right: 20px !important;
+}
+
+span {
+    /* color: #2196f3b8; */
+    color: #fbc02dc7;
+    font-style: italic;
+    margin-right: 5px;
 }

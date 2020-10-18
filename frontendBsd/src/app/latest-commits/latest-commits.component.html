@@ -1,3 +1,6 @@
 <div class="wrap-latest-commits">
     <p class="title-part">תגובות אחרונות.</p>
+    <a *ngFor="let commit of lastCommits">
+        <p>{{commit.name}} על <span>{{commit.title}}</span></p>
+    </a>
 </div>

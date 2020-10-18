@@ -85,6 +85,10 @@ mat-checkbox span {
     margin-right: 8px;
 }
 
+/* main-actions .mat-form-field-flex {
+    background-color: rgb(255 255 255 / 4%) !important;
+} */
+
 /* #endregion */
 
 /* #region(collapsed) [Swiper-Slide] */

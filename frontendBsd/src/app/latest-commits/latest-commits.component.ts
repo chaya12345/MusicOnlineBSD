@@ -9,11 +9,11 @@ import { ResponsesToArticlesService } from '../services/responses-to-articles.se
 })
 export class LatestCommitsComponent implements OnInit {
 
-  lastResponsesView: LastResponsView[];
+  lastCommits: LastResponsView[];
 
   constructor(private resToArticlesService: ResponsesToArticlesService) {
     try {
-      this.resToArticlesService.getLast5Responses().subscribe(LastRespons =>{ this.lastResponsesView = LastRespons; }, err => console.log(err));
+      this.resToArticlesService.getLast5Responses().subscribe(lastResponses =>{ this.lastCommits = lastResponses; }, err => console.log(err));
     }
     catch (err) { console.log(err); }
   }

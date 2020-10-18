@@ -1,0 +1,54 @@
+.wrap-main-actions {
+    color: white;
+    font-family: fb Joker, calibri;
+    font-size: 21px;
+    padding-top: 80px;
+    padding: 80px 50px 30px;
+    height: 100%;
+    /* background-color: #2376b9; */
+    background-color: #fbc02d;
+    width: 550px;
+}
+
+.wrap-main-actions span.mini-title {
+    display: block;
+    margin-bottom: 30px;
+    font-size: 23px;
+    color: #252525;
+    text-align: center;
+    padding: 5px 0;
+    font-family: fb Ogen;
+}
+
+.wrap-main-actions p {
+    display: inline-block;
+    margin-left: 15px;
+    color: white;
+}
+
+mat-form-field {
+    direction: rtl;
+    text-align: right;
+    color: #252525;
+    font-family: fb Joker, calibri;
+    font-size: 19px;
+}
+
+button.mat-icon-button {
+    transform: translate(-43px, 5px);
+    color: #252525;
+}
+
+.message {
+    font-size: 21px !important;
+    font-family: fb Joker, calibri !important;
+    text-align: center;
+    color: #252525;
+    display: block;
+    margin-bottom: 30px;
+    padding: 5px 0;
+}
+
+.message mat-icon.mat-icon {
+    margin: 20px 0;
+}

@@ -26,9 +26,7 @@ import { RegisterToNewsletterComponent } from './register-to-newsletter/register
 import { LatestArticleComponent } from './latest-article/latest-article.component';
 import { FooterSongComponent } from './footer-song/footer-song.component';
 import { PopularPlaylistComponent } from './popular-playlist/popular-playlist.component';
-import { NowViewedComponent } from './now-viewed/now-viewed.component';
 import { LatestCommitsComponent } from './latest-commits/latest-commits.component';
-import { InfoFooterComponent } from './info-footer/info-footer.component';
 import { CopyrightsComponent } from './copyrights/copyrights.component';
 import { ScrollTopComponent } from './scroll-top/scroll-top.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
@@ -69,6 +67,9 @@ import { SongsComponent } from './songs/songs.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { MessageComponent } from './message/message.component';
 import { NavButtonComponent } from './nav-button/nav-button.component';
+import { PopularSingersComponent } from './popular-singers/popular-singers.component';
+import { SmallSlogenComponent } from './small-slogen/small-slogen.component';
+import { MainActionsComponent } from './main-actions/main-actions.component';
 
 @NgModule({
   declarations: [
@@ -90,9 +91,7 @@ import { NavButtonComponent } from './nav-button/nav-button.component';
     LatestArticleComponent,
     FooterSongComponent,
     PopularPlaylistComponent,
-    NowViewedComponent,
     LatestCommitsComponent,
-    InfoFooterComponent,
     CopyrightsComponent,
     ScrollTopComponent,
     SideNavComponent,
@@ -132,7 +131,10 @@ import { NavButtonComponent } from './nav-button/nav-button.component';
     SongsComponent,
     LogInComponent,
     MessageComponent,
-    NavButtonComponent
+    NavButtonComponent,
+    PopularSingersComponent,
+    SmallSlogenComponent,
+    MainActionsComponent
   ],
   imports: [
     BrowserModule,

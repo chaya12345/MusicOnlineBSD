@@ -1,0 +1,22 @@
+.wrap-small-slogen {
+    padding: 10px;
+    display: flex;
+}
+
+.wrap-small-slogen img {
+    height: 200px;
+}
+
+.wrap-slogen {
+    color: white;
+}
+
+.wrap-slogen p {
+    font-family: fb Ogen;
+    font-size: 32px;
+}
+
+.wrap-slogen span {
+    font-family: fb Joker;
+    font-size: 28px;
+}

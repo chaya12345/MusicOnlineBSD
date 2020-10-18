@@ -1,0 +1,35 @@
+.wrap-popular-singers {
+    max-width: 550px;
+    padding: 80px 0 55px 0;
+}
+
+.wrap-popular-singers .singer-card {
+    background-position: center;
+    background-size: cover;
+    height: 150px;
+    width: 150px;
+    display: inline-flex;
+    margin: 10px 0 10px 20px;
+    border: solid 1px white;
+    cursor: pointer;
+}
+
+p.title-part {
+    margin-bottom: 25px;
+}
+
+.name {
+    background-color: white;
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+    font-family: fb Joker;
+    font-size: 21px;
+    padding: 3px 0;
+    transition: .4s;
+    color: #252525;
+}
+
+.singer-card:hover .name {
+    transform: translateY(-20px);
+}
