@@ -16,18 +16,25 @@ a p {
     margin: 10px 0;
     cursor: pointer;
     transition: .4s;
-    padding-right: 0px;
-    border-right: solid transparent 1px;
+    height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    padding: 0 6px;
 }
 
-a:hover p {
-    border-right-color: #fbc02d;
-    padding-right: 20px !important;
+a p:hover {
+    background-color: #f0f8ff0d;
 }
 
 span {
-    /* color: #2196f3b8; */
-    color: #fbc02dc7;
+    color: #2196f3a8;
     font-style: italic;
     margin-right: 5px;
+}
+
+mat-divider {
+    border-top-color: #ffffff1f;
 }
