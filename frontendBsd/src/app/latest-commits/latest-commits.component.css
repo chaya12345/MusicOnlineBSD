@@ -35,6 +35,10 @@ span {
     margin-right: 5px;
 }
 
+span:hover {
+    font-style: italic;
+}
+
 mat-divider {
     border-top-color: #ffffff1f;
 }
