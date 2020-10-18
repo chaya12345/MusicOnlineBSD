@@ -10,5 +10,15 @@
     width: 50px;
     transition: ease 0.4s;
     padding: 4px;
-    fill: #fbc02d;
+    background-color: #252525;
+    color: white;
+    border: solid 2px white !important;
+}
+
+button#scroll-top:hover mat-icon {
+    transform: rotateZ(-90deg);
+}
+
+button#scroll-top mat-icon {
+    transition: .4s;
 }
