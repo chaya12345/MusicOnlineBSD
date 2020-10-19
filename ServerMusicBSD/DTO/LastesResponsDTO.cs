@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class LastResponsDTO
+    public class LastesResponsDTO
     {
         public int id { get; set; }
         public string type { get; set; }

@@ -1,4 +1,4 @@
-export class LastResponsView{
+export class LastesResponsView{
     id?:number;
     type?:string;
     name?:string;

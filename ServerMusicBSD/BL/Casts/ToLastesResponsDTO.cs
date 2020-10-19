@@ -8,11 +8,11 @@ using DTO;
 
 namespace BL.Casts
 {
-    public class ToLastResponsDTO
+    public class ToLastesResponsDTO
     {
-        public static LastResponsDTO GetLastRespons(latestResponses lastRespons)
+        public static LastesResponsDTO GetLastRespons(latestResponses lastRespons)
         {
-            LastResponsDTO newRespons = new LastResponsDTO();
+            LastesResponsDTO newRespons = new LastesResponsDTO();
             newRespons.id = lastRespons.id;
             newRespons.name = lastRespons.name;
             newRespons.date = lastRespons.date;
@@ -21,9 +21,9 @@ namespace BL.Casts
             newRespons.topicId = lastRespons.topicId;
             return newRespons;
         }
-        public static List<LastResponsDTO> GetLastResponses(List<latestResponses> lastResponses)
+        public static List<LastesResponsDTO> GetLastResponses(List<latestResponses> lastResponses)
         {
-            List<LastResponsDTO> list = new List<LastResponsDTO>();
+            List<LastesResponsDTO> list = new List<LastesResponsDTO>();
             foreach (latestResponses item in lastResponses)
             {
                 list.Add(GetLastRespons(item));

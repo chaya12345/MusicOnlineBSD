@@ -61,10 +61,5 @@ namespace BL
             List<ResponsesToArticlesTBL> list = et.ResponsesToArticlesTBL.Where(r => r.date != null).OrderBy(r=>r.date).Distinct().ToList();
             return Casts.ToResponsesToArticlesDTO.GetResponses(list);
         }
-        public static List<LastResponsDTO> GetLastResponsesToArticlesAndSongs()
-        {
-            MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToLastResponsDTO.GetLastResponses(et.latestResponses.ToList());
-        }
     }
 }

@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { ResponsesToSongs } from '../classes/responsesToSongs';
 import { Observable } from 'rxjs';
 import { ResponsesToArticles } from '../classes/responsesToArticles';
-import { LastResponsView } from '../classes/lastResponsView';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +26,5 @@ export class ResponsesToArticlesService {
   public getLastResponses(): Observable<ResponsesToArticles[]> {
     return this.httpClient.get<ResponsesToArticles[]>(this.baseUrl + "GetLastResponses");
   }
-  public GetLastResponsesToArticlesAndSongs(): Observable<LastResponsView[]> {
-    return this.httpClient.get<LastResponsView[]>(this.baseUrl + "GetLastResponsesToArticlesAndSongs")
-  }
+  
 }
