@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="MusicOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MusicOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AlbumsTBL">
           <Key>
             <PropertyRef Name="id" />
@@ -240,6 +240,19 @@
           <Property Name="newsletter" Type="bit" />
           <Property Name="saveLike" Type="bit" />
           <Property Name="image_location" Type="varchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LastResponses">
+          <Key>
+            <PropertyRef Name="responsId" />
+            <PropertyRef Name="articleId" />
+          </Key>
+          <Property Name="responsId" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="articleId" Type="int" Nullable="false" />
+          <Property Name="title" Type="varchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'MusicOnline.dbo.latestResponses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -588,6 +601,15 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <EntitySet Name="TopicsTBL" EntityType="Self.TopicsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UpdatesTBL" EntityType="Self.UpdatesTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LastResponses" EntityType="Self.LastResponses" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LastResponses].[responsId] AS [responsId], 
+    [LastResponses].[name] AS [name], 
+    [LastResponses].[date] AS [date], 
+    [LastResponses].[articleId] AS [articleId], 
+    [LastResponses].[title] AS [title]
+    FROM [dbo].[LastResponses] AS [LastResponses]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="latestResponses" EntityType="Self.latestResponses" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [latestResponses].[id] AS [id], 
@@ -712,7 +734,8 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
             <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MusicOnlineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -999,6 +1022,17 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <NavigationProperty Name="PlaylistsTBL" Relationship="Self.FK_PlaylistsTBL_UsersTBL" FromRole="UsersTBL" ToRole="PlaylistsTBL" />
           <NavigationProperty Name="SingerSearchingToUserTBL" Relationship="Self.FK_SingerSearchingToUserTBL_UsersTBL" FromRole="UsersTBL" ToRole="SingerSearchingToUserTBL" />
           <NavigationProperty Name="SubscriptionTBL" Relationship="Self.FK_SubscriptionTBL_UsersTBL" FromRole="UsersTBL" ToRole="SubscriptionTBL" />
+        </EntityType>
+        <EntityType Name="LastResponses">
+          <Key>
+            <PropertyRef Name="responsId" />
+            <PropertyRef Name="articleId" />
+          </Key>
+          <Property Name="responsId" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="articleId" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="latestResponses">
           <Key>
@@ -1343,6 +1377,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <EntitySet Name="TopicsTBL" EntityType="Self.TopicsTBL" />
           <EntitySet Name="UpdatesTBL" EntityType="Self.UpdatesTBL" />
           <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" />
+          <EntitySet Name="LastResponses" EntityType="Self.LastResponses" />
           <EntitySet Name="latestResponses" EntityType="Self.latestResponses" />
           <EntitySet Name="songsDetails" EntityType="Self.songsDetails" />
           <AssociationSet Name="FK_SongsTBL_AlbumsTBL" Association="Self.FK_SongsTBL_AlbumsTBL">
@@ -1707,15 +1742,26 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="LastResponses">
+            <EntityTypeMapping TypeName="MusicOnlineModel.LastResponses">
+              <MappingFragment StoreEntitySet="LastResponses">
+                <ScalarProperty Name="responsId" ColumnName="responsId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="articleId" ColumnName="articleId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="latestResponses">
             <EntityTypeMapping TypeName="MusicOnlineModel.latestResponses">
               <MappingFragment StoreEntitySet="latestResponses">
-                <ScalarProperty Name="topicId" ColumnName="topicId" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="topic" ColumnName="topic" />
+                <ScalarProperty Name="topicId" ColumnName="topicId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
