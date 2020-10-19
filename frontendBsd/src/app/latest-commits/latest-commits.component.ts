@@ -15,12 +15,16 @@ export class LatestCommitsComponent implements OnInit {
   constructor(private latestResponsesService: LatestResponsesService, private router: Router) {
     try {
       this.latestResponsesService.getLastResponsesToArticlesAndSongs()
-        .subscribe(lastResponses => { this.lastCommits = lastResponses; }, err => console.log(err));
+        .subscribe(lastResponses => { this.lastCommits = lastResponses; this.updateList(); }, err => console.log(err));
     }
     catch (err) { console.log(err); }
   }
 
   ngOnInit() {
+  }
+
+  updateList(): void {
+    this.lastCommits = this.lastCommits.slice(0, 7);
   }
 
   getResponse(commit: LastesResponsView) {
