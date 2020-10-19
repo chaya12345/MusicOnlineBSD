@@ -5,7 +5,7 @@
 }
 
 p.title-part {
-    margin-bottom: 30px;
+    margin-bottom: 38px;
 }
 
 a p {
@@ -30,7 +30,8 @@ a p:hover {
 }
 
 span {
-    color: #fbc02d;
+    color: #2196f3a8;
+    /* color: #fbc02d; */
     font-style: italic;
     margin-right: 5px;
 }

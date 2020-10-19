@@ -28,9 +28,9 @@ export class LatestCommitsComponent implements OnInit {
   }
 
   getResponse(commit: LastesResponsView) {
-    if (commit.type == 'article')
-      this.router.navigateByUrl("article/" + commit.topicId);
-    else this.router.navigateByUrl("song/" + commit.topicId);
+    // if (commit.type == 'article')
+    //   this.router.navigateByUrl("article/" + commit.topicId);
+    // else this.router.navigateByUrl("song/" + commit.topicId);
   }
 
 }

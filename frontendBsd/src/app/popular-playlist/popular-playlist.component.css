@@ -1,7 +1,9 @@
 .wrap-popular-playlist {
     background-color: #101010;
-    height: 350px;
-    width: 350px;
+    /* height: 350px;
+    width: 350px; */
+    height: 300px;
+    width: 365px;
     background-size: cover;
     background-position: center;
     transition: .4s;
@@ -9,6 +11,8 @@
     animation-timing-function: ease linear;
     display: grid;
     grid-template-rows: fit-content(50%) auto fit-content(50%);
+    padding: 20px 1px 0;
+    border-radius: 4px;
 }
 
 @keyframes bigger {
@@ -25,7 +29,9 @@
     height: 110px;
     background-color: #252525;
     background-color: #fbc02dc2;
+    background-color: #ffffffbd;
     color: white;
+    color: #252525;
     text-align: center;
     padding: 10px 15px;
     font-family: fb Ogen;
@@ -34,6 +40,7 @@
 .header-playlist p {
     font-size: 39px;
     color: #3a3a3a;
+    color: #252525;
     font-weight: 600;
 }
 
