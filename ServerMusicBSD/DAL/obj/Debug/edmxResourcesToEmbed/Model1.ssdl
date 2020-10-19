@@ -237,17 +237,19 @@
     <Property Name="image_location" Type="varchar(max)" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'MusicOnline.dbo.LastResponses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="LastResponses">
+warning 6002: The table/view 'MusicOnline.dbo.latestResponses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="latestResponses">
     <Key>
-      <PropertyRef Name="responsId" />
-      <PropertyRef Name="articleId" />
+      <PropertyRef Name="id" />
+      <PropertyRef Name="type" />
+      <PropertyRef Name="topicId" />
     </Key>
-    <Property Name="responsId" Type="int" Nullable="false" />
-    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="7" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" />
     <Property Name="date" Type="datetime" />
-    <Property Name="articleId" Type="int" Nullable="false" />
-    <Property Name="title" Type="varchar(max)" />
+    <Property Name="topic" Type="varchar(max)" />
+    <Property Name="topicId" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -581,14 +583,15 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     <EntitySet Name="TopicsTBL" EntityType="Self.TopicsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UpdatesTBL" EntityType="Self.UpdatesTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="LastResponses" EntityType="Self.LastResponses" store:Type="Views" store:Schema="dbo">
+    <EntitySet Name="latestResponses" EntityType="Self.latestResponses" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-    [LastResponses].[responsId] AS [responsId], 
-    [LastResponses].[name] AS [name], 
-    [LastResponses].[date] AS [date], 
-    [LastResponses].[articleId] AS [articleId], 
-    [LastResponses].[title] AS [title]
-    FROM [dbo].[LastResponses] AS [LastResponses]</DefiningQuery>
+    [latestResponses].[id] AS [id], 
+    [latestResponses].[type] AS [type], 
+    [latestResponses].[name] AS [name], 
+    [latestResponses].[date] AS [date], 
+    [latestResponses].[topic] AS [topic], 
+    [latestResponses].[topicId] AS [topicId]
+    FROM [dbo].[latestResponses] AS [latestResponses]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="songsDetails" EntityType="Self.songsDetails" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 

@@ -12,12 +12,13 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class LastResponses
+    public partial class latestResponses
     {
-        public int responsId { get; set; }
+        public int id { get; set; }
+        public string type { get; set; }
         public string name { get; set; }
         public Nullable<System.DateTime> date { get; set; }
-        public int articleId { get; set; }
-        public string title { get; set; }
+        public string topic { get; set; }
+        public int topicId { get; set; }
     }
 }

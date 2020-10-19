@@ -284,16 +284,18 @@
     <NavigationProperty Name="SingerSearchingToUserTBL" Relationship="Self.FK_SingerSearchingToUserTBL_UsersTBL" FromRole="UsersTBL" ToRole="SingerSearchingToUserTBL" />
     <NavigationProperty Name="SubscriptionTBL" Relationship="Self.FK_SubscriptionTBL_UsersTBL" FromRole="UsersTBL" ToRole="SubscriptionTBL" />
   </EntityType>
-  <EntityType Name="LastResponses">
+  <EntityType Name="latestResponses">
     <Key>
-      <PropertyRef Name="responsId" />
-      <PropertyRef Name="articleId" />
+      <PropertyRef Name="id" />
+      <PropertyRef Name="type" />
+      <PropertyRef Name="topicId" />
     </Key>
-    <Property Name="responsId" Type="Int32" Nullable="false" />
-    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="date" Type="DateTime" Precision="3" />
-    <Property Name="articleId" Type="Int32" Nullable="false" />
-    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="topic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="topicId" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="songsDetails">
     <Key>
@@ -625,7 +627,7 @@
     <EntitySet Name="TopicsTBL" EntityType="Self.TopicsTBL" />
     <EntitySet Name="UpdatesTBL" EntityType="Self.UpdatesTBL" />
     <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" />
-    <EntitySet Name="LastResponses" EntityType="Self.LastResponses" />
+    <EntitySet Name="latestResponses" EntityType="Self.latestResponses" />
     <EntitySet Name="songsDetails" EntityType="Self.songsDetails" />
     <AssociationSet Name="FK_SongsTBL_AlbumsTBL" Association="Self.FK_SongsTBL_AlbumsTBL">
       <End Role="AlbumsTBL" EntitySet="AlbumsTBL" />

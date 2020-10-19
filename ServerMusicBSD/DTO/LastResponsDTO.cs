@@ -8,10 +8,11 @@ namespace DTO
 {
     public class LastResponsDTO
     {
-        public int responsId { get; set; }
+        public int id { get; set; }
+        public string type { get; set; }
         public string name { get; set; }
         public Nullable<System.DateTime> date { get; set; }
-        public int articleId { get; set; }
-        public string title { get; set; }
+        public string topic { get; set; }
+        public int topicId { get; set; }
     }
 }

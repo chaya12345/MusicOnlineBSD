@@ -260,14 +260,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="LastResponses">
-      <EntityTypeMapping TypeName="MusicOnlineModel.LastResponses">
-        <MappingFragment StoreEntitySet="LastResponses">
-          <ScalarProperty Name="responsId" ColumnName="responsId" />
+    <EntitySetMapping Name="latestResponses">
+      <EntityTypeMapping TypeName="MusicOnlineModel.latestResponses">
+        <MappingFragment StoreEntitySet="latestResponses">
+          <ScalarProperty Name="topicId" ColumnName="topicId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="type" ColumnName="type" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="articleId" ColumnName="articleId" />
-          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="topic" ColumnName="topic" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

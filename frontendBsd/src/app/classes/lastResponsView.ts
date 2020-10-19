@@ -1,7 +1,8 @@
 export class LastResponsView{
-    responsId?:number;
+    id?:number;
+    type?:string;
     name?:string;
     date?:Date;
-    articleId?:number;
-    title?:string;
+    topic?:string;
+    topicId?:number;
 }

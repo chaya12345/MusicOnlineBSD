@@ -27,7 +27,7 @@ export class ResponsesToArticlesService {
   public getLastResponses(): Observable<ResponsesToArticles[]> {
     return this.httpClient.get<ResponsesToArticles[]>(this.baseUrl + "GetLastResponses");
   }
-  public getLast5Responses(): Observable<LastResponsView[]> {
-    return this.httpClient.get<LastResponsView[]>(this.baseUrl + "GetLast5Responses")
+  public GetLastResponsesToArticlesAndSongs(): Observable<LastResponsView[]> {
+    return this.httpClient.get<LastResponsView[]>(this.baseUrl + "GetLastResponsesToArticlesAndSongs")
   }
 }

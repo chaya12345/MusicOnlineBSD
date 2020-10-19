@@ -35,9 +35,9 @@ namespace ServerMusicBSD.Controllers
         {
             return ResponsesToArticlesBL.GetLastResponses();
         }
-        public  List<LastResponsDTO> GetLast5Responses()
+        public  List<LastResponsDTO> GetLastResponsesToArticlesAndSongs()
         {
-            return ResponsesToArticlesBL.GetLast5Responses();
+            return ResponsesToArticlesBL.GetLastResponsesToArticlesAndSongs();
         }
     }
 }
