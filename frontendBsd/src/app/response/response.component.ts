@@ -11,6 +11,7 @@ export class ResponseComponent implements OnInit {
 
   @Input() response: any;
   id: number;
+  panelOpenState: boolean = false;
   @ViewChild('someVar') el:ElementRef;
   @ViewChild(MatAccordion) accordion: MatAccordion;
 
@@ -20,7 +21,6 @@ export class ResponseComponent implements OnInit {
   }
   
   ngAfterViewInit() {
-    console.log(this.el);
     if (this.activatedRoute.snapshot.paramMap.get('commitId') != (null || undefined)) {
       this.id = Number(this.activatedRoute.snapshot.paramMap.get('commitId'));
       if(this.response.id == this.id) {
@@ -32,12 +32,12 @@ export class ResponseComponent implements OnInit {
         setTimeout(() => {
           this.el.nativeElement.style.backgroundColor = "#fbc02d5c";
           this.el.nativeElement.style.transition = 'all .6s ease';
+          this.panelOpenState = true;
         }, 500);
         setTimeout(() => {
           this.el.nativeElement.style.backgroundColor = "white";
           this.el.nativeElement.style.transition = 'all .6s ease';
         }, 2500);
-        //this.accordion.openAll();
       }
     }
   }
