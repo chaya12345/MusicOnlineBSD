@@ -1,5 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MusicOnlineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="itemsBySinger_Result">
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="subtitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="date" Type="DateTime" />
+    <Property Name="dateHebrew" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+  </ComplexType>
   <EntityType Name="AlbumsTBL">
     <Key>
       <PropertyRef Name="id" />
@@ -737,5 +746,8 @@
       <End Role="TagsTBL" EntitySet="TagsTBL" />
       <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
     </AssociationSet>
+    <FunctionImport Name="itemsBySinger" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemsBySinger_Result)">
+      <Parameter Name="singer" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
 </Schema>

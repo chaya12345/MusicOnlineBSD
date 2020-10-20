@@ -572,6 +572,22 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="itemsBySinger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="singer" Type="varchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="title" Type="varchar(max)" />
+          <Property Name="subtitle" Type="varchar(max)" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="dateHebrew" Type="varchar" MaxLength="50" />
+          <Property Name="image" Type="varchar(max)" />
+          <Property Name="type" Type="varchar" MaxLength="11" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
   <EntityContainer Name="MusicOnlineModelStoreContainer">
     <EntitySet Name="AlbumsTBL" EntityType="Self.AlbumsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ArticlesTBL" EntityType="Self.ArticlesTBL" Schema="dbo" store:Type="Tables" />

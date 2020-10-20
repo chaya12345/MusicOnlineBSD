@@ -302,5 +302,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionName="MusicOnlineModel.Store.itemsBySinger" FunctionImportName="itemsBySinger">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MusicOnlineModel.itemsBySinger_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="dateHebrew" ColumnName="dateHebrew" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>
