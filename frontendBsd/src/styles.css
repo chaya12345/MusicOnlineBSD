@@ -335,6 +335,10 @@ response:first-of-type .mat-expansion-panel:not([class*=mat-elevation-z]) {
     margin-top: 25px;
 }
 
+response .mat-expansion-panel {
+    background-color: transparent !important;
+}
+
 /* #endregion */
 
 /* #region(collapsed) [Spinner] */
