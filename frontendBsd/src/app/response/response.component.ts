@@ -32,12 +32,12 @@ export class ResponseComponent implements OnInit {
         setTimeout(() => {
           this.el.nativeElement.style.backgroundColor = "#fbc02d5c";
           this.el.nativeElement.style.transition = 'all .6s ease';
+          this.panelOpenState = true;
         }, 500);
         setTimeout(() => {
           this.el.nativeElement.style.backgroundColor = "white";
           this.el.nativeElement.style.transition = 'all .6s ease';
         }, 2500);
-        this.panelOpenState = true;
       }
     }
   }
