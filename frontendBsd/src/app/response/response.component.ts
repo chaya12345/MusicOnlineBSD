@@ -17,13 +17,7 @@ export class ResponseComponent implements OnInit {
   constructor(public activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    if (this.activatedRoute.snapshot.paramMap.get('commitId') != (null || undefined)) {
-      this.id = Number(this.activatedRoute.snapshot.paramMap.get('commitId'));
-      if(this.response.id==this.id){
-        //זה מה שנותן בקונסול
-       // this.response = {id: 1044, songId: 71, name: "יאיר", title: "וווווווואו וואו וואו! ענקקקק!", content: "❤❤❤", …}
-      }
-    }
+   
   }
   
   ngAfterViewInit() {
@@ -36,7 +30,11 @@ export class ResponseComponent implements OnInit {
         console.log("----------");
         this.el.nativeElement.scrollIntoView();
         this.el.nativeElement.style.backgroundColor = "whitesmoke";
-        this.accordion.openAll();
+        setTimeout(()=>{
+          this.el.nativeElement.style.backgroundColor = "white";
+          this.el.nativeElement.style.transition='all .6s ease'; 
+        },2000)
+        //this.accordion.openAll();
       }
     }
   }
