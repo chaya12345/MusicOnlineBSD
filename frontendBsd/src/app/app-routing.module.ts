@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
+import { ArticleComponent } from './article/article.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MagazineComponent } from './magazine/magazine.component';
@@ -52,7 +53,7 @@ const routes: Routes = [{
   component: ArticleDetailsComponent
 },
 {
-  path: "article/:id/commit/commitId",
+  path: "article/:id/commit/:commitId",
   component: ArticleDetailsComponent
 }, {
   path: "playlists",
