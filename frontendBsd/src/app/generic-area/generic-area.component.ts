@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { GenericType } from '../classes/genericType';
 
 @Component({
   selector: 'generic-area',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class GenericAreaComponent implements OnInit {
 
-  @Input() item: any;
+  @Input() item: GenericType;
 
   constructor() { }
 
@@ -45,7 +46,7 @@ export class GenericAreaComponent implements OnInit {
   }
 
   addAnimation(): void {
-    var wrappers = document.getElementsByClassName("wrap-article");
+    var wrappers = document.getElementsByClassName("wrap-generic-area");
     for (var i = 0; i < wrappers.length; i++) {
       if (this.elementInViewport(wrappers[i]) == true) {
       (wrappers[i] as HTMLElement).style.animationName = "bigger";

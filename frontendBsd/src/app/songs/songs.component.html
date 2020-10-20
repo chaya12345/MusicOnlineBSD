@@ -4,8 +4,8 @@
     <div *ngIf="!isSingular" class="wrap-tool-box"><tools (onOrder)="order($event)" searchBox="true" [followUp]="isFollowUp" [addToPlaylist]="isAddToPlaylist" orderBy="true" [sideText]="isSideText"></tools></div>
     <songs-list *ngIf="!isSingular&&!isGeneric" [songsList]="songs" [orderBy]="orderBy"></songs-list>
     <song-details *ngIf="isSingular" [song]="song"></song-details>
-    <div *ngIf="!isSingular&&isGeneric">
-        <generic-area [item]="songs[0]"></generic-area>
+    <div *ngIf="!isSingular&&isGeneric" style="padding: 30px 17vw;">
+        <generic-area *ngFor="let song of songs" [item]="convertItem(song)"></generic-area>
     </div>
     <!-- <div style="padding-bottom: 30px;">
         <latest-in-magazine></latest-in-magazine>

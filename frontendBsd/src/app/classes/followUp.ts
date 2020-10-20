@@ -1,4 +1,4 @@
-export class FollowUp{
+export class FollowUp {
     id?:number;
     userId?:number;
     mail?:string;

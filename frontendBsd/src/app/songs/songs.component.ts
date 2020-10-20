@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { GenericType } from '../classes/genericType';
 import { Song } from '../classes/song';
 import { Topics } from '../classes/topics';
 import { ArtistsAndSingersService } from '../services/artists-and-singers.service';
@@ -170,6 +171,15 @@ export class SongsComponent implements OnInit {
     //   this.cdr.detectChanges();
     // }
     // this.orderBy = type;
+  }
+
+  convertItem(song: Song): GenericType {
+    let item: GenericType = new GenericType();
+    item.title = song.title;
+    item.subtitle = song.subtitle;
+    item.image = song.image_location;
+    item.date = song.date;
+    return item;
   }
 
 }
