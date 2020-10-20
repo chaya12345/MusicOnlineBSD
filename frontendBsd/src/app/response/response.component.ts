@@ -17,27 +17,26 @@ export class ResponseComponent implements OnInit {
   constructor(public activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-   
   }
   
   ngAfterViewInit() {
     console.log(this.el);
     if (this.activatedRoute.snapshot.paramMap.get('commitId') != (null || undefined)) {
       this.id = Number(this.activatedRoute.snapshot.paramMap.get('commitId'));
-      if(this.response.id==this.id) {
-        console.log("yes");
-        console.log(this.el);
-        console.log("----------");
+      if(this.response.id == this.id) {
         this.el.nativeElement.scrollIntoView({
           behavior: "smooth" ,
           block:  "center",
           inline: "start",
         });
-        this.el.nativeElement.style.backgroundColor = "whitesmoke";
-        setTimeout(()=>{
+        setTimeout(() => {
+          this.el.nativeElement.style.backgroundColor = "#fbc02d5c";
+          this.el.nativeElement.style.transition = 'all .6s ease';
+        }, 500);
+        setTimeout(() => {
           this.el.nativeElement.style.backgroundColor = "white";
-          this.el.nativeElement.style.transition='all .6s ease'; 
-        },2000)
+          this.el.nativeElement.style.transition = 'all .6s ease';
+        }, 2500);
         //this.accordion.openAll();
       }
     }
