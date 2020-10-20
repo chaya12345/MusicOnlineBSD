@@ -1,6 +1,6 @@
 <div class="wrap-latest-commits">
     <p class="title-part">תגובות אחרונות.</p>
-    <a *ngFor="let commit of lastCommits" [href]="commit.type+'/'+commit.topicId+'/commit/1044'">
+    <a *ngFor="let commit of lastCommits" [href]="commit.type+'/'+commit.topicId+'/commit/'+commit.id">
         <p (click)='getResponse(commit)'>{{commit.name}} על <span>{{commit.topic}}</span></p>
         <mat-divider></mat-divider>
     </a>

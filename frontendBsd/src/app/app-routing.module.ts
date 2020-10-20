@@ -35,8 +35,8 @@ const routes: Routes = [{
   path: "song/:id",
   component: SongsComponent
 }, {
-  path: "song/:id/commit/commitId",
-  component: ResponsesSongComponent
+  path: "song/:id/commit/:commitId",
+  component: SongsComponent
 },
 {
   path: "song/:filter/:value",
@@ -53,7 +53,7 @@ const routes: Routes = [{
 },
 {
   path: "article/:id/commit/commitId",
-  component: ResponsesArticleComponent
+  component: ArticleDetailsComponent
 }, {
   path: "playlists",
   component: PlaylistsComponent

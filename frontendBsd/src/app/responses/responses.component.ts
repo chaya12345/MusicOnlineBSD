@@ -25,6 +25,7 @@ export class ResponsesComponent implements OnInit {
   ngOnChanges(): void {
     try {
     this.getResponses();
+    // if(this.activatedRoute.snapshot.)
     } catch { }
   }
 

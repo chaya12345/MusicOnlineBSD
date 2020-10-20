@@ -20,10 +20,6 @@ export class ResponsesSongComponent implements OnInit {
 
     try {
       this.getResponses();
-      if (this.activatedRoute.snapshot.paramMap.get("commitId") != (null || undefined)) {
-        this.responseId = Number(this.activatedRoute.snapshot.paramMap.get("commitId"));
-       console.log(this.responses.find(res=>res.id==this.responseId));
-      }
     } catch { }
   }
 
