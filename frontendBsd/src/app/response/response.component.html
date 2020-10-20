@@ -1,25 +1,26 @@
-<div #someVar><mat-accordion *ngIf="response.content!=null&&response.content!=''">
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
+<div #someVar>
+  <mat-accordion *ngIf="response.content!=null&&response.content!=''">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
           {{response.title}}
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <p>{{response.content}}</p>
-  </mat-expansion-panel>
-  <span>{{response.name}} • {{response.date | date: 'd/M/yyyy'}}</span>
-</mat-accordion>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>{{response.content}}</p>
+    </mat-expansion-panel>
+    <span>{{response.name}} • {{response.date | date: 'd/M/yyyy'}}</span>
+  </mat-accordion>
 
-<mat-accordion *ngIf="response.content==null||response.content==''">
-  <mat-expansion-panel disabled>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
+  <mat-accordion *ngIf="response.content==null||response.content==''">
+    <mat-expansion-panel disabled>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
           {{response.title}}
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <p>{{response.content}}</p>
-  </mat-expansion-panel>
-  <span>{{response.name}} • {{response.date | date: 'd/M/yyyy'}}</span>
-</mat-accordion>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>{{response.content}}</p>
+    </mat-expansion-panel>
+    <span>{{response.name}} • {{response.date | date: 'd/M/yyyy'}}</span>
+  </mat-accordion>
 </div>
 <mat-divider></mat-divider>
