@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { MatAccordion } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,6 +12,7 @@ export class ResponseComponent implements OnInit {
   @Input() response: any;
   id: number;
   @ViewChild('someVar') el:ElementRef;
+  @ViewChild(MatAccordion) accordion: MatAccordion;
 
   constructor(public activatedRoute: ActivatedRoute) { }
 
@@ -34,6 +36,7 @@ export class ResponseComponent implements OnInit {
         console.log("----------");
         this.el.nativeElement.scrollIntoView();
         this.el.nativeElement.style.backgroundColor = "whitesmoke";
+        this.accordion.openAll();
       }
     }
   }
