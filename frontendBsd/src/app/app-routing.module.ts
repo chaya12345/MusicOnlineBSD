@@ -6,6 +6,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MagazineComponent } from './magazine/magazine.component';
 import { PlaylistSectionComponent } from './playlist-section/playlist-section.component';
 import { PlaylistsComponent } from './playlists/playlists.component';
+import { ResponsesArticleComponent } from './responses-article/responses-article.component';
+import { ResponsesSongComponent } from './responses-song/responses-song.component';
 import { SongsBySingerComponent } from './songs-by-singer/songs-by-singer.component';
 import { SongsPageComponent } from './songs-page/songs-page.component';
 import { SongsComponent } from './songs/songs.component';
@@ -33,6 +35,10 @@ const routes: Routes = [{
   path: "song/:id",
   component: SongsComponent
 }, {
+  path: "song/:id/commit/commitId",
+  component: ResponsesSongComponent
+},
+{
   path: "song/:filter/:value",
   component: SongsComponent
 }, {
@@ -44,6 +50,10 @@ const routes: Routes = [{
 }, {
   path: "article/:id",
   component: ArticleDetailsComponent
+},
+{
+  path: "article/:id/commit/commitId",
+  component: ResponsesArticleComponent
 }, {
   path: "playlists",
   component: PlaylistsComponent
