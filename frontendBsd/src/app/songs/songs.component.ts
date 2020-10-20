@@ -24,6 +24,7 @@ export class SongsComponent implements OnInit {
   isAddToPlaylist: boolean = false;
   isSideText: boolean = false;
   isSingular: boolean = false;
+  isGeneric: boolean = false;
   orderBy: string = "";
   
   navs: string[] = [];
@@ -64,6 +65,7 @@ export class SongsComponent implements OnInit {
           this.navs.push(value);
         } catch (err) { console.log(err); }
         this.isSingular = false;
+        this.isGeneric = true;
       }
       else if (filter == "by-tag") {
         try {
@@ -74,6 +76,7 @@ export class SongsComponent implements OnInit {
             this.navs.push(value);
         } catch (err) { console.log(err); }
         this.isSingular = false;
+        this.isGeneric = true;
       }
       else if (filter == "by-artist") {
         try {
@@ -84,6 +87,7 @@ export class SongsComponent implements OnInit {
            this.navs.push(value);
         } catch (err) { console.log(err); }
         this.isSingular = false;
+        this.isGeneric = true;
       }
       else if (filter == "by-all") {
         try {
@@ -94,6 +98,7 @@ export class SongsComponent implements OnInit {
            this.navs.push(value);
         } catch (err) { console.log(err); }
         this.isSingular = false;
+        this.isGeneric = true;
       }
       // if (this.activatedRoute.snapshot.paramMap.get("order")) {
       //   let order = this.activatedRoute.snapshot.paramMap.get("order");

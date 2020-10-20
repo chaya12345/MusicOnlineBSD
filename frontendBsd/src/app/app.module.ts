@@ -70,6 +70,7 @@ import { NavButtonComponent } from './nav-button/nav-button.component';
 import { PopularSingersComponent } from './popular-singers/popular-singers.component';
 import { SmallSlogenComponent } from './small-slogen/small-slogen.component';
 import { MainActionsComponent } from './main-actions/main-actions.component';
+import { GenericAreaComponent } from './generic-area/generic-area.component';
 
 @NgModule({
   declarations: [
@@ -134,7 +135,8 @@ import { MainActionsComponent } from './main-actions/main-actions.component';
     NavButtonComponent,
     PopularSingersComponent,
     SmallSlogenComponent,
-    MainActionsComponent
+    MainActionsComponent,
+    GenericAreaComponent
   ],
   imports: [
     BrowserModule,
