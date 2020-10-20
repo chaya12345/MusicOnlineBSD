@@ -28,7 +28,11 @@ export class ResponseComponent implements OnInit {
         console.log("yes");
         console.log(this.el);
         console.log("----------");
-        this.el.nativeElement.scrollIntoView();
+        this.el.nativeElement.scrollIntoView({
+          behavior: "smooth" ,
+          block:  "center",
+          inline: "start",
+        });
         this.el.nativeElement.style.backgroundColor = "whitesmoke";
         setTimeout(()=>{
           this.el.nativeElement.style.backgroundColor = "white";
