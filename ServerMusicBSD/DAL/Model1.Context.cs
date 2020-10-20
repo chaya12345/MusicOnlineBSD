@@ -12,6 +12,8 @@ namespace DAL
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class MusicOnlineEntities : DbContext
     {
@@ -51,5 +53,15 @@ namespace DAL
         public virtual DbSet<LastResponses> LastResponses { get; set; }
         public virtual DbSet<latestResponses> latestResponses { get; set; }
         public virtual DbSet<songsDetails> songsDetails { get; set; }
+    
+        [DbFunction("MusicOnlineEntities", "itemsBySinger")]
+        public virtual IQueryable<itemsBySinger_Result> itemsBySinger(string singer)
+        {
+            var singerParameter = singer != null ?
+                new ObjectParameter("singer", singer) :
+                new ObjectParameter("singer", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<itemsBySinger_Result>("[MusicOnlineEntities].[itemsBySinger](@singer)", singerParameter);
+        }
     }
 }
