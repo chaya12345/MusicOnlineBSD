@@ -8,11 +8,11 @@ using DTO;
 
 namespace BL.Casts
 {
-    public class ToItemsBySingerDTO
+    public class ToItemsByParameterDTO
     {
-        public static ItemsBySingerDTO GetItemBySinger(itemsBySinger_Result item)
+        public static ItemsByParameterDTO GetItemByParameter(itemsByParameter_Result item)
         {
-            ItemsBySingerDTO newItem = new ItemsBySingerDTO();
+            ItemsByParameterDTO newItem = new ItemsByParameterDTO();
             newItem.id = item.id;
             newItem.title = item.title;
             newItem.subtitle = item.subtitle;
@@ -24,12 +24,12 @@ namespace BL.Casts
             newItem.type = item.type;
             return newItem;
         }
-        public static List<ItemsBySingerDTO> GetItemsBySinger(List<itemsBySinger_Result> items)
+        public static List<ItemsByParameterDTO> GetItemsByParameter(List<itemsByParameter_Result> items)
         {
-            List<ItemsBySingerDTO> list = new List<ItemsBySingerDTO>();
-            foreach (itemsBySinger_Result item in items)
+            List<ItemsByParameterDTO> list = new List<ItemsByParameterDTO>();
+            foreach (itemsByParameter_Result item in items)
             {
-                list.Add(GetItemBySinger(item));
+                list.Add(GetItemByParameter(item));
             }
             return list;
         }

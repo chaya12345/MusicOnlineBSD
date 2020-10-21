@@ -46,7 +46,7 @@
     <Compile Include="ArtistsDTO.cs" />
     <Compile Include="ArtistsToSongsDTO.cs" />
     <Compile Include="FollowUpDTO.cs" />
-    <Compile Include="ItemsBySingerDTO.cs" />
+    <Compile Include="ItemsByParameterDTO.cs" />
     <Compile Include="JobsDTO.cs" />
     <Compile Include="LastesResponsDTO.cs" />
     <Compile Include="PlaylistsDTO.cs" />

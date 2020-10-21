@@ -11,7 +11,7 @@ namespace DAL
 {
     using System;
     
-    public partial class itemsBySinger_Result
+    public partial class itemsByParameter_Result
     {
         public int id { get; set; }
         public string title { get; set; }
