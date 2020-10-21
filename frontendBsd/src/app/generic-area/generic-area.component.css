@@ -78,6 +78,7 @@ div.content {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    white-space: nowrap;
 }
 
 .content p {
@@ -90,6 +91,7 @@ div.content {
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+    white-space: nowrap;
     padding-top: 3px;
 }
 

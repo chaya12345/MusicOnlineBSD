@@ -3,16 +3,31 @@
     color: white;
 }
 
-.wrap-footer-song p {
+.wrap-footer-song .wrap-title {
     padding: 5px 15px;
     font-size: 27px;
     font-family: fb Joker;
     font-weight: 600;
     letter-spacing: .2px;
+    height: 42px;
+    overflow: hidden;
+    position: relative;
+}
+
+.wrap-title p {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     line-height: 32px;
+    white-space: nowrap;
+    transition: left 5.5s linear;
+    position: absolute;
+    left: auto;
+}
+
+.wrap-footer-song:hover p {
+    left: 10px !important;
+    transition: left 5.5s linear;
 }
