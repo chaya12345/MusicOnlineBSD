@@ -1,11 +1,11 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GenericType } from '../classes/genericType';
-import { ItemsBySinger } from '../classes/itemsBySinger';
+import { ItemsByParameter } from '../classes/itemsByParameter';
 import { Song } from '../classes/song';
 import { Topics } from '../classes/topics';
 import { ArtistsAndSingersService } from '../services/artists-and-singers.service';
-import { ItemsBySingerService } from '../services/items-by-singer.service';
+import { ItemsByParameterService } from '../services/items-by-parameter.service';
 import { SingerService } from '../services/singer.service';
 import { SongService } from '../services/song.service';
 import { TopicsService } from '../services/topics.service';
@@ -32,13 +32,13 @@ export class SongsComponent implements OnInit {
   
   navs: string[] = [];
   songs: Song[] = [];
-  items: ItemsBySinger[] = [];
+  items: ItemsByParameter[] = [];
   song: Song;
   topic: Topics;
 
   constructor(private activatedRoute: ActivatedRoute, private songService: SongService,
     private cdr: ChangeDetectorRef, private topicsService: TopicsService, private singerService: SingerService,
-    private artsAndSingsService: ArtistsAndSingersService, private itemsBySingerService: ItemsBySingerService) { 
+    private artsAndSingsService: ArtistsAndSingersService, private itemsByParameterService: ItemsByParameterService) { 
     this.navs.push("חדש במוזיקה");
   }
 
@@ -66,7 +66,7 @@ export class SongsComponent implements OnInit {
           // this.songService.getSongsBySinger(value)
           // .subscribe(songs => { this.songs = songs; this.cdr.detectChanges(); 
           //   this.updateDataForList(); this.orderByDate(); }, err => console.log(err));
-          this.itemsBySingerService.getItemsBySinger(value)
+          this.itemsByParameterService.getItemsByParameter(value)
             .subscribe(items => { this.items = items; this.items.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
               this.cdr.detectChanges();
               }, err => console.log(err));

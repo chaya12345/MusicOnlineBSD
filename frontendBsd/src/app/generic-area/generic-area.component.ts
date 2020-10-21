@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GenericType } from '../classes/genericType';
-import { ItemsBySinger } from '../classes/itemsBySinger';
+import { ItemsByParameter } from '../classes/itemsByParameter';
 
 @Component({
   selector: 'generic-area',
@@ -9,7 +9,7 @@ import { ItemsBySinger } from '../classes/itemsBySinger';
 })
 export class GenericAreaComponent implements OnInit {
 
-  @Input() item: ItemsBySinger;
+  @Input() item: ItemsByParameter;
   type: string;
   icon: string;
 

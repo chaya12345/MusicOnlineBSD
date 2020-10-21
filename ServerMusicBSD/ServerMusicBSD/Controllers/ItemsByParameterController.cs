@@ -11,7 +11,7 @@ namespace ServerMusicBSD.Controllers
 {
     public class ItemsByParameterController : ApiController
     {
-        public List<ItemsByParameterDTO> GetItemsBySinger(string parameter)
+        public List<ItemsByParameterDTO> GetItemsByParameter(string parameter)
         {
             return ItemsByParameterBL.GetItemsByParameter(parameter);
         }
