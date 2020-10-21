@@ -1,4 +1,15 @@
-CREATE FUNCTION itemsBySinger (@singer varchar(50))
+USE [MusicOnline]
+GO
+
+/****** Object:  UserDefinedFunction [dbo].[itemsBySinger]    Script Date: 21/10/2020 13:24:19 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+ALTER FUNCTION [dbo].[itemsBySinger] (@singer varchar(50))
 RETURNS table 
 AS
 RETURN 
@@ -37,4 +48,4 @@ join TagsToArticlesTBL as tta on a.id = tta.articleId join TagsTBL as t on tta.t
   )
 GO
 
-select * from itemsBySinger('איציק דדיה') order by date desc
+
