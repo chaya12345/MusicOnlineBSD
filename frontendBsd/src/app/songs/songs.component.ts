@@ -63,9 +63,6 @@ export class SongsComponent implements OnInit {
       else if (filter == "by-singer" ||filter == "by-tag" ||filter == "by-artist"||filter == "by-all") {
         try {
           let value = this.activatedRoute.snapshot.paramMap.get("value");
-          // this.songService.getSongsBySinger(value)
-          // .subscribe(songs => { this.songs = songs; this.cdr.detectChanges(); 
-          //   this.updateDataForList(); this.orderByDate(); }, err => console.log(err));
           this.itemsByParameterService.getItemsByParameter(value)
             .subscribe(items => { this.items = items; this.items.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
               this.cdr.detectChanges();
@@ -75,46 +72,6 @@ export class SongsComponent implements OnInit {
         this.isSingular = false;
         this.isGeneric = true;
       }
-      // else if (filter == "by-tag") {
-      //   try {
-      //     let value = this.activatedRoute.snapshot.paramMap.get("value");
-      //     this.songService.getSongsByTag(value)
-      //     .subscribe(songs => { this.songs = songs; this.cdr.detectChanges(); 
-      //       this.updateDataForList(); this.orderByDate(); }, err => console.log(err));
-      //       this.navs.push(value);
-      //   } catch (err) { console.log(err); }
-      //   this.isSingular = false;
-      //   this.isGeneric = true;
-      // }
-      // else if (filter == "by-artist") {
-      //   try {
-      //     let value = this.activatedRoute.snapshot.paramMap.get("value");
-      //     this.songService.getSongsByArtistsAndSingers(value)
-      //     .subscribe(songs => { this.songs = songs; this.cdr.detectChanges(); 
-      //      this.updateDataForList(); this.orderByDate(); }, err => console.log(err));
-      //      this.navs.push(value);
-      //   } catch (err) { console.log(err); }
-      //   this.isSingular = false;
-      //   this.isGeneric = true;
-      // }
-      // else if (filter == "by-all") {
-      //   try {
-      //     let value = this.activatedRoute.snapshot.paramMap.get("value");
-      //     this.songService.getSongsByTagOrArtist(value)
-      //     .subscribe(songs => { this.songs = songs; this.cdr.detectChanges(); 
-      //      this.updateDataForList(); this.orderByDate(); }, err => console.log(err));
-      //      this.navs.push(value);
-      //   } catch (err) { console.log(err); }
-      //   this.isSingular = false;
-      //   this.isGeneric = true;
-      // }
-      // if (this.activatedRoute.snapshot.paramMap.get("order")) {
-      //   let order = this.activatedRoute.snapshot.paramMap.get("order");
-      //   if (order == "order-by-song") {
-      //     this.songs.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
-      //     this.cdr.detectChanges();
-      //   }
-      // }
     }
   }
 
