@@ -88,7 +88,7 @@ div.content {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     padding-top: 3px;
 }
@@ -112,4 +112,9 @@ div.content {
     text-align: center;
     border-radius: 4px;
     margin-right: auto;
+    display: flex;
+}
+
+.type-item mat-icon {
+    margin-right: 7px;
 }

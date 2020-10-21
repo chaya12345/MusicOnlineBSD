@@ -1,9 +1,11 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GenericType } from '../classes/genericType';
+import { ItemsBySinger } from '../classes/itemsBySinger';
 import { Song } from '../classes/song';
 import { Topics } from '../classes/topics';
 import { ArtistsAndSingersService } from '../services/artists-and-singers.service';
+import { ItemsBySingerService } from '../services/items-by-singer.service';
 import { SingerService } from '../services/singer.service';
 import { SongService } from '../services/song.service';
 import { TopicsService } from '../services/topics.service';
@@ -30,12 +32,13 @@ export class SongsComponent implements OnInit {
   
   navs: string[] = [];
   songs: Song[] = [];
+  items: ItemsBySinger[] = [];
   song: Song;
   topic: Topics;
 
   constructor(private activatedRoute: ActivatedRoute, private songService: SongService,
     private cdr: ChangeDetectorRef, private topicsService: TopicsService, private singerService: SingerService,
-    private artsAndSingsService: ArtistsAndSingersService) { 
+    private artsAndSingsService: ArtistsAndSingersService, private itemsBySingerService: ItemsBySingerService) { 
     this.navs.push("חדש במוזיקה");
   }
 
@@ -60,9 +63,13 @@ export class SongsComponent implements OnInit {
       else if (filter == "by-singer") {
         try {
           let value = this.activatedRoute.snapshot.paramMap.get("value");
-          this.songService.getSongsBySinger(value)
-          .subscribe(songs => { this.songs = songs; this.cdr.detectChanges(); 
-            this.updateDataForList(); this.orderByDate(); }, err => console.log(err));
+          // this.songService.getSongsBySinger(value)
+          // .subscribe(songs => { this.songs = songs; this.cdr.detectChanges(); 
+          //   this.updateDataForList(); this.orderByDate(); }, err => console.log(err));
+          this.itemsBySingerService.getItemsBySinger(value)
+            .subscribe(items => { this.items = items; this.items.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
+              this.cdr.detectChanges();
+              }, err => console.log(err));
           this.navs.push(value);
         } catch (err) { console.log(err); }
         this.isSingular = false;
@@ -173,13 +180,13 @@ export class SongsComponent implements OnInit {
     // this.orderBy = type;
   }
 
-  convertItem(song: Song): GenericType {
-    let item: GenericType = new GenericType();
-    item.title = song.title;
-    item.subtitle = song.subtitle;
-    item.image = song.image_location;
-    item.date = song.date;
-    return item;
-  }
+  // convertItem(song: Song): GenericType {
+  //   let item: GenericType = new GenericType();
+  //   item.title = song.title;
+  //   item.subtitle = song.subtitle;
+  //   item.image = song.image_location;
+  //   item.date = song.date;
+  //   return item;
+  // }
 
 }

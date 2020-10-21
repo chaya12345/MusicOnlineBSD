@@ -5,7 +5,7 @@
     <songs-list *ngIf="!isSingular&&!isGeneric" [songsList]="songs" [orderBy]="orderBy"></songs-list>
     <song-details *ngIf="isSingular" [song]="song"></song-details>
     <div *ngIf="!isSingular&&isGeneric" style="padding: 30px 17vw;">
-        <generic-area *ngFor="let song of songs" [item]="convertItem(song)"></generic-area>
+        <generic-area *ngFor="let item of items" [item]="item"></generic-area>
     </div>
     <!-- <div style="padding-bottom: 30px;">
         <latest-in-magazine></latest-in-magazine>

@@ -288,10 +288,13 @@ namespace BL
             List<SongsDTO> nonVocalSongs = new List<SongsDTO>();
             foreach (SongsDTO song in songs)
             {
-                List<string> tags = TagsToSongsBL.GetTagsNamesToSong(song.id);
-                if (!tags.Contains("ווקאלי") && !tags.Contains("אקפלה"))
+                if (song != null)
                 {
-                    nonVocalSongs.Add(song);
+                    List<string> tags = TagsToSongsBL.GetTagsNamesToSong(song.id);
+                    if (!tags.Contains("ווקאלי") && !tags.Contains("אקפלה"))
+                    {
+                        nonVocalSongs.Add(song);
+                    }
                 }
             }
             return nonVocalSongs;

@@ -17,6 +17,7 @@ export class TextComponent implements OnInit {
     try {
       this.getText();
     } catch (err) { console.log(err); }
+    console.log("text: " + this.file);
   }
 
   getText(): void {

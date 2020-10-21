@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GenericType } from '../classes/genericType';
+import { ItemsBySinger } from '../classes/itemsBySinger';
 
 @Component({
   selector: 'generic-area',
@@ -8,13 +9,40 @@ import { GenericType } from '../classes/genericType';
 })
 export class GenericAreaComponent implements OnInit {
 
-  @Input() item: GenericType;
+  @Input() item: ItemsBySinger;
+  type: string;
+  icon: string;
 
   constructor() { }
 
   ngOnInit(): void {
     window.addEventListener('scroll', this.scroll, true);
     this.addAnimation();
+  }
+
+  ngOnChanges() {
+    switch (this.item.type) {
+      case "song":
+        this.type = "שיר";
+        this.icon = "headset";
+        break;
+      case "article":
+        this.type = "כתבה";
+        this.icon = "queue_music";
+        break;
+      case "performance":
+        this.type = "הופעה";
+        this.icon = "mic";
+        break;
+      case "clip":
+        this.type = "קליפ";
+        this.icon = "videocam";
+        break;
+      default:
+        this.type = "שיר";
+        this.icon = "headset";
+        break;
+    }
   }
 
   ngOnDestroy() {
