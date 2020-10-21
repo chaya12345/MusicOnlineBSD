@@ -8,12 +8,12 @@ using DTO;
 
 namespace BL
 {
-    public class ItemsBySingerBL
+    public class ItemsByParameterBL
     {
-        public static List<ItemsBySingerDTO> GetItemsBySinger(string singerName)
+        public static List<ItemsByParameterDTO> GetItemsByParameter(string parameter)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToItemsBySingerDTO.GetItemsBySinger(et.itemsBySinger(singerName).ToList());
+            return Casts.ToItemsByParameterDTO.GetItemsByParameter(et.itemsByParameter(parameter).ToList());
         }
     }
 }

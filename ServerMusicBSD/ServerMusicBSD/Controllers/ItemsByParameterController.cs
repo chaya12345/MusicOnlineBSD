@@ -9,11 +9,11 @@ using BL;
 
 namespace ServerMusicBSD.Controllers
 {
-    public class ItemsBySingerController : ApiController
+    public class ItemsByParameterController : ApiController
     {
-        public List<ItemsBySingerDTO> GetItemsBySinger(string singerName)
+        public List<ItemsByParameterDTO> GetItemsByParameter(string parameter)
         {
-            return ItemsBySingerBL.GetItemsBySinger(singerName);
+            return ItemsByParameterBL.GetItemsByParameter(parameter);
         }
     }
 }

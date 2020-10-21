@@ -66,7 +66,7 @@
     <Compile Include="Casts\ToArtistsDTO.cs" />
     <Compile Include="Casts\ToArtistsToSongsDTO.cs" />
     <Compile Include="Casts\ToFollowUpDTO.cs" />
-    <Compile Include="Casts\ToItemsBySingerDTO.cs" />
+    <Compile Include="Casts\ToItemsByParameterDTO.cs" />
     <Compile Include="Casts\ToJobsDTO.cs" />
     <Compile Include="Casts\ToLastesResponsDTO.cs" />
     <Compile Include="Casts\ToPlaylistsDTO.cs" />
@@ -88,7 +88,7 @@
     <Compile Include="Casts\ToUpdatesDTO.cs" />
     <Compile Include="Casts\ToUsersDTO.cs" />
     <Compile Include="FollowUpBL.cs" />
-    <Compile Include="ItemsBySingerBL.cs" />
+    <Compile Include="ItemsByParameterBL.cs" />
     <Compile Include="JobsBL.cs" />
     <Compile Include="LastesResponsBL.cs" />
     <Compile Include="PlaylistBL.cs" />

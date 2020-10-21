@@ -572,8 +572,42 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="itemsBySinger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="singer" Type="varchar" Mode="In" />
+  <Function Name="getPlaylists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userId" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="playlistId" Type="int" />
+          <Property Name="songId" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="getSongs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="file_location" Type="varchar(max)" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="singerId" Type="int" />
+          <Property Name="count_like" Type="bigint" />
+          <Property Name="count_views" Type="bigint" />
+          <Property Name="albumId" Type="int" />
+          <Property Name="title" Type="varchar" MaxLength="150" />
+          <Property Name="subtitle" Type="varchar" MaxLength="300" />
+          <Property Name="image_location" Type="varchar(max)" />
+          <Property Name="content" Type="varchar(max)" />
+          <Property Name="isPerformance" Type="bit" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="itemsByParameter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="parameter" Type="varchar" Mode="In" />
     <ReturnType>
       <CollectionType>
         <RowType>
@@ -584,6 +618,52 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <Property Name="dateHebrew" Type="varchar" MaxLength="50" />
           <Property Name="image" Type="varchar(max)" />
           <Property Name="type" Type="varchar" MaxLength="11" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="searchByAlbum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="albumName" Type="varchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="file_location" Type="varchar(max)" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="singerId" Type="int" />
+          <Property Name="count_like" Type="bigint" />
+          <Property Name="count_views" Type="bigint" />
+          <Property Name="albumId" Type="int" />
+          <Property Name="title" Type="varchar" MaxLength="150" />
+          <Property Name="subtitle" Type="varchar" MaxLength="300" />
+          <Property Name="image_location" Type="varchar(max)" />
+          <Property Name="content" Type="varchar(max)" />
+          <Property Name="isPerformance" Type="bit" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="searchBySinger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="singerName" Type="varchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="file_location" Type="varchar(max)" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="singerId" Type="int" />
+          <Property Name="count_like" Type="bigint" />
+          <Property Name="count_views" Type="bigint" />
+          <Property Name="albumId" Type="int" />
+          <Property Name="title" Type="varchar" MaxLength="150" />
+          <Property Name="subtitle" Type="varchar" MaxLength="300" />
+          <Property Name="image_location" Type="varchar(max)" />
+          <Property Name="content" Type="varchar(max)" />
+          <Property Name="isPerformance" Type="bit" />
         </RowType>
       </CollectionType>
     </ReturnType>

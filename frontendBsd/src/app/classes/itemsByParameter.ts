@@ -1,4 +1,4 @@
-export class ItemsBySinger{
+export class ItemsByParameter {
     id?:number;
     title?:string;
     subtitle?:string;

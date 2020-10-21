@@ -577,8 +577,42 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="itemsBySinger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="singer" Type="varchar" Mode="In" />
+        <Function Name="getPlaylists" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="id" Type="int" Nullable="false" />
+                <Property Name="playlistId" Type="int" />
+                <Property Name="songId" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="getSongs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="id" Type="int" Nullable="false" />
+                <Property Name="name" Type="varchar" MaxLength="100" />
+                <Property Name="file_location" Type="varchar(max)" />
+                <Property Name="type" Type="varchar" MaxLength="50" />
+                <Property Name="date" Type="datetime" />
+                <Property Name="singerId" Type="int" />
+                <Property Name="count_like" Type="bigint" />
+                <Property Name="count_views" Type="bigint" />
+                <Property Name="albumId" Type="int" />
+                <Property Name="title" Type="varchar" MaxLength="150" />
+                <Property Name="subtitle" Type="varchar" MaxLength="300" />
+                <Property Name="image_location" Type="varchar(max)" />
+                <Property Name="content" Type="varchar(max)" />
+                <Property Name="isPerformance" Type="bit" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="itemsByParameter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="parameter" Type="varchar" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -589,6 +623,52 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
                 <Property Name="dateHebrew" Type="varchar" MaxLength="50" />
                 <Property Name="image" Type="varchar(max)" />
                 <Property Name="type" Type="varchar" MaxLength="11" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="searchByAlbum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="albumName" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="id" Type="int" Nullable="false" />
+                <Property Name="name" Type="varchar" MaxLength="100" />
+                <Property Name="file_location" Type="varchar(max)" />
+                <Property Name="type" Type="varchar" MaxLength="50" />
+                <Property Name="date" Type="datetime" />
+                <Property Name="singerId" Type="int" />
+                <Property Name="count_like" Type="bigint" />
+                <Property Name="count_views" Type="bigint" />
+                <Property Name="albumId" Type="int" />
+                <Property Name="title" Type="varchar" MaxLength="150" />
+                <Property Name="subtitle" Type="varchar" MaxLength="300" />
+                <Property Name="image_location" Type="varchar(max)" />
+                <Property Name="content" Type="varchar(max)" />
+                <Property Name="isPerformance" Type="bit" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="searchBySinger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="singerName" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="id" Type="int" Nullable="false" />
+                <Property Name="name" Type="varchar" MaxLength="100" />
+                <Property Name="file_location" Type="varchar(max)" />
+                <Property Name="type" Type="varchar" MaxLength="50" />
+                <Property Name="date" Type="datetime" />
+                <Property Name="singerId" Type="int" />
+                <Property Name="count_like" Type="bigint" />
+                <Property Name="count_views" Type="bigint" />
+                <Property Name="albumId" Type="int" />
+                <Property Name="title" Type="varchar" MaxLength="150" />
+                <Property Name="subtitle" Type="varchar" MaxLength="300" />
+                <Property Name="image_location" Type="varchar(max)" />
+                <Property Name="content" Type="varchar(max)" />
+                <Property Name="isPerformance" Type="bit" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -755,7 +835,28 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MusicOnlineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <ComplexType Name="itemsBySinger_Result">
+        <ComplexType Name="getPlaylists_Result">
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="playlistId" Type="Int32" />
+          <Property Name="songId" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="getSongs_Result">
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="file_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" />
+          <Property Name="singerId" Type="Int32" />
+          <Property Name="count_like" Type="Int64" />
+          <Property Name="count_views" Type="Int64" />
+          <Property Name="albumId" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="subtitle" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="image_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="isPerformance" Type="Boolean" />
+        </ComplexType>
+        <ComplexType Name="itemsByParameter_Result">
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="subtitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -763,6 +864,38 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <Property Name="dateHebrew" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="type" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="searchByAlbum_Result">
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="file_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" />
+          <Property Name="singerId" Type="Int32" />
+          <Property Name="count_like" Type="Int64" />
+          <Property Name="count_views" Type="Int64" />
+          <Property Name="albumId" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="subtitle" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="image_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="isPerformance" Type="Boolean" />
+        </ComplexType>
+        <ComplexType Name="searchBySinger_Result">
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="file_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" />
+          <Property Name="singerId" Type="Int32" />
+          <Property Name="count_like" Type="Int64" />
+          <Property Name="count_views" Type="Int64" />
+          <Property Name="albumId" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="subtitle" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="image_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="isPerformance" Type="Boolean" />
         </ComplexType>
         <EntityType Name="AlbumsTBL">
           <Key>
@@ -1501,8 +1634,18 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
             <End Role="TagsTBL" EntitySet="TagsTBL" />
             <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
           </AssociationSet>
-          <FunctionImport Name="itemsBySinger" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemsBySinger_Result)">
-            <Parameter Name="singer" Mode="In" Type="String" />
+          <FunctionImport Name="getPlaylists" IsComposable="true" ReturnType="Collection(MusicOnlineModel.getPlaylists_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getSongs" IsComposable="true" ReturnType="Collection(MusicOnlineModel.getSongs_Result)" />
+          <FunctionImport Name="itemsByParameter" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemsByParameter_Result)">
+            <Parameter Name="parameter" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="searchByAlbum" IsComposable="true" ReturnType="Collection(MusicOnlineModel.searchByAlbum_Result)">
+            <Parameter Name="albumName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="searchBySinger" IsComposable="true" ReturnType="Collection(MusicOnlineModel.searchBySinger_Result)">
+            <Parameter Name="singerName" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -1812,9 +1955,38 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionName="MusicOnlineModel.Store.itemsBySinger" FunctionImportName="itemsBySinger">
+          <FunctionImportMapping FunctionName="MusicOnlineModel.Store.getPlaylists" FunctionImportName="getPlaylists">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="MusicOnlineModel.itemsBySinger_Result">
+              <ComplexTypeMapping TypeName="MusicOnlineModel.getPlaylists_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="playlistId" ColumnName="playlistId" />
+                <ScalarProperty Name="songId" ColumnName="songId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="MusicOnlineModel.Store.getSongs" FunctionImportName="getSongs">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MusicOnlineModel.getSongs_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="file_location" ColumnName="file_location" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="singerId" ColumnName="singerId" />
+                <ScalarProperty Name="count_like" ColumnName="count_like" />
+                <ScalarProperty Name="count_views" ColumnName="count_views" />
+                <ScalarProperty Name="albumId" ColumnName="albumId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+                <ScalarProperty Name="image_location" ColumnName="image_location" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="isPerformance" ColumnName="isPerformance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="MusicOnlineModel.Store.itemsByParameter" FunctionImportName="itemsByParameter">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MusicOnlineModel.itemsByParameter_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="subtitle" ColumnName="subtitle" />
@@ -1822,6 +1994,46 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
                 <ScalarProperty Name="dateHebrew" ColumnName="dateHebrew" />
                 <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="type" ColumnName="type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="MusicOnlineModel.Store.searchByAlbum" FunctionImportName="searchByAlbum">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MusicOnlineModel.searchByAlbum_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="file_location" ColumnName="file_location" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="singerId" ColumnName="singerId" />
+                <ScalarProperty Name="count_like" ColumnName="count_like" />
+                <ScalarProperty Name="count_views" ColumnName="count_views" />
+                <ScalarProperty Name="albumId" ColumnName="albumId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+                <ScalarProperty Name="image_location" ColumnName="image_location" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="isPerformance" ColumnName="isPerformance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="MusicOnlineModel.Store.searchBySinger" FunctionImportName="searchBySinger">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MusicOnlineModel.searchBySinger_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="file_location" ColumnName="file_location" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="singerId" ColumnName="singerId" />
+                <ScalarProperty Name="count_like" ColumnName="count_like" />
+                <ScalarProperty Name="count_views" ColumnName="count_views" />
+                <ScalarProperty Name="albumId" ColumnName="albumId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+                <ScalarProperty Name="image_location" ColumnName="image_location" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="isPerformance" ColumnName="isPerformance" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
