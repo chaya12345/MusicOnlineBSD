@@ -18,21 +18,6 @@ export class FooterSongComponent implements OnInit {
 
   ngOnInit() {
     this.getCountResponses();
-    let el = document.getElementsByClassName("transform-title");
-    for (let i = 0; i < el.length; i++) {
-      console.log(i);
-      console.log(el[i]);
-      // el[i].style.position = "absolute";
-      // el[i].style.left = el[i].offsetWidth + "px !important";
-      (el[i] as HTMLElement).style.left = (((el[i] as HTMLElement).offsetWidth*-1)+350-20)+"px !important";
-      // ------------------------------------------------------------------------------
-      // (el[i] as HTMLElement).style.transform = "translateX("+(((el[i] as HTMLElement).offsetWidth*-1)+350-20)+"px)";
-      // console.log("------------ " + (el[i] as HTMLElement).style.transform);
-      // (el[i] as HTMLElement).style.transition = "5.5s";
-      // ------------------------------------------------------------------------------
-      // console.log("============ " + el[i].offsetWidth + "px !important");
-      // console.log("------------ " + (el[i] as HTMLElement).style.left);
-    }
   }
 
   getCountResponses(): void {
