@@ -22,12 +22,17 @@
     -webkit-box-orient: vertical;
     line-height: 32px;
     white-space: nowrap;
-    transition: left 5.5s linear;
-    position: absolute;
-    left: auto;
 }
 
 .wrap-footer-song:hover p {
-    left: 10px !important;
-    transition: left 5.5s linear;
+    position: absolute;
+	animation: 1.8s linear 0s slide forwards;
+}
+
+@keyframes slide {
+  from {
+      left: 100%;
+      transform: translateX(-100%); 
+    }
+  to { left: 10px; }
 }
