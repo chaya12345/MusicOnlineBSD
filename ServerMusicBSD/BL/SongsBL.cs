@@ -47,7 +47,7 @@ namespace BL
         public static List<SongsDTO> GetSongs()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToSongsDTO.GetSongs(et.SongsTBL.ToList());
+            return Casts.ToSongsDTO.GetSongs(et.SongsTBL.Where(s=>s.isPerformance==false).ToList());
         }
         public static SongsDTO GetSongById(int songId)
         {
@@ -58,7 +58,7 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             SingersTBL singerId = et.SingersTBL.Where(s => s.name == singerName).FirstOrDefault();
-            List<SongsDTO> result = Casts.ToSongsDTO.GetSongs(et.SongsTBL.Where(s => s.singerId == singerId.id).ToList());
+            List<SongsDTO> result = Casts.ToSongsDTO.GetSongs(et.SongsTBL.Where(s => s.singerId == singerId.id&&s.isPerformance==false).ToList());
             var songsByTag = GetSongsByTag(singerName);
             if (songsByTag != null)
             {
@@ -89,7 +89,9 @@ namespace BL
                 List<SongsTBL> songsIncludeTag = new List<SongsTBL>();
                 foreach (int? songId in songsId)
                 {
-                    songsIncludeTag.Add(et.SongsTBL.Where(song => song.id == songId).FirstOrDefault());
+                    SongsTBL s = et.SongsTBL.Where(song => song.id == songId && song.isPerformance == false).FirstOrDefault();
+                    if (s != null)
+                        songsIncludeTag.Add(s);
                 }
                 return Casts.ToSongsDTO.GetSongs(songsIncludeTag);
             }
@@ -186,7 +188,7 @@ namespace BL
             List<SongsTBL> songsIncludeAllTags = new List<SongsTBL>();
             if (tags != null)
             {
-                List<SongsTBL> songsList = et.SongsTBL.ToList();
+                List<SongsTBL> songsList = et.SongsTBL.Where(s=>s.isPerformance==false).ToList();
                 foreach (SongsTBL song in songsList)
                 {
                     List<TagsToSongsDTO> tagsToSong = TagsToSongsBL.GetTagsToSong(song.id);
@@ -226,6 +228,8 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             try
             {
+                if (song.isPerformance == null)
+                    song.isPerformance = false;
                 et.SongsTBL.Add(song);
                 et.SaveChanges();
             }
