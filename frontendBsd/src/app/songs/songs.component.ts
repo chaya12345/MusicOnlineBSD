@@ -29,7 +29,7 @@ export class SongsComponent implements OnInit {
   isSingular: boolean = false;
   isGeneric: boolean = false;
   orderBy: string = "";
-  
+
   navs: string[] = [];
   songs: Song[] = [];
   items: ItemsByParameter[] = [];
@@ -38,7 +38,7 @@ export class SongsComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, private songService: SongService,
     private cdr: ChangeDetectorRef, private topicsService: TopicsService, private singerService: SingerService,
-    private artsAndSingsService: ArtistsAndSingersService, private itemsByParameterService: ItemsByParameterService) { 
+    private artsAndSingsService: ArtistsAndSingersService, private itemsByParameterService: ItemsByParameterService) {
     this.navs.push("חדש במוזיקה");
   }
 
@@ -55,18 +55,21 @@ export class SongsComponent implements OnInit {
       if (filter == "all") {
         try {
           this.songService.getSongs()
-          .subscribe(songs => { this.songs = songs; this.cdr.detectChanges(); 
-            this.updateDataForList(); this.orderByDate(); }, err => console.log(err));
+            .subscribe(songs => {
+              this.songs = songs; 
+              // this.orderByName(); this.cdr.detectChanges();this.updateDataForList(); 
+            }, err => console.log(err));
         } catch (err) { console.log(err); }
         this.isSingular = false;
       }
-      else if (filter == "by-singer" ||filter == "by-tag" ||filter == "by-artist"||filter == "by-all") {
+      else if (filter == "by-singer" || filter == "by-tag" || filter == "by-artist" || filter == "by-all") {
         try {
           let value = this.activatedRoute.snapshot.paramMap.get("value");
           this.itemsByParameterService.getItemsByParameter(value)
-            .subscribe(items => { this.items = items; this.items.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
+            .subscribe(items => {
+              this.items = items; this.items.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
               this.cdr.detectChanges();
-              }, err => console.log(err));
+            }, err => console.log(err));
           this.navs.push(value);
         } catch (err) { console.log(err); }
         this.isSingular = false;
@@ -85,7 +88,8 @@ export class SongsComponent implements OnInit {
 
   updateDataForList(): void {
     try {
-    this.topicsService.getTopics().subscribe(topics => { this.topic = topics[0]; this.cdr.detectChanges(); this.updateTop(); }, err => console.log(err));
+      this.topicsService.getTopics().subscribe(topics => { 
+        this.topic = topics[0]; this.cdr.detectChanges(); this.updateTop(); }, err => console.log(err));
     } catch (err) { console.log(err); }
   }
 
@@ -95,7 +99,7 @@ export class SongsComponent implements OnInit {
     if (filter == "by-artist") {
       try {
         this.artsAndSingsService.getArtistOrSingerByName(name)
-        .subscribe(art => { this.updateDataToArtists(name, art.type); }, err => console.log(err));
+          .subscribe(art => { this.updateDataToArtists(name, art.type); }, err => console.log(err));
       } catch (err) { console.log(err); }
     }
     if (filter == "by-singer" || filter == "") {
@@ -127,14 +131,33 @@ export class SongsComponent implements OnInit {
   orderByDate(): void {
     this.songs.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
   }
+  orderByName(): void {
+    this.songs=this.songs.sort((a, b) => a.name > b.name ? 1 : -1);
+    console.log(this.songs);
+  }
+  orderByView(): void {
+    this.songs.sort((a, b) => a.count_views - b.count_views);
+  }
+  orderByLike(): void {
+    this.songs.sort((a, b) => a.count_like - b.count_like);
+  }
 
   order(type: string): void {
     console.log(type);
+    if (type == 'name')
+      this.orderByName();
+    else if (type == 'date')
+      this.orderByDate();
+    else if (type == 'views')
+      this.orderByView();
+    else if (type == 'like')
+      this.orderByLike();
+    this.orderBy = type;
     // if (type == "song") {
     //   this.songs.sort((a, b) => Math.round(a.name.localeCompare(b.name)));
     //   this.cdr.detectChanges();
     // }
-    // this.orderBy = type;
+    // 
   }
 
   // convertItem(song: Song): GenericType {
