@@ -1,9 +1,6 @@
-.wrap-search {
-    height: 220px;
-}
-
 .search-boxes {
     text-align: center;
+    margin: 30px 0 100px;
 }
 
 .search-boxes mat-form-field {

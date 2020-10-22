@@ -141,11 +141,11 @@ register button span {
 /* #region(collapsed) [for-Home-Page] */
 
 .wrap-container {
-    padding: 65px 60px;
+    padding: 95px 60px;
 }
 
 .center-content {
-    margin: 0 15.5vw;
+    margin: 0 14.5vw;
     height: 100%;
     display: grid;
 }
@@ -208,6 +208,7 @@ footer p.title-part {
 
 .center-object {
     display: flex;
+    flex-wrap: wrap;
     height: fit-content;
     padding: 20px 0;
 }
@@ -251,7 +252,7 @@ footer p.title-part {
 
 /* #endregion */
 
-/* #region(collapsed) [for-Home-Page] */
+/* #region(collapsed) [Dialog] */
 
 .mat-dialog-content {
     height: fit-content;
@@ -352,6 +353,18 @@ all-songs .mat-progress-spinner circle, .mat-spinner circle {
     stroke: #2c8dfb;
 }
 
+mat-spinner.small-spinner {
+    height: 20px !important;
+    width: 20px !important;
+    display: inline-block !important;
+    margin: 0px 10px;
+}
+
+mat-spinner.small-spinner svg {
+    height: 20px !important;
+    width: 20px !important;
+}
+
 /* #endregion */
 
 /* #region(collapsed) [Others] */
@@ -434,15 +447,3 @@ snack-bar-container {
 }
 
 /* #endregion */
-
-mat-spinner.small-spinner {
-    height: 20px !important;
-    width: 20px !important;
-    display: inline-block !important;
-    margin: 0px 10px;
-}
-
-mat-spinner.small-spinner svg {
-    height: 20px !important;
-    width: 20px !important;
-}

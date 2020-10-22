@@ -1,10 +1,7 @@
 <div class="wrap-latest-clips wrap-container">
     <div class="center-content">
         <p class="title-part">קליפים אחרונים.</p>
-        <div class="wrap-clips center-object">
-            <song class="space-between" *ngFor="let clip of clipsList" [song]="clip"></song>
-        </div>
-        <!-- <a href="songs" class="reload-more-button">לכל הקליפים</a> -->
+        <display-songs [songs]="songsList" count="6"></display-songs>
         <nav-button navigate="songs" text="לכל הקליפים" dark="true"></nav-button>
     </div>
 </div>

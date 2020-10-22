@@ -1,10 +1,7 @@
 <div class="wrap-popular-playlists wrap-container">
     <div class="center-content">
         <p class="title-part">הפלייליסטים הכי מושמעים.</p>
-        <div class="wrap-playlists center-object">
-            <popular-playlist class="space-between" *ngFor="let playlist of latestPlaylists" [playlist]="playlist"></popular-playlist>
-        </div>
-        <!-- <a href="playlists" class="reload-more-button light-button">לכל הפלייליסטים</a> -->
+        <display-playlists [playlists]="latestPlaylists" count="6"></display-playlists>
         <nav-button navigate="playlists" text="לכל הפלייליסטים"></nav-button>
     </div>
 </div>

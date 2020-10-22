@@ -1,6 +1,6 @@
 .wrap-popular-playlists {
     background-color: white;
-    height: 585px;
+    min-height: 585px;
 }
 
 .title-part {

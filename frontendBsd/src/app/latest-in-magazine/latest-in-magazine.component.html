@@ -1,10 +1,7 @@
 <div class="wrap-latest-in-magazine wrap-container">
     <div class="center-content">
         <p class="title-part">אחרונים במגזין.</p>
-        <div class="wrap-articles">
-            <article *ngFor="let article of latestArticles" [article]="article"></article>
-        </div>
-        <!-- <a href="magazine" class="reload-more-button light-button">למגזין המלא</a> -->
+        <articles [articles]="latestArticles" count="3"></articles>
         <nav-button navigate="magazine" text="למגזין המלא"></nav-button>
     </div>
 </div>

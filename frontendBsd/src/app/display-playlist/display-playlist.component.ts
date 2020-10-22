@@ -1,19 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { PlaylistSystem } from '../classes/playlistSystem';
 
 @Component({
-  selector: 'popular-playlist',
-  templateUrl: './popular-playlist.component.html',
-  styleUrls: ['./popular-playlist.component.css']
+  selector: 'display-playlist',
+  templateUrl: './display-playlist.component.html',
+  styleUrls: ['./display-playlist.component.css']
 })
-export class PopularPlaylistComponent implements OnInit {
+export class DisplayPlaylistComponent implements OnInit {
 
   @Input() playlist: PlaylistSystem;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     window.addEventListener('scroll', this.scroll, true);
     this.addAnimation();
   }

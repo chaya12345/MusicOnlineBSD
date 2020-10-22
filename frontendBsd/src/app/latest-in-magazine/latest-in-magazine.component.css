@@ -1,5 +1,5 @@
 .wrap-latest-in-magazine {
-    height: 1300px;
+    min-height: 1300px;
     background-color: white;
 }
 
@@ -13,8 +13,4 @@ button {
 
 .title-part {
     color: #252525;
-}
-
-.wrap-articles {
-    padding: 20px 0;
 }

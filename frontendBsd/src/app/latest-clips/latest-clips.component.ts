@@ -9,11 +9,11 @@ import { SongService } from '../services/song.service';
 })
 export class LatestClipsComponent implements OnInit {
 
-  clipsList: Song[] = [];
+  songsList: Song[] = [];
 
   constructor(private songService: SongService) {
     try {
-      this.songService.getSongsByTag('קליפ').subscribe(songs => { this.clipsList = songs; this.filter(); }, err => { console.log(err); });
+      this.songService.getSongsByTag('קליפ').subscribe(songs => { this.songsList = songs; this.filter(); }, err => { console.log(err); });
     }
     catch (err) { console.log(err); }
   }
@@ -22,8 +22,8 @@ export class LatestClipsComponent implements OnInit {
   }
   
   filter(): void {
-    this.clipsList.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
-    this.clipsList = this.clipsList.slice(0, 3);
+    this.songsList.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
+    // this.songsList = this.songsList.slice(0, 3);
   }
 
 }

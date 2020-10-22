@@ -5,7 +5,7 @@
     <div class="wrap-tool-box"><tools searchBox="true" followUp="true" orderBy="true"></tools></div>
     <div *ngIf="playlists.length!=0&&playlists!=null" class="all-playlists">
         <div class="wrap-playlist" *ngFor="let playlist of playlists">
-            <popular-playlist [playlist]="playlist"></popular-playlist>
+            <display-playlist [playlist]="playlist"></display-playlist>
         </div>
     </div>
     <div *ngIf="playlists.length==0||playlists==null" class="empty-list"><p>- לא נמצאו פלייליסטים -</p></div>

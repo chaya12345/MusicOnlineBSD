@@ -25,7 +25,6 @@ import { RegisterToWebsiteComponent } from './register-to-website/register-to-we
 import { RegisterToNewsletterComponent } from './register-to-newsletter/register-to-newsletter.component';
 import { LatestArticleComponent } from './latest-article/latest-article.component';
 import { FooterSongComponent } from './footer-song/footer-song.component';
-import { PopularPlaylistComponent } from './popular-playlist/popular-playlist.component';
 import { LatestCommitsComponent } from './latest-commits/latest-commits.component';
 import { CopyrightsComponent } from './copyrights/copyrights.component';
 import { ScrollTopComponent } from './scroll-top/scroll-top.component';
@@ -71,6 +70,10 @@ import { PopularSingersComponent } from './popular-singers/popular-singers.compo
 import { SmallSlogenComponent } from './small-slogen/small-slogen.component';
 import { MainActionsComponent } from './main-actions/main-actions.component';
 import { GenericAreaComponent } from './generic-area/generic-area.component';
+import { ArticlesComponent } from './articles/articles.component';
+import { DisplayPlaylistsComponent } from './display-playlists/display-playlists.component';
+import { DisplayPlaylistComponent } from './display-playlist/display-playlist.component';
+import { DisplaySongsComponent } from './display-songs/display-songs.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +94,6 @@ import { GenericAreaComponent } from './generic-area/generic-area.component';
     RegisterToNewsletterComponent,
     LatestArticleComponent,
     FooterSongComponent,
-    PopularPlaylistComponent,
     LatestCommitsComponent,
     CopyrightsComponent,
     ScrollTopComponent,
@@ -136,7 +138,11 @@ import { GenericAreaComponent } from './generic-area/generic-area.component';
     PopularSingersComponent,
     SmallSlogenComponent,
     MainActionsComponent,
-    GenericAreaComponent
+    GenericAreaComponent,
+    ArticlesComponent,
+    DisplayPlaylistsComponent,
+    DisplayPlaylistComponent,
+    DisplaySongsComponent
   ],
   imports: [
     BrowserModule,
