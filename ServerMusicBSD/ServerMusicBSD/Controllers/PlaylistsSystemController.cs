@@ -22,6 +22,10 @@ namespace ServerMusicBSD.Controllers
         {
             return PlaylistsSystemBL.GetPlaylistById(playlistId);
         }
+        public  PlaylistsSystemDTO GetPlaylistByName(string playlistName)
+        {
+            return PlaylistsSystemBL.GetPlaylistByName(playlistName);
+        }
         public  void PostPlaylistSystem([FromBody] PlaylistsSystemTBL playlistsSystem)
         {
             PlaylistsSystemBL.AddPlaylistSystem(playlistsSystem);

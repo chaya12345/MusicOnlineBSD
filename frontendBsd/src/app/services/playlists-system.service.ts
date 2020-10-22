@@ -18,6 +18,9 @@ export class PlaylistsSystemService {
   public getPlaylistById(playlistId:number): Observable<PlaylistSystem> {
     return this.httpClient.get<PlaylistSystem>(this.baseUrl + "GetPlaylistById?playlistId="+playlistId);
   }
+  public GetPlaylistByName(playlistName:string): Observable<PlaylistSystem> {
+    return this.httpClient.get<PlaylistSystem>(this.baseUrl + "GetPlaylistByName?playlistName="+playlistName);
+  }
   public addPlaylistSystem(playlistsSystem:PlaylistSystem): Observable<any> {
     return this.httpClient.post(this.baseUrl + "PostPlaylistSystem",playlistsSystem);
   }
