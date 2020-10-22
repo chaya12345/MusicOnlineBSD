@@ -74,6 +74,7 @@ import { ArticlesComponent } from './articles/articles.component';
 import { DisplayPlaylistsComponent } from './display-playlists/display-playlists.component';
 import { DisplayPlaylistComponent } from './display-playlist/display-playlist.component';
 import { DisplaySongsComponent } from './display-songs/display-songs.component';
+import { DisplaySectionComponent } from './display-section/display-section.component';
 
 @NgModule({
   declarations: [
@@ -142,7 +143,8 @@ import { DisplaySongsComponent } from './display-songs/display-songs.component';
     ArticlesComponent,
     DisplayPlaylistsComponent,
     DisplayPlaylistComponent,
-    DisplaySongsComponent
+    DisplaySongsComponent,
+    DisplaySectionComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,11 @@
+<div class="wrap-display-section" [class.dark-section]="dark">
+    <div class="center-content">
+        <p class="title-part" [class.darkText]="!dark">{{subject}}</p>
+        <div [ngSwitch]="type" [class.spacing]="type=='article'">
+            <display-songs *ngSwitchCase="'clip'" [songs]="songs" [count]="count"></display-songs>
+            <articles *ngSwitchCase="'article'" [articles]="articles" [count]="count"></articles>
+            <display-playlists *ngSwitchCase="'playlist'" [playlists]="playlists" [count]="count"></display-playlists>
+        </div>
+        <nav-button [navigate]="url" [text]="navigateText" [dark]="dark"></nav-button>
+    </div>
+</div>

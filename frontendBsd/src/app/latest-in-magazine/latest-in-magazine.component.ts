@@ -12,13 +12,17 @@ export class LatestInMagazineComponent implements OnInit {
   latestArticles: Article[] = [];
 
   constructor(private articleService: ArticleService) { 
+    this.getArticles();
+  }
+
+  ngOnInit(): void {
+  }
+
+  getArticles(): void {
     try {
     this.articleService.getArticles().subscribe(article => { this.latestArticles = article; }, err => { console.log(err); });
     }
     catch (err) { console.log(err); }
-  }
-
-  ngOnInit(): void {
   }
 
 }

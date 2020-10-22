@@ -1,7 +1,4 @@
 <div class="wrap-popular-playlists wrap-container">
-    <div class="center-content">
-        <p class="title-part">הפלייליסטים הכי מושמעים.</p>
-        <display-playlists [playlists]="latestPlaylists" count="6"></display-playlists>
-        <nav-button navigate="playlists" text="לכל הפלייליסטים"></nav-button>
-    </div>
+    <display-section type="playlist" subject="הפלייליסטים הכי מושמעים." count="6" url="playlists"
+    navigateText="לכל הפלייליסטים" [playlists]="latestPlaylists"></display-section>
 </div>
