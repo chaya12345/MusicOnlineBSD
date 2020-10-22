@@ -1,7 +1,4 @@
 <div class="wrap-latest-clips wrap-container">
-    <div class="center-content">
-        <p class="title-part">קליפים אחרונים.</p>
-        <display-songs [songs]="songsList" count="6"></display-songs>
-        <nav-button navigate="songs" text="לכל הקליפים" dark="true"></nav-button>
-    </div>
+    <display-section type="clip" subject="קליפים אחרונים." count="6" url="song/all/0" navigateText="לכל הקליפים"
+        [songs]="songsList" dark="true"></display-section>
 </div>
