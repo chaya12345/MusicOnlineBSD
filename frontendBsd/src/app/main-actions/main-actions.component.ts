@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainActionsComponent implements OnInit {
 
+  message: string = "האתר שומר על זכויות יוצרים. אם נתקלת בהפרת זכויות נא דווח לנו ונסיר באופן מידי.";
+
   constructor() { }
 
   ngOnInit(): void {

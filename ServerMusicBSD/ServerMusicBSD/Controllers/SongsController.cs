@@ -79,6 +79,9 @@ namespace ServerMusicBSD.Controllers
         {
             return SongsBL.GetSongsByArtistsAndSingers(name);
         }
-
+        public List<SongsDTO> GetPerformances()
+        {
+            return SongsBL.GetPerformances();
+        }
     }
 }

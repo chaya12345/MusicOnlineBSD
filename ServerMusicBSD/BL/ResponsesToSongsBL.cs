@@ -21,10 +21,6 @@ namespace BL
             {
                 et.ResponsesToSongsTBL.Add(response);
                 et.SaveChanges();
-                //SongsTBL song = et.SongsTBL.Where(s => s.id == response.songId).FirstOrDefault();
-                //if (song.count_responses == null)
-                //    song.count_responses = 1;
-                //else song.count_responses++;
             }
             catch (DbEntityValidationException dbEx)
             {

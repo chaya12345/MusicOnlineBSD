@@ -1,8 +1,8 @@
-<div class="wrap-display-section" [class.dark-section]="dark">
+<div class="wrap-display-section">
     <div class="center-content">
         <p class="title-part" [class.darkText]="!dark">{{subject}}</p>
         <div [ngSwitch]="type" [class.spacing]="type=='article'">
-            <display-songs *ngSwitchCase="'clip'" [songs]="songs" [count]="count"></display-songs>
+            <display-songs *ngSwitchCase="'song'" [songs]="songs" [count]="count"></display-songs>
             <articles *ngSwitchCase="'article'" [articles]="articles" [count]="count"></articles>
             <display-playlists *ngSwitchCase="'playlist'" [playlists]="playlists" [count]="count"></display-playlists>
         </div>

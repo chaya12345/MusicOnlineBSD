@@ -44,6 +44,9 @@ export class SongService {
   public getSongsByTagOrArtist(name: string): Observable<Song[]> {
     return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsByTagOrArtist?name=" + name);
   }
+  public getPerformances(): Observable<Song[]> {
+    return this.httpClient.get<Song[]>(this.baseUrl + "GetPerformances");
+  }
   public addSong(song: Song): Observable<any> {
     return this.httpClient.post(this.baseUrl + "PostSong", song);
   }

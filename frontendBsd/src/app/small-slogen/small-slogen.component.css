@@ -1,22 +1,28 @@
 .wrap-small-slogen {
     padding: 10px;
     display: flex;
+    background-color: #1d1d1d;
 }
 
 .wrap-small-slogen img {
-    height: 200px;
+    height: 150px;
+    margin: auto auto auto 10px;
 }
 
 .wrap-slogen {
     color: white;
+    margin: auto 10px auto auto;
+    height: fit-content;
 }
 
 .wrap-slogen p {
     font-family: fb Ogen;
-    font-size: 32px;
+    font-size: 29px;
 }
 
 .wrap-slogen span {
-    font-family: fb Joker;
-    font-size: 28px;
+    letter-spacing: 4px;
+    font-family: calibri;
+    font-weight: 100;
+    font-size: 24px;
 }

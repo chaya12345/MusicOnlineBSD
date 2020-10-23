@@ -18,7 +18,6 @@ import { LatestClipsComponent } from './latest-clips/latest-clips.component';
 import { LatestInMagazineComponent } from './latest-in-magazine/latest-in-magazine.component';
 import { PopularPlaylistsComponent } from './popular-playlists/popular-playlists.component';
 import { SearchComponent } from './search/search.component';
-import { LatestNewsComponent } from './latest-news/latest-news.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomePageComponent } from './home-page/home-page.component';
 import { RegisterToWebsiteComponent } from './register-to-website/register-to-website.component';
@@ -75,6 +74,8 @@ import { DisplayPlaylistsComponent } from './display-playlists/display-playlists
 import { DisplayPlaylistComponent } from './display-playlist/display-playlist.component';
 import { DisplaySongsComponent } from './display-songs/display-songs.component';
 import { DisplaySectionComponent } from './display-section/display-section.component';
+import { LatestPerformanceComponent } from './latest-performance/latest-performance.component';
+import { AnnualSurveySectionComponent } from './annual-survey-section/annual-survey-section.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,6 @@ import { DisplaySectionComponent } from './display-section/display-section.compo
     LatestInMagazineComponent,
     PopularPlaylistsComponent,
     SearchComponent,
-    LatestNewsComponent,
     HomePageComponent,
     RegisterToWebsiteComponent,
     RegisterToNewsletterComponent,
@@ -144,7 +144,9 @@ import { DisplaySectionComponent } from './display-section/display-section.compo
     DisplayPlaylistsComponent,
     DisplayPlaylistComponent,
     DisplaySongsComponent,
-    DisplaySectionComponent
+    DisplaySectionComponent,
+    LatestPerformanceComponent,
+    AnnualSurveySectionComponent
   ],
   imports: [
     BrowserModule,
