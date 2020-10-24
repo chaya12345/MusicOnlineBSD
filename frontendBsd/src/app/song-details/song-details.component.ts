@@ -59,8 +59,7 @@ export class SongDetailsComponent implements OnInit {
   }
 
   filter(): void {
-    this.similarSongs = this.similarSongs.slice(0, 3);
-    console.log(this.similarSongs);
+    this.similarSongs = this.similarSongs.slice(0, 5);
   }
 
 }
