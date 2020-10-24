@@ -26,7 +26,7 @@ namespace ServerMusicBSD.Controllers
         {
             return ReportsBL.GetReportById(reportId);
         }
-        public void PutReportStatus(int reportId,string status)
+        public void PutReportStatus(int reportId,int status)
         {
             ReportsBL.ChangeReportStatus(reportId, status);
         }

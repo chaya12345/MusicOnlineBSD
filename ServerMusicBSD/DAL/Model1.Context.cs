@@ -50,54 +50,17 @@ namespace DAL
         public virtual DbSet<TopicsTBL> TopicsTBL { get; set; }
         public virtual DbSet<UpdatesTBL> UpdatesTBL { get; set; }
         public virtual DbSet<UsersTBL> UsersTBL { get; set; }
-        public virtual DbSet<LastResponses> LastResponses { get; set; }
         public virtual DbSet<latestResponses> latestResponses { get; set; }
         public virtual DbSet<songsDetails> songsDetails { get; set; }
     
-        [DbFunction("MusicOnlineEntities", "getPlaylists")]
-        public virtual IQueryable<getPlaylists_Result> getPlaylists(Nullable<int> userId)
-        {
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("userId", userId) :
-                new ObjectParameter("userId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getPlaylists_Result>("[MusicOnlineEntities].[getPlaylists](@userId)", userIdParameter);
-        }
-    
-        [DbFunction("MusicOnlineEntities", "getSongs")]
-        public virtual IQueryable<getSongs_Result> getSongs()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<getSongs_Result>("[MusicOnlineEntities].[getSongs]()");
-        }
-    
         [DbFunction("MusicOnlineEntities", "itemsByParameter")]
-        public virtual IQueryable<itemsByParameter_Result> itemsByParameter(string parameter)
+        public virtual IQueryable<itemsByParameter_Result> itemsByParameter(string singer)
         {
-            var parameterParameter = parameter != null ?
-                new ObjectParameter("parameter", parameter) :
-                new ObjectParameter("parameter", typeof(string));
+            var singerParameter = singer != null ?
+                new ObjectParameter("singer", singer) :
+                new ObjectParameter("singer", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<itemsByParameter_Result>("[MusicOnlineEntities].[itemsByParameter](@parameter)", parameterParameter);
-        }
-    
-        [DbFunction("MusicOnlineEntities", "searchByAlbum")]
-        public virtual IQueryable<searchByAlbum_Result> searchByAlbum(string albumName)
-        {
-            var albumNameParameter = albumName != null ?
-                new ObjectParameter("albumName", albumName) :
-                new ObjectParameter("albumName", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<searchByAlbum_Result>("[MusicOnlineEntities].[searchByAlbum](@albumName)", albumNameParameter);
-        }
-    
-        [DbFunction("MusicOnlineEntities", "searchBySinger")]
-        public virtual IQueryable<searchBySinger_Result> searchBySinger(string singerName)
-        {
-            var singerNameParameter = singerName != null ?
-                new ObjectParameter("singerName", singerName) :
-                new ObjectParameter("singerName", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<searchBySinger_Result>("[MusicOnlineEntities].[searchBySinger](@singerName)", singerNameParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<itemsByParameter_Result>("[MusicOnlineEntities].[itemsByParameter](@singer)", singerParameter);
         }
     }
 }

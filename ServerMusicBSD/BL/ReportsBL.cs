@@ -14,10 +14,10 @@ namespace BL
     {        
         public static void addReport(ReportsTBL report)
         {
-            //int proc = (int)eProccessing.NOT_PROCESSED;
+            int proc = (int)eProccessing.NOT_PROCESSED;
             MusicOnlineEntities et = new MusicOnlineEntities();
             try {
-                report.status = "לא טופל";
+                report.status = proc;
                 et.ReportsTBL.Add(report);
                 et.SaveChanges();
             }
@@ -42,7 +42,7 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToReportsDTO.GetReport(et.ReportsTBL.Where(r => r.id == reportId).FirstOrDefault());
         }
-        public static void ChangeReportStatus(int reportId, string status)
+        public static void ChangeReportStatus(int reportId, int status)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             ReportsTBL report = et.ReportsTBL.Where(r => r.id == reportId).FirstOrDefault();
@@ -51,8 +51,9 @@ namespace BL
         }
         public static List<ReportsDTO> GetAllUntreatedReports()
         {
+            int proc = (int)eProccessing.HAS_BEEN_PROCESSED;
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToReportsDTO.GetReports(et.ReportsTBL.Where(r => r.status != "טופל").ToList());
+            return Casts.ToReportsDTO.GetReports(et.ReportsTBL.Where(r => r.status != proc).ToList());
         }
     }
 }

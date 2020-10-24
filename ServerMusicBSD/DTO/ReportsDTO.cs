@@ -14,6 +14,6 @@ namespace DTO
         public string phone { get; set; }
         public Nullable<int> songId { get; set; }
         public string message { get; set; }
-        public string status { get; set; }
+        public Nullable<int> status { get; set; }
     }
 }
