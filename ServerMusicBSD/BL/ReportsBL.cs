@@ -9,10 +9,12 @@ using DTO;
 
 namespace BL
 {
+    enum eProccessing { NOT_PROCESSED = 1, IN_PROCESS, HAS_BEEN_PROCESSED }
     public class ReportsBL
     {        
         public static void addReport(ReportsTBL report)
         {
+            //int proc = (int)eProccessing.NOT_PROCESSED;
             MusicOnlineEntities et = new MusicOnlineEntities();
             try {
                 report.status = "לא טופל";
