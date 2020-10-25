@@ -59,7 +59,7 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             ReportsTBL report = et.ReportsTBL.Where(r => r.id == reportId).FirstOrDefault();
-            report.status =(int)eProccessing.IN_PROCESS;
+            report.status = (int)eProccessing.IN_PROCESS;
             et.SaveChanges();
         }
     }
