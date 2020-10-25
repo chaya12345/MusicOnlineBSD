@@ -21,7 +21,7 @@ export class SiPopularSongsComponent implements OnInit {
 
   ngAfterViewInit() {
     var swiper = new Swiper('.swiper-container-song', {
-      slidesPerView: 1,
+      slidesPerView: 1.2,
       loop: true,
       spaceBetween: 14,
       centeredSlides: true,

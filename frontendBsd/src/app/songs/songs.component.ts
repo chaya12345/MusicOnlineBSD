@@ -153,6 +153,7 @@ export class SongsComponent implements OnInit {
     else if (type == 'order-by-likes')
       this.orderByLike();
     this.orderBy = type;
+    console.log(this.songs);
     // if (type == "song") {
     //   this.songs.sort((a, b) => Math.round(a.name.localeCompare(b.name)));
     //   this.cdr.detectChanges();
