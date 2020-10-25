@@ -128,12 +128,15 @@ export class SongsComponent implements OnInit {
     } catch (err) { console.log(err); }
   }
 
+  clearSongs(){
+    document.querySelectorAll('div.wrap-song').forEach(item=>item.innerHTML="");
+  }
+
   orderByDate(): void {
     this.songs.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
   }
   orderByName(): void {
     this.songs=this.songs.sort((a, b) => a.name > b.name ? 1 : -1);
-    console.log(this.songs);
   }
   orderByView(): void {
     this.songs.sort((a, b) => a.count_views - b.count_views);

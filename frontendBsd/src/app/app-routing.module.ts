@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { ArticleComponent } from './article/article.component';
@@ -45,7 +45,11 @@ const routes: Routes = [{
 }, {
   path: "song/:filter/:value/:order/:dir",
   component: SongsComponent
-}, {
+},{
+  path:" song/:filter/order/:orderType",
+  component:SongsComponent
+},
+ {
   path: "magazine",
   component: MagazineComponent
 }, {

@@ -17,7 +17,7 @@ import { UpdateService } from '../services/update.service';
 })
 export class ToolsComponent implements OnInit {
 
-  @Output() onOrder: EventEmitter<string> = new EventEmitter<string>();
+  //@Output() onOrder: EventEmitter<string> = new EventEmitter<string>();
   @Input() searchBox?: boolean = false;
   @Input() followUp?: boolean = false;
   @Input() addToPlaylist?: boolean = false;
@@ -72,7 +72,7 @@ export class ToolsComponent implements OnInit {
   }
 
   order(value: string): void {
-    this.onOrder.emit(value);
+   this.router.navigateByUrl('order/'+value)
   }
 
   addFollowUp() {
