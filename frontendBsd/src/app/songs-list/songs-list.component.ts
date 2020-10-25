@@ -23,7 +23,7 @@ export class SongsListComponent implements OnInit {
   }
 
   ngOnChanges() {
-    this.orderByDate();
+  //  this.orderByDate();
    this.loadData();
     if (this.orderBy == "song") {
       this.songsList.sort((a, b) => Math.round(a.name.localeCompare(b.name)));
@@ -44,8 +44,8 @@ export class SongsListComponent implements OnInit {
   }
 
   orderByDate(): void {
-    if (this.activatedRoute.snapshot.paramMap.get("orderType")) {
-      let order = this.activatedRoute.snapshot.paramMap.get("orderType");
+    if (this.activatedRoute.snapshot.paramMap.get("dir")) {
+      let order = this.activatedRoute.snapshot.paramMap.get("dir");
       console.log(order);
       if (order == "order-by-song") {
         this.songsList.sort((a, b) => Math.round(b.name.localeCompare(a.name)));
