@@ -15,7 +15,7 @@
     [label]="'Open image explorer'"
     [toolbar]="'insert,1'">
    </ckbutton> -->
-   <ckeditor [editor]="Editor"
+   <ckeditor [editor]="Editor" [config]="{ toolbar: [ 'heading', 'undo', 'redo', 'bold', 'italic', 'emoji' ] }"
     data="<p>Some initial data</p>"
     type="inline"></ckeditor>
     </div>

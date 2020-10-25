@@ -451,4 +451,9 @@ snack-bar-container {
     margin-left: 7px;
 }
 
+.ck.ck-content {
+    direction: rtl;
+    text-align: right !important;
+}
+
 /* #endregion */
