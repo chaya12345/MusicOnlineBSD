@@ -21,27 +21,20 @@ export class SiHotArticlesComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    var swiper = new Swiper('.swiper-container', {
+    var swiper = new Swiper('.swiper-container-article', {
       slidesPerView: 1,
       loop: true,
-      spaceBetween: 10,
+      spaceBetween: 14,
       centeredSlides: true,
       autoplay: {
         delay: 2500,
         disableOnInteraction: false,
       },
       speed: 800,
-      // pagination: {
-      //   el: '.swiper-pagination',
-      //   clickable: true,
-      // },
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
-      },
-      // scrollbar: {
-      //   el: '.swiper-scrollbar',
-      // },
+      }
     });
   }
 

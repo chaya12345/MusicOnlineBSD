@@ -1,1 +1,56 @@
-<p>si-popular-songs works!</p>
+<div class="wrap-si-popular-songs">
+
+    <div class="swiper-container swiper-container-song">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide" >
+                <div class="background-image-song" [style.background-image]="'url(../../assets/images/'+songs[0].image_location+')'">
+                    <div class="content-song">
+                        <p><a [href]="'song/'+songs[0].id">{{songs[0].title}}</a></p>
+                        <span>{{songs[0].date | date: 'd/M/yyyy'}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="background-image-song" [style.background-image]="'url(../../assets/images/'+songs[1].image_location+')'">
+                    <div class="content-song">
+                        <p><a [href]="'song/'+songs[1].id">{{songs[1].title}}</a></p>
+                        <span>{{songs[1].date | date: 'd/M/yyyy'}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="background-image-song" [style.background-image]="'url(../../assets/images/'+songs[2].image_location+')'">
+                    <div class="content-song">
+                        <p><a [href]="'song/'+songs[2].id">{{songs[2].title}}</a></p>
+                        <span>{{songs[2].date | date: 'd/M/yyyy'}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="background-image-song" [style.background-image]="'url(../../assets/images/'+songs[3].image_location+')'">
+                    <div class="content-song">
+                        <p><a [href]="'song/'+songs[3].id">{{songs[3].title}}</a></p>
+                        <span>{{songs[3].date | date: 'd/M/yyyy'}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="background-image-song" [style.background-image]="'url(../../assets/images/'+songs[4].image_location+')'">
+                    <div class="content-song">
+                        <p><a [href]="'song/'+songs[4].id">{{songs[4].title}}</a></p>
+                        <span>{{songs[4].date | date: 'd/M/yyyy'}}</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    
+    </div>
+
+</div>
