@@ -19,12 +19,12 @@ export class SongsListComponent implements OnInit {
   constructor(private cdr: ChangeDetectorRef, public activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    //this.orderByDate();
+    // document.getElementsByTagName("span")[0].innerHTML = "טוען...";
   }
 
   ngOnChanges() {
-
-    this.loadData();
+    this.orderByDate();
+   this.loadData();
     if (this.orderBy == "song") {
       this.songsList.sort((a, b) => Math.round(a.name.localeCompare(b.name)));
     }
@@ -44,27 +44,30 @@ export class SongsListComponent implements OnInit {
   }
 
   orderByDate(): void {
-    let order: string;
-    if (this.activatedRoute.snapshot.paramMap.get('dir') == null)
-      order = "order-by-date";
-    else order = this.activatedRoute.snapshot.paramMap.get('dir');
-    if (order == "order-by-song") {
-      this.songsList.sort((a, b) => Math.round(b.name.localeCompare(a.name)));
+    if (this.activatedRoute.snapshot.paramMap.get("orderType")) {
+      let order = this.activatedRoute.snapshot.paramMap.get("orderType");
+      console.log(order);
+      if (order == "order-by-song") {
+        this.songsList.sort((a, b) => Math.round(b.name.localeCompare(a.name)));
+      }
+      else if (order == "order-by-likes") {
+        this.songsList.sort((a, b) => Math.round(b.count_like - a.count_like));
+      }
+      else if (order == "order-by-views") {
+        this.songsList.sort((a, b) => Math.round(b.count_views - a.count_views));
+      }
+      else if (order == "order-by-res") {
+        this.songsList.sort((a, b) => Math.round(b.count_views - a.count_views));
+      }
+      else if (order == "order-by-date") {
+        this.songsList.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
+      }
+      this.cdr.detectChanges();
+      console.log(this.songsList);
     }
-    else if (order == "order-by-likes") {
-      this.songsList.sort((a, b) => Math.round(b.count_like - a.count_like));
-    }
-    else if (order == "order-by-views") {
-      this.songsList.sort((a, b) => Math.round(b.count_views - a.count_views));
-    }
-    else if (order == "order-by-res") {
-      this.songsList.sort((a, b) => Math.round(b.count_views - a.count_views));
-    }
-    else if (order == "order-by-date") {
+    else {
       this.songsList.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
     }
-    this.cdr.detectChanges();
-
   }
 
   LoadMore(event) {
