@@ -40,6 +40,7 @@ export class SongsComponent implements OnInit {
     private cdr: ChangeDetectorRef, private topicsService: TopicsService, private singerService: SingerService,
     private artsAndSingsService: ArtistsAndSingersService, private itemsByParameterService: ItemsByParameterService) {
     this.navs.push("חדש במוזיקה");
+    this.order();
   }
 
   ngOnInit() {
@@ -76,6 +77,10 @@ export class SongsComponent implements OnInit {
         this.isGeneric = true;
       }
     }
+    
+  }
+  ngOnChanges(){
+    this.order();
   }
 
   updateDataForSingular(): void {
@@ -144,9 +149,9 @@ export class SongsComponent implements OnInit {
 
   order(): void {
     let type: string;
-    if (this.activatedRoute.snapshot.paramMap.get('orderType') == null)
+    if (this.activatedRoute.snapshot.paramMap.get('dir') == null)
       type = 'order-by-date'
-    else type = this.activatedRoute.snapshot.paramMap.get('orderType');
+    else type = this.activatedRoute.snapshot.paramMap.get('dir');
     if (type == 'order-by-song')
       this.orderByName();
     else if (type == 'order-by-date')
