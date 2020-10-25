@@ -42,11 +42,11 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToReportsDTO.GetReport(et.ReportsTBL.Where(r => r.id == reportId).FirstOrDefault());
         }
-        public static void ChangeReportStatus(int reportId, int status)
+        public static void ChangeReportStatus(int reportId, bool status)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             ReportsTBL report = et.ReportsTBL.Where(r => r.id == reportId).FirstOrDefault();
-            report.status = status;
+            report.status = status == true ? report.status = (int)eProccessing.HAS_BEEN_PROCESSED : (int)eProccessing.NOT_PROCESSED;
             et.SaveChanges();
         }
         public static List<ReportsDTO> GetAllUntreatedReports()
@@ -54,6 +54,13 @@ namespace BL
             int proc = (int)eProccessing.HAS_BEEN_PROCESSED;
             MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToReportsDTO.GetReports(et.ReportsTBL.Where(r => r.status != proc).ToList());
+        }
+        public static void ChangeReportStatus(int reportId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            ReportsTBL report = et.ReportsTBL.Where(r => r.id == reportId).FirstOrDefault();
+            report.status =(int)eProccessing.IN_PROCESS;
+            et.SaveChanges();
         }
     }
 }
