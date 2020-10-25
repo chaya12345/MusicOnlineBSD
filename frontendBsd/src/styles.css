@@ -126,7 +126,8 @@ new-songs .swiper-button-prev, new-songs .swiper-button-next {
     font-size: 38px;
 }
 
-si-hot-articles .swiper-button-prev, si-hot-articles .swiper-button-next {
+si-hot-articles .swiper-button-prev, si-hot-articles .swiper-button-next, 
+si-popular-songs .swiper-button-prev, si-popular-songs .swiper-button-next {
     color: whitesmoke !important;
 }
 
