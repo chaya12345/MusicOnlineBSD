@@ -10,6 +10,7 @@ export class SiUpdatingComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    document.getElementsByClassName("wrap-si-updating")[0].lastElementChild.remove();
   }
 
 }

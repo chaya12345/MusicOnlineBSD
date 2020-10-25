@@ -1,0 +1,21 @@
+.wrap-si-updating {
+    background-color: whitesmoke;
+    padding: 10px;
+}
+
+.updating-section {
+    width: 100%;
+    background-color: whitesmoke;
+    font-family: fb Joker, calibri;
+    font-size: 21px;
+    padding: 10px;
+    display: grid;
+    color: #252525;
+}
+
+.updating-section span {
+    font-size: 19px;
+    color: #9e9e9e;
+    margin-right: auto;
+    margin-top: 7px;
+}
