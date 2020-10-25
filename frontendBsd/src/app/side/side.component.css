@@ -1,5 +1,6 @@
-.wrap-side {
-    padding: 70px 0 50px 20px;
+/* .wrap-side {
+    margin: 70px 0 50px;
+    padding: 0 10px;
 }
 
 .wrap-side p.title-part {
@@ -11,8 +12,12 @@
 
 .similar-results {
     width: fit-content;
-    height: 1030px;
+    min-height: 1030px;
     display: grid;
+}
+
+.display-song {
+    margin-bottom: 45px;
 }
 
 .latest-in-magazine {
@@ -21,4 +26,30 @@
 
 .title-part {
     color: #252525 !important;
+} */
+.wrap-side {
+    border: solid 1px #dcdcdc;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 25px;
+    min-width: 375px;
+    max-width: 450px;
+}
+
+div.title-section {
+    padding: 7px;
+    text-align: center;
+    font-family: fb Joker, calibri;
+    font-size: 21px;
+    border-bottom: solid 1px #dcdcdc;
+    margin: 10px 0;
+    color: #929292;
+}
+
+.similar-songs {
+    margin: 33px 0;
+}
+
+.similar-songs:first-of-type {
+    margin-top: 15px;
 }

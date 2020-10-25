@@ -1,49 +1,67 @@
 <div class="wrap-tools">
 
-    <div class="search-box" *ngIf="searchBox">
-        <input id="search-input" matInput placeholder="חפש...">
-        <mat-icon matPrefix>search</mat-icon>
-    </div>
+    <!-- אם הגעת לפה כי נבהלת מאיך שזה נראה - אני יודעת, וזה בטיפול. בעז"ה היום - (יום ראשון) :) -->
+    
+    <mat-accordion>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    אפשרויות נוספות<mat-icon>arrow_drop_down</mat-icon>
+                </mat-panel-title>
+                <!-- <mat-panel-description>
+                    This is a summary of the content
+                </mat-panel-description> -->
+            </mat-expansion-panel-header>
+            <!-- <p>This is the primary content of the panel.</p> -->
 
-    <button mat-stroked-button *ngIf="followUp&&!followedUp" (click)="addFollowUp()" class="min-width-button">
-        הוסף מעקב
-        <mat-icon *ngIf="!loading">notifications</mat-icon>
-        <mat-spinner *ngIf="loading" class="small-spinner"></mat-spinner>
-    </button>
-    <button mat-stroked-button *ngIf="followUp&&followedUp" (click)="deleteFollowUp()" class="min-width-button">
-        הסר מעקב
-        <mat-icon *ngIf="!loading">notifications_off</mat-icon>
-        <mat-spinner *ngIf="loading" class="small-spinner"></mat-spinner>
-    </button>
+            <div class="search-box" *ngIf="searchBox">
+                <input id="search-input" matInput placeholder="חפש...">
+                <mat-icon matPrefix>search</mat-icon>
+            </div>
 
-    <button mat-stroked-button *ngIf="addToPlaylist" [matMenuTriggerFor]="playlists">
-        שמור לפלייליסטים שלי
-        <mat-icon>star_border</mat-icon>
-    </button>
-    <mat-menu #playlists="matMenu" style="width: fit-content;">
-        <button mat-menu-item>שם שיר</button>
-        <button mat-menu-item>תאריך</button>
-        <button mat-menu-item>כמות צפיות</button>
-    </mat-menu>
+            <button mat-stroked-button *ngIf="followUp&&!followedUp" (click)="addFollowUp()" class="min-width-button">
+                הוסף מעקב
+                <mat-icon *ngIf="!loading">notifications</mat-icon>
+                <mat-spinner *ngIf="loading" class="small-spinner"></mat-spinner>
+            </button>
+            <button mat-stroked-button *ngIf="followUp&&followedUp" (click)="deleteFollowUp()" class="min-width-button">
+                הסר מעקב
+                <mat-icon *ngIf="!loading">notifications_off</mat-icon>
+                <mat-spinner *ngIf="loading" class="small-spinner"></mat-spinner>
+            </button>
 
-    <div class="order-by-menu" *ngIf="orderBy">
-        <button mat-stroked-button [matMenuTriggerFor]="menu" class="order-by-button">
-            <mat-icon>arrow_drop_down</mat-icon>סדר לפי
-        </button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item disabled *ngIf="!isChecked">מוגדר: סדר יורד</button>
-            <button mat-menu-item disabled *ngIf="isChecked">מוגדר: סדר עולה</button>
-            <mat-divider></mat-divider>
-            <button mat-menu-item (click)="order('name')">שם שיר</button>
-            <button mat-menu-item (click)="order('date')">תאריך</button>
-            <button mat-menu-item (click)="order('views')">כמות צפיות</button>
-            <button mat-menu-item (click)="order('likes')">כמות לייקים</button>
-            <button mat-menu-item (click)="order('res')">כמות תגובות</button>
-        </mat-menu>
-    </div>
+            <button mat-stroked-button *ngIf="addToPlaylist" [matMenuTriggerFor]="playlists">
+                שמור לפלייליסטים שלי
+                <mat-icon>star_border</mat-icon>
+            </button>
+            <mat-menu #playlists="matMenu" style="width: fit-content;">
+                <button mat-menu-item>שם שיר</button>
+                <button mat-menu-item>תאריך</button>
+                <button mat-menu-item>כמות צפיות</button>
+            </mat-menu>
 
-    <mat-slide-toggle [(ngModel)]="isChecked" *ngIf="orderBy" color="primary">סדר עולה</mat-slide-toggle>
+            <div class="order-by-menu" *ngIf="orderBy">
+                <button mat-stroked-button [matMenuTriggerFor]="menu" class="order-by-button">
+                    <mat-icon>arrow_drop_down</mat-icon>סדר לפי
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item disabled *ngIf="!isChecked">מוגדר: סדר יורד</button>
+                    <button mat-menu-item disabled *ngIf="isChecked">מוגדר: סדר עולה</button>
+                    <mat-divider></mat-divider>
+                    <button mat-menu-item (click)="order('name')">שם שיר</button>
+                    <button mat-menu-item (click)="order('date')">תאריך</button>
+                    <button mat-menu-item (click)="order('views')">כמות צפיות</button>
+                    <button mat-menu-item (click)="order('likes')">כמות לייקים</button>
+                    <button mat-menu-item (click)="order('res')">כמות תגובות</button>
+                </mat-menu>
+            </div>
 
-    <span *ngIf="sideText!=''&&sideText!=null">{{sideText}}</span>
+            <mat-slide-toggle [(ngModel)]="isChecked" *ngIf="orderBy" color="primary">סדר עולה</mat-slide-toggle>
+
+            <span *ngIf="sideText!=''&&sideText!=null">{{sideText}}</span>
+
+        </mat-expansion-panel>
+    </mat-accordion>
+
 
 </div>

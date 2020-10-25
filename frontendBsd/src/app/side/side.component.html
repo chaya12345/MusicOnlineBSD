@@ -1,13 +1,35 @@
-<div class="wrap-side">
+<!-- <div class="wrap-side">
     <p class="title-part">תוצאות דומות.</p>
     <div class="similar-results">
-        <song *ngFor="let song of similarSongs" [song]="song"></song>
+        <div class="display-song" *ngFor="let song of similarSongs">
+            <song [song]="song"></song>
+        </div>
     </div>
-    <!-- <div class="latest-in-magazine">
+    <div class="latest-in-magazine">
         <p class="title-part">אחרונים במגזין.</p>
         <div class="wrap-articles">
             <latest-article *ngFor="let article of latestArticles" [article]="article" vertical="true"></latest-article>
         </div>
-    </div> -->
+    </div>
     <reporting></reporting>
+</div> -->
+<div class="wrap-side">
+
+    <div class="title-section"><p>תוצאות דומות</p></div>
+    <section>
+        <div *ngFor="let song of similarSongs" class="similar-songs">
+            <song [song]="song"></song>
+        </div>
+    </section>
+    <si-similar-results></si-similar-results>
+
+    <div class="title-section"><p>הכתבות החמות של החודש</p></div>
+    <si-hot-articles></si-hot-articles>
+
+    <div class="title-section"><p>השירים הפופולאריים של החודש</p></div>
+    <si-popular-songs></si-popular-songs>
+
+    <div class="title-section"><p>עדכונים</p></div>
+    <si-updating></si-updating>
+    
 </div>

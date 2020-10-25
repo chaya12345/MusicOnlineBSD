@@ -59,7 +59,7 @@ export class SongDetailsComponent implements OnInit {
   }
 
   filter(): void {
-    this.similarSongs = this.similarSongs.slice(0, 5);
+    this.similarSongs = this.similarSongs.slice(0, 3);
   }
 
 }

@@ -5,7 +5,7 @@
 
 .wrap-tools {
     display: grid;
-    grid-template-columns: fit-content(50%) fit-content(50%) fit-content(50%) auto;
+    /* grid-template-columns: fit-content(50%) fit-content(50%) fit-content(50%) auto; */
     direction: ltr;
     padding: 7px 0 7px 30px;
     color: #252525;
@@ -58,4 +58,12 @@ button.mat-stroked-button.mat-button-base.ng-star-inserted {
 
 .min-width-button {
     min-width: 150px;
+}
+
+/*************/
+mat-expansion-panel {
+    background-color: whitesmoke;
+    border: solid 1px #e4e4e4;
+    text-align: right;
+    direction: rtl;
 }

@@ -76,6 +76,10 @@ import { DisplaySongsComponent } from './display-songs/display-songs.component';
 import { DisplaySectionComponent } from './display-section/display-section.component';
 import { LatestPerformanceComponent } from './latest-performance/latest-performance.component';
 import { AnnualSurveySectionComponent } from './annual-survey-section/annual-survey-section.component';
+import { SiUpdatingComponent } from './si-updating/si-updating.component';
+import { SiSimilarResultsComponent } from './si-similar-results/si-similar-results.component';
+import { SiHotArticlesComponent } from './si-hot-articles/si-hot-articles.component';
+import { SiPopularSongsComponent } from './si-popular-songs/si-popular-songs.component';
 
 @NgModule({
   declarations: [
@@ -146,7 +150,11 @@ import { AnnualSurveySectionComponent } from './annual-survey-section/annual-sur
     DisplaySongsComponent,
     DisplaySectionComponent,
     LatestPerformanceComponent,
-    AnnualSurveySectionComponent
+    AnnualSurveySectionComponent,
+    SiUpdatingComponent,
+    SiSimilarResultsComponent,
+    SiHotArticlesComponent,
+    SiPopularSongsComponent
   ],
   imports: [
     BrowserModule,
