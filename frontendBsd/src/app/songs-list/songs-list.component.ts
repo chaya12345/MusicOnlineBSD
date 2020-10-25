@@ -23,7 +23,7 @@ export class SongsListComponent implements OnInit {
   }
 
   ngOnChanges() {
-    this.orderByDate();
+    //this.orderByDate();
     this.loadData();
     if (this.orderBy == "song") {
       this.songsList.sort((a, b) => Math.round(a.name.localeCompare(b.name)));
@@ -54,7 +54,7 @@ export class SongsListComponent implements OnInit {
         this.songsList.sort((a, b) => Math.round(b.count_views - a.count_views));
       }
       else if (order == "order-by-res") {
-        // this.songsList.sort((a, b) => Math.round(b.count_views - a.count_views));
+        this.songsList.sort((a, b) => Math.round(b.count_views - a.count_views));
       }
       else if (order == "order-by-date") {
         this.songsList.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));

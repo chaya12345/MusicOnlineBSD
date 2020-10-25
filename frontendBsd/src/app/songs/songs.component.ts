@@ -57,7 +57,7 @@ export class SongsComponent implements OnInit {
           this.songService.getSongs()
             .subscribe(songs => {
               this.songs = songs; 
-              // this.orderByName(); this.cdr.detectChanges();this.updateDataForList(); 
+               this.order("order-by-date"); this.cdr.detectChanges();this.updateDataForList(); 
             }, err => console.log(err));
         } catch (err) { console.log(err); }
         this.isSingular = false;
@@ -144,13 +144,13 @@ export class SongsComponent implements OnInit {
 
   order(type: string): void {
     console.log(type);
-    if (type == 'name')
+    if (type == 'order-by-song')
       this.orderByName();
-    else if (type == 'date')
+    else if (type == 'order-by-date')
       this.orderByDate();
-    else if (type == 'views')
+    else if (type == 'order-by-views')
       this.orderByView();
-    else if (type == 'like')
+    else if (type == 'order-by-likes')
       this.orderByLike();
     this.orderBy = type;
     // if (type == "song") {
