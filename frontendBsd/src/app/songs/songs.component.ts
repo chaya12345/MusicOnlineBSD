@@ -56,8 +56,8 @@ export class SongsComponent implements OnInit {
         try {
           this.songService.getSongs()
             .subscribe(songs => {
-              this.songs = songs; 
-               this.order("order-by-date"); this.cdr.detectChanges();this.updateDataForList(); 
+              this.songs = songs;this.order();
+              this.cdr.detectChanges(); this.updateDataForList();
             }, err => console.log(err));
         } catch (err) { console.log(err); }
         this.isSingular = false;
@@ -88,8 +88,9 @@ export class SongsComponent implements OnInit {
 
   updateDataForList(): void {
     try {
-      this.topicsService.getTopics().subscribe(topics => { 
-        this.topic = topics[0]; this.cdr.detectChanges(); this.updateTop(); }, err => console.log(err));
+      this.topicsService.getTopics().subscribe(topics => {
+        this.topic = topics[0]; this.cdr.detectChanges(); this.updateTop();
+      }, err => console.log(err));
     } catch (err) { console.log(err); }
   }
 
@@ -128,15 +129,11 @@ export class SongsComponent implements OnInit {
     } catch (err) { console.log(err); }
   }
 
-  clearSongs(){
-    document.querySelectorAll('div.wrap-song').forEach(item=>item.innerHTML="");
-  }
-
   orderByDate(): void {
     this.songs.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
   }
   orderByName(): void {
-    this.songs=this.songs.sort((a, b) => a.name > b.name ? 1 : -1);
+    this.songs = this.songs.sort((a, b) => a.name > b.name ? 1 : -1);
   }
   orderByView(): void {
     this.songs.sort((a, b) => a.count_views - b.count_views);
@@ -145,8 +142,11 @@ export class SongsComponent implements OnInit {
     this.songs.sort((a, b) => a.count_like - b.count_like);
   }
 
-  order(type: string): void {
-    console.log(type);
+  order(): void {
+    let type: string;
+    if (this.activatedRoute.snapshot.paramMap.get('orderType') == null)
+      type = 'order-by-date'
+    else type = this.activatedRoute.snapshot.paramMap.get('orderType');
     if (type == 'order-by-song')
       this.orderByName();
     else if (type == 'order-by-date')
@@ -156,12 +156,6 @@ export class SongsComponent implements OnInit {
     else if (type == 'order-by-likes')
       this.orderByLike();
     this.orderBy = type;
-    console.log(this.songs);
-    // if (type == "song") {
-    //   this.songs.sort((a, b) => Math.round(a.name.localeCompare(b.name)));
-    //   this.cdr.detectChanges();
-    // }
-    // 
   }
 
   // convertItem(song: Song): GenericType {

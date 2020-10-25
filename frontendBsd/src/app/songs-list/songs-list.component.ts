@@ -24,7 +24,7 @@ export class SongsListComponent implements OnInit {
 
   ngOnChanges() {
     //this.orderByDate();
-    // this.loadData();
+   this.loadData();
     if (this.orderBy == "song") {
       this.songsList.sort((a, b) => Math.round(a.name.localeCompare(b.name)));
     }

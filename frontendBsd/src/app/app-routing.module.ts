@@ -47,7 +47,7 @@ const routes: Routes = [{
   component: SongsComponent
 },{
   path:" song/:filter/order/:orderType",
-  component:SongsComponent
+  component: SongsComponent
 },
  {
   path: "magazine",

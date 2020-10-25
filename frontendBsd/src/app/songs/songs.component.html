@@ -2,7 +2,7 @@
     <top [_title]="title" [subtitle]="subtitle" [img]="img" [icon]="icon" [isMain]="isMain"></top>
     <current-nav [navs]="navs"></current-nav>
     <div *ngIf="!isSingular" class="wrap-tool-box">
-        <tools (onOrder)="order($event)" searchBox="true" [followUp]="isFollowUp" [addToPlaylist]="isAddToPlaylist" orderBy="true" [sideText]="isSideText"></tools>
+        <tools searchBox="true" [followUp]="isFollowUp" [addToPlaylist]="isAddToPlaylist" orderBy="true" [sideText]="isSideText"></tools>
     </div>
     <songs-list *ngIf="!isSingular&&!isGeneric" [songsList]="songs" [orderBy]="orderBy" ></songs-list>
     <song-details *ngIf="isSingular" [song]="song"></song-details>
