@@ -16,12 +16,7 @@
 <div class="wrap-side">
 
     <div class="title-section"><p>תוצאות דומות</p></div>
-    <section>
-        <div *ngFor="let song of similarSongs" class="similar-songs">
-            <song [song]="song"></song>
-        </div>
-    </section>
-    <si-similar-results></si-similar-results>
+    <si-similar-results [songs]="similarSongs"></si-similar-results>
 
     <div class="title-section"><p>הכתבות החמות של החודש</p></div>
     <si-hot-articles></si-hot-articles>

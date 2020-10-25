@@ -103,16 +103,16 @@ mat-checkbox span {
     border-radius: 50px;
 }
 
-.swiper-pagination { 
+new-songs .swiper-pagination { 
     margin: 0 0 23px;
 }
 
-.swiper-pagination-bullet-active {
+new-songs .swiper-pagination-bullet-active {
     opacity: 1;
     background-color: #fff;
 }
 
-.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+new-songs .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
     margin: 0 4px;
 }
 
@@ -120,10 +120,14 @@ mat-checkbox span {
     cursor: pointer;
 }
 
-.swiper-button-prev, .swiper-button-next {
+new-songs .swiper-button-prev, new-songs .swiper-button-next {
     color: white !important;
     margin: 0 180px;
     font-size: 38px;
+}
+
+si-hot-articles .swiper-button-prev, si-hot-articles .swiper-button-next {
+    color: whitesmoke !important;
 }
 
 /* #endregion */

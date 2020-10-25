@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Song } from '../classes/song';
 
 @Component({
   selector: 'si-similar-results',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./si-similar-results.component.css']
 })
 export class SiSimilarResultsComponent implements OnInit {
+
+  @Input() songs: Song[] = [];
 
   constructor() { }
 
