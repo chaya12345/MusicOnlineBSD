@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { SongsDetailsView } from '../classes/songsDetailsView';
 import { Song } from '../classes/song';
 import { SongService } from '../services/song.service';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'song-details',
@@ -11,6 +12,8 @@ import { SongService } from '../services/song.service';
   styleUrls: ['./song-details.component.css']
 })
 export class SongDetailsComponent implements OnInit {
+
+  public Editor = ClassicEditor;
 
   songId: number;
   @Input() song: Song;

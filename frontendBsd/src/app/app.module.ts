@@ -5,6 +5,7 @@ import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatVideoModule } from 'mat-video';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -164,7 +165,8 @@ import { SiPopularSongsComponent } from './si-popular-songs/si-popular-songs.com
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatVideoModule
+    MatVideoModule,
+    CKEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent],
