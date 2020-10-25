@@ -46,7 +46,7 @@ const routes: Routes = [{
   path: "song/:filter/:value/:order/:dir",
   component: SongsComponent
 },{
-  path:" song/:filter/order/:orderType",
+  path:" song/:filter/:value/order/:orderType",
   component: SongsComponent
 },
  {

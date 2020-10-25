@@ -72,7 +72,7 @@ export class ToolsComponent implements OnInit {
   }
 
   order(value: string): void {
-   this.router.navigateByUrl('song/'+this.activatedRoute.snapshot.paramMap.get('filter')+'/order/'+value);
+   this.router.navigateByUrl('song/'+this.activatedRoute.snapshot.paramMap.get('filter')+'/0'+'/order/'+value);
   }
 
   addFollowUp() {
