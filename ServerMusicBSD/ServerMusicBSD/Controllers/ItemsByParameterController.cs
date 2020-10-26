@@ -17,5 +17,9 @@ namespace ServerMusicBSD.Controllers
         {
             return ItemsByParameterBL.GetItemsByParameter(parameter);
         }
+        public  ItemByNameDTO GetItemsByName(string name)
+        {
+            return ItemsByParameterBL.GetItemByName(name);
+        }
     }
 }

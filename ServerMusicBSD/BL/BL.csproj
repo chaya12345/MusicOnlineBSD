@@ -74,6 +74,7 @@
     <Compile Include="Casts\ToReportsDTO.cs" />
     <Compile Include="Casts\ToResponsesToArticlesDTO.cs" />
     <Compile Include="Casts\ToResponsesToSongsDTO.cs" />
+    <Compile Include="Casts\ToItemByNameDTO.cs" />
     <Compile Include="Casts\ToSingersDTO.cs" />
     <Compile Include="Casts\ToSingerSearchingToUserDTO.cs" />
     <Compile Include="Casts\ToSongsDetailsDTO.cs" />

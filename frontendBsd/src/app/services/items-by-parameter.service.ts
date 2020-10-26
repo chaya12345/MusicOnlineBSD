@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ItemByName } from '../classes/itemByName';
 import { ItemsByParameter } from '../classes/itemsByParameter';
 
 @Injectable({
@@ -14,6 +15,9 @@ export class ItemsByParameterService {
 
   getItemsByParameter(parameter: string): Observable<ItemsByParameter[]> {
     return this.httpClient.get<ItemsByParameter[]>(this.baseUrl + 'GetItemsByParameter?parameter=' + parameter);
+  }
+  getItemByName(name: string): Observable<ItemByName> {
+    return this.httpClient.get<ItemByName>(this.baseUrl + 'GetItemsByName?name=' + name);
   }
 
 }

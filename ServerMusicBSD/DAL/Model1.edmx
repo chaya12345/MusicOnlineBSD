@@ -564,6 +564,18 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="itemByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="item" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="id" Type="int" Nullable="false" />
+                <Property Name="name" Type="varchar" MaxLength="50" />
+                <Property Name="image" Type="varchar(max)" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="itemsByParameter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="singer" Type="varchar" Mode="In" />
           <ReturnType>
@@ -733,6 +745,11 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MusicOnlineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="itemByName_Result">
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </ComplexType>
         <ComplexType Name="itemsByParameter_Result">
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -1345,7 +1362,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MusicOnlineEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MusicOnlineEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AlbumsTBL" EntityType="Self.AlbumsTBL" />
           <EntitySet Name="ArticlesTBL" EntityType="Self.ArticlesTBL" />
           <EntitySet Name="ArtistsTBL" EntityType="Self.ArtistsTBL" />
@@ -1467,6 +1484,9 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
             <End Role="TagsTBL" EntitySet="TagsTBL" />
             <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
           </AssociationSet>
+          <FunctionImport Name="itemByName" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemByName_Result)">
+            <Parameter Name="item" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="itemsByParameter" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemsByParameter_Result)">
             <Parameter Name="singer" Mode="In" Type="String" />
           </FunctionImport>
@@ -1476,7 +1496,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MusicOnlineModelStoreContainer" CdmEntityContainer="MusicOnlineEntities">
+        <EntityContainerMapping StorageEntityContainer="MusicOnlineModelStoreContainer" CdmEntityContainer="MusicOnlineEntities1">
           <EntitySetMapping Name="AlbumsTBL">
             <EntityTypeMapping TypeName="MusicOnlineModel.AlbumsTBL">
               <MappingFragment StoreEntitySet="AlbumsTBL">
@@ -1767,6 +1787,15 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionName="MusicOnlineModel.Store.itemByName" FunctionImportName="itemByName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MusicOnlineModel.itemByName_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="image" ColumnName="image" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionName="MusicOnlineModel.Store.itemsByParameter" FunctionImportName="itemsByParameter">
             <ResultMapping>
               <ComplexTypeMapping TypeName="MusicOnlineModel.itemsByParameter_Result">

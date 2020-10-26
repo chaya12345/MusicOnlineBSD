@@ -15,5 +15,10 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToItemsByParameterDTO.GetItemsByParameter(et.itemsByParameter(parameter).ToList());
         }
+        public static ItemByNameDTO GetItemByName(string name)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            return Casts.ToItemByNameDTO.GetItemByName(et.itemByName(name).FirstOrDefault());
+        }
     }
 }
