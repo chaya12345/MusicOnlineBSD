@@ -1,6 +1,8 @@
 .wrap-si-updating {
     background-color: whitesmoke;
     padding: 10px;
+    overflow: hidden;
+    min-height: 403px;
 }
 
 .updating-section {
@@ -11,7 +13,76 @@
     padding: 10px;
     display: grid;
     color: #252525;
+    transition: 0.6s;
+    transform: translateX(0px);
+    
+    padding: 0;
+    animation-name: showAnimate;
+    animation-duration: .6s;
+    animation-timing-function: cubic-bezier(0.5, 0.05, 0.26, 1.48);
+    animation-fill-mode: forwards;
+    height: 0;
+    animation-delay: 2s;
 }
+
+.updating-section > * {
+    opacity: 0;
+    animation-name: changeOpacity;
+    animation-duration: .6s;
+    animation-timing-function: cubic-bezier(0.5, 0.05, 0.26, 1.48);
+    animation-fill-mode: forwards;
+    height: 0;
+    animation-delay: 2s;
+}
+
+.updating-section:first-of-type > * {
+    animation-delay: 1s;
+}
+
+.updating-section:nth-of-type(2), .updating-section:nth-of-type(2) > * {
+    animation-delay: 3s;
+}
+
+.updating-section:nth-of-type(3), .updating-section:nth-of-type(3) > * {
+    animation-delay: 4s;
+}
+
+.updating-section:nth-of-type(4), .updating-section:nth-of-type(4) > * {
+    animation-delay: 5s;
+}
+
+.updating-section:first-of-type {
+    padding: 0;
+    animation-name: showAnimate;
+    animation-duration: .6s;
+    animation-timing-function: cubic-bezier(0.5, 0.05, 0.26, 1.48);
+    animation-fill-mode: forwards;
+    height: 0;
+    animation-delay: 1s;
+}
+
+@keyframes showAnimate {
+    from {
+        transform: translateX(-430px);
+        padding: 0;
+        height: 0;
+    }
+    to {
+        transform: translateX(0px);
+        padding: 10px;
+        height: 95px;
+    }
+}
+
+@keyframes changeOpacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 
 .updating-section span {
     font-size: 19px;
@@ -19,3 +90,21 @@
     margin-right: auto;
     margin-top: 7px;
 }
+
+/* #slideset3 {height: 10em; position: relative;
+    overflow: hidden}
+  #slideset3 > * {height: 100%; box-sizing: border-box;
+    overflow: hidden}
+
+    #slideset3 > *:first-child {
+        animation: 12s autoplay3 infinite ease-in-out}
+      @keyframes autoplay3 {
+        0% {margin-top: 10em}
+        4% {margin-top: 0em}
+        31% {margin-top: 0em}
+        35% {margin-top: -10em}
+        64% {margin-top: -10em}
+        68% {margin-top: -20em}
+        96% {margin-top: -20em}
+        100% {margin-top: -30em}
+      } */

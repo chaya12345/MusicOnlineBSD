@@ -81,6 +81,7 @@ import { SiUpdatingComponent } from './si-updating/si-updating.component';
 import { SiSimilarResultsComponent } from './si-similar-results/si-similar-results.component';
 import { SiHotArticlesComponent } from './si-hot-articles/si-hot-articles.component';
 import { SiPopularSongsComponent } from './si-popular-songs/si-popular-songs.component';
+import { EditorComponent } from './editor/editor.component';
 
 @NgModule({
   declarations: [
@@ -155,7 +156,8 @@ import { SiPopularSongsComponent } from './si-popular-songs/si-popular-songs.com
     SiUpdatingComponent,
     SiSimilarResultsComponent,
     SiHotArticlesComponent,
-    SiPopularSongsComponent
+    SiPopularSongsComponent,
+    EditorComponent
   ],
   imports: [
     BrowserModule,
