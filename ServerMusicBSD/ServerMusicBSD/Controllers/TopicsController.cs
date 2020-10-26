@@ -22,5 +22,9 @@ namespace ServerMusicBSD.Controllers
         {
             TopicsBL.UpdateTopic(topicId, updateTopic);
         }
+        public  TopicsDTO GetTopic(string topicTitle)
+        {
+            return TopicsBL.GetTopic(topicTitle);
+        }
     }
 }
