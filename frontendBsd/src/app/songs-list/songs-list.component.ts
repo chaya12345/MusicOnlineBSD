@@ -59,7 +59,7 @@ export class SongsListComponent implements OnInit {
         this.songsList.sort((a, b) => Math.round(b.count_views - a.count_views));
       }
       else if (order == "res") {
-        this.songsList.sort((a, b) => Math.round(b.count_views - a.count_views));
+        this.songsList.sort((a, b) => Math.round( - a.count_views));
       }
       else if (order == "date") {
         this.songsList.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
