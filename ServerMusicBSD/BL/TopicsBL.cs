@@ -30,5 +30,13 @@ namespace BL
                 et.SaveChanges();
             }
         }
+        public static TopicsDTO GetTopic(string topicTitle)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            TopicsTBL topic = et.TopicsTBL.Where(t => t.title == topicTitle).FirstOrDefault();
+            if (topic == null)
+                return null;
+            return Casts.ToTopicsDTO.GetTopic(topic);
+        }
     }
 }

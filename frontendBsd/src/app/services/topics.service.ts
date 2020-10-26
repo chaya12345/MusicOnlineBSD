@@ -16,4 +16,7 @@ export class TopicsService {
   updateTopic(topicId:number,updateTopic:Topics):Observable<any>{
     return this.httpClient.put(this.baseUrl+'PutTopic?topicId='+topicId,updateTopic);
   }
+  getTopic(topicTitle:string): Observable<Topics> {
+    return this.httpClient.get<Topics>(this.baseUrl + 'GetTopic?topicTitle='+topicTitle);
+  }
 }
