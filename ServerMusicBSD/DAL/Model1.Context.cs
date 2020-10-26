@@ -15,10 +15,10 @@ namespace DAL
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class MusicOnlineEntities1 : DbContext
+    public partial class MusicOnlineEntities : DbContext
     {
-        public MusicOnlineEntities1()
-            : base("name=MusicOnlineEntities1")
+        public MusicOnlineEntities()
+            : base("name=MusicOnlineEntities")
         {
         }
     
@@ -53,24 +53,24 @@ namespace DAL
         public virtual DbSet<latestResponses> latestResponses { get; set; }
         public virtual DbSet<songsDetails> songsDetails { get; set; }
     
-        [DbFunction("MusicOnlineEntities1", "itemByName")]
+        [DbFunction("MusicOnlineEntities", "itemByName")]
         public virtual IQueryable<itemByName_Result> itemByName(string item)
         {
             var itemParameter = item != null ?
                 new ObjectParameter("item", item) :
                 new ObjectParameter("item", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<itemByName_Result>("[MusicOnlineEntities1].[itemByName](@item)", itemParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<itemByName_Result>("[MusicOnlineEntities].[itemByName](@item)", itemParameter);
         }
     
-        [DbFunction("MusicOnlineEntities1", "itemsByParameter")]
+        [DbFunction("MusicOnlineEntities", "itemsByParameter")]
         public virtual IQueryable<itemsByParameter_Result> itemsByParameter(string singer)
         {
             var singerParameter = singer != null ?
                 new ObjectParameter("singer", singer) :
                 new ObjectParameter("singer", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<itemsByParameter_Result>("[MusicOnlineEntities1].[itemsByParameter](@singer)", singerParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<itemsByParameter_Result>("[MusicOnlineEntities].[itemsByParameter](@singer)", singerParameter);
         }
     }
 }

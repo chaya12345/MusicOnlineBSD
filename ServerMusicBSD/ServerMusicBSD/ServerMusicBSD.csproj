@@ -198,7 +198,7 @@
       <Name>BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{8ee9ea59-ce76-4e3c-bee4-e787fe9456f3}</Project>
+      <Project>{97044d1b-b77e-4495-b1ab-01aeba25c384}</Project>
       <Name>DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">

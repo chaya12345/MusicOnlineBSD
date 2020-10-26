@@ -291,6 +291,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionName="MusicOnlineModel.Store.itemByName" FunctionImportName="itemByName">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MusicOnlineModel.itemByName_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="image" ColumnName="image" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionName="MusicOnlineModel.Store.itemsByParameter" FunctionImportName="itemsByParameter">
       <ResultMapping>
         <ComplexTypeMapping TypeName="MusicOnlineModel.itemsByParameter_Result">
