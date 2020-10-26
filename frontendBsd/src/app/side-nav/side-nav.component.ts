@@ -77,7 +77,7 @@ export class SideNavComponent implements OnInit {
       this.router.navigateByUrl("home");
     }
     else if (event.target.innerHTML.includes("חדש במוזיקה")) {
-      this.router.navigateByUrl("song/all/0");
+      this.router.navigateByUrl("song");
     }
     else if (event.target.innerHTML.includes("מגזין")) {
       this.router.navigateByUrl("magazine");

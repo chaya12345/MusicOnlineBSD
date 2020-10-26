@@ -1,6 +1,6 @@
 <div class="wrap-popular-singers">
     <p class="title-part">זמרים שאנשים חיפשו.</p>
-    <a class="singer-card" *ngFor="let singer of singers" [href]="'song/by-singer/'+singer.name"
+    <a class="singer-card" *ngFor="let singer of singers" [href]="'song?filter='+singer.name"
         [style.background-image]="'url(../../assets/images/'+singer.image+')'">
         <div class="name"><span>{{singer.name}}</span></div>
     </a>

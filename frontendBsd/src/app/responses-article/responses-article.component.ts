@@ -29,7 +29,7 @@ export class ResponsesArticleComponent implements OnInit {
   }
 
   getResponses(): void {
-    this.responseToArticlesService.getArticleResponses(parseInt(this.activatedRoute.snapshot.paramMap.get('id')))
+    this.responseToArticlesService.getArticleResponses(parseInt(this.activatedRoute.snapshot.queryParams.articleId))
       .subscribe(response => { this.responses = response; this.orderResponses(); 
         this.cdr.detectChanges(); }, err => { console.log(err); });
   }

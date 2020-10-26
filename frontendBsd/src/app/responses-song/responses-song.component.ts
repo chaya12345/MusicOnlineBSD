@@ -30,7 +30,7 @@ export class ResponsesSongComponent implements OnInit {
   }
 
   getResponses(): void {
-    this.responseToSongsService.getSongResponses(parseInt(this.activatedRoute.snapshot.paramMap.get('id')))
+    this.responseToSongsService.getSongResponses(parseInt(this.activatedRoute.snapshot.queryParams.songId))
       .subscribe(response => {
         this.responses = response; this.orderResponses();
         this.cdr.detectChanges();

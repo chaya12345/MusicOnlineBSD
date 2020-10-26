@@ -17,7 +17,7 @@ export class PlaylistSectionComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private playlistSystemService: PlaylistsSystemService,
     private cdr: ChangeDetectorRef) {
     try {
-      this.playlistSystemService.getPlaylistById(Number(this.activatedRoute.snapshot.paramMap.get("id")))
+      this.playlistSystemService.getPlaylistById(Number(this.activatedRoute.snapshot.queryParams.playlistId))
       .subscribe(playlist => { this.playlist = playlist; this.cdr.detectChanges(); this.loaded = true; this.navs.push(this.playlist.name); }, 
       err => console.log(err));
     } catch (err) { console.log(err); }

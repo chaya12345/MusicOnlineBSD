@@ -1,6 +1,6 @@
 import { ChangeDetectorRef } from '@angular/core';
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Song } from '../classes/song';
 
 @Component({
@@ -23,14 +23,16 @@ export class SongsListComponent implements OnInit {
   }
 
   ngOnChanges() {
-  //  this.orderByDate();
+   this.orderByDate();
    this.loadData();
     if (this.orderBy == "song") {
       this.songsList.sort((a, b) => Math.round(a.name.localeCompare(b.name)));
     }
     console.log("change");
     this.cdr.detectChanges();
-    this.loadData();
+    console.log("=================");
+    console.log(this.songsList);
+    console.log("=================");
   }
 
   loadData(): void {
@@ -44,8 +46,8 @@ export class SongsListComponent implements OnInit {
   }
 
   orderByDate(): void {
-    if (this.activatedRoute.snapshot.paramMap.get("dir")) {
-      let order = this.activatedRoute.snapshot.paramMap.get("dir");
+    if (this.activatedRoute.snapshot.paramMap.get("orderType")) {
+      let order = this.activatedRoute.snapshot.paramMap.get("orderType");
       console.log(order);
       if (order == "order-by-song") {
         this.songsList.sort((a, b) => Math.round(b.name.localeCompare(a.name)));

@@ -13,7 +13,7 @@
             <mat-icon matPrefix (click)="triggerClick()">search</mat-icon>
             <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete">
                 <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name">
-                    <a class="search-song" #option [href]="'song/'+song.id">{{song.name}}</a>
+                    <a class="search-song" #option [href]="'song?songId='+song.id">{{song.name}}</a>
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
@@ -26,7 +26,7 @@
             </button>
             <mat-autocomplete autoActiveFirstOption #autoSingers="matAutocomplete">
                 <mat-option *ngFor="let singer of filteredSingers | async" [value]="singer.name">
-                    <a class="search-singer" [href]="'song/by-singer/'+singer.name">{{singer.name}}</a>
+                    <a class="search-singer" [href]="'song?filter='+singer.name">{{singer.name}}</a>
                 </mat-option>
 
             </mat-autocomplete>

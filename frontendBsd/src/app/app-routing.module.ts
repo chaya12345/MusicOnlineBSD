@@ -15,55 +15,70 @@ import { SongsComponent } from './songs/songs.component';
 
 
 const routes: Routes = [{
+  //   path: "",
+  //   component: HomePageComponent
+  // }, {
+  //   path: "home",
+  //   component: HomePageComponent
+  // }, {
+  //   path: "song",
+  //   component: SongsComponent
+  // }, {
+  //   path: "song/:id",
+  //   component: SongsComponent
+  // }, {
+  //   path: "song/:id/commit/:commitId",
+  //   component: SongsComponent
+  // },
+  // {
+  //   path: "song/:filter/:value",
+  //   component: SongsComponent
+  // }, {
+  //   path:" song/:filter/:value/order/:orderType",
+  //   component: SongsComponent
+  // },
+  //  {
+  //   path: "magazine",
+  //   component: MagazineComponent
+  // }, {
+  //   path: "article/:id",
+  //   component: ArticleDetailsComponent
+  // },
+  // {
+  //   path: "article/:id/commit/:commitId",
+  //   component: ArticleDetailsComponent
+  // }, {
+  //   path: "playlists",
+  //   component: PlaylistsComponent
+  // }, {
+  //   path: "playlist/:id",
+  //   component: PlaylistSectionComponent
+  // }, {
+  //   path: "error",
+  //   component: ErrorPageComponent
+  // }, {
+  //   path: "**",
+  //   component: ErrorPageComponent
+
   path: "",
   component: HomePageComponent
 }, {
   path: "home",
   component: HomePageComponent
-},/* {
-  path: "song",
-  component: SongsPageComponent
 }, {
-  path: "song/:id",
-  component: SongsPageComponent
-}, {
-  path: "songs/:filter/:value",
-  component: SongsBySingerComponent
-},*/ {
   path: "song",
   component: SongsComponent
 }, {
-  path: "song/:id",
-  component: SongsComponent
-}, {
-  path: "song/:id/commit/:commitId",
-  component: SongsComponent
-},
-{
-  path: "song/:filter/:value",
-  component: SongsComponent
-}, {
-  path: "song/:filter/:value/:order/:dir",
-  component: SongsComponent
-},{
-  path:" song/:filter/:value/order/:orderType",
-  component: SongsComponent
-},
- {
   path: "magazine",
   component: MagazineComponent
 }, {
-  path: "article/:id",
-  component: ArticleDetailsComponent
-},
-{
-  path: "article/:id/commit/:commitId",
+  path: "magazine/article",
   component: ArticleDetailsComponent
 }, {
   path: "playlists",
   component: PlaylistsComponent
 }, {
-  path: "playlist/:id",
+  path: "playlist",
   component: PlaylistSectionComponent
 }, {
   path: "error",
@@ -74,7 +89,7 @@ const routes: Routes = [{
 }];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { enableTracing: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

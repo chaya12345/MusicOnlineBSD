@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GenericType } from '../classes/genericType';
 import { ItemsByParameter } from '../classes/itemsByParameter';
 
 @Component({

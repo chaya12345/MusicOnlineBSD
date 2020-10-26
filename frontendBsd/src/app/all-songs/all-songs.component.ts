@@ -14,7 +14,7 @@ export class AllSongsComponent implements OnInit {
 
   constructor(private songService: SongService) {
     try {
-      this.songService.getSongs().subscribe(songs => { this.songsList = songs; /*this.orderByDate();*/ }, err => console.log(err));
+      this.songService.getSongs().subscribe(songs => { this.songsList = songs; }, err => console.log(err));
     }
     catch (err) { console.log(err); }
     this.navs.push("חדש במוזיקה");
@@ -22,8 +22,5 @@ export class AllSongsComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  orderByDate(): void {
-    this.songsList.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
-  }
+  
 }

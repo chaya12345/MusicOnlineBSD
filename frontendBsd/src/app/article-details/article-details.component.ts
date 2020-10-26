@@ -18,7 +18,7 @@ export class ArticleDetailsComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private articleService: ArticleService,
     private httpClient: HttpClient, private router: Router) {
     try {
-      this.articleService.getArticleById(Number(this.activatedRoute.snapshot.paramMap.get('id')))
+      this.articleService.getArticleById(this.activatedRoute.snapshot.queryParams.articleId)
         .subscribe(article => { this.article = article; this.navs.push(this.article.title); }, err => console.log(err));
     } catch (err) { console.log(err); }
     this.navs.push("מגזין");

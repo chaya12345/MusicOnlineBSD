@@ -21,8 +21,8 @@ export class ResponseComponent implements OnInit {
   }
   
   ngAfterViewInit() {
-    if (this.activatedRoute.snapshot.paramMap.get('commitId') != (null || undefined)) {
-      this.id = Number(this.activatedRoute.snapshot.paramMap.get('commitId'));
+    if (this.activatedRoute.snapshot.queryParams.commitId) {
+      this.id = this.activatedRoute.snapshot.queryParams.commitId;
       if(this.response.id == this.id) {
         this.el.nativeElement.scrollIntoView({
           behavior: "smooth" ,
