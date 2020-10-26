@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { GenericType } from '../classes/genericType';
 import { ItemsByParameter } from '../classes/itemsByParameter';
 import { Song } from '../classes/song';
 import { Topics } from '../classes/topics';
