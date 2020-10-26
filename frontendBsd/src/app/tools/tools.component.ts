@@ -72,13 +72,18 @@ export class ToolsComponent implements OnInit {
   }
 
   order(value: string): void {
-   this.router.navigateByUrl('song/'+this.activatedRoute.snapshot.paramMap.get('filter')+'/'+this.activatedRoute.snapshot.paramMap.get('value')+'/order/'+value);
+    if (this.activatedRoute.snapshot.queryParams.filter) {
+      this.router.navigateByUrl('song?filter=' + this.activatedRoute.snapshot.queryParams.filter + '&orderType=' + value);
+    }
+    else {
+      this.router.navigateByUrl('song?orderType=' + value);
+    }
   }
 
   addFollowUp() {
     if (sessionStorage.getItem('user') != (null || undefined)) {
       this.user = JSON.parse(sessionStorage.getItem('user'));
-      this.id = parseInt(this.activatedRoute.snapshot.paramMap.get("id"));
+      this.id = parseInt(this.activatedRoute.snapshot.queryParams.songId||this.activatedRoute.snapshot.queryParams.articleId);
       this.newFollow.userId = this.user.id;
       if (this.activatedRoute.snapshot.routeConfig.path.includes("article") == true)
         this.newFollow.articleId = this.id;
@@ -102,7 +107,7 @@ export class ToolsComponent implements OnInit {
 
   delete() {
     this.user = JSON.parse(sessionStorage.getItem('user'));
-    this.id = Number(this.activatedRoute.snapshot.paramMap.get("id"));
+    this.id = Number(this.activatedRoute.snapshot.queryParams.songId||this.activatedRoute.snapshot.queryParams.articleId);
     if (this.activatedRoute.snapshot.routeConfig.path.includes("article") == true)
       try {
         this.loading = true;
