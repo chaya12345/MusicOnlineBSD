@@ -40,6 +40,7 @@ export class SongsComponent implements OnInit {
     private cdr: ChangeDetectorRef, private topicsService: TopicsService, private singerService: SingerService,
     private artsAndSingsService: ArtistsAndSingersService, private itemsByParameterService: ItemsByParameterService) {
     this.navs.push("חדש במוזיקה");
+    this.order();
   }
 
   ngOnInit() {
@@ -56,7 +57,7 @@ export class SongsComponent implements OnInit {
         try {
           this.songService.getSongs()
             .subscribe(songs => {
-              this.songs = songs; this.order();
+              this.songs = songs;this.order();
               this.cdr.detectChanges(); this.updateDataForList();
             }, err => console.log(err));
         } catch (err) { console.log(err); }
@@ -76,9 +77,11 @@ export class SongsComponent implements OnInit {
         this.isGeneric = true;
       }
     }
-
+    
   }
-  
+  ngOnChanges(){
+    this.order();
+  }
 
   updateDataForSingular(): void {
     this.title = this.song.title;
@@ -145,21 +148,19 @@ export class SongsComponent implements OnInit {
   }
 
   order(): void {
-    if (this.songs != null) {
-      let type: string;
-      if (this.activatedRoute.snapshot.paramMap.get('dir') == null)
-        type = 'order-by-date'
-      else type = this.activatedRoute.snapshot.paramMap.get('dir');
-      if (type == 'order-by-song')
-        this.orderByName();
-      else if (type == 'order-by-date')
-        this.orderByDate();
-      else if (type == 'order-by-views')
-        this.orderByView();
-      else if (type == 'order-by-likes')
-        this.orderByLike();
-      this.orderBy = type;
-    }
+    let type: string;
+    if (this.activatedRoute.snapshot.paramMap.get('dir') == null)
+      type = 'order-by-date'
+    else type = this.activatedRoute.snapshot.paramMap.get('dir');
+    if (type == 'order-by-song')
+      this.orderByName();
+    else if (type == 'order-by-date')
+      this.orderByDate();
+    else if (type == 'order-by-views')
+      this.orderByView();
+    else if (type == 'order-by-likes')
+      this.orderByLike();
+    this.orderBy = type;
   }
 
   // convertItem(song: Song): GenericType {
