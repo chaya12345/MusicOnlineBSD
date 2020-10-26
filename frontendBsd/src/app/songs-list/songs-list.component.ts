@@ -46,22 +46,22 @@ export class SongsListComponent implements OnInit {
   }
 
   orderByDate(): void {
-    if (this.activatedRoute.snapshot.paramMap.get("orderType")) {
-      let order = this.activatedRoute.snapshot.paramMap.get("orderType");
+    if (this.activatedRoute.snapshot.queryParams.orderType) {
+      let order = this.activatedRoute.snapshot.queryParams.orderType;
       console.log(order);
-      if (order == "order-by-song") {
+      if (order == "song") {
         this.songsList.sort((a, b) => Math.round(b.name.localeCompare(a.name)));
       }
-      else if (order == "order-by-likes") {
+      else if (order == "likes") {
         this.songsList.sort((a, b) => Math.round(b.count_like - a.count_like));
       }
-      else if (order == "order-by-views") {
+      else if (order == "views") {
         this.songsList.sort((a, b) => Math.round(b.count_views - a.count_views));
       }
-      else if (order == "order-by-res") {
+      else if (order == "res") {
         this.songsList.sort((a, b) => Math.round(b.count_views - a.count_views));
       }
-      else if (order == "order-by-date") {
+      else if (order == "date") {
         this.songsList.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
       }
       this.cdr.detectChanges();
