@@ -58,6 +58,21 @@ export class ToolsComponent implements OnInit {
 
   }
 
+  getUrl(orderType: string): string {
+    if (this.activatedRoute.snapshot.queryParams.orderType) {
+      let placing: number = this.router.url.indexOf("orderType");
+      if (this.router.url.includes("&") && this.router.url.lastIndexOf("&") > placing) {
+        return this.router.url.slice(0, placing) + "orderType=" + orderType + this.router.url.slice(this.router.url.lastIndexOf("&"), this.router.url.length);
+      }
+      return this.router.url.slice(0, placing) + "orderType=" + orderType;
+    }
+    else {
+      if (this.router.url.includes("="))
+        return this.router.url + "&orderType=" + orderType;
+    }
+    return this.router.url + "?orderType=" + orderType;
+  }
+
   logIn(num: number) {
     try {
       const dialogRef = this.dialog.open(LogInComponent, {
@@ -83,7 +98,7 @@ export class ToolsComponent implements OnInit {
   addFollowUp() {
     if (sessionStorage.getItem('user') != (null || undefined)) {
       this.user = JSON.parse(sessionStorage.getItem('user'));
-      this.id = parseInt(this.activatedRoute.snapshot.queryParams.songId||this.activatedRoute.snapshot.queryParams.articleId);
+      this.id = parseInt(this.activatedRoute.snapshot.queryParams.songId || this.activatedRoute.snapshot.queryParams.articleId);
       this.newFollow.userId = this.user.id;
       if (this.activatedRoute.snapshot.routeConfig.path.includes("article") == true)
         this.newFollow.articleId = this.id;
@@ -94,7 +109,8 @@ export class ToolsComponent implements OnInit {
           .subscribe(() => { this.openSnackBar("המעקב נוסף בהצלחה!"); this.followedUp = true; }, err => console.log(err));
       } catch (err) {
         console.log(err); this.openSnackBar("פעולה נכשלה. נסה שוב מאוחר יותר");
-        this.updateWebmaster("הוספת מעקב", this.user.id, this.id, this.newFollow.songId ? "song" : "article"); }
+        this.updateWebmaster("הוספת מעקב", this.user.id, this.id, this.newFollow.songId ? "song" : "article");
+      }
       finally { this.loading = false; }
     }
     else
@@ -107,22 +123,26 @@ export class ToolsComponent implements OnInit {
 
   delete() {
     this.user = JSON.parse(sessionStorage.getItem('user'));
-    this.id = Number(this.activatedRoute.snapshot.queryParams.songId||this.activatedRoute.snapshot.queryParams.articleId);
+    this.id = Number(this.activatedRoute.snapshot.queryParams.songId || this.activatedRoute.snapshot.queryParams.articleId);
     if (this.activatedRoute.snapshot.routeConfig.path.includes("article") == true)
       try {
         this.loading = true;
         this.followUpService.deleteFollowUp(this.user.id, this.id, 'article')
           .subscribe(() => { this.openSnackBar("המעקב הוסר בהצלחה!"); this.followedUp = false; }, err => console.log(err));
-      } catch (err) { console.log(err); this.openSnackBar("פעולה נכשלה. נסה שוב מאוחר יותר");
-        this.updateWebmaster("הסרת מעקב", this.user.id, this.id, this.newFollow.songId ? "song" : "article"); }
+      } catch (err) {
+        console.log(err); this.openSnackBar("פעולה נכשלה. נסה שוב מאוחר יותר");
+        this.updateWebmaster("הסרת מעקב", this.user.id, this.id, this.newFollow.songId ? "song" : "article");
+      }
       finally { this.loading = false; }
     else
       try {
         this.loading = true;
         this.followUpService.deleteFollowUp(this.user.id, this.id, 'song')
           .subscribe(() => { this.openSnackBar("המעקב הוסר בהצלחה!"); this.followedUp = false; }, err => console.log(err));
-      } catch (err) { console.log(err); this.openSnackBar("פעולה נכשלה. נסה שוב מאוחר יותר");
-        this.updateWebmaster("הסרת מעקב", this.user.id, this.id, this.newFollow.songId ? "song" : "article"); }
+      } catch (err) {
+        console.log(err); this.openSnackBar("פעולה נכשלה. נסה שוב מאוחר יותר");
+        this.updateWebmaster("הסרת מעקב", this.user.id, this.id, this.newFollow.songId ? "song" : "article");
+      }
       finally { this.loading = false; }
   }
 
@@ -148,8 +168,10 @@ export class ToolsComponent implements OnInit {
           }
         }
       });
-    } catch (err) { console.log(err); this.openSnackBar("קרתה תקלה. נסה שוב מאוחר יותר");
-      this.updateWebmaster("הצגת דיאלוג בעת בקשה להסרת מעקב", this.user.id, this.id, this.newFollow.songId ? "song" : "article"); }
+    } catch (err) {
+      console.log(err); this.openSnackBar("קרתה תקלה. נסה שוב מאוחר יותר");
+      this.updateWebmaster("הצגת דיאלוג בעת בקשה להסרת מעקב", this.user.id, this.id, this.newFollow.songId ? "song" : "article");
+    }
   }
 
   updateWebmaster(matter: string, usreId: number, itemId: number, itemType: string): void {

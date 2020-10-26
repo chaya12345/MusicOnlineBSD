@@ -48,11 +48,11 @@
                     <button mat-menu-item disabled *ngIf="!isChecked">מוגדר: סדר יורד</button>
                     <button mat-menu-item disabled *ngIf="isChecked">מוגדר: סדר עולה</button>
                     <mat-divider></mat-divider>
-                    <button mat-menu-item (click)="order('song')">שם שיר</button>
-                    <button mat-menu-item (click)="order('date')">תאריך</button>
-                    <button mat-menu-item (click)="order('views')">כמות צפיות</button>
-                    <button mat-menu-item (click)="order('likes')">כמות לייקים</button>
-                    <button mat-menu-item (click)="order('res')">כמות תגובות</button>
+                    <button mat-menu-item><a [href]="getUrl('song')">שם שיר</a></button>
+                    <button mat-menu-item><a [href]="getUrl('date')">תאריך</a></button>
+                    <button mat-menu-item><a [href]="getUrl('views')">כמות צפיות</a></button>
+                    <button mat-menu-item><a [href]="getUrl('likes')">כמות לייקים</a></button>
+                    <button mat-menu-item><a [href]="getUrl('res')">כמות תגובות</a></button>
                 </mat-menu>
             </div>
 

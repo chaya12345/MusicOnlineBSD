@@ -1,10 +1,11 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ItemsByParameter } from '../classes/itemsByParameter';
 import { Song } from '../classes/song';
 import { Topics } from '../classes/topics';
 import { ItemsByParameterService } from '../services/items-by-parameter.service';
 import { SongService } from '../services/song.service';
+import { TopicsService } from '../services/topics.service';
 
 @Component({
   selector: 'songs',
@@ -33,7 +34,8 @@ export class SongsComponent implements OnInit {
   topic: Topics;
 
   constructor(private activatedRoute: ActivatedRoute, private songService: SongService,
-    private cdr: ChangeDetectorRef, private itemsByParameterService: ItemsByParameterService) {
+    private cdr: ChangeDetectorRef, private itemsByParameterService: ItemsByParameterService,
+    private topicService: TopicsService, private router: Router) {
     this.navs.push("חדש במוזיקה");
   }
 
@@ -70,6 +72,14 @@ export class SongsComponent implements OnInit {
         this.navs.push(filter);
       }, err => console.log(err))
     } catch (err) { console.log(err); }
+    try {
+      this.itemsByParameterService.getItemByName(filter).subscribe(item => {
+        this.title = item.name;
+        this.subtitle = "כל השירים, הקליפים, ההופעות והכתבות";
+        this.img = item.image ? "../../assets/images" + item.image : null;
+        this.isMain = true;
+      }, err => console.log(err))
+    } catch (err) { console.log(err); }
     this.isSingular = false;
     this.isGeneric = true;
   }
@@ -82,38 +92,16 @@ export class SongsComponent implements OnInit {
         this.songs.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
       }, err => console.log(err))
     } catch (err) { console.log(err); }
+    try {
+      this.topicService.getTopic("חדש במוזיקה").subscribe(topic => {
+        this.title = topic.title;
+        this.subtitle = topic.subtitle;
+        this.img = "../../assets/images/" + topic.img;
+        this.icon = topic.icon;
+      }, err => console.log(err))
+    } catch (err) { console.log(err); }
     this.isSingular = false;
     this.isGeneric = false;
   }
-
-  // updateDataForList(): void {
-  //   try {
-  //     this.topicsService.getTopics().subscribe(topics => {
-  //       this.topic = topics[0]; this.cdr.detectChanges(); this.updateTop();
-  //     }, err => console.log(err));
-  //   } catch (err) { console.log(err); }
-  // }
-
-  // updateTop() {
-  //   let filter = this.activatedRoute.snapshot.paramMap.get("filter");
-  //   let name = this.activatedRoute.snapshot.paramMap.get("value");
-  //   if (filter == "by-artist") {
-  //     try {
-  //       this.artsAndSingsService.getArtistOrSingerByName(name)
-  //         .subscribe(art => { this.updateDataToArtists(name, art.type); }, err => console.log(err));
-  //     } catch (err) { console.log(err); }
-  //   }
-  //   if (filter == "by-singer" || filter == "") {
-  //     this.getDetailsOfSinger(name);
-  //     this.subtitle = "כל השירים, הקליפים, ההופעות והכתבות";
-  //     this.isMain = true;
-  //   }
-  //   else {
-  //     this.img = "../../assets/images/" + this.topic.img;
-  //     this.title = this.topic.title;
-  //     this.subtitle = this.topic.subtitle;
-  //     this.isMain = false;
-  //   }
-  // }
 
 }
