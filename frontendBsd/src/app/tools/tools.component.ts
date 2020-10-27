@@ -37,8 +37,8 @@ export class ToolsComponent implements OnInit {
   ngOnInit() {
     if (sessionStorage.getItem('user') != (null || undefined)) {
       this.user = JSON.parse(sessionStorage.getItem('user'));
-      this.id = Number(this.activatedRoute.snapshot.paramMap.get("id"));
       if (this.activatedRoute.snapshot.routeConfig.path.includes("article") == true) {
+        this.id = this.activatedRoute.snapshot.queryParams.articleId;
         this.followUpService.IsUserFollowUpArticle(this.user.id, this.id).subscribe(res => {
           if (res == true)
             this.followedUp = true;
@@ -47,6 +47,7 @@ export class ToolsComponent implements OnInit {
         })
       }
       if (this.activatedRoute.snapshot.routeConfig.path.includes("song") == true) {
+        this.id = this.activatedRoute.snapshot.queryParams.songId;
         this.followUpService.IsUserFollowUpSong(this.user.id, this.id).subscribe(res => {
           if (res == true)
             this.followedUp = true;

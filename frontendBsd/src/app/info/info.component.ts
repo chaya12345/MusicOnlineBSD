@@ -21,7 +21,7 @@ export class InfoComponent implements OnInit {
 
   ngOnInit() {
     // this.activatedRoute.snapshot.routeConfig.path.includes("song")
-    this.songId = Number(this.activatedRoute.snapshot.paramMap.get("id"));
+    this.songId = this.activatedRoute.snapshot.queryParams.songId;
   }
 
   sign(event): void {

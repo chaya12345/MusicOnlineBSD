@@ -16,7 +16,7 @@ export class RatingComponent implements OnInit {
   @Input() views?: number = 0;
   @Input() responses?: number = 0;
   navigate: string = "";
-  currentId: string = this.activatedRoute.snapshot.paramMap.get("id");
+  currentId: string = this.activatedRoute.snapshot.queryParams.songId || this.activatedRoute.snapshot.queryParams.articleId;
   toggle: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute, private likeService: LikeService, 

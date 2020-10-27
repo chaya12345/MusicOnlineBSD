@@ -43,7 +43,7 @@ export class ResponseAddingComponent implements OnInit {
     if (this.responseForm.valid) {
       if (this.activatedRoute.snapshot.routeConfig.path.includes("song") == true) {
         this.newResponseToSong = new ResponsesToSongs();
-        this.newResponseToSong.songId = Number(this.activatedRoute.snapshot.paramMap.get("id"));
+        this.newResponseToSong.songId = this.activatedRoute.snapshot.queryParams.songId;
         this.newResponseToSong.name = this.responseForm.controls.fullName.value;
         this.newResponseToSong.title = this.responseForm.controls.title.value;
         this.newResponseToSong.content = this.responseForm.controls.messange.value;
@@ -61,7 +61,7 @@ export class ResponseAddingComponent implements OnInit {
       }
       else if (this.activatedRoute.snapshot.routeConfig.path.includes("article") == true) {
         this.newResponseToArticle = new ResponsesToArticles();
-        this.newResponseToArticle.articleId = Number(this.activatedRoute.snapshot.paramMap.get("id"));
+        this.newResponseToArticle.articleId = Number(this.activatedRoute.snapshot.queryParams.articleId);
         this.newResponseToArticle.name = this.responseForm.controls.fullName.value;
         this.newResponseToArticle.title = this.responseForm.controls.title.value;
         this.newResponseToArticle.content = this.responseForm.controls.messange.value;
