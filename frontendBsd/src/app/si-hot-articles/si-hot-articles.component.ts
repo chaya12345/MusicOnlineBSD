@@ -1,5 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import Swiper, { Navigation, Pagination } from 'swiper';
+import { Swiper } from 'swiper/bundle';
+import { Navigation, Pagination } from 'swiper';
+// import Swiper, { Navigation, Pagination } from 'swiper';
 import { Article } from '../classes/article';
 import { ArticleService } from '../services/article.service';
 Swiper.use([Navigation, Pagination]);
@@ -22,15 +24,15 @@ export class SiHotArticlesComponent implements OnInit {
 
   ngAfterViewInit() {
     var swiper = new Swiper('.swiper-container-article', {
-      slidesPerView: 1.2,
+      slidesPerView: 1,
       loop: true,
       spaceBetween: 14,
       centeredSlides: true,
       autoplay: {
-        delay: 2500,
+        delay: 4500,
         disableOnInteraction: false,
       },
-      speed: 800,
+      speed: 900,
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',

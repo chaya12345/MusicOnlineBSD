@@ -12,7 +12,7 @@ export class TopComponent implements OnInit {
   @Input() _title: string;
   @Input() subtitle: string;
   @Input() icon?: string;
-  @Input() isMain?: boolean = false;
+  @Input() biggerFont?: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute) { }
 

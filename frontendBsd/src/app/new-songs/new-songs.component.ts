@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import Swiper, { Navigation, Pagination } from 'swiper';
+// import Swiper, { Navigation, Pagination } from 'swiper';
+import { Swiper } from 'swiper/bundle';
+import { Navigation, Pagination } from 'swiper';
 import { Song } from '../classes/song';
 import { SongService } from '../services/song.service';
 Swiper.use([Navigation, Pagination]);
@@ -26,27 +28,24 @@ export class NewSongsComponent implements OnInit {
 
 
   ngAfterViewInit() {
-    var swiper = new Swiper('.swiper-container', {
+    var swiper = new Swiper('.swiper-container-header', {
       slidesPerView: 1.2,
       loop: true,
       spaceBetween: 0,
       centeredSlides: true,
       autoplay: {
-        delay: 2500,
+        delay: 6500,
         disableOnInteraction: false,
       },
-      speed: 800,
+      speed: 900,
       pagination: {
-        el: '.swiper-pagination',
+        el: '.swiper-pagination-header',
         clickable: true,
       },
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      scrollbar: {
-        el: '.swiper-scrollbar',
-      },
+        nextEl: '.swiper-button-next-header',
+        prevEl: '.swiper-button-prev-header',
+      }
     });
   }
 
