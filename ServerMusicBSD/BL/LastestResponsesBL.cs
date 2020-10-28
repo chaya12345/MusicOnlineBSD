@@ -8,7 +8,7 @@ using DTO;
 
 namespace BL
 {
-    public class LastesResponsBL
+    public class LastestResponsesBL
     {
         public static List<LastesResponsDTO> GetLastResponsesToArticlesAndSongs()
         {

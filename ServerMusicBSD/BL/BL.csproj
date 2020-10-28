@@ -92,7 +92,7 @@
     <Compile Include="FollowUpBL.cs" />
     <Compile Include="ItemsByParameterBL.cs" />
     <Compile Include="JobsBL.cs" />
-    <Compile Include="LastesResponsBL.cs" />
+    <Compile Include="LastestResponsesBL.cs" />
     <Compile Include="PlaylistBL.cs" />
     <Compile Include="PlaylistsSystemBL.cs" />
     <Compile Include="ReportsBL.cs" />
