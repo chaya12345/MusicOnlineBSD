@@ -100,10 +100,12 @@ export class SongsListComponent implements OnInit {
 
   orderByViews(): void {
     this.songsList.sort((a, b) => b.count_views - a.count_views);
+    this.reverseOrder();
   }
 
   orderByLikes(): void {
     this.songsList.sort((a, b) => b.count_like - a.count_like);
+    this.reverseOrder();
   }
 
   reverseOrder(): void {
