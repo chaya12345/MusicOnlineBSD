@@ -14,6 +14,8 @@ namespace BL
         public static void AddFollowUp(FollowUpTBL followUp)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
+            if (followUp == null)
+                return;
             if ((followUp.userId == null && followUp.mail == null))
                 return;
             if (followUp.songId == null && followUp.articleId == null)
@@ -39,15 +41,21 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             if (type == "article")
             {
-                FollowUpTBL followUp = et.FollowUpTBL.Where(f => f.userId == userId && f.articleId == id).FirstOrDefault();
-                et.FollowUpTBL.Remove(followUp);
-                et.SaveChanges();
+                FollowUpTBL followUp = et.FollowUpTBL.Where(f =>f!=null&& f.userId == userId && f.articleId == id).FirstOrDefault();
+                if (followUp != null)
+                {
+                    et.FollowUpTBL.Remove(followUp);
+                    et.SaveChanges();
+                }
             }
             if (type == "song")
             {
-                FollowUpTBL followUp = et.FollowUpTBL.Where(f => f.userId == userId && f.songId == id).FirstOrDefault();
-                et.FollowUpTBL.Remove(followUp);
-                et.SaveChanges();
+                FollowUpTBL followUp = et.FollowUpTBL.Where(f =>f!=null&& f.userId == userId && f.songId == id).FirstOrDefault();
+                if (followUp != null)
+                {
+                    et.FollowUpTBL.Remove(followUp);
+                    et.SaveChanges();
+                }
             }
         }
         public static List<string> GetSongsNameYouFollowUp(int? userId, string mail)
@@ -56,27 +64,34 @@ namespace BL
             List<string> songsName = new List<string>();
             if (userId != null)
             {
-                UsersTBL user = et.UsersTBL.Where(u => u.id == userId).FirstOrDefault();
-                List<FollowUpTBL> list = et.FollowUpTBL.Where(f => f.userId == user.id && f.songId != null).ToList();
+                UsersTBL user = et.UsersTBL.Where(u =>u!=null&& u.id == userId).FirstOrDefault();
+                List<FollowUpTBL> list = et.FollowUpTBL.Where(f =>f!=null&&user!=null&& f.userId == user.id && f.songId != null).ToList();
+                if (list == null)
+                    return null;
                 foreach (FollowUpTBL item in list)
                 {
-                    SongsTBL song = et.SongsTBL.Where(s => s.id == item.songId).FirstOrDefault();
-                    songsName.Add(song.name);
-                    ;
+                    SongsTBL song = et.SongsTBL.Where(s =>s!=null&&item!=null&& s.id == item.songId).FirstOrDefault();
+                    if (song.name != null)
+                        songsName.Add(song.name);
                 }
             }
             else
             {
                 if (mail == "")
                     return null;
-                List<FollowUpTBL> list = et.FollowUpTBL.Where(f => f.mail == mail && f.songId != null).ToList();
+                List<FollowUpTBL> list = et.FollowUpTBL.Where(f =>f!=null&& f.mail == mail && f.songId != null).ToList();
+                if (list == null)
+                    return null;
                 foreach (FollowUpTBL item in list)
                 {
-                    SongsTBL song = et.SongsTBL.Where(s => s.id == item.songId).FirstOrDefault();
-                    songsName.Add(song.name);
+                    SongsTBL song = et.SongsTBL.Where(s =>s!=null&&item!=null&& s.id == item.songId).FirstOrDefault();
+                    if (song.name != null)
+                        songsName.Add(song.name);
                 }
             }
-            return songsName;
+            if (songsName != null)
+                return songsName;
+            return null;
         }
         public static List<string> GetArticlesNameYouFollowUp(int? userId, string mail)
         {
@@ -84,72 +99,92 @@ namespace BL
             List<string> articlesName = new List<string>();
             if (userId != null)
             {
-                UsersTBL user = et.UsersTBL.Where(u => u.id == userId).FirstOrDefault();
-                List<FollowUpTBL> list = et.FollowUpTBL.Where(f => f.userId == user.id && f.articleId != null).ToList();
+                UsersTBL user = et.UsersTBL.Where(u =>u!=null&& u.id == userId).FirstOrDefault();
+                if (user == null)
+                    return null;
+                List<FollowUpTBL> list = et.FollowUpTBL.Where(f =>f!=null&& f.userId == user.id && f.articleId != null).ToList();
+                if (list == null)
+                    return null;
                 foreach (FollowUpTBL item in list)
                 {
-                    ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == item.articleId).FirstOrDefault();
-                    articlesName.Add(article.title);
+                    ArticlesTBL article = et.ArticlesTBL.Where(a =>a!=null&&item!=null&& a.id == item.articleId).FirstOrDefault();
+                    if (article.title != null)
+                        articlesName.Add(article.title);
                 }
             }
             else
             {
                 if (mail == "")
                     return null;
-                List<FollowUpTBL> list = et.FollowUpTBL.Where(f => f.mail == mail && f.articleId != null).ToList();
+                List<FollowUpTBL> list = et.FollowUpTBL.Where(f =>f!=null&& f.mail == mail && f.articleId != null).ToList();
+                if (list == null)
+                    return null;
                 foreach (FollowUpTBL item in list)
                 {
-                    ArticlesTBL song = et.ArticlesTBL.Where(s => s.id == item.id).FirstOrDefault();
-                    articlesName.Add(song.title);
+                    ArticlesTBL song = et.ArticlesTBL.Where(s =>s!=null&&item!=null&& s.id == item.id).FirstOrDefault();
+                    if (song.title != null)
+                        articlesName.Add(song.title);
                 }
             }
-            return articlesName;
+            if (articlesName != null)
+                return articlesName;
+            return null;
         }
         public static List<string> GetMailsOfSongFollowUp(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<string> mails = new List<string>();
-            List<FollowUpTBL> list = et.FollowUpTBL.Where(f => f.songId == songId).ToList();
+            List<FollowUpTBL> list = et.FollowUpTBL.Where(f =>f!=null&& f.songId == songId).ToList();
+            if (list == null)
+                return null;
             foreach (FollowUpTBL item in list)
             {
                 if (item.userId != null)
                 {
-                    UsersTBL user = et.UsersTBL.Where(u => u.id == item.userId).FirstOrDefault();
-                    mails.Add(user.mail);
+                    UsersTBL user = et.UsersTBL.Where(u =>u!=null&& u.id == item.userId).FirstOrDefault();
+                    if (user.mail != null)
+                        mails.Add(user.mail);
                 }
                 else if (item.mail != null)
                     mails.Add(item.mail);
             }
-            return mails;
+            if (mails != null)
+                return mails;
+            return null;
         }
         public static List<string> GetMailsOfArticleFollowUp(int articleId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<string> mails = new List<string>();
-            List<FollowUpTBL> list = et.FollowUpTBL.Where(f => f.songId == articleId).ToList();
+            List<FollowUpTBL> list = et.FollowUpTBL.Where(f =>f!=null&& f.songId == articleId).ToList();
+            if (list == null)
+                return null;
             foreach (FollowUpTBL item in list)
             {
                 if (item.userId != null)
                 {
-                    UsersTBL user = et.UsersTBL.Where(u => u.id == item.userId).FirstOrDefault();
-                    mails.Add(user.mail);
+                    UsersTBL user = et.UsersTBL.Where(u =>u!=null&& u.id == item.userId).FirstOrDefault();
+                    if (user.mail != null)
+                        mails.Add(user.mail);
                 }
                 else if (item.mail != null)
                     mails.Add(item.mail);
             }
-            return mails;
+            if (mails != null)
+                return mails;
+            return null;
         }
         public static Boolean IsUserFollowUpSong(int userId, int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            if (et.FollowUpTBL.Where(f => f.userId == userId && f.songId == songId).FirstOrDefault() != null)
+            if (et.FollowUpTBL.Where(f =>f!=null&& f.userId == userId && f.songId == songId).FirstOrDefault() != null)
                 return true;
             return false;
         }
         public static Boolean IsUserFollowUpArticle(int userId, int articleId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            if (et.FollowUpTBL.Where(f => f.userId == userId && f.articleId == articleId).FirstOrDefault() != null)
+            if (et.FollowUpTBL.Where(f =>f!=null&& f.userId == userId && f.articleId == articleId).FirstOrDefault() != null)
                 return true;
             return false;
         }

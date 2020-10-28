@@ -14,12 +14,18 @@ namespace BL
         public static List<SingerSearchingToUserDTO> GetAllSingerSearching()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToSingerSearchingToUserDTO.GetSearchingsToUser(et.SingerSearchingToUserTBL.ToList());
+            List<SingerSearchingToUserTBL> list = et.SingerSearchingToUserTBL.ToList();
+            if (list != null)
+                return Casts.ToSingerSearchingToUserDTO.GetSearchingsToUser(list);
+            return null;
         }
         public static List<SingerSearchingToUserDTO> GetSingerSearchingToUser(int userId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToSingerSearchingToUserDTO.GetSearchingsToUser(et.SingerSearchingToUserTBL.Where(s => s.userId == userId).ToList());
+            List<SingerSearchingToUserTBL> list = et.SingerSearchingToUserTBL.Where(s =>s!=null&& s.userId == userId).ToList();
+            if (list != null)
+                return Casts.ToSingerSearchingToUserDTO.GetSearchingsToUser(list);
+            return null;
         }
         private static void AddRecord(int userId,int singerId)
         {
@@ -47,7 +53,9 @@ namespace BL
         private static void UpdateRecord(int userId, int singerId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SingerSearchingToUserTBL updateLine= et.SingerSearchingToUserTBL.Where(s => s.userId == userId && s.singerId == singerId).FirstOrDefault();
+            SingerSearchingToUserTBL updateLine= et.SingerSearchingToUserTBL.Where(s =>s!=null&& s.userId == userId && s.singerId == singerId).FirstOrDefault();
+            if (updateLine == null)
+                return;
             updateLine.count_searching++;
             updateLine.last_date = DateTime.Today;
             et.SaveChanges();
@@ -55,7 +63,7 @@ namespace BL
         public static void AddSingerSearchingToUser(int userId,int singerId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            if (et.SingerSearchingToUserTBL.Where(s => s.userId == userId && s.singerId == singerId).ToList() == null)
+            if (et.SingerSearchingToUserTBL.Where(s =>s!=null&& s.userId == userId && s.singerId == singerId).ToList() == null)
                 AddRecord(userId, singerId);
             else
                 UpdateRecord(userId, singerId);
@@ -63,8 +71,10 @@ namespace BL
         public static SingerSearchingToUserDTO GetLastSearchingToUser(int userId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SingerSearchingToUserTBL lastSearching= et.SingerSearchingToUserTBL.Where(s => s.userId == userId).OrderByDescending(s => s.last_date).FirstOrDefault();
-            return Casts.ToSingerSearchingToUserDTO.GetSearchingToUser(lastSearching);
+            SingerSearchingToUserTBL lastSearching= et.SingerSearchingToUserTBL.Where(s =>s!=null&& s.userId == userId).OrderByDescending(s => s.last_date).FirstOrDefault();
+            if (lastSearching != null)
+                return Casts.ToSingerSearchingToUserDTO.GetSearchingToUser(lastSearching);
+            return null;
         }
     }
 }

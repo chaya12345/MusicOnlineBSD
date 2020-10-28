@@ -21,7 +21,8 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<ArtistsAndSingersDTO> list = GetArtistsAndSingers();
-            return list.Where(artist => artist.name == name).FirstOrDefault();
+            ArtistsAndSingersDTO artistOrAndSinger = list.Where(artist => artist != null && artist.name == name).FirstOrDefault();
+            return artistOrAndSinger != null ? artistOrAndSinger : null;
         }
     }
 }

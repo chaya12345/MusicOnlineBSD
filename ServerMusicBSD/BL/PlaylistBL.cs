@@ -14,9 +14,12 @@ namespace BL
         public static void AddPlaylist(PlaylistsTBL playlist)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            try { 
-                et.PlaylistsTBL.Add(playlist);
-                et.SaveChanges();
+            try {
+                if (playlist != null)
+                {
+                    et.PlaylistsTBL.Add(playlist);
+                    et.SaveChanges();
+                }
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -32,22 +35,28 @@ namespace BL
         public static void DeletePlaylist(int id)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            PlaylistsTBL playlist = et.PlaylistsTBL.Where(p => p.id == id).FirstOrDefault();
+            PlaylistsTBL playlist = et.PlaylistsTBL.Where(p =>p!=null&& p.id == id).FirstOrDefault();
             if (playlist != null)
             {
                 et.PlaylistsTBL.Remove(playlist);
                 et.SaveChanges();
-                List<SongsToPlaylistsTBL> songsToDelet = et.SongsToPlaylistsTBL.Where(s => s.playlistId == id).ToList();
+                List<SongsToPlaylistsTBL> songsToDelet = et.SongsToPlaylistsTBL.Where(s => s!=null&&s.playlistId == id).ToList();
+                if (songsToDelet == null)
+                    return;
                 foreach (SongsToPlaylistsTBL song in songsToDelet)
                 {
-                    SongsToPlaylistsBL.DeleteSong(song.id);
+                    if (song != null)
+                        SongsToPlaylistsBL.DeleteSong(song.id);
                 }
             }
         }
         public static List<PlaylistsDTO> GetPlaylistsByUserId(int userId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToPlaylistsDTO.GetPlaylists(et.PlaylistsTBL.Where(p => p.userId == userId).ToList());
+            List<PlaylistsTBL> list = et.PlaylistsTBL.Where(p =>p!=null&& p.userId == userId).ToList();
+            if (list != null)
+                return Casts.ToPlaylistsDTO.GetPlaylists(list);
+            return null;
         }
     }
 }

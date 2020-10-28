@@ -13,7 +13,10 @@ namespace BL
         public static List<LastesResponsDTO> GetLastResponsesToArticlesAndSongs()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToLastesResponsDTO.GetLastResponses(et.latestResponses.ToList());
+            List<latestResponses> list = et.latestResponses.ToList();
+            if (list != null)
+                return Casts.ToLastesResponsDTO.GetLastResponses(list);
+            return null;
         }
     }
 }

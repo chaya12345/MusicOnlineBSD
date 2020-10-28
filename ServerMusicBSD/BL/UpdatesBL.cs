@@ -13,12 +13,15 @@ namespace BL
         public static List<UpdatesDTO> GetUpdates()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToUpdatesDTO.GetUpdates(et.UpdatesTBL.ToList());
+            List<UpdatesTBL> list = et.UpdatesTBL.ToList();
+            if (list != null)
+                return Casts.ToUpdatesDTO.GetUpdates(list);
+            return null;
         }
         public static UpdatesDTO GetUpdate(int updateId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            UpdatesTBL update = et.UpdatesTBL.Where(u => u.id == updateId).FirstOrDefault();
+            UpdatesTBL update = et.UpdatesTBL.Where(u =>u!=null&& u.id == updateId).FirstOrDefault();
             if (update != null)
                 return Casts.ToUpdatesDTO.GetUpdate(update);
             return null;
@@ -26,13 +29,16 @@ namespace BL
         public static void AddUpdate(UpdatesTBL update)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            et.UpdatesTBL.Add(update);
-            et.SaveChanges();
+            if (update != null)
+            {
+                et.UpdatesTBL.Add(update);
+                et.SaveChanges();
+            }
         }
         public static void DeleteUpdate(int updateId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            UpdatesTBL update = et.UpdatesTBL.Where(u => u.id == updateId).FirstOrDefault();
+            UpdatesTBL update = et.UpdatesTBL.Where(u =>u!=null&& u.id == updateId).FirstOrDefault();
             if (update != null)
             {
                 et.UpdatesTBL.Remove(update);
@@ -42,7 +48,7 @@ namespace BL
         public static List<UpdatesDTO> GetInProcessUpdates()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToUpdatesDTO.GetUpdates(et.UpdatesTBL.Where(u=>u.status!="טופל").ToList());
+            return Casts.ToUpdatesDTO.GetUpdates(et.UpdatesTBL.Where(u=>u!=null&&u.status!="טופל").ToList());
         }
     }
 }

@@ -13,6 +13,8 @@ namespace BL
     {
         public static void AddArtistName(ArtistsTBL artistsName)
         {
+            if (artistsName == null)
+                return;
             MusicOnlineEntities et = new MusicOnlineEntities();
             try { 
                 et.ArtistsTBL.Add(artistsName);
@@ -32,7 +34,10 @@ namespace BL
         public static List<ArtistsDTO> GetArtistsNames()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToArtistsDTO.GetArtistsNames(et.ArtistsTBL.ToList());
+            List<ArtistsTBL> list = et.ArtistsTBL.ToList();
+            if (list != null)
+                return Casts.ToArtistsDTO.GetArtistsNames(list);
+            return null;
         }
     }
 }

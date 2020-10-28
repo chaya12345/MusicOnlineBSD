@@ -17,9 +17,12 @@ namespace BL
             int proc = (int)eProccessing.NOT_PROCESSED;
             MusicOnlineEntities et = new MusicOnlineEntities();
             try {
-                report.status = proc;
-                et.ReportsTBL.Add(report);
-                et.SaveChanges();
+                if (report != null)
+                {
+                    report.status = proc;
+                    et.ReportsTBL.Add(report);
+                    et.SaveChanges();
+                }
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -35,17 +38,25 @@ namespace BL
         public static List<ReportsDTO> GetReports()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToReportsDTO.GetReports(et.ReportsTBL.ToList());
+            List<ReportsTBL> list = et.ReportsTBL.ToList();
+            if (list != null)
+                return Casts.ToReportsDTO.GetReports(list);
+            return null;
         }
         public static ReportsDTO GetReportById(int reportId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToReportsDTO.GetReport(et.ReportsTBL.Where(r => r.id == reportId).FirstOrDefault());
+            ReportsTBL report = et.ReportsTBL.Where(r => r.id == reportId).FirstOrDefault();
+            if(report!=null)
+            return Casts.ToReportsDTO.GetReport(report);
+            return null;
         }
         public static void ChangeReportStatus(int reportId, bool status)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            ReportsTBL report = et.ReportsTBL.Where(r => r.id == reportId).FirstOrDefault();
+            ReportsTBL report = et.ReportsTBL.Where(r =>r!=null&& r.id == reportId).FirstOrDefault();
+            if (report == null)
+                return;
             report.status = status == true ? report.status = (int)eProccessing.HAS_BEEN_PROCESSED : (int)eProccessing.NOT_PROCESSED;
             et.SaveChanges();
         }
@@ -53,12 +64,17 @@ namespace BL
         {
             int proc = (int)eProccessing.HAS_BEEN_PROCESSED;
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToReportsDTO.GetReports(et.ReportsTBL.Where(r => r.status != proc).ToList());
+            List<ReportsTBL> list = et.ReportsTBL.Where(r => r != null && r.status != proc).ToList();
+            if (list != null)
+                return Casts.ToReportsDTO.GetReports(list);
+            return null;
         }
         public static void ChangeReportStatus(int reportId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            ReportsTBL report = et.ReportsTBL.Where(r => r.id == reportId).FirstOrDefault();
+            ReportsTBL report = et.ReportsTBL.Where(r =>r!=null&& r.id == reportId).FirstOrDefault();
+            if (report != null)
+                return;
             report.status = (int)eProccessing.IN_PROCESS;
             et.SaveChanges();
         }

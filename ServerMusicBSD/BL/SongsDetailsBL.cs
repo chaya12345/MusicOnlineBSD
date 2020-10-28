@@ -11,7 +11,10 @@ namespace BL
     {
         public static List<songsDetails> GetSongs()
         {
-            return Casts.ToSongsDetailsDTO.GetSongsDetails(SongsBL.GetSongs());
+            List<DTO.SongsDTO> list = SongsBL.GetSongs();
+            if (list != null)
+                return Casts.ToSongsDetailsDTO.GetSongsDetails(list);
+            return null;
         }
     }
 }

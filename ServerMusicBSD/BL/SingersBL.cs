@@ -15,19 +15,28 @@ namespace BL
         public static List<SingersDTO> GetSingers()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToSingersDTO.GetSingers(et.SingersTBL.ToList());
+            List<SingersTBL> list = et.SingersTBL.ToList();
+            if (list != null)
+                return Casts.ToSingersDTO.GetSingers(list);
+            return null;
         }
         public static SingersDTO GetSingerByName(string name)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToSingersDTO.GetSinger(et.SingersTBL.Where(singer => singer.name == name).FirstOrDefault());
+            SingersTBL singer1 = et.SingersTBL.Where(singer => singer != null && singer.name == name).FirstOrDefault();
+            if (singer1 != null)
+                return Casts.ToSingersDTO.GetSinger(singer1);
+            return null;
         }
         public static void AddSinger(SingersTBL name)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            try { 
-                et.SingersTBL.Add(name);
-                et.SaveChanges();
+            try {
+                if (name != null)
+                {
+                    et.SingersTBL.Add(name);
+                    et.SaveChanges();
+                }
             }
             catch (DbEntityValidationException dbEx)
             {

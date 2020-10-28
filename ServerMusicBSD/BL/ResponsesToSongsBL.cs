@@ -14,6 +14,8 @@ namespace BL
         public static void AddResponse(ResponsesToSongsTBL response)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
+            if (response == null)
+                return;
             if (response.content == "") {
                 response.content = null;
             }
@@ -36,25 +38,33 @@ namespace BL
         public static List<ResponsesToSongsDTO> GetSongResponses(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToResponsesToSongsDTO.GetResponses(et.ResponsesToSongsTBL.Where(r => r.songId == songId).ToList());
+            List<ResponsesToSongsTBL> list = et.ResponsesToSongsTBL.Where(r => r != null && r.songId == songId).ToList();
+            if (list != null)
+                return Casts.ToResponsesToSongsDTO.GetResponses(list);
+            return null;
         }
         public static int GetCountResponsesToSong(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return et.ResponsesToSongsTBL.Count(res => res.songId == songId);
+            return et.ResponsesToSongsTBL.Count(res => res!=null&& res.songId == songId);
         }
         public static void DeleteResponse(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            ResponsesToSongsTBL response = et.ResponsesToSongsTBL.Where(r => r.id == songId).FirstOrDefault();
-            et.ResponsesToSongsTBL.Remove(response);
-            et.SaveChanges();
+            ResponsesToSongsTBL response = et.ResponsesToSongsTBL.Where(r =>r!=null&& r.id == songId).FirstOrDefault();
+            if (response != null)
+            {
+                et.ResponsesToSongsTBL.Remove(response);
+                et.SaveChanges();
+            }
         }
         public static List<ResponsesToSongsDTO> GetLastResponses()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<ResponsesToSongsTBL> list = et.ResponsesToSongsTBL.Where(r => r.date != null).OrderBy(r => r.date).Distinct().ToList();
-            return Casts.ToResponsesToSongsDTO.GetResponses(list);
+            List<ResponsesToSongsTBL> list = et.ResponsesToSongsTBL.Where(r =>r!=null&& r.date != null).OrderBy(r => r.date).Distinct().ToList();
+            if (list != null)
+                return Casts.ToResponsesToSongsDTO.GetResponses(list);
+            return null;
         }
     }
 }

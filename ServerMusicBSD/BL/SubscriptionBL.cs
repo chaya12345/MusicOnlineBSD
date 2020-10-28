@@ -16,8 +16,11 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             try
             {
-                et.SubscriptionTBL.Add(subscription);
-                et.SaveChanges();
+                if (subscription != null)
+                {
+                    et.SubscriptionTBL.Add(subscription);
+                    et.SaveChanges();
+                }
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -34,35 +37,41 @@ namespace BL
         public static void DeleteSubscription(int subscriptionId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SubscriptionTBL subscription = et.SubscriptionTBL.Where(s => s.id == subscriptionId).FirstOrDefault();
+            SubscriptionTBL subscription = et.SubscriptionTBL.Where(s =>s!=null&& s.id == subscriptionId).FirstOrDefault();
             et.SubscriptionTBL.Remove(subscription);
             et.SaveChanges();
         }
         public static List<string> GetMailsOfSingerSubscription(int singerId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<SubscriptionTBL> list = et.SubscriptionTBL.Where(s => s.singerId == singerId).ToList();
+            List<SubscriptionTBL> list = et.SubscriptionTBL.Where(s => s!=null&&s.singerId == singerId).ToList();
             List<string> mails = new List<string>();
+            if (list == null)
+                return null;
             foreach (SubscriptionTBL item in list)
             {
-                UsersTBL user = et.UsersTBL.Where(u => u.id == item.userId).FirstOrDefault();
+                UsersTBL user = et.UsersTBL.Where(u =>u!=null&& u.id == item.userId).FirstOrDefault();
                 if (user.mail != null)
                     mails.Add(user.mail);
             }
-            return mails;
+            if (mails != null)
+                return mails;
+            return null;
         }
         public static List<string> GetYourSingersNameSubscription(int userId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<SubscriptionTBL> list = et.SubscriptionTBL.Where(s => s.userId == userId).ToList();
+            List<SubscriptionTBL> list = et.SubscriptionTBL.Where(s =>s!=null&& s.userId == userId).ToList();
             List<string> names = new List<string>();
             foreach (SubscriptionTBL item in list)
             {
-                SingersTBL singer = et.SingersTBL.Where(s => s.id == item.singerId).FirstOrDefault();
+                SingersTBL singer = et.SingersTBL.Where(s => s!=null&&s.id == item.singerId).FirstOrDefault();
                 if (singer.name != null)
                     names.Add(singer.name);
             }
-            return names;
+            if (names != null)
+                return names;
+            return null;
         }
     }
 }

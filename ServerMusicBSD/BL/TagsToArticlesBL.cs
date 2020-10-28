@@ -16,27 +16,36 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<TagsToAtriclesDTO> tagsToArticle = GetTagsToArticle(articleId);
             List<string> tags = new List<string>();
+            if (tagsToArticle == null)
+                return null;
             foreach (TagsToAtriclesDTO tag in tagsToArticle)
             {
-                TagsTBL currentTag = et.TagsTBL.Where(t => t.id == tag.tagId && (t.isShow == true || all == true)).FirstOrDefault();
+                TagsTBL currentTag = et.TagsTBL.Where(t =>t!=null&& t.id == tag.tagId && (t.isShow == true || all == true)).FirstOrDefault();
                 if (currentTag != null)
                 {
                     tags.Add(currentTag.name);
                 }
             }
-            return tags;
+            return tags==null?null:tags;
         }
         public static List<TagsToAtriclesDTO> GetTagsToArticle(int articleId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToTagsToArticleDTO.GetTagsToArticles(et.TagsToArticlesTBL.Where(t => t.articleId == articleId).ToList());
+            List<TagsToArticlesTBL> list = et.TagsToArticlesTBL.Where(t => t.articleId == articleId).ToList();
+            if (list != null)
+                return Casts.ToTagsToArticleDTO.GetTagsToArticles(list);
+            return null;
         }
         public static void AddTagToArticle(TagsToArticlesTBL tagsToArticle)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            try { 
-            et.TagsToArticlesTBL.Add(tagsToArticle);
-            et.SaveChanges();
+            try 
+            {
+                if (tagsToArticle != null)
+                {
+                    et.TagsToArticlesTBL.Add(tagsToArticle);
+                    et.SaveChanges();
+                }
             }
             catch (DbEntityValidationException dbEx)
             {

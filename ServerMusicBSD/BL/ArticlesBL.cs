@@ -14,19 +14,29 @@ namespace BL
         public static List<ArticlesDTO> GetArticles()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToArticlesDTO.GetArticles(et.ArticlesTBL.ToList());
+            List<ArticlesTBL> list = et.ArticlesTBL.ToList();
+            if (list != null)
+                return Casts.ToArticlesDTO.GetArticles(list);
+            return null;
         }
         public static ArticlesDTO GetArticleById(int articleId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToArticlesDTO.GetArticle(et.ArticlesTBL.Where(a => a.id == articleId).FirstOrDefault());
+            ArticlesTBL article = et.ArticlesTBL.Where(a =>a!=null&& a.id == articleId).FirstOrDefault();
+            if (article != null)
+                return Casts.ToArticlesDTO.GetArticle(article);
+            return null;
         }
         public static void AddArticle(ArticlesTBL article)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            try { 
-                et.ArticlesTBL.Add(article);
-                et.SaveChanges();
+            try {
+                if (article != null)
+                {
+                    et.ArticlesTBL.Add(article);
+                    et.SaveChanges();
+                }
+                
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -42,9 +52,12 @@ namespace BL
         public static void DeleteArticle(int articleId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == articleId).FirstOrDefault();
-            et.ArticlesTBL.Remove(article);
-            et.SaveChanges();
+            ArticlesTBL article = et.ArticlesTBL.Where(a =>a!=null&& a.id == articleId).FirstOrDefault();
+            if (article != null)
+            {
+                et.ArticlesTBL.Remove(article);
+                et.SaveChanges();
+            }
         }
         public static List<ArticlesDTO> GetArticlesByTag(string tagName)
         {
@@ -53,37 +66,45 @@ namespace BL
             if (list != null)
                 return Casts.ToArticlesDTO.GetArticles(list);
             return null;
-
         }
         private static List<ArticlesTBL> GetArticleInListByTag(List<ArticlesTBL> articles, string tagName)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            TagsTBL tag = et.TagsTBL.Where(t => t.name == tagName).FirstOrDefault();
+            TagsTBL tag = et.TagsTBL.Where(t =>t!=null&& t.name == tagName).FirstOrDefault();
             List<ArticlesTBL> result = new List<ArticlesTBL>();
             if (tag != null && articles != null)
             {
-                List<TagsToArticlesTBL> tagToArticles = et.TagsToArticlesTBL.Where(t => t.tagId == tag.id).ToList();
+                List<TagsToArticlesTBL> tagToArticles = et.TagsToArticlesTBL.Where(t =>t!=null&& t.tagId == tag.id).ToList();
                 foreach (TagsToArticlesTBL artic in tagToArticles)
                 {
-                    ArticlesTBL articleIn = articles.Where(a => a.id == artic.articleId).FirstOrDefault();
+                    ArticlesTBL articleIn = articles.Where(a =>a!=null&&artic!=null&& a.id == artic.articleId).FirstOrDefault();
                     if (articleIn != null)
                         result.Add(articleIn);
                 }
-                return result;
+                if (result != null)
+                    return result;
             }
             return null;
         }
         public static List<ArticlesDTO> GetArticlesByTags(List<string> tags)
         {
+            if (tags == null)
+                return null;
             List<ArticlesDTO> articles = new List<ArticlesDTO>();
             foreach (string tag in tags)
             {
-                articles.AddRange(GetArticlesByTag(tag));
+                List<ArticlesDTO> list = GetArticlesByTag(tag);
+                if (list != null)
+                    articles.AddRange(list);
             }
-            return articles;
+            if (articles != null)
+                return articles;
+            return null;
         }
         public static List<ArticlesDTO> GetArticlesByAllTags(List<string> tags)
         {
+            if (tags == null)
+                return null;
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<ArticlesTBL> articles = et.ArticlesTBL.ToList();
             List<ArticlesTBL> flag = et.ArticlesTBL.ToList();
@@ -102,7 +123,7 @@ namespace BL
         public static void InreaseLike(int articleId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == articleId).FirstOrDefault();
+            ArticlesTBL article = et.ArticlesTBL.Where(a =>a!=null&& a.id == articleId).FirstOrDefault();
             if (article != null)
             {
                 if (article.count_like == null)
@@ -121,7 +142,7 @@ namespace BL
         public static void DecreaseLike(int articleId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == articleId).FirstOrDefault();
+            ArticlesTBL article = et.ArticlesTBL.Where(a =>a!=null&& a.id == articleId).FirstOrDefault();
             if (article != null)
             {
                 if (article.count_like == null)

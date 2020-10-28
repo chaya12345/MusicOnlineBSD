@@ -13,12 +13,18 @@ namespace BL
         public static List<ItemsByParameterDTO> GetItemsByParameter(string parameter)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToItemsByParameterDTO.GetItemsByParameter(et.itemsByParameter(parameter).ToList());
+            List<itemsByParameter_Result> list = et.itemsByParameter(parameter).ToList();
+            if (list != null)
+                return Casts.ToItemsByParameterDTO.GetItemsByParameter(list);
+            return null;
         }
         public static ItemByNameDTO GetItemByName(string name)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToItemByNameDTO.GetItemByName(et.itemByName(name).FirstOrDefault());
+            itemByName_Result itemByName = et.itemByName(name).FirstOrDefault();
+            if(itemByName!=null)
+            return Casts.ToItemByNameDTO.GetItemByName(itemByName);
+            return null;
         }
     }
 }

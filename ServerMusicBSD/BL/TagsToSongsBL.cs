@@ -16,34 +16,45 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<TagsToSongsDTO> tagsToSong = GetTagsToSong(songId);
             List<string> tags = new List<string>();
+            if (tagsToSong == null)
+                return null;
             foreach (TagsToSongsDTO tag in tagsToSong)
             {
-                TagsTBL x = et.TagsTBL.Where(t => t.id == tag.tagId && t.isShow == true).FirstOrDefault();
+                TagsTBL x = et.TagsTBL.Where(t =>t!=null&& t.id == tag.tagId && t.isShow == true).FirstOrDefault();
                 if(x!=null)
                 tags.Add(x.name);
             }
-            return tags;
+            return tags!=null?tags:null;
         }
         public static List<string> GetTagsIncludeArtistsToSong(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<string> tagsIncludeArtists = new List<string>();
-            tagsIncludeArtists.AddRange(GetTagsNamesToSong(songId));
-            tagsIncludeArtists.AddRange(ArtistsToSongsBL.GetArtistsNamesToSong(songId));
-            return tagsIncludeArtists;
+            List<string> list = GetTagsNamesToSong(songId);
+            if (list != null)
+                tagsIncludeArtists.AddRange(list);
+            List<string> list1 = ArtistsToSongsBL.GetArtistsNamesToSong(songId);
+            if(list1!=null)
+            tagsIncludeArtists.AddRange(list1);
+            return tagsIncludeArtists!=null?tagsIncludeArtists:null;
         }
         public static List<TagsToSongsDTO> GetTagsToSong(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToTagsToSongsDTO.GetTagsToSongs(et.TagsToSongsTBL
-                .Where(t => t.songId == songId).ToList());
+            List<TagsToSongsTBL> list = et.TagsToSongsTBL.Where(t => t != null && t.songId == songId).ToList();
+            if (list != null)
+                return Casts.ToTagsToSongsDTO.GetTagsToSongs(list);
+            return null;
         }
         public static void AddTagToSong(TagsToSongsTBL tagToSong)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try {
-                et.TagsToSongsTBL.Add(tagToSong);
-                et.SaveChanges();
+                if (tagToSong != null)
+                {
+                    et.TagsToSongsTBL.Add(tagToSong);
+                    et.SaveChanges();
+                }
             }
             catch (DbEntityValidationException dbEx)
             {

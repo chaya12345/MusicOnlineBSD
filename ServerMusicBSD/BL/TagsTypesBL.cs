@@ -13,17 +13,19 @@ namespace BL
         public static TagsTypesDTO GetTagType(int tagId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            TagsTBL tag = et.TagsTBL.Where(t => t.id == tagId).FirstOrDefault();
+            TagsTBL tag = et.TagsTBL.Where(t =>t!=null&& t.id == tagId).FirstOrDefault();
             if (tag != null)
             {
-                return Casts.ToTagsTypesDTO.GetTagType(et.TagsTypesTBL.Where(type => type.id == tag.tagTypeId).FirstOrDefault());
+                TagsTypesTBL tagsTypesTBL = et.TagsTypesTBL.Where(type => type.id == tag.tagTypeId).FirstOrDefault();
+                if(tagsTypesTBL!=null)
+                return Casts.ToTagsTypesDTO.GetTagType(tagsTypesTBL);
             }
             return null;
         }
         public static int GetId(string typeName)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            TagsTypesTBL currentType = et.TagsTypesTBL.Where(type => type.name == typeName).FirstOrDefault();
+            TagsTypesTBL currentType = et.TagsTypesTBL.Where(type => type!=null&& type.name == typeName).FirstOrDefault();
             if (currentType != null)
             {
                 return currentType.id;
@@ -33,7 +35,7 @@ namespace BL
         public static List<TagsDTO> GetTagByType(List<TagsDTO> tags, string typeName)
         {
             List<TagsDTO> matchingTags = new List<TagsDTO>();
-            matchingTags.AddRange(tags.Where(tag => tag.tagTypeId == GetId(typeName)).ToList());
+            matchingTags.AddRange(tags.Where(tag => tag!=null&& tag.tagTypeId == GetId(typeName)).ToList());
             return matchingTags;
         }
     }

@@ -14,26 +14,36 @@ namespace BL
         public static List<PlaylistsSystemDTO> GetPlaylists()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToPlaylistsSystemDTO.GetPlaylistsSystem(et.PlaylistsSystemTBL.ToList());
+            List<PlaylistsSystemTBL> list = et.PlaylistsSystemTBL.ToList();
+            if (list != null)
+                return Casts.ToPlaylistsSystemDTO.GetPlaylistsSystem(list);
+            return null;
         }
         public static PlaylistsSystemDTO GetPlaylistById(int playlistId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToPlaylistsSystemDTO.GetPlaylistSystem(
-                et.PlaylistsSystemTBL.Where(p => p.id == playlistId).FirstOrDefault());
+            PlaylistsSystemTBL playlistsSystem = et.PlaylistsSystemTBL.Where(p => p.id == playlistId).FirstOrDefault();
+            if (playlistsSystem != null)
+                return Casts.ToPlaylistsSystemDTO.GetPlaylistSystem(playlistsSystem);
+            return null;
         }
         public static PlaylistsSystemDTO GetPlaylistByName(string playlistName)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToPlaylistsSystemDTO.GetPlaylistSystem(
-                et.PlaylistsSystemTBL.Where(p => p.name == playlistName).FirstOrDefault());
+            PlaylistsSystemTBL playlistsSystem = et.PlaylistsSystemTBL.Where(p => p.name == playlistName).FirstOrDefault();
+            if (playlistsSystem != null)
+                return Casts.ToPlaylistsSystemDTO.GetPlaylistSystem(playlistsSystem);
+            return null;
         }
         public static void AddPlaylistSystem(PlaylistsSystemTBL playlistsSystem)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            try { 
-                et.PlaylistsSystemTBL.Add(playlistsSystem);
-                et.SaveChanges();
+            try {
+                if (playlistsSystem != null)
+                {
+                    et.PlaylistsSystemTBL.Add(playlistsSystem);
+                    et.SaveChanges();
+                }
             }
             catch (DbEntityValidationException dbEx)
             {

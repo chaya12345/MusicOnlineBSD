@@ -14,9 +14,13 @@ namespace BL
         public static void AddUser(UsersTBL user)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            try { 
-                et.UsersTBL.Add(user);
-                et.SaveChanges();
+            try
+            {
+                if (user != null)
+                {
+                    et.UsersTBL.Add(user);
+                    et.SaveChanges();
+                }
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -32,7 +36,7 @@ namespace BL
         public static bool signUp(UsersTBL user)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            if (et.UsersTBL.Where(usr => usr.mail == user.mail).FirstOrDefault() == null/* && mail is valid... */)
+            if (et.UsersTBL.Where(usr => usr!=null&& usr.mail == user.mail).FirstOrDefault() == null/* && mail is valid... */)
             {
                 if (user.newsletter == null)
                 {
@@ -64,7 +68,7 @@ namespace BL
         public static bool AddToNewsletter(string mail)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            if (et.UsersTBL.Where(usr => usr.mail == mail).FirstOrDefault() == null)
+            if (et.UsersTBL.Where(usr => usr!=null&& usr.mail == mail).FirstOrDefault() == null)
             {
                 UsersTBL user = new UsersTBL();
                 user.mail = mail;
@@ -76,7 +80,7 @@ namespace BL
             }
             else
             {
-                UsersTBL currentUser = et.UsersTBL.Where(usr => usr.mail == mail).FirstOrDefault();
+                UsersTBL currentUser = et.UsersTBL.Where(usr => usr!=null&& usr.mail == mail).FirstOrDefault();
                 if (currentUser.newsletter == null || currentUser.newsletter == false)
                 {
                     currentUser.newsletter = true;
@@ -100,7 +104,7 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             UsersTBL user = et.UsersTBL.Find(userId);
-            if (userId == user.id)
+            if (user!=null&&userId == user.id)
             {
                 if (updateUser.name != null)
                     user.name = updateUser.name;
@@ -140,7 +144,7 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             UsersTBL user = et.UsersTBL.Find(userId);
-            if (userId == user.id)
+            if (user!=null&&userId == user.id)
             {
                 if (updateUser.name != null)
                     user.name = updateUser.name;
@@ -155,7 +159,7 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             UsersTBL user = et.UsersTBL.Find(userId);
-            if (userId == user.id)
+            if (user!=null&&userId == user.id)
             {
                 if (updateUser.type != null)
                     user.type = updateUser.type;
@@ -172,12 +176,15 @@ namespace BL
         public static List<UsersDTO> GetUsers()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToUsersDTO.GetUsers(et.UsersTBL.ToList());
+            List<UsersTBL> list = et.UsersTBL.ToList();
+            if (list != null)
+                return Casts.ToUsersDTO.GetUsers(list);
+            return null;
         }
         public static UsersDTO GetUser(string userName, string password)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            UsersTBL user = et.UsersTBL.Where(u =>u.password == password).FirstOrDefault();
+            UsersTBL user = et.UsersTBL.Where(u =>u!=null&&u.password == password).FirstOrDefault();
             if (user!=null && (user.name == userName || user.mail == userName))
                 return Casts.ToUsersDTO.GetUser(user);
             return null;

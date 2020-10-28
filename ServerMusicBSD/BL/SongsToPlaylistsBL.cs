@@ -17,8 +17,11 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             try
             {
-                et.SongsToPlaylistsTBL.Add(songToPlaylist);
-                et.SaveChanges();
+                if (songToPlaylist != null)
+                {
+                    et.SongsToPlaylistsTBL.Add(songToPlaylist);
+                    et.SaveChanges();
+                }
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -34,7 +37,7 @@ namespace BL
         public static void MoveSongToOtherPlaylist(int id, int playlistId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SongsToPlaylistsTBL songsTo = et.SongsToPlaylistsTBL.Where(s => s.id == id).FirstOrDefault();
+            SongsToPlaylistsTBL songsTo = et.SongsToPlaylistsTBL.Where(s =>s!=null&& s.id == id).FirstOrDefault();
             if (songsTo != null)
             {
                 songsTo.playlistId = playlistId;
@@ -44,24 +47,29 @@ namespace BL
         public static void DeleteSong(int id)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SongsToPlaylistsTBL song = et.SongsToPlaylistsTBL.Where(s => s.id == id).FirstOrDefault();
-            et.SongsToPlaylistsTBL.Remove(song);
-            et.SaveChanges();
+            SongsToPlaylistsTBL song = et.SongsToPlaylistsTBL.Where(s =>s!=null&& s.id == id).FirstOrDefault();
+            if (song != null)
+            {
+                et.SongsToPlaylistsTBL.Remove(song);
+                et.SaveChanges();
+            }
         }
         public static List<SongsToPlaylistsDTO> GetSongsToPlaylists(int playlistId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToSongsToPlaylistsDTO.GetSongsToPlaylists(et.SongsToPlaylistsTBL
-                .Where(s => s.playlistId == playlistId).ToList());
+            List<SongsToPlaylistsTBL> list = et.SongsToPlaylistsTBL.Where(s => s != null && s.playlistId == playlistId).ToList();
+            if (list != null)
+                return Casts.ToSongsToPlaylistsDTO.GetSongsToPlaylists(list);
+            return null;
         }
         public static void AddLikedSong(int songId, int userId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            PlaylistsTBL playlist = et.PlaylistsTBL.Where(p => p.userId == userId && p.name == "שירים שאהבתי").FirstOrDefault();
+            PlaylistsTBL playlist = et.PlaylistsTBL.Where(p => p!=null&& p.userId == userId && p.name == "שירים שאהבתי").FirstOrDefault();
             if (playlist == null)
             {
                 PlaylistBL.AddPlaylist(new PlaylistsTBL() { name = "שירים שאהבתי", userId = userId });
-                playlist = et.PlaylistsTBL.Where(p => p.userId == userId && p.name == "שירים שאהבתי").FirstOrDefault();
+                playlist = et.PlaylistsTBL.Where(p =>p!=null&& p.userId == userId && p.name == "שירים שאהבתי").FirstOrDefault();
             }
             if (playlist != null)
             {

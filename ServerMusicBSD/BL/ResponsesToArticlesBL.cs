@@ -17,7 +17,9 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             try { 
                 et.ResponsesToArticlesTBL.Add(response);
-                ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == response.articleId).FirstOrDefault();
+                ArticlesTBL article = et.ArticlesTBL.Where(a =>a!=null&& a.id == response.articleId).FirstOrDefault();
+                if (article == null)
+                    return;
                 if (article.count_responses == null)
                     article.count_responses = 1;
                 else article.count_responses++;
@@ -37,18 +39,25 @@ namespace BL
         public static List<ResponsesToArticlesDTO> GetArticleResponses(int articleId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToResponsesToArticlesDTO.GetResponses(et.ResponsesToArticlesTBL.Where(r => r.articleId == articleId).ToList());
+            List<ResponsesToArticlesTBL> list = et.ResponsesToArticlesTBL.Where(r =>r!=null&& r.articleId == articleId).ToList();
+            if(list!=null)
+            return Casts.ToResponsesToArticlesDTO.GetResponses(list);
+            return null;
         }
         public static int GetCountResponsesToArticle(int articleId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return et.ResponsesToArticlesTBL.Count(res => res.articleId == articleId);
+            return et.ResponsesToArticlesTBL.Count(res => res!=null&& res.articleId == articleId);
         }
         public static void DeleteResponse(int responseId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            ResponsesToArticlesTBL response = et.ResponsesToArticlesTBL.Where(r => r.id == responseId).FirstOrDefault();
-            ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == response.articleId).FirstOrDefault();
+            ResponsesToArticlesTBL response = et.ResponsesToArticlesTBL.Where(r =>r!=null&& r.id == responseId).FirstOrDefault();
+            if (response == null)
+                return;
+            ArticlesTBL article = et.ArticlesTBL.Where(a =>a!=null&& a.id == response.articleId).FirstOrDefault();
+            if (article == null)
+                return;
             if (article.count_responses == null || article.count_responses <= 0)
                 article.count_responses = 0;
             else article.count_responses--;
@@ -58,8 +67,10 @@ namespace BL
         public static List<ResponsesToArticlesDTO> GetLastResponses()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<ResponsesToArticlesTBL> list = et.ResponsesToArticlesTBL.Where(r => r.date != null).OrderBy(r=>r.date).Distinct().ToList();
-            return Casts.ToResponsesToArticlesDTO.GetResponses(list);
+            List<ResponsesToArticlesTBL> list = et.ResponsesToArticlesTBL.Where(r =>r!=null&& r.date != null).OrderBy(r=>r.date).Distinct().ToList();
+            if (list != null)
+                return Casts.ToResponsesToArticlesDTO.GetResponses(list);
+            return null;
         }
     }
 }

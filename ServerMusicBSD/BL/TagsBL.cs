@@ -14,14 +14,20 @@ namespace BL
         public static List<TagsDTO> GetTags()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToTagsDTO.GetTags(et.TagsTBL.ToList());
+            List<TagsTBL> list = et.TagsTBL.ToList();
+            if (list != null)
+                return Casts.ToTagsDTO.GetTags(list);
+            return null;
         }
         public static void AddTag(TagsTBL tag)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            try { 
-            et.TagsTBL.Add(tag);
-            et.SaveChanges();
+            try {
+                if (tag != null)
+                {
+                    et.TagsTBL.Add(tag);
+                    et.SaveChanges();
+                }
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -38,12 +44,14 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             string name = "";
-            var currentTag = et.TagsTBL.Where(tag => tag.id == id).FirstOrDefault();
+            var currentTag = et.TagsTBL.Where(tag =>tag!=null&& tag.id == id).FirstOrDefault();
             if (currentTag != null)
             {
                 name = currentTag.name;
             }
-            return name;
+            if (name != null)
+                return name;
+            return null;
         }
     }
 }

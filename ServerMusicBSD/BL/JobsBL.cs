@@ -14,14 +14,20 @@ namespace BL
         public static List<JobsDTO> GetJobs()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToJobsDTO.GetJobs(et.JobTBL.ToList());
+            List<JobTBL> list = et.JobTBL.ToList();
+            if(list!=null)
+            return Casts.ToJobsDTO.GetJobs(list);
+            return null;
         }
         public static void AddJob(JobTBL newJob)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            try { 
-                et.JobTBL.Add(newJob);
-                et.SaveChanges();
+            try {
+                if (newJob != null)
+                {
+                    et.JobTBL.Add(newJob);
+                    et.SaveChanges();
+                }
             }
             catch (DbEntityValidationException dbEx)
             {
