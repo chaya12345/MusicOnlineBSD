@@ -18,7 +18,7 @@ export class SongsComponent implements OnInit {
   subtitle: string = "";
   img: string = "";
   icon: string = "";
-  isMain: boolean = false;
+  biggerFont: boolean = false;
 
   isFollowUp: boolean = false;
   isAddToPlaylist: boolean = false;
@@ -55,8 +55,8 @@ export class SongsComponent implements OnInit {
     try {
       this.songService.getSongById(songId).subscribe(song => {
         this.song = song;
-        this.title = this.song.title; this.subtitle = this.song.subtitle;
-        this.img = this.song.image_location; this.isMain = false;
+        this.title = this.song.title; this.subtitle = "01/09/2020 11:25";//this.song.subtitle;
+        this.img = "../../assets/images/" + this.song.image_location; this.biggerFont = true;
         this.navs.push(this.title);
       }, err => console.log(err))
     } catch (err) { console.log(err); }
@@ -77,7 +77,6 @@ export class SongsComponent implements OnInit {
         this.title = item.name;
         this.subtitle = "כל השירים, הקליפים, ההופעות והכתבות";
         this.img = item.image ? "../../assets/images" + item.image : null;
-        this.isMain = true;
       }, err => console.log(err))
     } catch (err) { console.log(err); }
     this.isSingular = false;
@@ -97,7 +96,6 @@ export class SongsComponent implements OnInit {
         this.title = topic.title;
         this.subtitle = topic.subtitle;
         this.img = "../../assets/images/" + topic.img;
-        this.isMain = true;
         this.icon = topic.icon;
       }, err => console.log(err))
     } catch (err) { console.log(err); }

@@ -30,21 +30,25 @@ div.content {
 }
 
 div.content div {
-    margin-top: auto;
+    margin: auto;
+    text-align: center;
 }
 
 .content h3 {
     font-family: fb Ogen, calibri;
-    font-size: 33px;
     margin: 20px 0;
-    padding: 0 20px;
-    border-right: solid 1px white;
+    padding: 16px 20px;
+    border: none;
+    border-bottom: dashed 1px #ffffff5c;
+    text-align: center;
+    font-size: 45px;
 }
 
 .content p {
     font-family: fb Joker, calibri;
-    font-size: 28px;
     line-height: 34px;
+    font-size: 32px;
+    font-weight: 100;
 }
 
 .tool-box {
@@ -80,25 +84,11 @@ div.content div {
     margin: 6px 15px;
 }
 
-.mainPage div {
-    margin: auto;
-    text-align: center;
+.bigger-font {
+    font-size: 37px !important;
 }
 
-.mainPage h3 {
-    padding: 16px 20px;
-    border: none;
-    border-bottom: dashed 1px #ffffff5c;
-    text-align: center;
-    font-size: 45px;
-}
-
-.mainPage p {
-    font-size: 32px;
-    font-weight: 100;
-}
-
-.mainPage h3 mat-icon {
+.content h3 mat-icon {
     font-size: 45px;
     height: fit-content;
     margin: 0 15px;
