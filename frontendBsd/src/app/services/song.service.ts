@@ -65,6 +65,9 @@ export class SongService {
   public getSongsByArtistsAndSingers(name: string): Observable<Song[]> {
     return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsByArtistsAndSingers?name=" + name);
   }
+  public getSongsPublishedThisYear(year: string): Observable<Song[]> {
+    return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsPublishedThisYear?year=" + year);
+  }
   // יצירת קריאת סרבר עם הרשאות גישה
   //   const headers = { 'Authorization': 'Bearer my-token' }
   //   const body = { title: 'Angular POST Request Example' }

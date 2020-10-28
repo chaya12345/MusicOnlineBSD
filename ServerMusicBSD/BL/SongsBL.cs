@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using System.Data;
 using Newtonsoft.Json;
 using System.Data.Entity.Validation;
+using System.Globalization;
 
 namespace BL
 {
@@ -449,6 +450,35 @@ namespace BL
             }
             list = clearDuplicate(list);
             return list;
+        }
+        public static string ToJewishDateString(DateTime value, string format)
+        {
+            var ci = CultureInfo.CreateSpecificCulture("he-IL");
+            ci.DateTimeFormat.Calendar = new HebrewCalendar();
+            return value.ToString(format, ci);
+        }
+        public static List<SongsDTO> GetSongsPublishedThisYear()
+        {
+            string year = ToJewishDateString(DateTime.Today, "D");
+            if (year.Contains("תשרי") || year.Contains("חשון"))
+            {
+                year = ToJewishDateString(DateTime.Today.AddDays(-70), "D");
+            }
+            year= year.Substring(year.IndexOf('ת'));
+            Console.WriteLine(year);
+            List<SongsDTO> songs = GetSongs();
+            if (songs == null)
+                return null;
+            List<SongsDTO> result = new List<SongsDTO>();
+            foreach (SongsDTO item in songs)
+            {
+                if (item != null && item.date != null)
+                {
+                    if (ToJewishDateString(item.date.Value, "D").Contains(year))
+                        result.Add(item);
+                }
+            }
+            return result != null ? result : null;
         }
     }
 }

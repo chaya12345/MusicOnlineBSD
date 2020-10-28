@@ -187,5 +187,5 @@ export class ToolsComponent implements OnInit {
   toggle() {
     this.storageService.setItem("reverse", this.isChecked ? 1 : 0);
   }
-
+ 
 }
