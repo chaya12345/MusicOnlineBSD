@@ -12,6 +12,8 @@ namespace BL.Casts
     {
         public static UsersDTO GetUser(UsersTBL user)
         {
+            if (user == null)
+                return null;
             UsersDTO newUser = new UsersDTO();
             newUser.id = user.id;
             newUser.name = user.name;
@@ -27,10 +29,14 @@ namespace BL.Casts
         }
         public static List<UsersDTO> GetUsers(List<UsersTBL> users)
         {
+            if (users == null)
+                return null;
             List<UsersDTO> listUsers = new List<UsersDTO>();
             foreach (UsersTBL user in users)
             {
-                listUsers.Add(GetUser(user));
+                UsersDTO addUser = GetUser(user);
+                if (addUser != null)
+                    listUsers.Add(addUser);
             }
             return listUsers;
         }

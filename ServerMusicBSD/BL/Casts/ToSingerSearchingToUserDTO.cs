@@ -13,6 +13,8 @@ namespace BL.Casts
         public static SingerSearchingToUserDTO
             GetSearchingToUser(SingerSearchingToUserTBL searching)
         {
+            if (searching == null)
+                return null;
             SingerSearchingToUserDTO newSearching = new SingerSearchingToUserDTO();
             newSearching.id = searching.id;
             newSearching.userId = searching.userId;
@@ -24,10 +26,14 @@ namespace BL.Casts
         public static List<SingerSearchingToUserDTO>
             GetSearchingsToUser(List<SingerSearchingToUserTBL> searchings)
         {
+            if (searchings == null)
+                return null;
             List<SingerSearchingToUserDTO> newSearchings = new List<SingerSearchingToUserDTO>();
             foreach (SingerSearchingToUserTBL searching in searchings)
             {
-                newSearchings.Add(GetSearchingToUser(searching));
+                SingerSearchingToUserDTO singerSearching = GetSearchingToUser(searching);
+                if(singerSearching!=null)
+                newSearchings.Add(singerSearching);
             }
             return newSearchings;
         }

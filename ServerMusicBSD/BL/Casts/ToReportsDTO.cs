@@ -12,6 +12,8 @@ namespace BL.Casts
     {
         public static ReportsDTO GetReport(ReportsTBL report)
         {
+            if (report == null)
+                return null;
             ReportsDTO newReport = new ReportsDTO();
             newReport.id = report.id;
             newReport.name = report.name;
@@ -24,10 +26,14 @@ namespace BL.Casts
         }
         public static List<ReportsDTO> GetReports(List<ReportsTBL> reports)
         {
+            if (reports == null)
+                return null;
             List<ReportsDTO> newReports = new List<ReportsDTO>();
             foreach (ReportsTBL rep in reports)
             {
-                newReports.Add(GetReport(rep));
+                ReportsDTO reportsDTO = GetReport(rep);
+                if(reportsDTO!=null)
+                newReports.Add(reportsDTO);
             }
             return newReports;
         }

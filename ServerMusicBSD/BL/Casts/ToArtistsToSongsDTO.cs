@@ -12,6 +12,8 @@ namespace BL.Casts
     {
         public static ArtistsToSongsDTO GetArtistsToSong(ArtistsToSongsTBL artist)
         {
+            if (artist == null)
+                return null;
             ArtistsToSongsDTO newArtist = new ArtistsToSongsDTO();
             newArtist.id = artist.id;
             newArtist.songId = artist.songId;
@@ -21,10 +23,14 @@ namespace BL.Casts
         }
         public static List<ArtistsToSongsDTO> GetArtistsToSongs(List<ArtistsToSongsTBL> artists)
         {
+            if (artists == null)
+                return null;
             List<ArtistsToSongsDTO> newArtists = new List<ArtistsToSongsDTO>();
             foreach (ArtistsToSongsTBL artist in artists)
             {
-                newArtists.Add(GetArtistsToSong(artist));
+                ArtistsToSongsDTO artistsToSongsDTO = GetArtistsToSong(artist);
+                if (artistsToSongsDTO != null)
+                    newArtists.Add(artistsToSongsDTO);
             }
             return newArtists;
         }

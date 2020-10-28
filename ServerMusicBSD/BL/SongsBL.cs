@@ -105,7 +105,7 @@ namespace BL
             foreach (SongsDTO song in songs)
             {
                 List<TagsDTO> tags = Casts.ToTagsDTO.GetTagsFromTagsToSong(TagsToSongsBL.GetTagsToSong(song.id).ToList());
-                if (tags.Where(t => t.id == tag.id).FirstOrDefault() != null) { suitableSongs.Add(song); }
+                if (tags.Where(t =>t!=null&& t.id == tag.id).FirstOrDefault() != null) { suitableSongs.Add(song); }
             }
             return suitableSongs;
         }

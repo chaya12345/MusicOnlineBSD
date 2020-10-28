@@ -12,6 +12,8 @@ namespace BL.Casts
     {
         public static TopicsDTO GetTopic(TopicsTBL topic)
         {
+            if (topic == null)
+                return null;
             TopicsDTO newTopic = new TopicsDTO();
             newTopic.id = topic.id;
             newTopic.title = topic.title;
@@ -23,10 +25,14 @@ namespace BL.Casts
         }
         public static List<TopicsDTO> GetTopics(List<TopicsTBL> topics)
         {
+            if (topics == null)
+                return null;
             List<TopicsDTO> list = new List<TopicsDTO>();
             foreach (TopicsTBL item in topics)
             {
-                list.Add(GetTopic(item));
+                TopicsDTO topic = GetTopic(item);
+                if (topic != null)
+                    list.Add(topic);
             }
             return list;
         }

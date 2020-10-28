@@ -12,6 +12,8 @@ namespace BL.Casts
     {
         public static UpdatesDTO GetUpdate(UpdatesTBL update)
         {
+            if (update == null)
+                return null;
             UpdatesDTO newUpdate = new UpdatesDTO();
             newUpdate.id = update.id;
             newUpdate.title = update.title;
@@ -21,10 +23,14 @@ namespace BL.Casts
         }
         public static List<UpdatesDTO> GetUpdates(List<UpdatesTBL> updates)
         {
+            if (updates == null)
+                return null;
             List<UpdatesDTO> list = new List<UpdatesDTO>();
             foreach (UpdatesTBL item in updates)
             {
-                list.Add(GetUpdate(item));
+                UpdatesDTO update = GetUpdate(item);
+                if (update != null)
+                    list.Add(update);
             }
             return list;
         }

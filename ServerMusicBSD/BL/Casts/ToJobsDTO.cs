@@ -12,6 +12,8 @@ namespace BL.Casts
     {
         public static JobsDTO GetJob (JobTBL job)
         {
+            if (job == null)
+                return null;
             JobsDTO newJob = new JobsDTO();
             newJob.id = job.id;
             newJob.name = job.name;
@@ -19,10 +21,14 @@ namespace BL.Casts
         }
         public static List<JobsDTO> GetJobs(List<JobTBL> jobs)
         {
+            if (jobs == null)
+                return null;
             List<JobsDTO> newJobs = new List<JobsDTO>();
             foreach (JobTBL job in jobs)
             {
-                newJobs.Add(GetJob(job));
+                JobsDTO jobsDTO = GetJob(job);
+                if (jobsDTO != null)
+                    newJobs.Add(jobsDTO);
             }
             return newJobs;
         }

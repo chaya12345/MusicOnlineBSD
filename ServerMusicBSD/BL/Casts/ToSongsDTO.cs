@@ -35,10 +35,14 @@ namespace BL.Casts
         }
         public static List<SongsDTO> GetSongs(List<SongsTBL> songs)
         {
+            if (songs == null)
+                return null;
             List<SongsDTO> songsDTO = new List<SongsDTO>();
             foreach (SongsTBL song in songs)
             {
-                songsDTO.Add(GetSong(song));
+                SongsDTO songs1 = GetSong(song);
+                if(songs1!=null)
+                songsDTO.Add(songs1);
             }
             return songsDTO;
         }

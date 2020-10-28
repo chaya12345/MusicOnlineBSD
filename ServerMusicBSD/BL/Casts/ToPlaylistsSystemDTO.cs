@@ -12,6 +12,8 @@ namespace BL.Casts
     {
         public static PlaylistsSystemDTO GetPlaylistSystem(PlaylistsSystemTBL playlist)
         {
+            if (playlist == null)
+                return null;
             PlaylistsSystemDTO newPlaylist = new PlaylistsSystemDTO();
             newPlaylist.id = playlist.id;
             newPlaylist.name = playlist.name;
@@ -21,13 +23,16 @@ namespace BL.Casts
             newPlaylist.tagId = playlist.tagId;
             return newPlaylist;
         }
-        public static List<PlaylistsSystemDTO> GetPlaylistsSystem
-            (List<PlaylistsSystemTBL> playlists)
+        public static List<PlaylistsSystemDTO> GetPlaylistsSystem(List<PlaylistsSystemTBL> playlists)
         {
+            if (playlists == null)
+                return null;
             List<PlaylistsSystemDTO> newPlaylists = new List<PlaylistsSystemDTO>();
             foreach (PlaylistsSystemTBL playlist in playlists)
             {
-                newPlaylists.Add(GetPlaylistSystem(playlist));
+                PlaylistsSystemDTO playlistsSystemDTO = GetPlaylistSystem(playlist);
+                if (playlistsSystemDTO != null)
+                    newPlaylists.Add(playlistsSystemDTO);
             }
             return newPlaylists;
         }

@@ -12,6 +12,8 @@ namespace BL.Casts
     {
         public static ResponsesToArticlesDTO GetResponse(ResponsesToArticlesTBL response)
         {
+            if (response == null)
+                return null;
             ResponsesToArticlesDTO newResponses = new ResponsesToArticlesDTO();
             newResponses.id = response.id;
             newResponses.articleId = response.articleId;
@@ -23,10 +25,14 @@ namespace BL.Casts
         }
         public static List<ResponsesToArticlesDTO> GetResponses(List<ResponsesToArticlesTBL> responses)
         {
+            if (responses == null)
+                return null;
             List<ResponsesToArticlesDTO> newResponses = new List<ResponsesToArticlesDTO>();
             foreach (ResponsesToArticlesTBL res in responses)
             {
-                newResponses.Add(GetResponse(res));
+                ResponsesToArticlesDTO responsesToArticlesDTO = GetResponse(res);
+                if(responsesToArticlesDTO!=null)
+                newResponses.Add(responsesToArticlesDTO);
             }
             return newResponses;
         }

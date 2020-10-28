@@ -12,6 +12,8 @@ namespace BL.Casts
     {
         public static FollowUpDTO GetFollowUp(FollowUpTBL followUp)
         {
+            if (followUp == null)
+                return null;
             FollowUpDTO newFollow = new FollowUpDTO();
             newFollow.id = followUp.id;
             newFollow.userId = followUp.userId;
@@ -22,10 +24,14 @@ namespace BL.Casts
         }
         public static List<FollowUpDTO> GetFollowUps(List<FollowUpTBL> followUps)
         {
+            if (followUps == null)
+                return null;
             List<FollowUpDTO> newFollow = new List<FollowUpDTO>();
             foreach (FollowUpTBL item in followUps)
             {
-                newFollow.Add(GetFollowUp(item));
+                FollowUpDTO followUpDTO = GetFollowUp(item);
+                if (followUpDTO != null)
+                    newFollow.Add(followUpDTO);
             }
             return newFollow;
         }

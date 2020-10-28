@@ -12,6 +12,8 @@ namespace BL.Casts
     {
         public static SubscriptionDTO GetSubscription(SubscriptionTBL subscription)
         {
+            if (subscription == null)
+                return null;
             SubscriptionDTO newSubscription = new SubscriptionDTO();
             newSubscription.id = subscription.id;
             newSubscription.userId = subscription.userId;
@@ -20,10 +22,14 @@ namespace BL.Casts
         }
         public static List<SubscriptionDTO> GetSubscriptions(List<SubscriptionTBL> subscriptions)
         {
+            if (subscriptions == null)
+                return null;
             List<SubscriptionDTO> list = new List<SubscriptionDTO>();
             foreach (SubscriptionTBL item in subscriptions)
             {
-                list.Add(GetSubscription(item));
+                SubscriptionDTO subscription = GetSubscription(item);
+                if (subscription != null)
+                    list.Add(subscription);
             }
             return list;
         }

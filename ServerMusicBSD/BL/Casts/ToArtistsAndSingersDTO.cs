@@ -12,6 +12,8 @@ namespace BL.Casts
     {
         public static ArtistsAndSingersDTO GetArtist(ArtistsTBL artists)
         {
+            if (artists == null)
+                return null;
             ArtistsAndSingersDTO newArtists = new ArtistsAndSingersDTO();
             newArtists.id = artists.id;
             newArtists.name = artists.name;
@@ -20,6 +22,8 @@ namespace BL.Casts
         }
         public static ArtistsAndSingersDTO GetSinger(SingersTBL singer)
         {
+            if (singer == null)
+                return null;
             ArtistsAndSingersDTO newSinger = new ArtistsAndSingersDTO();
             newSinger.id = singer.id;
             newSinger.name = singer.name;
@@ -28,27 +32,39 @@ namespace BL.Casts
         }
         public static List<ArtistsAndSingersDTO> GetArtistsAndSingers(List<SingersTBL> singers, List<ArtistsTBL> artists)
         {
+            if (singers == null)
+                return null;
             List<ArtistsAndSingersDTO> list = new List<ArtistsAndSingersDTO>();
             foreach (ArtistsTBL item in artists)
             {
-                list.Add(GetArtist(item));
+                ArtistsAndSingersDTO artistsAndSingersDTO = GetArtist(item);
+                if (artistsAndSingersDTO != null)
+                    list.Add(artistsAndSingersDTO);
             }
             foreach (SingersTBL item in singers)
             {
-                list.Add(GetSinger(item));
+                ArtistsAndSingersDTO artistsAndSingersDTO = GetSinger(item);
+                if (artistsAndSingersDTO != null)
+                    list.Add(artistsAndSingersDTO);
             }
             return clearDuplicate(list);
         }
         public static List<ArtistsAndSingersDTO> clearDuplicate(List<ArtistsAndSingersDTO> artistsAndSingers)
         {
+            if (artistsAndSingers == null)
+                return null;
             List<ArtistsAndSingersDTO> clearList = new List<ArtistsAndSingersDTO>();
             foreach (ArtistsAndSingersDTO item in artistsAndSingers)
             {
-                if (clearList.Where(a => a.name == item.name).FirstOrDefault() == null)
+                if (item != null)
                 {
-                    clearList.Add(item);
-                    bool b = clearList.Contains(item);
+                    if (clearList.Where(a => a != null && a.name == item.name).FirstOrDefault() == null)
+                    {
+                        clearList.Add(item);
+                        bool b = clearList.Contains(item);
+                    }
                 }
+                
             }
             return clearList;
         }

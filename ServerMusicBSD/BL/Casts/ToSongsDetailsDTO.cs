@@ -12,6 +12,8 @@ namespace BL.Casts
     {
         public static songsDetails comperSongToSongsDetails(SongsDTO songs)
         {
+            if (songs == null)
+                return null;
             MusicOnlineEntities et = new MusicOnlineEntities();
             songsDetails newSong = new songsDetails();
             newSong.id = songs.id;
@@ -32,10 +34,14 @@ namespace BL.Casts
         }
         public static List<songsDetails> GetSongsDetails(List<SongsDTO> songs)
         {
+            if (songs == null)
+                return null;
             List<songsDetails> songsDTO = new List<songsDetails>();
             foreach (SongsDTO song in songs)
             {
-                songsDTO.Add(comperSongToSongsDetails(song));
+                songsDetails songsDetails = comperSongToSongsDetails(song);
+                if (songsDetails != null)
+                    songsDTO.Add(songsDetails);
             }
             return songsDTO;
         }

@@ -12,6 +12,8 @@ namespace BL.Casts
     {
         public static LastesResponsDTO GetLastRespons(latestResponses lastRespons)
         {
+            if (lastRespons == null)
+                return null;
             LastesResponsDTO newRespons = new LastesResponsDTO();
             newRespons.id = lastRespons.id;
             newRespons.name = lastRespons.name;
@@ -23,10 +25,14 @@ namespace BL.Casts
         }
         public static List<LastesResponsDTO> GetLastResponses(List<latestResponses> lastResponses)
         {
+            if (lastResponses == null)
+                return null;
             List<LastesResponsDTO> list = new List<LastesResponsDTO>();
             foreach (latestResponses item in lastResponses)
             {
-                list.Add(GetLastRespons(item));
+                LastesResponsDTO lastesResponsDTO = GetLastRespons(item);
+                if (lastesResponsDTO != null)
+                    list.Add(lastesResponsDTO);
             }
             return list;
         }

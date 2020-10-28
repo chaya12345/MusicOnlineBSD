@@ -12,6 +12,8 @@ namespace BL.Casts
     {
         public static ArticlesDTO GetArticle(ArticlesTBL article)
         {
+            if (article == null)
+                return null;
             ArticlesDTO newArticle = new ArticlesDTO();
             newArticle.id = article.id;
             newArticle.title = article.title;
@@ -34,6 +36,8 @@ namespace BL.Casts
         }
         public static List<ArticlesDTO> GetArticles(List<ArticlesTBL> articles)
         {
+            if (articles == null)
+                return null;
             List<ArticlesDTO> newArticles = new List<ArticlesDTO>();
             foreach (ArticlesTBL article in articles)
             {

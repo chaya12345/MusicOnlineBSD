@@ -12,6 +12,8 @@ namespace BL.Casts
     {
         public static ItemsByParameterDTO GetItemByParameter(itemsByParameter_Result item)
         {
+            if (item == null)
+                return null;
             ItemsByParameterDTO newItem = new ItemsByParameterDTO();
             newItem.id = item.id;
             newItem.title = item.title;
@@ -26,10 +28,14 @@ namespace BL.Casts
         }
         public static List<ItemsByParameterDTO> GetItemsByParameter(List<itemsByParameter_Result> items)
         {
+            if (items == null)
+                return null;
             List<ItemsByParameterDTO> list = new List<ItemsByParameterDTO>();
             foreach (itemsByParameter_Result item in items)
             {
-                list.Add(GetItemByParameter(item));
+                ItemsByParameterDTO itemsByParameterDTO = GetItemByParameter(item);
+                if (itemsByParameterDTO != null)
+                    list.Add(itemsByParameterDTO);
             }
             return list;
         }
