@@ -81,6 +81,7 @@
     <Compile Include="Casts\ToSongsDTO.cs" />
     <Compile Include="Casts\ToSongsToPlaylistsDTO.cs" />
     <Compile Include="Casts\ToSubscriptionDTO.cs" />
+    <Compile Include="Casts\ToSurveyDTO.cs" />
     <Compile Include="Casts\ToTagsDTO.cs" />
     <Compile Include="Casts\ToTagsToArticleDTO.cs" />
     <Compile Include="Casts\ToTagsToSongsDTO.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="SongsDetailsBL.cs" />
     <Compile Include="SongsToPlaylistsBL.cs" />
     <Compile Include="SubscriptionBL.cs" />
+    <Compile Include="SurveyBL.cs" />
     <Compile Include="TagsBL.cs" />
     <Compile Include="TagsToArticlesBL.cs" />
     <Compile Include="TagsToSongsBL.cs" />

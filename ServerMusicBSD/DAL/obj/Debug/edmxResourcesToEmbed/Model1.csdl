@@ -197,6 +197,7 @@
     <NavigationProperty Name="SingersTBL" Relationship="Self.FK_SongsTBL_SingersTBL" FromRole="SongsTBL" ToRole="SingersTBL" />
     <NavigationProperty Name="SongsToPlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToPlaylistsTBL" />
     <NavigationProperty Name="TagsToSongsTBL" Relationship="Self.FK_TagsToSongsTBL_SongsTBL" FromRole="SongsTBL" ToRole="TagsToSongsTBL" />
+    <NavigationProperty Name="SurveyTBL" Relationship="MusicOnlineModel.FK_SurveyTBL_SongsTBL" FromRole="SongsTBL" ToRole="SurveyTBL" />
   </EntityType>
   <EntityType Name="SongsToPlaylistsTBL">
     <Key>
@@ -745,5 +746,42 @@
     <FunctionImport Name="itemsByParameter" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemsByParameter_Result)">
       <Parameter Name="singer" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="SurveyTBL" EntityType="MusicOnlineModel.SurveyTBL" />
+    <EntitySet Name="sysdiagrams" EntityType="MusicOnlineModel.sysdiagrams" />
+    <AssociationSet Name="FK_SurveyTBL_SongsTBL" Association="MusicOnlineModel.FK_SurveyTBL_SongsTBL">
+      <End Role="SongsTBL" EntitySet="SongsTBL" />
+      <End Role="SurveyTBL" EntitySet="SurveyTBL" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="SurveyTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="songId" Type="Int32" />
+    <Property Name="count" Type="Int32" />
+    <NavigationProperty Name="SongsTBL" Relationship="MusicOnlineModel.FK_SurveyTBL_SongsTBL" FromRole="SurveyTBL" ToRole="SongsTBL" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_SurveyTBL_SongsTBL">
+    <End Type="MusicOnlineModel.SongsTBL" Role="SongsTBL" Multiplicity="0..1" />
+    <End Type="MusicOnlineModel.SurveyTBL" Role="SurveyTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SongsTBL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SurveyTBL">
+        <PropertyRef Name="songId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
