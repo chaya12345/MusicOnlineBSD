@@ -2,6 +2,7 @@ import { ChangeDetectorRef } from '@angular/core';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Song } from '../classes/song';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'songs-list',
@@ -13,26 +14,47 @@ export class SongsListComponent implements OnInit {
   @Input() songsList: Song[] = [];
   @Input() orderBy: string = "";
 
-  currentIndex = 12;
+  songsToPage: number = 24;
+  currentIndex: number = 24;
   items: Song[] = [];
 
-  constructor(private cdr: ChangeDetectorRef, public activatedRoute: ActivatedRoute) { }
+  constructor(private cdr: ChangeDetectorRef, public activatedRoute: ActivatedRoute,
+    private storageService: StorageService) { }
 
   ngOnInit() {
     // document.getElementsByTagName("span")[0].innerHTML = "טוען...";
+    this.storageService.watchStorage().subscribe((data: string) => {
+      switch (data) {
+        case "order-type":
+          this.orderByType();
+          this.browsingPage(parseInt(sessionStorage.getItem("page"))||1);
+          break;
+        case "reverse":
+          this.reverseOrder();
+          this.browsingPage(parseInt(sessionStorage.getItem("page"))||1);
+          break;
+        case "page":
+          this.browsingPage(parseInt(sessionStorage.getItem("page"))||1);
+          break;
+      }
+    });
   }
 
   ngOnChanges() {
-   this.orderByDate();
-   this.loadData();
+    this.orderByType();
+    this.loadData();
     if (this.orderBy == "song") {
       this.songsList.sort((a, b) => Math.round(a.name.localeCompare(b.name)));
     }
-    console.log("change");
     this.cdr.detectChanges();
-    console.log("=================");
-    console.log(this.songsList);
-    console.log("=================");
+  }
+
+  browsingPage(page: number): void {
+    this.items = [];
+    for (let i = this.songsToPage*(page-1); i < this.songsToPage*page&&i<this.songsList.length; i++) {
+      this.items.push(this.songsList[i]);
+    }
+    this.cdr.detectChanges();
   }
 
   loadData(): void {
@@ -45,31 +67,47 @@ export class SongsListComponent implements OnInit {
     }
   }
 
-  orderByDate(): void {
-    if (this.activatedRoute.snapshot.queryParams.orderType) {
-      let order = this.activatedRoute.snapshot.queryParams.orderType;
-      console.log(order);
-      if (order == "song") {
-        this.songsList.sort((a, b) => Math.round(b.name.localeCompare(a.name)));
+  orderByType(): void {
+    let value = sessionStorage.getItem("order-type");
+    if (value) {
+      switch (value) {
+        case "song":
+          this.orderBySongName();
+          break;
+        case "views":
+          this.orderByViews();
+          break;
+        case "likes":
+          this.orderByLikes();
+          break;
+        default:
+          this.orderByDate();
+          break;
       }
-      else if (order == "likes") {
-        this.songsList.sort((a, b) => Math.round(b.count_like - a.count_like));
-      }
-      else if (order == "views") {
-        this.songsList.sort((a, b) => Math.round(b.count_views - a.count_views));
-      }
-      else if (order == "res") {
-        this.songsList.sort((a, b) => Math.round( - a.count_views));
-      }
-      else if (order == "date") {
-        this.songsList.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
-      }
-      this.cdr.detectChanges();
-      console.log(this.songsList);
     }
     else {
-      this.songsList.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
+      this.orderByDate();
     }
+  }
+
+  orderByDate(): void {
+    this.songsList.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
+  }
+
+  orderBySongName(): void {
+    this.songsList.sort((a, b) => b.name.localeCompare(a.name));
+  }
+
+  orderByViews(): void {
+    this.songsList.sort((a, b) => b.count_views - a.count_views);
+  }
+
+  orderByLikes(): void {
+    this.songsList.sort((a, b) => b.count_like - a.count_like);
+  }
+
+  reverseOrder(): void {
+    this.songsList.reverse();
   }
 
   LoadMore(event) {

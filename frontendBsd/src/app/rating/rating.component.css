@@ -1,15 +1,20 @@
 .wrap-rating {
     height: fit-content;
-    padding: 15px 17px;
+    padding: 3px 17px 5px;
     border-top: solid 1px #ffffff69;
     display: grid;
     grid-template-columns: fit-content(40%) fit-content(40%) auto;
 }
 
 .wrap-rating span {
+    font-size: 15.5px;
     font-weight: 100;
     font-family: calibri;
     display: table;
+}
+
+.wrap-rating mat-icon {
+    font-size: 21px;
 }
 
 .wrap-rating span.likes mat-icon {

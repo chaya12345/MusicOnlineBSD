@@ -1,7 +1,7 @@
 .wrap-article {
     height: 317px;
-    /* margin: 50px 50px 0; */
-    margin: 0 50px;
+    /* margin: 0 50px; */
+    margin-left: 350px;
     display: grid;
     grid-template-columns: fit-content(50%) auto;
     border: solid 1px #e6e5e5;
@@ -23,7 +23,8 @@
 
 div.img {
     height: 100%;
-    width: 550px;
+    /* width: 550px; */
+    width: 360px;
     background-size: cover;
     background-position: center;
 }

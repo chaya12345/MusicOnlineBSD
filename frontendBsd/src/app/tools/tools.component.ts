@@ -1,6 +1,6 @@
 import { EventEmitter } from '@angular/core';
 import { Component, Input, OnInit, Output } from '@angular/core';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog, MatSlideToggleChange, MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FollowUp } from '../classes/followUp';
 import { Update } from '../classes/update';
@@ -8,6 +8,7 @@ import { User } from '../classes/user';
 import { LogInComponent } from '../log-in/log-in.component';
 import { MessageComponent } from '../message/message.component';
 import { FollowUpService } from '../services/follow-up.service';
+import { StorageService } from '../services/storage.service';
 import { UpdateService } from '../services/update.service';
 
 @Component({
@@ -31,7 +32,8 @@ export class ToolsComponent implements OnInit {
   loading: boolean = false;
 
   constructor(public router: Router, private followUpService: FollowUpService, private activatedRoute: ActivatedRoute,
-    public dialog: MatDialog, private _snackBar: MatSnackBar, private updateService: UpdateService) {
+    public dialog: MatDialog, private _snackBar: MatSnackBar, private updateService: UpdateService,
+    private storageService: StorageService) {
   }
 
   ngOnInit() {
@@ -59,21 +61,6 @@ export class ToolsComponent implements OnInit {
 
   }
 
-  getUrl(orderType: string): string {
-    if (this.activatedRoute.snapshot.queryParams.orderType) {
-      let placing: number = this.router.url.indexOf("orderType");
-      if (this.router.url.includes("&") && this.router.url.lastIndexOf("&") > placing) {
-        return this.router.url.slice(0, placing) + "orderType=" + orderType + this.router.url.slice(this.router.url.lastIndexOf("&"), this.router.url.length);
-      }
-      return this.router.url.slice(0, placing) + "orderType=" + orderType;
-    }
-    else {
-      if (this.router.url.includes("="))
-        return this.router.url + "&orderType=" + orderType;
-    }
-    return this.router.url + "?orderType=" + orderType;
-  }
-
   logIn(num: number) {
     try {
       const dialogRef = this.dialog.open(LogInComponent, {
@@ -85,15 +72,6 @@ export class ToolsComponent implements OnInit {
           num == 1 ? this.addFollowUp() : this.deleteFollowUp();
       });
     } catch (err) { console.log(err); }
-  }
-
-  order(value: string): void {
-    if (this.activatedRoute.snapshot.queryParams.filter) {
-      this.router.navigateByUrl('song?filter=' + this.activatedRoute.snapshot.queryParams.filter + '&orderType=' + value);
-    }
-    else {
-      this.router.navigateByUrl('song?orderType=' + value);
-    }
   }
 
   addFollowUp() {
@@ -193,4 +171,21 @@ export class ToolsComponent implements OnInit {
       this.updateService.addUpdate(update).subscribe(err => console.log(err));
     } catch (err) { console.log(err); }
   }
+
+  saveOrderType(orderType: string): void {
+    this.storageService.setItem('order-type', orderType);
+    if (orderType != "song") {
+      this.storageService.setItem("reverse", 0);
+      this.isChecked = false;
+    }
+    else {
+      this.storageService.setItem("reverse", 1);
+      this.isChecked = true;
+    }
+  }
+
+  toggle() {
+    this.storageService.setItem("reverse", this.isChecked ? 1 : 0);
+  }
+
 }

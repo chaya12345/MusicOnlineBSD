@@ -48,15 +48,14 @@
                     <button mat-menu-item disabled *ngIf="!isChecked">מוגדר: סדר יורד</button>
                     <button mat-menu-item disabled *ngIf="isChecked">מוגדר: סדר עולה</button>
                     <mat-divider></mat-divider>
-                    <button mat-menu-item><a [href]="getUrl('song')">שם שיר</a></button>
-                    <button mat-menu-item><a [href]="getUrl('date')">תאריך</a></button>
-                    <button mat-menu-item><a [href]="getUrl('views')">כמות צפיות</a></button>
-                    <button mat-menu-item><a [href]="getUrl('likes')">כמות לייקים</a></button>
-                    <button mat-menu-item><a [href]="getUrl('res')">כמות תגובות</a></button>
+                    <button mat-menu-item (click)="saveOrderType('song')">שם שיר</button>
+                    <button mat-menu-item (click)="saveOrderType('date')">תאריך</button>
+                    <button mat-menu-item (click)="saveOrderType('views')">כמות צפיות</button>
+                    <button mat-menu-item (click)="saveOrderType('likes')">כמות לייקים</button>
                 </mat-menu>
             </div>
 
-            <mat-slide-toggle [(ngModel)]="isChecked" *ngIf="orderBy" color="primary">סדר עולה</mat-slide-toggle>
+            <mat-slide-toggle [(ngModel)]="isChecked" *ngIf="orderBy" color="primary" (change)="toggle()">סדר עולה</mat-slide-toggle>
 
             <span *ngIf="sideText!=''&&sideText!=null">{{sideText}}</span>
 

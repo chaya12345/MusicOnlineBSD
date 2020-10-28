@@ -1,12 +1,15 @@
 <div class="wrap-songs-list">
+    <browse-pages [itemsCount]="songsList.length" itemsToPage="24"></browse-pages>
     <div class="wrap-songs">
         <div class="wrap-song" *ngFor="let item of items">
           <song [song]="item" *ngIf="item!=null"></song>
+          <div class="under-song" style="padding: 6px; color: #c7c7c7;"><span>{{item.name}} >> איציק דדיה</span></div>
         </div>
         <span *ngIf="songsList==null||songsList.length==0">- לא נמצאו שירים בסינון הנוכחי -</span>
       </div>
-      <button class="reloadMore primary-style" color="primary" mat-flat-button (click)="LoadMore($event)">
+      <browse-pages [itemsCount]="songsList.length" itemsToPage="24"></browse-pages>
+      <!-- <button class="reloadMore primary-style" color="primary" mat-flat-button (click)="LoadMore($event)">
         <mat-spinner></mat-spinner>
         טען עוד
-      </button>
+      </button> -->
 </div>

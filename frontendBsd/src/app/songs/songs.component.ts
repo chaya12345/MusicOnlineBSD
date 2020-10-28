@@ -97,6 +97,7 @@ export class SongsComponent implements OnInit {
         this.title = topic.title;
         this.subtitle = topic.subtitle;
         this.img = "../../assets/images/" + topic.img;
+        this.isMain = true;
         this.icon = topic.icon;
       }, err => console.log(err))
     } catch (err) { console.log(err); }

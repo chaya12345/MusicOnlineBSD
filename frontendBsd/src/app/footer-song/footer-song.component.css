@@ -5,9 +5,11 @@
 
 .wrap-footer-song .wrap-title {
     padding: 5px 15px;
-    font-size: 27px;
+    /* font-size: 27px; */
+    font-size: 25px;
     font-family: fb Joker;
-    font-weight: 600;
+    /* font-weight: 600; */
+    font-weight: 500;
     letter-spacing: .2px;
     height: 42px;
     overflow: hidden;

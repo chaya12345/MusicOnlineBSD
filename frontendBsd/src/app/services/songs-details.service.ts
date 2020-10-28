@@ -11,7 +11,7 @@ export class SongsDetailsService {
   baseUrl: string = "https://localhost:44368/api/SongsDetails/";
   constructor(private httpClient:HttpClient) { }
 
-  GetSongs():Observable<SongsDetailsView[]>{
+  getSongs():Observable<SongsDetailsView[]>{
     return this.httpClient.get<SongsDetailsView[]>(this.baseUrl+'GetSongs');
   }
 }

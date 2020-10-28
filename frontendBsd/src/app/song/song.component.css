@@ -1,8 +1,10 @@
 .wrap-song {
     background-color: white;
     margin: auto;
-    height: 300px;
-    width: 350px;
+    /* height: 300px;
+    width: 350px; */
+    height: 250px;
+    width: 300px;
     background-size: cover;
     background-position: center;
     transition: .4s;
@@ -32,9 +34,11 @@
 
 .wrap-play-icon {
     display: flex;
-    height: 300px;
+    /* height: 300px;
+    width: 350px; */
+    height: 250px;
+    width: 300px;
     position: absolute;
-    width: 350px;
     background-color: #00000052;
     transition: .4s;
     z-index: 1;
@@ -42,7 +46,8 @@
 
 .wrap-play-icon mat-icon {
     color: white;
-    font-size: 84px;
+    /* font-size: 84px; */
+    font-size: 80px;
     height: auto;
     width: auto;
     margin: auto;

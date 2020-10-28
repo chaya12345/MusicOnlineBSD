@@ -20,7 +20,8 @@ export class LatestInMagazineComponent implements OnInit {
 
   getArticles(): void {
     try {
-    this.articleService.getArticles().subscribe(article => { this.latestArticles = article; }, err => { console.log(err); });
+    this.articleService.getArticles().subscribe(article => { this.latestArticles = article;
+    this.latestArticles.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime())); }, err => { console.log(err); });
     }
     catch (err) { console.log(err); }
   }
