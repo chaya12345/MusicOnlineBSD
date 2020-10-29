@@ -12,40 +12,40 @@ export class SongService {
   baseUrl: string = "https://localhost:44368/api/Songs/";
   constructor(private httpClient: HttpClient) { }
 
-  public getSongs(): Observable<Song[]> {
-    return this.httpClient.get<Song[]>(this.baseUrl + "GetSongs");
+  public getSongs(): Observable<SongsDetailsView[]> {
+    return this.httpClient.get<SongsDetailsView[]>(this.baseUrl + "GetSongs");
   }
-  public getSongById(songId: number): Observable<Song> {
-    return this.httpClient.get<Song>(this.baseUrl + "GetSongById?songId=" + songId);
+  public getSongById(songId: number): Observable<SongsDetailsView> {
+    return this.httpClient.get<SongsDetailsView>(this.baseUrl + "GetSongById?songId=" + songId);
   }
-  public getSongsBySinger(singerName: string): Observable<Song[]> {
-    return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsBySinger?singerName=" + singerName);
+  public getSongsBySinger(singerName: string): Observable<SongsDetailsView[]> {
+    return this.httpClient.get<SongsDetailsView[]>(this.baseUrl + "GetSongsBySinger?singerName=" + singerName);
   }
-  public getSongsByAlbum(albumName: string): Observable<Song[]> {
-    return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsByAlbum?albumName=" + albumName);
+  public getSongsByAlbum(albumName: string): Observable<SongsDetailsView[]> {
+    return this.httpClient.get<SongsDetailsView[]>(this.baseUrl + "GetSongsByAlbum?albumName=" + albumName);
   }
-  public getSongsByTag(tagName: string): Observable<Song[]> {
-    return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsByTag?tagName=" + tagName);
+  public getSongsByTag(tagName: string): Observable<SongsDetailsView[]> {
+    return this.httpClient.get<SongsDetailsView[]>(this.baseUrl + "GetSongsByTag?tagName=" + tagName);
   }
-  public getSongsByTagId(tagId: number): Observable<Song[]> {
-    return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsByTagId?tagId=" + tagId);
+  public getSongsByTagId(tagId: number): Observable<SongsDetailsView[]> {
+    return this.httpClient.get<SongsDetailsView[]>(this.baseUrl + "GetSongsByTagId?tagId=" + tagId);
   }
   public getSimilarSongs(songId: number): Observable<SongsDetailsView[]> {
-    return this.httpClient.get<Song[]>(this.baseUrl + "GetSimilarSongs?songId=" + songId);
+    return this.httpClient.get<SongsDetailsView[]>(this.baseUrl + "GetSimilarSongs?songId=" + songId);
   }
-  public getSongsByTags(tags: string[]): Observable<Song[]> {
+  public getSongsByTags(tags: string[]): Observable<SongsDetailsView[]> {
     var obj = { "tags": tags }
-    return this.httpClient.post<Song[]>(this.baseUrl + "PostSongsByTags", obj);
+    return this.httpClient.post<SongsDetailsView[]>(this.baseUrl + "PostSongsByTags", obj);
   }
-  public getSongsByAllTags(tags: string[]): Observable<Song[]> {
+  public getSongsByAllTags(tags: string[]): Observable<SongsDetailsView[]> {
     var obj = { "tags": tags }
-    return this.httpClient.post<Song[]>(this.baseUrl + "PostSongsByAllTags", obj);
+    return this.httpClient.post<SongsDetailsView[]>(this.baseUrl + "PostSongsByAllTags", obj);
   }
-  public getSongsByTagOrArtist(name: string): Observable<Song[]> {
-    return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsByTagOrArtist?name=" + name);
+  public getSongsByTagOrArtist(name: string): Observable<SongsDetailsView[]> {
+    return this.httpClient.get<SongsDetailsView[]>(this.baseUrl + "GetSongsByTagOrArtist?name=" + name);
   }
-  public getPerformances(): Observable<Song[]> {
-    return this.httpClient.get<Song[]>(this.baseUrl + "GetPerformances");
+  public getPerformances(): Observable<SongsDetailsView[]> {
+    return this.httpClient.get<SongsDetailsView[]>(this.baseUrl + "GetPerformances");
   }
   public addSong(song: Song): Observable<any> {
     return this.httpClient.post(this.baseUrl + "PostSong", song);
@@ -59,14 +59,14 @@ export class SongService {
   public decreaseLikeToSong(songId: number): Observable<any> {
     return this.httpClient.put(this.baseUrl + "PutDecreaseLikeToSong?songId=" + songId,songId);
   }
-  public getSongsByArtist(artistName: string): Observable<Song[]> {
-    return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsByArtist?artistName=" + artistName);
+  public getSongsByArtist(artistName: string): Observable<SongsDetailsView[]> {
+    return this.httpClient.get<SongsDetailsView[]>(this.baseUrl + "GetSongsByArtist?artistName=" + artistName);
   }
-  public getSongsByArtistsAndSingers(name: string): Observable<Song[]> {
-    return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsByArtistsAndSingers?name=" + name);
+  public getSongsByArtistsAndSingers(name: string): Observable<SongsDetailsView[]> {
+    return this.httpClient.get<SongsDetailsView[]>(this.baseUrl + "GetSongsByArtistsAndSingers?name=" + name);
   }
-  public getSongsPublishedThisYear(year: string): Observable<Song[]> {
-    return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsPublishedThisYear?year=" + year);
+  public getSongsPublishedThisYear(year: string): Observable<SongsDetailsView[]> {
+    return this.httpClient.get<SongsDetailsView[]>(this.baseUrl + "GetSongsPublishedThisYear?year=" + year);
   }
   // יצירת קריאת סרבר עם הרשאות גישה
   //   const headers = { 'Authorization': 'Bearer my-token' }

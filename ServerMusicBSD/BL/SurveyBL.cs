@@ -10,19 +10,19 @@ namespace BL
 {
     public class SurveyBL
     {
-        public static List<SongsDTO> GetSongsInSurvey()
+        public static List<songsDetails> GetSongsInSurvey()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<SurveyTBL> list = et.SurveyTBL.ToList();
-            List<SongsDTO> songs = SongsBL.GetSongs();
-            List<SongsDTO> result = new List<SongsDTO>();
+            List<songsDetails> songs = SongsBL.GetSongs();
+            List<songsDetails> result = new List<songsDetails>();
             if (list == null|| songs==null)
                 return null;
             foreach (SurveyTBL item in list)
             {
-                SongsDTO songsDTO = songs.Where(s => s != null && s.id == item.songId).FirstOrDefault();
-                if (songsDTO != null)
-                    result.Add(songsDTO);
+                songsDetails songsDetails = songs.Where(s => s != null && s.id == item.songId).FirstOrDefault();
+                if (songsDetails != null)
+                    result.Add(songsDetails);
             }
             return result != null ? result : null;
         }

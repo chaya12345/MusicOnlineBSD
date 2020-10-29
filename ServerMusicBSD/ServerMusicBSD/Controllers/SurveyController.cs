@@ -14,7 +14,7 @@ namespace ServerMusicBSD.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SurveyController : ApiController
     {
-        public List<SongsDTO> GetSongsInSurvey()
+        public List<songsDetails> GetSongsInSurvey()
         {
             return SurveyBL.GetSongsInSurvey();
         }

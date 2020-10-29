@@ -4,6 +4,7 @@ import { Swiper } from 'swiper/bundle';
 import { Navigation, Pagination } from 'swiper';
 import { Song } from '../classes/song';
 import { SongService } from '../services/song.service';
+import { SongsDetailsView } from '../classes/songsDetailsView';
 Swiper.use([Navigation, Pagination]);
 
 @Component({
@@ -13,7 +14,7 @@ Swiper.use([Navigation, Pagination]);
 })
 export class SiPopularSongsComponent implements OnInit {
 
-  songs: Song[] = [];
+  songs: SongsDetailsView[] = [];
 
   constructor(private songService: SongService, private cdr: ChangeDetectorRef) { }
 

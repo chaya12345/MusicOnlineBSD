@@ -9,6 +9,7 @@ import { TagService } from '../services/tag.service';
 import { Tag } from '../classes/tag';
 import { ArtistsAndSingersService } from '../services/artists-and-singers.service';
 import { ArtistsAndSingers } from '../classes/artistsAndSingers';
+import { SongsDetailsView } from '../classes/songsDetailsView';
 
 @Component({
   selector: 'search',
@@ -18,7 +19,7 @@ import { ArtistsAndSingers } from '../classes/artistsAndSingers';
 export class SearchComponent implements OnInit {
 
   filteredSongs: Observable<Song[]>;
-  songsList: Song[] = [];
+  songsList: SongsDetailsView[] = [];
   songsControl = new FormControl();
 
   filteredArtists: Observable<ArtistsAndSingers[]>;

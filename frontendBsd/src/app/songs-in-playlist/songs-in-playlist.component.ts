@@ -2,6 +2,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { PlaylistSystem } from '../classes/playlistSystem';
 import { Song } from '../classes/song';
+import { SongsDetailsView } from '../classes/songsDetailsView';
 import { SongService } from '../services/song.service';
 import { TagService } from '../services/tag.service';
 
@@ -13,7 +14,7 @@ import { TagService } from '../services/tag.service';
 export class SongsInPlaylistComponent implements OnInit {
 
   @Input() playlist: PlaylistSystem;
-  songsList: Song[] = [];
+  songsList: SongsDetailsView[] = [];
 
   playingSongId: number = -1;
 

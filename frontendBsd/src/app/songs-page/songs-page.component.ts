@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Song } from '../classes/song';
+import { SongsDetailsView } from '../classes/songsDetailsView';
 import { ShareDataService } from '../services/share-data.service';
 import { SongService } from '../services/song.service';
 
@@ -13,7 +14,7 @@ export class SongsPageComponent implements OnInit {
 
   isNarrow: boolean = false;
   songId: number = null;
-  song: Song;
+  song: SongsDetailsView;
 
   constructor(private shareData: ShareDataService, private activatedRoute: ActivatedRoute,
     private songService: SongService, private router: Router) {

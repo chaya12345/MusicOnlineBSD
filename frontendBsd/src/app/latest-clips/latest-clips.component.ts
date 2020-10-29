@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Song } from '../classes/song';
+import { SongsDetailsView } from '../classes/songsDetailsView';
 import { SongService } from '../services/song.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { SongService } from '../services/song.service';
 })
 export class LatestClipsComponent implements OnInit {
 
-  songsList: Song[] = [];
+  songsList: SongsDetailsView[] = [];
 
   constructor(private songService: SongService) {
     this.getClips();
