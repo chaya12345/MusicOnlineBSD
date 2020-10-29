@@ -4,20 +4,20 @@
     font-size: 21px;
 }
 
-span {
+a {
     display: inline-flex;
     cursor: pointer;
 }
 
-span mat-icon {
+a mat-icon {
     color: #d4d4d4;
     margin: 0 5px;
 }
 
-span:last-of-type mat-icon {
+a:last-of-type mat-icon {
     display: none;
 }
 
-span:last-of-type {
+a:last-of-type {
     color: #0d8ac3;
 }

@@ -1,5 +1,4 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-// import Swiper, { Navigation, Pagination } from 'swiper';
 import { Swiper } from 'swiper/bundle';
 import { Navigation, Pagination } from 'swiper';
 import { Song } from '../classes/song';

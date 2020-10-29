@@ -18,10 +18,10 @@ namespace BL
                 return Casts.ToTopicsDTO.GetTopics(list);
             return null;
         }
-        public static void UpdateTopic(int topicId,TopicsTBL updateTopic)
+        public static void UpdateTopic(int topicId, TopicsTBL updateTopic)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            TopicsTBL topic = et.TopicsTBL.Where(t =>t!=null&& t.id == topicId).FirstOrDefault();
+            TopicsTBL topic = et.TopicsTBL.Where(t => t != null && t.id == topicId).FirstOrDefault();
             if (topic != null)
             {
                 if (updateTopic.title != null)
@@ -36,7 +36,7 @@ namespace BL
         public static TopicsDTO GetTopic(string topicTitle)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            TopicsTBL topic = et.TopicsTBL.Where(t =>t!=null&& t.title == topicTitle).FirstOrDefault();
+            TopicsTBL topic = et.TopicsTBL.Where(t => t != null && t.title == topicTitle).FirstOrDefault();
             if (topic == null)
                 return null;
             return Casts.ToTopicsDTO.GetTopic(topic);

@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Topics } from '../classes/topics';
+import { TopicsService } from '../services/topics.service';
 
 @Component({
   selector: 'current-nav',
@@ -9,8 +11,9 @@ import { Router } from '@angular/router';
 export class CurrentNavComponent implements OnInit {
 
   @Input() navs?: string[] = [];
+  topics: Topics[] = [];
 
-  constructor(private router: Router) {
+  constructor(private topicsService: TopicsService, private router: Router) {
   }
 
   ngOnInit() {
@@ -19,19 +22,24 @@ export class CurrentNavComponent implements OnInit {
     this.navs.reverse();
   }
 
-  navigate(event): void {
-    if (event.target.innerHTML.includes("ראשי")) {
-      this.router.navigateByUrl("home");
+  navigate(nav: string): string {
+    let navigation: string = "";
+    try {
+      this.topicsService.getTopics().subscribe(topics => this.topics = topics, err => console.log(err));
+    } catch (err) { console.log(err); }
+    let isExist: boolean = false;
+    this.topics.forEach((topic) => {
+      if (topic.title == nav) {
+        isExist = true;
+      }
+    });
+    if (isExist) {
+      try {
+        this.topicsService.getTopic(nav).subscribe(topic => navigation = topic.href, err => console.log(err));
+      } catch (err) { console.log(err); }
+      return navigation;
     }
-    else if (event.target.innerHTML.includes("חדש במוזיקה")) {
-      this.router.navigateByUrl("song");
-    }
-    else if (event.target.innerHTML.includes("מגזין")) {
-      this.router.navigateByUrl("magazine");
-    }
-    else if (event.target.innerHTML.includes("הפלייליסטים")) {
-      this.router.navigateByUrl("playlists");
-    }
+    return this.router.url;
   }
 
 }

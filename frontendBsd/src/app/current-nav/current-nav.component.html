@@ -1,3 +1,3 @@
 <div class="wrap-list">
-    <span *ngFor="let nav of navs" (click)="navigate($event)">{{nav}}<mat-icon>chevron_left</mat-icon></span>
+    <a *ngFor="let nav of navs" [href]="navigate(nav)">{{nav}}<mat-icon>chevron_left</mat-icon></a>
 </div>

@@ -11,8 +11,8 @@ export class TopComponent implements OnInit {
   @Input() img: string;
   @Input() _title: string;
   @Input() subtitle: string;
+  @Input() date?: Date;
   @Input() icon?: string;
-  @Input() biggerFont?: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute) { }
 

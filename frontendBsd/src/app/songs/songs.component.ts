@@ -15,10 +15,10 @@ import { TopicsService } from '../services/topics.service';
 export class SongsComponent implements OnInit {
 
   title: string = "";
-  subtitle: string = "";
+  subtitle: string;
+  date: Date;
   img: string = "";
   icon: string = "";
-  biggerFont: boolean = false;
 
   isFollowUp: boolean = false;
   isAddToPlaylist: boolean = false;
@@ -55,8 +55,8 @@ export class SongsComponent implements OnInit {
     try {
       this.songService.getSongById(songId).subscribe(song => {
         this.song = song;
-        this.title = this.song.title; this.subtitle = "01/09/2020 11:25";//this.song.subtitle;
-        this.img = "../../assets/images/" + this.song.image_location; this.biggerFont = true;
+        this.title = this.song.title; this.date = this.song.date;
+        this.img = "../../assets/images/" + this.song.image_location;
         this.navs.push(this.title);
       }, err => console.log(err))
     } catch (err) { console.log(err); }

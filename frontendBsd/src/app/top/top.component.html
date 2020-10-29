@@ -2,7 +2,8 @@
     <div class="content">
         <div>
             <h3><mat-icon *ngIf="icon!=null&&icon!=undefined&&icon!=''">{{icon}}</mat-icon>{{_title}}</h3>
-            <p [class.bigger-font]="biggerFont">{{subtitle}}</p>
+            <p *ngIf="subtitle!=null&&subtitle!=undefined">{{subtitle}}</p>
+            <p *ngIf="date!=null&&date!=undefined" class="bigger-font">{{date | date: 'd/M/yyyy H:mm'}}</p>
         </div>
     </div>
     <div class="img" [style.background-image]="'url('+img+')'"></div>
