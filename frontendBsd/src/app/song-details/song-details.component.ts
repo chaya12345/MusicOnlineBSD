@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SongsDetailsView } from '../classes/songsDetailsView';
-import { Song } from '../classes/song';
+import { Song } from '../classes/Song';
 import { SongService } from '../services/song.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
@@ -19,7 +18,7 @@ export class SongDetailsComponent implements OnInit {
   @Input() song: Song;
   navs: string[] = [];
   songContent: string = "";
-  similarSongs: SongsDetailsView[] = [];
+  similarSongs: Song[] = [];
 
   constructor(private httpClient: HttpClient, private songService: SongService,
     private router: Router) {

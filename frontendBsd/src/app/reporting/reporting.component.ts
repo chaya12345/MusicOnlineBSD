@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 import { Song } from '../classes/song';
-import { SongsDetailsView } from '../classes/songsDetailsView';
 import { ReportingDialogComponent } from '../reporting-dialog/reporting-dialog.component';
 import { SongService } from '../services/song.service';
 
@@ -29,7 +28,7 @@ export class ReportingComponent implements OnInit {
   result: string;
 
   _songId: number = null;
-  song: SongsDetailsView;
+  song: Song;
 
   constructor(private activatedRoute: ActivatedRoute, private songService: SongService, 
     public dialog: MatDialog) {  }
