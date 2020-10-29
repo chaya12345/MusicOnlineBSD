@@ -1,8 +1,6 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Song } from '../classes/song';
-import { LikeService } from '../services/like.service';
 import { ResponseToSongsService } from '../services/response-to-songs.service';
-import { SongService } from '../services/song.service';
 
 @Component({
   selector: 'footer-song',

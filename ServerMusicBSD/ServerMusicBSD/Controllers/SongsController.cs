@@ -87,9 +87,5 @@ namespace ServerMusicBSD.Controllers
         {
             return SongsBL.GetSongsPublishedThisYear();
         }
-        public  string GetToJewishDateString(string format)
-        {
-            return SongsBL.ToJewishDateString(DateTime.Today,format);
-        }
     }
 }
