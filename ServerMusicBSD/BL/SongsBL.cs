@@ -45,7 +45,7 @@ namespace BL
             new Necessity(eNecessityLevel.FLEXIBLE, "סגנון"),
             new Necessity(eNecessityLevel.FLEXIBLE, "נושא")
         };
-        public static List<SongsDTO> GetSongs()
+        public static List<songsDetails> GetSongs()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<SongsTBL> list = et.SongsTBL.Where(s => s != null && s.isPerformance == false).ToList();
@@ -53,21 +53,21 @@ namespace BL
                 return Casts.ToSongsDTO.GetSongs(list);
             return null;
         }
-        public static SongsDTO GetSongById(int songId)
+        public static songsDetails GetSongById(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             SongsTBL song1 = et.SongsTBL.Where(song => song.id == songId).FirstOrDefault();
             if (song1 != null)
-                return Casts.ToSongsDTO.GetSong(song1);
+                return Casts.ToSongsDTO.GetSongWithSingerName(song1);
             return null;
         }
-        public static List<SongsDTO> GetSongsBySinger(string singerName)
+        public static List<songsDetails> GetSongsBySinger(string singerName)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             SingersTBL singerId = et.SingersTBL.Where(s => s != null && s.name == singerName).FirstOrDefault();
             if (singerId == null)
                 return null;
-            List<SongsDTO> result = Casts.ToSongsDTO.GetSongs(et.SongsTBL.Where(s => s != null && s.singerId == singerId.id && s.isPerformance == false).ToList());
+            List<songsDetails> result = Casts.ToSongsDTO.GetSongs(et.SongsTBL.Where(s => s != null && s.singerId == singerId.id && s.isPerformance == false).ToList());
             var songsByTag = GetSongsByTag(singerName);
             if (songsByTag != null)
             {
@@ -77,7 +77,7 @@ namespace BL
                 return result;
             return null;
         }
-        public static List<SongsDTO> GetSongsByAlbum(string albumName)
+        public static List<songsDetails> GetSongsByAlbum(string albumName)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             long id = 0;
@@ -91,7 +91,7 @@ namespace BL
                 return Casts.ToSongsDTO.GetSongs(list);
             return null;
         }
-        public static List<SongsDTO> GetSongsByTag(string tagName)
+        public static List<songsDetails> GetSongsByTag(string tagName)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             var tag = et.TagsTBL.Where(t => t != null && t.name == tagName).FirstOrDefault();
@@ -112,14 +112,14 @@ namespace BL
             }
             return null;
         }
-        public static List<SongsDTO> GetSongsByTag(List<SongsDTO> songs, string tagName)
+        public static List<songsDetails> GetSongsByTag(List<songsDetails> songs, string tagName)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<SongsDTO> suitableSongs = new List<SongsDTO>();
+            List<songsDetails> suitableSongs = new List<songsDetails>();
             TagsDTO tag = Casts.ToTagsDTO.GetTag(et.TagsTBL.Where(t => t != null && t.name == tagName).FirstOrDefault());
             if (tag == null || songs == null)
                 return null;
-            foreach (SongsDTO song in songs)
+            foreach (songsDetails song in songs)
             {
                 List<TagsDTO> tags = Casts.ToTagsDTO.GetTagsFromTagsToSong(TagsToSongsBL.GetTagsToSong(song.id).ToList());
                 if (tags.Where(t => t != null && t.id == tag.id).FirstOrDefault() != null)
@@ -129,19 +129,19 @@ namespace BL
                 return suitableSongs;
             return null;
         }
-        public static List<SongsDTO> GetSongsByTagId(int tagId)
+        public static List<songsDetails> GetSongsByTagId(int tagId)
         {
             return GetSongsByTag(TagsBL.GetName(tagId));
         }
-        public static List<SongsDTO> GetSongsByTags(List<string> tags)
+        public static List<songsDetails> GetSongsByTags(List<string> tags)
         {
             if (tags == null)
                 return null;
-            List<SongsDTO> suitableSongs = new List<SongsDTO>();
+            List<songsDetails> suitableSongs = new List<songsDetails>();
             foreach (string tag in tags)
             {
 
-                List<SongsDTO> list = GetSongsByTag(tag);
+                List<songsDetails> list = GetSongsByTag(tag);
                 if (list != null)
                     suitableSongs.AddRange(list);
             }
@@ -149,49 +149,49 @@ namespace BL
                 return suitableSongs;
             return null;
         }
-        public static List<SongsDTO> GetSongsByTagOrArtist(string name)
+        public static List<songsDetails> GetSongsByTagOrArtist(string name)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<SongsDTO> songs = new List<SongsDTO>();
+            List<songsDetails> songs = new List<songsDetails>();
             if (et.TagsTBL.Where(tag => tag.name == name).FirstOrDefault() != null)
             {
-                List<SongsDTO> list = GetSongsByTag(name);
+                List<songsDetails> list = GetSongsByTag(name);
                 if (list != null)
                     songs.AddRange(list);
             }
             if (et.ArtistsTBL.Where(artist => artist.name == name).FirstOrDefault() != null)
             {
-                List<SongsDTO> list = GetSongsByArtist(name);
+                List<songsDetails> list = GetSongsByArtist(name);
                 if (list != null)
                     songs.AddRange(list);
             }
             if (et.SingersTBL.Where(singer => singer.name == name).FirstOrDefault() != null)
             {
-                List<SongsDTO> list = GetSongsBySinger(name);
+                List<songsDetails> list = GetSongsBySinger(name);
                 if (list != null)
                     songs.AddRange(list);
             }
             songs = clearDuplicate(songs);
             return songs;
         }
-        public static List<SongsDTO> OrderSongsByTags(List<SongsDTO> songs, List<string> tags)
+        public static List<songsDetails> OrderSongsByTags(List<songsDetails> songs, List<string> tags)
         {
-            List<SongsDTO> suitableSongs = new List<SongsDTO>();
-            List<SongsDTO> nonSuitableSongs = new List<SongsDTO>();
+            List<songsDetails> suitableSongs = new List<songsDetails>();
+            List<songsDetails> nonSuitableSongs = new List<songsDetails>();
             if (tags == null || songs == null)
                 return null;
             foreach (string tag in tags)
             {
-                List<SongsDTO> list = GetSongsByTag(songs, tag);
+                List<songsDetails> list = GetSongsByTag(songs, tag);
                 if (list != null)
                     suitableSongs.AddRange(list);
             }
-            foreach (SongsDTO song in songs)
+            foreach (songsDetails song in songs)
             {
                 if (!suitableSongs.Contains(song) && song != null)
                     nonSuitableSongs.Add(song);
             }
-            List<SongsDTO> orderSongs = new List<SongsDTO>();
+            List<songsDetails> orderSongs = new List<songsDetails>();
             if (suitableSongs != null && nonSuitableSongs!=null)
             {
                 orderSongs.AddRange(suitableSongs);
@@ -201,12 +201,12 @@ namespace BL
             }
             return null;
         }
-        public static List<SongsDTO> clearDuplicate(List<SongsDTO> songs)
+        public static List<songsDetails> clearDuplicate(List<songsDetails> songs)
         {
-            List<SongsDTO> clearList = new List<SongsDTO>();
+            List<songsDetails> clearList = new List<songsDetails>();
             if (songs == null)
                 return null;
-            foreach (SongsDTO song in songs)
+            foreach (songsDetails song in songs)
             {
                 if (clearList.Where(s =>s!=null&& song!=null&&s.id == song.id).FirstOrDefault() == null)
                 {
@@ -218,21 +218,21 @@ namespace BL
                 return clearList;
             return null;
         }
-        public static List<SongsDTO> GetSongsByTags(List<SongsDTO> songs, List<string> tags)
+        public static List<songsDetails> GetSongsByTags(List<songsDetails> songs, List<string> tags)
         {
-            List<SongsDTO> suitableSongs = new List<SongsDTO>();
+            List<songsDetails> suitableSongs = new List<songsDetails>();
             if (songs == null || tags == null)
                 return null;
             foreach (string tag in tags)
             {
-                List<SongsDTO> list = GetSongsByTag(songs, tag);
+                List<songsDetails> list = GetSongsByTag(songs, tag);
                 if (list != null)
                     suitableSongs.AddRange(list);
             }
             suitableSongs = clearDuplicate(suitableSongs);
             return suitableSongs;
         }
-        public static List<SongsDTO> GetSongsByAllTags(List<string> tags)
+        public static List<songsDetails> GetSongsByAllTags(List<string> tags)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<SongsTBL> songsIncludeAllTags = new List<SongsTBL>();
@@ -267,9 +267,9 @@ namespace BL
             }
             return Casts.ToSongsDTO.GetSongs(songsIncludeAllTags);
         }
-        public static List<SongsDTO> GetSongsByAllTypes(List<TagsDTO>[] tags)
+        public static List<songsDetails> GetSongsByAllTypes(List<TagsDTO>[] tags)
         {
-            List<SongsDTO> songs = new List<SongsDTO>();
+            List<songsDetails> songs = new List<songsDetails>();
             songs.AddRange(GetSongsByTags(tags[0].Select(tag => tag.name).ToList()));
             for (int i = 1; tags[i] != null && tags[i].Count > 0; i++)
             {
@@ -277,7 +277,7 @@ namespace BL
             }
             return songs;
         }
-        public static List<SongsDTO> GetPerformances()
+        public static List<songsDetails> GetPerformances()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<SongsTBL> list = et.SongsTBL.Where(song => song != null && song.isPerformance == true).ToList();
@@ -354,10 +354,10 @@ namespace BL
                 }
             }
         }
-        public static List<SongsDTO> clearVocalSongs(List<SongsDTO> songs)
+        public static List<songsDetails> clearVocalSongs(List<songsDetails> songs)
         {
-            List<SongsDTO> nonVocalSongs = new List<SongsDTO>();
-            foreach (SongsDTO song in songs)
+            List<songsDetails> nonVocalSongs = new List<songsDetails>();
+            foreach (songsDetails song in songs)
             {
                 if (song != null)
                 {
@@ -376,8 +376,8 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<TagsDTO> tags = Casts.ToTagsDTO.GetTagsFromTagsToSong(TagsToSongsBL.GetTagsToSong(songId));
-            List<SongsDTO> possibleSongs = new List<SongsDTO>();
-            List<SongsDTO> songs = new List<SongsDTO>();
+            List<songsDetails> possibleSongs = new List<songsDetails>();
+            List<songsDetails> songs = new List<songsDetails>();
             List<TagsDTO>[] hardTags = new List<TagsDTO>[necessity.Count];
             List<TagsDTO> flexibleTags = new List<TagsDTO>();
             int index = 0;
@@ -407,9 +407,9 @@ namespace BL
             }
             songs.AddRange(OrderSongsByTags(possibleSongs, flexibleTags.Select(tag => tag.name).ToList()));
             bool isFound = songs.Remove(songs.Where(song => song.id == songId).FirstOrDefault());
-            return Casts.ToSongsDetailsDTO.GetSongsDetails(songs);
+            return songs;
         }
-        public static List<SongsDTO> GetSongsByArtist(string artistName)
+        public static List<songsDetails> GetSongsByArtist(string artistName)
         {
 
             MusicOnlineEntities et = new MusicOnlineEntities();
@@ -432,19 +432,19 @@ namespace BL
             }
             return null;
         }
-        public static List<SongsDTO> GetSongsByArtistsAndSingers(string name)
+        public static List<songsDetails> GetSongsByArtistsAndSingers(string name)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<SongsDTO> list = new List<SongsDTO>();
+            List<songsDetails> list = new List<songsDetails>();
             if (et.SingersTBL.Where(singer => singer!=null&& singer.name == name).FirstOrDefault() != null)
             {
-                List<SongsDTO> list1 = GetSongsBySinger(name);
+                List<songsDetails> list1 = GetSongsBySinger(name);
                 if (list1 != null)
                     list.AddRange(list1);
             }
             if (et.ArtistsTBL.Where(artist => artist!=null&& artist.name == name).FirstOrDefault() != null)
             {
-                List<SongsDTO> list1 = GetSongsByArtist(name);
+                List<songsDetails> list1 = GetSongsByArtist(name);
                 if (list1 != null)
                     list.AddRange(list1);
             }
@@ -457,7 +457,7 @@ namespace BL
             ci.DateTimeFormat.Calendar = new HebrewCalendar();
             return value.ToString(format, ci);
         }
-        public static List<SongsDTO> GetSongsPublishedThisYear()
+        public static List<songsDetails> GetSongsPublishedThisYear()
         {
             string year = ToJewishDateString(DateTime.Today, "D");
             if (year.Contains("תשרי") || year.Contains("חשון"))
@@ -466,11 +466,11 @@ namespace BL
             }
             year= year.Substring(year.IndexOf('ת'));
             Console.WriteLine(year);
-            List<SongsDTO> songs = GetSongs();
+            List<songsDetails> songs = GetSongs();
             if (songs == null)
                 return null;
-            List<SongsDTO> result = new List<SongsDTO>();
-            foreach (SongsDTO item in songs)
+            List<songsDetails> result = new List<songsDetails>();
+            foreach (songsDetails item in songs)
             {
                 if (item != null && item.date != null)
                 {

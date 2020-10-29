@@ -15,39 +15,39 @@ namespace ServerMusicBSD.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SongsController : ApiController
     {
-        public List<SongsDTO> GetSongs()
+        public List<songsDetails> GetSongs()
         {
             return SongsBL.GetSongs();
         }
-        public SongsDTO GetSongById(int songId)
+        public songsDetails GetSongById(int songId)
         {
             return SongsBL.GetSongById(songId);
         }
-        public List<SongsDTO> GetSongsBySinger(string singerName)
+        public List<songsDetails> GetSongsBySinger(string singerName)
         {
             return SongsBL.GetSongsBySinger(singerName);
         }
-        public List<SongsDTO> GetSongsByAlbum(string albumName)
+        public List<songsDetails> GetSongsByAlbum(string albumName)
         {
             return SongsBL.GetSongsByAlbum(albumName);
         }
-        public List<SongsDTO> GetSongsByTag(string tagName)
+        public List<songsDetails> GetSongsByTag(string tagName)
         {
             return SongsBL.GetSongsByTag(tagName);
         }
-        public List<SongsDTO> GetSongsByTagOrArtist(string name)
+        public List<songsDetails> GetSongsByTagOrArtist(string name)
         {
             return SongsBL.GetSongsByTagOrArtist(name);
         }
-        public List<SongsDTO> GetSongsByTagId(int tagId)
+        public List<songsDetails> GetSongsByTagId(int tagId)
         {
             return SongsBL.GetSongsByTagId(tagId);
         }
-        public List<SongsDTO> PostSongsByTags([FromBody] TagsResponse tagsResponse)
+        public List<songsDetails> PostSongsByTags([FromBody] TagsResponse tagsResponse)
         {
             return SongsBL.GetSongsByTags(tagsResponse.tags);
         }
-        public List<SongsDTO> PostSongsByAllTags([FromBody] TagsResponse tagsResponse)
+        public List<songsDetails> PostSongsByAllTags([FromBody] TagsResponse tagsResponse)
         {
             return SongsBL.GetSongsByAllTags(tagsResponse.tags);
         }
@@ -71,19 +71,19 @@ namespace ServerMusicBSD.Controllers
         {
             SongsBL.DecreaseLike(songId);
         }
-        public  List<SongsDTO> GetSongsByArtist(string artistName)
+        public  List<songsDetails> GetSongsByArtist(string artistName)
         {
             return SongsBL.GetSongsByArtist(artistName);
         }
-        public  List<SongsDTO> GetSongsByArtistsAndSingers(string name)
+        public  List<songsDetails> GetSongsByArtistsAndSingers(string name)
         {
             return SongsBL.GetSongsByArtistsAndSingers(name);
         }
-        public List<SongsDTO> GetPerformances()
+        public List<songsDetails> GetPerformances()
         {
             return SongsBL.GetPerformances();
         }
-        public List<SongsDTO> GetSongsPublishedThisYear()
+        public List<songsDetails> GetSongsPublishedThisYear()
         {
             return SongsBL.GetSongsPublishedThisYear();
         }

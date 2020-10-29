@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemsByParameter } from '../classes/itemsByParameter';
 import { Song } from '../classes/song';
+import { SongsDetailsView } from '../classes/songsDetailsView';
 import { Topics } from '../classes/topics';
 import { ItemsByParameterService } from '../services/items-by-parameter.service';
 import { SongService } from '../services/song.service';
@@ -28,9 +29,9 @@ export class SongsComponent implements OnInit {
   orderBy: string = "";
 
   navs: string[] = [];
-  songs: Song[] = [];
+  songs: SongsDetailsView[] = [];
   items: ItemsByParameter[] = [];
-  song: Song;
+  song: SongsDetailsView;
   topic: Topics;
 
   constructor(private activatedRoute: ActivatedRoute, private songService: SongService,

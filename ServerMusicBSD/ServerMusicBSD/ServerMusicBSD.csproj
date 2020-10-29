@@ -165,7 +165,6 @@
     <Compile Include="Controllers\SingersController.cs" />
     <Compile Include="Controllers\SingerSearchingToUserController.cs" />
     <Compile Include="Controllers\SongsController.cs" />
-    <Compile Include="Controllers\SongsDetailsController.cs" />
     <Compile Include="Controllers\SongsToPlaylistsController.cs" />
     <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="Controllers\SurveyController.cs" />
