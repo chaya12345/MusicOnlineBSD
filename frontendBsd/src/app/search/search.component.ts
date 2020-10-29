@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { Song } from '../classes/song';
 import { SongService } from '../services/song.service';
 import { Singer } from '../classes/singer';
 import { TagService } from '../services/tag.service';
 import { Tag } from '../classes/tag';
 import { ArtistsAndSingersService } from '../services/artists-and-singers.service';
 import { ArtistsAndSingers } from '../classes/artistsAndSingers';
-import { SongsDetailsView } from '../classes/songsDetailsView';
+import { Song } from '../classes/Song';
 
 @Component({
   selector: 'search',
@@ -19,7 +18,7 @@ import { SongsDetailsView } from '../classes/songsDetailsView';
 export class SearchComponent implements OnInit {
 
   filteredSongs: Observable<Song[]>;
-  songsList: SongsDetailsView[] = [];
+  songsList: Song[] = [];
   songsControl = new FormControl();
 
   filteredArtists: Observable<ArtistsAndSingers[]>;

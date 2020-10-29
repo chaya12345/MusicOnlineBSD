@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Song } from '../classes/song';
-import { SongsDetailsView } from '../classes/songsDetailsView';
 import { SongService } from '../services/song.service';
 
 @Component({
@@ -12,7 +11,7 @@ import { SongService } from '../services/song.service';
 export class SongsBySingerComponent implements OnInit {
 
   singerName: string = "";
-  songsList: SongsDetailsView[] = [];
+  songsList: Song[] = [];
   navs: string[] = [];
 
   constructor(private activatedRoute: ActivatedRoute, private songService: SongService) { }

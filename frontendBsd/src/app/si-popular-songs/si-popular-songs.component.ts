@@ -1,9 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Swiper } from 'swiper/bundle';
 import { Navigation, Pagination } from 'swiper';
-import { Song } from '../classes/song';
 import { SongService } from '../services/song.service';
-import { SongsDetailsView } from '../classes/songsDetailsView';
+import { Song } from '../classes/Song';
 Swiper.use([Navigation, Pagination]);
 
 @Component({
@@ -13,7 +12,7 @@ Swiper.use([Navigation, Pagination]);
 })
 export class SiPopularSongsComponent implements OnInit {
 
-  songs: SongsDetailsView[] = [];
+  songs: Song[] = [];
 
   constructor(private songService: SongService, private cdr: ChangeDetectorRef) { }
 

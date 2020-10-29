@@ -10,8 +10,6 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { LogInComponent } from '../log-in/log-in.component';
 import { MessageComponent } from '../message/message.component';
-import { SongsDetailsView } from '../classes/songsDetailsView';
-
 
 export interface messange {
   text: string;
@@ -27,7 +25,7 @@ export class HeaderComponent implements OnInit {
   // @ViewChild('option', {static: true}) option: ElementRef<HTMLElement>;
   connected: boolean = true;
   filteredSongs: Observable<Song[]>;
-  songsList: SongsDetailsView[] = [];
+  songsList: Song[] = [];
   songsControl = new FormControl();
 
   filteredSingers: Observable<Singer[]>;
