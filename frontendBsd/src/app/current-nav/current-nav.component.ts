@@ -25,7 +25,9 @@ export class CurrentNavComponent implements OnInit {
   navigate(nav: string): string {
     let navigation: string = "";
     try {
-      this.topicsService.getTopics().subscribe(topics => this.topics = topics, err => console.log(err));
+      this.topicsService.getTopics().subscribe(
+        topics => this.topics = topics,
+        err => console.log(err));
     } catch (err) { console.log(err); }
     let isExist: boolean = false;
     this.topics.forEach((topic) => {
@@ -35,7 +37,9 @@ export class CurrentNavComponent implements OnInit {
     });
     if (isExist) {
       try {
-        this.topicsService.getTopic(nav).subscribe(topic => navigation = topic.href, err => console.log(err));
+        this.topicsService.getTopic(nav).subscribe(
+          topic => navigation = topic.href,
+          err => console.log(err));
       } catch (err) { console.log(err); }
       return navigation;
     }
