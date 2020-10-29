@@ -4,7 +4,6 @@ import { PlaylistSystem } from '../classes/playlistSystem';
 import { Song } from '../classes/song';
 import { SongsDetailsView } from '../classes/songsDetailsView';
 import { SongService } from '../services/song.service';
-import { TagService } from '../services/tag.service';
 
 @Component({
   selector: 'songs-in-playlist',
