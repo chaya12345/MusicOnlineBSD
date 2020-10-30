@@ -26,7 +26,7 @@ export class BrowsePagesComponent implements OnInit {
   }
 
   ngOnChanges(): void {
-    this.indexs = Array(Math.round(this.itemsCount / this.itemsToPage + (this.itemsCount % this.itemsToPage ? 1 : 0)))
+    this.indexs = Array(Math.ceil(this.itemsCount / this.itemsToPage))
       .fill(0).map((x, i) => i + 1);
     // this.indexs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
     this.calcIndex();

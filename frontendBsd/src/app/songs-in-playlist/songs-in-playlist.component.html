@@ -12,7 +12,7 @@
         <div class="example-box" *ngFor="let song of songsList" cdkDrag>
             <div><a [href]="'song?songId='+song.id"><button mat-stroked-button color="warn">פתח</button></a>
             <button mat-icon-button><mat-icon>favorite_border</mat-icon></button></div>
-            <p>{{song.name}}<span> >> איציק דדיה</span></p>
+            <p>{{song.name}}<span> >> {{song.singerName}}</span></p>
             <button mat-mini-fab color="warn" *ngIf="playingSongId!=song.id" (click)="playingSongId=song.id"><mat-icon>play_arrow</mat-icon></button>
             <button mat-mini-fab color="warn" *ngIf="playingSongId==song.id" (click)="playingSongId=(-1)"><mat-icon>pause</mat-icon></button>
         </div>
