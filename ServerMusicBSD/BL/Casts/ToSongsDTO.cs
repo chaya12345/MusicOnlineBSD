@@ -44,8 +44,9 @@ namespace BL.Casts
             newSong.file_location = songs.file_location;
             newSong.type = songs.type;
             newSong.date = songs.date;
-            SingersTBL s1 = et.SingersTBL.Where(s => s != null && s.id == songs.singerId).FirstOrDefault();
-            newSong.singerName = s1 != null ? s1.name : null;
+            //SingersTBL s1 = et.SingersTBL.Where(s => s != null && s.id == songs.singerId).FirstOrDefault();
+            //newSong.singerName = s1 != null ? s1.name : null;
+            newSong.singerName = GetSingersToSong(songs);
             newSong.count_like = songs.count_like;
             newSong.count_views = songs.count_views;
             newSong.albumId = songs.albumId;
@@ -67,6 +68,41 @@ namespace BL.Casts
                     songsDTO.Add(songsDetails);
             }
             return songsDTO;
+        }
+        public static string GetSingersToSong(SongsTBL song)
+        {
+            if (song == null)
+                return "";
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            string singers = "";
+            SingersTBL singer = et.SingersTBL.Where(s => s.id == song.singerId).FirstOrDefault();
+            if (singer != null)
+            {
+                singers = singer.name;
+            }
+            JobTBL duet = et.JobTBL.Where(job => job.name == "דואט").First();
+            if (duet != null)
+            {
+                List<ArtistsToSongsTBL> rellevatArtists = et.ArtistsToSongsTBL
+                    .Where(ats => ats.jobId == duet.id && ats.songId == song.id).ToList();
+                foreach (ArtistsToSongsTBL artistToSong in rellevatArtists)
+                {
+                    ArtistsTBL artist = et.ArtistsTBL.Where(a => a.id == artistToSong.artistId).FirstOrDefault();
+                    if (artist != null)
+                    {
+                        if (rellevatArtists[rellevatArtists.Count() - 1].Equals(artistToSong))
+                        {
+                            singers = singers + " ו";
+                        }
+                        else
+                        {
+                            singers = singers + ", ";
+                        }
+                        singers = singers + artist.name;
+                    }
+                }
+            }
+            return singers;
         }
     }
 }

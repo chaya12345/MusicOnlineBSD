@@ -18,7 +18,6 @@ import { UpdateService } from '../services/update.service';
 })
 export class ToolsComponent implements OnInit {
 
-  //@Output() onOrder: EventEmitter<string> = new EventEmitter<string>();
   @Input() searchBox?: boolean = false;
   @Input() followUp?: boolean = false;
   @Input() addToPlaylist?: boolean = false;

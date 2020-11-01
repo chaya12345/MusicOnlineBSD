@@ -3,23 +3,35 @@
     padding: 0 320px;
 }
 
-.index-button {
-    padding: 9px 2px;
-    text-align: center;
-    width: 34px;
-    margin: 0 5px;
-    cursor: pointer;
-}
-
-.activeIndex {
-    background-color: #fbc02d;
-    color: white;
-}
-
 .dotes {
     margin-top: auto;
     letter-spacing: 5px;
     margin-bottom: 7px;
     color: #fbc02d;
     font-weight: 700;
+}
+
+.number-button {
+    font-family: fb Joker;
+    font-size: 21px;
+    font-weight: 400;
+    width: fit-content;
+    min-width: 35px;
+    border: solid 1px #ececec;
+    margin: 0 5px;
+}
+
+.activeIndex .number-button {
+    background-color: #fbc02d;
+    color: white !important;
+    border: none;
+}
+
+.mat-flat-button[disabled] {
+    background-color: transparent;
+    color: #b3b3b3 !important;
+}
+
+button {
+    color: #000000c7 !important;
 }

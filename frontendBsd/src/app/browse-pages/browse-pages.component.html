@@ -1,11 +1,24 @@
 <div class="wrap-browse-pages">
-    <button mat-stroked-button color="primary" [disabled]="currentIndex==1" (click)="currentIndex=currentIndex-1; calcIndex()">הקודם<mat-icon>navigate_next</mat-icon></button>
-    <div class="index-button" *ngIf="indexDisplay[0]>1" [class.activeIndex]="currentIndex==1" (click)="currentIndex=1; calcIndex()"><span>1</span></div>
+    <button mat-flat-button [disabled]="currentIndex==1" (click)="currentIndex=currentIndex-1; calcIndex()">הקודם
+        <mat-icon style="margin-right: 6px;">double_arrow</mat-icon></button>
+
+    <div class="index-button" *ngIf="indexDisplay[0]>1" [class.activeIndex]="currentIndex==1"
+        (click)="currentIndex=1; calcIndex()"><span>1</span></div>
+
     <p class="dotes" [style.visibility]="indexDisplay[0]>1?'visible':'hidden'">...</p>
-    <div class="index-button" *ngFor="let index of indexDisplay" [class.activeIndex]="index==currentIndex" (click)="currentIndex=index; calcIndex()">
-        <span>{{index}}</span>
+
+    <div class="index-button" *ngFor="let index of indexDisplay" [class.activeIndex]="index==currentIndex"
+        (click)="currentIndex=index; calcIndex()">
+        <button mat-flat-button class="number-button">{{index}}</button>
     </div>
+
     <p class="dotes" [style.visibility]="indexDisplay[indexDisplay.length-1]<indexs.length?'visible':'hidden'">...</p>
-    <div class="index-button" *ngIf="indexDisplay[indexDisplay.length-1]!=indexs.length" [class.activeIndex]="currentIndex==indexs.length" (click)="currentIndex=1; calcIndex()"><span>{{indexs.length}}</span></div>
-    <button mat-stroked-button color="primary" [disabled]="currentIndex==indexs.length" (click)="currentIndex=currentIndex+1; calcIndex()"><mat-icon>navigate_before</mat-icon>הבא</button>
+
+    <div class="index-button" *ngIf="indexDisplay[indexDisplay.length-1]!=indexs.length"
+        [class.activeIndex]="currentIndex==indexs.length" (click)="currentIndex=1; calcIndex()">
+        <span>{{indexs.length}}</span></div>
+
+    <button mat-flat-button [disabled]="currentIndex==indexs.length" (click)="currentIndex=currentIndex+1; calcIndex()">
+        <mat-icon style="transform: rotate(180deg); margin-left: 6px;">double_arrow</mat-icon>הבא
+    </button>
 </div>

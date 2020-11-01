@@ -29,15 +29,15 @@ export class NewSongsComponent implements OnInit {
 
   ngAfterViewInit() {
     var swiper = new Swiper('.swiper-container-header', {
-      slidesPerView: 1.2,
+      slidesPerView: 1,
       loop: true,
-      spaceBetween: 0,
+      spaceBetween: -0.1,
       centeredSlides: true,
       autoplay: {
-        delay: 6500,
+        delay: 7500,
         disableOnInteraction: false,
       },
-      speed: 900,
+      speed: 1000,
       pagination: {
         el: '.swiper-pagination-header',
         clickable: true,
