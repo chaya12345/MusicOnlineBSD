@@ -44,8 +44,6 @@ namespace BL.Casts
             newSong.file_location = songs.file_location;
             newSong.type = songs.type;
             newSong.date = songs.date;
-            //SingersTBL s1 = et.SingersTBL.Where(s => s != null && s.id == songs.singerId).FirstOrDefault();
-            //newSong.singerName = s1 != null ? s1.name : null;
             newSong.singerName = GetSingersToSong(songs);
             newSong.count_like = songs.count_like;
             newSong.count_views = songs.count_views;
@@ -75,7 +73,7 @@ namespace BL.Casts
                 return "";
             MusicOnlineEntities et = new MusicOnlineEntities();
             string singers = "";
-            SingersTBL singer = et.SingersTBL.Where(s => s.id == song.singerId).FirstOrDefault();
+            SingersTBL singer = et.SingersTBL.Where(s => s!=null&& s.id == song.singerId).FirstOrDefault();
             if (singer != null)
             {
                 singers = singer.name;
@@ -90,7 +88,21 @@ namespace BL.Casts
                     ArtistsTBL artist = et.ArtistsTBL.Where(a => a.id == artistToSong.artistId).FirstOrDefault();
                     if (artist != null)
                     {
-                        if (rellevatArtists[rellevatArtists.Count() - 1].Equals(artistToSong))
+                        string famallyName = artist.name.Substring(artist.name.IndexOf(' ')+1);
+                        Console.WriteLine(famallyName);
+
+
+                        if (singers.Contains(famallyName)&&!singers.Contains(artist.name))
+                        {
+                            string begin = singers.Substring(0, singers.IndexOf(famallyName));
+                            Console.WriteLine(begin);
+                            string end=singers.Substring(famallyName.Length,singers.Length-famallyName.Length);
+                           
+                            string midlle = artist.name.Substring(0, artist.name.Length-famallyName.Length - 1);
+                            singers = begin + "ו" + midlle +" "+ end;
+                            Console.WriteLine(end);
+                        }
+                        else if (rellevatArtists[rellevatArtists.Count() - 1].Equals(artistToSong))
                         {
                             singers = singers + " ו";
                         }
