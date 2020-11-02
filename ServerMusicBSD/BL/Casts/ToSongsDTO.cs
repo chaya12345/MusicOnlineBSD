@@ -73,7 +73,7 @@ namespace BL.Casts
                 return "";
             MusicOnlineEntities et = new MusicOnlineEntities();
             string singers = "";
-            SingersTBL singer = et.SingersTBL.Where(s => s!=null&& s.id == song.singerId).FirstOrDefault();
+            SingersTBL singer = et.SingersTBL.Where(s => s != null && s.id == song.singerId).FirstOrDefault();
             if (singer != null)
             {
                 singers = singer.name;
@@ -88,29 +88,36 @@ namespace BL.Casts
                     ArtistsTBL artist = et.ArtistsTBL.Where(a => a.id == artistToSong.artistId).FirstOrDefault();
                     if (artist != null)
                     {
-                        string famallyName = artist.name.Substring(artist.name.IndexOf(' ')+1);
-                        Console.WriteLine(famallyName);
-
-
-                        if (singers.Contains(famallyName)&&!singers.Contains(artist.name))
+                        string lastName = artist.name.Substring(artist.name.IndexOf(' ') + 1);
+                        if (singers.Contains(lastName) && !singers.Contains(artist.name))
                         {
-                            string begin = singers.Substring(0, singers.IndexOf(famallyName));
+                            string begin = singers.Substring(0, singers.IndexOf(lastName));
                             Console.WriteLine(begin);
-                            string end=singers.Substring(famallyName.Length,singers.Length-famallyName.Length);
-                           
-                            string midlle = artist.name.Substring(0, artist.name.Length-famallyName.Length - 1);
-                            singers = begin + "ו" + midlle +" "+ end;
-                            Console.WriteLine(end);
-                        }
-                        else if (rellevatArtists[rellevatArtists.Count() - 1].Equals(artistToSong))
-                        {
-                            singers = singers + " ו";
+                            //string end = singers.Substring(lastName.Length, singers.Length - lastName.Length);
+                            //string end = singers.Substring(, singers.Length);
+
+                            string middle = artist.name.Substring(0, artist.name.Length - lastName.Length - 1);
+                            if (singers.IndexOf(lastName) + lastName.Length < singers.Length - 1)
+                            {
+                                singers = begin + "ו" + middle + " " + lastName + singers.Substring(singers.IndexOf(lastName) + lastName.Length, singers.Length);
+                            }
+                            else
+                            {
+                                singers = begin + "ו" + middle + " " + lastName;
+                            }
                         }
                         else
                         {
-                            singers = singers + ", ";
+                            if (rellevatArtists[rellevatArtists.Count() - 1].Equals(artistToSong))
+                            {
+                                singers = singers + " ו";
+                            }
+                            else
+                            {
+                                singers = singers + ", ";
+                            }
+                            singers = singers + artist.name;
                         }
-                        singers = singers + artist.name;
                     }
                 }
             }

@@ -19,6 +19,7 @@ export class SongsComponent implements OnInit {
   date: Date;
   img: string = "";
   icon: string = "";
+  notBlur: boolean = false;
 
   isFollowUp: boolean = false;
   isAddToPlaylist: boolean = false;
@@ -97,6 +98,7 @@ export class SongsComponent implements OnInit {
         this.subtitle = topic.subtitle;
         this.img = "../../assets/images/" + topic.img;
         this.icon = topic.icon;
+        this.notBlur = true;
       }, err => console.log(err))
     } catch (err) { console.log(err); }
     this.isSingular = false;

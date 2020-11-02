@@ -399,7 +399,7 @@ a {
 tools .mat-input-element {
     color: #252525;
     border: none;
-    font-family: fb Joker;
+    font-family: fb Joker, calibri;
     font-size: 21px;
 }
 
@@ -410,7 +410,7 @@ tools mat-menu {
 
 .mat-menu-content button {
     text-align: right;
-    font-family: fb Joker;
+    font-family: fb Joker, calibri;
     font-size: 19px;
     padding: 0 22px;
 }
@@ -424,6 +424,29 @@ mat-slide-toggle {
 
 span.mat-slide-toggle-content {
     margin-right: 8px;
+}
+
+.mat-menu-item-submenu-trigger::after {
+    right: auto !important;
+    left: 16px;
+    transform: translateY(-50%) rotate(180deg) !important;
+}
+
+.mat-menu-item .mat-icon {
+    margin-left: 16px;
+    margin-right: 0 !important;
+}
+
+button.mat-menu-item {
+    direction: rtl;
+}
+
+.mat-menu-content > button > span {
+    margin-left: 20px;
+}
+
+button.active > mat-icon {
+    color: #fbc02d !important;
 }
 
 /* #endregion */

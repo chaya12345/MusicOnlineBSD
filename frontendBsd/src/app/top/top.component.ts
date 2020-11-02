@@ -13,6 +13,7 @@ export class TopComponent implements OnInit {
   @Input() subtitle: string;
   @Input() date?: Date;
   @Input() icon?: string;
+  @Input() notBlur?: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute) { }
 

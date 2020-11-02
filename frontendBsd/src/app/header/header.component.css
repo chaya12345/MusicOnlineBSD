@@ -32,28 +32,6 @@
 
 .search {
     margin: auto auto auto 0;
-}
-
-.search mat-form-field {
-    margin: 15px;
-    direction: ltr;
-    text-align: right !important;
-}
-
-button.mat-flat-button {
-    padding: 11px 17px;
-    font-size: 21px;
-    font-family: fb Joker, calibri;
-    transform: translateY(-4px);
-    margin-right: 15px;
-}
-
-button.mat-flat-button mat-icon {
-    margin-left: 8px;
-}
-
-button.mat-fab {
-    box-shadow: none !important;
-    margin-right: 25px;
-    background-color: #bfbfbfc2;
+    display: flex;
+    align-items: center;
 }

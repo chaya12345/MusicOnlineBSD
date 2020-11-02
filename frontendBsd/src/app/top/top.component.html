@@ -6,5 +6,5 @@
             <p *ngIf="date!=null&&date!=undefined" class="bigger-font">{{date | date: 'd/M/yyyy H:mm'}}</p>
         </div>
     </div>
-    <div class="img" [style.background-image]="'url('+img+')'"></div>
+    <div class="img" [style.background-image]="'url('+img+')'" [class.not-blur]="notBlur"></div>
 </div>

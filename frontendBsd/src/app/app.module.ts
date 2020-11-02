@@ -83,6 +83,9 @@ import { SiHotArticlesComponent } from './si-hot-articles/si-hot-articles.compon
 import { SiPopularSongsComponent } from './si-popular-songs/si-popular-songs.component';
 import { EditorComponent } from './editor/editor.component';
 import { BrowsePagesComponent } from './browse-pages/browse-pages.component';
+import { CustomToolBarComponent } from './custom-tool-bar/custom-tool-bar.component';
+import { LogInActionsComponent } from './log-in-actions/log-in-actions.component';
+import { SearchMiniComponent } from './search-mini/search-mini.component';
 
 @NgModule({
   declarations: [
@@ -159,7 +162,10 @@ import { BrowsePagesComponent } from './browse-pages/browse-pages.component';
     SiHotArticlesComponent,
     SiPopularSongsComponent,
     EditorComponent,
-    BrowsePagesComponent
+    BrowsePagesComponent,
+    CustomToolBarComponent,
+    LogInActionsComponent,
+    SearchMiniComponent
   ],
   imports: [
     BrowserModule,
