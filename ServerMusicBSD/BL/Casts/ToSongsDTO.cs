@@ -92,10 +92,6 @@ namespace BL.Casts
                         if (singers.Contains(lastName) && !singers.Contains(artist.name))
                         {
                             string begin = singers.Substring(0, singers.IndexOf(lastName));
-                            Console.WriteLine(begin);
-                            //string end = singers.Substring(lastName.Length, singers.Length - lastName.Length);
-                            //string end = singers.Substring(, singers.Length);
-
                             string middle = artist.name.Substring(0, artist.name.Length - lastName.Length - 1);
                             if (singers.IndexOf(lastName) + lastName.Length < singers.Length - 1)
                             {
@@ -108,14 +104,8 @@ namespace BL.Casts
                         }
                         else
                         {
-                            if (rellevatArtists[rellevatArtists.Count() - 1].Equals(artistToSong))
-                            {
-                                singers = singers + " ו";
-                            }
-                            else
-                            {
-                                singers = singers + ", ";
-                            }
+                                singers = singers + 
+                                    (rellevatArtists[rellevatArtists.Count() - 1].Equals(artistToSong) ? " ו" : ", ");
                             singers = singers + artist.name;
                         }
                     }
