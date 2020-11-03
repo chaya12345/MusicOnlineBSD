@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -14,6 +14,8 @@ import { SongService } from '../services/song.service';
 })
 export class SearchMiniComponent implements OnInit {
   
+  @Output() opened: EventEmitter<void> = new EventEmitter();
+  @Output() closed: EventEmitter<void> = new EventEmitter();
   filteredSongs: Observable<Song[]>;
   songsList: Song[] = [];
   songsControl = new FormControl();
@@ -68,6 +70,10 @@ export class SearchMiniComponent implements OnInit {
 
   orderByName(list: any[]): void {
     list.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  isOpened(open: boolean) {
+    open ? this.opened.emit() : this.closed.emit();
   }
 
 }

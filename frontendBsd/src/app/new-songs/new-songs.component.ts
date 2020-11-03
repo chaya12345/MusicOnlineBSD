@@ -29,7 +29,7 @@ export class NewSongsComponent implements OnInit {
 
   ngAfterViewInit() {
     var swiper = new Swiper('.swiper-container-header', {
-      slidesPerView: 1,
+      slidesPerView: 1.2,
       loop: true,
       spaceBetween: -0.1,
       centeredSlides: true,

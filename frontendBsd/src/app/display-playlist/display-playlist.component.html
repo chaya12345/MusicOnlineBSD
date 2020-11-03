@@ -1,10 +1,16 @@
-<a [href]="'playlist?playlistId='+playlist.id" class="wrap-popular-playlist" [style.background-image]="'url(../../assets/images/'+playlist.image+')'">
-    <div class="header-playlist">
-        <p>{{playlist.name}}</p>
-        <span>{{playlist.title}}</span>
+<div class="main-wrapper">
+    <div class="wrapper">
+        <a [href]="'playlist?playlistId='+playlist.id" class="wrap-popular-playlist"
+            [style.background-image]="'url(../../assets/images/'+playlist.image+')'">
+            <div class="header-playlist">
+            </div>
+        </a>
     </div>
-    <div></div>
-    <div class="bottom">
-        <rating [likes]="'5'" [views]="playlist.count_views" [responses]="'3'"></rating>
-    </div>
-</a>
+    <a [href]="'playlist?playlistId='+playlist.id" class="text-container">
+        <p class="text">{{playlist.name}}<span> >> {{playlist.title}}</span></p>
+        <div class="rating">
+            <span>{{playlist.count_views}}</span>
+            <mat-icon>visibility</mat-icon>
+        </div>
+    </a>
+</div>

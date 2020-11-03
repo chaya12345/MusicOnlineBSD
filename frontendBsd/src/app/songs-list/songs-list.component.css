@@ -11,6 +11,7 @@
     padding: 0px 3vw;
     border-right: solid 1px #eaeaea;
     border-left: solid 1px #eaeaea;
+    min-height: 2016px;
 }
 
 .wrap-song {

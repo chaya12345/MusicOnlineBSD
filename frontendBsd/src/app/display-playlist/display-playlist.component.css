@@ -1,18 +1,37 @@
+.main-wrapper {
+    padding: 10px 10px 15px;
+    border: solid 1px #e6e5e5;
+    border-radius: 4px;
+    min-height: 305px;
+}
+
+.wrapper {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    height: 215px;
+    width: 387px;
+    overflow: hidden;
+}
+
 .wrap-popular-playlist {
-    background-color: #101010;
-    /* height: 350px;
-    width: 350px; */
-    height: 300px;
-    width: 365px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    margin: auto;
     background-size: cover;
     background-position: center;
-    transition: .4s;
+    transition: .6s;
+    display: flex;
+    cursor: pointer;
     animation-duration: .6s;
     animation-timing-function: ease linear;
-    display: grid;
-    grid-template-rows: fit-content(50%) auto fit-content(50%);
-    padding: 20px 1px 0;
-    border-radius: 4px;
+}
+
+.wrapper:hover .wrap-popular-playlist {
+    transform: scale(1.1);
+    display: flex;
 }
 
 @keyframes bigger {
@@ -25,31 +44,42 @@
 }
 
 .header-playlist {
-    width: 100%;
-    height: 110px;
-    background-color: #252525;
-    background-color: #fbc02dc2;
-    background-color: #ffffffbd;
-    color: white;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    height: 215px;
+    width: 387px;
+    position: absolute;
+    background-color: #00000052;
+    transition: .4s;
+    z-index: 1;
+    display: flex;
+}
+
+.text-container {
+    display: grid;
+    grid-template-columns: auto fit-content(50%);
+    padding-top: 15px;
+    padding-left: 10px;
+}
+
+.text {
     color: #252525;
-    text-align: center;
-    padding: 10px 15px;
-    font-family: fb Ogen;
+    font-family: fb Joker;
+    font-size: 21px;
+    font-weight: bold;
 }
 
-.header-playlist p {
-    font-size: 39px;
-    color: #3a3a3a;
-    color: #252525;
-    font-weight: 600;
+.text > span {
+    font-size: 19px;
+    font-weight: 400;
 }
 
-.header-playlist span {
-    font-size: 22px;
-    font-family: calibri;
-    font-weight: 100;
+.rating {
+    display: flex;
+    color: #fbc02d;
+    margin-right: 15px;
 }
 
-.bottom {
-    color: white;
+.rating span {
+    margin-left: 10px;
 }

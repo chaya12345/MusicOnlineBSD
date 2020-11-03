@@ -1,6 +1,7 @@
 <div class="wrap-playlists">
-    <top _title="הפלייליסטים" subtitle="פלייליסטים בכל סגנון ולכל זמן"
-        icon="equalizer" img="../../assets/images/piano-keys-made-with-black-white-paper-yellow-backdrop_23-2147926855.jpg"></top>
+    <custom-tool-bar></custom-tool-bar>
+    <top [_title]="title" [subtitle]="subtitle"
+        [icon]="icon" [img]="'../../assets/images/'+img" notBlur="true"></top>
     <current-nav [navs]="navs"></current-nav>
     <div class="wrap-tool-box"><tools searchBox="true" followUp="true" orderBy="true"></tools></div>
     <div *ngIf="playlists.length!=0&&playlists!=null" class="all-playlists">

@@ -5,5 +5,13 @@
     <button *ngIf="connected" mat-flat-button (click)="openMessageDialog('האם אתה בטוח שברצונך להתנתק?')">
         <mat-icon>logout</mat-icon>התנתק
     </button>
-    <button mat-fab color="warn"><mat-icon>person</mat-icon></button>
+    <button mat-fab color="warn" [matMenuTriggerFor]="menu">
+        <mat-icon>person</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <span (mouseenter)="isFocus(true)" (mouseleave)="isFocus(false)">
+        <button mat-menu-item>פרופיל</button>
+        <button mat-menu-item>הגדרות</button>
+        <button mat-menu-item>איזור אישי</button></span>
+    </mat-menu>
 </div>

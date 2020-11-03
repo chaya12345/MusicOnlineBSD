@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { LogInComponent } from '../log-in/log-in.component';
 import { MessageComponent } from '../message/message.component';
@@ -10,6 +10,8 @@ import { MessageComponent } from '../message/message.component';
 })
 export class LogInActionsComponent implements OnInit {
 
+  @Output() opened: EventEmitter<void> = new EventEmitter();
+  @Output() closed: EventEmitter<void> = new EventEmitter();
   connected: boolean = true;
   text: string = "האם אתה בטוח שברצונך להתנתק?";
 
@@ -55,6 +57,10 @@ export class LogInActionsComponent implements OnInit {
         else this.isConnected();
       });
     } catch (err) { console.log(err); }
+  }
+
+  isFocus(focus: boolean) {
+    focus ? this.opened.emit() : this.closed.emit();
   }
 
 }

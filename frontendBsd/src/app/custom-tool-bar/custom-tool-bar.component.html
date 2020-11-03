@@ -1,80 +1,87 @@
-<div id="customToolbar" class="wrap-custom-tool-bar">
+<div id="customToolbar" class="wrap-custom-tool-bar" (mouseenter)="isFocus=true"
+    (mouseleave)="isFocus=false; timeoutToHide();">
     <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-right: 45px;">
         <mat-icon>more_vert</mat-icon>
     </button>
 
     <mat-menu #menu="matMenu" xPosition="before">
-        <button mat-menu-item>
-            <mat-icon>notifications</mat-icon>
-            <span>הוסף מעקב</span>
-        </button>
-        <button mat-menu-item [matMenuTriggerFor]="ordering">
-            <mat-icon>sort</mat-icon>
-            <span>סדר לפי</span>
-        </button>
-        <button mat-menu-item [disabled]="true">
-            <mat-icon>timer</mat-icon>
-            <span>הוסף מנוי לזמר</span>
-        </button>
-        <button mat-menu-item [matMenuTriggerFor]="playlists" [disabled]="true">
-            <mat-icon>menu_open</mat-icon>
-            <span>הוסף לפלייליסטים שלי</span>
-        </button>
-        <button mat-menu-item [disabled]="true">
-            <mat-icon>report</mat-icon>
-            <span>דווח על שיר</span>
-        </button>
-        <mat-divider></mat-divider>
-        <button mat-menu-item>
-            <mat-icon>near_me</mat-icon>
-            <span>הרשם לניוזלטר</span>
-        </button>
+        <span (mouseenter)="isFocus=true" (mouseleave)="isFocus=false; timeoutToHide();">
+            <button mat-menu-item [disabled]="isPublic">
+                <mat-icon>notifications</mat-icon>
+                <span>הוסף מעקב</span>
+            </button>
+            <button mat-menu-item [matMenuTriggerFor]="ordering">
+                <mat-icon>sort</mat-icon>
+                <span>סדר לפי</span>
+            </button>
+            <button mat-menu-item [disabled]="isPublic">
+                <mat-icon>timer</mat-icon>
+                <span>הוסף מנוי לזמר</span>
+            </button>
+            <button mat-menu-item [matMenuTriggerFor]="playlists" [disabled]="isPublic">
+                <mat-icon>menu_open</mat-icon>
+                <span>הוסף לפלייליסטים שלי</span>
+            </button>
+            <button mat-menu-item [disabled]="isPublic">
+                <mat-icon>report</mat-icon>
+                <span>דווח על שיר</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="openDialogToNewsletter()">
+                <mat-icon>near_me</mat-icon>
+                <span>הרשם לניוזלטר</span>
+            </button>
+        </span>
     </mat-menu>
 
     <mat-menu #ordering="matMenu" xPosition="before">
-        <button mat-menu-item [class.active]="currentOrder=='song'" (click)="saveOrderType('song')">
-            <mat-icon>text_rotate_vertical</mat-icon>שם שיר
-        </button>
-        <button mat-menu-item [class.active]="currentOrder=='date'" (click)="saveOrderType('date')">
-            <mat-icon>date_range</mat-icon>תאריך
-        </button>
-        <button mat-menu-item [class.active]="currentOrder=='views'" (click)="saveOrderType('views')">
-            <mat-icon>visibility</mat-icon>כמות צפיות
-        </button>
-        <button mat-menu-item [class.active]="currentOrder=='likes'" (click)="saveOrderType('likes')">
-            <mat-icon>thumb_up</mat-icon>כמות לייקים
-        </button>
-        <mat-divider></mat-divider>
-        <button mat-menu-item [class.active]="currentDirection==true" (click)="currentDirection=true">
-            <mat-icon>arrow_upward</mat-icon>סדר עולה
-        </button>
-        <button mat-menu-item [class.active]="currentDirection==false" (click)="currentDirection=false">
-            <mat-icon>arrow_downward</mat-icon>סדר יורד
-        </button>
+        <span (mouseenter)="isFocus=true" (mouseleave)="isFocus=false; timeoutToHide();">
+            <button mat-menu-item [disabled]="isByName" [class.active]="currentOrder=='song'" (click)="saveOrderType('song')">
+                <mat-icon>text_rotate_vertical</mat-icon>שם שיר
+            </button>
+            <button mat-menu-item [class.active]="currentOrder=='date'" (click)="saveOrderType('date')">
+                <mat-icon>date_range</mat-icon>תאריך
+            </button>
+            <button mat-menu-item [class.active]="currentOrder=='views'" (click)="saveOrderType('views')">
+                <mat-icon>visibility</mat-icon>כמות צפיות
+            </button>
+            <button mat-menu-item [class.active]="currentOrder=='likes'" (click)="saveOrderType('likes')">
+                <mat-icon>thumb_up</mat-icon>כמות לייקים
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item [class.active]="currentDirection==true" (click)="setDirection(true)">
+                <mat-icon>arrow_upward</mat-icon>סדר עולה
+            </button>
+            <button mat-menu-item [class.active]="currentDirection==false" (click)="setDirection(false)">
+                <mat-icon>arrow_downward</mat-icon>סדר יורד
+            </button>
+        </span>
     </mat-menu>
 
     <mat-menu #playlists="matMenu" xPosition="before">
-        <button mat-menu-item>
-            <mat-icon>text_rotate_vertical</mat-icon>שם שיר
-        </button>
-        <button mat-menu-item>
-            <mat-icon>date_range</mat-icon>תאריך
-        </button>
-        <button mat-menu-item>
-            <mat-icon>visibility</mat-icon>כמות צפיות
-        </button>
-        <button mat-menu-item>
-            <mat-icon>thumb_up</mat-icon>כמות לייקים
-        </button>
-        <mat-divider></mat-divider>
-        <button mat-menu-item>
-            <mat-icon>arrow_upward</mat-icon>סדר עולה
-        </button>
-        <button mat-menu-item>
-            <mat-icon>arrow_downward</mat-icon>סדר יורד
-        </button>
+        <span (mouseenter)="isFocus=true" (mouseleave)="isFocus=false; timeoutToHide();">
+            <button mat-menu-item>
+                <mat-icon>text_rotate_vertical</mat-icon>שם שיר
+            </button>
+            <button mat-menu-item>
+                <mat-icon>date_range</mat-icon>תאריך
+            </button>
+            <button mat-menu-item>
+                <mat-icon>visibility</mat-icon>כמות צפיות
+            </button>
+            <button mat-menu-item>
+                <mat-icon>thumb_up</mat-icon>כמות לייקים
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item>
+                <mat-icon>arrow_upward</mat-icon>סדר עולה
+            </button>
+            <button mat-menu-item>
+                <mat-icon>arrow_downward</mat-icon>סדר יורד
+            </button>
+        </span>
     </mat-menu>
 
-    <log-in-actions></log-in-actions>
-    <search-mini></search-mini>
+    <log-in-actions (opened)="isOpened1=true" (closed)="isOpened1=false; timeoutToHide();"></log-in-actions>
+    <search-mini (opened)="isOpened2=true" (closed)="isOpened2=false; timeoutToHide();"></search-mini>
 </div>

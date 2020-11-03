@@ -19,5 +19,6 @@ button.mat-flat-button mat-icon {
 button.mat-fab {
     box-shadow: none !important;
     margin-right: 25px;
-    background-color: #bfbfbfc2;
+    /* background-color: #bfbfbfc2; */
+    background-color: #f44336a6;
 }

@@ -1,3 +1,7 @@
+<browse-pages [itemsCount]="articlesList.length" [itemsToPage]="6"></browse-pages>
 <div class="wrap-all-articles">
-    <article *ngFor="let article of articlesList" [article]="article"></article>
+    <div class="wrap-article" *ngFor="let article of items">
+        <article [article]="article"></article>
+    </div>
 </div>
+<browse-pages [itemsCount]="articlesList.length" [itemsToPage]="6"></browse-pages>

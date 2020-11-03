@@ -30,7 +30,7 @@ export class SongsListComponent implements OnInit {
           this.browsingPage(parseInt(sessionStorage.getItem("page"))||1);
           break;
         case "reverse":
-          this.reverseOrder();
+          this.orderByType();
           this.browsingPage(parseInt(sessionStorage.getItem("page"))||1);
           break;
         case "page":
@@ -69,48 +69,47 @@ export class SongsListComponent implements OnInit {
 
   orderByType(): void {
     let value = sessionStorage.getItem("order-type");
+    let dir = parseInt(sessionStorage.getItem("reverse"))==0?"desc":"asc"
     if (value) {
       switch (value) {
         case "song":
-          this.orderBySongName();
+          this.orderBySongName(dir);
           break;
         case "views":
-          this.orderByViews();
+          this.orderByViews(dir);
           break;
         case "likes":
-          this.orderByLikes();
+          this.orderByLikes(dir);
           break;
         default:
-          this.orderByDate();
+          this.orderByDate(dir);
           break;
       }
     }
     else {
-      this.orderByDate();
+      this.orderByDate(dir);
     }
   }
 
-  orderByDate(): void {
-    this.songsList.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
+  orderByDate(dir: string): void {
+    this.songsList.sort((a, b) => Math.round(new Date((dir=="desc"?b:a).date).getTime() - new Date((dir=="desc"?a:b).date).getTime()));
   }
 
-  orderBySongName(): void {
-    this.songsList.sort((a, b) => b.name.localeCompare(a.name));
+  orderBySongName(dir: string): void {
+    this.songsList.sort((a, b) => (dir=="desc"?b:a).name.localeCompare((dir=="desc"?a:b).name));
   }
 
-  orderByViews(): void {
-    this.songsList.sort((a, b) => b.count_views - a.count_views);
-    this.reverseOrder();
+  orderByViews(dir: string): void {
+    this.songsList.sort((a, b) => (dir=="desc"?b:a).count_views - (dir=="desc"?a:b).count_views);
   }
 
-  orderByLikes(): void {
-    this.songsList.sort((a, b) => b.count_like - a.count_like);
-    this.reverseOrder();
+  orderByLikes(dir: string): void {
+    this.songsList.sort((a, b) => (dir=="desc"?b:a).count_like - (dir=="desc"?a:b).count_like);
   }
 
-  reverseOrder(): void {
-    this.songsList.reverse();
-  }
+  // reverseOrder(): void {
+  //   this.songsList.reverse();
+  // }
 
   LoadMore(event) {
     event.currentTarget.classList.add("loading");

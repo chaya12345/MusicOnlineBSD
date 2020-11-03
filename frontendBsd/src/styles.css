@@ -441,12 +441,16 @@ button.mat-menu-item {
     direction: rtl;
 }
 
-.mat-menu-content > button > span {
+.mat-menu-content > span > button > span {
     margin-left: 20px;
 }
 
 button.active > mat-icon {
     color: #fbc02d !important;
+}
+
+.mat-menu-item[disabled] mat-icon {
+    color: rgba(0, 0, 0, 0.24);
 }
 
 /* #endregion */

@@ -3,7 +3,7 @@
         <mat-label>שם שיר</mat-label>
         <input type="text" matInput [formControl]="songsControl" [matAutocomplete]="autoSongs">
         <mat-icon matPrefix>search</mat-icon>
-        <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete">
+        <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete" (opened)="isOpened(true)" (closed)="isOpened(false)">
             <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name">
                 <a class="search-song" #option [href]="'song?songId='+song.id">{{song.name}}</a>
             </mat-option>
@@ -16,11 +16,10 @@
         <button mat-icon-button matPrefix>
             <mat-icon>search</mat-icon>
         </button>
-        <mat-autocomplete autoActiveFirstOption #autoSingers="matAutocomplete">
-            <mat-option *ngFor="let singer of filteredSingers | async" [value]="singer.name">
-                <a class="search-singer" [href]="'song?filter='+singer.name">{{singer.name}}</a>
-            </mat-option>
-
+        <mat-autocomplete autoActiveFirstOption #autoSingers="matAutocomplete" (opened)="isOpened(true)" (closed)="isOpened(false)">
+                <mat-option *ngFor="let singer of filteredSingers | async" [value]="singer.name">
+                    <a class="search-singer" [href]="'song?filter='+singer.name">{{singer.name}}</a>
+                </mat-option>
         </mat-autocomplete>
     </mat-form-field>
 </div>
