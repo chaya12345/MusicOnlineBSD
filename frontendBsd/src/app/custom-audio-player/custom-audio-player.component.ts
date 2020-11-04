@@ -8,11 +8,13 @@ import { Song } from '../classes/song';
 })
 export class CustomAudioPlayerComponent implements OnInit {
 
-  @Input() song: Song;
+  @Input() songsList: Song[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  ngOnChanges(): void {
+  }
 }

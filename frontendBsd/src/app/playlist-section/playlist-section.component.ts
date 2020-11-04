@@ -16,12 +16,19 @@ export class PlaylistSectionComponent implements OnInit {
   navs: string[] = [];
   loaded: boolean = false;
   song: Song;
+  songsList: Song[];
 
   constructor(private activatedRoute: ActivatedRoute, private playlistSystemService: PlaylistsSystemService,
     private cdr: ChangeDetectorRef, private songService: SongService) {
     try {
       this.playlistSystemService.getPlaylistById(Number(this.activatedRoute.snapshot.queryParams.playlistId))
-      .subscribe(playlist => { this.playlist = playlist; this.cdr.detectChanges(); this.loaded = true; this.navs.push(this.playlist.name); }, 
+      .subscribe(playlist => { 
+        this.playlist = playlist;
+        this.loaded = true;
+        this.getSongs();
+        this.navs.push(this.playlist.name);
+        this.cdr.detectChanges();
+      }, 
       err => console.log(err));
     } catch (err) { console.log(err); }
     this.navs.push("הפלייליסטים");
@@ -31,6 +38,13 @@ export class PlaylistSectionComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  getSongs(): void {
+    try {
+      this.songService.getSongsByTagId(this.playlist.tagId)
+      .subscribe(songs => { this.songsList = songs; this.cdr.detectChanges(); }, err => console.log(err));
+    } catch (err) { console.log(err); }
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Song } from '../classes/song';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'player-details',
@@ -8,16 +9,20 @@ import { Song } from '../classes/song';
 })
 export class PlayerDetailsComponent implements OnInit {
 
-  @Input() song: Song;
+  @Input() songsList: Song[] = [];
+  index: number = 0;
 
-  constructor() { }
+  constructor(private storageService: StorageService) { }
 
   ngOnInit(): void {
+    this.storageService.watchStorage().subscribe((data: string) => {
+      if (data == "index") {
+        this.index = parseInt(sessionStorage.getItem("index"));
+      }
+    });
   }
 
   ngOnChanges(): void {
-    console.log("this.song");
-    console.log(this.song);
   }
 
 }
