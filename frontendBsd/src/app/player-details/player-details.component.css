@@ -1,0 +1,28 @@
+.wrap-player-details {
+    display: flex;
+    padding: 10px 125px 10px 0;
+    height: 100%;
+    min-width: 450px;
+}
+
+.img {
+    height: 120px;
+    width: 200px;
+    background-position: center;
+    background-size: cover;
+}
+
+.wrap-details {
+    font-family: fb Joker;
+    font-size: 21px;
+    padding: 10px 25px;
+    line-height: 32px;
+}
+
+.wrap-details p {
+    font-weight: bold;
+}
+
+.wrap-details span {
+    font-weight: 100;
+}

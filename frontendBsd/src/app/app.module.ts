@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { MaterialModule } from './material.module';
@@ -86,6 +86,11 @@ import { BrowsePagesComponent } from './browse-pages/browse-pages.component';
 import { CustomToolBarComponent } from './custom-tool-bar/custom-tool-bar.component';
 import { LogInActionsComponent } from './log-in-actions/log-in-actions.component';
 import { SearchMiniComponent } from './search-mini/search-mini.component';
+import { CustomAudioPlayerComponent } from './custom-audio-player/custom-audio-player.component';
+import { PlayerDetailsComponent } from './player-details/player-details.component';
+import { PlayerActionsComponent } from './player-actions/player-actions.component';
+import { PlayerVolumeComponent } from './player-volume/player-volume.component';
+import { GestureConfig, MatSliderModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -165,7 +170,11 @@ import { SearchMiniComponent } from './search-mini/search-mini.component';
     BrowsePagesComponent,
     CustomToolBarComponent,
     LogInActionsComponent,
-    SearchMiniComponent
+    SearchMiniComponent,
+    CustomAudioPlayerComponent,
+    PlayerDetailsComponent,
+    PlayerActionsComponent,
+    PlayerVolumeComponent
   ],
   imports: [
     BrowserModule,
@@ -176,9 +185,14 @@ import { SearchMiniComponent } from './search-mini/search-mini.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatVideoModule,
-    CKEditorModule
+    CKEditorModule,
+
+    MatSliderModule,
+    HammerModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
     RegisterToWebsiteComponent,

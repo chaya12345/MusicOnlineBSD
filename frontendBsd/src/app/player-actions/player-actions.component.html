@@ -1,0 +1,22 @@
+<div class="wrap-player-actions">
+    <div class="wrapper">
+        <div class="wrap-actions">
+            <button mat-icon-button><mat-icon>shuffle</mat-icon></button>
+            <button mat-icon-button><mat-icon>skip_next</mat-icon></button>
+            <button mat-icon-button><mat-icon>fast_forward</mat-icon></button>
+            <button mat-icon-button (click)="forward(10)"><mat-icon>forward_10</mat-icon></button>
+            <button mat-mini-fab *ngIf="song!=null&&!isPlaying" (click)="playSong(activeSong)"><mat-icon>play_arrow</mat-icon></button>
+            <button mat-mini-fab *ngIf="song!=null&&isPlaying" (click)="player.pause()"><mat-icon>pause</mat-icon></button>
+            <button mat-icon-button (click)="rewind(10)"><mat-icon>replay_10</mat-icon></button>
+            <button mat-icon-button><mat-icon>fast_rewind</mat-icon></button>
+            <button mat-icon-button><mat-icon>skip_previous</mat-icon></button>
+            <button mat-icon-button><mat-icon>repeat</mat-icon></button>
+            <audio #player preload="metadata" style="display: none;" (timeupdate)="onTimeUpdate()" (pause)="onPause()" (ended)="onEnded()"></audio>
+        </div>
+        <div class="wrap-slider">
+            <span>{{durationTime}}</span>
+            <mat-slider min="0" [max]="getDuration()" step="1" [value]="currentState" (input)="onInputChange($event)"></mat-slider>
+            <span>{{ currentTime$ | async }}</span>
+        </div>
+    </div>
+</div>

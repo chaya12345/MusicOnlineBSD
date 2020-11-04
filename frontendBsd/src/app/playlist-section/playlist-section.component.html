@@ -3,6 +3,7 @@
     <top *ngIf="loaded" [_title]="playlist.name" [subtitle]="playlist.title" [img]="'../../assets/images/'+playlist.image"></top>
     <current-nav [navs]="navs"></current-nav>
     <songs-in-playlist [playlist]="playlist"></songs-in-playlist>
+    <custom-audio-player [song]="song"></custom-audio-player>
     <popular-playlists></popular-playlists>
     <footer></footer>
 </div>
