@@ -3,13 +3,20 @@
         <song-in-playlist *ngFor="let song of songsToPlaylist" [song]="song"></song-in-playlist>
     </div> -->
     <div class="playing-now">
-        <div><p>פועל כעת >></p></div>
+        <div>
+            <p>פועל כעת >></p>
+            <div class="song-details">
+                <!-- <video-section [src]="'../../assets/songs/'+songsToPlaylist[index].file_location"
+                    [img]="'../../assets/images/'+songsToPlaylist[index].image_location" [type]="songsToPlaylist[index].type"></video-section> -->
+            </div>
+        </div>
         <div class="content-current-song">
             <div *ngIf="songsToPlaylist!=null&&songsToPlaylist.length!=0" [style.background-image]="'url(../../assets/images'+songsToPlaylist[0].image_location+')'"></div>
         </div>
     </div>
     <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let song of songsToPlaylist" cdkDrag [class.active]="index==songsToPlaylist.indexOf(song)">
+        <div class="example-box" *ngFor="let song of songsToPlaylist" cdkDrag [class.active]="index==songsToPlaylist.indexOf(song)"
+        (click)="toggle(song)">
             <div><a [href]="'song?songId='+song.id"><button mat-stroked-button color="warn">פתח</button></a>
             <button mat-icon-button><mat-icon>favorite_border</mat-icon></button></div>
             <p>{{song.name}}<span> >> {{song.singerName}}</span></p>

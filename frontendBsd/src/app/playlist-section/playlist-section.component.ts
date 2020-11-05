@@ -1,5 +1,6 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AudioPlaying } from '../classes/audioPlaying';
 import { PlaylistSystem } from '../classes/playlistSystem';
 import { Song } from '../classes/song';
 import { PlaylistsSystemService } from '../services/playlists-system.service';
@@ -17,6 +18,7 @@ export class PlaylistSectionComponent implements OnInit {
   loaded: boolean = false;
   song: Song;
   songsList: Song[];
+  playingObj: AudioPlaying = new AudioPlaying();
 
   constructor(private activatedRoute: ActivatedRoute, private playlistSystemService: PlaylistsSystemService,
     private cdr: ChangeDetectorRef, private songService: SongService) {
@@ -31,7 +33,7 @@ export class PlaylistSectionComponent implements OnInit {
       }, 
       err => console.log(err));
     } catch (err) { console.log(err); }
-    this.navs.push("הפלייליסטים");
+    this.navs.push("פלייליסטים");
     try {
       songService.getSongById(71).subscribe(song => this.song = song, err => console.log(err));
     } catch (err) { console.log(err); }
@@ -45,6 +47,10 @@ export class PlaylistSectionComponent implements OnInit {
       this.songService.getSongsByTagId(this.playlist.tagId)
       .subscribe(songs => { this.songsList = songs; this.cdr.detectChanges(); }, err => console.log(err));
     } catch (err) { console.log(err); }
+  }
+
+  updateIndex(obj: AudioPlaying): void {
+    this.playingObj = obj;
   }
 
 }

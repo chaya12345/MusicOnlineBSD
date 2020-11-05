@@ -2,8 +2,8 @@
     <custom-tool-bar></custom-tool-bar>
     <top *ngIf="loaded" [_title]="playlist.name" [subtitle]="playlist.title" [img]="'../../assets/images/'+playlist.image"></top>
     <current-nav [navs]="navs"></current-nav>
-    <songs-in-playlist [songsToPlaylist]="songsList"></songs-in-playlist>
-    <custom-audio-player [songsList]="songsList"></custom-audio-player>
+    <songs-in-playlist [songsToPlaylist]="songsList" (onPlay)="updateIndex($event)"></songs-in-playlist>
+    <custom-audio-player [songsList]="songsList" [playingObj]="playingObj"></custom-audio-player>
     <popular-playlists></popular-playlists>
     <footer></footer>
 </div>

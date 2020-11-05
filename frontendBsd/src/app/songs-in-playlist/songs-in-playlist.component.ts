@@ -1,5 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AudioPlaying } from '../classes/audioPlaying';
 import { PlaylistSystem } from '../classes/playlistSystem';
 import { Song } from '../classes/song';
 import { SongService } from '../services/song.service';
@@ -13,9 +14,11 @@ import { StorageService } from '../services/storage.service';
 export class SongsInPlaylistComponent implements OnInit {
 
   @Input() songsToPlaylist: Song[] = [];
+  @Output() onPlay = new EventEmitter<AudioPlaying>();
 
   playingSongId: number = -1;
   index: number = 0;
+  isPlay: boolean = false;
 
   constructor(private storageService: StorageService) { }
 
@@ -40,6 +43,33 @@ export class SongsInPlaylistComponent implements OnInit {
   }
 
   ngOnChanges(): void {
+  }
+
+  toggle(song: Song): void {
+    if (this.isPlay == false || this.index != this.songsToPlaylist.indexOf(song)) {
+      this.play(song);
+    }
+    else {
+      this.pause(song);
+    }
+  }
+
+  play(song: Song): void {
+    this.isPlay = true;
+    this.playingSongId = this.songsToPlaylist[this.index].id;
+    let obj = new AudioPlaying();
+    obj.index = this.songsToPlaylist.indexOf(song);
+    obj.play = true;
+    this.onPlay.emit(obj);
+  }
+
+  pause(song: Song) {
+    this.isPlay = false;
+    this.playingSongId = -1;
+    let obj = new AudioPlaying();
+    obj.index = this.songsToPlaylist.indexOf(song);
+    obj.play = false;
+    this.onPlay.emit(obj);
   }
 
 }

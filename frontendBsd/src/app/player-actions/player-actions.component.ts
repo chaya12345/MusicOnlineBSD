@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatSliderChange } from '@angular/material';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { AudioPlaying } from '../classes/audioPlaying';
 import { Song } from '../classes/song';
 import { StorageService } from '../services/storage.service';
 
@@ -12,6 +13,7 @@ import { StorageService } from '../services/storage.service';
 export class PlayerActionsComponent implements OnInit {
 
   @Input() songsList: Song[] = [];
+  @Input() playingObj?: AudioPlaying;
   currentProgress$ = new BehaviorSubject(0);
   currentTime$ = new Subject();
 
@@ -38,12 +40,26 @@ export class PlayerActionsComponent implements OnInit {
   }
 
   ngOnChanges() {
-    this.durationTime = '0:00';
-    this.player.nativeElement.src = '../../assets/songs/' + this.songsList[0].file_location;
-    this.player.nativeElement.load();
     this.activeSong = this.songsList[0];
     this.isPlaying = false;
+    if (this.currentIndex != this.playingObj.index) {
+      this.currentIndex = this.playingObj.index || 0;
+      this.durationTime = '0:00';
+      this.player.nativeElement.src = '../../assets/songs/' + this.songsList[0].file_location;
+      this.player.nativeElement.load();
+    }
+    if (this.playingObj.play == true) {
+      this.playSong(true);
+    }
+    else {
+      this.onPause();
+    }
   }
+
+  // ngDoCheck() {
+  //   this.currentIndex = this.index;
+  //   this.playSong(true);
+  // }
 
   startClick = (e) => {
     console.log(e);
@@ -81,6 +97,9 @@ export class PlayerActionsComponent implements OnInit {
     if (auto == true && this.activeRepeat == true || auto == (false || undefined || null)) {
       this.player.nativeElement.play();
       this.isPlaying = true;
+    }
+    else {
+      this.onPause();
     }
   }
 
@@ -137,8 +156,8 @@ export class PlayerActionsComponent implements OnInit {
 
   // Play song that comes after active song
   playNextSong(auto?: boolean): void {
-      const nextSongIndex = this.currentIndex + 1 < this.songsList.length ?
-        this.currentIndex + 1 : -1;
+    const nextSongIndex = this.currentIndex + 1 < this.songsList.length ?
+      this.currentIndex + 1 : -1;
     if (nextSongIndex === -1) {
       this.currentIndex = 0;
       this.playSong(auto);
@@ -193,6 +212,7 @@ export class PlayerActionsComponent implements OnInit {
 
   onPause(): void {
     this.storageService.setItem("playing", false);
+    this.player.nativeElement.pause();
     this.isPlaying = false;
     // this.currentProgress$.next(0);
     // this.currentTime$.next('0:00');

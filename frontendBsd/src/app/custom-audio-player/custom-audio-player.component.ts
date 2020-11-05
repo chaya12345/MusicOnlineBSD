@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AudioPlaying } from '../classes/audioPlaying';
 import { Song } from '../classes/song';
 
 @Component({
@@ -9,6 +10,7 @@ import { Song } from '../classes/song';
 export class CustomAudioPlayerComponent implements OnInit {
 
   @Input() songsList: Song[] = [];
+  @Input() playingObj?: AudioPlaying;
 
   constructor() { }
 
