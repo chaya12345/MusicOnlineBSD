@@ -1,0 +1,26 @@
+<div *ngIf="permission" class="wrap-settings">
+    <mat-toolbar>
+        <mat-icon style="margin-left: 6px;">admin_panel_settings</mat-icon>
+        <span>איזור מנהל</span>
+    </mat-toolbar>
+    <div class="wrap-tabs">
+        <mat-tab-group animationDuration="0ms">
+            <mat-tab *ngFor="let tab of tabs">
+                <ng-template mat-tab-label>
+                    <mat-icon class="example-tab-icon">{{tab.icon}}</mat-icon>
+                    {{tab.name}}
+                </ng-template>
+                <div [ngSwitch]="tab.name">
+                    <sett-main *ngSwitchCase="'כללי'"></sett-main>
+                    <sett-songs *ngSwitchCase="'ניהול שירים'"></sett-songs>
+                    <sett-magazine *ngSwitchCase="'ניהול מגזין'"></sett-magazine>
+                    <sett-surveys *ngSwitchCase="'ניהול פלייליסטים'"></sett-surveys>
+                    <sett-surveys *ngSwitchCase="'סקרים'"></sett-surveys>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>
+<div *ngIf="!permission" class="non-permission">
+    <error-page type="הרשאה"></error-page>
+</div>

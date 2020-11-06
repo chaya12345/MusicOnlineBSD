@@ -1,0 +1,22 @@
+<div class="wrap-sett-songs">
+    <!-- <button mat-stroked-button>
+        <mat-icon>library_music</mat-icon>
+        הוסף שיר
+    </button> -->
+    <!-- <mat-file-upload></mat-file-upload> -->
+    <!-- <input type="file"> -->
+    <button mat-flat-button (click)="fileInput.click()">
+        <mat-icon>library_add</mat-icon>
+        <span>הוסף שיר</span>
+        <input id="file"  accept="video/mp4,image/png,image/jpeg" #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />
+      </button>
+      <div class="fileName"><span>{{fileName||'שם קובץ'}}</span></div>
+      <img class="previewImg" [src]="imageSrc||'../../assets/images/one-continuous-line-drawing-headphones_5137405.png'" alt="your image" />
+
+      <audio #figAudio>
+        <source [src]="audSrc | sanitizerUrl" type="audio/ogg">
+        <source [src]="audSrc | sanitizerUrl" type="audio/mpeg">
+        <source [src]="audSrc | sanitizerUrl" type="audio/wav">
+      </audio>
+      <input type="file" (change)="audFileSelected($event)">
+</div>

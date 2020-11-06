@@ -1,0 +1,24 @@
+.wrap-sett-songs {
+    padding: 50px;
+    font-family: fb Joker;
+    font-size: 21px;
+}
+
+.wrap-sett-songs button {
+    padding: 5px 10px;
+    font-family: fb Joker;
+    font-size: 19px;
+}
+
+.fileName {
+    padding: 5px;
+    background-color: whitesmoke;
+    font-family: fb Joker, calibri;
+    font-size: 19px;
+    min-height: 34px;
+}
+
+.previewImg {
+    margin: 20px 0;
+    height: 200px;
+}

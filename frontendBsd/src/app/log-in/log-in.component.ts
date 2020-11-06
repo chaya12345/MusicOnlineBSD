@@ -34,13 +34,19 @@ export class LogInComponent implements OnInit {
     if (this.formLogIn.valid) {
       this.name = this.formLogIn.controls.name.value;
       this.password = this.formLogIn.controls.password.value;
-      this.usersService.logIn(this.name, this.password)
-        .subscribe(user => {//חובה לבדוק שהוא אכן מצא משתמש כזה, כי גם אם הוא לא מצא הקריאה עדיין הצליחה
-          if (user != null || user != undefined) {
-            sessionStorage.setItem('user', JSON.stringify(user));
+      let manager = this.usersService.logInManager(this.name, this.password);
+      if (manager != null) {
+        sessionStorage.setItem('manager', manager.id.toString());
+      }
+      else {
+        this.usersService.logIn(this.name, this.password)
+          .subscribe(user => {//חובה לבדוק שהוא אכן מצא משתמש כזה, כי גם אם הוא לא מצא הקריאה עדיין הצליחה
+            if (user != null || user != undefined) {
+              sessionStorage.setItem('user', JSON.stringify(user));
+            }
           }
-        }
-          , err => console.log(err));
+            , err => console.log(err));
+      }
       this.onNoClick();
     }
   }

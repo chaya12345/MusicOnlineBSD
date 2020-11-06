@@ -37,13 +37,14 @@
 
 .side-nav-item {
     margin: 30px 0;
-    display: grid;
-    grid-template-columns: fit-content(40%) auto;
+    display: flex;
+    align-items: center;
     width: 100%;
     padding: 8px 0;
     transition: .4s;
 }
-.side-nav-item .mat-icon{
+
+.side-nav-item .mat-icon {
     margin: 0 20px;
 }
 

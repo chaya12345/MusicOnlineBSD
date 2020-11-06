@@ -11,6 +11,33 @@ namespace BL
 {
     public class UsersBL
     {
+        private static List<UsersTBL> managers = new List<UsersTBL>() {
+            new UsersTBL()
+            {
+                name = "הודיה עזרן",
+                mail = "0504117455h@gmail.com",
+                password = "LegGh5QwYGE77@!",
+                type = true,
+                newsletter = true,
+                saveLike = true
+            }
+            , new UsersTBL() {
+                name = "אודיה אושרי",
+                mail = "bsd.odaya@gmail.com",
+                password = "7d7vM6@vTPFcsBt",
+                type = true,
+                newsletter = true,
+                saveLike = true
+            }
+        };
+        public static List<UsersTBL> GetManagers()
+        {
+            return managers;
+        }
+        public static void SetManager(UsersTBL manager)
+        {
+            managers.Add(manager);
+        }
         public static void AddUser(UsersTBL user)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
@@ -36,7 +63,7 @@ namespace BL
         public static bool signUp(UsersTBL user)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            if (et.UsersTBL.Where(usr => usr!=null&& usr.mail == user.mail).FirstOrDefault() == null/* && mail is valid... */)
+            if (et.UsersTBL.Where(usr => usr != null && usr.mail == user.mail).FirstOrDefault() == null/* && mail is valid... */)
             {
                 if (user.newsletter == null)
                 {
@@ -68,7 +95,7 @@ namespace BL
         public static bool AddToNewsletter(string mail)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            if (et.UsersTBL.Where(usr => usr!=null&& usr.mail == mail).FirstOrDefault() == null)
+            if (et.UsersTBL.Where(usr => usr != null && usr.mail == mail).FirstOrDefault() == null)
             {
                 UsersTBL user = new UsersTBL();
                 user.mail = mail;
@@ -80,7 +107,7 @@ namespace BL
             }
             else
             {
-                UsersTBL currentUser = et.UsersTBL.Where(usr => usr!=null&& usr.mail == mail).FirstOrDefault();
+                UsersTBL currentUser = et.UsersTBL.Where(usr => usr != null && usr.mail == mail).FirstOrDefault();
                 if (currentUser.newsletter == null || currentUser.newsletter == false)
                 {
                     currentUser.newsletter = true;
@@ -104,7 +131,7 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             UsersTBL user = et.UsersTBL.Find(userId);
-            if (user!=null&&userId == user.id)
+            if (user != null && userId == user.id)
             {
                 if (updateUser.name != null)
                     user.name = updateUser.name;
@@ -122,7 +149,7 @@ namespace BL
                     user.newsletter = updateUser.newsletter;
                 et.SaveChanges();
             }
-                
+
         }
 
         public static void UpdatePassword(int userId, string password)
@@ -139,12 +166,11 @@ namespace BL
 
             }
         }
-
         public static void UpdateProfil(int userId, UsersTBL updateUser)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             UsersTBL user = et.UsersTBL.Find(userId);
-            if (user!=null&&userId == user.id)
+            if (user != null && userId == user.id)
             {
                 if (updateUser.name != null)
                     user.name = updateUser.name;
@@ -159,7 +185,7 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             UsersTBL user = et.UsersTBL.Find(userId);
-            if (user!=null&&userId == user.id)
+            if (user != null && userId == user.id)
             {
                 if (updateUser.type != null)
                     user.type = updateUser.type;
@@ -184,9 +210,14 @@ namespace BL
         public static UsersDTO GetUser(string userName, string password)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            UsersTBL user = et.UsersTBL.Where(u =>u!=null&&u.password == password).FirstOrDefault();
-            if (user!=null && (user.name == userName || user.mail == userName))
+            UsersTBL user = et.UsersTBL.Where(u => u != null && u.password == password).FirstOrDefault();
+            if (user != null && (user.name == userName || user.mail == userName))
                 return Casts.ToUsersDTO.GetUser(user);
+            //UsersTBL result = GetManagers().Where(manager => manager.password == user.password).FirstOrDefault();
+            //if (result != null && (result.name == userName || result.mail == userName))
+            //{
+            //    return Casts.ToUsersDTO.GetUser(result);
+            //}
             return null;
         }
     }

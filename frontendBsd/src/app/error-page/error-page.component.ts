@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,9 +8,21 @@ import { Router } from '@angular/router';
 })
 export class ErrorPageComponent implements OnInit {
 
+  @Input() type?: string = "";
+
+  massage: string = "";
+  icon: string = "";
+
   constructor(private router: Router) { }
 
   ngOnInit() {
+    if (this.type == "הרשאה") {
+      this.icon = "report_problem";
+      this.massage = "אין לך הרשאת גישה!";
+    }
+    else {
+      this.massage = "מצטערים, הניתוב שחיפשת שגוי.";
+    }
   }
 
   backToHome(): void {

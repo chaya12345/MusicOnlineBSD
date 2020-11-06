@@ -1,0 +1,11 @@
+mat-toolbar {
+    padding: 20px 150px 20px 30px;
+    font-family: fb Joker;
+    font-size: 23px;
+    margin-bottom: 25px;
+}
+
+.wrap-tabs {
+    margin: 40px 5px;
+    padding: 0 11vw;
+}

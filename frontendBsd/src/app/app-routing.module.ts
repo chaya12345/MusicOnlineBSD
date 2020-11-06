@@ -9,6 +9,7 @@ import { PlaylistSectionComponent } from './playlist-section/playlist-section.co
 import { PlaylistsComponent } from './playlists/playlists.component';
 import { ResponsesArticleComponent } from './responses-article/responses-article.component';
 import { ResponsesSongComponent } from './responses-song/responses-song.component';
+import { SettingsComponent } from './settings/settings.component';
 import { SongsBySingerComponent } from './songs-by-singer/songs-by-singer.component';
 import { SongsPageComponent } from './songs-page/songs-page.component';
 import { SongsComponent } from './songs/songs.component';
@@ -80,6 +81,9 @@ const routes: Routes = [{
 }, {
   path: "playlist",
   component: PlaylistSectionComponent
+}, {
+  path: "settings",
+  component: SettingsComponent
 }, {
   path: "error",
   component: ErrorPageComponent

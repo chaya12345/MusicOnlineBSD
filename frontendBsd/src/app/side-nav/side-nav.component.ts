@@ -39,10 +39,19 @@ export class SideNavComponent implements OnInit {
 
   constructor(private shareData: ShareDataService, private router: Router,
     private topicsService: TopicsService) {
-      try {
-        this.topicsService.getTopics().subscribe(topics => this.topics = topics, err => console.log(err));
-      } catch (err) { console.log(err); }
-    }
+    try {
+      this.topicsService.getTopics().subscribe(topics => {
+        this.topics = topics;
+        if (sessionStorage.getItem("manager")) {
+          let settings = new Topics();
+          settings.title = "איזור מנהל";
+          settings.icon = "admin_panel_settings";
+          settings.href = "settings?manager=" + sessionStorage.getItem("manager");
+          this.topics.push(settings);
+        }
+      }, err => console.log(err));
+    } catch (err) { console.log(err); }
+  }
 
   ngOnInit() {
     this.href = this.router.url;

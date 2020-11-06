@@ -91,6 +91,12 @@ import { PlayerDetailsComponent } from './player-details/player-details.componen
 import { PlayerActionsComponent } from './player-actions/player-actions.component';
 import { PlayerVolumeComponent } from './player-volume/player-volume.component';
 import { GestureConfig, MatSliderModule } from '@angular/material';
+import { SettingsComponent } from './settings/settings.component';
+import { SettMainComponent } from './sett-main/sett-main.component';
+import { SettSongsComponent } from './sett-songs/sett-songs.component';
+import { SettMagazineComponent } from './sett-magazine/sett-magazine.component';
+import { SettSurveysComponent } from './sett-surveys/sett-surveys.component';
+import { SanitizerUrlPipe } from './pipes/sanitizer-url.pipe';
 
 @NgModule({
   declarations: [
@@ -174,7 +180,13 @@ import { GestureConfig, MatSliderModule } from '@angular/material';
     CustomAudioPlayerComponent,
     PlayerDetailsComponent,
     PlayerActionsComponent,
-    PlayerVolumeComponent
+    PlayerVolumeComponent,
+    SettingsComponent,
+    SettMainComponent,
+    SettSongsComponent,
+    SettMagazineComponent,
+    SettSurveysComponent,
+    SanitizerUrlPipe
   ],
   imports: [
     BrowserModule,
@@ -188,7 +200,7 @@ import { GestureConfig, MatSliderModule } from '@angular/material';
     CKEditorModule,
 
     MatSliderModule,
-    HammerModule,
+    HammerModule
   ],
   providers: [
     { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig }
