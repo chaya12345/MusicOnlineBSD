@@ -98,6 +98,8 @@ import { SettMagazineComponent } from './sett-magazine/sett-magazine.component';
 import { SettSurveysComponent } from './sett-surveys/sett-surveys.component';
 import { SanitizerUrlPipe } from './pipes/sanitizer-url.pipe';
 
+import { AngularEditorModule } from '@kolkov/angular-editor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -198,6 +200,8 @@ import { SanitizerUrlPipe } from './pipes/sanitizer-url.pipe';
     HttpClientModule,
     MatVideoModule,
     CKEditorModule,
+
+    AngularEditorModule, 
 
     MatSliderModule,
     HammerModule

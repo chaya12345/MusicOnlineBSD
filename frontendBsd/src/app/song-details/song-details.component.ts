@@ -13,6 +13,7 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export class SongDetailsComponent implements OnInit {
 
   public Editor = ClassicEditor;
+  htmlContent;
 
   songId: number;
   @Input() song: Song;

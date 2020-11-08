@@ -1,9 +1,11 @@
-<div class="wrap-video" [ngSwitch]="type" [class.wrapNotFound]="type==''">
-    <mat-video *ngSwitchCase="'video'" [src]="src" [keyboard]="false">
+<div class="wrap-video" [class.wrapNotFound]="type==''">
+    <!-- <mat-video #video *ngSwitchCase="'video'" [src]="src" [keyboard]="false" [preload]="true" [download]="false">
     </mat-video>
-    <mat-video *ngSwitchCase="'audio'" [src]="src" [keyboard]="false" [poster]="img"></mat-video>
-    <div class="notFound" *ngSwitchCase="''">
+    <mat-video #video *ngSwitchCase="'audio'" [src]="src" [keyboard]="false" [preload]="true" [download]="false" [poster]="img"></mat-video> -->
+    <!-- <mat-video #video *ngIf="src!=''" [src]="src"></mat-video> -->
+    <video style="height: 400px; width: 800px;" [src]="src" controls><source type="video/mp4" [src]="src"></video>
+    <!-- <div class="notFound" *ngSwitchCase="''">
         <img style="height: 200px;" src="../../assets/images/one-continuous-line-drawing-headphones_5137405.png">
     <span>הקובץ המבוקש לא נמצא</span>
-    </div>
-</div>
+    </div> -->
+</div><!--  [ngSwitch]="type" -->
