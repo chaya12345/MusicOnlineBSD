@@ -19,7 +19,7 @@
         <div class="example-box" *ngFor="let song of songsToPlaylist" cdkDrag [class.active]="index==songsToPlaylist.indexOf(song)"
         (click)="toggle(song)">
             <div><a [href]="'song?songId='+song.id"><button mat-stroked-button color="warn">פתח</button></a>
-            <button mat-icon-button><mat-icon>favorite_border</mat-icon></button></div>
+            <button mat-icon-button><mat-icon (mouseenter)="changeColor($event,'#F44336')" (mouseleave)="changeColor($event,'black')">favorite_border</mat-icon></button></div>
             <p>{{song.name}}<span> >> {{song.singerName}}</span></p>
             <button mat-mini-fab color="warn" *ngIf="playingSongId!=song.id" (click)="playingSongId=song.id"><mat-icon>play_arrow</mat-icon></button>
             <button mat-mini-fab color="warn" *ngIf="playingSongId==song.id" (click)="playingSongId=(-1)"><mat-icon>pause</mat-icon></button>

@@ -42,7 +42,7 @@ export class PlaylistSectionComponent implements OnInit {
   getSongs(): void {
     try {
       this.songsToPlaylistsSystemService.getSongsToPlaylistSystem(parseInt(this.activatedRoute.snapshot.queryParams.playlistId))
-        .subscribe(songs => { this.songsList = songs; this.cdr.detectChanges(); console.log("===="); console.log(this.songsList); }, err => console.log(err));
+        .subscribe(songs => { this.songsList = songs; this.cdr.detectChanges(); }, err => console.log(err));
     } catch (err) { console.log(err); }
   }
 

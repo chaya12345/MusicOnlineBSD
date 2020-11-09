@@ -6,7 +6,7 @@
     <p><b>{{song.name}}</b> - {{song.title}}</p>
     <div class="actions">
         <div class="rating">
-            <rating (mouseenter)="changeColor($event,'F44336')" (mouseleave)="changeColor($event,'black')"  [likes]="song.count_like" [views]="song.count_views" [responses]="'5'"></rating>
+            <rating (mouseenter)="changeColor($event,'#F44336')" (mouseleave)="changeColor($event,'black')"  [likes]="song.count_like" [views]="song.count_views" [responses]="'5'"></rating>
         </div>
         <div class="menu">
             <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>

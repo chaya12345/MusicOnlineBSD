@@ -2,6 +2,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AudioPlaying } from '../classes/audioPlaying';
 import { Song } from '../classes/song';
+import { LikeService } from '../services/like.service';
 import { StorageService } from '../services/storage.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class SongsInPlaylistComponent implements OnInit {
   index: number = 0;
   isPlay: boolean = false;
 
-  constructor(private storageService: StorageService) { }
+  constructor(private storageService: StorageService, private likeService: LikeService) { }
 
   ngOnInit() {
     this.storageService.watchStorage().subscribe((data: string) => {
@@ -68,6 +69,10 @@ export class SongsInPlaylistComponent implements OnInit {
     obj.index = this.songsToPlaylist.indexOf(song);
     obj.play = false;
     this.onPlay.emit(obj);
+  }
+
+  changeColor(event, color: string) {
+    this.likeService.change_like_color(event, color);
   }
 
 }
