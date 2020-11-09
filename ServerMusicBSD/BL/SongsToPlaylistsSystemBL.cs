@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-    class SongsToPlaylistsSystemBL
+    public class SongsToPlaylistsSystemBL
     {
     }
 }
