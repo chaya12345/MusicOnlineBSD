@@ -13,6 +13,5 @@ namespace DTO
         public string title { get; set; }
         public Nullable<long> count_views { get; set; }
         public string image { get; set; }
-        public Nullable<int> tagId { get; set; }
     }
 }

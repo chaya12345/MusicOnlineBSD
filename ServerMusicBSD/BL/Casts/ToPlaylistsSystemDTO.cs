@@ -20,7 +20,6 @@ namespace BL.Casts
             newPlaylist.title = playlist.title;
             newPlaylist.count_views = playlist.count_views;
             newPlaylist.image = playlist.image;
-            newPlaylist.tagId = playlist.tagId;
             return newPlaylist;
         }
         public static List<PlaylistsSystemDTO> GetPlaylistsSystem(List<PlaylistsSystemTBL> playlists)

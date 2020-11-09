@@ -12,14 +12,13 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class ReportsTBL
+    public partial class SongsToPlaylistsSystemTBL
     {
         public int id { get; set; }
-        public string name { get; set; }
-        public string mail { get; set; }
-        public string phone { get; set; }
+        public Nullable<int> playlistId { get; set; }
         public Nullable<int> songId { get; set; }
-        public string message { get; set; }
-        public Nullable<int> status { get; set; }
+    
+        public virtual PlaylistsSystemTBL PlaylistsSystemTBL { get; set; }
+        public virtual SongsTBL SongsTBL { get; set; }
     }
 }

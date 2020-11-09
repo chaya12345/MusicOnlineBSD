@@ -14,13 +14,19 @@ namespace DAL
     
     public partial class PlaylistsSystemTBL
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PlaylistsSystemTBL()
+        {
+            this.SongsToPlaylistsSystemTBL = new HashSet<SongsToPlaylistsSystemTBL>();
+        }
+    
         public int id { get; set; }
         public string name { get; set; }
         public string title { get; set; }
         public Nullable<long> count_views { get; set; }
         public string image { get; set; }
-        public Nullable<int> tagId { get; set; }
     
-        public virtual TagsTBL TagsTBL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SongsToPlaylistsSystemTBL> SongsToPlaylistsSystemTBL { get; set; }
     }
 }

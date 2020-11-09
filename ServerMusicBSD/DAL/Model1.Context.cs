@@ -41,8 +41,10 @@ namespace DAL
         public virtual DbSet<SingerSearchingToUserTBL> SingerSearchingToUserTBL { get; set; }
         public virtual DbSet<SingersTBL> SingersTBL { get; set; }
         public virtual DbSet<SongsTBL> SongsTBL { get; set; }
+        public virtual DbSet<SongsToPlaylistsSystemTBL> SongsToPlaylistsSystemTBL { get; set; }
         public virtual DbSet<SongsToPlaylistsTBL> SongsToPlaylistsTBL { get; set; }
         public virtual DbSet<SubscriptionTBL> SubscriptionTBL { get; set; }
+        public virtual DbSet<SurveyTBL> SurveyTBL { get; set; }
         public virtual DbSet<TagsTBL> TagsTBL { get; set; }
         public virtual DbSet<TagsToArticlesTBL> TagsToArticlesTBL { get; set; }
         public virtual DbSet<TagsToSongsTBL> TagsToSongsTBL { get; set; }
@@ -52,7 +54,6 @@ namespace DAL
         public virtual DbSet<UsersTBL> UsersTBL { get; set; }
         public virtual DbSet<latestResponses> latestResponses { get; set; }
         public virtual DbSet<songsDetails> songsDetails { get; set; }
-        public virtual DbSet<SurveyTBL> SurveyTBL { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     
         [DbFunction("MusicOnlineEntities", "itemByName")]

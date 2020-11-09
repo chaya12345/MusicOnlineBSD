@@ -76,7 +76,6 @@
           <Property Name="title" Type="varchar(max)" />
           <Property Name="count_views" Type="bigint" />
           <Property Name="image" Type="varchar(max)" />
-          <Property Name="tagId" Type="int" />
         </EntityType>
         <EntityType Name="PlaylistsTBL">
           <Key>
@@ -157,6 +156,14 @@
           <Property Name="image_location" Type="varchar(max)" />
           <Property Name="content" Type="varchar(max)" />
           <Property Name="isPerformance" Type="bit" />
+        </EntityType>
+        <EntityType Name="SongsToPlaylistsSystemTBL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="playlistId" Type="int" />
+          <Property Name="songId" Type="int" />
         </EntityType>
         <EntityType Name="SongsToPlaylistsTBL">
           <Key>
@@ -366,18 +373,6 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PlaylistsSystemTBL_TagsTBL">
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="0..1" />
-          <End Role="PlaylistsSystemTBL" Type="Self.PlaylistsSystemTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagsTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="PlaylistsSystemTBL">
-              <PropertyRef Name="tagId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PlaylistsTBL_UsersTBL">
           <End Role="UsersTBL" Type="Self.UsersTBL" Multiplicity="0..1" />
           <End Role="PlaylistsTBL" Type="Self.PlaylistsTBL" Multiplicity="*" />
@@ -459,6 +454,30 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
             </Principal>
             <Dependent Role="SongsTBL">
               <PropertyRef Name="singerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SongsToPlaylistsSystemTBL_PlaylistsSystemTBL">
+          <End Role="PlaylistsSystemTBL" Type="Self.PlaylistsSystemTBL" Multiplicity="0..1" />
+          <End Role="SongsToPlaylistsSystemTBL" Type="Self.SongsToPlaylistsSystemTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlaylistsSystemTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SongsToPlaylistsSystemTBL">
+              <PropertyRef Name="playlistId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SongsToPlaylistsSystemTBL_SongsTBL">
+          <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="0..1" />
+          <End Role="SongsToPlaylistsSystemTBL" Type="Self.SongsToPlaylistsSystemTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SongsTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SongsToPlaylistsSystemTBL">
+              <PropertyRef Name="songId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -625,6 +644,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <EntitySet Name="SingerSearchingToUserTBL" EntityType="Self.SingerSearchingToUserTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SingersTBL" EntityType="Self.SingersTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SongsTBL" EntityType="Self.SongsTBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SongsToPlaylistsSystemTBL" EntityType="Self.SongsToPlaylistsSystemTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubscriptionTBL" EntityType="Self.SubscriptionTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SurveyTBL" EntityType="Self.SurveyTBL" Schema="dbo" store:Type="Tables" />
@@ -687,10 +707,6 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
             <End Role="UsersTBL" EntitySet="UsersTBL" />
             <End Role="FollowUpTBL" EntitySet="FollowUpTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_PlaylistsSystemTBL_TagsTBL" Association="Self.FK_PlaylistsSystemTBL_TagsTBL">
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-            <End Role="PlaylistsSystemTBL" EntitySet="PlaylistsSystemTBL" />
-          </AssociationSet>
           <AssociationSet Name="FK_PlaylistsTBL_UsersTBL" Association="Self.FK_PlaylistsTBL_UsersTBL">
             <End Role="UsersTBL" EntitySet="UsersTBL" />
             <End Role="PlaylistsTBL" EntitySet="PlaylistsTBL" />
@@ -718,6 +734,14 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <AssociationSet Name="FK_SongsTBL_SingersTBL" Association="Self.FK_SongsTBL_SingersTBL">
             <End Role="SingersTBL" EntitySet="SingersTBL" />
             <End Role="SongsTBL" EntitySet="SongsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SongsToPlaylistsSystemTBL_PlaylistsSystemTBL" Association="Self.FK_SongsToPlaylistsSystemTBL_PlaylistsSystemTBL">
+            <End Role="PlaylistsSystemTBL" EntitySet="PlaylistsSystemTBL" />
+            <End Role="SongsToPlaylistsSystemTBL" EntitySet="SongsToPlaylistsSystemTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SongsToPlaylistsSystemTBL_SongsTBL" Association="Self.FK_SongsToPlaylistsSystemTBL_SongsTBL">
+            <End Role="SongsTBL" EntitySet="SongsTBL" />
+            <End Role="SongsToPlaylistsSystemTBL" EntitySet="SongsToPlaylistsSystemTBL" />
           </AssociationSet>
           <AssociationSet Name="FK_SongsToPlaylistsTBL_PlaylistsTBL" Association="Self.FK_SongsToPlaylistsTBL_PlaylistsTBL">
             <End Role="PlaylistsTBL" EntitySet="PlaylistsTBL" />
@@ -861,8 +885,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="count_views" Type="Int64" />
           <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="tagId" Type="Int32" />
-          <NavigationProperty Name="TagsTBL" Relationship="Self.FK_PlaylistsSystemTBL_TagsTBL" FromRole="PlaylistsSystemTBL" ToRole="TagsTBL" />
+          <NavigationProperty Name="SongsToPlaylistsSystemTBL" Relationship="MusicOnlineModel.FK_SongsToPlaylistsSystemTBL_PlaylistsSystemTBL" FromRole="PlaylistsSystemTBL" ToRole="SongsToPlaylistsSystemTBL" />
         </EntityType>
         <EntityType Name="PlaylistsTBL">
           <Key>
@@ -885,7 +908,6 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <Property Name="songId" Type="Int32" />
           <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="Int32" />
-          <NavigationProperty Name="SongsTBL" Relationship="Self.FK_ReportsTBL_SongsTBL" FromRole="ReportsTBL" ToRole="SongsTBL" />
         </EntityType>
         <EntityType Name="ResponsesToArticlesTBL">
           <Key>
@@ -956,12 +978,22 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <NavigationProperty Name="AlbumsTBL" Relationship="Self.FK_SongsTBL_AlbumsTBL" FromRole="SongsTBL" ToRole="AlbumsTBL" />
           <NavigationProperty Name="ArtistsToSongsTBL" Relationship="Self.FK_ArtistsToSongsTBL_SongsTBL2" FromRole="SongsTBL" ToRole="ArtistsToSongsTBL" />
           <NavigationProperty Name="FollowUpTBL" Relationship="Self.FK_FollowUpTBL_SongsTBL" FromRole="SongsTBL" ToRole="FollowUpTBL" />
-          <NavigationProperty Name="ReportsTBL" Relationship="Self.FK_ReportsTBL_SongsTBL" FromRole="SongsTBL" ToRole="ReportsTBL" />
           <NavigationProperty Name="ResponsesToSongsTBL" Relationship="Self.FK_ResponsesToSongsTBL_SongsTBL" FromRole="SongsTBL" ToRole="ResponsesToSongsTBL" />
           <NavigationProperty Name="SingersTBL" Relationship="Self.FK_SongsTBL_SingersTBL" FromRole="SongsTBL" ToRole="SingersTBL" />
           <NavigationProperty Name="SongsToPlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToPlaylistsTBL" />
+          <NavigationProperty Name="SurveyTBL" Relationship="Self.FK_SurveyTBL_SongsTBL" FromRole="SongsTBL" ToRole="SurveyTBL" />
           <NavigationProperty Name="TagsToSongsTBL" Relationship="Self.FK_TagsToSongsTBL_SongsTBL" FromRole="SongsTBL" ToRole="TagsToSongsTBL" />
-          <NavigationProperty Name="SurveyTBL" Relationship="MusicOnlineModel.FK_SurveyTBL_SongsTBL" FromRole="SongsTBL" ToRole="SurveyTBL" />
+          <NavigationProperty Name="SongsToPlaylistsSystemTBL" Relationship="MusicOnlineModel.FK_SongsToPlaylistsSystemTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToPlaylistsSystemTBL" />
+        </EntityType>
+        <EntityType Name="SongsToPlaylistsSystemTBL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="playlistId" Type="Int32" />
+          <Property Name="songId" Type="Int32" />
+          <NavigationProperty Name="PlaylistsSystemTBL" Relationship="MusicOnlineModel.FK_SongsToPlaylistsSystemTBL_PlaylistsSystemTBL" FromRole="SongsToPlaylistsSystemTBL" ToRole="PlaylistsSystemTBL" />
+          <NavigationProperty Name="SongsTBL" Relationship="MusicOnlineModel.FK_SongsToPlaylistsSystemTBL_SongsTBL" FromRole="SongsToPlaylistsSystemTBL" ToRole="SongsTBL" />
         </EntityType>
         <EntityType Name="SongsToPlaylistsTBL">
           <Key>
@@ -983,6 +1015,15 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <NavigationProperty Name="SingersTBL" Relationship="Self.FK_SubscriptionTBL_SingersTBL" FromRole="SubscriptionTBL" ToRole="SingersTBL" />
           <NavigationProperty Name="UsersTBL" Relationship="Self.FK_SubscriptionTBL_UsersTBL" FromRole="SubscriptionTBL" ToRole="UsersTBL" />
         </EntityType>
+        <EntityType Name="SurveyTBL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="songId" Type="Int32" />
+          <Property Name="count" Type="Int32" />
+          <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SurveyTBL_SongsTBL" FromRole="SurveyTBL" ToRole="SongsTBL" />
+        </EntityType>
         <EntityType Name="TagsTBL">
           <Key>
             <PropertyRef Name="id" />
@@ -991,7 +1032,6 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="tagTypeId" Type="Int32" />
           <Property Name="isShow" Type="Boolean" />
-          <NavigationProperty Name="PlaylistsSystemTBL" Relationship="Self.FK_PlaylistsSystemTBL_TagsTBL" FromRole="TagsTBL" ToRole="PlaylistsSystemTBL" />
           <NavigationProperty Name="TagsTypesTBL" Relationship="Self.FK_TagsTBL_TagsTypesTBL" FromRole="TagsTBL" ToRole="TagsTypesTBL" />
           <NavigationProperty Name="TagsToArticlesTBL" Relationship="Self.FK_TagsToArticleTBL_TagsTBL" FromRole="TagsTBL" ToRole="TagsToArticlesTBL" />
           <NavigationProperty Name="TagsToSongsTBL" Relationship="Self.FK_TagsToSongsTBL_TagNameTBL" FromRole="TagsTBL" ToRole="TagsToSongsTBL" />
@@ -1202,18 +1242,6 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PlaylistsSystemTBL_TagsTBL">
-          <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="0..1" />
-          <End Role="PlaylistsSystemTBL" Type="Self.PlaylistsSystemTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TagsTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="PlaylistsSystemTBL">
-              <PropertyRef Name="tagId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_PlaylistsTBL_UsersTBL">
           <End Role="UsersTBL" Type="Self.UsersTBL" Multiplicity="0..1" />
           <End Role="PlaylistsTBL" Type="Self.PlaylistsTBL" Multiplicity="*" />
@@ -1235,18 +1263,6 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
             </Principal>
             <Dependent Role="SongsToPlaylistsTBL">
               <PropertyRef Name="playlistId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ReportsTBL_SongsTBL">
-          <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="0..1" />
-          <End Role="ReportsTBL" Type="Self.ReportsTBL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SongsTBL">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="ReportsTBL">
-              <PropertyRef Name="songId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1318,6 +1334,18 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="SongsToPlaylistsTBL">
+              <PropertyRef Name="songId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SurveyTBL_SongsTBL">
+          <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="0..1" />
+          <End Role="SurveyTBL" Type="Self.SurveyTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SongsTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SurveyTBL">
               <PropertyRef Name="songId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1397,8 +1425,10 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <EntitySet Name="SingerSearchingToUserTBL" EntityType="Self.SingerSearchingToUserTBL" />
           <EntitySet Name="SingersTBL" EntityType="Self.SingersTBL" />
           <EntitySet Name="SongsTBL" EntityType="Self.SongsTBL" />
+          <EntitySet Name="SongsToPlaylistsSystemTBL" EntityType="Self.SongsToPlaylistsSystemTBL" />
           <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" />
           <EntitySet Name="SubscriptionTBL" EntityType="Self.SubscriptionTBL" />
+          <EntitySet Name="SurveyTBL" EntityType="Self.SurveyTBL" />
           <EntitySet Name="TagsTBL" EntityType="Self.TagsTBL" />
           <EntitySet Name="TagsToArticlesTBL" EntityType="Self.TagsToArticlesTBL" />
           <EntitySet Name="TagsToSongsTBL" EntityType="Self.TagsToSongsTBL" />
@@ -1444,10 +1474,6 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
             <End Role="UsersTBL" EntitySet="UsersTBL" />
             <End Role="FollowUpTBL" EntitySet="FollowUpTBL" />
           </AssociationSet>
-          <AssociationSet Name="FK_PlaylistsSystemTBL_TagsTBL" Association="Self.FK_PlaylistsSystemTBL_TagsTBL">
-            <End Role="TagsTBL" EntitySet="TagsTBL" />
-            <End Role="PlaylistsSystemTBL" EntitySet="PlaylistsSystemTBL" />
-          </AssociationSet>
           <AssociationSet Name="FK_PlaylistsTBL_UsersTBL" Association="Self.FK_PlaylistsTBL_UsersTBL">
             <End Role="UsersTBL" EntitySet="UsersTBL" />
             <End Role="PlaylistsTBL" EntitySet="PlaylistsTBL" />
@@ -1455,10 +1481,6 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <AssociationSet Name="FK_SongsToPlaylistsTBL_PlaylistsTBL" Association="Self.FK_SongsToPlaylistsTBL_PlaylistsTBL">
             <End Role="PlaylistsTBL" EntitySet="PlaylistsTBL" />
             <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ReportsTBL_SongsTBL" Association="Self.FK_ReportsTBL_SongsTBL">
-            <End Role="SongsTBL" EntitySet="SongsTBL" />
-            <End Role="ReportsTBL" EntitySet="ReportsTBL" />
           </AssociationSet>
           <AssociationSet Name="FK_ResponsesToSongsTBL_SongsTBL" Association="Self.FK_ResponsesToSongsTBL_SongsTBL">
             <End Role="SongsTBL" EntitySet="SongsTBL" />
@@ -1483,6 +1505,10 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <AssociationSet Name="FK_SongsToPlaylistsTBL_SongsTBL" Association="Self.FK_SongsToPlaylistsTBL_SongsTBL">
             <End Role="SongsTBL" EntitySet="SongsTBL" />
             <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SurveyTBL_SongsTBL" Association="Self.FK_SurveyTBL_SongsTBL">
+            <End Role="SongsTBL" EntitySet="SongsTBL" />
+            <End Role="SurveyTBL" EntitySet="SurveyTBL" />
           </AssociationSet>
           <AssociationSet Name="FK_TagsToSongsTBL_SongsTBL" Association="Self.FK_TagsToSongsTBL_SongsTBL">
             <End Role="SongsTBL" EntitySet="SongsTBL" />
@@ -1510,22 +1536,16 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <FunctionImport Name="itemsByParameter" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemsByParameter_Result)">
           <Parameter Name="singer" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="SurveyTBL" EntityType="MusicOnlineModel.SurveyTBL" />
           <EntitySet Name="sysdiagrams" EntityType="MusicOnlineModel.sysdiagrams" />
-          <AssociationSet Name="FK_SurveyTBL_SongsTBL" Association="MusicOnlineModel.FK_SurveyTBL_SongsTBL">
+          <AssociationSet Name="FK_SongsToPlaylistsSystemTBL_PlaylistsSystemTBL" Association="MusicOnlineModel.FK_SongsToPlaylistsSystemTBL_PlaylistsSystemTBL">
+            <End Role="PlaylistsSystemTBL" EntitySet="PlaylistsSystemTBL" />
+            <End Role="SongsToPlaylistsSystemTBL" EntitySet="SongsToPlaylistsSystemTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SongsToPlaylistsSystemTBL_SongsTBL" Association="MusicOnlineModel.FK_SongsToPlaylistsSystemTBL_SongsTBL">
             <End Role="SongsTBL" EntitySet="SongsTBL" />
-            <End Role="SurveyTBL" EntitySet="SurveyTBL" />
+            <End Role="SongsToPlaylistsSystemTBL" EntitySet="SongsToPlaylistsSystemTBL" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="SurveyTBL">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="songId" Type="Int32" />
-          <Property Name="count" Type="Int32" />
-          <NavigationProperty Name="SongsTBL" Relationship="MusicOnlineModel.FK_SurveyTBL_SongsTBL" FromRole="SurveyTBL" ToRole="SongsTBL" />
-        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -1536,14 +1556,26 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="FK_SurveyTBL_SongsTBL">
+        <Association Name="FK_SongsToPlaylistsSystemTBL_PlaylistsSystemTBL">
+          <End Type="MusicOnlineModel.PlaylistsSystemTBL" Role="PlaylistsSystemTBL" Multiplicity="0..1" />
+          <End Type="MusicOnlineModel.SongsToPlaylistsSystemTBL" Role="SongsToPlaylistsSystemTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlaylistsSystemTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SongsToPlaylistsSystemTBL">
+              <PropertyRef Name="playlistId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SongsToPlaylistsSystemTBL_SongsTBL">
           <End Type="MusicOnlineModel.SongsTBL" Role="SongsTBL" Multiplicity="0..1" />
-          <End Type="MusicOnlineModel.SurveyTBL" Role="SurveyTBL" Multiplicity="*" />
+          <End Type="MusicOnlineModel.SongsToPlaylistsSystemTBL" Role="SongsToPlaylistsSystemTBL" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SongsTBL">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="SurveyTBL">
+            <Dependent Role="SongsToPlaylistsSystemTBL">
               <PropertyRef Name="songId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1630,7 +1662,6 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="count_views" ColumnName="count_views" />
                 <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="tagId" ColumnName="tagId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1721,6 +1752,15 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SongsToPlaylistsSystemTBL">
+            <EntityTypeMapping TypeName="MusicOnlineModel.SongsToPlaylistsSystemTBL">
+              <MappingFragment StoreEntitySet="SongsToPlaylistsSystemTBL">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="playlistId" ColumnName="playlistId" />
+                <ScalarProperty Name="songId" ColumnName="songId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SongsToPlaylistsTBL">
             <EntityTypeMapping TypeName="MusicOnlineModel.SongsToPlaylistsTBL">
               <MappingFragment StoreEntitySet="SongsToPlaylistsTBL">
@@ -1736,6 +1776,15 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="userId" ColumnName="userId" />
                 <ScalarProperty Name="singerId" ColumnName="singerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SurveyTBL">
+            <EntityTypeMapping TypeName="MusicOnlineModel.SurveyTBL">
+              <MappingFragment StoreEntitySet="SurveyTBL">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="songId" ColumnName="songId" />
+                <ScalarProperty Name="count" ColumnName="count" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1866,15 +1915,6 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="SurveyTBL">
-            <EntityTypeMapping TypeName="MusicOnlineModel.SurveyTBL">
-              <MappingFragment StoreEntitySet="SurveyTBL">
-                <ScalarProperty Name="count" ColumnName="count" />
-                <ScalarProperty Name="songId" ColumnName="songId" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="MusicOnlineModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">

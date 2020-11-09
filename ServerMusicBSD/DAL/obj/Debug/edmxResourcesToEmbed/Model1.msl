@@ -77,7 +77,6 @@
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="count_views" ColumnName="count_views" />
           <ScalarProperty Name="image" ColumnName="image" />
-          <ScalarProperty Name="tagId" ColumnName="tagId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -168,6 +167,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="SongsToPlaylistsSystemTBL">
+      <EntityTypeMapping TypeName="MusicOnlineModel.SongsToPlaylistsSystemTBL">
+        <MappingFragment StoreEntitySet="SongsToPlaylistsSystemTBL">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="playlistId" ColumnName="playlistId" />
+          <ScalarProperty Name="songId" ColumnName="songId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="SongsToPlaylistsTBL">
       <EntityTypeMapping TypeName="MusicOnlineModel.SongsToPlaylistsTBL">
         <MappingFragment StoreEntitySet="SongsToPlaylistsTBL">
@@ -183,6 +191,15 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="userId" ColumnName="userId" />
           <ScalarProperty Name="singerId" ColumnName="singerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyTBL">
+      <EntityTypeMapping TypeName="MusicOnlineModel.SurveyTBL">
+        <MappingFragment StoreEntitySet="SurveyTBL">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="songId" ColumnName="songId" />
+          <ScalarProperty Name="count" ColumnName="count" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -313,15 +330,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <EntitySetMapping Name="SurveyTBL">
-      <EntityTypeMapping TypeName="MusicOnlineModel.SurveyTBL">
-        <MappingFragment StoreEntitySet="SurveyTBL">
-          <ScalarProperty Name="count" ColumnName="count" />
-          <ScalarProperty Name="songId" ColumnName="songId" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="MusicOnlineModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
