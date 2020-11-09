@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSliderChange } from '@angular/material';
 import { Song } from '../classes/song';
+import { LikeService } from '../services/like.service';
 
 @Component({
   selector: 'song-in-playlist',
@@ -16,7 +17,7 @@ export class SongInPlaylistComponent implements OnInit {
   volume: number = 10;
   showSlider: boolean = false;
 
-  constructor() {
+  constructor(private likeService:LikeService) {
   }
 
   ngOnInit() {
@@ -39,6 +40,9 @@ export class SongInPlaylistComponent implements OnInit {
       localStorage.setItem('isPlay', 'true');
       localStorage.setItem('currentSong', this.song.id.toString());
     }
+  }
+  changeColor(event,color:string){
+    this.likeService.change_like_color(event,color);
   }
 
   pause(): void {

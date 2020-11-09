@@ -5,6 +5,7 @@ import { PlaylistSystem } from '../classes/playlistSystem';
 import { Song } from '../classes/song';
 import { PlaylistsSystemService } from '../services/playlists-system.service';
 import { SongService } from '../services/song.service';
+import { SongsToPlaylistsSystemService } from '../services/songs-to-playlists-system.service';
 
 @Component({
   selector: 'playlist-section',
@@ -16,12 +17,11 @@ export class PlaylistSectionComponent implements OnInit {
   playlist: PlaylistSystem;
   navs: string[] = [];
   loaded: boolean = false;
-  song: Song;
   songsList: Song[];
   playingObj: AudioPlaying = new AudioPlaying();
 
   constructor(private activatedRoute: ActivatedRoute, private playlistSystemService: PlaylistsSystemService,
-    private cdr: ChangeDetectorRef, private songService: SongService) {
+    private cdr: ChangeDetectorRef, private songService: SongService,private songsToPlaylistsSystemService:SongsToPlaylistsSystemService) {
     try {
       this.playlistSystemService.getPlaylistById(Number(this.activatedRoute.snapshot.queryParams.playlistId))
       .subscribe(playlist => { 
@@ -34,9 +34,6 @@ export class PlaylistSectionComponent implements OnInit {
       err => console.log(err));
     } catch (err) { console.log(err); }
     this.navs.push("פלייליסטים");
-    try {
-      songService.getSongById(71).subscribe(song => this.song = song, err => console.log(err));
-    } catch (err) { console.log(err); }
   }
 
   ngOnInit() {
@@ -44,8 +41,8 @@ export class PlaylistSectionComponent implements OnInit {
 
   getSongs(): void {
     try {
-      this.songService.getSongsByTagId(this.playlist.tagId)
-      .subscribe(songs => { this.songsList = songs; this.cdr.detectChanges(); }, err => console.log(err));
+      this.songsToPlaylistsSystemService.getSongsToPlaylistSystem(this.playlist.id).
+      subscribe(songs => { this.songsList = songs; this.cdr.detectChanges(); }, err => console.log(err))
     } catch (err) { console.log(err); }
   }
 
