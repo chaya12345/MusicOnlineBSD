@@ -16,6 +16,7 @@
     display: grid;
     grid-template-rows: fit-content(50%) auto fit-content(50%);
     width: 65%;
+    height: 222px;
 }
 
 .title-song {

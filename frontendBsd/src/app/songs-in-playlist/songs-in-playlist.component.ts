@@ -1,9 +1,7 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AudioPlaying } from '../classes/audioPlaying';
-import { PlaylistSystem } from '../classes/playlistSystem';
 import { Song } from '../classes/song';
-import { SongService } from '../services/song.service';
 import { StorageService } from '../services/storage.service';
 
 @Component({

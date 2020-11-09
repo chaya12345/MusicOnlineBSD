@@ -9,7 +9,7 @@ import { SongsToPlaylistsSystem } from '../classes/songsToPlaylistsSystem';
 })
 export class SongsToPlaylistsSystemService {
 
-  baseUrl: string = "https://localhost:44368/api/SongsToPlaylistsSystem";
+  baseUrl: string = "https://localhost:44368/api/SongsToPlaylistsSystem/";
   constructor(private httpClient: HttpClient) { }
 
   getSongsToPlaylistSystem(plalistId: number): Observable<Song[]> {
