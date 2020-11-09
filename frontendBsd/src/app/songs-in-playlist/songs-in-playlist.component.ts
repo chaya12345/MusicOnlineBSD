@@ -1,8 +1,10 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AudioPlaying } from '../classes/audioPlaying';
 import { Song } from '../classes/song';
 import { LikeService } from '../services/like.service';
+import { SongService } from '../services/song.service';
 import { StorageService } from '../services/storage.service';
 
 @Component({
@@ -18,8 +20,10 @@ export class SongsInPlaylistComponent implements OnInit {
   playingSongId: number = -1;
   index: number = 0;
   isPlay: boolean = false;
+  toggleLike: boolean = false;
 
-  constructor(private storageService: StorageService, private likeService: LikeService) { }
+  constructor(private storageService: StorageService, private likeService: LikeService,
+    private songService: SongService,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {
     this.storageService.watchStorage().subscribe((data: string) => {
@@ -71,8 +75,25 @@ export class SongsInPlaylistComponent implements OnInit {
     this.onPlay.emit(obj);
   }
 
-  changeColor(event, color: string) {
-    this.likeService.change_like_color(event, color);
+  changeColor(event) {
+    this.likeService.change_like_color(event,'#F44336');
   }
 
+  resetColor(event) {
+    this.likeService.reset_like_color(event,'black');
+  }
+
+  sign(event): void {
+    this.likeService.toggle_like(event);
+    this.toggleLike == false ? this.addLike() : this.MissLike();
+    this.toggleLike = !this.toggleLike;
+  }
+
+  addLike(): void {
+    this.songService.increaseLikeToSong(Number(this.activatedRoute.snapshot.queryParams.songId)).subscribe();
+  }
+
+  MissLike(): void {
+    this.songService.decreaseLikeToSong(Number(this.activatedRoute.snapshot.queryParams.songId)).subscribe();
+  }
 }
