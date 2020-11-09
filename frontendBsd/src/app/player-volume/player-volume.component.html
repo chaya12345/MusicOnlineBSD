@@ -1,1 +1,5 @@
-<p>player-volume works!</p>
+<div class="wrap-player-volume">
+    <span>{{percentVolume}}%</span>
+    <mat-slider min="0" max="1" step="0.01" [value]="currentState" (input)="onInputChange($event)"></mat-slider>
+    <mat-icon (click)="toggleVolume()">{{getSuitableIcon()}}</mat-icon>
+</div>

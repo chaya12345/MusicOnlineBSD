@@ -96,9 +96,11 @@ import { SettMainComponent } from './sett-main/sett-main.component';
 import { SettSongsComponent } from './sett-songs/sett-songs.component';
 import { SettMagazineComponent } from './sett-magazine/sett-magazine.component';
 import { SettSurveysComponent } from './sett-surveys/sett-surveys.component';
-import { SanitizerUrlPipe } from './pipes/sanitizer-url.pipe';
+import { SongInfoComponent } from './song-info/song-info.component';
 
+import { SanitizerUrlPipe } from './pipes/sanitizer-url.pipe';
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { BarRatingModule } from "ngx-bar-rating";
 
 @NgModule({
   declarations: [
@@ -188,7 +190,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     SettSongsComponent,
     SettMagazineComponent,
     SettSurveysComponent,
-    SanitizerUrlPipe
+    SanitizerUrlPipe,
+    SongInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -201,7 +204,8 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     MatVideoModule,
     CKEditorModule,
 
-    AngularEditorModule, 
+    AngularEditorModule,
+    BarRatingModule,
 
     MatSliderModule,
     HammerModule

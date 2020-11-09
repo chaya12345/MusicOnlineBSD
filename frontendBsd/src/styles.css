@@ -514,6 +514,24 @@ custom-audio-player .mat-slider-thumb {
     border: solid 3px #101010 !important;
 }
 
+song-info .mat-slider-thumb {
+    display: none;
+}
+
+song-info .mat-slider-track-background {
+    background-color: rgb(0 0 0 / 8%) !important;
+    transform: none !important;
+}
+
+.mat-slider-disabled:hover .mat-slider-track-background,
+.mat-slider:hover .mat-slider-track-background {
+    background-color: rgb(0 0 0 / 8%);
+}
+
+.mat-slider-disabled .mat-slider-track-fill {
+    background-color: #2196f3;
+}
+
 /* #endregion */
 
 /* #region(collapsed) [Tabs] */

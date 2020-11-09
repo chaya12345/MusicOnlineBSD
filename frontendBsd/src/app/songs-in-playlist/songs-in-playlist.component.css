@@ -93,6 +93,11 @@ button.mat-icon-button mat-icon {
     font-size: 21px;
 }
 
+button.mat-stroked-button {
+  font-family: fb Joker;
+  font-size: 19px;
+}
+
 .playing-now {
     width: 700px;
     padding: 20px;

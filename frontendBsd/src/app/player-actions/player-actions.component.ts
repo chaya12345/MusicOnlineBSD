@@ -54,6 +54,11 @@ export class PlayerActionsComponent implements OnInit {
     else {
       this.onPause();
     }
+    this.storageService.watchLocalStorage().subscribe((data: string) => {
+      if (data == "volume") {
+        this.player.nativeElement.volume = parseFloat(localStorage.getItem("volume"));
+      }
+    });
   }
 
   // ngDoCheck() {

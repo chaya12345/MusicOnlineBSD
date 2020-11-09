@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { LogInComponent } from '../log-in/log-in.component';
 import { MessageComponent } from '../message/message.component';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'log-in-actions',
@@ -15,10 +16,15 @@ export class LogInActionsComponent implements OnInit {
   connected: boolean = true;
   text: string = "האם אתה בטוח שברצונך להתנתק?";
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private storageService: StorageService) { }
 
   ngOnInit(): void {
     this.isConnected();
+    this.storageService.watchStorage().subscribe(data => {
+      if (data == 'user') {
+        this.isConnected();
+      }
+    });
   }
 
   isConnected() {

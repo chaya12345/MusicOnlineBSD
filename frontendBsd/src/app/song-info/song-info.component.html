@@ -1,0 +1,16 @@
+<div class="wrap-song-info">
+    <div class="wrap-left-side" [style.background-image]="'url(../../assets/images/'+currentSong.image_location+')'"></div>
+    <div class="wrap-right-side">
+        <a class="title-song" [href]="'song?songId='+currentSong.id">{{currentSong.title}}</a>
+        <span>{{currentSong.date | date: 'dd/MM/yyyy'}}</span>
+        <div class="rating">
+            <span><mat-icon>visibility</mat-icon>{{currentSong.count_views}} צפיות</span>
+            <span><mat-icon>thumb_up</mat-icon>{{currentSong.count_like}} אנשים שאהבו</span>
+            <span><mat-icon>speaker_notes</mat-icon>{{countRes}} תגובות</span>
+            <mat-slider min="0" max="100" [value]="currentSong.count_like/currentSong.count_views*100" color="warn" invert="true" disabled></mat-slider>
+            <!-- <bar-rating [(rate)]="rate" [max]="5"></bar-rating>
+            <bar-rating [(rate)]="rate" [max]="4" [theme]="'movie'" [showText]="true"
+                [titles]="['Bad', 'Mediocre' , 'Good', 'Awesome']"></bar-rating> -->
+        </div>
+    </div>
+</div>

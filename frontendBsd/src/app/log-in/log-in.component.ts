@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { User } from '../classes/user';
 import { RegisterToWebsiteComponent } from '../register-to-website/register-to-website.component';
 import { DialogDataToWebsite } from '../register/register.component';
+import { StorageService } from '../services/storage.service';
 import { UsersService } from '../services/users.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class LogInComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<LogInComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogDataToWebsite, private usersService: UsersService,
-    public dialog: MatDialog) {
+    public dialog: MatDialog, private storageService: StorageService) {
     this.formLogIn = new FormGroup({
       name: new FormControl("", [Validators.required]),
       password: new FormControl("", [Validators.required])
@@ -36,13 +37,13 @@ export class LogInComponent implements OnInit {
       this.password = this.formLogIn.controls.password.value;
       let manager = this.usersService.logInManager(this.name, this.password);
       if (manager != null) {
-        sessionStorage.setItem('manager', manager.id.toString());
+        this.storageService.setItem('manager', manager.id.toString());
       }
       else {
         this.usersService.logIn(this.name, this.password)
           .subscribe(user => {//חובה לבדוק שהוא אכן מצא משתמש כזה, כי גם אם הוא לא מצא הקריאה עדיין הצליחה
             if (user != null || user != undefined) {
-              sessionStorage.setItem('user', JSON.stringify(user));
+              this.storageService.setItem('user', JSON.stringify(user));
             }
           }
             , err => console.log(err));

@@ -21,13 +21,13 @@ export class VideoSectionComponent implements OnInit {
   }
 
   ngOnChanges() {
-    this.video = this.matVideo.getVideoTag();
+    // this.video = this.matVideo.getVideoTag();
  
     // Use Angular renderer or addEventListener to listen for standard HTML5 video events
     
-    this.renderer.listen(this.video, 'ended', () => console.log('video ended'));
-    this.video.addEventListener('ended', () => console.log('video ended'));
-    console.log("Src" + this.src);
+    // this.renderer.listen(this.video, 'ended', () => console.log('video ended'));
+    // this.video.addEventListener('ended', () => console.log('video ended'));
+    // console.log("Src" + this.src);
   }
 
 }
