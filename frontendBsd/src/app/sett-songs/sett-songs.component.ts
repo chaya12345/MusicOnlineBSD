@@ -40,11 +40,11 @@ export class SettSongsComponent implements OnInit {
 
   audFileSelected(event: any) {
     if (event.target.files && event.target.files[0]) {
-      const audSrc = URL.createObjectURL(event.target.files[0]);
+      this.audSrc = URL.createObjectURL(event.target.files[0]);
       this.figAudio.nativeElement.src = this.audSrc;
-      console.log(audSrc);
+      console.log(this.audSrc);
     }
-
+    console.log("arrive!");
   }
 
 }

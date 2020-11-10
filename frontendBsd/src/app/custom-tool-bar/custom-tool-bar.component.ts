@@ -25,7 +25,7 @@ export class CustomToolBarComponent implements OnInit {
   ngOnInit(): void {
     this.currentPosition = window.pageYOffset;
     window.addEventListener('scroll', this.scroll, true);
-    let dir = sessionStorage.getItem("reverse")
+    let dir = sessionStorage.getItem("reverse");
     if (dir) {
       this.currentDirection = parseInt(dir) == 1 ? true : false;
     }

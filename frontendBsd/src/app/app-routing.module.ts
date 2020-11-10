@@ -5,6 +5,7 @@ import { ArticleComponent } from './article/article.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MagazineComponent } from './magazine/magazine.component';
+import { PerformanceComponent } from './performance/performance.component';
 import { PlaylistSectionComponent } from './playlist-section/playlist-section.component';
 import { PlaylistsComponent } from './playlists/playlists.component';
 import { ResponsesArticleComponent } from './responses-article/responses-article.component';
@@ -84,6 +85,9 @@ const routes: Routes = [{
 }, {
   path: "settings",
   component: SettingsComponent
+}, {
+  path: "performance",
+  component: PerformanceComponent
 }, {
   path: "error",
   component: ErrorPageComponent

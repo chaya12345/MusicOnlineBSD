@@ -5,7 +5,7 @@
     <div *ngIf="!isSingular" class="wrap-tool-box">
         <tools searchBox="true" [followUp]="isFollowUp" [addToPlaylist]="isAddToPlaylist" orderBy="true" [sideText]="isSideText"></tools>
     </div>
-    <songs-list *ngIf="!isSingular&&!isGeneric" [songsList]="songs" [orderBy]="orderBy" ></songs-list>
+    <songs-list *ngIf="!isSingular&&!isGeneric" [songsList]="songs"></songs-list>
     <song-details *ngIf="isSingular" [song]="song"></song-details>
     <div *ngIf="!isSingular&&isGeneric" style="padding: 30px 17vw;">
         <generic-area *ngFor="let item of items" [item]="item"></generic-area>

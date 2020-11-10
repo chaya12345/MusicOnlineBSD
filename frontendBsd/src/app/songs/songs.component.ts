@@ -26,7 +26,6 @@ export class SongsComponent implements OnInit {
   isSideText: boolean = false;
   isSingular: boolean = false;
   isGeneric: boolean = false;
-  orderBy: string = "";
 
   navs: string[] = [];
   songs: Song[] = [];

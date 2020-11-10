@@ -83,17 +83,17 @@ export class SongsInPlaylistComponent implements OnInit {
     this.likeService.reset_like_color(event,'black');
   }
 
-  sign(event): void {
+  sign(event, songId: number): void {
     this.likeService.toggle_like(event);
-    this.toggleLike == false ? this.addLike() : this.MissLike();
+    this.toggleLike == false ? this.addLike(songId) : this.MissLike(songId);
     this.toggleLike = !this.toggleLike;
   }
 
-  addLike(): void {
-    this.songService.increaseLikeToSong(Number(this.activatedRoute.snapshot.queryParams.songId)).subscribe();
+  addLike(songId: number): void {
+    this.songService.increaseLikeToSong(songId).subscribe();
   }
 
-  MissLike(): void {
-    this.songService.decreaseLikeToSong(Number(this.activatedRoute.snapshot.queryParams.songId)).subscribe();
+  MissLike(songId: number): void {
+    this.songService.decreaseLikeToSong(songId).subscribe();
   }
 }

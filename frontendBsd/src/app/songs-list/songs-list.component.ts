@@ -12,7 +12,6 @@ import { StorageService } from '../services/storage.service';
 export class SongsListComponent implements OnInit {
 
   @Input() songsList: Song[] = [];
-  @Input() orderBy: string = "";
 
   songsToPage: number = 24;
   currentIndex: number = 24;
@@ -27,14 +26,14 @@ export class SongsListComponent implements OnInit {
       switch (data) {
         case "order-type":
           this.orderByType();
-          this.browsingPage(parseInt(sessionStorage.getItem("page"))||1);
+          this.browsingPage(parseInt(sessionStorage.getItem("page")) || 1);
           break;
         case "reverse":
           this.orderByType();
-          this.browsingPage(parseInt(sessionStorage.getItem("page"))||1);
+          this.browsingPage(parseInt(sessionStorage.getItem("page")) || 1);
           break;
         case "page":
-          this.browsingPage(parseInt(sessionStorage.getItem("page"))||1);
+          this.browsingPage(parseInt(sessionStorage.getItem("page")) || 1);
           break;
       }
     });
@@ -43,15 +42,12 @@ export class SongsListComponent implements OnInit {
   ngOnChanges() {
     this.orderByType();
     this.loadData();
-    if (this.orderBy == "song") {
-      this.songsList.sort((a, b) => Math.round(a.name.localeCompare(b.name)));
-    }
     this.cdr.detectChanges();
   }
 
   browsingPage(page: number): void {
     this.items = [];
-    for (let i = this.songsToPage*(page-1); i < this.songsToPage*page&&i<this.songsList.length; i++) {
+    for (let i = this.songsToPage * (page - 1); i < this.songsToPage * page && i < this.songsList.length; i++) {
       this.items.push(this.songsList[i]);
     }
     this.cdr.detectChanges();
@@ -69,7 +65,7 @@ export class SongsListComponent implements OnInit {
 
   orderByType(): void {
     let value = sessionStorage.getItem("order-type");
-    let dir = parseInt(sessionStorage.getItem("reverse"))==0?"desc":"asc"
+    let dir = parseInt(sessionStorage.getItem("reverse")) == 1 ? "asc" : "desc";
     if (value) {
       switch (value) {
         case "song":
@@ -92,19 +88,19 @@ export class SongsListComponent implements OnInit {
   }
 
   orderByDate(dir: string): void {
-    this.songsList.sort((a, b) => Math.round(new Date((dir=="desc"?b:a).date).getTime() - new Date((dir=="desc"?a:b).date).getTime()));
+    this.songsList.sort((a, b) => Math.round(new Date((dir == "desc" ? b : a).date).getTime() - new Date((dir == "desc" ? a : b).date).getTime()));
   }
 
   orderBySongName(dir: string): void {
-    this.songsList.sort((a, b) => (dir=="desc"?b:a).name.localeCompare((dir=="desc"?a:b).name));
+    this.songsList.sort((a, b) => (dir == "desc" ? b : a).name.localeCompare((dir == "desc" ? a : b).name));
   }
 
   orderByViews(dir: string): void {
-    this.songsList.sort((a, b) => (dir=="desc"?b:a).count_views - (dir=="desc"?a:b).count_views);
+    this.songsList.sort((a, b) => (dir == "desc" ? b : a).count_views - (dir == "desc" ? a : b).count_views);
   }
 
   orderByLikes(dir: string): void {
-    this.songsList.sort((a, b) => (dir=="desc"?b:a).count_like - (dir=="desc"?a:b).count_like);
+    this.songsList.sort((a, b) => (dir == "desc" ? b : a).count_like - (dir == "desc" ? a : b).count_like);
   }
 
   // reverseOrder(): void {

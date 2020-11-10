@@ -6,6 +6,7 @@ import { Singer } from '../classes/singer';
 import { Song } from '../classes/song';
 import { SingerService } from '../services/singer.service';
 import { SongService } from '../services/song.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'search-mini',
@@ -13,7 +14,7 @@ import { SongService } from '../services/song.service';
   styleUrls: ['./search-mini.component.css']
 })
 export class SearchMiniComponent implements OnInit {
-  
+
   @Output() opened: EventEmitter<void> = new EventEmitter();
   @Output() closed: EventEmitter<void> = new EventEmitter();
   filteredSongs: Observable<Song[]>;
@@ -24,7 +25,7 @@ export class SearchMiniComponent implements OnInit {
   singersControl = new FormControl();
   singersList: Singer[] = [];
 
-  constructor(private songService: SongService, private singerService: SingerService) { 
+  constructor(private songService: SongService, private singerService: SingerService, private router: Router) {
     this.songsControl = new FormControl();
     this.singersControl = new FormControl();
     try {
@@ -74,6 +75,22 @@ export class SearchMiniComponent implements OnInit {
 
   isOpened(open: boolean) {
     open ? this.opened.emit() : this.closed.emit();
+  }
+
+  songSearch(): void {
+    this.songsList.forEach(song => {
+      if (song.name == (document.getElementById("song-search") as HTMLInputElement).value) {
+        window.location.href = "song?songId=" + song.id;
+      }
+    });
+  }
+
+  singerSearch(): void {
+    this.singersList.forEach(singer => {
+      if (singer.name == (document.getElementById("singer-search") as HTMLInputElement).value) {
+        window.location.href = "song?filter=" + singer.name;
+      }
+    });
   }
 
 }

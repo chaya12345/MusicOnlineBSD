@@ -22,7 +22,7 @@ export class PopularSingersComponent implements OnInit {
 
   order(): void {
     this.singers.sort((a, b) => Math.round(b.searchings - a.searchings));
-    this.singers = this.singers.slice(0, 9);
+    this.singers = this.singers.slice(0, 12);
   }
 
 }

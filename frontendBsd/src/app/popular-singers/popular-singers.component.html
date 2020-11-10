@@ -1,7 +1,18 @@
 <div class="wrap-popular-singers">
-    <p class="title-part">זמרים שאנשים חיפשו.</p>
-    <a class="singer-card" *ngFor="let singer of singers" [href]="'song?filter='+singer.name"
+    <p class="title-part">זמרים שאנשים חיפשו >></p>
+    <!-- <a class="singer-card" *ngFor="let singer of singers" [href]="'song?filter='+singer.name"
         [style.background-image]="'url(../../assets/images/'+singer.image+')'">
         <div class="name"><span>{{singer.name}}</span></div>
-    </a>
+    </a> -->
+    <div class="wrap-singers-cards">
+        <mat-card class="example-card" *ngFor="let singer of singers">
+            <a [href]="'song?filter='+singer.name">
+                <div mat-card-image class="img" [style.background-image]="'url(../../assets/images/'+singer.image+')'">
+                    <div class="wrap-text">
+                        <p>{{singer.name}}</p>
+                    </div>
+                </div>
+            </a>
+        </mat-card>
+    </div>
 </div>

@@ -101,6 +101,7 @@ import { SongInfoComponent } from './song-info/song-info.component';
 import { SanitizerUrlPipe } from './pipes/sanitizer-url.pipe';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { BarRatingModule } from "ngx-bar-rating";
+import { PerformanceComponent } from './performance/performance.component';
 
 @NgModule({
   declarations: [
@@ -191,7 +192,8 @@ import { BarRatingModule } from "ngx-bar-rating";
     SettMagazineComponent,
     SettSurveysComponent,
     SanitizerUrlPipe,
-    SongInfoComponent
+    SongInfoComponent,
+    PerformanceComponent
   ],
   imports: [
     BrowserModule,
