@@ -10,3 +10,9 @@
     flex: 0 1 calc(50% - 55px);
     margin: 25px 27px;
 }
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    height: fit-content;
+}

@@ -17,10 +17,35 @@ div.content {
     z-index: 2;
 }
 
+.wrapper {
+    display: flex;
+}
+
+mat-spinner {
+    margin: auto;
+}
+
+.current-img {
+    background-position: center;
+    background-size: cover;
+    height: 200px;
+    width: 250px;
+    min-width: 250px;
+    margin-left: 50px !important;
+    border: solid 1px white;
+    display: flex;
+    align-items: center;
+    background-color: #141312de;
+}
+
+.current-content {
+    min-width: 400px;
+}
+
 .img {
     transform: translateX(-3px);
-    -webkit-filter: blur(4px);
-    filter: blur(4px);
+    /* -webkit-filter: blur(4px);
+    filter: blur(4px); */
     position: relative;
     top: -530px;
     z-index: 1;

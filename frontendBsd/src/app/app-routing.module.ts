@@ -1,5 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AnnualSurveyComponent } from './annual-survey/annual-survey.component';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { ArticleComponent } from './article/article.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
@@ -88,6 +89,9 @@ const routes: Routes = [{
 }, {
   path: "performance",
   component: PerformanceComponent
+}, {
+  path: "annual-survey",
+  component: AnnualSurveyComponent
 }, {
   path: "error",
   component: ErrorPageComponent

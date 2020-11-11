@@ -1,15 +1,16 @@
 <div class="wrap-songs-list">
-    <browse-pages [itemsCount]="songsList.length" itemsToPage="24"></browse-pages>
-    <div class="wrap-songs">
-        <div class="wrap-song" *ngFor="let item of items">
-          <song [song]="item" *ngIf="item!=null"></song>
-          <div class="under-song" style="padding: 6px; color: #000000c7; font-family: fb Joker, calibri; font-size: 21px;"><p style="font-weight: bold;">{{item.name}}<span style="font-weight: 400;"> >> {{item.singerName}}</span></p></div>
+  <browse-pages [itemsCount]="songsList.length" itemsToPage="24"></browse-pages>
+  <div class="wrap-songs">
+    <div class="wrapper">
+      <div class="wrap-song" *ngFor="let item of items">
+        <song [song]="item" *ngIf="item!=null"></song>
+        <div class="under-song"
+          style="padding: 6px; color: #000000c7; font-family: fb Joker, calibri; font-size: 21px;">
+          <p style="font-weight: bold;">{{item.name}}<span style="font-weight: 400;"> >> {{item.singerName}}</span></p>
         </div>
-        <span *ngIf="songsList==null||songsList.length==0">- לא נמצאו שירים בסינון הנוכחי -</span>
       </div>
-      <browse-pages [itemsCount]="songsList.length" itemsToPage="24"></browse-pages>
-      <!-- <button class="reloadMore primary-style" color="primary" mat-flat-button (click)="LoadMore($event)">
-        <mat-spinner></mat-spinner>
-        טען עוד
-      </button> -->
+      <span *ngIf="songsList==null||songsList.length==0">- לא נמצאו שירים בסינון הנוכחי -</span>
+    </div>
+  </div>
+  <browse-pages [itemsCount]="songsList.length" itemsToPage="24"></browse-pages>
 </div>

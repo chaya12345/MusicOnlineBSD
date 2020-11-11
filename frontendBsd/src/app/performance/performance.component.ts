@@ -18,7 +18,7 @@ export class PerformanceComponent implements OnInit {
 
   constructor(private topicsService: TopicsService, private songService: SongService) {
     try {
-      this.topicsService.getTopic("הופעות").subscribe(t =>  this.topic = t, err => console.log(err));
+      this.topicsService.getTopic("הופעות").subscribe(t => this.topic = t, err => console.log(err));
     } catch (err) { console.log(err); }
     this.navs.push("הופעות");
     try {

@@ -27,7 +27,7 @@ export class MagazineComponent implements OnInit {
     try {
       this.topicsService.getTopic("מגזין").subscribe(topic => {
         this.title = topic.title; this.subtitle = topic.subtitle;
-        this.img = topic.img; this.icon = topic.icon; this.href = topic.href;
+        /*this.img = topic.img; */this.icon = topic.icon; this.href = topic.href;
       }, err => console.log(err));
     } catch (err) { console.log(err); }
   }

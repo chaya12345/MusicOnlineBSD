@@ -1,8 +1,11 @@
 .wrap-main-actions {
-    padding: 80px 30px 55px 0;
+    padding: 80px 30px 55px;
     color: white;
     font-family: fb Joker, calibri;
     font-size: 21px;
+    border: solid 1px #ffffff1f;
+    border-top: none;
+    font-weight: 100;
 }
 
 .wrap-main-actions span {

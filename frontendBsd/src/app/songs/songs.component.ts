@@ -76,7 +76,8 @@ export class SongsComponent implements OnInit {
       this.itemsByParameterService.getItemByName(filter).subscribe(item => {
         this.title = item.name;
         this.subtitle = "כל השירים, הקליפים, ההופעות והכתבות";
-        this.img = item.image ? "../../assets/images" + item.image : null;
+        this.img = item.image ? "../../assets/images/" + item.image : null;
+        this.notBlur = true;
       }, err => console.log(err))
     } catch (err) { console.log(err); }
     this.isSingular = false;
@@ -95,7 +96,7 @@ export class SongsComponent implements OnInit {
       this.topicService.getTopic("חדש במוזיקה").subscribe(topic => {
         this.title = topic.title;
         this.subtitle = topic.subtitle;
-        this.img = "../../assets/images/" + topic.img;
+        // this.img = "../../assets/images/" + topic.img;
         this.icon = topic.icon;
         this.notBlur = true;
       }, err => console.log(err))

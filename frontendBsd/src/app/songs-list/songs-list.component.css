@@ -5,8 +5,6 @@
 .wrap-songs {
     display: flex;
     flex-wrap: wrap;
-    /* margin: 30px 17vw; */
-    /* margin: 30px 16vw; */
     margin: 30px 11vw;
     padding: 0px 3vw;
     border-right: solid 1px #eaeaea;
@@ -14,9 +12,15 @@
     min-height: 2016px;
 }
 
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    height: fit-content;
+    width: 100%;
+}
+
 .wrap-song {
     display: inline-block;
-    /* flex: 0 1 calc(33% - 25px); */
     flex: 0 1 calc(25% - 26px);
     margin: 25px 12px;
 }

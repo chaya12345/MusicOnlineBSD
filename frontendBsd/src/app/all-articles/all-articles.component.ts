@@ -12,8 +12,8 @@ export class AllArticlesComponent implements OnInit {
 
   articlesList: Article[] = [];
 
-  songsToPage: number = 6;
-  currentIndex: number = 6;
+  songsToPage: number = 8;
+  currentIndex: number = 8;
   items: Article[] = [];
 
   constructor(private articleService:ArticleService, private cdr: ChangeDetectorRef,
@@ -97,10 +97,6 @@ export class AllArticlesComponent implements OnInit {
     }
     this.cdr.detectChanges();
   }
-
-  // orderByDate(): void {
-  //   this.articlesList.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
-  // }
 
   loadData(): void {
     if (this.articlesList != null && this.articlesList.length != 0) {

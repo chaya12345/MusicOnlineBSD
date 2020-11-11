@@ -59,7 +59,6 @@ export class SongsListComponent implements OnInit {
         this.items.push(this.songsList[i]);
       }
       this.cdr.detectChanges();
-      this.fixDisplaying();
     }
   }
 
@@ -101,39 +100,6 @@ export class SongsListComponent implements OnInit {
 
   orderByLikes(dir: string): void {
     this.songsList.sort((a, b) => (dir == "desc" ? b : a).count_like - (dir == "desc" ? a : b).count_like);
-  }
-
-  // reverseOrder(): void {
-  //   this.songsList.reverse();
-  // }
-
-  LoadMore(event) {
-    event.currentTarget.classList.add("loading");
-    // var position = document.documentElement.scrollTop || document.body.scrollTop;
-    console.log(event.currentTarget);
-    const rangeLoading: number = 6;
-    for (let i = this.currentIndex; i < this.currentIndex + rangeLoading; i++) {
-      this.items.push(this.songsList[i]);
-    }
-    this.currentIndex += rangeLoading;
-    this.cdr.detectChanges();
-    event.currentTarget.classList.remove("loading");
-    this.fixDisplaying();
-    // document.documentElement.scrollTop = position;
-  }
-
-  fixDisplaying(): void {
-    var divs = document.getElementsByClassName("wrap-song");
-    for (var i = 0; i < divs.length; i++) {
-      if (divs[i].innerHTML == `<!--bindings={
-  "ng-reflect-ng-if": "false"
-}-->`) {
-        divs[i].classList.add("empty");
-      }
-    }
-    for (var i = 0; i < document.getElementsByClassName("empty").length; i++) {
-      document.getElementsByClassName("empty")[i].remove();
-    }
   }
 
 }

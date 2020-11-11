@@ -1,0 +1,12 @@
+<div class="wrap-annual-survey-content">
+    <img id="img-survey" [src]="'../../assets/images/'+imgSurvey">
+    <div class="wrap-songs">
+        <div class="wrap-song" *ngFor="let song of songs">
+            <an-sr-song [song]="song" [possible]="countPossible" (selectedSong)="addSong($event)"></an-sr-song>
+        </div>
+    </div>
+    <div class="summary">
+        <p>נותרו לך עוד {{countPossible}} שירים</p>
+        <button mat-flat-button [disabled]="countPossible>0" (click)="saveSelection()">הצבע</button>
+    </div>
+</div>

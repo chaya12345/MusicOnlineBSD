@@ -13,7 +13,7 @@
       <div class="fileName"><span>{{fileName||'שם קובץ'}}</span></div>
       <img class="previewImg" [src]="imageSrc||'../../assets/images/one-continuous-line-drawing-headphones_5137405.png'" alt="your image" />
 
-      <audio controls #figAudio>
+      <audio controls #figAudio *ngIf="typeFile=='audio'">
         <source [src]="audSrc | sanitizerUrl" type="audio/ogg">
         <source [src]="audSrc | sanitizerUrl" type="audio/mpeg">
         <source [src]="audSrc | sanitizerUrl" type="audio/wav">
@@ -21,6 +21,6 @@
       <!-- <video controls #figAudio>
         <source [src]="audSrc | sanitizerUrl" type="video/mp4">
       </video> -->
-      <video [src]="audSrc | sanitizerUrl" controls #figAudio><source type="video/mp4" [src]="audSrc | sanitizerUrl"></video>
+      <video [src]="audSrc | sanitizerUrl" controls #figAudio *ngIf="typeFile=='video'"><source type="video/mp4" [src]="audSrc | sanitizerUrl"></video>
       <input type="file" (change)="audFileSelected($event)">
 </div>

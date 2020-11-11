@@ -40,7 +40,7 @@ export class PlaylistsComponent implements OnInit {
     try {
       this.topicsService.getTopic("פלייליסטים").subscribe(topic => {
         this.title = topic.title; this.subtitle = topic.subtitle;
-        this.img = topic.img; this.icon = topic.icon;
+        /*this.img = topic.img; */this.icon = topic.icon;
       }, err => console.log(err));
     } catch (err) { console.log(err); }
   }

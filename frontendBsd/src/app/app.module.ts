@@ -102,6 +102,9 @@ import { SanitizerUrlPipe } from './pipes/sanitizer-url.pipe';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { BarRatingModule } from "ngx-bar-rating";
 import { PerformanceComponent } from './performance/performance.component';
+import { AnnualSurveyComponent } from './annual-survey/annual-survey.component';
+import { AnnualSurveyContentComponent } from './annual-survey-content/annual-survey-content.component';
+import { AnSrSongComponent } from './an-sr-song/an-sr-song.component';
 
 @NgModule({
   declarations: [
@@ -193,7 +196,10 @@ import { PerformanceComponent } from './performance/performance.component';
     SettSurveysComponent,
     SanitizerUrlPipe,
     SongInfoComponent,
-    PerformanceComponent
+    PerformanceComponent,
+    AnnualSurveyComponent,
+    AnnualSurveyContentComponent,
+    AnSrSongComponent
   ],
   imports: [
     BrowserModule,

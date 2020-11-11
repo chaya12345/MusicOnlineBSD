@@ -1,0 +1,11 @@
+<div class="wrap-an-sr-song" [class.selected]="selected">
+    <div class="img" [style.background-image]="'url(../../assets/images/'+song.image_location+')'">
+        <div class="add-button" (click)="addSong()" (mouseenter)="focus=true" (mouseleave)="focus=false">
+            <mat-icon *ngIf="!selected||focus" [class.remove]="selected">add</mat-icon>
+            <mat-icon *ngIf="selected&&!focus">done</mat-icon>
+        </div>
+    </div>
+    <div class="song-details">
+        <p><span>{{song.name}}</span> >> {{song.singerName}}</p>
+    </div>
+</div>
