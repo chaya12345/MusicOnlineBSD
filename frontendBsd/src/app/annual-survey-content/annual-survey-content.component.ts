@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { Song } from '../classes/song';
 import { SongSelection } from '../classes/songSelection';
 import { SurveyService } from '../services/survey.service';
@@ -16,7 +17,7 @@ export class AnnualSurveyContentComponent implements OnInit {
   maxCount: number = 10;
   countPossible: number;
 
-  constructor(private surveyService: SurveyService) {
+  constructor(private surveyService: SurveyService, private _snackBar: MatSnackBar) {
     try {
       this.surveyService.getSongsInSurvey().subscribe(songs => {
         this.songs = songs;
@@ -26,6 +27,12 @@ export class AnnualSurveyContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, '', {
+      duration: 2000,
+    });
   }
 
   addSong(value: SongSelection): void {
@@ -40,7 +47,10 @@ export class AnnualSurveyContentComponent implements OnInit {
   }
 
   saveSelection(): void {
-    /* TODO -- saving selected songs -- */
+    this.surveyService.addVotingToSongs(this.selectedSongs).subscribe(
+      succses => { this.openSnackBar("ההצבעה נשמרה!"); this.selectedSongs = [];  this.countPossible = this.maxCount;},
+      err => { console.log(err); this.openSnackBar("בשל תקלה זמנית לא ניתן להצביע כעת, אנא נסו מאוחר יותר");});
+    /* TODO -- לנקות את העיצוב אחרי ההצבעה או אחרי שמורידים אחד -- */
     /* TODO -- showing suitable massage -- */
   }
 

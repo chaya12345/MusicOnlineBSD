@@ -14,13 +14,16 @@ export class SurveyService {
   getSongsInSurvey(): Observable<Song[]> {
     return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsInSurvey");
   }
-  AddVotingToSong(songId:number):Observable<any>{
+  addVotingToSong(songId:number):Observable<any>{
     return this.httpClient.put(this.baseUrl+"PutVotingToSong?songId="+songId,songId);
   }
-  AddSongToSurvey(survey:Survey):Observable<any>{
+  addVotingToSongs(selectionSongs:Song[]):Observable<any>{
+    return this.httpClient.put(this.baseUrl+"PutVotingToSongs",selectionSongs);
+  }
+  addSongToSurvey(survey:Survey):Observable<any>{
     return this.httpClient.post(this.baseUrl+"PostSongToSurvey",survey);
   }
-  AddSongsToSurvey(surveys:Survey[]):Observable<any>{
+  addSongsToSurvey(surveys:Survey[]):Observable<any>{
     return this.httpClient.post(this.baseUrl+"PostSongsToSurvey",surveys);
   }
 }

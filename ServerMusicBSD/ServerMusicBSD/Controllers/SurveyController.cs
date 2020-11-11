@@ -22,6 +22,10 @@ namespace ServerMusicBSD.Controllers
         {
             SurveyBL.AddVotingToSong(songId);
         }
+        public  void PutVotingToSongs([FromBody] SongsTBL[] selectionSongs)
+        {
+            SurveyBL.AddVotingToSongs(selectionSongs);
+        }
         public static void PostSongToSurvey([FromBody]SurveyTBL survey)
         {
             SurveyBL.AddSongToSurvey(survey);

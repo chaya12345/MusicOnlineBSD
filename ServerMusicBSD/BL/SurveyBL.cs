@@ -38,6 +38,16 @@ namespace BL
                 et.SaveChanges();
             }
         }
+        public static void AddVotingToSongs(SongsTBL[] selectoinSongs)
+        {
+            if (selectoinSongs != null)
+            {
+                foreach (SongsTBL item in selectoinSongs)
+                {
+                    AddVotingToSong(item.id);
+                }
+            }
+        }
         public static void AddSongToSurvey(SurveyTBL survey)
         {
             if (survey != null)
