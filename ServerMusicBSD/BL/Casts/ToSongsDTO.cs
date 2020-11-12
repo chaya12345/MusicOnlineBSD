@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using DAL;
 using DTO;
 
@@ -33,33 +34,54 @@ namespace BL.Casts
             }
             return null;
         }
-        public static songsDetails GetSongWithSingerName(SongsTBL songs)
+        public static songsDetails GetSongWithSingerName<T>(T song)
         {
-            if (songs == null)
+            if (song == null)
                 return null;
             MusicOnlineEntities et = new MusicOnlineEntities();
+            SongsTBL song1 = new SongsTBL();
+            if (typeof(T).Name == "getFavoriteSongs")
+            {
+                MapperConfiguration config = new MapperConfiguration(cfg =>
+                    cfg.CreateMap<getFavoriteSongs, SongsTBL>()
+                );
+                Mapper mapper = new Mapper(config);
+                song1 = mapper.Map<SongsTBL>(song);
+            }
+            else if (typeof(T).Name == "GetNewSong")
+            {
+                MapperConfiguration config = new MapperConfiguration(cfg =>
+                    cfg.CreateMap<GetNewSong, SongsTBL>()
+                );
+                Mapper mapper = new Mapper(config);
+                song1 = mapper.Map<SongsTBL>(song);
+            }
+            else if (typeof(T).Name == "SongsTBL")
+            {
+                song1 = song as SongsTBL;
+            }
             songsDetails newSong = new songsDetails();
-            newSong.id = songs.id;
-            newSong.name = songs.name;
-            newSong.file_location = songs.file_location;
-            newSong.type = songs.type;
-            newSong.date = songs.date;
-            newSong.singerName = GetSingersToSong(songs);
-            newSong.count_like = songs.count_like;
-            newSong.count_views = songs.count_views;
-            newSong.albumId = songs.albumId;
-            newSong.title = songs.title;
-            newSong.subtitle = songs.subtitle;
-            newSong.image_location = songs.image_location;
-            newSong.content = songs.content;
+            newSong.id = song1.id;
+            newSong.name = song1.name;
+            newSong.file_location = song1.file_location;
+            newSong.type = song1.type;
+            newSong.date = song1.date;
+            newSong.singerName = GetSingersToSong(song1);
+            newSong.count_like = song1.count_like;
+            newSong.count_views = song1.count_views;
+            newSong.albumId = song1.albumId;
+            newSong.title = song1.title;
+            newSong.subtitle = song1.subtitle;
+            newSong.image_location = song1.image_location;
+            newSong.content = song1.content;
             return newSong;
         }
-        public static List<songsDetails> GetSongs(List<SongsTBL> songs)
+        public static List<songsDetails> GetSongs<T>(List<T> songs)
         {
             if (songs == null)
                 return null;
             List<songsDetails> songsDTO = new List<songsDetails>();
-            foreach (SongsTBL song in songs)
+            foreach (T song in songs)
             {
                 songsDetails songsDetails = GetSongWithSingerName(song);
                 if (songsDetails != null)

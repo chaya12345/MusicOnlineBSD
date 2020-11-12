@@ -1,0 +1,12 @@
+<div class="wrap-performances-list">
+    <browse-pages [itemsCount]="performances.length" [itemsToPage]="songsToPage"></browse-pages>
+    <div class="wrap-performances">
+      <div class="wrapper">
+        <div class="wrap-performance" *ngFor="let item of items">
+            <performance-section [performance]="item"></performance-section>
+        </div>
+        <span *ngIf="performances==null||performances.length==0">- לא נמצאו שירים בסינון הנוכחי -</span>
+      </div>
+    </div>
+    <browse-pages [itemsCount]="performances.length" [itemsToPage]="songsToPage"></browse-pages>
+</div>

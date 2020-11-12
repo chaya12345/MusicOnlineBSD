@@ -330,14 +330,43 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="MusicOnlineModel.sysdiagrams">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="definition" ColumnName="definition" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+    <EntitySetMapping Name="getFavoriteSongs">
+      <EntityTypeMapping TypeName="MusicOnlineModel.getFavoriteSongs">
+        <MappingFragment StoreEntitySet="getFavoriteSongs">
+          <ScalarProperty Name="isPerformance" ColumnName="isPerformance" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="image_location" ColumnName="image_location" />
+          <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="albumId" ColumnName="albumId" />
+          <ScalarProperty Name="count_views" ColumnName="count_views" />
+          <ScalarProperty Name="count_like" ColumnName="count_like" />
+          <ScalarProperty Name="singerId" ColumnName="singerId" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="file_location" ColumnName="file_location" />
           <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GetNewSong">
+      <EntityTypeMapping TypeName="MusicOnlineModel.GetNewSong">
+        <MappingFragment StoreEntitySet="GetNewSong">
+          <ScalarProperty Name="isPerformance" ColumnName="isPerformance" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="image_location" ColumnName="image_location" />
+          <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="albumId" ColumnName="albumId" />
+          <ScalarProperty Name="count_views" ColumnName="count_views" />
+          <ScalarProperty Name="count_like" ColumnName="count_like" />
+          <ScalarProperty Name="singerId" ColumnName="singerId" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="file_location" ColumnName="file_location" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

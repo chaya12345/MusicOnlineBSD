@@ -55,9 +55,10 @@
         <AssociationConnector Association="MusicOnlineModel.FK_TagsTBL_TagsTypesTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_TagsToArticleTBL_TagsTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_TagsToSongsTBL_TagNameTBL" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="MusicOnlineModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
         <AssociationConnector Association="MusicOnlineModel.FK_SongsToPlaylistsSystemTBL_PlaylistsSystemTBL" />
         <AssociationConnector Association="MusicOnlineModel.FK_SongsToPlaylistsSystemTBL_SongsTBL" />
+        <EntityTypeShape EntityType="MusicOnlineModel.getFavoriteSongs" Width="1.5" PointX="13.375" PointY="14.75" />
+        <EntityTypeShape EntityType="MusicOnlineModel.GetNewSong" Width="1.5" PointX="15.375" PointY="14.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

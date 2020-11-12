@@ -89,3 +89,6 @@ C:\BsdMusicOnline\ServerMusicBSD\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
 C:\BsdMusicOnline\ServerMusicBSD\BL\obj\Debug\BL.csproj.CopyComplete
 C:\BsdMusicOnline\ServerMusicBSD\BL\obj\Debug\BL.dll
 C:\BsdMusicOnline\ServerMusicBSD\BL\obj\Debug\BL.pdb
+C:\BsdMusicOnline\ServerMusicBSD\BL\bin\Debug\BL.dll.config
+C:\BsdMusicOnline\ServerMusicBSD\BL\bin\Debug\AutoMapper.dll
+C:\BsdMusicOnline\ServerMusicBSD\BL\bin\Debug\AutoMapper.xml

@@ -1,0 +1,35 @@
+.wrap-performance-section {
+    display: grid;
+    grid-template-columns: fit-content(50%) auto;
+}
+
+.per-img {
+    height: 250px;
+    width: 350px;
+    background-position: center;
+    background-size: cover;
+    background-color: #eceaea;
+}
+
+.per-details {
+    font-family: fb Joker;
+    font-size: 21px;
+    padding: 20px 35px;
+    display: grid;
+    grid-template-rows: fit-content(50%) fit-content(50%);
+}
+
+.per-details p {
+    font-family: fb Ogen;
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
+.per-details span {
+    line-height: 32px;
+}
+
+.per-info {
+    margin-top: auto;
+    color: #00000078;
+}

@@ -105,6 +105,8 @@ import { PerformanceComponent } from './performance/performance.component';
 import { AnnualSurveyComponent } from './annual-survey/annual-survey.component';
 import { AnnualSurveyContentComponent } from './annual-survey-content/annual-survey-content.component';
 import { AnSrSongComponent } from './an-sr-song/an-sr-song.component';
+import { PerformanceSectionComponent } from './performance-section/performance-section.component';
+import { PerformancesListComponent } from './performances-list/performances-list.component';
 
 @NgModule({
   declarations: [
@@ -199,7 +201,9 @@ import { AnSrSongComponent } from './an-sr-song/an-sr-song.component';
     PerformanceComponent,
     AnnualSurveyComponent,
     AnnualSurveyContentComponent,
-    AnSrSongComponent
+    AnSrSongComponent,
+    PerformanceSectionComponent,
+    PerformancesListComponent
   ],
   imports: [
     BrowserModule,

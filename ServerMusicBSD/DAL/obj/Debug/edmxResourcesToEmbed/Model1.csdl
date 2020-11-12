@@ -748,7 +748,6 @@
     <FunctionImport Name="itemsByParameter" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemsByParameter_Result)">
       <Parameter Name="singer" Mode="In" Type="String" />
     </FunctionImport>
-    <EntitySet Name="sysdiagrams" EntityType="MusicOnlineModel.sysdiagrams" />
     <AssociationSet Name="FK_SongsToPlaylistsSystemTBL_PlaylistsSystemTBL" Association="MusicOnlineModel.FK_SongsToPlaylistsSystemTBL_PlaylistsSystemTBL">
       <End Role="PlaylistsSystemTBL" EntitySet="PlaylistsSystemTBL" />
       <End Role="SongsToPlaylistsSystemTBL" EntitySet="SongsToPlaylistsSystemTBL" />
@@ -757,17 +756,9 @@
       <End Role="SongsTBL" EntitySet="SongsTBL" />
       <End Role="SongsToPlaylistsSystemTBL" EntitySet="SongsToPlaylistsSystemTBL" />
     </AssociationSet>
+    <EntitySet Name="getFavoriteSongs" EntityType="MusicOnlineModel.getFavoriteSongs" />
+    <EntitySet Name="GetNewSong" EntityType="MusicOnlineModel.GetNewSong" />
   </EntityContainer>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <Association Name="FK_SongsToPlaylistsSystemTBL_PlaylistsSystemTBL">
     <End Type="MusicOnlineModel.PlaylistsSystemTBL" Role="PlaylistsSystemTBL" Multiplicity="0..1" />
     <End Type="MusicOnlineModel.SongsToPlaylistsSystemTBL" Role="SongsToPlaylistsSystemTBL" Multiplicity="*" />
@@ -792,4 +783,42 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="getFavoriteSongs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="file_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="singerId" Type="Int32" />
+    <Property Name="count_like" Type="Int64" />
+    <Property Name="count_views" Type="Int64" />
+    <Property Name="albumId" Type="Int32" />
+    <Property Name="title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="subtitle" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="image_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="isPerformance" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="GetNewSong">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="file_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="singerId" Type="Int32" />
+    <Property Name="count_like" Type="Int64" />
+    <Property Name="count_views" Type="Int64" />
+    <Property Name="albumId" Type="Int32" />
+    <Property Name="title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="subtitle" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="image_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="isPerformance" Type="Boolean" />
+  </EntityType>
 </Schema>

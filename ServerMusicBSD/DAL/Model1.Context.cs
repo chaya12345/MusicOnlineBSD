@@ -54,7 +54,8 @@ namespace DAL
         public virtual DbSet<UsersTBL> UsersTBL { get; set; }
         public virtual DbSet<latestResponses> latestResponses { get; set; }
         public virtual DbSet<songsDetails> songsDetails { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<getFavoriteSongs> getFavoriteSongs { get; set; }
+        public virtual DbSet<GetNewSong> GetNewSong { get; set; }
     
         [DbFunction("MusicOnlineEntities", "itemByName")]
         public virtual IQueryable<itemByName_Result> itemByName(string item)

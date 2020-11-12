@@ -14,17 +14,25 @@ namespace BL
         public static List<songsDetails> GetSongsToPlaylistSystem(int playlistId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<SongsToPlaylistsSystemTBL> rellevantSTP = et.SongsToPlaylistsSystemTBL.Where(stp => stp.playlistId == playlistId).ToList();
-            List<songsDetails> songs = new List<songsDetails>();
-            foreach (SongsToPlaylistsSystemTBL stp in rellevantSTP)
+            if (playlistId != 33 && playlistId != 34)
             {
-                songsDetails song = et.songsDetails.Where(s => s.id == stp.songId).FirstOrDefault();
-                if (song != null)
+                List<SongsToPlaylistsSystemTBL> rellevantSTP = et.SongsToPlaylistsSystemTBL.Where(stp => stp.playlistId == playlistId).ToList();
+                List<songsDetails> songs = new List<songsDetails>();
+                foreach (SongsToPlaylistsSystemTBL stp in rellevantSTP)
                 {
-                    songs.Add(song);
+                    songsDetails song = et.songsDetails.Where(s => s.id == stp.songId).FirstOrDefault();
+                    if (song != null)
+                    {
+                        songs.Add(song);
+                    }
                 }
+                return songs;
             }
-            return songs;
+            if (playlistId == 33)
+            {
+                return Casts.ToSongsDTO.GetSongs(et.getFavoriteSongs.ToList());
+            }
+            return Casts.ToSongsDTO.GetSongs(et.GetNewSong.ToList());
         }
         public static void AddSongToPlaylistSystem(SongsToPlaylistsSystemTBL stp)
         {

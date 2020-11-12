@@ -1,15 +1,10 @@
 .wrap-footer {
-    background-color: #252525;
+    background-color: #1d1d1d;/* #252525;*/
     display: grid;
     grid-template-columns: fit-content(50%) auto auto;
-    padding: 0 120px 25px 80px;
+    padding-right: 120px;
     min-height: 550px;
     margin-top: 250px;
-    background-image: url(../../assets/images/for_topics/08312012-BOWERS-WILKINS-HEADPHONES-001edit.jpg);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-blend-mode: multiply;
 }
 
 popular-singers {

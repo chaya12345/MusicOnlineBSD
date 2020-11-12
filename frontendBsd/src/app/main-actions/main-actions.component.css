@@ -3,9 +3,16 @@
     color: white;
     font-family: fb Joker, calibri;
     font-size: 21px;
-    border: solid 1px #ffffff1f;
+    /* border: solid 1px #ffffff1f; */
     border-top: none;
     font-weight: 100;
+    height: 100%;
+    background-color: #252525;
+    background-image: url(../../assets/images/for_topics/08312012-BOWERS-WILKINS-HEADPHONES-001edit.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-blend-mode: multiply;
 }
 
 .wrap-main-actions span {

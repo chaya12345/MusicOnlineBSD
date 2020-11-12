@@ -11,6 +11,7 @@ export class AnSrSongComponent implements OnInit {
 
   @Input() song: Song;
   @Input() possible: number;
+  @Input() reset: boolean = false;
   @Output() selectedSong: EventEmitter<SongSelection> = new EventEmitter<SongSelection>();
   selected: boolean = false;
   focus: boolean = false;

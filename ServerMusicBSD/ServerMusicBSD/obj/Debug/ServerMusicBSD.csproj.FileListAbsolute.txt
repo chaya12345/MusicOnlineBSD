@@ -622,3 +622,6 @@ D:\projectBSD\ServerMusicBSD\ServerMusicBSD\obj\Debug\ServerMusicBSD.csprojAssem
 D:\projectBSD\ServerMusicBSD\ServerMusicBSD\obj\Debug\ServerMusicBSD.csproj.CopyComplete
 D:\projectBSD\ServerMusicBSD\ServerMusicBSD\obj\Debug\ServerMusicBSD.dll
 D:\projectBSD\ServerMusicBSD\ServerMusicBSD\obj\Debug\ServerMusicBSD.pdb
+C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\bin\BL.dll.config
+C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\bin\AutoMapper.dll
+C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\bin\AutoMapper.xml

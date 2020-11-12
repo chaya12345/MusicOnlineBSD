@@ -1,6 +1,7 @@
 .wrap-popular-singers {
     max-width: 550px;
     padding: 80px 0 55px 0;
+    height: 100%;
 }
 
 .wrap-popular-singers .singer-card {
@@ -44,14 +45,17 @@ p.title-part {
 mat-card {
     margin: 9px;
     padding: 0 10px 0 10px;
-    border: solid 1px #ffffff4a;
+    border: solid 1px white;
     background-color: #ffffff4a;
     overflow: hidden;
+    border-radius: 0 !important;
 }
 
 .img {
     height: 110px;
     width: 160px;
+    height: 111px;
+    width: 158px;
     background-position: center;
     background-size: cover;
 }
@@ -80,11 +84,16 @@ mat-card-content, mat-card-title {
     transform: scale(0.8);
 }
 
+.show-all-card {
+    opacity: 1;
+    transform: scale(1);
+}
+
 .wrap-text p {
     margin: auto;
 }
 
-mat-card:hover .wrap-text {
+mat-card:hover .wrap-text:not(.show-all-card) {
     opacity: 1;
     transform: scale(1.1);
 }

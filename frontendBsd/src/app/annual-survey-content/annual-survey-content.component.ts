@@ -16,6 +16,7 @@ export class AnnualSurveyContentComponent implements OnInit {
   selectedSongs: Song[] = [];
   maxCount: number = 10;
   countPossible: number;
+  reset: boolean = false;
 
   constructor(private surveyService: SurveyService, private _snackBar: MatSnackBar) {
     try {
@@ -48,7 +49,7 @@ export class AnnualSurveyContentComponent implements OnInit {
 
   saveSelection(): void {
     this.surveyService.addVotingToSongs(this.selectedSongs).subscribe(
-      succses => { this.openSnackBar("ההצבעה נשמרה!"); this.selectedSongs = [];  this.countPossible = this.maxCount;},
+      succses => { this.openSnackBar("ההצבעה נשמרה!"); this.selectedSongs = []; this.countPossible = this.maxCount; },
       err => { console.log(err); this.openSnackBar("בשל תקלה זמנית לא ניתן להצביע כעת, אנא נסו מאוחר יותר");});
     /* TODO -- לנקות את העיצוב אחרי ההצבעה -- */
     /* TODO -- showing suitable massage -- */

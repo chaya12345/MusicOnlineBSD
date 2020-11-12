@@ -1,5 +1,6 @@
 <div class="wrap-main">
     <tools searchBox="true" followUp="true" addToPlaylist="true" [sideText]="date | date: 'd/M/yyyy H:mm'"></tools>
+    <span class="subtitle">{{song.subtitle}}</span>
     <video-section [src]="file" [img]="img" [type]="type" *ngIf="loaded"></video-section>
     <text [file]="text" *ngIf="loaded"></text>
     <tags [tagsList]="tags" *ngIf="loaded"></tags>

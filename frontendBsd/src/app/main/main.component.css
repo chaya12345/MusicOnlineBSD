@@ -2,3 +2,9 @@
     width: 73vw;
     padding: 50px 140px;
 }
+
+.subtitle {
+    font-family: fb Joker, calibri;
+    font-size: 21px;
+    line-height: 32px;
+}
