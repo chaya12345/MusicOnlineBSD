@@ -49,7 +49,7 @@ export class AnnualSurveyContentComponent implements OnInit {
 
   saveSelection(): void {
     this.surveyService.addVotingToSongs(this.selectedSongs).subscribe(
-      succses => { this.openSnackBar("ההצבעה נשמרה!"); this.selectedSongs = []; this.countPossible = this.maxCount; },
+      succses => { this.openSnackBar("ההצבעה נשמרה!"); this.selectedSongs = []; this.countPossible = this.maxCount; this.reset = true; },
       err => { console.log(err); this.openSnackBar("בשל תקלה זמנית לא ניתן להצביע כעת, אנא נסו מאוחר יותר");});
     /* TODO -- לנקות את העיצוב אחרי ההצבעה -- */
     /* TODO -- showing suitable massage -- */

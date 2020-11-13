@@ -1,4 +1,4 @@
-<div class="wrap-performance-section">
+<a [href]="'song?songId='+performance.id" class="wrap-performance-section">
     <div class="per-img" [style.background-image]="'url(../../assets/images/'+performance.image_location+')'"></div>
     <div class="per-details">
         <p>{{performance.title}}</p>
@@ -6,4 +6,4 @@
         <!-- <text [file]="'../../assets/text/'+performance.content"></text> -->
         <span class="per-info">{{performance.date | date : "dd/MM/yyyy H:mm"}} • דוד קליגר</span>
     </div>
-</div>
+</a>

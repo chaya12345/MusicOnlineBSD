@@ -14,7 +14,7 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<SurveyTBL> list = et.SurveyTBL.ToList();
-            List<songsDetails> songs = SongsBL.GetSongs();
+            List<songsDetails> songs = SongsBL.GetSongsIncludePerformances();
             List<songsDetails> result = new List<songsDetails>();
             if (list == null|| songs==null)
                 return null;

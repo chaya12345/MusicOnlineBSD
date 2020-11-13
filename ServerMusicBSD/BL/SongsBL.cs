@@ -53,6 +53,16 @@ namespace BL
                 return Casts.ToSongsDTO.GetSongs(list);
             return null;
         }
+        public static List<songsDetails> GetSongsIncludePerformances()
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<SongsTBL> list = et.SongsTBL.Where(s => s != null).ToList();
+            if (list != null)
+            {
+                return Casts.ToSongsDTO.GetSongs(list);
+            }
+            return null;
+        }
         public static songsDetails GetSongById(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();

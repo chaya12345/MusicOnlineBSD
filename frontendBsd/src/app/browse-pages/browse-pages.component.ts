@@ -48,7 +48,7 @@ export class BrowsePagesComponent implements OnInit {
       }
     }
     else if (this.currentIndex + 2 <= this.indexs.length) {
-      let missing = 5 - (this.currentIndex + 2 - 1);
+      let missing = 5 - (this.currentIndex + 2/* - 1*/);
       for (let i = this.currentIndex + 2 + missing - 1; i > this.currentIndex + 2; i--) {
         if (i <= this.indexs.length) {
           this.updateDisplaying(1);

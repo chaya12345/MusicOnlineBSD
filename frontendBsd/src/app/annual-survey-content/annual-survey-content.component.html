@@ -1,8 +1,12 @@
 <div class="wrap-annual-survey-content">
     <img id="img-survey" [src]="'../../assets/images/'+imgSurvey">
     <div class="wrap-songs">
+        <div class="category-name">
+            <span>שיר השנה</span>
+        </div>
         <div class="wrap-song" *ngFor="let song of songs">
-            <an-sr-song [song]="song" [possible]="countPossible" [reset]="reset" (selectedSong)="addSong($event)"></an-sr-song>
+            <an-sr-song [song]="song" [possible]="countPossible" [reset]="reset" (selectedSong)="addSong($event)">
+            </an-sr-song>
         </div>
     </div>
     <div class="summary">

@@ -1,6 +1,8 @@
 .wrap-an-sr-song {
-    height: 300px;
-    width: 350px;
+    /* height: 300px;
+    width: 350px; */
+    height: 245px;
+    width: 260px;
     border: solid 2px #0000000f;
     border-radius: 4px;
     transition: .4s;
@@ -16,9 +18,9 @@
 }
 
 .img {
-    height: 80%;
+    height: 74.5%;
     width: 100%;
-    background-position: center;
+    background-position: top;
     background-size: cover;
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
@@ -80,7 +82,7 @@
 }
 
 .song-details {
-    height: 20%;
+    height: 25.5%;
     width: 100%;
     color: #000000c7;
     font-family: fb Joker, calibri;

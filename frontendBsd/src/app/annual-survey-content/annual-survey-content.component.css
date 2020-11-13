@@ -25,7 +25,7 @@
 }
 
 .wrap-song {
-    margin: 15px 10px;
+    margin: 15px 13px;
 }
 
 .summary {
@@ -57,4 +57,13 @@
 button.mat-flat-button[disabled] {
     background-color: #ffffffa1 !important;
     color: black !important;
+}
+
+.category-name {
+    width: 100%;
+    background-color: whitesmoke;
+    padding: 20px 0;
+    font-family: fb Joker;
+    font-size: 21px;
+    margin: 0 15px 25px;
 }
