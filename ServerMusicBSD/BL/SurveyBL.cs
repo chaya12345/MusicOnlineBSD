@@ -16,7 +16,7 @@ namespace BL
             List<SongsToSurveyTBL> list = et.SongsToSurveyTBL.ToList();
             List<songsDetails> songs = SongsBL.GetSongsIncludePerformances();
             List<songsDetails> result = new List<songsDetails>();
-            if (list == null|| songs==null)
+            if (list == null || songs == null)
                 return null;
             foreach (SongsToSurveyTBL item in list)
             {
