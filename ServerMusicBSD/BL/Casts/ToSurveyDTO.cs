@@ -10,7 +10,7 @@ namespace BL.Casts
 {
     public class ToSurveyDTO
     {
-        public static SurveyDTO GetSurvey(SurveyTBL survey)
+        public static SurveyDTO GetSurvey(SongsToSurveyTBL survey)
         {
             if (survey == null)
                 return null;
@@ -20,12 +20,12 @@ namespace BL.Casts
             newSurvey.count = survey.count;
             return newSurvey;
         }
-        public static List<SurveyDTO> GetSurveys(List<SurveyTBL> surveys)
+        public static List<SurveyDTO> GetSurveys(List<SongsToSurveyTBL> surveys)
         {
             if (surveys == null)
                 return null;
             List<SurveyDTO> list = new List<SurveyDTO>();
-            foreach (SurveyTBL item in surveys)
+            foreach (SongsToSurveyTBL item in surveys)
             {
                 SurveyDTO survey = GetSurvey(item);
                 if (survey != null)

@@ -20,10 +20,10 @@ namespace DAL
             this.ArtistsToSongsTBL = new HashSet<ArtistsToSongsTBL>();
             this.FollowUpTBL = new HashSet<FollowUpTBL>();
             this.ResponsesToSongsTBL = new HashSet<ResponsesToSongsTBL>();
-            this.SongsToPlaylistsTBL = new HashSet<SongsToPlaylistsTBL>();
-            this.SurveyTBL = new HashSet<SurveyTBL>();
-            this.TagsToSongsTBL = new HashSet<TagsToSongsTBL>();
             this.SongsToPlaylistsSystemTBL = new HashSet<SongsToPlaylistsSystemTBL>();
+            this.SongsToPlaylistsTBL = new HashSet<SongsToPlaylistsTBL>();
+            this.SongsToSurveyTBL = new HashSet<SongsToSurveyTBL>();
+            this.TagsToSongsTBL = new HashSet<TagsToSongsTBL>();
         }
     
         public int id { get; set; }
@@ -50,12 +50,12 @@ namespace DAL
         public virtual ICollection<ResponsesToSongsTBL> ResponsesToSongsTBL { get; set; }
         public virtual SingersTBL SingersTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SongsToPlaylistsSystemTBL> SongsToPlaylistsSystemTBL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SongsToPlaylistsTBL> SongsToPlaylistsTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SurveyTBL> SurveyTBL { get; set; }
+        public virtual ICollection<SongsToSurveyTBL> SongsToSurveyTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TagsToSongsTBL> TagsToSongsTBL { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SongsToPlaylistsSystemTBL> SongsToPlaylistsSystemTBL { get; set; }
     }
 }

@@ -13,12 +13,12 @@ namespace BL
         public static List<songsDetails> GetSongsInSurvey()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<SurveyTBL> list = et.SurveyTBL.ToList();
+            List<SongsToSurveyTBL> list = et.SongsToSurveyTBL.ToList();
             List<songsDetails> songs = SongsBL.GetSongsIncludePerformances();
             List<songsDetails> result = new List<songsDetails>();
             if (list == null|| songs==null)
                 return null;
-            foreach (SurveyTBL item in list)
+            foreach (SongsToSurveyTBL item in list)
             {
                 songsDetails songsDetails = songs.Where(s => s != null && s.id == item.songId).FirstOrDefault();
                 if (songsDetails != null)
@@ -29,7 +29,7 @@ namespace BL
         public static void AddVotingToSong(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SurveyTBL survey = et.SurveyTBL.Where(s => s != null && s.songId == songId).FirstOrDefault();
+            SongsToSurveyTBL survey = et.SongsToSurveyTBL.Where(s => s != null && s.songId == songId).FirstOrDefault();
             if (survey != null)
             {
                 if (survey.count == null)
@@ -48,20 +48,20 @@ namespace BL
                 }
             }
         }
-        public static void AddSongToSurvey(SurveyTBL survey)
+        public static void AddSongToSurvey(SongsToSurveyTBL survey)
         {
             if (survey != null)
             {
                 MusicOnlineEntities et = new MusicOnlineEntities();
-                et.SurveyTBL.Add(survey);
+                et.SongsToSurveyTBL.Add(survey);
                 et.SaveChanges();
             }
         }
-        public static void AddSongsToSurvey(List<SurveyTBL> surveys)
+        public static void AddSongsToSurvey(List<SongsToSurveyTBL> surveys)
         {
             if (surveys == null)
                 return;
-            foreach (SurveyTBL item in surveys)
+            foreach (SongsToSurveyTBL item in surveys)
             {
                 if (item != null)
                     AddSongToSurvey(item);
