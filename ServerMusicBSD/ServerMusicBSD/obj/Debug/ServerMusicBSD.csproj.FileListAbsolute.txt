@@ -625,3 +625,6 @@ D:\projectBSD\ServerMusicBSD\ServerMusicBSD\obj\Debug\ServerMusicBSD.pdb
 C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\bin\BL.dll.config
 C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\bin\AutoMapper.dll
 C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\bin\AutoMapper.xml
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\AutoMapper.dll
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\BL.dll.config
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\AutoMapper.xml
