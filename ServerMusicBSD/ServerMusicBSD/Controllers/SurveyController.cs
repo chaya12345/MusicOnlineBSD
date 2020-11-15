@@ -54,7 +54,7 @@ namespace ServerMusicBSD.Controllers
         {
             SingersToSurveyBL.AddSingerToSurvey(survey);
         }
-        public void AddSingersToSurvey([FromBody]List<SingersToSurveyTBL> surveys)
+        public void PostSingersToSurvey([FromBody]List<SingersToSurveyTBL> surveys)
         {
             SingersToSurveyBL.AddSingersToSurvey(surveys);
         }
