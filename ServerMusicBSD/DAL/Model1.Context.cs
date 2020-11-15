@@ -46,7 +46,6 @@ namespace DAL
         public virtual DbSet<SongsToPlaylistsTBL> SongsToPlaylistsTBL { get; set; }
         public virtual DbSet<SongsToSurveyTBL> SongsToSurveyTBL { get; set; }
         public virtual DbSet<SubscriptionTBL> SubscriptionTBL { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TagsTBL> TagsTBL { get; set; }
         public virtual DbSet<TagsToArticlesTBL> TagsToArticlesTBL { get; set; }
         public virtual DbSet<TagsToSongsTBL> TagsToSongsTBL { get; set; }

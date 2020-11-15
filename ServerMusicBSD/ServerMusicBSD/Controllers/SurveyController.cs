@@ -16,23 +16,51 @@ namespace ServerMusicBSD.Controllers
     {
         public List<songsDetails> GetSongsInSurvey()
         {
-            return SurveyBL.GetSongsInSurvey();
+            return SongsToSurveyBL.GetSongsInSurvey();
         }
-        public  void PutVotingToSong(int songId)
+        public void PutVotingToSong(int songId)
         {
-            SurveyBL.AddVotingToSong(songId);
+            SongsToSurveyBL.AddVotingToSong(songId);
         }
-        public  void PutVotingToSongs([FromBody] SongsTBL[] selectionSongs)
+        public void PutVotingToSongs([FromBody] SongsTBL[] selectionSongs)
         {
-            SurveyBL.AddVotingToSongs(selectionSongs);
+            SongsToSurveyBL.AddVotingToSongs(selectionSongs);
         }
-        public static void PostSongToSurvey([FromBody]SongsToSurveyTBL survey)
+        public void PostSongToSurvey([FromBody]SongsToSurveyTBL survey)
         {
-            SurveyBL.AddSongToSurvey(survey);
+            SongsToSurveyBL.AddSongToSurvey(survey);
         }
-        public static void PostSongsToSurvey([FromBody]List<SongsToSurveyTBL> surveys)
+        public void PostSongsToSurvey([FromBody]List<SongsToSurveyTBL> surveys)
         {
-            SurveyBL.AddSongsToSurvey(surveys);
+            SongsToSurveyBL.AddSongsToSurvey(surveys);
+        }
+        public void DeleteSongFromSurvey(int songId)
+        {
+            SongsToSurveyBL.DeleteSongFromSurvey(songId);
+        }
+        public List<SingersDTO> GetSingersInSurvey()
+        {
+            return SingersToSurveyBL.GetSingersInSurvey();
+        }
+        public void PutVotingToSinger(int singerId)
+        {
+            SingersToSurveyBL.AddVotingToSinger(singerId);
+        }
+        public void PostVotingToSingers([FromBody]SingersTBL[] selectoinSingers)
+        {
+            SingersToSurveyBL.AddVotingToSingers(selectoinSingers);
+        }
+        public void PostSingerToSurvey([FromBody]SingersToSurveyTBL survey)
+        {
+            SingersToSurveyBL.AddSingerToSurvey(survey);
+        }
+        public void AddSingersToSurvey([FromBody]List<SingersToSurveyTBL> surveys)
+        {
+            SingersToSurveyBL.AddSingersToSurvey(surveys);
+        }
+        public void DeleteSingerFromSurvey(int singerId)
+        {
+            SingersToSurveyBL.DeleteSingerFromSurvey(singerId);
         }
     }
 }

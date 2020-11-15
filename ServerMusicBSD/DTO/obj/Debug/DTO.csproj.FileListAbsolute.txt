@@ -6,7 +6,6 @@ C:\Users\טיירי\Documents\תכנות\פרוייקט\C#\projectBSD\ServerMusi
 C:\Users\טיירי\Documents\תכנות\פרוייקט\C#\projectBSD\ServerMusicBSD\DTO\obj\Debug\DTO.pdb
 C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\DTO\bin\Debug\DTO.dll
 C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\DTO\bin\Debug\DTO.pdb
-C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
 C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\DTO\obj\Debug\DTO.dll
 C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\DTO\obj\Debug\DTO.pdb
 C:\workspace1209\projectBSD\ServerMusicBSD\DTO\bin\Debug\DTO.dll
@@ -26,3 +25,4 @@ C:\BsdMusicOnline\ServerMusicBSD\DTO\bin\Debug\DTO.pdb
 C:\BsdMusicOnline\ServerMusicBSD\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 C:\BsdMusicOnline\ServerMusicBSD\DTO\obj\Debug\DTO.dll
 C:\BsdMusicOnline\ServerMusicBSD\DTO\obj\Debug\DTO.pdb
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
