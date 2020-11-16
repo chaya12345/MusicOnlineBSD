@@ -147,9 +147,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SingersToSurveyTBL">
-      <EntityTypeMapping TypeName="MusicOnlineModel.SingersToSurveyTBL">
-        <MappingFragment StoreEntitySet="SingersToSurveyTBL">
+    <EntitySetMapping Name="SingersToParadeTBL">
+      <EntityTypeMapping TypeName="MusicOnlineModel.SingersToParadeTBL">
+        <MappingFragment StoreEntitySet="SingersToParadeTBL">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="singerId" ColumnName="singerId" />
           <ScalarProperty Name="count" ColumnName="count" />
@@ -176,6 +176,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="SongsToParadeTBL">
+      <EntityTypeMapping TypeName="MusicOnlineModel.SongsToParadeTBL">
+        <MappingFragment StoreEntitySet="SongsToParadeTBL">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="songId" ColumnName="songId" />
+          <ScalarProperty Name="count" ColumnName="count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="SongsToPlaylistsSystemTBL">
       <EntityTypeMapping TypeName="MusicOnlineModel.SongsToPlaylistsSystemTBL">
         <MappingFragment StoreEntitySet="SongsToPlaylistsSystemTBL">
@@ -191,15 +200,6 @@
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="playlistId" ColumnName="playlistId" />
           <ScalarProperty Name="songId" ColumnName="songId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="SongsToSurveyTBL">
-      <EntityTypeMapping TypeName="MusicOnlineModel.SongsToSurveyTBL">
-        <MappingFragment StoreEntitySet="SongsToSurveyTBL">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="songId" ColumnName="songId" />
-          <ScalarProperty Name="count" ColumnName="count" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -12,12 +12,12 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class SongsToSurveyTBL
+    public partial class SingersToParadeTBL
     {
         public int id { get; set; }
-        public Nullable<int> songId { get; set; }
+        public Nullable<int> singerId { get; set; }
         public Nullable<int> count { get; set; }
     
-        public virtual SongsTBL SongsTBL { get; set; }
+        public virtual SingersTBL SingersTBL { get; set; }
     }
 }

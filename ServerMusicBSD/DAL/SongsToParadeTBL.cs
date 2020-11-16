@@ -10,13 +10,14 @@
 namespace DAL
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class sp_helpdiagrams_Result
+    public partial class SongsToParadeTBL
     {
-        public string Database { get; set; }
-        public string Name { get; set; }
-        public int ID { get; set; }
-        public string Owner { get; set; }
-        public int OwnerID { get; set; }
+        public int id { get; set; }
+        public Nullable<int> songId { get; set; }
+        public Nullable<int> count { get; set; }
+    
+        public virtual SongsTBL SongsTBL { get; set; }
     }
 }

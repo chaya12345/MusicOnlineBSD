@@ -22,7 +22,7 @@ namespace DAL
             this.ResponsesToSongsTBL = new HashSet<ResponsesToSongsTBL>();
             this.SongsToPlaylistsSystemTBL = new HashSet<SongsToPlaylistsSystemTBL>();
             this.SongsToPlaylistsTBL = new HashSet<SongsToPlaylistsTBL>();
-            this.SongsToSurveyTBL = new HashSet<SongsToSurveyTBL>();
+            this.SongsToParadeTBL = new HashSet<SongsToParadeTBL>();
             this.TagsToSongsTBL = new HashSet<TagsToSongsTBL>();
         }
     
@@ -54,7 +54,7 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SongsToPlaylistsTBL> SongsToPlaylistsTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SongsToSurveyTBL> SongsToSurveyTBL { get; set; }
+        public virtual ICollection<SongsToParadeTBL> SongsToParadeTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TagsToSongsTBL> TagsToSongsTBL { get; set; }
     }

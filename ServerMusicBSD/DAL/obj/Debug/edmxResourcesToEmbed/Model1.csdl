@@ -166,18 +166,18 @@
     <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="searchings" Type="Int64" />
     <NavigationProperty Name="SingerSearchingToUserTBL" Relationship="Self.FK_SingerSearchingToUserTBL_SingersTBL" FromRole="SingersTBL" ToRole="SingerSearchingToUserTBL" />
-    <NavigationProperty Name="SingersToSurveyTBL" Relationship="Self.FK_SingersToSurveyTBL_SingersTBL" FromRole="SingersTBL" ToRole="SingersToSurveyTBL" />
+    <NavigationProperty Name="SingersToParadeTBL" Relationship="Self.FK_SingersToSurveyTBL_SingersTBL" FromRole="SingersTBL" ToRole="SingersToParadeTBL" />
     <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsTBL_SingersTBL" FromRole="SingersTBL" ToRole="SongsTBL" />
     <NavigationProperty Name="SubscriptionTBL" Relationship="Self.FK_SubscriptionTBL_SingersTBL" FromRole="SingersTBL" ToRole="SubscriptionTBL" />
   </EntityType>
-  <EntityType Name="SingersToSurveyTBL">
+  <EntityType Name="SingersToParadeTBL">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="singerId" Type="Int32" />
     <Property Name="count" Type="Int32" />
-    <NavigationProperty Name="SingersTBL" Relationship="Self.FK_SingersToSurveyTBL_SingersTBL" FromRole="SingersToSurveyTBL" ToRole="SingersTBL" />
+    <NavigationProperty Name="SingersTBL" Relationship="Self.FK_SingersToSurveyTBL_SingersTBL" FromRole="SingersToParadeTBL" ToRole="SingersTBL" />
   </EntityType>
   <EntityType Name="SongsTBL">
     <Key>
@@ -204,8 +204,17 @@
     <NavigationProperty Name="SingersTBL" Relationship="Self.FK_SongsTBL_SingersTBL" FromRole="SongsTBL" ToRole="SingersTBL" />
     <NavigationProperty Name="SongsToPlaylistsSystemTBL" Relationship="Self.FK_SongsToPlaylistsSystemTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToPlaylistsSystemTBL" />
     <NavigationProperty Name="SongsToPlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToPlaylistsTBL" />
-    <NavigationProperty Name="SongsToSurveyTBL" Relationship="Self.FK_SurveyTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToSurveyTBL" />
+    <NavigationProperty Name="SongsToParadeTBL" Relationship="Self.FK_SurveyTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToParadeTBL" />
     <NavigationProperty Name="TagsToSongsTBL" Relationship="Self.FK_TagsToSongsTBL_SongsTBL" FromRole="SongsTBL" ToRole="TagsToSongsTBL" />
+  </EntityType>
+  <EntityType Name="SongsToParadeTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="songId" Type="Int32" />
+    <Property Name="count" Type="Int32" />
+    <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SurveyTBL_SongsTBL" FromRole="SongsToParadeTBL" ToRole="SongsTBL" />
   </EntityType>
   <EntityType Name="SongsToPlaylistsSystemTBL">
     <Key>
@@ -226,15 +235,6 @@
     <Property Name="songId" Type="Int32" />
     <NavigationProperty Name="PlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_PlaylistsTBL" FromRole="SongsToPlaylistsTBL" ToRole="PlaylistsTBL" />
     <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsToPlaylistsTBL" ToRole="SongsTBL" />
-  </EntityType>
-  <EntityType Name="SongsToSurveyTBL">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="songId" Type="Int32" />
-    <Property Name="count" Type="Int32" />
-    <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SurveyTBL_SongsTBL" FromRole="SongsToSurveyTBL" ToRole="SongsTBL" />
   </EntityType>
   <EntityType Name="SubscriptionTBL">
     <Key>
@@ -576,12 +576,12 @@
   </Association>
   <Association Name="FK_SingersToSurveyTBL_SingersTBL">
     <End Role="SingersTBL" Type="Self.SingersTBL" Multiplicity="0..1" />
-    <End Role="SingersToSurveyTBL" Type="Self.SingersToSurveyTBL" Multiplicity="*" />
+    <End Role="SingersToParadeTBL" Type="Self.SingersToParadeTBL" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SingersTBL">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="SingersToSurveyTBL">
+      <Dependent Role="SingersToParadeTBL">
         <PropertyRef Name="singerId" />
       </Dependent>
     </ReferentialConstraint>
@@ -636,12 +636,12 @@
   </Association>
   <Association Name="FK_SurveyTBL_SongsTBL">
     <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="0..1" />
-    <End Role="SongsToSurveyTBL" Type="Self.SongsToSurveyTBL" Multiplicity="*" />
+    <End Role="SongsToParadeTBL" Type="Self.SongsToParadeTBL" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SongsTBL">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="SongsToSurveyTBL">
+      <Dependent Role="SongsToParadeTBL">
         <PropertyRef Name="songId" />
       </Dependent>
     </ReferentialConstraint>
@@ -720,11 +720,11 @@
     <EntitySet Name="ResponsesToSongsTBL" EntityType="Self.ResponsesToSongsTBL" />
     <EntitySet Name="SingerSearchingToUserTBL" EntityType="Self.SingerSearchingToUserTBL" />
     <EntitySet Name="SingersTBL" EntityType="Self.SingersTBL" />
-    <EntitySet Name="SingersToSurveyTBL" EntityType="Self.SingersToSurveyTBL" />
+    <EntitySet Name="SingersToParadeTBL" EntityType="Self.SingersToParadeTBL" />
     <EntitySet Name="SongsTBL" EntityType="Self.SongsTBL" />
+    <EntitySet Name="SongsToParadeTBL" EntityType="Self.SongsToParadeTBL" />
     <EntitySet Name="SongsToPlaylistsSystemTBL" EntityType="Self.SongsToPlaylistsSystemTBL" />
     <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" />
-    <EntitySet Name="SongsToSurveyTBL" EntityType="Self.SongsToSurveyTBL" />
     <EntitySet Name="SubscriptionTBL" EntityType="Self.SubscriptionTBL" />
     <EntitySet Name="TagsTBL" EntityType="Self.TagsTBL" />
     <EntitySet Name="TagsToArticlesTBL" EntityType="Self.TagsToArticlesTBL" />
@@ -799,7 +799,7 @@
     </AssociationSet>
     <AssociationSet Name="FK_SingersToSurveyTBL_SingersTBL" Association="Self.FK_SingersToSurveyTBL_SingersTBL">
       <End Role="SingersTBL" EntitySet="SingersTBL" />
-      <End Role="SingersToSurveyTBL" EntitySet="SingersToSurveyTBL" />
+      <End Role="SingersToParadeTBL" EntitySet="SingersToParadeTBL" />
     </AssociationSet>
     <AssociationSet Name="FK_SongsTBL_SingersTBL" Association="Self.FK_SongsTBL_SingersTBL">
       <End Role="SingersTBL" EntitySet="SingersTBL" />
@@ -819,7 +819,7 @@
     </AssociationSet>
     <AssociationSet Name="FK_SurveyTBL_SongsTBL" Association="Self.FK_SurveyTBL_SongsTBL">
       <End Role="SongsTBL" EntitySet="SongsTBL" />
-      <End Role="SongsToSurveyTBL" EntitySet="SongsToSurveyTBL" />
+      <End Role="SongsToParadeTBL" EntitySet="SongsToParadeTBL" />
     </AssociationSet>
     <AssociationSet Name="FK_TagsToSongsTBL_SongsTBL" Association="Self.FK_TagsToSongsTBL_SongsTBL">
       <End Role="SongsTBL" EntitySet="SongsTBL" />
@@ -847,46 +847,5 @@
     <FunctionImport Name="itemsByParameter" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemsByParameter_Result)">
       <Parameter Name="singer" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="sp_alterdiagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="version" Mode="In" Type="Int32" />
-      <Parameter Name="definition" Mode="In" Type="Binary" />
-    </FunctionImport>
-    <FunctionImport Name="sp_creatediagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="version" Mode="In" Type="Int32" />
-      <Parameter Name="definition" Mode="In" Type="Binary" />
-    </FunctionImport>
-    <FunctionImport Name="sp_dropdiagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MusicOnlineModel.sp_helpdiagramdefinition_Result)">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MusicOnlineModel.sp_helpdiagrams_Result)">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_renamediagram">
-      <Parameter Name="diagramname" Mode="In" Type="String" />
-      <Parameter Name="owner_id" Mode="In" Type="Int32" />
-      <Parameter Name="new_diagramname" Mode="In" Type="String" />
-    </FunctionImport>
-    <FunctionImport Name="sp_upgraddiagrams" />
   </EntityContainer>
-  <ComplexType Name="sp_helpdiagramdefinition_Result">
-    <Property Type="Int32" Name="version" Nullable="true" />
-    <Property Type="Binary" Name="definition" Nullable="true" />
-  </ComplexType>
-  <ComplexType Name="sp_helpdiagrams_Result">
-    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-    <Property Type="Int32" Name="ID" Nullable="false" />
-    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-    <Property Type="Int32" Name="OwnerID" Nullable="false" />
-  </ComplexType>
 </Schema>

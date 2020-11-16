@@ -12,55 +12,55 @@ using System.Web.Http.Cors;
 namespace ServerMusicBSD.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class SurveyController : ApiController
+    public class ParadeController : ApiController
     {
-        public List<songsDetails> GetSongsInSurvey()
+        public List<songsDetails> GetSongsInParade()
         {
-            return SongsToSurveyBL.GetSongsInSurvey();
+            return SongsToParadeBL.GetSongsInParade();
         }
         public void PutVotingToSong(int songId)
         {
-            SongsToSurveyBL.AddVotingToSong(songId);
+            SongsToParadeBL.AddVotingToSong(songId);
         }
         public void PutVotingToSongs([FromBody] SongsTBL[] selectionSongs)
         {
-            SongsToSurveyBL.AddVotingToSongs(selectionSongs);
+            SongsToParadeBL.AddVotingToSongs(selectionSongs);
         }
-        public void PostSongToSurvey([FromBody]SongsToSurveyTBL survey)
+        public void PostSongToParade([FromBody]SongsToParadeTBL Parade)
         {
-            SongsToSurveyBL.AddSongToSurvey(survey);
+            SongsToParadeBL.AddSongToParade(Parade);
         }
-        public void PostSongsToSurvey([FromBody]List<SongsToSurveyTBL> surveys)
+        public void PostSongsToParade([FromBody]List<SongsToParadeTBL> Parades)
         {
-            SongsToSurveyBL.AddSongsToSurvey(surveys);
+            SongsToParadeBL.AddSongsToParade(Parades);
         }
-        public void DeleteSongFromSurvey(int songId)
+        public void DeleteSongFromParade(int songId)
         {
-            SongsToSurveyBL.DeleteSongFromSurvey(songId);
+            SongsToParadeBL.DeleteSongFromParade(songId);
         }
-        public List<SingersDTO> GetSingersInSurvey()
+        public List<SingersDTO> GetSingersInParade()
         {
-            return SingersToSurveyBL.GetSingersInSurvey();
+            return SingersToParadeBL.GetSingersInParade();
         }
         public void PutVotingToSinger(int singerId)
         {
-            SingersToSurveyBL.AddVotingToSinger(singerId);
+            SingersToParadeBL.AddVotingToSinger(singerId);
         }
         public void PostVotingToSingers([FromBody]SingersTBL[] selectoinSingers)
         {
-            SingersToSurveyBL.AddVotingToSingers(selectoinSingers);
+            SingersToParadeBL.AddVotingToSingers(selectoinSingers);
         }
-        public void PostSingerToSurvey([FromBody]SingersToSurveyTBL survey)
+        public void PostSingerToParade([FromBody]SingersToParadeTBL Parade)
         {
-            SingersToSurveyBL.AddSingerToSurvey(survey);
+            SingersToParadeBL.AddSingerToParade(Parade);
         }
-        public void PostSingersToSurvey([FromBody]List<SingersToSurveyTBL> surveys)
+        public void PostSingersToParade([FromBody]List<SingersToParadeTBL> Parades)
         {
-            SingersToSurveyBL.AddSingersToSurvey(surveys);
+            SingersToParadeBL.AddSingersToParade(Parades);
         }
-        public void DeleteSingerFromSurvey(int singerId)
+        public void DeleteSingerFromParade(int singerId)
         {
-            SingersToSurveyBL.DeleteSingerFromSurvey(singerId);
+            SingersToParadeBL.DeleteSingerFromParade(singerId);
         }
     }
 }

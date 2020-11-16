@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class SingersToSurveyDTO
+    public class SongsToParadeDTO
     {
         public int id { get; set; }
-        public Nullable<int> singerId { get; set; }
+        public Nullable<int> songId { get; set; }
         public Nullable<int> count { get; set; }
     }
 }

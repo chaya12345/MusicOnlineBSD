@@ -8,17 +8,17 @@ using DTO;
 
 namespace BL
 {
-    public class SingersToSurveyBL
+    public class SingersToParadeBL
     {
-        public static List<SingersDTO> GetSingersInSurvey()
+        public static List<SingersDTO> GetSingersInParade()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<SingersToSurveyTBL> list = et.SingersToSurveyTBL.ToList();
+            List<SingersToParadeTBL> list = et.SingersToParadeTBL.ToList();
             List<SingersDTO> singers = SingersBL.GetSingers();
             List<SingersDTO> result = new List<SingersDTO>();
             if (list == null || singers == null)
                 return null;
-            foreach (SingersToSurveyTBL item in list)
+            foreach (SingersToParadeTBL item in list)
             {
                 SingersDTO relevantsinger = singers.Where(s => s != null && s.id == item.singerId).FirstOrDefault();
                 if (relevantsinger != null)
@@ -29,12 +29,12 @@ namespace BL
         public static void AddVotingToSinger(int singerId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SingersToSurveyTBL survey = et.SingersToSurveyTBL.Where(s => s != null && s.singerId == singerId).FirstOrDefault();
-            if (survey != null)
+            SingersToParadeTBL Parade = et.SingersToParadeTBL.Where(s => s != null && s.singerId == singerId).FirstOrDefault();
+            if (Parade != null)
             {
-                if (survey.count == null)
-                    survey.count = 1;
-                else survey.count++;
+                if (Parade.count == null)
+                    Parade.count = 1;
+                else Parade.count++;
                 et.SaveChanges();
             }
         }
@@ -48,30 +48,30 @@ namespace BL
                 }
             }
         }
-        public static void AddSingerToSurvey(SingersToSurveyTBL survey)
+        public static void AddSingerToParade(SingersToParadeTBL Parade)
         {
-            if (survey != null)
+            if (Parade != null)
             {
                 MusicOnlineEntities et = new MusicOnlineEntities();
-                et.SingersToSurveyTBL.Add(survey);
+                et.SingersToParadeTBL.Add(Parade);
                 et.SaveChanges();
             }
         }
-        public static void AddSingersToSurvey(List<SingersToSurveyTBL> surveys)
+        public static void AddSingersToParade(List<SingersToParadeTBL> Parades)
         {
-            if (surveys == null)
+            if (Parades == null)
                 return;
-            foreach (SingersToSurveyTBL item in surveys)
+            foreach (SingersToParadeTBL item in Parades)
             {
                 if (item != null)
-                    AddSingerToSurvey(item);
+                    AddSingerToParade(item);
             }
         }
-        public static void DeleteSingerFromSurvey(int singerId)
+        public static void DeleteSingerFromParade(int singerId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SingersToSurveyTBL singerToSurvey = et.SingersToSurveyTBL.Where(survey => survey.singerId == singerId).FirstOrDefault();
-            et.SingersToSurveyTBL.Remove(singerToSurvey);
+            SingersToParadeTBL singerToParade = et.SingersToParadeTBL.Where(Parade => Parade.singerId == singerId).FirstOrDefault();
+            et.SingersToParadeTBL.Remove(singerToParade);
             et.SaveChanges();
         }
     }
