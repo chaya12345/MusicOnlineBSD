@@ -8,26 +8,26 @@ using DTO;
 
 namespace BL.Casts
 {
-    public class ToSurveyDTO
+    public class ToSingersToSurveyDTO
     {
-        public static SurveyDTO GetSurvey(SongsToSurveyTBL survey)
+        public static SingersToSurveyDTO GetSurvey(SingersToSurveyTBL survey)
         {
             if (survey == null)
                 return null;
-            SurveyDTO newSurvey = new SurveyDTO();
+            SingersToSurveyDTO newSurvey = new SingersToSurveyDTO();
             newSurvey.id = survey.id;
-            newSurvey.songId = survey.songId;
+            newSurvey.singerId = survey.singerId;
             newSurvey.count = survey.count;
             return newSurvey;
         }
-        public static List<SurveyDTO> GetSurveys(List<SongsToSurveyTBL> surveys)
+        public static List<SingersToSurveyDTO> GetSurveys(List<SingersToSurveyTBL> surveys)
         {
             if (surveys == null)
                 return null;
-            List<SurveyDTO> list = new List<SurveyDTO>();
-            foreach (SongsToSurveyTBL item in surveys)
+            List<SingersToSurveyDTO> list = new List<SingersToSurveyDTO>();
+            foreach (SingersToSurveyTBL item in surveys)
             {
-                SurveyDTO survey = GetSurvey(item);
+                SingersToSurveyDTO survey = GetSurvey(item);
                 if (survey != null)
                     list.Add(survey);
             }

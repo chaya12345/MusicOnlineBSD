@@ -8,7 +8,7 @@ using DTO;
 
 namespace BL
 {
-    public class SurveyBL
+    public class SongsToSurveyBL
     {
         public static List<songsDetails> GetSongsInSurvey()
         {
@@ -66,6 +66,13 @@ namespace BL
                 if (item != null)
                     AddSongToSurvey(item);
             }
+        }
+        public static void DeleteSongFromSurvey(int songId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            SongsToSurveyTBL songToSurvey = et.SongsToSurveyTBL.Where(survey => survey.songId == songId).FirstOrDefault();
+            et.SongsToSurveyTBL.Remove(songToSurvey);
+            et.SaveChanges();
         }
     }
 }
