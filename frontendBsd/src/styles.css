@@ -85,6 +85,10 @@ mat-checkbox span {
     margin-right: 8px;
 }
 
+mat-form-field input {
+    direction: rtl !important;
+}
+
 /* main-actions .mat-form-field-flex {
     background-color: rgb(255 255 255 / 4%) !important;
 } */
@@ -386,6 +390,11 @@ button.primary-style {
 a {
     text-decoration: none;
     color: inherit;
+}
+
+text a {
+    text-decoration: underline !important;
+    color: #2660c5 !important;
 }
 
 /* #endregion */
