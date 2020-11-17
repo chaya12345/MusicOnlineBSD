@@ -118,7 +118,6 @@ export class SongsComponent implements OnInit {
   }
 
   addFollowUp(value: boolean): void {
-
     if (this.song != null && sessionStorage.getItem('user') != null && sessionStorage.getItem('user') != undefined) {
       this.userInfo = JSON.parse(sessionStorage.getItem('user'));
       if (value == true) {
@@ -140,8 +139,10 @@ export class SongsComponent implements OnInit {
         } catch (err) { console.log(err); this.openSnackBar("מצטערים, קרתה תקלה. נסה שוב מאוחר יותר"); }
       }
     }
+  }
 
-
+  addReport() {
+    console.log("report");
   }
 
 }

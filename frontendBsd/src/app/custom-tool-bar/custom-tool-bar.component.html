@@ -26,7 +26,7 @@
                 <mat-icon>menu_open</mat-icon>
                 <span>הוסף לפלייליסטים שלי</span>
             </button>
-            <button mat-menu-item [disabled]="isPublic">
+            <button mat-menu-item [disabled]="isPublic" (click)="addReport()">
                 <mat-icon>report</mat-icon>
                 <span>דווח על שיר</span>
             </button>

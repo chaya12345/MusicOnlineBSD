@@ -11,6 +11,7 @@ import { StorageService } from '../services/storage.service';
 export class CustomToolBarComponent implements OnInit {
 
   @Output() onFollowUp: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() onReport: EventEmitter<void> = new EventEmitter<void>();
   @Input() isPublic?: boolean = true;
   @Input() isByName?: boolean = false;
   currentOrder: string = "date";
@@ -87,6 +88,10 @@ export class CustomToolBarComponent implements OnInit {
   removeFollowUp(): void {
     this.followUp = false;
     this.onFollowUp.emit(false);
+  }
+
+  addReport(): void {
+    this.onReport.emit();
   }
 
 }
