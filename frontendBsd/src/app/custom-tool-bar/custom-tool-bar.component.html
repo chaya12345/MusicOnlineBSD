@@ -18,7 +18,7 @@
                 <mat-icon>sort</mat-icon>
                 <span>סדר לפי</span>
             </button>
-            <button mat-menu-item [disabled]="isPublic">
+            <button mat-menu-item [disabled]="isPublic" (click)="addSubscription()">
                 <mat-icon>timer</mat-icon>
                 <span>הוסף מנוי לזמר</span>
             </button>
