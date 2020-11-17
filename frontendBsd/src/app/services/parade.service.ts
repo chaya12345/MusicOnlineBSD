@@ -38,9 +38,6 @@ export class ParadeService {
   addVotingToSinger(singerId: number): Observable<any> {
     return this.httpClient.put(this.baseUrl + "PutVotingToSinger?singerId=" + singerId, singerId);
   }
-  addVotingToSingers(selectionSingers: Singer[]): Observable<any> {
-    return this.httpClient.put(this.baseUrl + "PostVotingToSingers", selectionSingers);
-  }
   addSingerToParade(parade: SingersToParade): Observable<any> {
     return this.httpClient.post(this.baseUrl + "PostSingerToParade", parade);
   }

@@ -38,16 +38,6 @@ namespace BL
                 et.SaveChanges();
             }
         }
-        public static void AddVotingToSingers(SingersTBL[] selectoinSingers)
-        {
-            if (selectoinSingers != null)
-            {
-                foreach (SingersTBL item in selectoinSingers)
-                {
-                    AddVotingToSinger(item.id);
-                }
-            }
-        }
         public static void AddSingerToParade(SingersToParadeTBL Parade)
         {
             if (Parade != null)

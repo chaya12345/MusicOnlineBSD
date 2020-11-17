@@ -46,10 +46,6 @@ namespace ServerMusicBSD.Controllers
         {
             SingersToParadeBL.AddVotingToSinger(singerId);
         }
-        public void PostVotingToSingers([FromBody]SingersTBL[] selectoinSingers)
-        {
-            SingersToParadeBL.AddVotingToSingers(selectoinSingers);
-        }
         public void PostSingerToParade([FromBody]SingersToParadeTBL parade)
         {
             SingersToParadeBL.AddSingerToParade(parade);

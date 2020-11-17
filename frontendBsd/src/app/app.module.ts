@@ -76,7 +76,6 @@ import { DisplayPlaylistComponent } from './display-playlist/display-playlist.co
 import { DisplaySongsComponent } from './display-songs/display-songs.component';
 import { DisplaySectionComponent } from './display-section/display-section.component';
 import { LatestPerformanceComponent } from './latest-performance/latest-performance.component';
-import { AnnualSurveySectionComponent } from './annual-survey-section/annual-survey-section.component';
 import { SiUpdatingComponent } from './si-updating/si-updating.component';
 import { SiSimilarResultsComponent } from './si-similar-results/si-similar-results.component';
 import { SiHotArticlesComponent } from './si-hot-articles/si-hot-articles.component';
@@ -102,9 +101,6 @@ import { SanitizerUrlPipe } from './pipes/sanitizer-url.pipe';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { BarRatingModule } from "ngx-bar-rating";
 import { PerformanceComponent } from './performance/performance.component';
-import { AnnualSurveyComponent } from './annual-survey/annual-survey.component';
-import { AnnualSurveyContentComponent } from './annual-survey-content/annual-survey-content.component';
-import { AnSrSongComponent } from './an-sr-song/an-sr-song.component';
 import { PerformanceSectionComponent } from './performance-section/performance-section.component';
 import { PerformancesListComponent } from './performances-list/performances-list.component';
 import { ParadeComponent } from './parade/parade.component';
@@ -113,6 +109,7 @@ import { ParadeBodyComponent } from './parade-body/parade-body.component';
 import { ParadeSongOfTheYearComponent } from './parade-song-of-the-year/parade-song-of-the-year.component';
 import { ParadeSingerOfTheYearComponent } from './parade-singer-of-the-year/parade-singer-of-the-year.component';
 import { ParadeItemComponent } from './parade-item/parade-item.component';
+import { ParadeLinkComponent } from './parade-link/parade-link.component';
 
 @NgModule({
   declarations: [
@@ -183,7 +180,6 @@ import { ParadeItemComponent } from './parade-item/parade-item.component';
     DisplaySongsComponent,
     DisplaySectionComponent,
     LatestPerformanceComponent,
-    AnnualSurveySectionComponent,
     SiUpdatingComponent,
     SiSimilarResultsComponent,
     SiHotArticlesComponent,
@@ -205,9 +201,6 @@ import { ParadeItemComponent } from './parade-item/parade-item.component';
     SanitizerUrlPipe,
     SongInfoComponent,
     PerformanceComponent,
-    AnnualSurveyComponent,
-    AnnualSurveyContentComponent,
-    AnSrSongComponent,
     PerformanceSectionComponent,
     PerformancesListComponent,
     ParadeComponent,
@@ -215,7 +208,8 @@ import { ParadeItemComponent } from './parade-item/parade-item.component';
     ParadeBodyComponent,
     ParadeSongOfTheYearComponent,
     ParadeSingerOfTheYearComponent,
-    ParadeItemComponent
+    ParadeItemComponent,
+    ParadeLinkComponent
   ],
   imports: [
     BrowserModule,

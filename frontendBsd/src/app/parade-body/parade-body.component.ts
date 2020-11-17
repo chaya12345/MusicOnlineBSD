@@ -17,6 +17,7 @@ export class ParadeBodyComponent implements OnInit {
   yearSongMessage: string = "";
   baseMessageYearSinger: string = "בחרו את זמר השנה שלכם";
   baseMessageYearSong: string = "בחרו 10 שירים שעשו לכם את השנה";
+  successVotingMessange: string = "ההצבעה בוצעה בהצלחה.";
   selectedYearSinger: boolean = false;
   selectedYearSong: boolean = false;
   votedYearSong: boolean = false;
@@ -68,8 +69,7 @@ export class ParadeBodyComponent implements OnInit {
     try {
       this.paradeService.addVotingToSongs(this.selectedSongs).subscribe(() => {
         this.votedYearSong = true;
-        this.yearSongMessage = "ההצבעה בוצעה";
-        // this.selectedYearSong = false;
+        this.yearSongMessage = this.successVotingMessange;
       }, err => console.log(err));
     } catch (err) { console.log(err); }
 
@@ -79,8 +79,7 @@ export class ParadeBodyComponent implements OnInit {
     try {
       this.paradeService.addVotingToSinger(this.selectedSinger.id).subscribe(() => {
         this.votedYearSinger = true;
-        this.yearSingerMessage = "ההצבעה בוצעה";
-        // this.selectedYearSinger = false;
+        this.yearSingerMessage = this.successVotingMessange;
       }, err => console.log(err));
     } catch (err) { console.log(err); }
   }
