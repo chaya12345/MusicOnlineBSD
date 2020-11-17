@@ -1,11 +1,13 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { parse } from 'path';
 import { FollowUp } from '../classes/followUp';
 import { ItemsByParameter } from '../classes/itemsByParameter';
 import { Song } from '../classes/song';
 import { Topics } from '../classes/topics';
 import { User } from '../classes/user';
+import { ReportingDialogComponent } from '../reporting-dialog/reporting-dialog.component';
 import { FollowUpService } from '../services/follow-up.service';
 import { ItemsByParameterService } from '../services/items-by-parameter.service';
 import { SongService } from '../services/song.service';
@@ -39,10 +41,15 @@ export class SongsComponent implements OnInit {
   followUp: FollowUp = new FollowUp();
   userInfo: User;
 
+  mail: string;
+  phone: string;
+  messange: string;
+  songId: number;
+
   constructor(private activatedRoute: ActivatedRoute, private songService: SongService,
     private cdr: ChangeDetectorRef, private itemsByParameterService: ItemsByParameterService,
     private topicService: TopicsService, private router: Router,
-    private followUpService: FollowUpService, private _snackbar: MatSnackBar) {
+    private followUpService: FollowUpService, private _snackbar: MatSnackBar,private dialog:MatDialog) {
     this.navs.push("חדש במוזיקה");
   }
 
@@ -143,6 +150,13 @@ export class SongsComponent implements OnInit {
 
   addReport() {
     console.log("report");
+    const dialogRef=this.dialog.open(ReportingDialogComponent,{
+      width:"500px",
+      data:{mail: this.mail, phone: this.phone, messange: this.messange}
+    });
+    dialogRef.componentInstance.data.songId=this.song.id+"";
+    dialogRef.afterClosed().subscribe(result=>
+      console.log(result));
   }
 
 }
