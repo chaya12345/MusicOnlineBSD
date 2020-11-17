@@ -10,6 +10,7 @@ import { StorageService } from '../services/storage.service';
 })
 export class CustomToolBarComponent implements OnInit {
 
+  @Output() onAddToPlaylist:EventEmitter<void>= new  EventEmitter<void>();
   @Output() onFollowUp: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() onReport: EventEmitter<void> = new EventEmitter<void>();
   @Input() isPublic?: boolean = true;
@@ -92,6 +93,9 @@ export class CustomToolBarComponent implements OnInit {
 
   addReport(): void {
     this.onReport.emit();
+  }
+  addToPlaylist():void{
+    this.onAddToPlaylist.emit();
   }
 
 }

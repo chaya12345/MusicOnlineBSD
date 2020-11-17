@@ -22,7 +22,7 @@
                 <mat-icon>timer</mat-icon>
                 <span>הוסף מנוי לזמר</span>
             </button>
-            <button mat-menu-item [matMenuTriggerFor]="playlists" [disabled]="isPublic">
+            <button mat-menu-item [matMenuTriggerFor]="playlists" [disabled]="isPublic" (click)="addToPlaylist()">
                 <mat-icon>menu_open</mat-icon>
                 <span>הוסף לפלייליסטים שלי</span>
             </button>
