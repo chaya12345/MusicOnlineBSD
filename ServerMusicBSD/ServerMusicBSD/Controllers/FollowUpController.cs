@@ -19,9 +19,9 @@ namespace ServerMusicBSD.Controllers
         {
             return FollowUpBL.AddFollowUp(followUp);
         }
-        public void DeleteFollowUp(int userId, int id, string type)
+        public bool DeleteFollowUp(int userId, int id, string type)
         {
-            FollowUpBL.DeleteFollowUp(userId,id,type);
+            return FollowUpBL.DeleteFollowUp(userId,id,type);
         }
         public List<string> GetSongsNameYouFollowUp(int? userId,string mail)
         {

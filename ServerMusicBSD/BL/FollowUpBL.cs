@@ -48,27 +48,32 @@ namespace BL
             return false;
         }
 
-        public static void DeleteFollowUp(int userId,int id,string type)
+        public static bool DeleteFollowUp(int userId, int id, string type)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             if (type == "article")
             {
                 FollowUpTBL followUp = et.FollowUpTBL.Where(f =>f!=null&& f.userId == userId && f.articleId == id).FirstOrDefault();
-                if (followUp != null)
+                if (followUp != null && !isCheck(followUp))
                 {
                     et.FollowUpTBL.Remove(followUp);
                     et.SaveChanges();
+                    return true;
                 }
+                return false;
             }
             if (type == "song")
             {
                 FollowUpTBL followUp = et.FollowUpTBL.Where(f =>f!=null&& f.userId == userId && f.songId == id).FirstOrDefault();
-                if (followUp != null)
+                if (followUp != null && !isCheck(followUp))
                 {
                     et.FollowUpTBL.Remove(followUp);
                     et.SaveChanges();
+                    return true;
                 }
+                return false;
             }
+            return false;
         }
         public static List<string> GetSongsNameYouFollowUp(int? userId, string mail)
         {
