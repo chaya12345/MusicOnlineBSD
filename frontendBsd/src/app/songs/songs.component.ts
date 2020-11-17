@@ -1,8 +1,12 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FollowUp } from '../classes/followUp';
 import { ItemsByParameter } from '../classes/itemsByParameter';
 import { Song } from '../classes/song';
 import { Topics } from '../classes/topics';
+import { User } from '../classes/user';
+import { FollowUpService } from '../services/follow-up.service';
 import { ItemsByParameterService } from '../services/items-by-parameter.service';
 import { SongService } from '../services/song.service';
 import { TopicsService } from '../services/topics.service';
@@ -32,10 +36,13 @@ export class SongsComponent implements OnInit {
   items: ItemsByParameter[] = [];
   song: Song;
   topic: Topics;
+  followUp: FollowUp = new FollowUp();
+  userInfo: User;
 
   constructor(private activatedRoute: ActivatedRoute, private songService: SongService,
     private cdr: ChangeDetectorRef, private itemsByParameterService: ItemsByParameterService,
-    private topicService: TopicsService, private router: Router) {
+    private topicService: TopicsService, private router: Router,
+    private followUpService: FollowUpService, private _snackbar: MatSnackBar) {
     this.navs.push("חדש במוזיקה");
   }
 
@@ -105,8 +112,27 @@ export class SongsComponent implements OnInit {
     this.isGeneric = false;
   }
 
+  openSnackBar(message: string) {
+    this._snackbar.open(message, '', {
+      duration: 20000
+    })
+  }
+
   addFollowUp(value: boolean): void {
-    /* --- add follow up ------ */
+    try {
+      if (this.song != null && sessionStorage.getItem('user') != null && sessionStorage.getItem('user') != undefined) {
+        this.followUp.songId = this.song.id;
+        this.userInfo = JSON.parse(sessionStorage.getItem('user'));
+        this.followUp.userId = this.userInfo.id;
+        this.followUpService.addFollowUp(this.followUp).subscribe(result => {
+          this.openSnackBar("המעקב נוסף בהצלחה");
+        });
+      }
+    }
+    catch {
+      this.openSnackBar("מצטערים, קרתה תקלה. נסה שוב מאוחר יותר");
+    }
+
   }
 
 }
