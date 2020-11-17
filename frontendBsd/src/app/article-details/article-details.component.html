@@ -1,5 +1,5 @@
 <div class="wrap-article-details">
-    <custom-tool-bar isPublic="false"></custom-tool-bar>
+    <custom-tool-bar isPublic="false" (onFollowUp)="addFollowUp($event)"></custom-tool-bar>
     <top [_title]="article.title" [date]="article.date" [img]="'../../assets/images/'+article.main_image"></top>
     <current-nav [navs]="navs"></current-nav>
     <div class="section">
