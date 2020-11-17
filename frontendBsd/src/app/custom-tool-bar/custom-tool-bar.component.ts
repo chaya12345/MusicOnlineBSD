@@ -86,6 +86,7 @@ export class CustomToolBarComponent implements OnInit {
 
   removeFollowUp(): void {
     this.followUp = false;
+    this.onFollowUp.emit(false);
   }
 
 }
