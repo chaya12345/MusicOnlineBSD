@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { RegisterToNewsletterComponent } from '../register-to-newsletter/register-to-newsletter.component';
 import { StorageService } from '../services/storage.service';
@@ -10,6 +10,7 @@ import { StorageService } from '../services/storage.service';
 })
 export class CustomToolBarComponent implements OnInit {
 
+  @Output() onFollowUp: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() isPublic?: boolean = true;
   @Input() isByName?: boolean = false;
   currentOrder: string = "date";
@@ -75,6 +76,10 @@ export class CustomToolBarComponent implements OnInit {
       });
     }
     catch (err) { console.log(err); }
+  }
+
+  addFollowUp(): void {
+    this.onFollowUp.emit(true);
   }
 
 }

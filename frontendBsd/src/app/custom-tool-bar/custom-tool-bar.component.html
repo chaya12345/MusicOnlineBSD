@@ -6,7 +6,7 @@
 
     <mat-menu #menu="matMenu" xPosition="before">
         <span (mouseenter)="isFocus=true" (mouseleave)="isFocus=false; timeoutToHide();">
-            <button mat-menu-item [disabled]="isPublic">
+            <button mat-menu-item [disabled]="isPublic" (click)="addFollowUp()">
                 <mat-icon>notifications</mat-icon>
                 <span>הוסף מעקב</span>
             </button>

@@ -105,4 +105,8 @@ export class SongsComponent implements OnInit {
     this.isGeneric = false;
   }
 
+  addFollowUp(value: boolean): void {
+    /* --- add follow up ------ */
+  }
+
 }

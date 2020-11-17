@@ -56,4 +56,8 @@ export class ArticleDetailsComponent implements OnInit {
     this.similarArticles = this.similarArticles.slice(0, 3);
   }
 
+  addFollowUp(value: boolean) {
+    /* ----- add follow up ---- */
+  }
+
 }

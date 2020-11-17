@@ -1,5 +1,5 @@
 <div class="wrap-songs">
-    <custom-tool-bar [isPublic]="!isSingular"></custom-tool-bar>
+    <custom-tool-bar [isPublic]="!isSingular" (onFollowUp)="addFollowUp($event)"></custom-tool-bar>
     <top [_title]="title" [subtitle]="subtitle" [date]="date" [img]="img" [icon]="icon" [notBlur]="notBlur"></top>
     <current-nav [navs]="navs"></current-nav>
     <div *ngIf="!isSingular" class="wrap-tool-box">
