@@ -1,15 +1,17 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { parse } from 'path';
 import { FollowUp } from '../classes/followUp';
 import { ItemsByParameter } from '../classes/itemsByParameter';
+import { PlayList } from '../classes/playlist';
 import { Song } from '../classes/song';
 import { Topics } from '../classes/topics';
 import { User } from '../classes/user';
 import { ReportingDialogComponent } from '../reporting-dialog/reporting-dialog.component';
 import { FollowUpService } from '../services/follow-up.service';
 import { ItemsByParameterService } from '../services/items-by-parameter.service';
+import { PlaylistsService } from '../services/playlists.service';
 import { SongService } from '../services/song.service';
 import { TopicsService } from '../services/topics.service';
 
@@ -20,6 +22,7 @@ import { TopicsService } from '../services/topics.service';
 })
 export class SongsComponent implements OnInit {
 
+  @Output() sendPlilist:EventEmitter<PlayList[]>=new EventEmitter<PlayList[]>();
   title: string = "";
   subtitle: string;
   date: Date;
@@ -49,7 +52,8 @@ export class SongsComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private songService: SongService,
     private cdr: ChangeDetectorRef, private itemsByParameterService: ItemsByParameterService,
     private topicService: TopicsService, private router: Router,
-    private followUpService: FollowUpService, private _snackbar: MatSnackBar,private dialog:MatDialog) {
+    private followUpService: FollowUpService, private _snackbar: MatSnackBar, private dialog: MatDialog,
+    private playlistService: PlaylistsService) {
     this.navs.push("חדש במוזיקה");
   }
 
@@ -143,7 +147,7 @@ export class SongsComponent implements OnInit {
           this.followUpService.deleteFollowUp(this.userInfo.id, this.song.id, "song").subscribe(
             result => {
               result == true ? this.openSnackBar("המעקב הוסר בהצלחה") :
-              this.openSnackBar("לא קיים מעקב לכתובת המייל שהוזנה");
+                this.openSnackBar("לא קיים מעקב לכתובת המייל שהוזנה");
             }, err => console.log(err)
           );
         } catch (err) { console.log(err); this.openSnackBar("מצטערים, קרתה תקלה. נסה שוב מאוחר יותר"); }
@@ -153,16 +157,23 @@ export class SongsComponent implements OnInit {
 
   addReport() {
     console.log("report");
-    const dialogRef=this.dialog.open(ReportingDialogComponent,{
-      width:"500px",
-      data:{mail: this.mail, phone: this.phone, messange: this.messange}
+    const dialogRef = this.dialog.open(ReportingDialogComponent, {
+      width: "500px",
+      data: { mail: this.mail, phone: this.phone, messange: this.messange }
     });
-    dialogRef.componentInstance.data.songId=this.song.id+"";
-    dialogRef.afterClosed().subscribe(result=>
+    dialogRef.componentInstance.data.songId = this.song.id + "";
+    dialogRef.afterClosed().subscribe(result =>
       console.log(result));
   }
-  addToPlaylist(){
-    
+  addToPlaylist() {
+    if (sessionStorage.getItem('user') != null && sessionStorage.getItem('user') != undefined) {
+      this.userInfo=JSON.parse(sessionStorage.getItem('user'));
+      try {
+        this.playlistService.GetPlaylistsByUserId(this.userInfo.id).subscribe(
+          result=>{console.log(result);
+            this.sendPlilist.emit(result);},err=>console.log(err));
+      }catch(err){console.log(err);}
+    }
   }
 
 }

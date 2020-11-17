@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { PlayList } from '../classes/playlist';
 import { RegisterToNewsletterComponent } from '../register-to-newsletter/register-to-newsletter.component';
 import { StorageService } from '../services/storage.service';
 
@@ -22,6 +23,7 @@ export class CustomToolBarComponent implements OnInit {
   isOpened1: boolean = false;
   isOpened2: boolean = false;
   followUp: boolean = false;
+  showPlaylists:PlayList[]=[];
 
   constructor(private storageService: StorageService, public dialog: MatDialog) {
    }
@@ -96,6 +98,9 @@ export class CustomToolBarComponent implements OnInit {
   }
   addToPlaylist():void{
     this.onAddToPlaylist.emit();
+  }
+  userPlilist(playlists:PlayList[]){
+    this.showPlaylists=playlists;
   }
 
 }

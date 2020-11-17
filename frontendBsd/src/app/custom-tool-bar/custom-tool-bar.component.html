@@ -22,7 +22,7 @@
                 <mat-icon>timer</mat-icon>
                 <span>הוסף מנוי לזמר</span>
             </button>
-            <button mat-menu-item [matMenuTriggerFor]="playlists" [disabled]="isPublic" (click)="addToPlaylist()">
+            <button mat-menu-item [matMenuTriggerFor]="playlists" [disabled]="isPublic" (mouseover)="addToPlaylist()">
                 <mat-icon>menu_open</mat-icon>
                 <span>הוסף לפלייליסטים שלי</span>
             </button>
@@ -40,7 +40,8 @@
 
     <mat-menu #ordering="matMenu" xPosition="before">
         <span (mouseenter)="isFocus=true" (mouseleave)="isFocus=false; timeoutToHide();">
-            <button mat-menu-item [disabled]="isByName" [class.active]="currentOrder=='song'" (click)="saveOrderType('song')">
+            <button mat-menu-item [disabled]="isByName" [class.active]="currentOrder=='song'"
+                (click)="saveOrderType('song')">
                 <mat-icon>text_rotate_vertical</mat-icon>שם שיר
             </button>
             <button mat-menu-item [class.active]="currentOrder=='date'" (click)="saveOrderType('date')">
@@ -62,26 +63,15 @@
         </span>
     </mat-menu>
 
-    <mat-menu #playlists="matMenu" xPosition="before">
+    <mat-menu #playlists="matMenu" xPosition="before" (sendPlilist)="userPlilist($event)">
         <span (mouseenter)="isFocus=true" (mouseleave)="isFocus=false; timeoutToHide();">
+            <div *ngFor="let playlist of showPlaylists">
+                <button mat-menu-item>
+                    {{playlist.name}}
+                </button>
+            </div>
             <button mat-menu-item>
-                <mat-icon>text_rotate_vertical</mat-icon>שם שיר
-            </button>
-            <button mat-menu-item>
-                <mat-icon>date_range</mat-icon>תאריך
-            </button>
-            <button mat-menu-item>
-                <mat-icon>visibility</mat-icon>כמות צפיות
-            </button>
-            <button mat-menu-item>
-                <mat-icon>thumb_up</mat-icon>כמות לייקים
-            </button>
-            <mat-divider></mat-divider>
-            <button mat-menu-item>
-                <mat-icon>arrow_upward</mat-icon>סדר עולה
-            </button>
-            <button mat-menu-item>
-                <mat-icon>arrow_downward</mat-icon>סדר יורד
+                <!-- <mat-icon>plus</mat-icon> -->צור פליליסט
             </button>
         </span>
     </mat-menu>
