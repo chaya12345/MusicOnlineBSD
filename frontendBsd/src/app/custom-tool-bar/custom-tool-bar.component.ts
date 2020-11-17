@@ -13,6 +13,7 @@ export class CustomToolBarComponent implements OnInit {
   @Output() onAddToPlaylist:EventEmitter<void>= new  EventEmitter<void>();
   @Output() onFollowUp: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() onReport: EventEmitter<void> = new EventEmitter<void>();
+  @Output() onSubscription: EventEmitter<void> = new EventEmitter<void>();
   @Input() isPublic?: boolean = true;
   @Input() isByName?: boolean = false;
   currentOrder: string = "date";
@@ -94,8 +95,13 @@ export class CustomToolBarComponent implements OnInit {
   addReport(): void {
     this.onReport.emit();
   }
+
   addToPlaylist():void{
     this.onAddToPlaylist.emit();
+  }
+
+  addSubscription(): void {
+    this.onSubscription.emit();
   }
 
 }
