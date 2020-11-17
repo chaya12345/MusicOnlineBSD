@@ -15,9 +15,9 @@
 }
 
 .swiper-slide {
-    background-color: whitesmoke;
     height: 100%;
     border-radius: 4px;
+    padding: 12px;
 }
 
 .background-image-song {
@@ -26,14 +26,14 @@
     background-size: cover;
     display: flex;
     border-radius: 5px;
-    border: solid 1px #dedede;
+    box-shadow: 0 0 5px 2px #0000001f;
 }
 
 .content-song {
     width: 100%;
     padding: 20px 15px;
     margin-top: auto;
-    background-color: whitesmoke;
+    background-color: white;
     color: black;
     font-family: fb Joker, calibri;
     font-size: 21px;

@@ -6,7 +6,9 @@
 .similar-song-section {
     height: 300px;
     border-radius: 4px;
-    margin-bottom: 30px;
+    margin: 0 20px 30px;
+    text-align: center;
+    box-shadow: 0 0 5px 2px #0000001f;
 }
 
 .similar-song-section:last-of-type {
@@ -19,14 +21,13 @@
     background-size: cover;
     display: flex;
     border-radius: 5px;
-    border: solid 1px #dedede;
 }
 
 .content-song {
     width: 100%;
     padding: 20px 15px;
+    background-color: white;
     margin-top: auto;
-    background-color: whitesmoke;
     color: black;
     font-family: fb Joker, calibri;
     font-size: 21px;
