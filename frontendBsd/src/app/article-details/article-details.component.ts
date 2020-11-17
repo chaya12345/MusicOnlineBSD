@@ -1,8 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Article } from '../classes/article';
+import { FollowUp } from '../classes/followUp';
+import { User } from '../classes/user';
 import { ArticleService } from '../services/article.service';
+import { FollowUpService } from '../services/follow-up.service';
 
 @Component({
   selector: 'article-details',
@@ -16,7 +20,7 @@ export class ArticleDetailsComponent implements OnInit {
   similarArticles: Article[] = [];
 
   constructor(private activatedRoute: ActivatedRoute, private articleService: ArticleService,
-    private httpClient: HttpClient, private router: Router) {
+    private router: Router, private followUpService: FollowUpService, private _snackBar: MatSnackBar) {
     try {
       this.articleService.getArticleById(this.activatedRoute.snapshot.queryParams.articleId)
         .subscribe(article => { this.article = article; this.navs.push(this.article.title); }, err => console.log(err));
@@ -57,7 +61,24 @@ export class ArticleDetailsComponent implements OnInit {
   }
 
   addFollowUp(value: boolean) {
-    /* ----- add follow up ---- */
+    if (this.article != null && sessionStorage.getItem('user') != null && sessionStorage.getItem('user') != undefined) {
+      let user: User = JSON.parse(sessionStorage.getItem('user'));
+      let followUp: FollowUp = new FollowUp();
+      followUp.articleId = this.article.id;
+      followUp.userId = user.id;
+      try {
+        this.followUpService.addFollowUp(followUp)
+          .subscribe(() => {
+            this.openSnackBar('המעקב נוסף בהצלחה');
+          }, err => console.log(err));
+      } catch (err) { console.log(err); this.openSnackBar('מצטערים, קרתה תקלה. נסה שוב מאוחר יותר'); }
+    }
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, '', {
+      duration: 2000,
+    });
   }
 
 }
