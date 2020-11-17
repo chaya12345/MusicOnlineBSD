@@ -10,7 +10,7 @@
                 <mat-icon>notifications</mat-icon>
                 <span>הוסף מעקב</span>
             </button>
-            <button mat-menu-item [matMenuTriggerFor]="ordering">
+            <button mat-menu-item [matMenuTriggerFor]="ordering" [disabled]="!isPublic">
                 <mat-icon>sort</mat-icon>
                 <span>סדר לפי</span>
             </button>
