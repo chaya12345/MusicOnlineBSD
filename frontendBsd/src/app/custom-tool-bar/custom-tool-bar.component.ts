@@ -19,6 +19,7 @@ export class CustomToolBarComponent implements OnInit {
   isFocus: boolean = false;
   isOpened1: boolean = false;
   isOpened2: boolean = false;
+  followUp: boolean = false;
 
   constructor(private storageService: StorageService, public dialog: MatDialog) {
    }
@@ -79,7 +80,12 @@ export class CustomToolBarComponent implements OnInit {
   }
 
   addFollowUp(): void {
+    this.followUp = true;
     this.onFollowUp.emit(true);
+  }
+
+  removeFollowUp(): void {
+    this.followUp = false;
   }
 
 }

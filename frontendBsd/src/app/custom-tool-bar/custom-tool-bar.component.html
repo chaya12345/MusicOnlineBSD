@@ -6,9 +6,13 @@
 
     <mat-menu #menu="matMenu" xPosition="before">
         <span (mouseenter)="isFocus=true" (mouseleave)="isFocus=false; timeoutToHide();">
-            <button mat-menu-item [disabled]="isPublic" (click)="addFollowUp()">
+            <button mat-menu-item [disabled]="isPublic" (click)="addFollowUp()" *ngIf="!followUp">
                 <mat-icon>notifications</mat-icon>
                 <span>הוסף מעקב</span>
+            </button>
+            <button mat-menu-item [disabled]="isPublic" (click)="removeFollowUp()" *ngIf="followUp">
+                <mat-icon>notifications_off</mat-icon>
+                <span>הסר מעקב</span>
             </button>
             <button mat-menu-item [matMenuTriggerFor]="ordering" [disabled]="!isPublic">
                 <mat-icon>sort</mat-icon>
