@@ -17,6 +17,7 @@ export class CustomToolBarComponent implements OnInit {
   @Output() onSubscription: EventEmitter<void> = new EventEmitter<void>();
   @Input() isPublic?: boolean = true;
   @Input() isByName?: boolean = false;
+  @Input() playlists?: PlayList[] = [];
   currentOrder: string = "date";
   currentDirection: boolean = false;
   currentPosition:number;

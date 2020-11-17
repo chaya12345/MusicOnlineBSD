@@ -49,6 +49,8 @@ export class SongsComponent implements OnInit {
   messange: string;
   songId: number;
 
+  userPlaylists: PlayList[] = [];
+
   constructor(private activatedRoute: ActivatedRoute, private songService: SongService,
     private cdr: ChangeDetectorRef, private itemsByParameterService: ItemsByParameterService,
     private topicService: TopicsService, private router: Router,
@@ -170,8 +172,10 @@ export class SongsComponent implements OnInit {
       this.userInfo=JSON.parse(sessionStorage.getItem('user'));
       try {
         this.playlistService.GetPlaylistsByUserId(this.userInfo.id).subscribe(
-          result=>{console.log(result);
-            this.sendPlilist.emit(result);},err=>console.log(err));
+          result=>{
+            console.log(result);
+            this.userPlaylists = result;
+          },err=>console.log(err));
       }catch(err){console.log(err);}
     }
   }
