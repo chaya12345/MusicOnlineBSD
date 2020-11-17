@@ -139,7 +139,6 @@ si-popular-songs .swiper-button-prev, si-popular-songs .swiper-button-next {
     padding: 10px 15px;
     border-radius: 50px;
     margin: 0 -8px;
-    /* border: solid 1px black; */
     box-shadow: 0 0 5px 2px #0000001f;
     transform: translateY(-10px);
 }
