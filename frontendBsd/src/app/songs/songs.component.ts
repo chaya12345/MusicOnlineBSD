@@ -134,7 +134,10 @@ export class SongsComponent implements OnInit {
         this.followUp.userId = this.userInfo.id;
         try {
           this.followUpService.deleteFollowUp(this.userInfo.id, this.song.id, "song").subscribe(
-            result => this.openSnackBar("המעקב הוסר בהצלחה"), err => console.log(err)
+            result => {
+              result == true ? this.openSnackBar("המעקב הוסר בהצלחה") :
+              this.openSnackBar("לא קיים מעקב לכתובת המייל שהוזנה");
+            }, err => console.log(err)
           );
         } catch (err) { console.log(err); this.openSnackBar("מצטערים, קרתה תקלה. נסה שוב מאוחר יותר"); }
       }
