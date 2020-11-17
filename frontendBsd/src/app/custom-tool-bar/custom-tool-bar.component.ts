@@ -102,10 +102,7 @@ export class CustomToolBarComponent implements OnInit {
   addToPlaylist():void{
     this.onAddToPlaylist.emit();
   }
-  userPlilist(playlists:PlayList[]){
-    this.showPlaylists=playlists;
-  }
-
+  
   addSubscription(): void {
     this.onSubscription.emit();
   }

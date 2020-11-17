@@ -22,7 +22,6 @@ import { TopicsService } from '../services/topics.service';
 })
 export class SongsComponent implements OnInit {
 
-  @Output() sendPlilist:EventEmitter<PlayList[]>=new EventEmitter<PlayList[]>();
   title: string = "";
   subtitle: string;
   date: Date;

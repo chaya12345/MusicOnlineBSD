@@ -63,15 +63,15 @@
         </span>
     </mat-menu>
 
-    <mat-menu #playlists="matMenu" xPosition="before" (sendPlilist)="userPlilist($event)">
+    <mat-menu #playlists="matMenu" xPosition="before">
         <span (mouseenter)="isFocus=true" (mouseleave)="isFocus=false; timeoutToHide();">
-            <div *ngFor="let playlist of showPlaylists">
+            <div *ngFor="let playlist of playlists">
                 <button mat-menu-item>
                     {{playlist.name}}
                 </button>
             </div>
             <button mat-menu-item>
-                <!-- <mat-icon>plus</mat-icon> -->צור פליליסט
+                <mat-icon>playlist_add</mat-icon>צור פליליסט
             </button>
         </span>
     </mat-menu>
