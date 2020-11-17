@@ -26,13 +26,13 @@ namespace ServerMusicBSD.Controllers
         {
             SongsToParadeBL.AddVotingToSongs(selectionSongs);
         }
-        public void PostSongToParade([FromBody]SongsToParadeTBL Parade)
+        public void PostSongToParade([FromBody]SongsToParadeTBL parade)
         {
-            SongsToParadeBL.AddSongToParade(Parade);
+            SongsToParadeBL.AddSongToParade(parade);
         }
-        public void PostSongsToParade([FromBody]List<SongsToParadeTBL> Parades)
+        public void PostSongsToParade([FromBody]List<SongsToParadeTBL> parades)
         {
-            SongsToParadeBL.AddSongsToParade(Parades);
+            SongsToParadeBL.AddSongsToParade(parades);
         }
         public void DeleteSongFromParade(int songId)
         {
@@ -50,13 +50,13 @@ namespace ServerMusicBSD.Controllers
         {
             SingersToParadeBL.AddVotingToSingers(selectoinSingers);
         }
-        public void PostSingerToParade([FromBody]SingersToParadeTBL Parade)
+        public void PostSingerToParade([FromBody]SingersToParadeTBL parade)
         {
-            SingersToParadeBL.AddSingerToParade(Parade);
+            SingersToParadeBL.AddSingerToParade(parade);
         }
-        public void PostSingersToParade([FromBody]List<SingersToParadeTBL> Parades)
+        public void PostSingersToParade([FromBody]List<SingersToParadeTBL> parades)
         {
-            SingersToParadeBL.AddSingersToParade(Parades);
+            SingersToParadeBL.AddSingersToParade(parades);
         }
         public void DeleteSingerFromParade(int singerId)
         {

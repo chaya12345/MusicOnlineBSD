@@ -168,7 +168,7 @@
     <Compile Include="Controllers\SongsToPlaylistsController.cs" />
     <Compile Include="Controllers\SongsToPlaylistsSystemController.cs" />
     <Compile Include="Controllers\SubscriptionController.cs" />
-    <Compile Include="Controllers\SurveyController.cs" />
+    <Compile Include="Controllers\ParadeController.cs" />
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Controllers\TagsToArticlesController.cs" />
     <Compile Include="Controllers\TagsToSongsController.cs" />

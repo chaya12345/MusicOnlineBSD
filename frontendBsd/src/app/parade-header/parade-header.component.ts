@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ParadeHeaderComponent implements OnInit {
 
-  @Input() imgSurvey: string = "";
+  @Input() imgParade: string = "";
 
   constructor() { }
 

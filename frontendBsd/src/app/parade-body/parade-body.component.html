@@ -30,12 +30,12 @@
     </div>
 
     <div class="summary">
-        <div class="sec" [class.possible]="selectedYearSong">
+        <div class="sec" [class.possible]="selectedYearSong" [class.voted]="votedYearSong">
             <p>{{yearSongMessage}}</p>
             <button mat-flat-button [disabled]="!selectedYearSong" (click)="sendYearSongVoting()">הצבע</button>
         </div>
         <mat-divider></mat-divider>
-        <div class="sec" [class.possible]="selectedYearSinger">
+        <div class="sec" [class.possible]="selectedYearSinger" [class.voted]="votedYearSinger">
             <p>{{yearSingerMessage}}</p>
             <button mat-flat-button [disabled]="!selectedYearSinger" (click)="sendYearSingerVoting()">הצבע</button>
         </div>

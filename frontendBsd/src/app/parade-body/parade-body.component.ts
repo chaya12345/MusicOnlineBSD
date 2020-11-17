@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { single } from 'rxjs/operators';
 import { Singer } from '../classes/singer';
 import { Song } from '../classes/song';
+import { ParadeService } from '../services/parade.service';
 
 @Component({
   selector: 'parade-body',
@@ -21,7 +23,10 @@ export class ParadeBodyComponent implements OnInit {
   votedYearSinger: boolean = false;
   maxCount: number = 10;
 
-  constructor() { 
+  selectedSongs: Song[] = [];
+  selectedSinger: Singer = new Singer();
+
+  constructor(private paradeService: ParadeService) {
     this.yearSingerMessage = this.baseMessageYearSinger;
     this.yearSongMessage = this.baseMessageYearSong;
   }
@@ -30,6 +35,7 @@ export class ParadeBodyComponent implements OnInit {
   }
 
   updateSingerSelection(value: Singer): void {
+    this.selectedSinger = value;
     if (value != null) {
       this.yearSingerMessage = "זמר השנה שלי הוא - " + value.name;
       this.selectedYearSinger = true;
@@ -41,6 +47,7 @@ export class ParadeBodyComponent implements OnInit {
   }
 
   updateSongSelection(songs: Song[]): void {
+    this.selectedSongs = songs;
     let value = songs.length;
     if (value == null || value == 0) {
       this.yearSongMessage = this.baseMessageYearSong;
@@ -58,15 +65,24 @@ export class ParadeBodyComponent implements OnInit {
   }
 
   sendYearSongVoting(): void {
-    this.votedYearSong = true;
-    this.yearSongMessage = "ההצבעה בוצעה";
-    this.selectedYearSong = false;
+    try {
+      this.paradeService.addVotingToSongs(this.selectedSongs).subscribe(() => {
+        this.votedYearSong = true;
+        this.yearSongMessage = "ההצבעה בוצעה";
+        // this.selectedYearSong = false;
+      }, err => console.log(err));
+    } catch (err) { console.log(err); }
+
   }
 
   sendYearSingerVoting(): void {
-    this.votedYearSinger = true;
-    this.yearSingerMessage = "ההצבעה בוצעה";
-    this.selectedYearSinger = false;
+    try {
+      this.paradeService.addVotingToSinger(this.selectedSinger.id).subscribe(() => {
+        this.votedYearSinger = true;
+        this.yearSingerMessage = "ההצבעה בוצעה";
+        // this.selectedYearSinger = false;
+      }, err => console.log(err));
+    } catch (err) { console.log(err); }
   }
 
 }

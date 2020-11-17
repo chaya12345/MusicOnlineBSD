@@ -2,7 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar, MatAccordion } from '@angular/material';
 import { Song } from '../classes/song';
 import { SongSelection } from '../classes/songSelection';
-import { SurveyService } from '../services/survey.service';
+import { ParadeService } from '../services/parade.service';
 
 @Component({
   selector: 'annual-survey-content',
@@ -19,9 +19,9 @@ export class AnnualSurveyContentComponent implements OnInit {
   countPossible: number;
   reset: boolean = false;
 
-  constructor(private surveyService: SurveyService, private _snackBar: MatSnackBar) {
+  constructor(private paradeService: ParadeService, private _snackBar: MatSnackBar) {
     try {
-      this.surveyService.getSongsInSurvey().subscribe(songs => {
+      this.paradeService.getSongsInParade().subscribe(songs => {
         this.songs = songs;
       }, err => console.log(err));
     } catch (err) { console.log(err); }
@@ -49,7 +49,7 @@ export class AnnualSurveyContentComponent implements OnInit {
   }
 
   saveSelection(): void {
-    this.surveyService.addVotingToSongs(this.selectedSongs).subscribe(
+    this.paradeService.addVotingToSongs(this.selectedSongs).subscribe(
       succses => { this.openSnackBar("ההצבעה נשמרה!"); this.selectedSongs = []; this.countPossible = this.maxCount; this.reset = true; },
       err => { console.log(err); this.openSnackBar("בשל תקלה זמנית לא ניתן להצביע כעת, אנא נסו מאוחר יותר");});
     /* TODO -- לנקות את העיצוב אחרי ההצבעה -- */
