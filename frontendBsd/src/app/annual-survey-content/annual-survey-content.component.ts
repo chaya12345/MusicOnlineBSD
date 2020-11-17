@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatSnackBar, MatAccordion } from '@angular/material';
 import { Song } from '../classes/song';
 import { SongSelection } from '../classes/songSelection';
 import { SurveyService } from '../services/survey.service';
@@ -11,6 +11,7 @@ import { SurveyService } from '../services/survey.service';
 })
 export class AnnualSurveyContentComponent implements OnInit {
 
+  @ViewChild(MatAccordion) accordion: MatAccordion;
   @Input() imgSurvey: string = "";
   songs: Song[] = [];
   selectedSongs: Song[] = [];

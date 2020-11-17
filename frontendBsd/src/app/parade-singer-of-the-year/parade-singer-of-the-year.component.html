@@ -1,0 +1,8 @@
+<div class="wrap-singer-of-the-year">
+    <div class="wrap-singer" *ngFor="let singer of singers" (click)="selectSinger(singer)" [class.selected]="singer==selectedSinger">
+        <parade-item [singer]="singer"></parade-item>
+        <div class="over-item">
+            <mat-icon *ngIf="singer==selectedSinger">done</mat-icon>
+        </div>
+    </div>
+</div>

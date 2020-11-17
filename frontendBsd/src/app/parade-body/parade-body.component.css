@@ -1,0 +1,72 @@
+.wrap-parade-body {
+    margin: flex;
+}
+
+.wrapper {
+    width: 65vw;
+    margin: 0 auto;
+    border-right: solid 1px #0000001f;
+    border-left: solid 1px #0000001f;
+    min-height: 1500px;
+}
+
+.wrapper p {
+    font-family: fb Joker;
+    font-size: 21px;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.summary {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    min-height: 75px;
+    width: 500px;
+    background-color: #101010f5;
+    text-align: center;
+    padding: 20px;
+    font-family: fb Joker;
+    font-size: 23px;
+    color: white;
+    border-bottom: solid 1px #fff;
+}
+
+.sec {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+
+.sec > * {
+    margin: auto;
+}
+
+.sec p {
+    flex-grow: 1;
+}
+
+.sec.possible p {
+    color: #2196F3;
+}
+
+.mat-divider {
+    border-top-color: rgb(255 255 255 / 25%);
+    margin: 15px 0 !important;
+}
+
+.sec button {
+    font-family: fb Joker;
+    font-size: 19px;
+    flex-grow: 0;
+    background-color: #2196F3;
+    color: white;
+    font-weight: 100;
+}
+
+button.mat-flat-button[disabled] {
+    background-color: white !important;
+    color: black !important;
+    font-weight: 400;
+}

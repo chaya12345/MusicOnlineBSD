@@ -1,0 +1,9 @@
+.wrap-parade-header {
+    display: flex;
+}
+
+#img-survey {
+    max-width: 65vw;
+    width: 65vw;
+    margin: 0 auto 50px;
+}

@@ -107,6 +107,12 @@ import { AnnualSurveyContentComponent } from './annual-survey-content/annual-sur
 import { AnSrSongComponent } from './an-sr-song/an-sr-song.component';
 import { PerformanceSectionComponent } from './performance-section/performance-section.component';
 import { PerformancesListComponent } from './performances-list/performances-list.component';
+import { ParadeComponent } from './parade/parade.component';
+import { ParadeHeaderComponent } from './parade-header/parade-header.component';
+import { ParadeBodyComponent } from './parade-body/parade-body.component';
+import { ParadeSongOfTheYearComponent } from './parade-song-of-the-year/parade-song-of-the-year.component';
+import { ParadeSingerOfTheYearComponent } from './parade-singer-of-the-year/parade-singer-of-the-year.component';
+import { ParadeItemComponent } from './parade-item/parade-item.component';
 
 @NgModule({
   declarations: [
@@ -203,7 +209,13 @@ import { PerformancesListComponent } from './performances-list/performances-list
     AnnualSurveyContentComponent,
     AnSrSongComponent,
     PerformanceSectionComponent,
-    PerformancesListComponent
+    PerformancesListComponent,
+    ParadeComponent,
+    ParadeHeaderComponent,
+    ParadeBodyComponent,
+    ParadeSongOfTheYearComponent,
+    ParadeSingerOfTheYearComponent,
+    ParadeItemComponent
   ],
   imports: [
     BrowserModule,

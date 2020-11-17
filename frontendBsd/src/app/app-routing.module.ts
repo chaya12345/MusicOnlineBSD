@@ -6,6 +6,7 @@ import { ArticleComponent } from './article/article.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { MagazineComponent } from './magazine/magazine.component';
+import { ParadeComponent } from './parade/parade.component';
 import { PerformanceComponent } from './performance/performance.component';
 import { PlaylistSectionComponent } from './playlist-section/playlist-section.component';
 import { PlaylistsComponent } from './playlists/playlists.component';
@@ -92,6 +93,9 @@ const routes: Routes = [{
 }, {
   path: "annual-survey",
   component: AnnualSurveyComponent
+}, {
+  path: "parade",
+  component: ParadeComponent
 }, {
   path: "error",
   component: ErrorPageComponent

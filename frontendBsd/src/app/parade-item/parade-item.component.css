@@ -1,0 +1,35 @@
+.wrap-parade-item {
+    height: 245px;
+    width: 260px;
+    transition: .4s;
+    overflow: hidden;
+}
+
+.img {
+    height: 74.5%;
+    width: 100%;
+    background-position: top;
+    background-size: cover;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    background-color: whitesmoke;
+    transition: 1s;
+}
+
+.song-details {
+    height: 25.5%;
+    width: 100%;
+    color: #000000c7;
+    font-family: fb Joker, calibri;
+    font-size: 21px;
+    text-align: center;
+    display: grid;
+}
+
+.song-details p {
+    margin: auto;
+}
+
+.song-details span {
+    font-weight: bold;
+}

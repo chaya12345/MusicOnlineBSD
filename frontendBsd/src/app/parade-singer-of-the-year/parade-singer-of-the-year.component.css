@@ -1,0 +1,54 @@
+.wrap-singer-of-the-year {
+    max-width: 65vw;
+    width: 65vw;
+    padding: 50px 23px;
+    margin: 0 auto;
+    min-height: 870px;
+    border-radius: 4px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.wrap-singer {
+    margin: 15px 13px;
+    border: solid 2px #0000000f;
+    border-radius: 4px;
+    transition: .4s;
+    display: grid;
+}
+
+parade-item {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.wrap-singer .over-item {
+    grid-area: 1 / 1 / 2 / 2;
+    transition: .4s;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.over-item mat-icon {
+    margin: auto;
+    color: #0000004b;
+    font-size: 43px;
+    height: fit-content;
+    width: fit-content;
+}
+
+.wrap-singer:hover {
+    border-color: #0000004b;
+}
+
+.wrap-singer.selected {
+    border-color: #2196f3;
+}
+
+.wrap-singer.selected .over-item {
+    background-color: #ffffff8f;
+}
+
+.wrap-singer.selected .over-item mat-icon {
+    color: #2196f3;
+}

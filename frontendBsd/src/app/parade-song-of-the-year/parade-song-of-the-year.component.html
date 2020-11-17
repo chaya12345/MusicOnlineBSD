@@ -1,0 +1,8 @@
+<div class="wrap-song-of-the-year">
+    <div class="wrap-song" *ngFor="let song of songs" (click)="selectSong(song)" [class.selected]="this.selectedSongs.includes(song)">
+        <parade-item [song]="song"></parade-item>
+        <div class="over-item">
+            <mat-icon *ngIf="this.selectedSongs.includes(song)">done</mat-icon>
+        </div>
+    </div>
+</div>

@@ -349,6 +349,11 @@ response .mat-expansion-panel {
     background-color: transparent !important;
 }
 
+parade mat-expansion-panel-header {
+    background-color: #0000000d !important;
+    padding-left: 20px !important;
+}
+
 /* #endregion */
 
 /* #region(collapsed) [Spinner] */
