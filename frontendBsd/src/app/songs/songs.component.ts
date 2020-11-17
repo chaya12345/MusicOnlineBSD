@@ -119,19 +119,29 @@ export class SongsComponent implements OnInit {
   }
 
   addFollowUp(value: boolean): void {
-    try {
-      if (this.song != null && sessionStorage.getItem('user') != null && sessionStorage.getItem('user') != undefined) {
+
+    if (this.song != null && sessionStorage.getItem('user') != null && sessionStorage.getItem('user') != undefined) {
+      this.userInfo = JSON.parse(sessionStorage.getItem('user'));
+      if (value == true) {
         this.followUp.songId = this.song.id;
-        this.userInfo = JSON.parse(sessionStorage.getItem('user'));
         this.followUp.userId = this.userInfo.id;
-        this.followUpService.addFollowUp(this.followUp).subscribe(result => {
-          this.openSnackBar("המעקב נוסף בהצלחה");
-        });
+        try {
+          this.followUpService.addFollowUp(this.followUp).subscribe(result => {
+            this.openSnackBar("המעקב נוסף בהצלחה");
+          }, err => console.log(err));
+        }
+        catch (err) { console.log(err); this.openSnackBar("מצטערים, קרתה תקלה. נסה שוב מאוחר יותר"); }
+      }
+      else {
+        this.followUp.userId = this.userInfo.id;
+        try {
+          this.followUpService.deleteFollowUp(this.userInfo.id, this.song.id, "song").subscribe(
+            result => this.openSnackBar("המעקב הוסר בהצלחה"), err => console.log(err)
+          );
+        } catch (err) { console.log(err); this.openSnackBar("מצטערים, קרתה תקלה. נסה שוב מאוחר יותר"); }
       }
     }
-    catch {
-      this.openSnackBar("מצטערים, קרתה תקלה. נסה שוב מאוחר יותר");
-    }
+
 
   }
 

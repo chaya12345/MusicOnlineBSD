@@ -64,14 +64,23 @@ export class ArticleDetailsComponent implements OnInit {
     if (this.article != null && sessionStorage.getItem('user') != null && sessionStorage.getItem('user') != undefined) {
       let user: User = JSON.parse(sessionStorage.getItem('user'));
       let followUp: FollowUp = new FollowUp();
-      followUp.articleId = this.article.id;
-      followUp.userId = user.id;
-      try {
-        this.followUpService.addFollowUp(followUp)
-          .subscribe(() => {
-            this.openSnackBar('המעקב נוסף בהצלחה');
-          }, err => console.log(err));
-      } catch (err) { console.log(err); this.openSnackBar('מצטערים, קרתה תקלה. נסה שוב מאוחר יותר'); }
+      if (value == true) {
+        followUp.articleId = this.article.id;
+        followUp.userId = user.id;
+        try {
+          this.followUpService.addFollowUp(followUp)
+            .subscribe(() => {
+              this.openSnackBar('המעקב נוסף בהצלחה');
+            }, err => console.log(err));
+        } catch (err) { console.log(err); this.openSnackBar('מצטערים, קרתה תקלה. נסה שוב מאוחר יותר'); }
+      }
+      else {
+        try {
+          this.followUpService.deleteFollowUp(user.id, this.article.id, "article").subscribe(
+            result=>this.openSnackBar("המעקב הוסר בהצלחה"),err=>console.log(err)
+          );
+        } catch (err) { console.log(err); this.openSnackBar('מצטערים, קרתה תקלה. נסה שוב מאוחר יותר'); }
+      }
     }
   }
 
