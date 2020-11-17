@@ -61,8 +61,6 @@ export class ArticleDetailsComponent implements OnInit {
   }
 
   addFollowUp(value: boolean) {
-    console.log(value);
-    console.log(this.article);
     if (this.article != null && sessionStorage.getItem('user') != null && sessionStorage.getItem('user') != undefined) {
       let user: User = JSON.parse(sessionStorage.getItem('user'));
       let followUp: FollowUp = new FollowUp();
