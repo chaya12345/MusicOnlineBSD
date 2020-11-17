@@ -15,9 +15,9 @@ namespace ServerMusicBSD.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class FollowUpController : ApiController
     {
-        public void PostFollowUp([FromBody]FollowUpTBL followUp)
+        public bool PostFollowUp([FromBody]FollowUpTBL followUp)
         {
-            FollowUpBL.AddFollowUp(followUp);
+            return FollowUpBL.AddFollowUp(followUp);
         }
         public void DeleteFollowUp(int userId, int id, string type)
         {

@@ -12,8 +12,8 @@ export class FollowUpService {
 
   constructor(private httpClient: HttpClient) { }
 
-  addFollowUp(followUp: FollowUp): Observable<any> {
-    return this.httpClient.post(this.baseUrl + 'PostFollowUp', followUp);
+  addFollowUp(followUp: FollowUp): Observable<boolean> {
+    return this.httpClient.post<boolean>(this.baseUrl + 'PostFollowUp', followUp);
   }
   deleteFollowUp(userId:number,id:number,type:string):Observable<any>{
     return this.httpClient.delete(this.baseUrl+'DeleteFollowUp?userId='+userId+'&id='+id+'&type='+type);

@@ -103,7 +103,6 @@ export class SongsComponent implements OnInit {
       this.topicService.getTopic("חדש במוזיקה").subscribe(topic => {
         this.title = topic.title;
         this.subtitle = topic.subtitle;
-        // this.img = "../../assets/images/" + topic.img;
         this.icon = topic.icon;
         this.notBlur = true;
       }, err => console.log(err))
@@ -114,8 +113,8 @@ export class SongsComponent implements OnInit {
 
   openSnackBar(message: string) {
     this._snackbar.open(message, '', {
-      duration: 20000
-    })
+      duration: 2000
+    });
   }
 
   addFollowUp(value: boolean): void {
@@ -127,7 +126,7 @@ export class SongsComponent implements OnInit {
         this.followUp.userId = this.userInfo.id;
         try {
           this.followUpService.addFollowUp(this.followUp).subscribe(result => {
-            this.openSnackBar("המעקב נוסף בהצלחה");
+            result == true ? this.openSnackBar("המעקב נוסף בהצלחה") : this.openSnackBar("כבר קיים מעקב לכתובת המייל שהוזנה");
           }, err => console.log(err));
         }
         catch (err) { console.log(err); this.openSnackBar("מצטערים, קרתה תקלה. נסה שוב מאוחר יותר"); }

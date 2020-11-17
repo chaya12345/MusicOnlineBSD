@@ -11,31 +11,43 @@ namespace BL
 {
     public class FollowUpBL
     {
-        public static void AddFollowUp(FollowUpTBL followUp)
+        public static bool AddFollowUp(FollowUpTBL followUp)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            if (followUp == null)
-                return;
-            if ((followUp.userId == null && followUp.mail == null))
-                return;
-            if (followUp.songId == null && followUp.articleId == null)
-                return;
-            try
+            if (followUp != null && (followUp.userId != null || followUp.mail != null) &&
+                (followUp.songId != null || followUp.articleId != null) && !isCheck(followUp))
             {
-                et.FollowUpTBL.Add(followUp);
-                et.SaveChanges();
-            }
-            catch (DbEntityValidationException dbEx)
-            {
-                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                try
                 {
-                    foreach (var validationError in validationErrors.ValidationErrors)
+                    et.FollowUpTBL.Add(followUp);
+                    et.SaveChanges();
+                    return true;
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
                     {
-                        System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        }
                     }
+                    return false;
                 }
             }
+            return false;
         }
+
+        private static bool isCheck(FollowUpTBL followUp)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            if (et.FollowUpTBL.Where(f => ((f.mail != null && f.mail == followUp.mail) ||
+            (f.userId != null && f.userId == followUp.userId)) && ((f.songId != null && f.songId == followUp.songId) ||
+            (f.articleId != null && f.articleId == followUp.articleId))).FirstOrDefault() != null)
+                return true;
+            return false;
+        }
+
         public static void DeleteFollowUp(int userId,int id,string type)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();

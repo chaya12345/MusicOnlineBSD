@@ -69,8 +69,8 @@ export class ArticleDetailsComponent implements OnInit {
         followUp.userId = user.id;
         try {
           this.followUpService.addFollowUp(followUp)
-            .subscribe(() => {
-              this.openSnackBar('המעקב נוסף בהצלחה');
+            .subscribe(result => {
+              result == true ? this.openSnackBar('המעקב נוסף בהצלחה') : this.openSnackBar("כבר קיים מעקב לכתובת המייל שהוזנה");
             }, err => console.log(err));
         } catch (err) { console.log(err); this.openSnackBar('מצטערים, קרתה תקלה. נסה שוב מאוחר יותר'); }
       }
