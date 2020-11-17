@@ -65,7 +65,7 @@ export class ArticleDetailsComponent implements OnInit {
     console.log(this.article);
     if (this.article != null && sessionStorage.getItem('user') != null && sessionStorage.getItem('user') != undefined) {
       let user: User = JSON.parse(sessionStorage.getItem('user'));
-      let followUp: FollowUp;
+      let followUp: FollowUp = new FollowUp();
       followUp.articleId = this.article.id;
       followUp.userId = user.id;
       try {
