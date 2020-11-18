@@ -79,6 +79,7 @@ export class EditorComponent implements OnInit {
     /*----------------------*/
     ClassicEditor
       .create(document.querySelector('#editor'), {
+        // plugins: [EasyImage]
          //plugins: [ SimpleUploadAdapter, Alignment ],
         // simpleUpload: {
         //     // Feature configuration.

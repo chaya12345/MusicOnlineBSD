@@ -110,6 +110,7 @@ import { ParadeSongOfTheYearComponent } from './parade-song-of-the-year/parade-s
 import { ParadeSingerOfTheYearComponent } from './parade-singer-of-the-year/parade-singer-of-the-year.component';
 import { ParadeItemComponent } from './parade-item/parade-item.component';
 import { ParadeLinkComponent } from './parade-link/parade-link.component';
+import { TextEditorComponent } from './text-editor/text-editor.component';
 
 @NgModule({
   declarations: [
@@ -209,7 +210,8 @@ import { ParadeLinkComponent } from './parade-link/parade-link.component';
     ParadeSongOfTheYearComponent,
     ParadeSingerOfTheYearComponent,
     ParadeItemComponent,
-    ParadeLinkComponent
+    ParadeLinkComponent,
+    TextEditorComponent
   ],
   imports: [
     BrowserModule,
