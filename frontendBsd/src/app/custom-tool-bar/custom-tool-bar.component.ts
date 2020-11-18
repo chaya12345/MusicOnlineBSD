@@ -37,6 +37,9 @@ export class CustomToolBarComponent implements OnInit {
     if (dir) {
       this.currentDirection = parseInt(dir) == 1 ? true : false;
     }
+    if(this.playlists!=null&&this.playlists!=undefined){
+      console.log(this.playlists);
+    }
   }
 
   ngOnDestroy() {
