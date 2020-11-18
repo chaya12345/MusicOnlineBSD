@@ -111,6 +111,7 @@ import { ParadeSingerOfTheYearComponent } from './parade-singer-of-the-year/para
 import { ParadeItemComponent } from './parade-item/parade-item.component';
 import { ParadeLinkComponent } from './parade-link/parade-link.component';
 import { TextEditorComponent } from './text-editor/text-editor.component';
+import { FieldFormComponent } from './field-form/field-form.component';
 
 @NgModule({
   declarations: [
@@ -211,7 +212,8 @@ import { TextEditorComponent } from './text-editor/text-editor.component';
     ParadeSingerOfTheYearComponent,
     ParadeItemComponent,
     ParadeLinkComponent,
-    TextEditorComponent
+    TextEditorComponent,
+    FieldFormComponent
   ],
   imports: [
     BrowserModule,

@@ -34,6 +34,13 @@ namespace BL
                 }
             }
         }
+        public static void AddSongToPlaylist(PlaylistsTBL playlist, SongsTBL song)
+        {
+            SongsToPlaylistsTBL stp = new SongsToPlaylistsTBL();
+            stp.songId = song.id;
+            stp.playlistId = playlist.id;
+            AddSongToPlaylist(stp);
+        }
         public static void MoveSongToOtherPlaylist(int id, int playlistId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();

@@ -1,0 +1,24 @@
+<div class="wrap-dialog">
+    <h1 mat-dialog-title>{{message}}</h1>
+    <div mat-dialog-content>
+        <form (ngSubmit)="onSubmit()">
+
+            <mat-form-field appearance="fill" style="display: none;">
+                <mat-label>Enter your email</mat-label>
+                <input matInput placeholder="pat@example.com" [formControl]="email" required>
+                <mat-error *ngIf="email.invalid">{{getMailErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="פלייליסט חדש" [formControl]="name" required maxlength="30">
+                <mat-error *ngIf="email.invalid">{{getNameErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <div mat-dialog-actions>
+                <button class="action-button" mat-stroked-button color="warn" (click)="onNoClick()">בטל</button>
+                <button class="action-button" mat-flat-button color="warn" type="submit">אשר</button>
+            </div>
+
+        </form>
+    </div>
+</div>

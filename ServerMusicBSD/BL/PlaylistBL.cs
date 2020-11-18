@@ -11,14 +11,17 @@ namespace BL
 {
     public class PlaylistBL
     {
-        public static void AddPlaylist(PlaylistsTBL playlist)
+        public static bool AddPlaylist(PlaylistsTBL playlist)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try {
                 if (playlist != null)
                 {
+                    if (et.PlaylistsTBL.Where(p => p.userId == playlist.userId && p.name == playlist.name).FirstOrDefault() != null)
+                        return false;
                     et.PlaylistsTBL.Add(playlist);
                     et.SaveChanges();
+                    return true;
                 }
             }
             catch (DbEntityValidationException dbEx)
@@ -31,6 +34,23 @@ namespace BL
                     }
                 }
             }
+            return false;
+        }
+        public static bool AddPlaylistWithSong(PlaylistsTBL playlist, SongsTBL song)
+        {
+            bool created = AddPlaylist(playlist);
+            if (created == true)
+            {
+                MusicOnlineEntities et = new MusicOnlineEntities();
+                PlaylistsTBL currentPlaylist =
+                    et.PlaylistsTBL.Where(p => p.userId == playlist.userId && p.name == playlist.name).FirstOrDefault();
+                if (currentPlaylist != null)
+                {
+                    SongsToPlaylistsBL.AddSongToPlaylist(currentPlaylist, song);
+                }
+                return true;
+            }
+            return false;
         }
         public static void DeletePlaylist(int id)
         {

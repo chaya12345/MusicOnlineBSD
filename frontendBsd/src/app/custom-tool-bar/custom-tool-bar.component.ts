@@ -11,24 +11,24 @@ import { StorageService } from '../services/storage.service';
 })
 export class CustomToolBarComponent implements OnInit {
 
-  @Output() onAddToPlaylist:EventEmitter<void> = new  EventEmitter<void>();
+  @Output() onAddToPlaylist: EventEmitter<void> = new EventEmitter<void>();
   @Output() onFollowUp: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() onReport: EventEmitter<void> = new EventEmitter<void>();
   @Output() onSubscription: EventEmitter<void> = new EventEmitter<void>();
+  @Output() onCreatePlaylist: EventEmitter<void> = new EventEmitter<void>();
   @Input() isPublic?: boolean = true;
   @Input() isByName?: boolean = false;
-  @Input() playlists?: PlayList[] = [];
+  @Input() _playlists?: PlayList[] = [];
   currentOrder: string = "date";
   currentDirection: boolean = false;
-  currentPosition:number;
+  currentPosition: number;
   isFocus: boolean = false;
   isOpened1: boolean = false;
   isOpened2: boolean = false;
   followUp: boolean = false;
-  showPlaylists:PlayList[]=[];
 
   constructor(private storageService: StorageService, public dialog: MatDialog) {
-   }
+  }
 
   ngOnInit(): void {
     this.currentPosition = window.pageYOffset;
@@ -37,13 +37,15 @@ export class CustomToolBarComponent implements OnInit {
     if (dir) {
       this.currentDirection = parseInt(dir) == 1 ? true : false;
     }
-    if(this.playlists!=null&&this.playlists!=undefined){
-      console.log(this.playlists);
-    }
+  }
+
+  ngOnChanges(): void {
+    console.log("playlist>>>>");
+    console.log(this._playlists);
   }
 
   ngOnDestroy() {
-      window.removeEventListener('scroll', this.scroll, true);
+    window.removeEventListener('scroll', this.scroll, true);
   }
 
   scroll = (event): void => {
@@ -59,10 +61,10 @@ export class CustomToolBarComponent implements OnInit {
 
   timeoutToHide() {
     let scroll = window.pageYOffset;
-      setTimeout(() => {
-        if (this.currentPosition == scroll && this.isFocus == false && this.isOpened1 == false && this.isOpened2 == false)
-          document.getElementById("customToolbar").style.transform = "translateY(-140px)";
-      }, 5500);
+    setTimeout(() => {
+      if (this.currentPosition == scroll && this.isFocus == false && this.isOpened1 == false && this.isOpened2 == false)
+        document.getElementById("customToolbar").style.transform = "translateY(-140px)";
+    }, 5500);
   }
 
   saveOrderType(orderType: string): void {
@@ -80,7 +82,7 @@ export class CustomToolBarComponent implements OnInit {
     try {
       const dialogRef = this.dialog.open(RegisterToNewsletterComponent, {
         width: '400px',
-        data: { }
+        data: {}
       });
       dialogRef.afterClosed().subscribe(result => {
       });
@@ -102,12 +104,17 @@ export class CustomToolBarComponent implements OnInit {
     this.onReport.emit();
   }
 
-  addToPlaylist():void{
+  addToPlaylist(): void {
+    console.log(this._playlists);
     this.onAddToPlaylist.emit();
   }
-  
+
   addSubscription(): void {
     this.onSubscription.emit();
+  }
+
+  createPlaylist(): void {
+    this.onCreatePlaylist.emit();
   }
 
 }

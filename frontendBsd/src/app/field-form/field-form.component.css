@@ -1,0 +1,35 @@
+.wrap-dialog {
+    direction: rtl;
+    font-family: fb Joker;
+    font-size: 21px;
+}
+
+mat-form-field {
+    text-align: right;
+    width: 100%;
+    font-family: fb Joker, calibri;
+    font-size: 19px;
+}
+
+.mat-dialog-content p {
+    margin-bottom: 20px;
+}
+
+textarea {
+    height: 100px;
+}
+
+.mat-dialog-title {
+    font-family: fb Joker;
+    font-size: 23px;
+    text-align: right;
+    margin: 15px 10px;
+}
+
+button {
+    font-family: fb Joker !important;
+    font-size: 19px !important;
+    padding: 2px 20px;
+    margin-bottom: 16px;
+    margin-right: 5px;
+}

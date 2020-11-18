@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
+import { create } from 'domain';
 import { parse } from 'path';
 import { FollowUp } from '../classes/followUp';
 import { ItemsByParameter } from '../classes/itemsByParameter';
@@ -8,6 +9,8 @@ import { PlayList } from '../classes/playlist';
 import { Song } from '../classes/song';
 import { Topics } from '../classes/topics';
 import { User } from '../classes/user';
+import { FieldFormComponent, Type } from '../field-form/field-form.component';
+import { LogInComponent } from '../log-in/log-in.component';
 import { ReportingDialogComponent } from '../reporting-dialog/reporting-dialog.component';
 import { FollowUpService } from '../services/follow-up.service';
 import { ItemsByParameterService } from '../services/items-by-parameter.service';
@@ -130,7 +133,7 @@ export class SongsComponent implements OnInit {
   }
 
   addFollowUp(value: boolean): void {
-    if (this.song != null && sessionStorage.getItem('user') != null && sessionStorage.getItem('user') != undefined) {
+    if (this.isConnected()) {
       this.userInfo = JSON.parse(sessionStorage.getItem('user'));
       if (value == true) {
         this.followUp.songId = this.song.id;
@@ -154,6 +157,19 @@ export class SongsComponent implements OnInit {
         } catch (err) { console.log(err); this.openSnackBar("מצטערים, קרתה תקלה. נסה שוב מאוחר יותר"); }
       }
     }
+    else {
+      this.openLoginDialog();
+    }
+  }
+
+  openLoginDialog() {
+    try {
+      const dialogRef = this.dialog.open(LogInComponent, {
+        width: '400px',
+        data: {}
+      });
+      dialogRef.afterClosed().subscribe(result => { });
+    } catch (err) { console.log(err); }
   }
 
   addReport() {
@@ -166,17 +182,58 @@ export class SongsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result =>
       console.log(result));
   }
+
   addToPlaylist() {
-    if (sessionStorage.getItem('user') != null && sessionStorage.getItem('user') != undefined) {
-      this.userInfo=JSON.parse(sessionStorage.getItem('user'));
+    if (this.isConnected()) {
+      this.userInfo = JSON.parse(sessionStorage.getItem('user'));
       try {
         this.playlistService.GetPlaylistsByUserId(this.userInfo.id).subscribe(
-          result=>{
+          result => {
             console.log(result);
             this.userPlaylists = result;
-          },err=>console.log(err));
-      }catch(err){console.log(err);}
+          }, err => console.log(err));
+      } catch (err) { console.log(err); }
     }
+  }
+
+  createPlaylist(): void {
+    if (this.isConnected()) {
+      this.openMessageDialog("הכנס שם לפלייליסט");
+    }
+    else {
+      this.openLoginDialog();
+    }
+  }
+
+  isConnected(): boolean {
+    if (sessionStorage.getItem('user') != null && sessionStorage.getItem('user') != undefined) {
+      this.userInfo = JSON.parse(sessionStorage.getItem('user'));
+      return true;
+    }
+    return false;
+  }
+
+  openMessageDialog(text: string) {
+    try {
+      const dialogRef = this.dialog.open(FieldFormComponent, {
+        width: '400px',
+        data: { message: text, type: Type.name }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        this.addNewPlaylist(result);
+      });
+    } catch (err) { console.log(err); }
+  }
+
+  addNewPlaylist(fileName: string): void {
+    try {
+      let playlist = new PlayList;
+      playlist.name = fileName;
+      playlist.userId = this.userInfo.id;
+      this.playlistService.addPlaylistWithSong(playlist, this.song).subscribe(() => {
+        console.log("succes");
+      }, err => console.log(err));
+    } catch (err) { console.log(); }
   }
 
 }

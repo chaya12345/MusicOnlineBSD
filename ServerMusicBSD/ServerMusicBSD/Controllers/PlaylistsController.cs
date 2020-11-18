@@ -11,12 +11,20 @@ using System.Web.Http.Cors;
 
 namespace ServerMusicBSD.Controllers
 {
+    public class PlaylistWithSong {
+        public PlaylistsTBL playlist { get; set; }
+        public SongsTBL song { get; set; }
+    }
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class PlaylistsController : ApiController
     {
-        public void PostPlaylist([FromBody] PlaylistsTBL newPlaylist)
+        public bool PostPlaylist([FromBody] PlaylistsTBL newPlaylist)
         {
-            PlaylistBL.AddPlaylist(newPlaylist);
+            return PlaylistBL.AddPlaylist(newPlaylist);
+        }
+        public bool PostPlaylistWithSong([FromBody] PlaylistWithSong playlistWithSong)
+        {
+            return PlaylistBL.AddPlaylistWithSong(playlistWithSong.playlist, playlistWithSong.song);
         }
         public void DeletePlaylist(int playlistId)
         {

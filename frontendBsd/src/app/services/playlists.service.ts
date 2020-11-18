@@ -2,6 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PlayList } from '../classes/playlist';
 import { Observable } from 'rxjs';
+import { Song } from '../classes/song';
+
+export class PlaylistWithSong {
+  playlist: PlayList;
+  song: Song;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +18,14 @@ export class PlaylistsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public addPlaylist(playlist: PlayList): void {
-    this.httpClient.post(this.baseUrl + "PostPlaylist", playlist);
+  public addPlaylist(playlist: PlayList): Observable<boolean> {
+    return this.httpClient.post<boolean>(this.baseUrl + "PostPlaylist", playlist);
+  }
+  public addPlaylistWithSong(playlist: PlayList, song: Song): Observable<boolean> {
+    let playlistWithSong: PlaylistWithSong = new PlaylistWithSong();
+    playlistWithSong.playlist = playlist;
+    playlistWithSong.song = song;
+    return this.httpClient.post<boolean>(this.baseUrl + "PostPlaylistWithSong", playlistWithSong);
   }
   public deletePlaylist(playlistId: number): Observable<any> {
     return this.httpClient.delete(this.baseUrl + "DeletePlaylist?playlistId=" + playlistId);
