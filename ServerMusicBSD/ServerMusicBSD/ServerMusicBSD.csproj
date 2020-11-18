@@ -172,6 +172,7 @@
     <Compile Include="Controllers\TagsController.cs" />
     <Compile Include="Controllers\TagsToArticlesController.cs" />
     <Compile Include="Controllers\TagsToSongsController.cs" />
+    <Compile Include="Controllers\TextEditorController.cs" />
     <Compile Include="Controllers\TopicsController.cs" />
     <Compile Include="Controllers\UpdatesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
