@@ -1,12 +1,12 @@
-import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
-import { create } from 'domain';
-import { parse } from 'path';
 import { FollowUp } from '../classes/followUp';
 import { ItemsByParameter } from '../classes/itemsByParameter';
 import { PlayList } from '../classes/playlist';
+import { Singer } from '../classes/singer';
 import { Song } from '../classes/song';
+import { Subscription } from '../classes/subscription';
 import { Topics } from '../classes/topics';
 import { User } from '../classes/user';
 import { FieldFormComponent, Type } from '../field-form/field-form.component';
@@ -15,7 +15,9 @@ import { ReportingDialogComponent } from '../reporting-dialog/reporting-dialog.c
 import { FollowUpService } from '../services/follow-up.service';
 import { ItemsByParameterService } from '../services/items-by-parameter.service';
 import { PlaylistsService } from '../services/playlists.service';
+import { SingerService } from '../services/singer.service';
 import { SongService } from '../services/song.service';
+import { SubscriptionService } from '../services/subscription.service';
 import { TopicsService } from '../services/topics.service';
 
 @Component({
@@ -52,12 +54,14 @@ export class SongsComponent implements OnInit {
   songId: number;
 
   userPlaylists: PlayList[] = [];
+  singer: Singer;
 
   constructor(private activatedRoute: ActivatedRoute, private songService: SongService,
     private cdr: ChangeDetectorRef, private itemsByParameterService: ItemsByParameterService,
     private topicService: TopicsService, private router: Router,
     private followUpService: FollowUpService, private _snackbar: MatSnackBar, private dialog: MatDialog,
-    private playlistService: PlaylistsService) {
+    private playlistService: PlaylistsService, public singerService: SingerService,
+    private subscriptionService: SubscriptionService) {
     this.navs.push("חדש במוזיקה");
   }
 
@@ -198,7 +202,7 @@ export class SongsComponent implements OnInit {
 
   createPlaylist(): void {
     if (this.isConnected()) {
-      this.openMessageDialog("הכנס שם לפלייליסט");
+      this.openFieldFormDialog("הכנס שם לפלייליסט", Type.name);
     }
     else {
       this.openLoginDialog();
@@ -213,14 +217,19 @@ export class SongsComponent implements OnInit {
     return false;
   }
 
-  openMessageDialog(text: string) {
+  openFieldFormDialog(text: string, type: Type, singer?: Singer) {
     try {
       const dialogRef = this.dialog.open(FieldFormComponent, {
         width: '400px',
-        data: { message: text, type: Type.name }
+        data: { message: text, type: type, singer: singer }
       });
       dialogRef.afterClosed().subscribe(result => {
+        if (type == Type.name) {
         this.addNewPlaylist(result);
+        }
+        else if (type == Type.singers) {
+          this.addNewSubscription(result);
+        }
       });
     } catch (err) { console.log(err); }
   }
@@ -234,6 +243,50 @@ export class SongsComponent implements OnInit {
         console.log("succes");
       }, err => console.log(err));
     } catch (err) { console.log(); }
+  }
+
+  addSubscription(): void {
+    if (this.isConnected()) {
+      try {
+      this.songService.getSingerOfSong(this.song.id).subscribe(singer => {
+        this.singer = singer;
+        this.openFieldFormDialog("בחר את הזמר שתרצה להתעדכן במייל על תוכן חדש שלו >>", Type.singers, singer);
+      }, err => console.log(err));
+      } catch (err) { console.log(err); }
+    }
+    else {
+
+    }
+  }
+
+  addNewSubscription(singerName: string): void {
+    if (singerName == this.singer.name) {
+      this.doSubscription(this.singer.id);
+    }
+    else {
+      try {
+        this.singerService.GetSingerByName(singerName).subscribe(singer =>
+          this.doSubscription(singer.id), err => console.log(err));
+      } catch (err) { console.log(err); }
+    }
+  }
+
+  doSubscription(singerId: number): void {
+    let failedMessage: string = "מצטערים, ההרשמה למנוי נכשלה. נסה שוב מאוחר יותר"
+    try {
+      let sub: Subscription = new Subscription();
+      sub.singerId = singerId;
+      sub.userId = this.userInfo.id;
+      this.subscriptionService.addSubscription(sub).subscribe(success =>
+        success == true ? this.openSnackBar("נרשמת בהצלחה") :
+        this.openSnackBar("כתובת המייל שהוזנה כבר רשומה לזמר שנבחר"), err => { 
+          console.log(err);
+          this.openSnackBar(failedMessage);
+      });
+    } catch (err) {
+      console.log(err);
+      this.openSnackBar(failedMessage);
+    }
   }
 
 }

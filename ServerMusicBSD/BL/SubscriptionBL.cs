@@ -11,15 +11,18 @@ namespace BL
 {
     public class SubscriptionBL
     {
-        public static void AddSubscription(SubscriptionTBL subscription)
+        public static bool AddSubscription(SubscriptionTBL subscription)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try
             {
-                if (subscription != null)
+                if (subscription != null && et.SubscriptionTBL
+                    .Where(sub => sub.userId == subscription.userId &&
+                    sub.singerId == subscription.singerId).FirstOrDefault() == null)
                 {
                     et.SubscriptionTBL.Add(subscription);
                     et.SaveChanges();
+                    return true;
                 }
             }
             catch (DbEntityValidationException dbEx)
@@ -32,6 +35,7 @@ namespace BL
                     }
                 }
             }
+            return false;
         }
 
         public static void DeleteSubscription(int subscriptionId)

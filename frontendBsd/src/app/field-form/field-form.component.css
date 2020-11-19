@@ -33,3 +33,7 @@ button {
     margin-bottom: 16px;
     margin-right: 5px;
 }
+
+.outline-field {
+    direction: ltr;
+}

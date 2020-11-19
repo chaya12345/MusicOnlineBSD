@@ -2,7 +2,7 @@
     <div class="similar-song-section" *ngFor="let item of items">
         <div class="background-image-song" [style.background-image]="'url(../../assets/images/'+item.img+')'">
             <div class="content-song">
-                <p><a [href]="'song?songId='+item.id">{{item.title}}</a></p>
+                <p><a [href]="(songs.length>0?('song?songId='):('magazine/article?articleId='))+item.id">{{item.title}}</a></p>
                 <span>{{item.date | date: 'd/M/yyyy'}}</span>
             </div>
         </div>

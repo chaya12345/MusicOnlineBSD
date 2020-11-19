@@ -97,5 +97,29 @@ export class SearchComponent implements OnInit {
         this.tagsList.push(tag);
     });
   }
+  
+  songSearch(): void {
+    this.songsList.forEach(song => {
+      if (song.name == (document.getElementById("song-search") as HTMLInputElement).value) {
+        window.location.href = "song?songId=" + song.id;
+      }
+    });
+  }
+
+  singerSearch(): void {
+    this.artistsIncludeSingers.forEach(artist => {
+      if (artist.name == (document.getElementById("artist-search") as HTMLInputElement).value) {
+        window.location.href = "song?filter=" + artist.name;
+      }
+    });
+  }
+
+  tagSearch(): void {
+    this.tagsList.forEach(tag => {
+      if (tag.name == (document.getElementById("tag-search") as HTMLInputElement).value) {
+        window.location.href = "song?filter=" + tag.name;
+      }
+    });
+  }
 
 }

@@ -71,6 +71,18 @@ namespace BL
                 return Casts.ToSongsDTO.GetSongWithSingerName(song1);
             return null;
         }
+        public static SingersDTO GetSingerOfSong(int songId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            SongsTBL currentSong = et.SongsTBL.Where(song => song.id == songId).FirstOrDefault();
+            if (currentSong != null)
+            {
+                SingersTBL currentSinger = et.SingersTBL.Where(singer => singer.id == currentSong.singerId).FirstOrDefault();
+                if (currentSinger != null)
+                    return Casts.ToSingersDTO.GetSinger(currentSinger);
+            }
+            return null;
+        }
         public static List<songsDetails> GetSongsBySinger(string singerName)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
