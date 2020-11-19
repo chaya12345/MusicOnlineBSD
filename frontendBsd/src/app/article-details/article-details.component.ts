@@ -29,6 +29,7 @@ export class ArticleDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getSimilarResults();
   }
 
   onRefresh() {
@@ -43,9 +44,6 @@ export class ArticleDetailsComponent implements OnInit {
 
   ngOnChanges(): void {
     this.navs.push(this.article.title);
-    try {
-      this.getSimilarResults();
-    } catch { }
   }
 
   getSimilarResults(): void {
@@ -77,10 +75,10 @@ export class ArticleDetailsComponent implements OnInit {
       else {
         try {
           this.followUpService.deleteFollowUp(user.id, this.article.id, "article").subscribe(
-            result => { 
+            result => {
               result == true ? this.openSnackBar("המעקב הוסר בהצלחה") :
-              this.openSnackBar("לא קיים מעקב לכתובת המייל שהוזנה");
-             }, err => console.log(err)
+                this.openSnackBar("לא קיים מעקב לכתובת המייל שהוזנה");
+            }, err => console.log(err)
           );
         } catch (err) { console.log(err); this.openSnackBar('מצטערים, קרתה תקלה. נסה שוב מאוחר יותר'); }
       }

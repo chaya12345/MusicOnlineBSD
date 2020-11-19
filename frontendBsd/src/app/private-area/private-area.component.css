@@ -1,0 +1,19 @@
+mat-toolbar {
+    font-family: fb Joker;
+    font-size: 23px;
+    margin-bottom: 25px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    padding-right: 200px;
+}
+
+button.mat-mini-fab {
+    box-shadow: none !important;
+}
+
+.wrap-tabs {
+    margin: 100px 12vw;
+    font-family: fb Joker, calibri;
+    min-height: 1500px;
+}

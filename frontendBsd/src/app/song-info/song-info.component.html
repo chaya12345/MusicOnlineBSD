@@ -7,7 +7,8 @@
             <span><mat-icon>visibility</mat-icon>{{currentSong.count_views}} צפיות</span>
             <span><mat-icon>thumb_up</mat-icon>{{currentSong.count_like}} אנשים שאהבו</span>
             <span><mat-icon>speaker_notes</mat-icon>{{countRes}} תגובות</span>
-            <mat-slider min="0" max="100" [value]="currentSong.count_like/currentSong.count_views*100" color="warn" invert="true" disabled></mat-slider>
+            <mat-slider min="0" max="100" [value]="currentSong.count_like/currentSong.count_views*100" color="warn" invert="true" disabled
+            [matTooltip]="currentSong.count_like+'/'+currentSong.count_views" matTooltipClass="tooltip relative-tooltip"></mat-slider>
             <!-- <bar-rating [(rate)]="rate" [max]="5"></bar-rating>
             <bar-rating [(rate)]="rate" [max]="4" [theme]="'movie'" [showText]="true"
                 [titles]="['Bad', 'Mediocre' , 'Good', 'Awesome']"></bar-rating> -->

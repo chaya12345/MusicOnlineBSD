@@ -1,6 +1,7 @@
 .wrap-si-similar-results {
     height: 100%;
-    min-height: 275px;
+    min-height: 977px;
+    padding: 10px 0;
 }
 
 .similar-song-section {

@@ -112,6 +112,8 @@ import { ParadeItemComponent } from './parade-item/parade-item.component';
 import { ParadeLinkComponent } from './parade-link/parade-link.component';
 import { TextEditorComponent } from './text-editor/text-editor.component';
 import { FieldFormComponent } from './field-form/field-form.component';
+import { PrivateAreaComponent } from './private-area/private-area.component';
+import { PrivPlaylistsComponent } from './priv-playlists/priv-playlists.component';
 
 @NgModule({
   declarations: [
@@ -213,7 +215,9 @@ import { FieldFormComponent } from './field-form/field-form.component';
     ParadeItemComponent,
     ParadeLinkComponent,
     TextEditorComponent,
-    FieldFormComponent
+    FieldFormComponent,
+    PrivateAreaComponent,
+    PrivPlaylistsComponent
   ],
   imports: [
     BrowserModule,

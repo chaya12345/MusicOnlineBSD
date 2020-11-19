@@ -1,32 +1,3 @@
-/* .wrap-side {
-    margin: 70px 0 50px;
-    padding: 0 10px;
-}
-
-.wrap-side p.title-part {
-    font-size: 23px;
-    font-family: fb Ogen;
-    color: #fbc02d;
-    margin-bottom: 45px;
-}
-
-.similar-results {
-    width: fit-content;
-    min-height: 1030px;
-    display: grid;
-}
-
-.display-song {
-    margin-bottom: 45px;
-}
-
-.latest-in-magazine {
-    padding: 35px 0 25px;
-}
-
-.title-part {
-    color: #252525 !important;
-} */
 .wrap-side {
     border: solid 1px #dcdcdc;
     padding: 10px;
@@ -37,12 +8,12 @@
 }
 
 div.title-section {
-    padding: 7px;
+    padding: 15px;
     text-align: center;
     font-family: fb Joker, calibri;
     font-size: 21px;
     border-bottom: solid 1px #dcdcdc;
-    margin: 35px 0 25px;
+    margin: 55px 0 35px;
     color: #929292;
 }
 

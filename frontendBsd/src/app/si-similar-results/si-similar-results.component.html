@@ -1,9 +1,9 @@
 <div class="wrap-si-similar-results">
-    <div class="similar-song-section" *ngFor="let song of songs">
-        <div class="background-image-song" [style.background-image]="'url(../../assets/images/'+song.image_location+')'">
+    <div class="similar-song-section" *ngFor="let item of items">
+        <div class="background-image-song" [style.background-image]="'url(../../assets/images/'+item.img+')'">
             <div class="content-song">
-                <p><a [href]="'song?songId='+song.id">{{song.title}}</a></p>
-                <span>{{song.date | date: 'd/M/yyyy'}}</span>
+                <p><a [href]="'song?songId='+item.id">{{item.title}}</a></p>
+                <span>{{item.date | date: 'd/M/yyyy'}}</span>
             </div>
         </div>
     </div>

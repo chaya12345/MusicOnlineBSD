@@ -8,6 +8,7 @@ import { ParadeComponent } from './parade/parade.component';
 import { PerformanceComponent } from './performance/performance.component';
 import { PlaylistSectionComponent } from './playlist-section/playlist-section.component';
 import { PlaylistsComponent } from './playlists/playlists.component';
+import { PrivateAreaComponent } from './private-area/private-area.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SongsComponent } from './songs/songs.component';
 
@@ -42,6 +43,9 @@ const routes: Routes = [{
 }, {
   path: "parade",
   component: ParadeComponent
+}, {
+  path: "user",
+  component: PrivateAreaComponent
 }, {
   path: "error",
   component: ErrorPageComponent

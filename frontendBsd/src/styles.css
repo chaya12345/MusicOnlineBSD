@@ -357,9 +357,26 @@ response .mat-expansion-panel {
     background-color: transparent !important;
 }
 
-parade mat-expansion-panel-header {
+parade mat-expansion-panel-header,
+priv-playlists mat-expansion-panel-header {
     background-color: #0000000d !important;
     padding-left: 20px !important;
+}
+priv-playlists mat-expansion-panel-header {
+    height: 60px !important;
+}
+
+priv-playlists .mat-expansion-panel-body {
+    min-height: 250px;
+}
+
+priv-playlists .mat-expansion-panel-spacing {
+    margin: 2px 0 !important;
+}
+
+priv-playlists mat-expansion-panel.mat-expansion-panel {
+    margin: 23px 0 !important;
+    border: solid 1px #0000001a !important;
 }
 
 /* #endregion */
