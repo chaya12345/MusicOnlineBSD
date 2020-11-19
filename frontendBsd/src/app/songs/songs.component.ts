@@ -255,7 +255,7 @@ export class SongsComponent implements OnInit {
       } catch (err) { console.log(err); }
     }
     else {
-
+      this.openLoginDialog();
     }
   }
 
