@@ -92,6 +92,7 @@
     <Compile Include="Casts\ToTopicsDTO.cs" />
     <Compile Include="Casts\ToUpdatesDTO.cs" />
     <Compile Include="Casts\ToUsersDTO.cs" />
+    <Compile Include="FavoriteSongsToUserBL.cs" />
     <Compile Include="FollowUpBL.cs" />
     <Compile Include="ItemsByParameterBL.cs" />
     <Compile Include="JobsBL.cs" />

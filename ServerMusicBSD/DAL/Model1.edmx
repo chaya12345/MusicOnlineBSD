@@ -50,6 +50,14 @@
           <Property Name="artistId" Type="int" />
           <Property Name="jobId" Type="int" />
         </EntityType>
+        <EntityType Name="FavoriteSongsToUserTBL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="int" />
+          <Property Name="songId" Type="int" />
+        </EntityType>
         <EntityType Name="FollowUpTBL">
           <Key>
             <PropertyRef Name="id" />
@@ -196,6 +204,16 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="userId" Type="int" />
           <Property Name="singerId" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="TagsTBL">
           <Key>
@@ -374,6 +392,30 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
             </Principal>
             <Dependent Role="ArtistsToSongsTBL">
               <PropertyRef Name="songId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriteSongsToUserTBL_SongsTBL">
+          <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="0..1" />
+          <End Role="FavoriteSongsToUserTBL" Type="Self.FavoriteSongsToUserTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SongsTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FavoriteSongsToUserTBL">
+              <PropertyRef Name="songId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriteSongsToUserTBL_UsersTBL">
+          <End Role="UsersTBL" Type="Self.UsersTBL" Multiplicity="0..1" />
+          <End Role="FavoriteSongsToUserTBL" Type="Self.FavoriteSongsToUserTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FavoriteSongsToUserTBL">
+              <PropertyRef Name="userId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -686,6 +728,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <EntitySet Name="ArticlesTBL" EntityType="Self.ArticlesTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ArtistsTBL" EntityType="Self.ArtistsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ArtistsToSongsTBL" EntityType="Self.ArtistsToSongsTBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FavoriteSongsToUserTBL" EntityType="Self.FavoriteSongsToUserTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FollowUpTBL" EntityType="Self.FollowUpTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="JobTBL" EntityType="Self.JobTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PlaylistsSystemTBL" EntityType="Self.PlaylistsSystemTBL" Schema="dbo" store:Type="Tables" />
@@ -701,6 +744,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <EntitySet Name="SongsToPlaylistsSystemTBL" EntityType="Self.SongsToPlaylistsSystemTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubscriptionTBL" EntityType="Self.SubscriptionTBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TagsTBL" EntityType="Self.TagsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TagsToArticlesTBL" EntityType="Self.TagsToArticlesTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TagsToSongsTBL" EntityType="Self.TagsToSongsTBL" Schema="dbo" store:Type="Tables" />
@@ -782,6 +826,14 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <AssociationSet Name="FK_ArtistsToSongsTBL_SongsTBL2" Association="Self.FK_ArtistsToSongsTBL_SongsTBL2">
             <End Role="SongsTBL" EntitySet="SongsTBL" />
             <End Role="ArtistsToSongsTBL" EntitySet="ArtistsToSongsTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriteSongsToUserTBL_SongsTBL" Association="Self.FK_FavoriteSongsToUserTBL_SongsTBL">
+            <End Role="SongsTBL" EntitySet="SongsTBL" />
+            <End Role="FavoriteSongsToUserTBL" EntitySet="FavoriteSongsToUserTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriteSongsToUserTBL_UsersTBL" Association="Self.FK_FavoriteSongsToUserTBL_UsersTBL">
+            <End Role="UsersTBL" EntitySet="UsersTBL" />
+            <End Role="FavoriteSongsToUserTBL" EntitySet="FavoriteSongsToUserTBL" />
           </AssociationSet>
           <AssociationSet Name="FK_FollowUpTBL_ArticlesTBL" Association="Self.FK_FollowUpTBL_ArticlesTBL">
             <End Role="ArticlesTBL" EntitySet="ArticlesTBL" />
@@ -1086,6 +1138,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <NavigationProperty Name="SongsToPlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToPlaylistsTBL" />
           <NavigationProperty Name="SongsToParadeTBL" Relationship="Self.FK_SurveyTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToParadeTBL" />
           <NavigationProperty Name="TagsToSongsTBL" Relationship="Self.FK_TagsToSongsTBL_SongsTBL" FromRole="SongsTBL" ToRole="TagsToSongsTBL" />
+          <NavigationProperty Name="FavoriteSongsToUserTBL" Relationship="MusicOnlineModel.FK_FavoriteSongsToUserTBL_SongsTBL" FromRole="SongsTBL" ToRole="FavoriteSongsToUserTBL" />
         </EntityType>
         <EntityType Name="SongsToParadeTBL">
           <Key>
@@ -1204,6 +1257,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <NavigationProperty Name="PlaylistsTBL" Relationship="Self.FK_PlaylistsTBL_UsersTBL" FromRole="UsersTBL" ToRole="PlaylistsTBL" />
           <NavigationProperty Name="SingerSearchingToUserTBL" Relationship="Self.FK_SingerSearchingToUserTBL_UsersTBL" FromRole="UsersTBL" ToRole="SingerSearchingToUserTBL" />
           <NavigationProperty Name="SubscriptionTBL" Relationship="Self.FK_SubscriptionTBL_UsersTBL" FromRole="UsersTBL" ToRole="SubscriptionTBL" />
+          <NavigationProperty Name="FavoriteSongsToUserTBL" Relationship="MusicOnlineModel.FK_FavoriteSongsToUserTBL_UsersTBL" FromRole="UsersTBL" ToRole="FavoriteSongsToUserTBL" />
         </EntityType>
         <EntityType Name="getFavoriteSongs">
           <Key>
@@ -1727,7 +1781,61 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <FunctionImport Name="itemsByParameter" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemsByParameter_Result)">
           <Parameter Name="singer" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="FavoriteSongsToUserTBL" EntityType="MusicOnlineModel.FavoriteSongsToUserTBL" />
+          <EntitySet Name="sysdiagrams" EntityType="MusicOnlineModel.sysdiagrams" />
+          <AssociationSet Name="FK_FavoriteSongsToUserTBL_SongsTBL" Association="MusicOnlineModel.FK_FavoriteSongsToUserTBL_SongsTBL">
+            <End Role="SongsTBL" EntitySet="SongsTBL" />
+            <End Role="FavoriteSongsToUserTBL" EntitySet="FavoriteSongsToUserTBL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FavoriteSongsToUserTBL_UsersTBL" Association="MusicOnlineModel.FK_FavoriteSongsToUserTBL_UsersTBL">
+            <End Role="UsersTBL" EntitySet="UsersTBL" />
+            <End Role="FavoriteSongsToUserTBL" EntitySet="FavoriteSongsToUserTBL" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="FavoriteSongsToUserTBL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="songId" Type="Int32" />
+          <NavigationProperty Name="SongsTBL" Relationship="MusicOnlineModel.FK_FavoriteSongsToUserTBL_SongsTBL" FromRole="FavoriteSongsToUserTBL" ToRole="SongsTBL" />
+          <NavigationProperty Name="UsersTBL" Relationship="MusicOnlineModel.FK_FavoriteSongsToUserTBL_UsersTBL" FromRole="FavoriteSongsToUserTBL" ToRole="UsersTBL" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_FavoriteSongsToUserTBL_SongsTBL">
+          <End Type="MusicOnlineModel.SongsTBL" Role="SongsTBL" Multiplicity="0..1" />
+          <End Type="MusicOnlineModel.FavoriteSongsToUserTBL" Role="FavoriteSongsToUserTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SongsTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FavoriteSongsToUserTBL">
+              <PropertyRef Name="songId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FavoriteSongsToUserTBL_UsersTBL">
+          <End Type="MusicOnlineModel.UsersTBL" Role="UsersTBL" Multiplicity="0..1" />
+          <End Type="MusicOnlineModel.FavoriteSongsToUserTBL" Role="FavoriteSongsToUserTBL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersTBL">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="FavoriteSongsToUserTBL">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2112,6 +2220,26 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="FavoriteSongsToUserTBL">
+            <EntityTypeMapping TypeName="MusicOnlineModel.FavoriteSongsToUserTBL">
+              <MappingFragment StoreEntitySet="FavoriteSongsToUserTBL">
+                <ScalarProperty Name="songId" ColumnName="songId" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MusicOnlineModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
