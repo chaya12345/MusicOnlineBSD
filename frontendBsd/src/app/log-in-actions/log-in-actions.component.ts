@@ -1,7 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
+import { User } from '../classes/user';
 import { LogInComponent } from '../log-in/log-in.component';
 import { MessageComponent } from '../message/message.component';
+import { ShareDataService } from '../services/share-data.service';
 import { StorageService } from '../services/storage.service';
 
 @Component({
@@ -16,7 +19,8 @@ export class LogInActionsComponent implements OnInit {
   connected: boolean = true;
   text: string = "האם אתה בטוח שברצונך להתנתק?";
 
-  constructor(public dialog: MatDialog, private storageService: StorageService) { }
+  constructor(public dialog: MatDialog, private storageService: StorageService,
+    private router: Router, private shareDataService: ShareDataService) { }
 
   ngOnInit(): void {
     this.isConnected();
@@ -27,11 +31,12 @@ export class LogInActionsComponent implements OnInit {
     });
   }
 
-  isConnected() {
+  isConnected(): boolean {
     if (sessionStorage.getItem('user') != null && sessionStorage.getItem('user') != undefined) {
       this.connected = true;
     }
     else { this.connected = false; }
+    return this.connected;
   }
 
   openLoginDialog() {
@@ -67,6 +72,17 @@ export class LogInActionsComponent implements OnInit {
 
   isFocus(focus: boolean) {
     focus ? this.opened.emit() : this.closed.emit();
+  }
+
+  navigateToPA(): void {
+    if (this.isConnected()) {
+      let user: User = JSON.parse(sessionStorage.getItem("user"));
+      this.router.navigateByUrl("/user?userId=" + user.id);
+      this.shareDataService.emitUserConnect(user);
+    }
+    else {
+      this.openLoginDialog();
+    }
   }
 
 }

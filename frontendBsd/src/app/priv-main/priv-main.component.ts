@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivMainComponent implements OnInit {
 
+  date: Date = new Date("01-12-2020 21:05");
+
   constructor() { }
 
   ngOnInit(): void {

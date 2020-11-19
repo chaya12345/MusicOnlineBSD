@@ -1,0 +1,29 @@
+.wrap-playlist-folder {
+    border: solid 1px #00000021;
+    align-items: center;
+    padding: 16px 15px;
+    border-radius: 4px;
+    width: 565px;
+    display: grid;
+    grid-template-columns: fit-content(50%)
+        auto auto fit-content(50%) fit-content(50%);
+    font-family: fb Joker;
+    font-size: 21px;
+}
+
+.wrap-playlist-folder > * {
+    margin: 0 10px;
+}
+
+.wrap-playlist-folder span {
+    color: #0000005e;
+}
+
+.wrap-playlist-folder p {
+    cursor: pointer;
+}
+
+.wrap-playlist-folder button {
+    font-family: fb Joker;
+    font-size: 19px;
+}

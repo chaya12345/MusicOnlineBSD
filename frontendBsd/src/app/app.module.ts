@@ -114,9 +114,9 @@ import { TextEditorComponent } from './text-editor/text-editor.component';
 import { FieldFormComponent } from './field-form/field-form.component';
 import { PrivateAreaComponent } from './private-area/private-area.component';
 import { PrivPlaylistsComponent } from './priv-playlists/priv-playlists.component';
-import { PrivProfileComponent } from './priv-profile/priv-profile.component';
 import { PrivInfoComponent } from './priv-info/priv-info.component';
 import { PrivMainComponent } from './priv-main/priv-main.component';
+import { PlaylistFolderComponent } from './playlist-folder/playlist-folder.component';
 
 @NgModule({
   declarations: [
@@ -221,9 +221,9 @@ import { PrivMainComponent } from './priv-main/priv-main.component';
     FieldFormComponent,
     PrivateAreaComponent,
     PrivPlaylistsComponent,
-    PrivProfileComponent,
     PrivInfoComponent,
-    PrivMainComponent
+    PrivMainComponent,
+    PlaylistFolderComponent
   ],
   imports: [
     BrowserModule,

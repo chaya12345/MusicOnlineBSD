@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PrivProfileComponent } from './priv-profile.component';
+import { PlaylistFolderComponent } from './playlist-folder.component';
 
-describe('PrivProfileComponent', () => {
-  let component: PrivProfileComponent;
-  let fixture: ComponentFixture<PrivProfileComponent>;
+describe('PlaylistFolderComponent', () => {
+  let component: PlaylistFolderComponent;
+  let fixture: ComponentFixture<PlaylistFolderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PrivProfileComponent ]
+      declarations: [ PlaylistFolderComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PrivProfileComponent);
+    fixture = TestBed.createComponent(PlaylistFolderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

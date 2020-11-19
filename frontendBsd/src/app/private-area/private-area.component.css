@@ -12,12 +12,6 @@ button.mat-mini-fab {
     box-shadow: none !important;
 }
 
-/* .wrap-tabs {
-    margin: 100px 12vw;
-    font-family: fb Joker, calibri;
-    min-height: 1500px;
-} */
-
 .wrap-content {
     display: grid;
     grid-template-columns: fit-content(50%) auto;
@@ -30,4 +24,5 @@ button.mat-mini-fab {
     flex-wrap: wrap;
     display: grid;
     grid-template-columns: auto auto;
+    grid-gap: 45px;
 }
