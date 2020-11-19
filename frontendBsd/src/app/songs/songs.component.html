@@ -1,5 +1,5 @@
 <div class="wrap-songs">
-    <custom-tool-bar [isPublic]="!isSingular" [_playlists]="userPlaylists" (onCreatePlaylist)="createPlaylist()"
+    <custom-tool-bar [isPublic]="!isSingular" [_playlists]="userPlaylists" (onCreatePlaylist)="createPlaylist()" (onSubscription)="addSubscription()"
     (onAddToPlaylist)="addToPlaylist()" (onFollowUp)="addFollowUp($event)" (onReport)="addReport()"></custom-tool-bar>
     <top [_title]="title" [subtitle]="subtitle" [date]="date" [img]="img" [icon]="icon" [notBlur]="notBlur"></top>
     <current-nav [navs]="navs"></current-nav>

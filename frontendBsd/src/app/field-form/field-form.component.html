@@ -3,15 +3,25 @@
     <div mat-dialog-content>
         <form (ngSubmit)="onSubmit()">
 
-            <mat-form-field appearance="fill" style="display: none;">
+            <mat-form-field appearance="fill" *ngIf="'email'==fit()">
                 <mat-label>Enter your email</mat-label>
                 <input matInput placeholder="pat@example.com" [formControl]="email" required>
                 <mat-error *ngIf="email.invalid">{{getMailErrorMessage()}}</mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" *ngIf="'name'==fit()">
                 <input matInput placeholder="פלייליסט חדש" [formControl]="name" required maxlength="30">
                 <mat-error *ngIf="email.invalid">{{getNameErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="outline-field" appearance="outline" *ngIf="'singers'==fit()">
+                <input id="singer-search" type="text" matInput [(ngModel)]="singer.name"
+                    [formControl]="singersControl" [matAutocomplete]="autoSingers">
+                <mat-autocomplete autoActiveFirstOption #autoSingers="matAutocomplete">
+                    <mat-option *ngFor="let singer of filteredSingers | async" [value]="currentSinger">
+                        <a class="search-singer" [href]="'song?filter='+singer.name">{{singer.name}}</a>
+                    </mat-option>
+                </mat-autocomplete>
             </mat-form-field>
 
             <div mat-dialog-actions>

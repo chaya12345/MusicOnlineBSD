@@ -310,6 +310,8 @@ mat-panel-title {
 
 response mat-panel-title {
     font-weight: 600;
+    font-size: 20px;
+    font-family: assistant;
 }
 
 .mat-expansion-panel:not([class*=mat-elevation-z]) {
@@ -425,6 +427,34 @@ a {
 text a {
     text-decoration: underline !important;
     color: #2660c5 !important;
+}
+
+article-details text div img {
+    max-width: 550px !important;
+    margin: 15px 100px 10px;
+}
+
+article-details text > div {
+    padding: 25px 0 !important;
+    border-top: solid 1px #00000021;
+}
+
+article-details text div,
+article-details text p {
+    font-size: 21px !important;
+    line-height: 42px !important;
+    font-family: assistant light;
+}
+
+song-details text div,
+article-details text p {
+    font-size: 21px !important;
+    line-height: 42px !important;
+    font-family: assistant light !important;
+}
+
+article-details text div > strong:only-child {
+    line-height: 79px;
 }
 
 /* #endregion */

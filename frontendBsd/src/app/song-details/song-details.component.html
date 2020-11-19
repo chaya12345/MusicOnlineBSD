@@ -1,14 +1,13 @@
 <div class="wrap-song-details" *ngIf="song!=null&&song!=undefined">
-    <!-- <top [img]="'../../assets/images/'+song.image_location" [_title]="song.title" [subtitle]="song.subtitle"></top> -->
-    <!-- <current-nav [navs]="navs"></current-nav> -->
     <div class="section">
         <main [song]="song"></main>
         <side [similarSongs]="similarSongs"></side>
     </div>
-    <!-- <footer></footer> -->
-    <editor></editor>
+
+    <!-- <editor></editor> -->
+    <!-- <text-editor></text-editor> -->
+
     <!-- <angular-editor minHeight="500px" [placeholder]="'Enter text here...'" [(ngModel)]="htmlContent"></angular-editor> -->
-    <text-editor></text-editor>
     <!-- https://www.npmjs.com/package/@kolkov/angular-editor -->
     <!-- npm install @kolkov/angular-editor --save -->
 </div>

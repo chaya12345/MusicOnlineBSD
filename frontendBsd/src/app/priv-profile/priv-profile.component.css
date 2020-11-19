@@ -1,0 +1,8 @@
+mat-card.mat-card.profile-card {
+    width: 250px;
+    margin: 20px;
+}
+
+.mat-card-avatar {
+    background-size: cover;
+}

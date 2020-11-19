@@ -14,9 +14,9 @@ namespace ServerMusicBSD.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SubscriptionController : ApiController
     {
-        public void PostSubscription([FromBody] SubscriptionTBL subscription)
+        public bool PostSubscription([FromBody] SubscriptionTBL subscription)
         {
-            SubscriptionBL.AddSubscription(subscription);
+            return SubscriptionBL.AddSubscription(subscription);
         }
         public void DeleteSubscription(int subscriptionId)
         {
