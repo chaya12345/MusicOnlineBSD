@@ -206,6 +206,7 @@
     <NavigationProperty Name="SongsToPlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToPlaylistsTBL" />
     <NavigationProperty Name="SongsToParadeTBL" Relationship="Self.FK_SurveyTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToParadeTBL" />
     <NavigationProperty Name="TagsToSongsTBL" Relationship="Self.FK_TagsToSongsTBL_SongsTBL" FromRole="SongsTBL" ToRole="TagsToSongsTBL" />
+    <NavigationProperty Name="FavoriteSongsToUserTBL" Relationship="MusicOnlineModel.FK_FavoriteSongsToUserTBL_SongsTBL" FromRole="SongsTBL" ToRole="FavoriteSongsToUserTBL" />
   </EntityType>
   <EntityType Name="SongsToParadeTBL">
     <Key>
@@ -324,6 +325,7 @@
     <NavigationProperty Name="PlaylistsTBL" Relationship="Self.FK_PlaylistsTBL_UsersTBL" FromRole="UsersTBL" ToRole="PlaylistsTBL" />
     <NavigationProperty Name="SingerSearchingToUserTBL" Relationship="Self.FK_SingerSearchingToUserTBL_UsersTBL" FromRole="UsersTBL" ToRole="SingerSearchingToUserTBL" />
     <NavigationProperty Name="SubscriptionTBL" Relationship="Self.FK_SubscriptionTBL_UsersTBL" FromRole="UsersTBL" ToRole="SubscriptionTBL" />
+    <NavigationProperty Name="FavoriteSongsToUserTBL" Relationship="MusicOnlineModel.FK_FavoriteSongsToUserTBL_UsersTBL" FromRole="UsersTBL" ToRole="FavoriteSongsToUserTBL" />
   </EntityType>
   <EntityType Name="getFavoriteSongs">
     <Key>
@@ -847,5 +849,59 @@
     <FunctionImport Name="itemsByParameter" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemsByParameter_Result)">
       <Parameter Name="singer" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="FavoriteSongsToUserTBL" EntityType="MusicOnlineModel.FavoriteSongsToUserTBL" />
+    <EntitySet Name="sysdiagrams" EntityType="MusicOnlineModel.sysdiagrams" />
+    <AssociationSet Name="FK_FavoriteSongsToUserTBL_SongsTBL" Association="MusicOnlineModel.FK_FavoriteSongsToUserTBL_SongsTBL">
+      <End Role="SongsTBL" EntitySet="SongsTBL" />
+      <End Role="FavoriteSongsToUserTBL" EntitySet="FavoriteSongsToUserTBL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FavoriteSongsToUserTBL_UsersTBL" Association="MusicOnlineModel.FK_FavoriteSongsToUserTBL_UsersTBL">
+      <End Role="UsersTBL" EntitySet="UsersTBL" />
+      <End Role="FavoriteSongsToUserTBL" EntitySet="FavoriteSongsToUserTBL" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="FavoriteSongsToUserTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" />
+    <Property Name="songId" Type="Int32" />
+    <NavigationProperty Name="SongsTBL" Relationship="MusicOnlineModel.FK_FavoriteSongsToUserTBL_SongsTBL" FromRole="FavoriteSongsToUserTBL" ToRole="SongsTBL" />
+    <NavigationProperty Name="UsersTBL" Relationship="MusicOnlineModel.FK_FavoriteSongsToUserTBL_UsersTBL" FromRole="FavoriteSongsToUserTBL" ToRole="UsersTBL" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_FavoriteSongsToUserTBL_SongsTBL">
+    <End Type="MusicOnlineModel.SongsTBL" Role="SongsTBL" Multiplicity="0..1" />
+    <End Type="MusicOnlineModel.FavoriteSongsToUserTBL" Role="FavoriteSongsToUserTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SongsTBL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="FavoriteSongsToUserTBL">
+        <PropertyRef Name="songId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FavoriteSongsToUserTBL_UsersTBL">
+    <End Type="MusicOnlineModel.UsersTBL" Role="UsersTBL" Multiplicity="0..1" />
+    <End Type="MusicOnlineModel.FavoriteSongsToUserTBL" Role="FavoriteSongsToUserTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsersTBL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="FavoriteSongsToUserTBL">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
