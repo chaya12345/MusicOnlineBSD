@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivPlaylistsComponent implements OnInit {
 
+  step = 0;
+
+  setStep(index: number) {
+    this.step = index;
+  }
+
   constructor() { }
 
   ngOnInit(): void {
