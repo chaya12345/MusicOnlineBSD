@@ -51,5 +51,9 @@ namespace ServerMusicBSD.Controllers
         {
             ArticlesBL.DecreaseLike(articleId);
         }
+        public  void PutViewToArticle(int articleId)
+        {
+            ArticlesBL.AddViewToArticle(articleId);
+        }
     }
 }

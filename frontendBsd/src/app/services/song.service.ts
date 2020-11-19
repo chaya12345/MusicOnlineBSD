@@ -71,6 +71,9 @@ export class SongService {
   public getSongsPublishedThisYear(year: string): Observable<Song[]> {
     return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsPublishedThisYear?year=" + year);
   }
+  public addViewToSong(songId:number):Observable<any>{
+    return this.httpClient.put(this.baseUrl+"PutViewToSong?songId="+songId,songId);
+  }
   // יצירת קריאת סרבר עם הרשאות גישה
   //   const headers = { 'Authorization': 'Bearer my-token' }
   //   const body = { title: 'Angular POST Request Example' }

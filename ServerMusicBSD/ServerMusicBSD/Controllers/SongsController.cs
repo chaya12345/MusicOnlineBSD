@@ -65,7 +65,7 @@ namespace ServerMusicBSD.Controllers
         }
         public List<songsDetails> GetSimilarSongs(int songId)
         {
-           return SongsBL.GetSimilarSongs(songId);
+            return SongsBL.GetSimilarSongs(songId);
         }
         public void PutIncreaseLikeToSong(int songId)
         {
@@ -75,11 +75,11 @@ namespace ServerMusicBSD.Controllers
         {
             SongsBL.DecreaseLike(songId);
         }
-        public  List<songsDetails> GetSongsByArtist(string artistName)
+        public List<songsDetails> GetSongsByArtist(string artistName)
         {
             return SongsBL.GetSongsByArtist(artistName);
         }
-        public  List<songsDetails> GetSongsByArtistsAndSingers(string name)
+        public List<songsDetails> GetSongsByArtistsAndSingers(string name)
         {
             return SongsBL.GetSongsByArtistsAndSingers(name);
         }
@@ -90,6 +90,10 @@ namespace ServerMusicBSD.Controllers
         public List<songsDetails> GetSongsPublishedThisYear()
         {
             return SongsBL.GetSongsPublishedThisYear();
+        }
+        public void PutViewToSong(int songId)
+        {
+            SongsBL.AddViewToSong(songId);
         }
     }
 }

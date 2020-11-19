@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Song } from '../classes/Song';
 import { SongService } from '../services/song.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -22,8 +22,13 @@ export class SongDetailsComponent implements OnInit {
   similarSongs: Song[] = [];
 
   constructor(private httpClient: HttpClient, private songService: SongService,
-    private router: Router) {
-      this.navs.push("חדש במוזיקה");
+    private router: Router, private activatedRoute: ActivatedRoute) {
+    this.navs.push("חדש במוזיקה");
+    //TO-DO
+    // try {
+    //   let id: number = Number(this.activatedRoute.snapshot.queryParams.songId);
+    //   songService.addViewToSong(id).subscribe();
+    // } catch (err) { console.log(err); }
   }
 
   ngOnInit() {

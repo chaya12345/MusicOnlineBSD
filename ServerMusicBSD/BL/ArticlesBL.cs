@@ -157,5 +157,17 @@ namespace BL
                 }
             }
         }
+        public static void AddViewToArticle(int articleId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            ArticlesTBL article = et.ArticlesTBL.Where(a => a != null && a.id == articleId).FirstOrDefault();
+            if (article == null)
+                return;
+            if (article.count_views == null)
+                article.count_views = 1;
+            else
+                article.count_views++;
+            et.SaveChanges();
+        }
     }
 }

@@ -40,4 +40,7 @@ export class ArticleService {
   public decreaseLikeToArticle(articleId: number): Observable<any> {
     return this.httpClient.put(this.baseUrl + "PutDecreaseLikeToSongArticle?articleId=" + articleId,articleId);
   }
+  public addViewToArticle(articleId):Observable<any>{
+    return this.httpClient.put(this.baseUrl+"PutViewToArticle?articleId="+articleId,articleId);
+  }
 }

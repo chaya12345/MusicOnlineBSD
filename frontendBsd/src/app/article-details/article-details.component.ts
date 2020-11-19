@@ -25,6 +25,11 @@ export class ArticleDetailsComponent implements OnInit {
       this.articleService.getArticleById(this.activatedRoute.snapshot.queryParams.articleId)
         .subscribe(article => { this.article = article; this.navs.push(this.article.title); }, err => console.log(err));
     } catch (err) { console.log(err); }
+    //TO-DO
+    // try{
+    //   let id: number = Number(this.activatedRoute.snapshot.queryParams.articleId);
+    //   articleService.addViewToArticle(id).subscribe();
+    // }catch(err){console.log(err);}
     this.navs.push("מגזין");
   }
 

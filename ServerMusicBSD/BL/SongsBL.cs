@@ -502,5 +502,17 @@ namespace BL
             }
             return result != null ? result : null;
         }
+        public static void AddViewToSong(int songId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            SongsTBL song = et.SongsTBL.Where(s => s != null && s.id == songId).FirstOrDefault();
+            if (song == null)
+                return;
+            if (song.count_views == null)
+                song.count_views = 1;
+            else
+                song.count_views++;
+            et.SaveChanges();
+        }
     }
 }
