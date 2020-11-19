@@ -1,0 +1,51 @@
+.wrap-priv-info {
+    width: 400px;
+}
+
+.private-details {
+    display: flex;
+    height: fit-content;
+    padding: 20px 0;
+    border-bottom: solid 1px #00000021;
+}
+
+.profile-image {
+    height: 70px;
+    width: 70px;
+    border-radius: 50px;
+    background-color: tomato;
+}
+
+.content-of-details {
+    display: grid;
+    align-items: center;
+    padding: 5px 15px;
+}
+
+.content-of-details p {
+    font-family: fb Joker;
+    font-weight: bold;
+    font-size: 21px;
+}
+
+.status-user {
+    font-family: fb Joker;
+    font-size: 21px;
+}
+
+.status-user p {
+    line-height: 45px;
+    padding: 5px 20px;
+    background-color: whitesmoke;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+button.mat-flat-button {
+    width: 100%;
+    background-color: tomato;
+    font-family: fb Joker;
+    font-size: 19px;
+    color: white;
+    padding: 3px 0;
+}

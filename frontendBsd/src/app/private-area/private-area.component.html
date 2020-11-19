@@ -1,7 +1,7 @@
 <div class="wrap-private-area">
     <top _title="האיזור האישי שלי" subtitle="מוזיקה בסגנון שלך >>" icon="account_circle"></top>
     <custom-tool-bar></custom-tool-bar>
-    <div class="wrap-tabs">
+    <!-- <div class="wrap-tabs">
         <mat-tab-group animationDuration="0ms" [selectedIndex]="1">
             <mat-tab label="פרופיל">
                 <priv-profile></priv-profile>
@@ -13,6 +13,13 @@
             <mat-tab label="כתבות שאהבתי">Content 3</mat-tab>
             <mat-tab label="ההגדרות שלי">Content 3</mat-tab>
         </mat-tab-group>
+    </div> -->
+    <div class="wrap-content">
+        <div class="wrap-main">
+            <priv-info></priv-info>
+            <priv-main></priv-main>
+        </div>
+        <side></side>
     </div>
     <footer></footer>
 </div>

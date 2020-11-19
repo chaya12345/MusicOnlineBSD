@@ -115,6 +115,8 @@ import { FieldFormComponent } from './field-form/field-form.component';
 import { PrivateAreaComponent } from './private-area/private-area.component';
 import { PrivPlaylistsComponent } from './priv-playlists/priv-playlists.component';
 import { PrivProfileComponent } from './priv-profile/priv-profile.component';
+import { PrivInfoComponent } from './priv-info/priv-info.component';
+import { PrivMainComponent } from './priv-main/priv-main.component';
 
 @NgModule({
   declarations: [
@@ -219,7 +221,9 @@ import { PrivProfileComponent } from './priv-profile/priv-profile.component';
     FieldFormComponent,
     PrivateAreaComponent,
     PrivPlaylistsComponent,
-    PrivProfileComponent
+    PrivProfileComponent,
+    PrivInfoComponent,
+    PrivMainComponent
   ],
   imports: [
     BrowserModule,
