@@ -151,7 +151,6 @@ namespace BL
             }
 
         }
-
         public static void UpdatePassword(int userId, string password)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
@@ -218,6 +217,57 @@ namespace BL
             //{
             //    return Casts.ToUsersDTO.GetUser(result);
             //}
+            return null;
+        }
+        public static List<songsDetails> GetFollowUpSongs(int userId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<FollowUpTBL> list = et.FollowUpTBL.Where(f => f != null && f.userId == userId && f.articleId == null).ToList();
+            if (list == null)
+                return null;
+            List<SongsTBL> result = new List<SongsTBL>();
+            foreach (FollowUpTBL item in list)
+            {
+                SongsTBL song = et.SongsTBL.Where(s => s != null && s.id == item.songId).FirstOrDefault();
+                if (song != null)
+                    result.Add(song);
+            }
+            if (result != null)
+                return Casts.ToSongsDTO.GetSongs(result);
+            return null;
+        }
+        public static List<ArticlesDTO> GetFollowUpArticles(int userId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<FollowUpTBL> list = et.FollowUpTBL.Where(f => f != null && f.userId == userId && f.songId == null).ToList();
+            if (list == null)
+                return null;
+            List<ArticlesTBL> result = new List<ArticlesTBL>();
+            foreach (FollowUpTBL item in list)
+            {
+                ArticlesTBL article= et.ArticlesTBL.Where(a => a != null && a.id == item.articleId).FirstOrDefault();
+                if (article != null)
+                    result.Add(article);
+            }
+            if (result != null)
+                return Casts.ToArticlesDTO.GetArticles(result);
+            return null;
+        }
+        public static List<SingersDTO> GetSubscriptionToSinger(int userId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<SubscriptionTBL> list = et.SubscriptionTBL.Where(s => s != null && s.userId == userId).ToList();
+            if (list == null)
+                return null;
+            List<SingersTBL> result = new List<SingersTBL>();
+            foreach (SubscriptionTBL item in list)
+            {
+                SingersTBL singer = et.SingersTBL.Where(s => s != null && s.id == item.singerId).FirstOrDefault();
+                if (singer != null)
+                    result.Add(singer);
+            }
+            if (result != null)
+                return Casts.ToSingersDTO.GetSingers(result);
             return null;
         }
     }

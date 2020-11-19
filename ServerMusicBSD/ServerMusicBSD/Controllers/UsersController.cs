@@ -49,6 +49,18 @@ namespace ServerMusicBSD.Controllers
         public List<UsersDTO> GetUsers()
         {
             return UsersBL.GetUsers();
-        }  
+        }
+        public List<songsDetails> GetFollowUpSongs(int userId)
+        {
+            return UsersBL.GetFollowUpSongs(userId);
+        }
+        public List<ArticlesDTO> GetFollowUpArticles(int userId)
+        {
+            return UsersBL.GetFollowUpArticles(userId);
+        }
+        public List<SingersDTO> GetSubscriptionToSinger(int userId)
+        {
+            return UsersBL.GetSubscriptionToSinger(userId);
+        }
     }
 }
