@@ -17,6 +17,10 @@ div.title-section {
     color: #929292;
 }
 
+.title-section:first-of-type {
+    margin-top: 20px !important;
+}
+
 .similar-songs {
     margin: 33px 0;
 }
