@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -11,6 +11,9 @@ import { PlaylistsComponent } from './playlists/playlists.component';
 import { PrivateAreaComponent } from './private-area/private-area.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SongsComponent } from './songs/songs.component';
+import { 
+  AuthGuardService as AuthGuard 
+} from './services/auth-guard.service';
 
 
 const routes: Routes = [{
@@ -36,7 +39,11 @@ const routes: Routes = [{
   component: PlaylistSectionComponent
 }, {
   path: "settings",
-  component: SettingsComponent
+  component: SettingsComponent,
+  canActivate: [AuthGuard], 
+  data: { 
+    expectedRole: 'admin'
+  }
 }, {
   path: "performance",
   component: PerformanceComponent
@@ -45,7 +52,10 @@ const routes: Routes = [{
   component: ParadeComponent
 }, {
   path: "user",
-  component: PrivateAreaComponent
+  component: PrivateAreaComponent,
+  canActivate: [AuthGuard]
+  // prevent activate but not to navigate to..
+  // to do that use in - canLoad instead of canActivate
 }, {
   path: "error",
   component: ErrorPageComponent
