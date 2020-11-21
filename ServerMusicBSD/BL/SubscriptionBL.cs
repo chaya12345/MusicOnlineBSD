@@ -41,20 +41,20 @@ namespace BL
         public static void DeleteSubscription(int subscriptionId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SubscriptionTBL subscription = et.SubscriptionTBL.Where(s =>s!=null&& s.id == subscriptionId).FirstOrDefault();
+            SubscriptionTBL subscription = et.SubscriptionTBL.Where(s => s != null && s.id == subscriptionId).FirstOrDefault();
             et.SubscriptionTBL.Remove(subscription);
             et.SaveChanges();
         }
         public static List<string> GetMailsOfSingerSubscription(int singerId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<SubscriptionTBL> list = et.SubscriptionTBL.Where(s => s!=null&&s.singerId == singerId).ToList();
+            List<SubscriptionTBL> list = et.SubscriptionTBL.Where(s => s != null && s.singerId == singerId).ToList();
             List<string> mails = new List<string>();
             if (list == null)
                 return null;
             foreach (SubscriptionTBL item in list)
             {
-                UsersTBL user = et.UsersTBL.Where(u =>u!=null&& u.id == item.userId).FirstOrDefault();
+                UsersTBL user = et.UsersTBL.Where(u => u != null && u.id == item.userId).FirstOrDefault();
                 if (user.mail != null)
                     mails.Add(user.mail);
             }
@@ -65,11 +65,11 @@ namespace BL
         public static List<string> GetYourSingersNameSubscription(int userId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<SubscriptionTBL> list = et.SubscriptionTBL.Where(s =>s!=null&& s.userId == userId).ToList();
+            List<SubscriptionTBL> list = et.SubscriptionTBL.Where(s => s != null && s.userId == userId).ToList();
             List<string> names = new List<string>();
             foreach (SubscriptionTBL item in list)
             {
-                SingersTBL singer = et.SingersTBL.Where(s => s!=null&&s.id == item.singerId).FirstOrDefault();
+                SingersTBL singer = et.SingersTBL.Where(s => s != null && s.id == item.singerId).FirstOrDefault();
                 if (singer.name != null)
                     names.Add(singer.name);
             }
