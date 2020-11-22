@@ -15,7 +15,7 @@ namespace ServerMusicBSD.Controllers
     {
         [System.Web.Http.HttpPost]
         [System.Web.Http.ActionName("UploadImage")]
-        public HttpResponseMessage UploadJsonFile()
+        public HttpResponseMessage UploadJsonFile(string folderName)
         {
             HttpResponseMessage response = new HttpResponseMessage();
             var httpRequest = HttpContext.Current.Request;
@@ -26,8 +26,8 @@ namespace ServerMusicBSD.Controllers
                     var postedFile = httpRequest.Files[file];
                     var filePath = HttpContext.Current.Server.MapPath("~/UploadFile/" + postedFile.FileName);
                     filePath = AppDomain.CurrentDomain.BaseDirectory.Substring(0,
-                            AppDomain.CurrentDomain.BaseDirectory.LastIndexOf("Server") - 1) + "\\DAL\\src\\images\\for_playlists\\"
-                            + postedFile.FileName;
+                            AppDomain.CurrentDomain.BaseDirectory.LastIndexOf("Server") - 1) + "\\DAL\\src\\images\\"
+                            + folderName + "\\" + postedFile.FileName;
                     postedFile.SaveAs(filePath);
                 }
             }

@@ -12,14 +12,14 @@ export class UploadService {
 
   constructor(private httpClient: HttpClient) { }
   
-  postFile(fileToUpload: File): Observable<boolean> {
+  postFile(fileToUpload: File, folderName: string): Observable<boolean> {
     const formData: FormData = new FormData();
     formData.append('fileKey', fileToUpload, fileToUpload.name);
     let headers = new Headers({ 'Content-Type': 'application/json' });    
     headers.append('Content-Type', 'multipart/form-data');
 
     // let options = new RequestOptions({ headers: headers, method: 'post' });
-    return this.httpClient.post<boolean>(this.baseUrl + 'UploadImage', formData);
+    return this.httpClient.post<boolean>(this.baseUrl + "UploadImage?folderName=" + folderName, formData);
       // .map(
       //   (response => response.json()))
       // .catch(CommonFunctionService.handleError);

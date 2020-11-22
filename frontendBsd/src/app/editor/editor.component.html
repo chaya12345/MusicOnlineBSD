@@ -5,21 +5,21 @@
         <p>This is the editor content.</p>
     </div> -->
     <form role="form" #myForm="ngForm" accept-charset="UTF-8" (ngSubmit)="onSubmit()" novalidate>
-        <!-- <div class="form-group">
+        <div class="form-group">
             <input autofocus autocomplete="none" type="text" name="UserName" placeholder="Enter Title"
                 [(ngModel)]="article.title" class="form-control" required #PageContentTitle="ngModel"
                 id="PageContentTitle">
-        </div> -->
+        </div>
         <ckeditor [editor]="Editor" [config]="ckEditorConfig" [(ngModel)]="article.content" #PageContent="ngModel"
             name="PageContent" required debounce="500" style="height: 400px;">
         </ckeditor>
-        <!-- <div class="form-group mt-4">
+        <div class="form-group mt-4">
             <div class="row">
                 <div class="col-3 col-md-3 mb-3">
                     <button type="submit" class="btn btn-info">Submit</button>
                 </div>
             </div>
-        </div> -->
+        </div>
     </form>
 </div>
 
