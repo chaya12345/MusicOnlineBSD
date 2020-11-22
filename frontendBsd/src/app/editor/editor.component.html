@@ -11,7 +11,7 @@
                 id="PageContentTitle">
         </div> -->
         <ckeditor [editor]="Editor" [config]="ckEditorConfig" [(ngModel)]="article.content" #PageContent="ngModel"
-            name="PageContent" required debounce="500">
+            name="PageContent" required debounce="500" style="height: 400px;">
         </ckeditor>
         <!-- <div class="form-group mt-4">
             <div class="row">

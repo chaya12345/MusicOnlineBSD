@@ -11,7 +11,7 @@
 form {
     display: grid;
     grid-template-columns: auto auto;
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-rows: repeat(9, 1fr);
     grid-column-gap: 15px;
 }
 
@@ -48,7 +48,7 @@ form > :nth-child(7) {
 }
 
 form > :nth-child(8) {
-    grid-area: 9 / 1 / 10 / 2;
+    grid-area: 10 / 1 / 11 / 2;
 }
 
 form > button {
