@@ -197,6 +197,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="src\images\for_playlists\" />
     <Folder Include="src\text\articles_content\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

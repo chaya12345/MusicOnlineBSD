@@ -1,4 +1,4 @@
-<div *ngIf="permission" class="wrap-settings">
+<!-- <div *ngIf="permission" class="wrap-settings">
     <mat-toolbar>
         <mat-icon style="margin-left: 6px;">admin_panel_settings</mat-icon>
         <span>איזור מנהל</span>
@@ -23,4 +23,18 @@
 </div>
 <div *ngIf="!permission" class="non-permission">
     <error-page type="הרשאה"></error-page>
+</div> -->
+<div class="wrap-admin">
+    <top _title="איזור מנהל" subtitle="מוזיקה בסגנון שלך >>" icon="account_circle"></top>
+    <custom-tool-bar></custom-tool-bar>
+    <div class="wrap-content">
+        <div class="wrap-main">
+            <priv-info [name]="'יעקב כהן'" [mail]="'yaakov10@gmail.com'" [img]="null"></priv-info>
+            <p-side></p-side>
+            <p-center></p-center>
+            <p-left-side></p-left-side>
+        </div>
+        <side></side>
+    </div>
+    <footer></footer>
 </div>

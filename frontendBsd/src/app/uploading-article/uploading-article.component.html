@@ -1,0 +1,31 @@
+<div class="wrap-uploading-article">
+    <p class="title-section">העלאת כתבה >></p>
+    <form>
+        <!-- title -->
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="כותרת">
+        </mat-form-field>
+        <!-- subtitle -->
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="כותרת משנה">
+        </mat-form-field>
+        <!-- image -->
+        <uploading-image (onSelect)="selectImage($event)"></uploading-image>
+        <!-- singer -->
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="בחירת זמר">
+        </mat-form-field>
+        <!-- tags -->
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="בחירת תגיות">
+        </mat-form-field>
+        <!-- artists -->
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="בחירת אומנים">
+        </mat-form-field>
+        <!-- content -->
+        <div></div>
+        <!-- upload button -->
+        <button mat-stroked-button><mat-icon>publish</mat-icon>העלאה</button>
+    </form>
+</div>

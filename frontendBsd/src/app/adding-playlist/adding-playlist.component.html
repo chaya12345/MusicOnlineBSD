@@ -1,0 +1,26 @@
+<div class="wrap-adding-playlist">
+    <p class="title-section">הוספת פלייליסט >></p>
+    <form [formGroup]="playlistAddingForm" (ngSubmit)="onSubmit()">
+        <!-- name -->
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="שם פלייליסט" formControlName="name" required minlength="3">
+            <mat-error *ngIf="playlistAddingForm.controls.title.invalid">{{getNameErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <!-- title -->
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="כותרת" formControlName="title" required minlength="3">
+            <mat-error *ngIf="playlistAddingForm.controls.title.invalid">{{getTitleErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <!-- image -->
+        <uploading-image (onSelect)="selectImage($event)"></uploading-image>
+        <!-- adding a song -->
+        <mat-form-field appearance="fill">
+            <mat-label>הוספת שירים</mat-label>
+            <mat-select formControlName="songs" multiple>
+              <mat-option *ngFor="let song of songsList" [value]="song.name">{{song.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        <!-- upload button -->
+        <button mat-stroked-button type="submit"><mat-icon>playlist_add</mat-icon>הוספה</button>
+    </form>
+</div>

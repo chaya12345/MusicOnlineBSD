@@ -1,0 +1,25 @@
+.wrap-profile-obj {
+    display: flex;
+    height: fit-content;
+    padding: 20px 0;
+    border-bottom: solid 1px #00000021;
+}
+
+.profile-image {
+    height: 70px;
+    width: 70px;
+    border-radius: 50px;
+    background-color: tomato;
+}
+
+.content-of-profile {
+    display: grid;
+    align-items: center;
+    padding: 5px 15px;
+}
+
+.content-of-profile p {
+    font-family: fb Joker;
+    font-weight: bold;
+    font-size: 21px;
+}

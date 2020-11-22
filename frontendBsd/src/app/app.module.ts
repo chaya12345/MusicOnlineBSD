@@ -117,6 +117,17 @@ import { PrivPlaylistsComponent } from './priv-playlists/priv-playlists.componen
 import { PrivInfoComponent } from './priv-info/priv-info.component';
 import { PrivMainComponent } from './priv-main/priv-main.component';
 import { PlaylistFolderComponent } from './playlist-folder/playlist-folder.component';
+import { ProfileObjComponent } from './profile-obj/profile-obj.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminLeftSideComponent } from './admin-left-side/admin-left-side.component';
+import { AdminCenterComponent } from './admin-center/admin-center.component';
+import { AdminRightSideComponent } from './admin-right-side/admin-right-side.component';
+import { InfoBoardComponent } from './info-board/info-board.component';
+import { UploadingSongComponent } from './uploading-song/uploading-song.component';
+import { UploadingArticleComponent } from './uploading-article/uploading-article.component';
+import { AddingPlaylistComponent } from './adding-playlist/adding-playlist.component';
+import { ActivationParadeComponent } from './activation-parade/activation-parade.component';
+import { UploadingImageComponent } from './uploading-image/uploading-image.component';
 
 @NgModule({
   declarations: [
@@ -223,7 +234,18 @@ import { PlaylistFolderComponent } from './playlist-folder/playlist-folder.compo
     PrivPlaylistsComponent,
     PrivInfoComponent,
     PrivMainComponent,
-    PlaylistFolderComponent
+    PlaylistFolderComponent,
+    ProfileObjComponent,
+    AdminComponent,
+    AdminLeftSideComponent,
+    AdminCenterComponent,
+    AdminRightSideComponent,
+    InfoBoardComponent,
+    UploadingSongComponent,
+    UploadingArticleComponent,
+    AddingPlaylistComponent,
+    ActivationParadeComponent,
+    UploadingImageComponent
   ],
   imports: [
     BrowserModule,

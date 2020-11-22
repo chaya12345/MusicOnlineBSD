@@ -1,0 +1,37 @@
+<div class="wrap-uploading-song">
+    <p class="title-section">העלאת שיר >></p>
+    <form>
+        <!-- name -->
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="שם שיר">
+        </mat-form-field>
+        <!-- singer -->
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="בחירת זמר">
+        </mat-form-field>
+        <!-- title -->
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="כותרת">
+        </mat-form-field>
+        <!-- subtitle -->
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="כותרת משנה">
+        </mat-form-field>
+        <!-- image -->
+        <uploading-image (onSelect)="selectImage($event)"></uploading-image>
+        <!-- song -->
+        <div class="upload-area"></div>
+        <!-- tags -->
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="בחירת תגיות">
+        </mat-form-field>
+        <!-- artists -->
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="בחירת אומנים">
+        </mat-form-field>
+        <!-- is performance -->
+        <div></div>
+        <!-- upload button -->
+        <button mat-stroked-button><mat-icon>publish</mat-icon>העלאה</button>
+    </form>
+</div>

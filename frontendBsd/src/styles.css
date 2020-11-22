@@ -89,6 +89,10 @@ mat-form-field input {
     direction: rtl !important;
 }
 
+mat-option mat-pseudo-checkbox.mat-pseudo-checkbox {
+    margin-left: 8px;
+}
+
 /* main-actions .mat-form-field-flex {
     background-color: rgb(255 255 255 / 4%) !important;
 } */

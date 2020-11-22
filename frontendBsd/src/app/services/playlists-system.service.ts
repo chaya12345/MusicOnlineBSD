@@ -3,6 +3,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PlaylistSystem } from '../classes/playlistSystem';
 
+export class playlistSystemWithSongs {
+  playlistSystem: PlaylistSystem;
+  songs: string[];
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,5 +28,11 @@ export class PlaylistsSystemService {
   }
   public addPlaylistSystem(playlistsSystem:PlaylistSystem): Observable<any> {
     return this.httpClient.post(this.baseUrl + "PostPlaylistSystem",playlistsSystem);
+  }
+  public addPlaylistSystemWithSongs(playlistsSystem: PlaylistSystem, songs: string[]): Observable<any> {
+    let pws = new playlistSystemWithSongs();
+    pws.playlistSystem = playlistsSystem;
+    pws.songs = songs;
+    return this.httpClient.post(this.baseUrl + "PostPlaylistSystemWithSongs", pws);
   }
 }

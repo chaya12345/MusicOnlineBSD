@@ -1,4 +1,4 @@
-mat-toolbar {
+/* mat-toolbar {
     padding: 20px 150px 20px 30px;
     font-family: fb Joker;
     font-size: 23px;
@@ -8,4 +8,18 @@ mat-toolbar {
 .wrap-tabs {
     margin: 40px 5px;
     padding: 0 11vw;
+} */
+.wrap-content {
+    display: grid;
+    grid-template-columns: fit-content(50%) auto;
+}
+
+.wrap-main {
+    width: 73vw;
+    padding: 50px 165px;
+    display: flex;
+    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 45px;
 }

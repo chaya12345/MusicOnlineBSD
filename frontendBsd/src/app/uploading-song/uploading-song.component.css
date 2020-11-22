@@ -1,0 +1,80 @@
+.wrap-uploading-song {
+    padding-top: 30px;
+}
+
+.title-section {
+    font-family: fb Joker;
+    font-size: 21px;
+    margin-bottom: 30px;
+}
+
+form {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: repeat(9, 1fr);
+    grid-column-gap: 15px;
+}
+
+form mat-form-field {
+    text-align: right !important;
+}
+
+form > :first-child {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+form > :nth-child(2) {
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+form > :nth-child(3) {
+    grid-area: 2 / 1 / 3 / 3;
+}
+
+form > :nth-child(4) {
+    grid-area: 3 / 1 / 4 / 3;
+}
+
+form > :nth-child(5) {
+    grid-area: 4 / 1 / 8 / 2;
+}
+
+form > :nth-child(6) {
+    grid-area: 4 / 2 / 8/ 3;
+}
+
+form > :nth-child(7) {
+    grid-area: 8 / 1 / 9 / 2;
+}
+
+form > :nth-child(8) {
+    grid-area: 8 / 2 / 9 / 3;
+}
+
+form > :nth-child(9) {
+    grid-area: 9 / 1 / 10 / 2;
+}
+
+form > :nth-child(10) {
+    grid-area: 9 / 2 / 10 / 3;
+}
+
+form > button {
+    height: 48px;
+    margin-left: auto;
+    padding: 0 40px;
+    font-family: fb Joker;
+    font-size: 19px;
+}
+
+form > button mat-icon {
+    margin-left: 10px;
+}
+
+form > div {
+    height: 100%;
+    width: 100%;
+    background-color: whitesmoke;
+    background-clip: content-box;
+    padding-bottom: 17px;
+}

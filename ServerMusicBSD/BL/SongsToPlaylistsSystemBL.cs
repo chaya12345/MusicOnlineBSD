@@ -56,6 +56,38 @@ namespace BL
                 }
             }
         }
+        public static void AddSongsToPlaylistSystem(string[] songs, int? playlistId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            try
+            {
+                if (songs != null && playlistId != null)
+                {
+                    foreach (string songName in songs)
+                    {
+                        SongsTBL song = et.SongsTBL.Where(s => s != null && s.name == songName).FirstOrDefault();
+                        if (song != null)
+                        {
+                            SongsToPlaylistsSystemTBL newStp = new SongsToPlaylistsSystemTBL();
+                            newStp.playlistId = playlistId;
+                            newStp.songId = song.id;
+                            et.SongsToPlaylistsSystemTBL.Add(newStp);
+                            et.SaveChanges();
+                        }
+                    }
+                }
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
+        }
         public static void AddSongsToPlaylistSystem(List<SongsToPlaylistsSystemTBL> stpList)
         {
             if (stpList != null)

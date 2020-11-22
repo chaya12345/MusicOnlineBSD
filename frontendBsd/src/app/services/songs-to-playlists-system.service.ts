@@ -15,13 +15,13 @@ export class SongsToPlaylistsSystemService {
   getSongsToPlaylistSystem(plalistId: number): Observable<Song[]> {
     return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsToPlaylistSystem?playlistId=" + plalistId);
   }
-  addSongToPlaylistSystem(stp:SongsToPlaylistsSystem):Observable<any>{
-    return this.httpClient.post(this.baseUrl+"PostSongToPlaylistSystem",stp);
+  addSongToPlaylistSystem(stp: SongsToPlaylistsSystem): Observable<any> {
+    return this.httpClient.post(this.baseUrl + "PostSongToPlaylistSystem", stp);
   }
-  addSongsToPlaylistSystem(stp:SongsToPlaylistsSystem[]):Observable<any>{
-    return this.httpClient.post(this.baseUrl+"PostSongToPlaylistSystem",stp);
+  addSongsToPlaylistSystem(stp: SongsToPlaylistsSystem[]): Observable<any> {
+    return this.httpClient.post(this.baseUrl + "PostSongToPlaylistSystem", stp);
   }
-  deleteSongFromPlaylistSystem(playlistId:number,songId:number):Observable<any>{
-    return this.httpClient.delete(this.baseUrl+"DeleteSongFromPlaylistSystem?playlistId="+playlistId+"&songId="+songId);
+  deleteSongFromPlaylistSystem(playlistId: number, songId: number): Observable<any> {
+    return this.httpClient.delete(this.baseUrl + "DeleteSongFromPlaylistSystem?playlistId=" + playlistId + "&songId=" + songId);
   }
 }

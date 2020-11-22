@@ -1,0 +1,65 @@
+.wrap-activation-parade {
+    padding-top: 30px;
+}
+
+.title-section {
+    font-family: fb Joker;
+    font-size: 21px;
+    margin-bottom: 30px;
+}
+
+form {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 15px;
+    padding-left: 5vw;
+}
+
+form mat-form-field {
+    text-align: right !important;
+}
+
+form > :first-child {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+form > :nth-child(2) {
+    grid-area: 2 / 1 / 6 / 2;
+}
+
+form > :nth-child(3) {
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+form > :nth-child(4) {
+    grid-area: 3 / 2 / 4 / 3;
+}
+
+form > :nth-child(5) {
+    grid-area: 4 / 2 / 5 / 3;
+}
+
+form > :nth-child(6) {
+    grid-area: 5 / 2 / 6 / 3;
+}
+
+form > button {
+    height: 48px;
+    margin-left: auto;
+    padding: 0 40px;
+    font-family: fb Joker;
+    font-size: 19px;
+}
+
+form > button mat-icon {
+    margin-left: 10px;
+}
+
+form > div {
+    height: 100%;
+    width: 100%;
+    background-color: whitesmoke;
+    background-clip: content-box;
+    padding-bottom: 17px;
+}

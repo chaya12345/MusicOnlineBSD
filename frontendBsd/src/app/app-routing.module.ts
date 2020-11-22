@@ -14,6 +14,7 @@ import { SongsComponent } from './songs/songs.component';
 import { 
   AuthGuardService as AuthGuard 
 } from './services/auth-guard.service';
+import { AdminComponent } from './admin/admin.component';
 
 
 const routes: Routes = [{
@@ -40,7 +41,7 @@ const routes: Routes = [{
 }, {
   path: "settings",
   component: SettingsComponent,
-  canActivate: [AuthGuard], 
+  // canActivate: [AuthGuard],
   data: { 
     expectedRole: 'admin'
   }
@@ -53,9 +54,12 @@ const routes: Routes = [{
 }, {
   path: "user",
   component: PrivateAreaComponent,
-  canActivate: [AuthGuard]
+  // canActivate: [AuthGuard]
   // prevent activate but not to navigate to..
   // to do that use in - canLoad instead of canActivate
+}, {
+  path: "admin",
+  component: AdminComponent
 }, {
   path: "error",
   component: ErrorPageComponent

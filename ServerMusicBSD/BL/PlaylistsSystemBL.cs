@@ -56,5 +56,16 @@ namespace BL
                 }
             }
         }
+        public static void AddPlaylistSystemWithSongs(PlaylistsSystemTBL playlistSystem, string[] songs)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            AddPlaylistSystem(playlistSystem);
+            PlaylistsSystemTBL currentPlaylist = et.PlaylistsSystemTBL
+                .Where(playlist => playlist != null && playlist.name == playlistSystem.name).FirstOrDefault();
+            if (currentPlaylist != null)
+            {
+                SongsToPlaylistsSystemBL.AddSongsToPlaylistSystem(songs, currentPlaylist.id);
+            }
+        }
     }
 }

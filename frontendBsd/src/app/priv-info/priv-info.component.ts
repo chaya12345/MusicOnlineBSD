@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'priv-info',
@@ -7,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivInfoComponent implements OnInit {
 
-  name: string = "איציק לוי";
-  mail: string = "Itzik.levi@gmail.com";
+  @Input() name: string = "";
+  @Input() mail: string = "";
+  @Input() img: string = "";
   subsCount: number = 2;
   songsInFollowUp: number = 4;
   articlesInFollowUp: number = 6;

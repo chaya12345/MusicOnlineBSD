@@ -11,6 +11,11 @@ using System.Web.Http.Cors;
 
 namespace ServerMusicBSD.Controllers
 {
+    public class playlistSystemWithSongs
+    {
+        public PlaylistsSystemTBL playlistSystem;
+        public string[] songs;
+    }
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class PlaylistsSystemController : ApiController
     {
@@ -29,6 +34,11 @@ namespace ServerMusicBSD.Controllers
         public  void PostPlaylistSystem([FromBody] PlaylistsSystemTBL playlistsSystem)
         {
             PlaylistsSystemBL.AddPlaylistSystem(playlistsSystem);
+        }
+        [HttpPost]
+        public void PostPlaylistSystemWithSongs([FromBody] playlistSystemWithSongs pws)
+        {
+            PlaylistsSystemBL.AddPlaylistSystemWithSongs(pws.playlistSystem, pws.songs);
         }
     }
 }

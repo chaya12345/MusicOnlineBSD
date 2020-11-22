@@ -1,11 +1,5 @@
 <div class="wrap-priv-info">
-    <div class="private-details">
-        <div class="profile-image"></div>
-        <div class="content-of-details">
-            <p>{{name}}</p>
-            <span>{{mail}}</span>
-        </div>
-    </div>
+    <profile-obj [name]="name" [mail]="mail" [img]="null"></profile-obj>
     <div class="status-user">
         <p>{{subsCount}} מנויים לזמרים</p>
         <p>{{songsInFollowUp}} שירים במעקב שלי</p>
