@@ -48,13 +48,15 @@ export class AddingPlaylistComponent implements OnInit {
       newPlaylist.name = this.playlistAddingForm.controls.name.value;
       newPlaylist.title = this.playlistAddingForm.controls.title.value;
       newPlaylist.image = this.playlistAddingForm.controls.image.value;
-      console.log(this.playlistAddingForm.value);
       let songs = this.playlistAddingForm.controls.songs.value;
-      console.log(songs);
       try {
       this.playlistsSystemService.addPlaylistSystemWithSongs(newPlaylist, songs).subscribe(res =>
-        console.log(res, "Yes"), err => console.log(err));
+        {
+          console.log(res, "Yes");
+          this.saveImage(this.imageFile);
+        }, err => console.log(err));
       } catch (err) { console.log(err); }
+      // this.reset();
     }
   }
 
@@ -63,19 +65,14 @@ export class AddingPlaylistComponent implements OnInit {
   }
 
   selectImage(fileToUpload: File): void {
-    // const file = files.item(0);
     console.log(fileToUpload.name);
     this.imageFile = fileToUpload;
     this.playlistAddingForm.controls.image.setValue("for_playlists/" + fileToUpload.name);
-    // this.uploadService.postFile(formData).subscribe(
-    //   res => console.log(res),
-    //   error => console.log(error)
-    // );
   }
 
-  saveImage(): void {
-    if (this.imageFile != null) {
-      this.uploadService.postFile(this.imageFile).subscribe(
+  saveImage(fileToUpload: File): void {
+    if (fileToUpload != null) {
+      this.uploadService.postFile(fileToUpload).subscribe(
         res => console.log(res),
         error => console.log(error)
       );
