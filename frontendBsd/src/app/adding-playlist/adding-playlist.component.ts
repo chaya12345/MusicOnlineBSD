@@ -56,7 +56,7 @@ export class AddingPlaylistComponent implements OnInit {
           this.saveImage(this.imageFile);
         }, err => console.log(err));
       } catch (err) { console.log(err); }
-      // this.reset();
+      this.reset();
     }
   }
 

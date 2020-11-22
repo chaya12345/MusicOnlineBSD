@@ -1,26 +1,26 @@
-<div class="" style="margin-right: 200px; width: 1300px; height: 500px;">
+<div class="">
     <!-- <ckeditor [(ngModel)]="contentdata.Content" #PageContent="ngModel" name="PageContent" required
     [editor]="Editor" [config]="ckEditorConfig" data="<p>Hello, world!</p>"></ckeditor>
     <div id="editor">
         <p>This is the editor content.</p>
     </div> -->
-    <form role="form" #myForm="ngForm" accept-charset="UTF-8" (ngSubmit)="onSubmit()" novalidate style="margin: 30px;">    
-    <div class="form-group">    
-        <input autofocus autocomplete="none" type="text" name="UserName" placeholder="Enter Title"    
-            [(ngModel)]="article.title" class="form-control" required #PageContentTitle="ngModel"    
-            id="PageContentTitle">    
-    </div>    
-    <ckeditor [editor]="Editor" [config]="ckEditorConfig" [(ngModel)]="article.content" #PageContent="ngModel" name="PageContent" required    
-         debounce="500">    
-    </ckeditor>    
-    <div class="form-group mt-4">    
-        <div class="row">    
-            <div class="col-3 col-md-3 mb-3">    
-                <button type="submit" class="btn btn-info">Submit</button>    
-            </div>    
-        </div>    
-    </div>    
-</form>   
+    <form role="form" #myForm="ngForm" accept-charset="UTF-8" (ngSubmit)="onSubmit()" novalidate style="margin: 30px;">
+        <!-- <div class="form-group">
+            <input autofocus autocomplete="none" type="text" name="UserName" placeholder="Enter Title"
+                [(ngModel)]="article.title" class="form-control" required #PageContentTitle="ngModel"
+                id="PageContentTitle">
+        </div> -->
+        <ckeditor [editor]="Editor" [config]="ckEditorConfig" [(ngModel)]="article.content" #PageContent="ngModel"
+            name="PageContent" required debounce="500">
+        </ckeditor>
+        <!-- <div class="form-group mt-4">
+            <div class="row">
+                <div class="col-3 col-md-3 mb-3">
+                    <button type="submit" class="btn btn-info">Submit</button>
+                </div>
+            </div>
+        </div> -->
+    </form>
 </div>
 
-<!--  [config]="{ toolbar: [ 'heading', 'undo', 'redo', 'bold', 'italic', 'emoji' ]}" -->
+<!--  [config]="{ toolbar: [ 'heading', 'undo', 'redo', 'bold', 'italic', 'emoji' ]}" style="margin-right: 200px; width: 1300px; height: 500px;" -->

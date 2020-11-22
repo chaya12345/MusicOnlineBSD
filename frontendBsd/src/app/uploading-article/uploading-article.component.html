@@ -1,31 +1,42 @@
 <div class="wrap-uploading-article">
     <p class="title-section">העלאת כתבה >></p>
-    <form>
+    <form [formGroup]="uploadingArticleForm" (ngSubmit)="onSubmit()">
         <!-- title -->
         <mat-form-field appearance="fill">
-            <input matInput placeholder="כותרת">
+            <input matInput placeholder="כותרת" formControlName="title" required minlength="3">
+            <mat-error *ngIf="uploadingArticleForm.controls.title.invalid">{{getTitleErrorMessage()}}</mat-error>
         </mat-form-field>
         <!-- subtitle -->
         <mat-form-field appearance="fill">
-            <input matInput placeholder="כותרת משנה">
+            <input matInput placeholder="כותרת משנה" formControlName="subtitle" required minlength="3">
+            <mat-error *ngIf="uploadingArticleForm.controls.subtitle.invalid">{{getSubtitleErrorMessage()}}</mat-error>
         </mat-form-field>
         <!-- image -->
         <uploading-image (onSelect)="selectImage($event)"></uploading-image>
         <!-- singer -->
         <mat-form-field appearance="fill">
-            <input matInput placeholder="בחירת זמר">
-        </mat-form-field>
+            <mat-label>בחירת זמרים</mat-label>
+            <mat-select formControlName="singers" multiple>
+              <mat-option *ngFor="let singer of singers" [value]="singer.name">{{singer.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
         <!-- tags -->
         <mat-form-field appearance="fill">
-            <input matInput placeholder="בחירת תגיות">
-        </mat-form-field>
+            <mat-label>בחירת תגיות</mat-label>
+            <mat-select formControlName="tags" multiple>
+              <mat-option *ngFor="let tag of tags" [value]="tag.name">{{tag.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
         <!-- artists -->
         <mat-form-field appearance="fill">
-            <input matInput placeholder="בחירת אומנים">
-        </mat-form-field>
+            <mat-label>בחירת אומנים</mat-label>
+            <mat-select formControlName="artists" multiple>
+              <mat-option *ngFor="let artist of artists" [value]="artist.name">{{artist.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
         <!-- content -->
-        <div></div>
+        <editor></editor>
         <!-- upload button -->
-        <button mat-stroked-button><mat-icon>publish</mat-icon>העלאה</button>
+        <button mat-stroked-button type="submit"><mat-icon>publish</mat-icon>העלאה</button>
     </form>
 </div>

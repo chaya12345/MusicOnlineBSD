@@ -4,7 +4,7 @@
         <!-- name -->
         <mat-form-field appearance="fill">
             <input matInput placeholder="שם פלייליסט" formControlName="name" required minlength="3">
-            <mat-error *ngIf="playlistAddingForm.controls.title.invalid">{{getNameErrorMessage()}}</mat-error>
+            <mat-error *ngIf="playlistAddingForm.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
         </mat-form-field>
         <!-- title -->
         <mat-form-field appearance="fill">
