@@ -65,7 +65,7 @@
 
     <mat-menu #playlists="matMenu" xPosition="before">
         <span (mouseenter)="isFocus=true" (mouseleave)="isFocus=false; timeoutToHide();">
-            <button mat-menu-item *ngFor="let playlist of _playlists">
+            <button mat-menu-item *ngFor="let playlist of _playlists" (click)="addSongToPlaylist(playlist.id)">
                 <mat-icon>library_music</mat-icon>{{playlist.name}}
             </button>
             <button mat-menu-item (click)="createPlaylist()">
