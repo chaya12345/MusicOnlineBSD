@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { ActivatedRoute } from '@angular/router';
 import { PlayList } from '../classes/playlist';
+import { SongsToPlaylists } from '../classes/songsToPlaylists';
 import { RegisterToNewsletterComponent } from '../register-to-newsletter/register-to-newsletter.component';
+import { SongsToPlaylistsService } from '../services/songs-to-playlists.service';
 import { StorageService } from '../services/storage.service';
 
 @Component({
@@ -27,7 +30,8 @@ export class CustomToolBarComponent implements OnInit {
   isOpened2: boolean = false;
   followUp: boolean = false;
 
-  constructor(private storageService: StorageService, public dialog: MatDialog) {
+  constructor(private storageService: StorageService, public dialog: MatDialog,
+    private activatedRoute: ActivatedRoute,private songsToPlaylistsService:SongsToPlaylistsService, private _snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -116,5 +120,19 @@ export class CustomToolBarComponent implements OnInit {
   createPlaylist(): void {
     this.onCreatePlaylist.emit();
   }
-
+  addSongToPlaylist(playlistId: number): void {
+    let stp: SongsToPlaylists = new SongsToPlaylists;
+    stp.playlistId = playlistId;
+    stp.songId = this.activatedRoute.snapshot.queryParams.songId;
+    try{
+      this.songsToPlaylistsService.addSongToPlaylists(stp).subscribe(
+        succes=>this.openSnackBar("השיר נוסף בהצלחה"),err=>console.log(err)
+      );
+    }catch(err){console.log(err);this.openSnackBar('מצטערים, קרתה תקלה. נסה שוב מאוחר יותר');}
+  }
+  openSnackBar(message: string) {
+    this._snackBar.open(message, '', {
+      duration: 2000,
+    });
+  }
 }
