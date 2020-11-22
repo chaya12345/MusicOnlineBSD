@@ -17,26 +17,28 @@
         <mat-form-field appearance="fill">
             <mat-label>בחירת זמרים</mat-label>
             <mat-select formControlName="singers" multiple>
-              <mat-option *ngFor="let singer of singers" [value]="singer.name">{{singer.name}}</mat-option>
+                <mat-option *ngFor="let singer of singers" [value]="singer.name">{{singer.name}}</mat-option>
             </mat-select>
-          </mat-form-field>
+        </mat-form-field>
         <!-- tags -->
         <mat-form-field appearance="fill">
             <mat-label>בחירת תגיות</mat-label>
             <mat-select formControlName="tags" multiple>
-              <mat-option *ngFor="let tag of tags" [value]="tag.name">{{tag.name}}</mat-option>
+                <mat-option *ngFor="let tag of tags" [value]="tag.name">{{tag.name}}</mat-option>
             </mat-select>
-          </mat-form-field>
+        </mat-form-field>
         <!-- artists -->
         <mat-form-field appearance="fill">
             <mat-label>בחירת אומנים</mat-label>
             <mat-select formControlName="artists" multiple>
-              <mat-option *ngFor="let artist of artists" [value]="artist.name">{{artist.name}}</mat-option>
+                <mat-option *ngFor="let artist of artists" [value]="artist.name">{{artist.name}}</mat-option>
             </mat-select>
-          </mat-form-field>
+        </mat-form-field>
         <!-- content -->
         <editor></editor>
         <!-- upload button -->
-        <button mat-stroked-button type="submit"><mat-icon>publish</mat-icon>העלאה</button>
+        <button mat-stroked-button type="submit">
+            <mat-icon>publish</mat-icon>העלאה
+        </button>
     </form>
 </div>
