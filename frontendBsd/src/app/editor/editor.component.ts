@@ -43,6 +43,7 @@ export class EditorComponent implements OnInit {
   constructor(private contentservice: ContentService, private router: Router) {
     this.contentdata.PageContentTitle = "";
     this.contentdata.PageContent = "";
+    this.article.content = "";
   }
 
   ngOnInit(): void {
