@@ -514,5 +514,24 @@ namespace BL
                 song.count_views++;
             et.SaveChanges();
         }
+        public static void addSong(SongsTBL song,string singers,string artists,string tags)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            song.date = DateTime.Now;
+            List<string> singersName=new List<string>();
+            int len;
+            do
+            {
+                if (singers.Contains(","))
+                    len = singers.IndexOf(',');
+                else len = singers.Length;
+                singersName.Add(singers.Substring(0, len));
+                singers = singers.Substring(len + 1, singers.Length - len - 1);
+            } while (singers.Contains(","));
+            SingersTBL singer =et.SingersTBL.Where(s=>s.name==singersName[0]).FirstOrDefault();
+            if (singer == null)
+                return;
+            song.singerId = singer.id;
+        }
     }
 }

@@ -1,21 +1,29 @@
 <div class="wrap-uploading-song">
     <p class="title-section">העלאת שיר >></p>
-    <form>
+    <form [formGroup]="uploadSong" (ngSubmit)="onSubmit()">
         <!-- name -->
         <mat-form-field appearance="fill">
-            <input matInput placeholder="שם שיר">
+            <input matInput placeholder="שם שיר" formControlName="name">
+            <mat-error *ngIf="uploadSong.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
         </mat-form-field>
         <!-- singer -->
         <mat-form-field appearance="fill">
-            <input matInput placeholder="בחירת זמר">
+            <mat-label>בחירת זמרים</mat-label>
+            <mat-select formControlName="singers" multiple>
+                <mat-option *ngFor="let singer of singersList" [value]="singer.name">{{singer.name}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="uploadSong.controls.singers.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
+
         <!-- title -->
         <mat-form-field appearance="fill">
-            <input matInput placeholder="כותרת">
+            <input matInput placeholder="כותרת" formControlName="title">
+            <mat-error *ngIf="uploadSong.controls.title.invalid">{{getTitleErrorMessage()}}</mat-error>
         </mat-form-field>
         <!-- subtitle -->
         <mat-form-field appearance="fill">
-            <input matInput placeholder="כותרת משנה">
+            <input matInput placeholder="כותרת משנה" formControlName="subtitle">
+            <mat-error *ngIf="uploadSong.controls.subtitle.invalid">{{getSubtitleErrorMessage()}}</mat-error>
         </mat-form-field>
         <!-- image -->
         <uploading-image (onSelect)="selectImage($event)"></uploading-image>
@@ -23,15 +31,24 @@
         <div class="upload-area"></div>
         <!-- tags -->
         <mat-form-field appearance="fill">
-            <input matInput placeholder="בחירת תגיות">
+            <mat-label>בחירת תגיות</mat-label>
+            <mat-select formControlName="tags" multiple>
+                <mat-option *ngFor="let tag of tagsList" [value]="tag.name">{{tag.name}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="uploadSong.controls.singers.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
         <!-- artists -->
         <mat-form-field appearance="fill">
-            <input matInput placeholder="בחירת אומנים">
+            <mat-label>בחירת אומנים</mat-label>
+            <mat-select formControlName="artists" multiple>
+                <mat-option *ngFor="let artist of artistsList" [value]="artist.name">{{artist.name}}</mat-option>
+            </mat-select>
         </mat-form-field>
         <!-- is performance -->
-        <div></div>
+        <mat-checkbox color="warn"(change)="isPreformance=!isPreformance">הופעה</mat-checkbox>
         <!-- upload button -->
-        <button mat-stroked-button><mat-icon>publish</mat-icon>העלאה</button>
+        <button mat-stroked-button>
+            <mat-icon>publish</mat-icon>העלאה
+        </button>
     </form>
 </div>
