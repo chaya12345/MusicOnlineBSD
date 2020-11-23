@@ -10,7 +10,7 @@
         <mat-form-field appearance="fill">
             <mat-label>בחירת זמרים</mat-label>
             <mat-select formControlName="singers" multiple>
-                <mat-option *ngFor="let singer of singersList" [value]="singer.name">{{singer.name}}</mat-option>
+                <mat-option *ngFor="let singer of singers" [value]="singer.name">{{singer.name}}</mat-option>
             </mat-select>
             <mat-error *ngIf="uploadSong.controls.singers.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
@@ -28,24 +28,24 @@
         <!-- image -->
         <uploading-image (onSelect)="selectImage($event)"></uploading-image>
         <!-- song -->
-        <div class="upload-area"></div>
+        <uploading-audio-video-file (onSelect)="selectSong($event)"></uploading-audio-video-file>
         <!-- tags -->
         <mat-form-field appearance="fill">
             <mat-label>בחירת תגיות</mat-label>
             <mat-select formControlName="tags" multiple>
-                <mat-option *ngFor="let tag of tagsList" [value]="tag.name">{{tag.name}}</mat-option>
+                <mat-option *ngFor="let tag of tags" [value]="tag.name">{{tag.name}}</mat-option>
             </mat-select>
-            <mat-error *ngIf="uploadSong.controls.singers.invalid">{{getErrorMessage()}}</mat-error>
+            <mat-error *ngIf="uploadSong.controls.tags.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
         <!-- artists -->
         <mat-form-field appearance="fill">
             <mat-label>בחירת אומנים</mat-label>
             <mat-select formControlName="artists" multiple>
-                <mat-option *ngFor="let artist of artistsList" [value]="artist.name">{{artist.name}}</mat-option>
+                <mat-option #matOption *ngFor="let artist of artists" (onSelectionChange)="selectJob(artist.name, matOption.selected)" [value]="artist.name">{{artist.name}}</mat-option>
             </mat-select>
         </mat-form-field>
         <!-- is performance -->
-        <mat-checkbox color="warn"(change)="isPreformance=!isPreformance">הופעה</mat-checkbox>
+        <mat-checkbox color="warn" (change)="isPerformance=!isPerformance">הופעה</mat-checkbox>
         <!-- upload button -->
         <button mat-stroked-button>
             <mat-icon>publish</mat-icon>העלאה

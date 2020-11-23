@@ -93,6 +93,11 @@ mat-option mat-pseudo-checkbox.mat-pseudo-checkbox {
     margin-left: 8px;
 }
 
+.mat-select-panel mat-option, .mat-select-value-text {
+    font-family: fb Joker, calibri;
+    font-size: 21px !important;
+}
+
 /* main-actions .mat-form-field-flex {
     background-color: rgb(255 255 255 / 4%) !important;
 } */

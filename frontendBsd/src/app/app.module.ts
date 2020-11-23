@@ -128,6 +128,8 @@ import { UploadingArticleComponent } from './uploading-article/uploading-article
 import { AddingPlaylistComponent } from './adding-playlist/adding-playlist.component';
 import { ActivationParadeComponent } from './activation-parade/activation-parade.component';
 import { UploadingImageComponent } from './uploading-image/uploading-image.component';
+import { UploadingAudioVideoFileComponent } from './uploading-audio-video-file/uploading-audio-video-file.component';
+import { SelectJobComponent } from './select-job/select-job.component';
 
 @NgModule({
   declarations: [
@@ -245,7 +247,9 @@ import { UploadingImageComponent } from './uploading-image/uploading-image.compo
     UploadingArticleComponent,
     AddingPlaylistComponent,
     ActivationParadeComponent,
-    UploadingImageComponent
+    UploadingImageComponent,
+    UploadingAudioVideoFileComponent,
+    SelectJobComponent
   ],
   imports: [
     BrowserModule,

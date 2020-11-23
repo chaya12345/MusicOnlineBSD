@@ -26,7 +26,7 @@ namespace ServerMusicBSD.Controllers
                     var postedFile = httpRequest.Files[file];
                     var filePath = HttpContext.Current.Server.MapPath("~/UploadFile/" + postedFile.FileName);
                     filePath = AppDomain.CurrentDomain.BaseDirectory.Substring(0,
-                            AppDomain.CurrentDomain.BaseDirectory.LastIndexOf("Server") - 1) + "\\DAL\\src\\images\\"
+                            AppDomain.CurrentDomain.BaseDirectory.LastIndexOf("Server") - 1) + "\\DAL\\src\\"
                             + folderName + "\\" + postedFile.FileName;
                     postedFile.SaveAs(filePath);
                 }

@@ -53,6 +53,11 @@ namespace BL
                 return Casts.ToSongsDTO.GetSongs(list);
             return null;
         }
+        public static SongsTBL getIdOfSong(string name)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            return et.SongsTBL.Where(s => s != null && s.name == name).FirstOrDefault();
+        }
         public static List<songsDetails> GetSongsIncludePerformances()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
@@ -307,15 +312,19 @@ namespace BL
                 return Casts.ToSongsDTO.GetSongs(list);
             return null;
         }
-        public static void AddSong(SongsTBL song)
+        public static void AddSong(SongsTBL song, string singerName)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try
             {
-                if (song == null)
+                SingersTBL singer = et.SingersTBL.Where(s => s != null && s.name == singerName).FirstOrDefault();
+                if (song == null || singer == null)
                     return;
                 if (song.isPerformance == null)
                     song.isPerformance = false;
+                song.singerId = singer.id;
+                song.count_like = 0;
+                song.count_views = 0;
                 et.SongsTBL.Add(song);
                 et.SaveChanges();
             }

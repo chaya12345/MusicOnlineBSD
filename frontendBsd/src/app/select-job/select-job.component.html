@@ -1,0 +1,15 @@
+<div class="wrap-dialog">
+    <h1 mat-dialog-title>בחר תפקיד לאומן שהוספת</h1>
+    <div mat-dialog-content>
+        <mat-form-field appearance="fill">
+            <mat-label>בחירת תפקיד</mat-label>
+            <mat-select [formControl]="job">
+                <mat-option *ngFor="let job of jobs" [value]="job.name">{{job.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div mat-dialog-actions>
+            <!-- <button mat-stroked-button color="warn" (click)="onNoClick()">בטל</button> -->
+            <button mat-flat-button color="warn" (click)="close()">אשר</button>
+        </div>
+    </div>
+</div>

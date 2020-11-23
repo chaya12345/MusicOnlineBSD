@@ -3,10 +3,20 @@ import { HttpClient } from '@angular/common/http';
 import {  Observable } from 'rxjs';
 import { Song } from '../classes/song';
 import { Singer } from '../classes/singer';
+import { ArtistWithJob } from '../classes/artistWithJob';
+
+export class SongObj
+{
+    public song: Song;
+    public singers: string[];
+    public tags: string[];
+    public artists: ArtistWithJob[];
+}
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class SongService {
 
   baseUrl: string = "https://localhost:44368/api/Songs/";
@@ -50,8 +60,8 @@ export class SongService {
   public getSingerOfSong(songId: number): Observable<Singer> {
     return this.httpClient.get<Singer>(this.baseUrl + "GetSingerOfSong?songId=" + songId);
   }
-  public addSong(song: Song): Observable<any> {
-    return this.httpClient.post(this.baseUrl + "PostSong", song);
+  public addSong(songObj: SongObj): Observable<any> {
+    return this.httpClient.post(this.baseUrl + "PostSong", songObj);
   }
   public deleteSong(songId: number): Observable<any> {
     return this.httpClient.delete(this.baseUrl + "deleteSong?songId=" + songId);

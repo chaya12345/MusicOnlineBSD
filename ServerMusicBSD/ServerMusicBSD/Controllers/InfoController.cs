@@ -4,36 +4,31 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using BL;
 
 namespace ServerMusicBSD.Controllers
 {
     public class InfoController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        public int GetSongsCount()
         {
-            return new string[] { "value1", "value2" };
+            return InfoBL.GetSongsCount();
         }
-
-        // GET api/<controller>/5
-        public string Get(int id)
+        public int GetArticlesCount()
         {
-            return "value";
+            return InfoBL.GetArticlesCount();
         }
-
-        // POST api/<controller>
-        public void Post([FromBody] string value)
+        public int GetPlaylistsCount()
         {
+            return InfoBL.GetPlaylistsCount();
         }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
+        public int GetUsersCount()
         {
+            return InfoBL.GetUsersCount();
         }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
+        public int GetSubsToNewsletterCount()
         {
+            return InfoBL.GetSubsToNewsletterCount();
         }
     }
 }

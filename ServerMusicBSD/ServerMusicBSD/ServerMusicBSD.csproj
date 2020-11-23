@@ -220,6 +220,7 @@
     <Compile Include="Controllers\ArtistsToSongsController.cs" />
     <Compile Include="Controllers\FavoriteSongsToUserController.cs" />
     <Compile Include="Controllers\FollowUpController.cs" />
+    <Compile Include="Controllers\InfoController.cs" />
     <Compile Include="Controllers\ItemsByParameterController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\LatestResponsesController.cs" />

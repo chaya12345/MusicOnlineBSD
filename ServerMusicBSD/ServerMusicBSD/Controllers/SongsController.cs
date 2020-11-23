@@ -12,6 +12,13 @@ using System.Net.Mail;
 
 namespace ServerMusicBSD.Controllers
 {
+    public class SongObj
+    {
+        public SongsTBL song;
+        public string[] singers;
+        public string[] tags;
+        public ArtistWithJob[] artists;
+    }
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SongsController : ApiController
     {
@@ -55,9 +62,19 @@ namespace ServerMusicBSD.Controllers
         {
             return SongsBL.GetSongsByAllTags(tagsResponse.tags);
         }
-        public void PostSong([FromBody] SongsTBL song)
+        public void PostSong([FromBody] SongObj songObj)
         {
-            SongsBL.AddSong(song);
+            if (songObj.singers.Length > 0)
+            {
+                SongsBL.AddSong(songObj.song, songObj.singers[0]);
+                SongsTBL song = SongsBL.getIdOfSong(songObj.song.name);
+                if (song != null)
+                {
+                    TagsToSongsBL.AddTagsToSong(songObj.tags, song.id);
+                    ArtistsToSongsBL.AddArtistsToSong(songObj.artists, song.id);
+                    ArtistsToSongsBL.AddArtistsToDuet(songObj.singers, song.id);
+                }
+            }
         }
         public void DeleteSong(int songId)
         {

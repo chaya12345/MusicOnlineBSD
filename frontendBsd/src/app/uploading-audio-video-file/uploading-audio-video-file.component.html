@@ -1,0 +1,17 @@
+<div class="wrap-uploading-audio-video-file">
+    <button mat-flat-button (click)="fileInput1.click()">
+        <mat-icon>video_library</mat-icon>
+        <span>בחר שיר</span>
+        <input id="fileInput1" accept="video/mp4,audio/mp3,audio/wav,audio/mpeg" #fileInput1 type="file" (change)="audFileSelected($event)"
+            style="display:none;" />
+    </button>
+    <div class="file">
+        <audio controls #figAudio1 *ngIf="typeFile=='audio'">
+            <source [src]="audSrc | sanitizerUrl" type="audio/ogg">
+            <source [src]="audSrc | sanitizerUrl" type="audio/mpeg">
+            <source [src]="audSrc | sanitizerUrl" type="audio/wav">
+        </audio>
+        <video [src]="audSrc | sanitizerUrl" controls #figAudio *ngIf="typeFile=='video'">
+            <source type="video/mp4" [src]="audSrc | sanitizerUrl"></video>
+    </div>
+</div>

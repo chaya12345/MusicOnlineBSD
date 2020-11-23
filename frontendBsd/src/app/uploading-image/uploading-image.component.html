@@ -2,7 +2,7 @@
     <button mat-flat-button (click)="fileInput.click()">
         <mat-icon>image</mat-icon>
         <span>בחר תמונה</span>
-        <input id="file"  accept="video/mp4,image/png,image/jpeg" #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />
+        <input id="file" accept="image/png,image/jpeg" #fileInput type="file" (change)="onFileInput($event)" style="display:none;" />
       </button>
     <div class="image"
         [style.background-image]="'url('+(imageSrc||'../../assets/images/one-continuous-line-drawing-headphones_5137405.png')+')'"></div>

@@ -7,7 +7,6 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class UploadingImageComponent implements OnInit {
   
-  // @Output() onSelect: EventEmitter<FormData> = new EventEmitter<FormData>();
   @Output() onSelect: EventEmitter<File> = new EventEmitter<File>();
   srcResult: any;
   fileName: string = "";
@@ -37,7 +36,6 @@ export class UploadingImageComponent implements OnInit {
       formData.append('file', fileToUpload, fileToUpload.name);
       console.log(formData);
       console.log(fileToUpload);
-      // this.onSelect.emit(formData);
       this.onSelect.emit(fileToUpload);
     }
   }

@@ -39,5 +39,10 @@ namespace BL
                 return Casts.ToArtistsDTO.GetArtistsNames(list);
             return null;
         }
+        public static ArtistsTBL GetArtistByName(string name)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            return et.ArtistsTBL.Where(a => a != null && a.name == name).FirstOrDefault();
+        }
     }
 }

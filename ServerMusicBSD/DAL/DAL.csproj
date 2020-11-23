@@ -198,6 +198,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\images\for_playlists\" />
+    <Folder Include="src\images\for_songs\איציק-דדיה\" />
+    <Folder Include="src\songs\איציק-דדיה\" />
     <Folder Include="src\text\articles_content\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 import { PlaylistSystem } from '../classes/playlistSystem';
 import { Song } from '../classes/song';
 import { PlaylistsSystemService } from '../services/playlists-system.service';
@@ -20,7 +21,7 @@ export class AddingPlaylistComponent implements OnInit {
 
   constructor(private songService: SongService, private uploadService: UploadService,
     private songsToPlaylistsSystemService: SongsToPlaylistsSystemService,
-    private playlistsSystemService: PlaylistsSystemService) {
+    private playlistsSystemService: PlaylistsSystemService, private _snackBar: MatSnackBar) {
     this.playlistAddingForm = new FormGroup({
       name: new FormControl("", [Validators.required, Validators.minLength(3)]),
       title: new FormControl("", [Validators.required, Validators.minLength(3)]),
@@ -57,7 +58,14 @@ export class AddingPlaylistComponent implements OnInit {
         }, err => console.log(err));
       } catch (err) { console.log(err); }
       this.reset();
+      this.openSnackBar("הוספת הפלייליסט בוצעה בהצלחה");
     }
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, '', {
+      duration: 2000,
+    });
   }
 
   reset() {
@@ -72,7 +80,7 @@ export class AddingPlaylistComponent implements OnInit {
 
   saveImage(fileToUpload: File): void {
     if (fileToUpload != null) {
-      this.uploadService.postFile(fileToUpload, "for_playlists").subscribe(
+      this.uploadService.postFile(fileToUpload, "images//for_playlists").subscribe(
         res => console.log(res),
         error => console.log(error)
       );
