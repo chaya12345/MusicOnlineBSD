@@ -82,12 +82,12 @@ namespace BL
             if (userId != null)
             {
                 UsersTBL user = et.UsersTBL.Where(u =>u!=null&& u.id == userId).FirstOrDefault();
-                List<FollowUpTBL> list = et.FollowUpTBL.Where(f =>f!=null&&user!=null&& f.userId == user.id && f.songId != null).ToList();
+                List<FollowUpTBL> list = et.FollowUpTBL.Where(f =>f.userId == user.id && f.songId != null).ToList();
                 if (list == null)
                     return null;
                 foreach (FollowUpTBL item in list)
                 {
-                    SongsTBL song = et.SongsTBL.Where(s =>s!=null&&item!=null&& s.id == item.songId).FirstOrDefault();
+                    SongsTBL song = et.SongsTBL.Where(s =>s.id == item.songId).FirstOrDefault();
                     if (song.name != null)
                         songsName.Add(song.name);
                 }
@@ -124,7 +124,7 @@ namespace BL
                     return null;
                 foreach (FollowUpTBL item in list)
                 {
-                    ArticlesTBL article = et.ArticlesTBL.Where(a =>a!=null&&item!=null&& a.id == item.articleId).FirstOrDefault();
+                    ArticlesTBL article = et.ArticlesTBL.Where(a =>a.id == item.articleId).FirstOrDefault();
                     if (article.title != null)
                         articlesName.Add(article.title);
                 }
