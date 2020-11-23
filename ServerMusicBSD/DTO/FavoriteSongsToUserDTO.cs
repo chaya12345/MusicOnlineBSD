@@ -11,5 +11,6 @@ namespace DTO
         public int id { get; set; }
         public int userId { get; set; }
         public int songId { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
     }
 }

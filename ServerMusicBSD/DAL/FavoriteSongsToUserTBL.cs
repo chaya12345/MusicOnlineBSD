@@ -17,6 +17,7 @@ namespace DAL
         public int id { get; set; }
         public Nullable<int> userId { get; set; }
         public Nullable<int> songId { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
     
         public virtual SongsTBL SongsTBL { get; set; }
         public virtual UsersTBL UsersTBL { get; set; }

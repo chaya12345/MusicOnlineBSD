@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
+import { Singer } from '../classes/singer';
+import { Song } from '../classes/song';
+import { SingerService } from '../services/singer.service';
+import { SongService } from '../services/song.service';
+import { UploadService } from '../services/upload.service';
 
 @Component({
   selector: 'activation-parade',
@@ -7,9 +14,81 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActivationParadeComponent implements OnInit {
 
-  constructor() { }
+  managmentParade:FormGroup;
+  singers:Singer[]=[];
+  songs:Song[]=[];
+  imageFile: File;
+
+  constructor(private singerService:SingerService,private songService:SongService,private uploadService: UploadService,
+    private _snackBar: MatSnackBar) { 
+    this.managmentParade=new FormGroup({
+      image:new FormControl("",Validators.required),
+      year:new FormControl("",Validators.required),
+      songs:new FormControl("",Validators.required),
+      singers:new FormControl("",Validators.required)
+    });
+    this.getSingers();
+    this.getSongs();
+  }
 
   ngOnInit(): void {
+  }
+  getSongs():void{
+    try{
+      this.songService.getSongsPublishedThisYear().subscribe(songs=>this.songs=songs,err=>console.log(err));
+    }catch(err){console.log(err);}
+  }
+  getSingers(): void {
+    try {
+      this.singerService.getSingers().subscribe(singers => {
+        this.singers = singers;
+        this.sort(this.singers);
+      }, err => console.log(err));
+    } catch (err) { console.log(err); }
+  }
+  sort(list: any[]): void {
+    list.sort((a, b) => a.name.localeCompare(b.name));
+  }
+  getErrorMessage(): string {
+    let message: string = this.getError(this.managmentParade.controls.singers);
+    if (message != "") return message;
+  }
+  getError(field: AbstractControl) {
+    if (field.hasError("required"))
+      return "זהו שדה חובה.";
+    else if (field.hasError("minlength"))
+      return "שם לא תקין. (פחות ממינימום תווים שנדרש)";
+    else if (field.hasError("maxLength"))
+      return "שם חורג ממגבלת התווים"
+    return "";
+  }
+  selectImage(fileToUpload: File): void {
+    console.log(fileToUpload.name);
+    this.imageFile = fileToUpload;
+    // this.managmentParade.controls.image.setValue("");
+  }
+
+  saveFile(filesToUpload: File[], folderName: string, folderName2?: string): void {
+    if (filesToUpload != null) {
+      this.uploadService.postFile(filesToUpload, folderName, folderName2).subscribe(
+        res => console.log(res),
+        error => console.log(error)
+      );
+    }
+  }
+  onSubmit(){
+    if(this.managmentParade.valid){
+      this.openSnackBar("הפעלת המצעד בוצעה הבצלחה");
+    }
+    else{
+      this.openSnackBar("יש למלא את כל השדות כהלכה");
+    }
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, '', {
+      duration: 2000,
+    });
   }
 
 }
