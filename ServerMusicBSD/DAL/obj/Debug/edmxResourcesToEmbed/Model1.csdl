@@ -869,6 +869,7 @@
     <Property Name="songId" Type="Int32" />
     <NavigationProperty Name="SongsTBL" Relationship="MusicOnlineModel.FK_FavoriteSongsToUserTBL_SongsTBL" FromRole="FavoriteSongsToUserTBL" ToRole="SongsTBL" />
     <NavigationProperty Name="UsersTBL" Relationship="MusicOnlineModel.FK_FavoriteSongsToUserTBL_UsersTBL" FromRole="FavoriteSongsToUserTBL" ToRole="UsersTBL" />
+    <Property Name="date" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

@@ -57,6 +57,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="userId" Type="int" />
           <Property Name="songId" Type="int" />
+          <Property Name="date" Type="datetime" />
         </EntityType>
         <EntityType Name="FollowUpTBL">
           <Key>
@@ -1801,6 +1802,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <Property Name="songId" Type="Int32" />
           <NavigationProperty Name="SongsTBL" Relationship="MusicOnlineModel.FK_FavoriteSongsToUserTBL_SongsTBL" FromRole="FavoriteSongsToUserTBL" ToRole="SongsTBL" />
           <NavigationProperty Name="UsersTBL" Relationship="MusicOnlineModel.FK_FavoriteSongsToUserTBL_UsersTBL" FromRole="FavoriteSongsToUserTBL" ToRole="UsersTBL" />
+          <Property Name="date" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -2223,6 +2225,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <EntitySetMapping Name="FavoriteSongsToUserTBL">
             <EntityTypeMapping TypeName="MusicOnlineModel.FavoriteSongsToUserTBL">
               <MappingFragment StoreEntitySet="FavoriteSongsToUserTBL">
+                <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="songId" ColumnName="songId" />
                 <ScalarProperty Name="userId" ColumnName="userId" />
                 <ScalarProperty Name="id" ColumnName="id" />

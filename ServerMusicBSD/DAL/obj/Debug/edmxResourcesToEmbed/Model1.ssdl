@@ -52,6 +52,7 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="userId" Type="int" />
     <Property Name="songId" Type="int" />
+    <Property Name="date" Type="datetime" />
   </EntityType>
   <EntityType Name="FollowUpTBL">
     <Key>

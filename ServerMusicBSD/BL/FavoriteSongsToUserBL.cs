@@ -35,6 +35,7 @@ namespace BL
                 if (favoriteSongsToUser == null)
                     return;
                 MusicOnlineEntities et = new MusicOnlineEntities();
+                favoriteSongsToUser.date = DateTime.Now;
                 et.FavoriteSongsToUserTBL.Add(favoriteSongsToUser);
                 et.SaveChanges();
             }
