@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Article } from '../classes/article';
 import { FollowUp } from '../classes/followUp';
 import { User } from '../classes/user';
+import { LogInComponent } from '../log-in/log-in.component';
 import { ArticleService } from '../services/article.service';
 import { FollowUpService } from '../services/follow-up.service';
 
@@ -20,7 +21,8 @@ export class ArticleDetailsComponent implements OnInit {
   similarArticles: Article[] = [];
 
   constructor(private activatedRoute: ActivatedRoute, private articleService: ArticleService,
-    private router: Router, private followUpService: FollowUpService, private _snackBar: MatSnackBar) {
+    private router: Router, private followUpService: FollowUpService, private _snackBar: MatSnackBar,
+    private dialog: MatDialog) {
     try {
       this.articleService.getArticleById(this.activatedRoute.snapshot.queryParams.articleId)
         .subscribe(article => { this.article = article; this.navs.push(this.article.title); }, err => console.log(err));
@@ -88,8 +90,19 @@ export class ArticleDetailsComponent implements OnInit {
         } catch (err) { console.log(err); this.openSnackBar('מצטערים, קרתה תקלה. נסה שוב מאוחר יותר'); }
       }
     }
+    else{
+      this.openLoginDialog();
+    }
   }
-
+  openLoginDialog() {
+    try {
+      const dialogRef = this.dialog.open(LogInComponent, {
+        width: '400px',
+        data: {}
+      });
+      dialogRef.afterClosed().subscribe(result => { });
+    } catch (err) { console.log(err); }
+  }
   openSnackBar(message: string) {
     this._snackBar.open(message, '', {
       duration: 2000,
