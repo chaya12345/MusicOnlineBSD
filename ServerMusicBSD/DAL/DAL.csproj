@@ -102,6 +102,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ParadeTBL.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="PlaylistsSystemTBL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -142,10 +145,13 @@
     <Compile Include="SongsToPlaylistsTBL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="SubscriptionTBL.cs">
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagrams.cs">
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubscriptionTBL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="TagsTBL.cs">
@@ -185,6 +191,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="src\images\for_playlists\" />
+    <Folder Include="src\images\for_songs\איציק-דדיה\" />
+    <Folder Include="src\songs\איציק-דדיה\" />
+    <Folder Include="src\text\articles_content\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -195,12 +207,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\images\for_playlists\" />
-    <Folder Include="src\images\for_songs\איציק-דדיה\" />
-    <Folder Include="src\songs\איציק-דדיה\" />
-    <Folder Include="src\text\articles_content\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

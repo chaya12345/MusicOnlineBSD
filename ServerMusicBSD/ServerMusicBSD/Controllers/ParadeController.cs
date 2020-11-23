@@ -14,49 +14,17 @@ namespace ServerMusicBSD.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ParadeController : ApiController
     {
-        public List<songsDetails> GetSongsInParade()
+        public ParadeTBL GetActiveParade()
         {
-            return SongsToParadeBL.GetSongsInParade();
+            return ParadeBL.GetActiveParade();
         }
-        public void PutVotingToSong(int songId)
+        public ParadeTBL GetParadeByYear(string year)
         {
-            SongsToParadeBL.AddVotingToSong(songId);
+            return ParadeBL.GetParadeByYear(year);
         }
-        public void PutVotingToSongs([FromBody] SongsTBL[] selectionSongs)
+        public bool PostParade(ParadeTBL parade)
         {
-            SongsToParadeBL.AddVotingToSongs(selectionSongs);
-        }
-        public void PostSongToParade([FromBody]SongsToParadeTBL parade)
-        {
-            SongsToParadeBL.AddSongToParade(parade);
-        }
-        public void PostSongsToParade([FromBody]List<SongsToParadeTBL> parades)
-        {
-            SongsToParadeBL.AddSongsToParade(parades);
-        }
-        public void DeleteSongFromParade(int songId)
-        {
-            SongsToParadeBL.DeleteSongFromParade(songId);
-        }
-        public List<SingersDTO> GetSingersInParade()
-        {
-            return SingersToParadeBL.GetSingersInParade();
-        }
-        public void PutVotingToSinger(int singerId)
-        {
-            SingersToParadeBL.AddVotingToSinger(singerId);
-        }
-        public void PostSingerToParade([FromBody]SingersToParadeTBL parade)
-        {
-            SingersToParadeBL.AddSingerToParade(parade);
-        }
-        public void PostSingersToParade([FromBody]List<SingersToParadeTBL> parades)
-        {
-            SingersToParadeBL.AddSingersToParade(parades);
-        }
-        public void DeleteSingerFromParade(int singerId)
-        {
-            SingersToParadeBL.DeleteSingerFromParade(singerId);
+            return ParadeBL.AddParade(parade);
         }
     }
 }

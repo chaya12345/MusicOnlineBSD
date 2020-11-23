@@ -18,13 +18,13 @@ namespace DAL
         public SongsTBL()
         {
             this.ArtistsToSongsTBL = new HashSet<ArtistsToSongsTBL>();
+            this.FavoriteSongsToUserTBL = new HashSet<FavoriteSongsToUserTBL>();
             this.FollowUpTBL = new HashSet<FollowUpTBL>();
             this.ResponsesToSongsTBL = new HashSet<ResponsesToSongsTBL>();
             this.SongsToPlaylistsSystemTBL = new HashSet<SongsToPlaylistsSystemTBL>();
             this.SongsToPlaylistsTBL = new HashSet<SongsToPlaylistsTBL>();
             this.SongsToParadeTBL = new HashSet<SongsToParadeTBL>();
             this.TagsToSongsTBL = new HashSet<TagsToSongsTBL>();
-            this.FavoriteSongsToUserTBL = new HashSet<FavoriteSongsToUserTBL>();
         }
     
         public int id { get; set; }
@@ -46,6 +46,8 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ArtistsToSongsTBL> ArtistsToSongsTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FavoriteSongsToUserTBL> FavoriteSongsToUserTBL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FollowUpTBL> FollowUpTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ResponsesToSongsTBL> ResponsesToSongsTBL { get; set; }
@@ -58,7 +60,5 @@ namespace DAL
         public virtual ICollection<SongsToParadeTBL> SongsToParadeTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TagsToSongsTBL> TagsToSongsTBL { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FavoriteSongsToUserTBL> FavoriteSongsToUserTBL { get; set; }
     }
 }

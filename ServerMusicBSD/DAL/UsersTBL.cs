@@ -17,11 +17,11 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UsersTBL()
         {
+            this.FavoriteSongsToUserTBL = new HashSet<FavoriteSongsToUserTBL>();
             this.FollowUpTBL = new HashSet<FollowUpTBL>();
             this.PlaylistsTBL = new HashSet<PlaylistsTBL>();
             this.SingerSearchingToUserTBL = new HashSet<SingerSearchingToUserTBL>();
             this.SubscriptionTBL = new HashSet<SubscriptionTBL>();
-            this.FavoriteSongsToUserTBL = new HashSet<FavoriteSongsToUserTBL>();
         }
     
         public int id { get; set; }
@@ -36,6 +36,8 @@ namespace DAL
         public string image_location { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<FavoriteSongsToUserTBL> FavoriteSongsToUserTBL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FollowUpTBL> FollowUpTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PlaylistsTBL> PlaylistsTBL { get; set; }
@@ -43,7 +45,5 @@ namespace DAL
         public virtual ICollection<SingerSearchingToUserTBL> SingerSearchingToUserTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SubscriptionTBL> SubscriptionTBL { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FavoriteSongsToUserTBL> FavoriteSongsToUserTBL { get; set; }
     }
 }

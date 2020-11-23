@@ -1,10 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Singer } from '../classes/singer';
-import { SingersToParade } from '../classes/singersToParade';
-import { Song } from '../classes/song';
-import { SongsToParade } from '../classes/songsToParade';
+import { Parade } from '../classes/parade';
 
 @Injectable({
   providedIn: 'root'
@@ -12,39 +9,19 @@ import { SongsToParade } from '../classes/songsToParade';
 export class ParadeService {
 
   baseUrl: string = "https://localhost:44368/api/Parade/";
+
   constructor(private httpClient: HttpClient) { }
 
-  getSongsInParade(): Observable<Song[]> {
-    return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsInParade");
+  getActiveParade(): Observable<Parade> {
+    return this.httpClient.get<Parade>(this.baseUrl + "GetActiveParade");
   }
-  addVotingToSong(songId: number): Observable<any> {
-    return this.httpClient.put(this.baseUrl + "PutVotingToSong?songId=" + songId, songId);
+
+  getParadeByYear(year: string): Observable<Parade> {
+    return this.httpClient.get<Parade>(this.baseUrl + "GetParadeByYear?year=" + year);
   }
-  addVotingToSongs(selectionSongs: Song[]): Observable<any> {
-    return this.httpClient.put(this.baseUrl + "PutVotingToSongs", selectionSongs);
+
+  addParade(parade: Parade): Observable<boolean> {
+    return this.httpClient.post<boolean>(this.baseUrl + "PostParade", parade);
   }
-  addSongToParade(parade: SongsToParade): Observable<any> {
-    return this.httpClient.post(this.baseUrl + "PostSongToParade", parade);
-  }
-  addSongsToParade(parades: SongsToParade[]): Observable<any> {
-    return this.httpClient.post(this.baseUrl + "PostSongsToParade", parades);
-  }
-  deleteSongFromParade(songId: number): Observable<any> {
-    return this.httpClient.delete(this.baseUrl + "DeleteSongFromSurvey?songId=" + songId);
-  }
-  getSingersInParade(): Observable<Singer[]> {
-    return this.httpClient.get<Singer[]>(this.baseUrl + "GetSingersInParade");
-  }
-  addVotingToSinger(singerId: number): Observable<any> {
-    return this.httpClient.put(this.baseUrl + "PutVotingToSinger?singerId=" + singerId, singerId);
-  }
-  addSingerToParade(parade: SingersToParade): Observable<any> {
-    return this.httpClient.post(this.baseUrl + "PostSingerToParade", parade);
-  }
-  addSingersToParade(parades: SingersToParade[]): Observable<any> {
-    return this.httpClient.post(this.baseUrl + "PostSingersToParade", parades);
-  }
-  deleteSingerFromParade(singerId: number): Observable<any> {
-    return this.httpClient.delete(this.baseUrl + "DeleteSingerFromParade?singerId=" + singerId);
-  }
+
 }
