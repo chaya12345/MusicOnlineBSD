@@ -162,7 +162,8 @@ export class SongsComponent implements OnInit {
       }
     }
     else {
-      this.openLoginDialog();
+     // this.openLoginDialog();
+     
     }
   }
 
