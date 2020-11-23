@@ -116,7 +116,8 @@ namespace BL
             if (singers.Length > 1)
             {
                 MusicOnlineEntities et = new MusicOnlineEntities();
-                TagsTBL duet = et.TagsTBL.Where(tag => tag != null && tag.name == "דואט").FirstOrDefault();
+                string duetString = "דואט";
+                TagsTBL duet = et.TagsTBL.Where(tag => tag != null && tag.name == duetString).FirstOrDefault();
                 if (duet != null)
                 {
                     for (int index = 1; index < singers.Length; index++)
