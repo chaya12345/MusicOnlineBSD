@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { User } from '../classes/user';
 import { UsersService } from '../services/users.service';
 
 class TabObj {
@@ -18,6 +19,7 @@ class TabObj {
 })
 export class SettingsComponent implements OnInit {
 
+  user:User=new User;
   permission: boolean = false;
   tabs: TabObj[] = [
     new TabObj("כללי", "reorder"),
@@ -28,6 +30,8 @@ export class SettingsComponent implements OnInit {
   ]
 
   constructor(private usersService: UsersService, private activatedRoute: ActivatedRoute) {
+    this.user.name="יעקב כהן";
+    this.user.mail="yaakov10@gmail.com";
     try {
       parseInt(this.activatedRoute.snapshot.queryParams.manager);
       if (this.usersService.getManager(parseInt(this.activatedRoute.snapshot.queryParams.manager)) != null) {
