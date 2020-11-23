@@ -22,7 +22,7 @@ namespace ServerMusicBSD.Controllers
         {
             return ParadeBL.GetParadeByYear(year);
         }
-        public bool AddParade(ParadeTBL parade)
+        public bool PostParade(ParadeTBL parade)
         {
             return ParadeBL.AddParade(parade);
         }
