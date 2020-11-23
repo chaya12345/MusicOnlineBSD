@@ -15,19 +15,21 @@ namespace ServerMusicBSD.Controllers
     {
         [System.Web.Http.HttpPost]
         [System.Web.Http.ActionName("UploadImage")]
-        public HttpResponseMessage UploadJsonFile(string folderName)
+        public HttpResponseMessage UploadJsonFile(string folderName, string folderName2)
         {
             HttpResponseMessage response = new HttpResponseMessage();
             var httpRequest = HttpContext.Current.Request;
             if (httpRequest.Files.Count > 0)
             {
+                int i = 0;
                 foreach (string file in httpRequest.Files)
                 {
+                    ++i;
                     var postedFile = httpRequest.Files[file];
                     var filePath = HttpContext.Current.Server.MapPath("~/UploadFile/" + postedFile.FileName);
                     filePath = AppDomain.CurrentDomain.BaseDirectory.Substring(0,
                             AppDomain.CurrentDomain.BaseDirectory.LastIndexOf("Server") - 1) + "\\DAL\\src\\"
-                            + folderName + "\\" + postedFile.FileName;
+                            + (i == 1 ? folderName : folderName2) + "\\" + postedFile.FileName;
                     postedFile.SaveAs(filePath);
                 }
             }

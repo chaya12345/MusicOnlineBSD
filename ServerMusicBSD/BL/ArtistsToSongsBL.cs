@@ -121,7 +121,8 @@ namespace BL
                 {
                     for (int index = 1; index < singers.Length; index++)
                     {
-                        ArtistsTBL artist = et.ArtistsTBL.Where(a => a != null && a.name == singers[index]).FirstOrDefault();
+                        string singer = singers[index];
+                        ArtistsTBL artist = et.ArtistsTBL.Where(a => a != null && a.name == singer).FirstOrDefault();
                         int artistId = -1;
                         if (artist == null)
                         {

@@ -57,16 +57,13 @@ export class UploadingSongComponent implements OnInit {
     this.uploadSong.controls.song.setValue("songs/");
     if (this.uploadSong.valid && this.imageFile != null && this.songFile != null) {
       let folderOfSinger = this.convertToFolderName(this.uploadSong.controls.singers.value[0]);
-      this.saveFile(this.imageFile, "images//for_songs//" + folderOfSinger);
-      this.saveFile(this.songFile, "songs//" + folderOfSinger);
       this.uploadSong.controls.image.setValue("for_songs/" + folderOfSinger + "/" + this.imageFile.name);
-      this.uploadSong.controls.song.setValue("songs/" + folderOfSinger + "/" + this.imageFile.name);
+      this.uploadSong.controls.song.setValue(folderOfSinger + "\\" + this.songFile.name);
       let song: Song = new Song;
       song.name = this.uploadSong.controls.name.value;
-      song.file_location = null;
       song.type = null;
       song.title = this.uploadSong.controls.title.value;
-      song.subtitle = this.uploadSong.controls.title.value;
+      song.subtitle = this.uploadSong.controls.subtitle.value;
       song.image_location = null;
       song.content = null;
       song.isPerformance = this.isPerformance;
@@ -85,6 +82,7 @@ export class UploadingSongComponent implements OnInit {
         this.songService.addSong(songObj).subscribe(res => {
           console.log(res);
           this.openSnackBar("העלאת שיר בוצעה בהצלחה");
+          this.saveFile([this.imageFile, this.songFile], "images//for_songs//" + folderOfSinger, "songs//" + folderOfSinger);
         }, err => console.log(err));
       } catch (err) { console.log(err); }
     }
@@ -144,9 +142,9 @@ export class UploadingSongComponent implements OnInit {
     this.uploadSong.controls.image.setValue("for_songs/");
   }
 
-  saveFile(fileToUpload: File, folderName: string): void {
-    if (fileToUpload != null) {
-      this.uploadService.postFile(fileToUpload, folderName).subscribe(
+  saveFile(filesToUpload: File[], folderName: string, folderName2?: string): void {
+    if (filesToUpload != null) {
+      this.uploadService.postFile(filesToUpload, folderName, folderName2).subscribe(
         res => console.log(res),
         error => console.log(error)
       );

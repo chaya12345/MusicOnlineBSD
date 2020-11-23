@@ -322,6 +322,7 @@ namespace BL
                     return;
                 if (song.isPerformance == null)
                     song.isPerformance = false;
+                song.date = DateTime.Now;
                 song.singerId = singer.id;
                 song.count_like = 0;
                 song.count_views = 0;

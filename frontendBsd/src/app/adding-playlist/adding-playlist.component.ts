@@ -80,7 +80,7 @@ export class AddingPlaylistComponent implements OnInit {
 
   saveImage(fileToUpload: File): void {
     if (fileToUpload != null) {
-      this.uploadService.postFile(fileToUpload, "images//for_playlists").subscribe(
+      this.uploadService.postFile([fileToUpload], "images//for_playlists").subscribe(
         res => console.log(res),
         error => console.log(error)
       );
