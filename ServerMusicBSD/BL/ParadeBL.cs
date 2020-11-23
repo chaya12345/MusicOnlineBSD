@@ -13,7 +13,7 @@ namespace BL
         public static ParadeTBL GetActiveParade()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return et.ParadeTBL.Where(p => p != null && p.dateEnd != null).FirstOrDefault();
+            return et.ParadeTBL.Where(p => p != null && p.dateEnd == null).FirstOrDefault();
         }
         public static ParadeTBL GetParadeByYear(string year)
         {

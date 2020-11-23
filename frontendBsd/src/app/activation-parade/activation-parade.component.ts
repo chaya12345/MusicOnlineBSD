@@ -14,18 +14,18 @@ import { UploadService } from '../services/upload.service';
 })
 export class ActivationParadeComponent implements OnInit {
 
-  managmentParade:FormGroup;
-  singers:Singer[]=[];
-  songs:Song[]=[];
+  activationParadeForm: FormGroup;
+  singers: Singer[] = [];
+  songs: Song[] = [];
   imageFile: File;
 
-  constructor(private singerService:SingerService,private songService:SongService,private uploadService: UploadService,
-    private _snackBar: MatSnackBar) { 
-    this.managmentParade=new FormGroup({
-      image:new FormControl("",Validators.required),
-      year:new FormControl("",Validators.required),
-      songs:new FormControl("",Validators.required),
-      singers:new FormControl("",Validators.required)
+  constructor(private singerService: SingerService, private songService: SongService,
+    private uploadService: UploadService, private _snackBar: MatSnackBar) {
+    this.activationParadeForm = new FormGroup({
+      image: new FormControl("", Validators.required),
+      year: new FormControl("", Validators.required),
+      songs: new FormControl("", Validators.required),
+      singers: new FormControl("", Validators.required)
     });
     this.getSingers();
     this.getSongs();
@@ -33,11 +33,13 @@ export class ActivationParadeComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  getSongs():void{
-    try{
-      this.songService.getSongsPublishedThisYear().subscribe(songs=>this.songs=songs,err=>console.log(err));
-    }catch(err){console.log(err);}
+
+  getSongs(): void {
+    try {
+      this.songService.getSongsPublishedThisYear().subscribe(songs => this.songs = songs, err => console.log(err));
+    } catch (err) { console.log(err); }
   }
+
   getSingers(): void {
     try {
       this.singerService.getSingers().subscribe(singers => {
@@ -46,22 +48,22 @@ export class ActivationParadeComponent implements OnInit {
       }, err => console.log(err));
     } catch (err) { console.log(err); }
   }
+
   sort(list: any[]): void {
     list.sort((a, b) => a.name.localeCompare(b.name));
   }
+
   getErrorMessage(): string {
-    let message: string = this.getError(this.managmentParade.controls.singers);
+    let message: string = this.getError(this.activationParadeForm.controls.singers);
     if (message != "") return message;
   }
+
   getError(field: AbstractControl) {
     if (field.hasError("required"))
       return "זהו שדה חובה.";
-    else if (field.hasError("minlength"))
-      return "שם לא תקין. (פחות ממינימום תווים שנדרש)";
-    else if (field.hasError("maxLength"))
-      return "שם חורג ממגבלת התווים"
     return "";
   }
+
   selectImage(fileToUpload: File): void {
     console.log(fileToUpload.name);
     this.imageFile = fileToUpload;
@@ -76,12 +78,13 @@ export class ActivationParadeComponent implements OnInit {
       );
     }
   }
-  onSubmit(){
-    if(this.managmentParade.valid){
-      this.openSnackBar("הפעלת המצעד בוצעה הבצלחה");
+
+  onSubmit() {
+    if (this.activationParadeForm.valid) {
+      this.openSnackBar("הפעלת המצעד בוצעה בהצלחה");
     }
-    else{
-      this.openSnackBar("יש למלא את כל השדות כהלכה");
+    else {
+      // this.openSnackBar("יש למלא את כל השדות כהלכה");
     }
   }
 

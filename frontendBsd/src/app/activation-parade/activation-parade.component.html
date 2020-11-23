@@ -1,6 +1,6 @@
 <div class="wrap-activation-parade">
     <p class="title-section">ניהול מצעד >></p>
-    <form [formGroup]="managmentParade" (ngSubmit)="onSubmit()">
+    <form [formGroup]="activationParadeForm" (ngSubmit)="onSubmit()">
         <!-- activate button -->
         <button mat-stroked-button><mat-icon>slideshow</mat-icon>הפעל מצעד</button>
         <!-- image -->
@@ -15,7 +15,7 @@
             <mat-select formControlName="songs" multiple>
                 <mat-option *ngFor="let song of songs" [value]="song.name">{{song.name}}</mat-option>
             </mat-select>
-            <mat-error *ngIf="managmentParade.controls.songs.invalid">{{getErrorMessage()}}</mat-error>
+            <mat-error *ngIf="activationParadeForm.controls.songs.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
         <!-- singers selections -->
         <mat-form-field appearance="fill">
@@ -23,7 +23,7 @@
             <mat-select formControlName="singers" multiple>
                 <mat-option *ngFor="let singer of singers" [value]="singer.name">{{singer.name}}</mat-option>
             </mat-select>
-            <mat-error *ngIf="managmentParade.controls.singers.invalid">{{getErrorMessage()}}</mat-error>
+            <mat-error *ngIf="activationParadeForm.controls.singers.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
         <!-- submit button -->
         <button mat-stroked-button type="submit"><mat-icon>check_circle</mat-icon>אשר שינויים</button>
