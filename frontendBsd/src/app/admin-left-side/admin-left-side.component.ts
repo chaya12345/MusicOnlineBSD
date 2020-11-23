@@ -17,34 +17,24 @@ export class AdminLeftSideComponent implements OnInit {
   mail: string = "yaakov10@gmail.com";
   img: string = "";
 
-  info: Info[];
-  countSongs: number;
-  countArticles: number;
-  countPlaylists: number;
-  countUsers: number;
-  countNewsletter: number;
+  info: Info[]=[];
 
   constructor(private infoService: InfoService) {
     try {
-      this.infoService.GetSongsCount().subscribe(count => this.countSongs = count, err => console.log(err));
+      this.infoService.GetSongsCount().subscribe(count => this.info.push({ data: "שירים באתר", count: count }), err => console.log(err));
     } catch (err) { console.log(err); }
     try {
-      this.infoService.GetArticlesCount().subscribe(count => this.countArticles = count, err => console.log(err));
+      this.infoService.GetArticlesCount().subscribe(count =>this.info.push({ data: "כתבות באתר", count:count }), err => console.log(err));
     } catch (err) { console.log(err); }
     try {
-      this.infoService.GetPlaylistsCount().subscribe(count => this.countPlaylists = count, err => console.log(err));
+      this.infoService.GetPlaylistsCount().subscribe(count => this.info.push({ data: "פלייליסטים באתר", count: count }), err => console.log(err));
     } catch (err) { console.log(err); }
     try {
-      this.infoService.GetUsersCount().subscribe(count => this.countUsers = count, err => console.log(err));
+      this.infoService.GetUsersCount().subscribe(count => this.info.push({ data: "משתמשים", count: count }), err => console.log(err));
     } catch (err) { console.log(err); }
     try {
-      this.infoService.GetSubsToNewsletterCount().subscribe(count => this.countNewsletter = count, err => console.log(err));
+      this.infoService.GetSubsToNewsletterCount().subscribe(count => this.info.push({ data: "רשומים לניוזלטר", count: count }), err => console.log(err));
     } catch (err) { console.log(err); }
-    this.info = [{ data: "שירים באתר", count: this.countSongs },
-    { data: "כתבות באתר", count: this.countArticles },
-    { data: "פלייליסטים באתר", count: this.countPlaylists },
-    { data: "משתמשים", count: this.countUsers },
-    { data: "רשומים לניוזלטר", count: this.countNewsletter }];
   }
 
   ngOnInit(): void {
