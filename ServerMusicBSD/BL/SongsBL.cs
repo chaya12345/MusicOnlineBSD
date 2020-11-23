@@ -53,7 +53,7 @@ namespace BL
                 return Casts.ToSongsDTO.GetSongs(list);
             return null;
         }
-        public static SongsTBL getIdOfSong(string name)
+        public static SongsTBL getSongByName(string name)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             return et.SongsTBL.Where(s => s != null && s.name == name).FirstOrDefault();
