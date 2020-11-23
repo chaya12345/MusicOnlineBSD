@@ -17,7 +17,9 @@ namespace DAL
         public int id { get; set; }
         public Nullable<int> songId { get; set; }
         public Nullable<int> count { get; set; }
+        public Nullable<int> paradeId { get; set; }
     
+        public virtual ParadeTBL ParadeTBL { get; set; }
         public virtual SongsTBL SongsTBL { get; set; }
     }
 }

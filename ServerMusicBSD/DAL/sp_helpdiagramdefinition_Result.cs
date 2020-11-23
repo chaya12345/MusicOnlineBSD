@@ -10,16 +10,10 @@
 namespace DAL
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class SingersToParadeTBL
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public int id { get; set; }
-        public Nullable<int> paradeId { get; set; }
-        public Nullable<int> singerId { get; set; }
-        public Nullable<int> count { get; set; }
-    
-        public virtual ParadeTBL ParadeTBL { get; set; }
-        public virtual SingersTBL SingersTBL { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
