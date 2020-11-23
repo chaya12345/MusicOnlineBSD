@@ -3,6 +3,8 @@ import { single } from 'rxjs/operators';
 import { Singer } from '../classes/singer';
 import { Song } from '../classes/song';
 import { ParadeService } from '../services/parade.service';
+import { SingersToParadeService } from '../services/singers-to-parade.service';
+import { SongsToParadeService } from '../services/songs-to-parade.service';
 
 @Component({
   selector: 'parade-body',
@@ -27,7 +29,7 @@ export class ParadeBodyComponent implements OnInit {
   selectedSongs: Song[] = [];
   selectedSinger: Singer = new Singer();
 
-  constructor(private paradeService: ParadeService) {
+  constructor(private singersToParadeService: SingersToParadeService, private songsToParadeService: SongsToParadeService) {
     this.yearSingerMessage = this.baseMessageYearSinger;
     this.yearSongMessage = this.baseMessageYearSong;
   }
@@ -67,7 +69,7 @@ export class ParadeBodyComponent implements OnInit {
 
   sendYearSongVoting(): void {
     try {
-      this.paradeService.addVotingToSongs(this.selectedSongs).subscribe(() => {
+      this.songsToParadeService.addVotingToSongs(this.selectedSongs).subscribe(() => {
         this.votedYearSong = true;
         this.yearSongMessage = this.successVotingMessange;
       }, err => console.log(err));
@@ -77,7 +79,7 @@ export class ParadeBodyComponent implements OnInit {
 
   sendYearSingerVoting(): void {
     try {
-      this.paradeService.addVotingToSinger(this.selectedSinger.id).subscribe(() => {
+      this.singersToParadeService.addVotingToSinger(this.selectedSinger.id).subscribe(() => {
         this.votedYearSinger = true;
         this.yearSingerMessage = this.successVotingMessange;
       }, err => console.log(err));

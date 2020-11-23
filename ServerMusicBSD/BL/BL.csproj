@@ -98,6 +98,7 @@
     <Compile Include="ItemsByParameterBL.cs" />
     <Compile Include="JobsBL.cs" />
     <Compile Include="LastestResponsesBL.cs" />
+    <Compile Include="ParadeBL.cs" />
     <Compile Include="PlaylistBL.cs" />
     <Compile Include="PlaylistsSystemBL.cs" />
     <Compile Include="ReportsBL.cs" />

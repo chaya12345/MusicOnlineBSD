@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { Singer } from '../classes/singer';
 import { ParadeService } from '../services/parade.service';
+import { SingersToParadeService } from '../services/singers-to-parade.service';
 
 @Component({
   selector: 'parade-singer-of-the-year',
@@ -17,9 +18,9 @@ export class ParadeSingerOfTheYearComponent implements OnInit {
   // maxCount: number = 10;
   // countPossible: number;
 
-  constructor(private paradeService: ParadeService, private _snackBar: MatSnackBar) { 
+  constructor(private singersToParadeService: SingersToParadeService, private _snackBar: MatSnackBar) { 
     try {
-      this.paradeService.getSingersInParade()
+      this.singersToParadeService.getSingersInParade()
       .subscribe(singers => { this.singers = singers; console.log("singers"); console.log(singers); }, err => console.log(err));
     } catch (err) { console.log(err); }
     // this.countPossible = this.maxCount;

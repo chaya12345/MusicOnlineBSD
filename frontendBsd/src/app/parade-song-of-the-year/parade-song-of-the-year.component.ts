@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material';
 import { Song } from '../classes/song';
 import { SongSelection } from '../classes/songSelection';
 import { ParadeService } from '../services/parade.service';
+import { SongsToParadeService } from '../services/songs-to-parade.service';
 
 @Component({
   selector: 'parade-song-of-the-year',
@@ -16,9 +17,9 @@ export class ParadeSongOfTheYearComponent implements OnInit {
   selectedSongs: Song[] = [];
   maxCount: number = 10;
 
-  constructor(private paradeService: ParadeService, private _snackBar: MatSnackBar) {
+  constructor(private songsToParadeService: SongsToParadeService, private _snackBar: MatSnackBar) {
     try {
-      this.paradeService.getSongsInParade().subscribe(songs => {
+      this.songsToParadeService.getSongsInParade().subscribe(songs => {
         this.songs = songs;
       }, err => console.log(err));
     } catch (err) { console.log(err); }

@@ -13,23 +13,28 @@ namespace BL
         public static List<SingersDTO> GetSingersInParade()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<SingersToParadeTBL> list = et.SingersToParadeTBL.ToList();
-            List<SingersDTO> singers = SingersBL.GetSingers();
             List<SingersDTO> result = new List<SingersDTO>();
-            if (list == null || singers == null)
-                return null;
-            foreach (SingersToParadeTBL item in list)
+            ParadeTBL parade = ParadeBL.GetActiveParade();
+            if (parade != null)
             {
-                SingersDTO relevantsinger = singers.Where(s => s != null && s.id == item.singerId).FirstOrDefault();
-                if (relevantsinger != null)
-                    result.Add(relevantsinger);
+                List<SingersToParadeTBL> list = et.SingersToParadeTBL
+                    .Where(singer => singer != null && singer.paradeId == parade.id).ToList();
+                List<SingersDTO> singers = SingersBL.GetSingers();
+                if (list == null || singers == null)
+                    return null;
+                foreach (SingersToParadeTBL item in list)
+                {
+                    SingersDTO rellevantsinger = singers.Where(s => s != null && s.id == item.singerId).FirstOrDefault();
+                    if (rellevantsinger != null)
+                        result.Add(rellevantsinger);
+                }
             }
-            return result != null ? result : null;
+            return result;
         }
         public static void AddVotingToSinger(int singerId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SingersToParadeTBL Parade = et.SingersToParadeTBL.Where(s => s != null && s.singerId == singerId).FirstOrDefault();
+            SingersToParadeTBL Parade = et.SingersToParadeTBL.Where(singer => singer != null && singer.singerId == singerId).FirstOrDefault();
             if (Parade != null)
             {
                 if (Parade.count == null)
