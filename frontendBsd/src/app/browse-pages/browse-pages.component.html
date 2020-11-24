@@ -15,7 +15,7 @@
     <p class="dotes" [style.visibility]="indexDisplay[indexDisplay.length-1]<indexs.length?'visible':'hidden'">...</p>
 
     <div class="index-button" *ngIf="indexDisplay[indexDisplay.length-1]!=indexs.length"
-        [class.activeIndex]="currentIndex==indexs.length" (click)="currentIndex=1; calcIndex()">
+        [class.activeIndex]="currentIndex==indexs.length" (click)="currentIndex=indexs.length; calcIndex()">
         <button mat-flat-button class="number-button">{{indexs.length}}</button></div>
 
     <button mat-flat-button [disabled]="currentIndex==indexs.length" (click)="currentIndex=currentIndex+1; calcIndex()">
