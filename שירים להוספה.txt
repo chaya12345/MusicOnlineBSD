@@ -118,16 +118,16 @@
 אם זה - נגינה על כלי, כמו - קלרינט, פסנטר וכו' להוסיף - רק אם זה מישהו מוכר (אם הוא בטבלת אומנים כבר ואם לא - תגידי לי מי הוא)
 וזהו. לא צריך - צילום ועריכת וידאו וכל השאר...
 
------ https://www.jdn.co.il/breakingnews/1363998/ (ללא תוכן)
------ https://www.jdn.co.il/breakingnews/1353121/ (ללא תוכן, הטקסט שאחרי התגיות זו כותרת משנה)
------ https://www.jdn.co.il/breakingnews/1393620/ (שימי את זה אצל - שוקי סלומון)
------ https://www.jdn.co.il/breakingnews/1337903/ (התמונה ששמו שם זה סתם תמונה של הזמר ולא של השיר, צריך לחפש במקום אחר את התמונה)
------ https://www.jdn.co.il/breakingnews/1340503/ (הם שמו פה כמויות אומנים, לא צריך את כולם (רק הפקה מוזיקאלית, מיקס ומאסטרינג, ייצוג והפקה (שלום וגשל לבד))
------ https://www.jdn.co.il/music/1334796/
------ https://www.jdn.co.il/breakingnews/1331781/
------ https://www.jdn.co.il/music/1323104/
------ https://www.jdn.co.il/music/1310301/ (שימי תגית קורונה)
------ https://www.jdn.co.il/breakingnews/1307151/ (שימי את זה אצל - חיים ישראל ושימי גם תגיות בידוד וקאבר)
+https://www.jdn.co.il/breakingnews/1363998/ (ללא תוכן)
+https://www.jdn.co.il/breakingnews/1353121/ (ללא תוכן, הטקסט שאחרי התגיות זו כותרת משנה)
+https://www.jdn.co.il/breakingnews/1393620/ (שימי את זה אצל - שוקי סלומון)
+https://www.jdn.co.il/breakingnews/1337903/ (התמונה ששמו שם זה סתם תמונה של הזמר ולא של השיר, צריך לחפש במקום אחר את התמונה)
+https://www.jdn.co.il/breakingnews/1340503/ (הם שמו פה כמויות אומנים, לא צריך את כולם (רק הפקה מוזיקאלית, מיקס ומאסטרינג, ייצוג והפקה (שלום וגשל לבד))
+https://www.jdn.co.il/music/1334796/
+ https://www.jdn.co.il/breakingnews/1331781/
+https://www.jdn.co.il/music/1323104/
+----- https://www.jdn.co.il/music/1310301/ (שימי תגית קורונה, ללא אומנים)
+ https://www.jdn.co.il/breakingnews/1307151/ (שימי את זה אצל - חיים ישראל ושימי גם תגיות בידוד וקאבר)
 https://www.jdn.co.il/music/1306716/ (תגית - פסח, לשים אצל אייל טויטו)
  https://www.jdn.co.il/music/1303492/
  https://www.jdn.co.il/music/1300482/
