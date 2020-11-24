@@ -61,12 +61,21 @@ namespace BL
                 et.SaveChanges();
             }
         }
-        public static List<SongsToPlaylistsDTO> GetSongsToPlaylists(int playlistId)
+        public static List<songsDetails> GetSongsToPlaylists(int playlistId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<SongsToPlaylistsTBL> list = et.SongsToPlaylistsTBL.Where(s => s != null && s.playlistId == playlistId).ToList();
-            if (list != null)
-                return Casts.ToSongsToPlaylistsDTO.GetSongsToPlaylists(list);
+            if (list == null)
+            return null;
+            List<SongsTBL> result = new List<SongsTBL>();
+            foreach (SongsToPlaylistsTBL item in list)
+            {
+                SongsTBL song = et.SongsTBL.Where(s => s.id == item.songId).FirstOrDefault();
+                if (song != null)
+                    result.Add(song);
+            }
+            if (result != null)
+                return Casts.ToSongsDTO.GetSongs(result);
             return null;
         }
         public static void AddLikedSong(int songId, int userId)

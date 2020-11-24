@@ -26,7 +26,7 @@ namespace ServerMusicBSD.Controllers
         {
             SongsToPlaylistsBL.DeleteSong(songId);
         }
-        public List<SongsToPlaylistsDTO> GetSongsToPlaylists(int playlistId)
+        public List<songsDetails> GetSongsToPlaylists(int playlistId)
         {
             return SongsToPlaylistsBL.GetSongsToPlaylists(playlistId);
         }
