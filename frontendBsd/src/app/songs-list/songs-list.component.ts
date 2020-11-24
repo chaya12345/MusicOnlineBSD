@@ -13,8 +13,8 @@ export class SongsListComponent implements OnInit {
 
   @Input() songsList: Song[] = [];
 
-  songsToPage: number = 24;
-  currentIndex: number = 24;
+  songsToPage: number = 20;
+  currentIndex: number = 20;
   items: Song[] = [];
 
   constructor(private cdr: ChangeDetectorRef, public activatedRoute: ActivatedRoute,

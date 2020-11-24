@@ -628,3 +628,14 @@ song-info .mat-slider-track-background {
 editor > div, editor form, editor .ck.ck-reset.ck-editor, editor .ck-editor__main, editor .ck-content {
     height: 93.5%;
 }
+
+div.angular-editor {
+    height: 100%;
+    display: grid;
+    grid-template-rows: min-content auto;
+    padding-bottom: 20px;
+}
+
+.angular-editor-textarea, .angular-editor-textarea {
+    height: 100% !important;
+}

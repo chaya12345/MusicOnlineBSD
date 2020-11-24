@@ -1,5 +1,5 @@
 .wrap-uploading-article {
-    padding-top: 30px;
+    padding-top: 60px;
 }
 
 .title-section {
@@ -44,7 +44,7 @@ form > :nth-child(6) {
 }
 
 form > :nth-child(7) {
-    grid-area: 7 / 1 / 9 / 3;
+    grid-area: 7 / 1 / 10 / 3;
 }
 
 form > :nth-child(8) {

@@ -13,6 +13,7 @@
     background-attachment: fixed;
     background-blend-mode: multiply;
     height: calc(100% + 80px);
+    display: grid;
 }
 
 .wrap-main-actions span {
@@ -26,4 +27,24 @@
 
 .wrap-main-actions a {
     font-size: 19px;
+}
+
+.mini-logo {
+    align-items: center;
+    text-align: center;
+    margin-top: auto;
+}
+
+.mini-logo p {
+    font-size: 25px;
+    margin-bottom: 0;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.mini-logo img {
+    height: 120px;
+    padding: 0 30px;
+    margin-bottom: 7px;
+    border-bottom: solid 1px #ffffff24;
 }

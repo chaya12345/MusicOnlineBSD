@@ -1,7 +1,7 @@
 <div class="wrap-side">
 
-    <div class="title-section"><p>תוצאות דומות</p></div>
-    <si-similar-results [songs]="similarSongs" [articles]="similarArticles"></si-similar-results>
+    <div class="title-section"><p>{{favoriteSongs.length>0?'שירים שאהבת >>':'תוצאות דומות'}}</p></div>
+    <si-similar-results [songs]="similarSongs.length>0?similarSongs:favoriteSongs" [articles]="similarArticles"></si-similar-results>
 
     <div class="title-section"><p>הכתבות החמות של החודש</p></div>
     <si-hot-articles></si-hot-articles>

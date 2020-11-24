@@ -74,10 +74,8 @@ export class UploadingSongComponent implements OnInit {
       songObj.song = song;
       songObj.singers = this.uploadSong.controls.singers.value;
       songObj.tags = this.uploadSong.controls.tags.value;
-      songObj.artists = this.uploadSong.controls.artists.value;
-      // let singers = 
-      // let tags = 
-      // let artists = 
+      // songObj.artists = this.uploadSong.controls.artists.value;
+      songObj.artists = this.artistsWithJobs;
       try {
         this.songService.addSong(songObj).subscribe(res => {
           console.log(res);

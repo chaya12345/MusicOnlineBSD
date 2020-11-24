@@ -1,6 +1,6 @@
 <div class="wrap-responses">
     <h2>תגובות.</h2>
-    <response-adding (onSend)="updateData($event)"></response-adding>
+    <response-adding (onSendToSong)="updateData($event)"></response-adding>
     <response *ngFor="let response of responses" [response]="response"></response>
     <div *ngIf="responses.length==0">
         <span>אין עדיין תגובות.</span>

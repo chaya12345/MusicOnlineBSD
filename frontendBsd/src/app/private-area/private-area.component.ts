@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Song } from '../classes/song';
 import { User } from '../classes/user';
+import { FavoriteSongsToUserService } from '../services/favorite-songs-to-user.service';
 import { ShareDataService } from '../services/share-data.service';
 import { UsersService } from '../services/users.service';
 
@@ -12,8 +14,10 @@ import { UsersService } from '../services/users.service';
 export class PrivateAreaComponent implements OnInit {
 
   user: User;
+  songs: Song[] = [];
+
   constructor(private activatedRoute: ActivatedRoute, private shareDataService: ShareDataService,
-    private usersService: UsersService) {
+    private usersService: UsersService, private favoriteSongsToUserService: FavoriteSongsToUserService) {
     if (this.activatedRoute.snapshot.queryParams.userId) {
       console.log("Yes");
       if (this.shareDataService.userConnectedEventListner()) {
@@ -33,9 +37,20 @@ export class PrivateAreaComponent implements OnInit {
           this.user=element;
         }),err=>console.log(err))
     } catch (err) { console.log(err) }
+    this.getSongs();
   }
 
   ngOnInit(): void {
+  }
+
+  getSongs(): void {
+    try {
+      this.favoriteSongsToUserService.getFavoriteSongsToUser(10).subscribe(songs => {
+          this.songs = songs;
+          this.songs.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
+          this.songs = this.songs.slice(0, 5);
+        }, err => console.log(err));
+    } catch (err) { console.log(err); }
   }
 
 }

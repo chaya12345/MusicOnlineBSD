@@ -12,6 +12,7 @@ export class SideComponent implements OnInit {
 
   @Input() similarSongs?: Song[] = [];
   @Input() similarArticles?: Article[] = [];
+  @Input() favoriteSongs?: Song[] = [];
   latestArticles: Article[] = [];
 
   constructor(private articleService: ArticleService) { 

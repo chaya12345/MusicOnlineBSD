@@ -1,5 +1,5 @@
 <div class="wrap-songs-list">
-  <browse-pages [itemsCount]="songsList.length" itemsToPage="24"></browse-pages>
+  <browse-pages [itemsCount]="songsList.length" [itemsToPage]="songsToPage"></browse-pages>
   <div class="wrap-songs">
     <div class="wrapper">
       <div class="wrap-song" *ngFor="let item of items">
@@ -12,5 +12,5 @@
       <span *ngIf="songsList==null||songsList.length==0">- לא נמצאו שירים בסינון הנוכחי -</span>
     </div>
   </div>
-  <browse-pages [itemsCount]="songsList.length" itemsToPage="24"></browse-pages>
+  <browse-pages [itemsCount]="songsList.length" [itemsToPage]="songsToPage"></browse-pages>
 </div>

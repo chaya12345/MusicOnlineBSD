@@ -192,9 +192,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\images\for_playlists\" />
+    <Folder Include="src\images\for_songs\אברהם-פריד\" />
     <Folder Include="src\images\for_songs\איציק-דדיה\" />
+    <Folder Include="src\images\for_songs\מידד-טסה\" />
+    <Folder Include="src\images\for_songs\קובי-ברומר\" />
+    <Folder Include="src\songs\אברהם-פריד\" />
     <Folder Include="src\songs\איציק-דדיה\" />
+    <Folder Include="src\songs\מידד-טסה\" />
+    <Folder Include="src\songs\קובי-ברומר\" />
     <Folder Include="src\text\articles_content\" />
+    <Folder Include="src\text\songs_content\אברהם-פריד\" />
+    <Folder Include="src\text\songs_content\איציק-דדיה\" />
+    <Folder Include="src\text\songs_content\מידד-טסה\" />
+    <Folder Include="src\text\songs_content\נפתלי-קמפה\" />
+    <Folder Include="src\text\songs_content\קובי-ברומר\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model1.Context.tt">
@@ -207,6 +218,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="src\images\for_songs\נפתלי-קמפה\WhatsApp-Image-2020-06-17-at-13.53.23.jpeg" />
+    <Content Include="src\songs\נפתלי-קמפה\videoplayback-10.mp4" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
