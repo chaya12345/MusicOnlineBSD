@@ -44,12 +44,13 @@ export class PrivMainComponent implements OnInit {
         stp.id = playlistId;
         stp.songs = result;
         this.stpObj.push(stp);
+        console.log(this.stpObj);
       }, err => console.log(err));
     } catch (err) { console.log(err); }
   }
 
   h(playlist){
-    console.log(this.stpObj[this.playlists.indexOf(playlist)]);
+    console.log(this.stpObj[this.playlists.indexOf(playlist)].songs);
   }
 
 }

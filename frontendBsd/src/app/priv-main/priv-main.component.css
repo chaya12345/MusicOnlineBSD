@@ -11,3 +11,20 @@
 .wrap-folder {
     margin: 27px 0;
 }
+
+.wrap-song {
+    display: flex;
+    font-family: fb Joker, calibri;
+    font-size: 21px;
+    margin: 10px 0;
+}
+
+.img {
+    height: 80px;
+    width: 100px;
+    background-position: center;
+    background-size: cover;
+    margin-left: 25px;
+    margin-left: 25px;
+    background-color: #ececec;
+}
