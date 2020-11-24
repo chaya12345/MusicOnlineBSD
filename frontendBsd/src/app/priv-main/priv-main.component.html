@@ -1,7 +1,19 @@
 <div class="wrap-priv-main">
     <p class="title-section">הפלייליסטים שלי >></p>
-    <playlist-folder [name]="'מקפיץ'" [date]="date"></playlist-folder>
-    <playlist-folder [name]="'חתונה'" [date]="date"></playlist-folder>
-    <playlist-folder [name]="'מזרחי כבד'" [date]="date"></playlist-folder>
-    <playlist-folder [name]="'שבת'" [date]="date"></playlist-folder>
+    <div class="wrap-folder" *ngFor="let playlist of playlists">
+        
+    <mat-accordion>
+        <mat-expansion-panel hideToggle>
+          <mat-expansion-panel-header>
+            <!-- <mat-panel-title> -->
+              <playlist-folder [name]="playlist.name" [date]="playlist.date" (click)="h(playlist)"></playlist-folder>
+            <!-- </mat-panel-title> -->
+            <!-- <mat-panel-description>
+              This is a summary of the content
+            </mat-panel-description> -->
+          </mat-expansion-panel-header>
+          <p *ngFor="let song of stpObj[playlists.indexOf(playlist)].songs">{{song.songId}}</p>
+        </mat-expansion-panel>
+        </mat-accordion>
+    </div>
 </div>

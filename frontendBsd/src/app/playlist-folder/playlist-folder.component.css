@@ -9,8 +9,6 @@
         auto auto fit-content(50%) fit-content(50%);
     font-family: fb Joker;
     font-size: 21px;
-    
-    margin-bottom: 25px;
 }
 
 .wrap-playlist-folder > * {

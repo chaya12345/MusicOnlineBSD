@@ -390,6 +390,10 @@ priv-playlists mat-expansion-panel.mat-expansion-panel {
     border: solid 1px #0000001a !important;
 }
 
+priv-main mat-expansion-panel-header {
+    height: 75px !important;
+}
+
 /* #endregion */
 
 /* #region(collapsed) [Spinner] */
