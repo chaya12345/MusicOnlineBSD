@@ -17,14 +17,29 @@
     font-family: fb Joker, calibri;
     font-size: 21px;
     margin: 10px 0;
+    border: solid 1px #00000029;
+    padding: 7px;
+    border-radius: 4px;
 }
 
 .img {
     height: 80px;
-    width: 100px;
+    width: 150px;
     background-position: center;
     background-size: cover;
     margin-left: 25px;
     margin-left: 25px;
     background-color: #ececec;
+}
+
+.details {
+    display: grid;
+    align-items: center;
+}
+
+.wrap-song button {
+    margin: 0 auto 0 20px;
+    position: relative;
+    bottom: 50%;
+    transform: translateY(50%) scale(1.5);
 }
