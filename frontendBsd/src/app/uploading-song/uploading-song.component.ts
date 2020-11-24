@@ -48,9 +48,6 @@ export class UploadingSongComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(">>" + this.convertToFolderName("אברהם פריד") + "<<");
-    console.log(">>" + this.convertToFolderName("מרדכי בן דוד") + "<<");
-    console.log(">>" + this.convertToFolderName("מרדכי בן דוד ") + "<<");
   }
 
   onSubmit(): void {
