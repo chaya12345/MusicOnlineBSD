@@ -1,0 +1,5 @@
+<div id="customToolbar" class="wrap-custom-tool-bar" (mouseenter)="isFocus=true"
+    (mouseleave)="isFocus=false; timeoutToHide();">
+    <log-in-actions (opened)="isOpened1=true" (closed)="isOpened1=false; timeoutToHide();"></log-in-actions>
+    <search-mini (opened)="isOpened2=true" (closed)="isOpened2=false; timeoutToHide();"></search-mini>
+</div>

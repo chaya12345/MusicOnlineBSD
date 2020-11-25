@@ -1,5 +1,5 @@
 <div class="wrap-playlist-section">
-    <custom-tool-bar></custom-tool-bar>
+    <tool-bar-without-menu></tool-bar-without-menu>
     <top *ngIf="loaded" [_title]="playlist.name" [subtitle]="playlist.title" [img]="'../../assets/images/'+playlist.image"></top>
     <current-nav [navs]="navs"></current-nav>
     <songs-in-playlist [songsToPlaylist]="songsList" (onPlay)="updateIndex($event)"></songs-in-playlist>

@@ -14,7 +14,6 @@ export class PerformanceComponent implements OnInit {
   topic: Topics = new Topics;
   navs: string[] = [];
   songs: Song[] = [];
-  orderBy;
 
   constructor(private topicsService: TopicsService, private songService: SongService) {
     try {

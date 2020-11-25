@@ -19,6 +19,7 @@ export class ArticleDetailsComponent implements OnInit {
   article: Article;
   navs: string[] = [];
   similarArticles: Article[] = [];
+  followupAdded: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute, private articleService: ArticleService,
     private router: Router, private followUpService: FollowUpService, private _snackBar: MatSnackBar,
@@ -75,7 +76,13 @@ export class ArticleDetailsComponent implements OnInit {
         try {
           this.followUpService.addFollowUp(followUp)
             .subscribe(result => {
-              result == true ? this.openSnackBar('המעקב נוסף בהצלחה') : this.openSnackBar("כבר קיים מעקב לכתובת המייל שהוזנה");
+              if (result == true) {
+                this.openSnackBar('המעקב נוסף בהצלחה');
+                this.followupAdded = true;
+              } else {
+                this.openSnackBar("כבר קיים מעקב לכתובת המייל שהוזנה");
+                this.followupAdded = true;
+              }
             }, err => console.log(err));
         } catch (err) { console.log(err); this.openSnackBar('מצטערים, קרתה תקלה. נסה שוב מאוחר יותר'); }
       }
@@ -83,14 +90,19 @@ export class ArticleDetailsComponent implements OnInit {
         try {
           this.followUpService.deleteFollowUp(user.id, this.article.id, "article").subscribe(
             result => {
-              result == true ? this.openSnackBar("המעקב הוסר בהצלחה") :
+              if (result == true) {
+                this.openSnackBar("המעקב הוסר בהצלחה");
+                this.followupAdded = false;
+              } else {
                 this.openSnackBar("לא קיים מעקב לכתובת המייל שהוזנה");
+                this.followupAdded = false;
+              }
             }, err => console.log(err)
           );
         } catch (err) { console.log(err); this.openSnackBar('מצטערים, קרתה תקלה. נסה שוב מאוחר יותר'); }
       }
     }
-    else{
+    else {
       this.openLoginDialog();
     }
   }
