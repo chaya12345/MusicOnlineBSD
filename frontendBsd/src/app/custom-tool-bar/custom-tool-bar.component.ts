@@ -22,16 +22,17 @@ export class CustomToolBarComponent implements OnInit {
   @Input() isPublic?: boolean = true;
   @Input() isByName?: boolean = false;
   @Input() _playlists?: PlayList[] = [];
+  @Input() isArticle?: boolean = false;
   currentOrder: string = "date";
   currentDirection: boolean = false;
   currentPosition: number;
   isFocus: boolean = false;
   isOpened1: boolean = false;
   isOpened2: boolean = false;
-  followUp: boolean = false;
+  @Input() followUp: boolean = false;
 
   constructor(private storageService: StorageService, public dialog: MatDialog,
-    private activatedRoute: ActivatedRoute,private songsToPlaylistsService:SongsToPlaylistsService, private _snackBar: MatSnackBar) {
+    private activatedRoute: ActivatedRoute, private songsToPlaylistsService: SongsToPlaylistsService, private _snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -95,12 +96,12 @@ export class CustomToolBarComponent implements OnInit {
   }
 
   addFollowUp(): void {
-    this.followUp = true;
+    // this.followUp = true;
     this.onFollowUp.emit(true);
   }
 
   removeFollowUp(): void {
-    this.followUp = false;
+    // this.followUp = false;
     this.onFollowUp.emit(false);
   }
 
@@ -124,11 +125,11 @@ export class CustomToolBarComponent implements OnInit {
     let stp: SongsToPlaylists = new SongsToPlaylists;
     stp.playlistId = playlistId;
     stp.songId = this.activatedRoute.snapshot.queryParams.songId;
-    try{
+    try {
       this.songsToPlaylistsService.addSongToPlaylists(stp).subscribe(
-        succes=>this.openSnackBar("השיר נוסף בהצלחה"),err=>console.log(err)
+        succes => this.openSnackBar("השיר נוסף בהצלחה"), err => console.log(err)
       );
-    }catch(err){console.log(err);this.openSnackBar('מצטערים, קרתה תקלה. נסה שוב מאוחר יותר');}
+    } catch (err) { console.log(err); this.openSnackBar('מצטערים, קרתה תקלה. נסה שוב מאוחר יותר'); }
   }
   openSnackBar(message: string) {
     this._snackBar.open(message, '', {

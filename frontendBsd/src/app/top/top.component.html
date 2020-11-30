@@ -1,7 +1,7 @@
 <div class="top" id="top-scroll">
     <div class="content">
         <div class="wrapper">
-            <div class="current-img" [style.background-image]="'url('+img+')'" *ngIf="img!=''">
+            <div class="current-img" [style.background-image]="'url('+img+')'" *ngIf="isImage">
                 <mat-spinner class="small-spinner" *ngIf="imgFailed"></mat-spinner>
             </div>
             <div class="current-content">

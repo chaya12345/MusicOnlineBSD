@@ -16,6 +16,7 @@ export class TopComponent implements OnInit {
   @Input() icon?: string;
   @Input() notBlur?: boolean = false;
   imgFailed: boolean = false;
+  isImage:boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute) { }
 
@@ -40,7 +41,6 @@ export class TopComponent implements OnInit {
   ngOnChanges(): void {
     window.onscroll = function () {
       var currentScrollPos = window.pageYOffset;
-
       // 20 is an arbitrary number here, just to make you think if you need the prevScrollpos variable:
       if (currentScrollPos > 20) {
         // I am using 'display' instead of 'top':
@@ -50,6 +50,9 @@ export class TopComponent implements OnInit {
       }
     }
     this.imageExists();
+    if (this.img == (null || undefined || "")||this.img == null || undefined || "")
+      this.isImage = false;
+    else this.isImage = true;
   }
 
   imageExists() {

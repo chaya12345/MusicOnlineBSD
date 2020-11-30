@@ -6,7 +6,7 @@
 
     <mat-menu #menu="matMenu" xPosition="before">
         <span (mouseenter)="isFocus=true" (mouseleave)="isFocus=false; timeoutToHide();">
-            <button mat-menu-item [disabled]="isPublic" (click)="addFollowUp()" *ngIf="!followUp">
+            <button mat-menu-item  [disabled]="isPublic" (click)="addFollowUp()" *ngIf="!followUp">
                 <mat-icon>notifications</mat-icon>
                 <span>הוסף מעקב</span>
             </button>
@@ -18,15 +18,15 @@
                 <mat-icon>sort</mat-icon>
                 <span>סדר לפי</span>
             </button>
-            <button mat-menu-item [disabled]="isPublic" (click)="addSubscription()">
+            <button mat-menu-item [disabled]="(isArticle&&!isPublic)||isPublic" (click)="addSubscription()">
                 <mat-icon>timer</mat-icon>
                 <span>הוסף מנוי לזמר</span>
             </button>
-            <button mat-menu-item [matMenuTriggerFor]="playlists" [disabled]="isPublic" (mouseover)="addToPlaylist()">
+            <button mat-menu-item [matMenuTriggerFor]="playlists" [disabled]="(isArticle&&!isPublic)||isPublic" (mouseover)="addToPlaylist()">
                 <mat-icon>menu_open</mat-icon>
                 <span>הוסף לפלייליסטים שלי</span>
             </button>
-            <button mat-menu-item [disabled]="isPublic" (click)="addReport()">
+            <button mat-menu-item [disabled]="(isArticle&&!isPublic)||isPublic" (click)="addReport()">
                 <mat-icon>report</mat-icon>
                 <span>דווח על שיר</span>
             </button>
