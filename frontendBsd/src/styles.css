@@ -237,6 +237,11 @@ footer p.title-part {
     flex-wrap: wrap;
     height: fit-content;
     padding: 20px 0;
+    
+    width: 1300px;
+    position: relative;
+    right: 50%;
+    transform: translateX(50%);
 }
 
 .reload-more-button {

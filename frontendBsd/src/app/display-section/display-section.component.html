@@ -1,5 +1,5 @@
 <div class="wrap-display-section">
-    <div class="center-content">
+    <div>
         <p class="title-part" [class.darkText]="!dark">{{subject}}</p>
         <div [ngSwitch]="type" [class.spacing]="type=='article'">
             <display-songs *ngSwitchCase="'song'" [songs]="songs" [count]="count"></display-songs>
@@ -9,3 +9,4 @@
         <nav-button [navigate]="url" [text]="navigateText" [dark]="dark"></nav-button>
     </div>
 </div>
+<!--  class="center-content" -->

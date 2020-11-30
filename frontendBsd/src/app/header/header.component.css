@@ -6,15 +6,18 @@
     color: white !important; */
     background-color: white;
     color: #171717 !important;
+    align-items: center;
 }
 
 .wrap-header img {
     height: 100%;
+    flex: 0;
+    margin-left: 2vw;
 }
 
 .slogen {
     display: inline-block;
-    margin: auto 120px;
+    flex: 1;
 }
 
 .slogen p {
@@ -31,7 +34,7 @@
 }
 
 .search {
-    margin: auto auto auto 0;
     display: flex;
     align-items: center;
+    margin-right: auto;
 }
