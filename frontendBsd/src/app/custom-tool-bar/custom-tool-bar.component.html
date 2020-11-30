@@ -18,6 +18,10 @@
                 <mat-icon>sort</mat-icon>
                 <span>סדר לפי</span>
             </button>
+            <button mat-menu-item [matMenuTriggerFor]="filtering" [disabled]="!isPublic">
+                <mat-icon>filter_list</mat-icon>
+                <span>סנן לפי</span>
+            </button>
             <button mat-menu-item [disabled]="(isArticle&&!isPublic)||isPublic" (click)="addSubscription()">
                 <mat-icon>timer</mat-icon>
                 <span>הוסף מנוי לזמר</span>
@@ -70,6 +74,20 @@
             </button>
             <button mat-menu-item (click)="createPlaylist()">
                 <mat-icon>playlist_add</mat-icon>צור פלייליסט
+            </button>
+        </span>
+    </mat-menu>
+
+    <mat-menu #filtering="matMenu" xPosition="before">
+        <span (mouseenter)="isFocus=true" (mouseleave)="isFocus=false; timeoutToHide();">
+            <button mat-menu-item [class.active]="currentDirection==false" (click)="setDirection(false)">
+                <mat-icon>arrow_downward</mat-icon>ג'אנר
+            </button>
+            <button mat-menu-item [class.active]="currentDirection==false" (click)="setDirection(false)">
+                <mat-icon>arrow_downward</mat-icon>חגים
+            </button>
+            <button mat-menu-item [class.active]="currentDirection==false" (click)="setDirection(false)">
+                <mat-icon>arrow_downward</mat-icon>קליפים
             </button>
         </span>
     </mat-menu>
