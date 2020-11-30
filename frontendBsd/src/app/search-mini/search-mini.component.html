@@ -20,7 +20,7 @@
         </button>
         <mat-autocomplete autoActiveFirstOption #autoSingers="matAutocomplete" (opened)="isOpened(true)" (closed)="isOpened(false)">
                 <mat-option *ngFor="let singer of filteredSingers | async" [value]="singer.name">
-                    <a class="search-singer" [href]="'song?filter='+singer.name">{{singer.name}}</a>
+                    <a class="search-singer" [href]="'song?filter='+singer.name" (click)="searchingSinger(singer)">{{singer.name}}</a>
                 </mat-option>
         </mat-autocomplete>
     </mat-form-field>

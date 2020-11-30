@@ -14,21 +14,13 @@ namespace ServerMusicBSD.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SingerSearchingToUserController : ApiController
     {
-        public  List<SingerSearchingToUserDTO> GetAllSingerSearching()
-        {
-            return SingerSearchingToUserBL.GetAllSingerSearching();
-        }
-        public  List<SingerSearchingToUserDTO> GetSingerSearchingToUser(int userId)
+        public  List<SingersDTO> GetSingerSearchingToUser(int userId)
         {
             return SingerSearchingToUserBL.GetSingerSearchingToUser(userId);
         }
         public void PutSingerSearchingToUser(int userId, int singerId)
         {
             SingerSearchingToUserBL.AddSingerSearchingToUser(userId, singerId);
-        }
-        public  SingerSearchingToUserDTO GetLastSearchingToUser(int userId)
-        {
-            return SingerSearchingToUserBL.GetLastSearchingToUser(userId);
         }
     }
 }

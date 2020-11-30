@@ -83,8 +83,7 @@ import { SiPopularSongsComponent } from './si-popular-songs/si-popular-songs.com
 import { EditorComponent } from './editor/editor.component';
 import { BrowsePagesComponent } from './browse-pages/browse-pages.component';
 import { CustomToolBarComponent } from './custom-tool-bar/custom-tool-bar.component';
-import { LogInActionsComponent } from './log-in-actions/log-in-actions.component';
-import { SearchMiniComponent } from './search-mini/search-mini.component';
+import { LogInActionsComponent } from './log-in-actions/log-in-actions.component'
 import { CustomAudioPlayerComponent } from './custom-audio-player/custom-audio-player.component';
 import { PlayerDetailsComponent } from './player-details/player-details.component';
 import { PlayerActionsComponent } from './player-actions/player-actions.component';
@@ -131,6 +130,7 @@ import { UploadingImageComponent } from './uploading-image/uploading-image.compo
 import { UploadingAudioVideoFileComponent } from './uploading-audio-video-file/uploading-audio-video-file.component';
 import { SelectJobComponent } from './select-job/select-job.component';
 import { ToolBarWithoutMenuComponent } from './tool-bar-without-menu/tool-bar-without-menu.component';
+import { SearchMiniComponent } from './search-mini/search-mini.component';
 
 @NgModule({
   declarations: [

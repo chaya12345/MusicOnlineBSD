@@ -26,5 +26,9 @@ namespace ServerMusicBSD.Controllers
         {
             SingersBL.AddSinger(name);
         }
+        public void PutSearchingToSinger(string singerName)
+        {
+            SingersBL.AddSearchingToSinger(singerName);
+        }
     }
 }

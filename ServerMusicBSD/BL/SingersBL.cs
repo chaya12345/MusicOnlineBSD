@@ -49,5 +49,16 @@ namespace BL
                 }
             }
         }
+        public static void AddSearchingToSinger(string singerName)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            SingersTBL singer= et.SingersTBL.Where(s => s.name == singerName).FirstOrDefault();
+            if (singer == null)
+                return;
+            if (singer.searchings == null)
+                singer.searchings = 1;
+            else singer.searchings++;
+            et.SaveChanges();
+        }
     }
 }
