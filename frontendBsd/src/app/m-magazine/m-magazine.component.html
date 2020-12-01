@@ -1,0 +1,9 @@
+<div class="wrap-m-magazine">
+    <div class="m-vertical-container">
+        <p class="title-section">אחרונים במגזין</p>
+        <div class="wrap-article wrap-vertical" *ngFor="let article of magazine">
+            <article [article]="article"></article>
+        </div>
+        <nav-button text="למגזין המלא" navigate="magazine"></nav-button>
+    </div>
+</div>

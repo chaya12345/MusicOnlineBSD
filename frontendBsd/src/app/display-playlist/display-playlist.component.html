@@ -1,4 +1,4 @@
-<div class="main-wrapper">
+<!-- <div class="main-wrapper">
     <div class="wrapper">
         <a [href]="'playlist?playlistId='+playlist.id" class="wrap-popular-playlist"
             [style.background-image]="'url(../../assets/images/'+playlist.image+')'">
@@ -13,4 +13,15 @@
             <mat-icon>visibility</mat-icon>
         </div>
     </a>
+</div> -->
+<div class="wrap-playlist">
+    <a class="img" [href]="'playlist?playlistId='+playlist.id"
+    [style.background-image]="'url(../../assets/images/'+playlist.image+')'"></a>
+    <div class="wrap-details">
+        <a [href]="'playlist?playlistId='+playlist.id"><p class="text">{{playlist.name}}<span> >> {{playlist.title}}</span></p></a>
+        <div class="rating">
+            <span>{{playlist.count_views}}</span>
+            <mat-icon>visibility</mat-icon>
+        </div>
+    </div>
 </div>

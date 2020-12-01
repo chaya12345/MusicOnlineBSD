@@ -1,0 +1,9 @@
+<div class="wrap-m-clips">
+    <div class="m-container">
+        <p class="title-section">קליפים אחרונים</p>
+        <div class="wrap-clip" *ngFor="let clip of clips">
+            <song [song]="clip"></song>
+        </div>
+        <nav-button text="לכל הקליפים" navigate="clips"></nav-button>
+    </div>
+</div>

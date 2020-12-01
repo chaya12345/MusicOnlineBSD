@@ -132,6 +132,11 @@ import { SelectJobComponent } from './select-job/select-job.component';
 import { ToolBarWithoutMenuComponent } from './tool-bar-without-menu/tool-bar-without-menu.component';
 import { SearchMiniComponent } from './search-mini/search-mini.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { MClipsComponent } from './m-clips/m-clips.component';
+import { MMagazineComponent } from './m-magazine/m-magazine.component';
+import { MPerformanceComponent } from './m-performance/m-performance.component';
+import { MPlaylistsComponent } from './m-playlists/m-playlists.component';
+import { MParadeComponent } from './m-parade/m-parade.component';
 
 @NgModule({
   declarations: [
@@ -253,7 +258,12 @@ import { MainPageComponent } from './main-page/main-page.component';
     UploadingAudioVideoFileComponent,
     SelectJobComponent,
     ToolBarWithoutMenuComponent,
-    MainPageComponent
+    MainPageComponent,
+    MClipsComponent,
+    MMagazineComponent,
+    MPerformanceComponent,
+    MPlaylistsComponent,
+    MParadeComponent
   ],
   imports: [
     BrowserModule,

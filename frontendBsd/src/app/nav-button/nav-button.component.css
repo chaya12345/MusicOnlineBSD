@@ -21,7 +21,7 @@ mat-divider {
 
 span {
     grid-area: 1 / 1 / 2 / 2;
-    margin: 0 auto 0 140px;
+    margin: 0 auto 0 200px;
     font-family: fb Ogen;
     font-size: 19px;
     padding: 0 10px;
@@ -36,6 +36,12 @@ a.dark span {
 }
 
 a:hover span {
-    margin: 0 auto 0 170px;
+    margin: 0 auto 0 150px;
     color: #4da0fd;
+}
+
+span p {
+    font-family: fb Joker;
+    display: inline-block;
+    margin-right: 4px;
 }

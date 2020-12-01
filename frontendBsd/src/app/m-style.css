@@ -1,0 +1,35 @@
+.m-container {
+    width: fit-content;
+    position: relative;
+    right: 50%;
+    transform: translateX(50%);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 35px 40px;
+    padding: 100px 0;
+}
+
+.m-vertical-container {
+    padding: 100px 0;
+    display: grid;
+    grid-template-columns: 55vw;
+    grid-row-gap: 35px;
+    width: 55vw;
+    position: relative;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+.wrap-vertical {
+    grid-column: 1 / 2;
+}
+
+p.title-section {
+    grid-column: 1 / 5;
+    font-family: fb Ogen;
+    font-size: 23px;
+}
+
+nav-button {
+    grid-column: 1 / 5;
+}

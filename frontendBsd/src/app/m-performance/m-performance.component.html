@@ -1,0 +1,9 @@
+<div class="wrap-m-performance">
+    <div class="m-container">
+        <p class="title-section">הופעות אחרונות</p>
+        <div class="wrap-performance" *ngFor="let per of performances">
+            <song [song]="per"></song>
+        </div>
+        <nav-button text="לכל ההופעות" navigate="performance"></nav-button>
+    </div>
+</div>
