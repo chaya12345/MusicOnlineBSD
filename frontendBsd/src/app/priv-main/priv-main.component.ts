@@ -4,6 +4,7 @@ import { PlayList } from '../classes/playlist';
 import { Song } from '../classes/song';
 import { PlaylistsService } from '../services/playlists.service';
 import { SongsToPlaylistsService } from '../services/songs-to-playlists.service';
+import { StorageService } from '../services/storage.service';
 
 export class SongsToPlaylistObj {
   id: number;
@@ -22,11 +23,30 @@ export class PrivMainComponent implements OnInit {
   @Output() sendPlaylist: EventEmitter<Song[]> = new EventEmitter();
   @Output() onPlay: EventEmitter<AudioPlaying> = new EventEmitter();
 
-  constructor(private playlistsService: PlaylistsService, private songsToPlaylistService: SongsToPlaylistsService) {
+  index: number = 0;
+  isPlay: boolean = false;
+  playingSongId: number = -1;
+  songsToPlaylist:Song[]=[];
+
+  constructor(private playlistsService: PlaylistsService, private songsToPlaylistService: SongsToPlaylistsService,
+    private storageService:StorageService) {
     this.getPlaylists();
   }
 
   ngOnInit(): void {
+    this.storageService.watchStorage().subscribe((data: string) => {
+      if (data == "index") {
+        this.index = parseInt(sessionStorage.getItem("index"));
+      }
+      else if (data == "playing") {
+        if (sessionStorage.getItem("playing") == "true") {
+          this.playingSongId = this.songsToPlaylist[this.index].id;
+        }
+        else {
+          this.playingSongId = -1;
+        }
+      }
+    });
   }
 
   getPlaylists(): void {
@@ -55,11 +75,34 @@ export class PrivMainComponent implements OnInit {
   h(playlist) {
     console.log(this.stpObj[this.playlists.indexOf(playlist)].songs);
   }
-  sentPlayList(obj: AudioPlaying) {
-    //this.onPlay.emit(obj);
-  }
   movePlaylist(songList: Song[]) {
+    this.songsToPlaylist=songList;
     this.sendPlaylist.emit(songList);
+  }
+  play(song: Song): void {
+    this.isPlay = true;
+    this.playingSongId = this.songsToPlaylist[this.index].id;
+    let obj = new AudioPlaying();
+    obj.index = this.songsToPlaylist.indexOf(song);
+    obj.play = true;
+    this.onPlay.emit(obj);
+  }
+
+  pause(song: Song) {
+    this.isPlay = false;
+    this.playingSongId = -1;
+    let obj = new AudioPlaying();
+    obj.index = this.songsToPlaylist.indexOf(song);
+    obj.play = false;
+    this.onPlay.emit(obj);
+  }
+  toggle(song: Song): void {
+    if (this.isPlay == false || this.index != this.songsToPlaylist.indexOf(song)) {
+      this.play(song);
+    }
+    else {
+      this.pause(song);
+    }
   }
 
 }

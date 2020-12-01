@@ -3,11 +3,13 @@
     <tool-bar-without-menu></tool-bar-without-menu>
     <div class="wrap-content">
         <div class="wrap-main">
-            <priv-info [user]="user" ></priv-info>
+            <priv-info [user]="user"></priv-info>
             <priv-main (sendPlaylist)="onSendPlaylist($event)" (onPlay)="updateIndex($event)"></priv-main>
         </div>
         <side [favoriteSongs]="songs"></side>
     </div>
-    <player-actions [songsList]="songsList" [playingObj]="playingObj"></player-actions>
+    <div *ngIf="check()">
+        <custom-audio-player [songsList]="songsList" [playingObj]="playingObj"></custom-audio-player>
+    </div>
     <footer></footer>
 </div>

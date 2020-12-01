@@ -12,10 +12,11 @@
               This is a summary of the content
             </mat-panel-description> -->
           </mat-expansion-panel-header>
-          <div class="wrap-song" *ngFor="let song of stpObj[playlists.indexOf(playlist)].songs">
+          <div class="wrap-song" *ngFor="let song of stpObj[playlists.indexOf(playlist)].songs"  (click)="toggle(song)">
             <div class="img" [style.background-image]="'url(../../assets/images/'+song.image_location+')'"></div>
             <div class="details"><strong>{{song.name}}</strong><span>{{song.singerName}}</span></div>
-            <button mat-icon-button (click)="sentPlayList($event)"><mat-icon>play_circle_fill</mat-icon></button>
+            <button mat-icon-button *ngIf="playingSongId!=song.id" (click)="playingSongId=song.id" ><mat-icon>play_circle_fill</mat-icon></button>
+            <button mat-mini-fab *ngIf="playingSongId==song.id" (click)="playingSongId=(-1)"><mat-icon>pause</mat-icon></button>
           </div>
         </mat-expansion-panel>
         </mat-accordion>

@@ -61,4 +61,9 @@ export class PrivateAreaComponent implements OnInit {
   updateIndex(obj: AudioPlaying): void {
     this.playingObj = obj;
   }
+  check(): boolean {
+    if (this.songsList.length > 0)
+      return true;
+    return false;
+  }
 }
