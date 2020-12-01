@@ -6,7 +6,7 @@
         <mat-expansion-panel hideToggle>
           <mat-expansion-panel-header>
             <!-- <mat-panel-title> -->
-              <playlist-folder [name]="playlist.name" [date]="playlist.date" (click)="h(playlist)"></playlist-folder>
+              <playlist-folder [name]="playlist.name" [date]="playlist.date" [id]="playlist.id"(playlist)="movePlaylist($event)" (click)="h(playlist)"></playlist-folder>
             <!-- </mat-panel-title> -->
             <!-- <mat-panel-description>
               This is a summary of the content
@@ -15,7 +15,7 @@
           <div class="wrap-song" *ngFor="let song of stpObj[playlists.indexOf(playlist)].songs">
             <div class="img" [style.background-image]="'url(../../assets/images/'+song.image_location+')'"></div>
             <div class="details"><strong>{{song.name}}</strong><span>{{song.singerName}}</span></div>
-            <button mat-icon-button><mat-icon>play_circle_fill</mat-icon></button>
+            <button mat-icon-button (click)="sentPlayList($event)"><mat-icon>play_circle_fill</mat-icon></button>
           </div>
         </mat-expansion-panel>
         </mat-accordion>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AudioPlaying } from '../classes/audioPlaying';
 import { PlayList } from '../classes/playlist';
 import { Song } from '../classes/song';
 import { PlaylistsService } from '../services/playlists.service';
@@ -18,6 +19,8 @@ export class PrivMainComponent implements OnInit {
 
   playlists: PlayList[] = [];
   stpObj: SongsToPlaylistObj[] = [];
+  @Output() sendPlaylist: EventEmitter<Song[]> = new EventEmitter();
+  @Output() onPlay: EventEmitter<AudioPlaying> = new EventEmitter();
 
   constructor(private playlistsService: PlaylistsService, private songsToPlaylistService: SongsToPlaylistsService) {
     this.getPlaylists();
@@ -49,8 +52,14 @@ export class PrivMainComponent implements OnInit {
     } catch (err) { console.log(err); }
   }
 
-  h(playlist){
+  h(playlist) {
     console.log(this.stpObj[this.playlists.indexOf(playlist)].songs);
+  }
+  sentPlayList(obj: AudioPlaying) {
+    //this.onPlay.emit(obj);
+  }
+  movePlaylist(songList: Song[]) {
+    this.sendPlaylist.emit(songList);
   }
 
 }
