@@ -24,7 +24,7 @@ export class SongDetailsComponent implements OnInit {
   constructor(private httpClient: HttpClient, private songService: SongService,
     private router: Router, private activatedRoute: ActivatedRoute) {
     this.navs.push("חדש במוזיקה");
-    //TO-DO
+    //TODO
     // try {
     //   let id: number = Number(this.activatedRoute.snapshot.queryParams.songId);
     //   songService.addViewToSong(id).subscribe();

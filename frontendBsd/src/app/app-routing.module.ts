@@ -15,6 +15,7 @@ import {
   AuthGuardService as AuthGuard 
 } from './services/auth-guard.service';
 import { AdminComponent } from './admin/admin.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 
 const routes: Routes = [{
@@ -23,6 +24,9 @@ const routes: Routes = [{
 }, {
   path: "home",
   component: HomePageComponent
+}, {
+  path: "main",
+  component: MainPageComponent
 }, {
   path: "song",
   component: SongsComponent

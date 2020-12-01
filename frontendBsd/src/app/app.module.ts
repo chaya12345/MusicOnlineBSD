@@ -131,6 +131,7 @@ import { UploadingAudioVideoFileComponent } from './uploading-audio-video-file/u
 import { SelectJobComponent } from './select-job/select-job.component';
 import { ToolBarWithoutMenuComponent } from './tool-bar-without-menu/tool-bar-without-menu.component';
 import { SearchMiniComponent } from './search-mini/search-mini.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -251,7 +252,8 @@ import { SearchMiniComponent } from './search-mini/search-mini.component';
     UploadingImageComponent,
     UploadingAudioVideoFileComponent,
     SelectJobComponent,
-    ToolBarWithoutMenuComponent
+    ToolBarWithoutMenuComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,

@@ -195,17 +195,15 @@
     <Folder Include="src\images\for_songs\אברהם-פריד\" />
     <Folder Include="src\images\for_songs\איציק-דדיה\" />
     <Folder Include="src\images\for_songs\מידד-טסה\" />
-    <Folder Include="src\images\for_songs\קובי-ברומר\" />
+    <Folder Include="src\images\for_songs\נחמן-גולדברג\" />
     <Folder Include="src\songs\אברהם-פריד\" />
     <Folder Include="src\songs\איציק-דדיה\" />
     <Folder Include="src\songs\מידד-טסה\" />
-    <Folder Include="src\songs\קובי-ברומר\" />
+    <Folder Include="src\songs\נחמן-גולדברג\" />
     <Folder Include="src\text\articles_content\" />
     <Folder Include="src\text\songs_content\אברהם-פריד\" />
     <Folder Include="src\text\songs_content\איציק-דדיה\" />
     <Folder Include="src\text\songs_content\מידד-טסה\" />
-    <Folder Include="src\text\songs_content\נפתלי-קמפה\" />
-    <Folder Include="src\text\songs_content\קובי-ברומר\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model1.Context.tt">
@@ -218,8 +216,19 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="src\images\for_songs\אייל-טויטו\WhatsApp-Image-2020-04-06-at-11.40.38.jpeg" />
+    <Content Include="src\images\for_songs\חיים-ישראל\__צילום-מסך-270-2048x1152.png" />
     <Content Include="src\images\for_songs\נפתלי-קמפה\WhatsApp-Image-2020-06-17-at-13.53.23.jpeg" />
+    <Content Include="src\images\for_songs\קובי-ברומר\עטיפת-הסינגל--560x315.jpg" />
+    <Content Include="src\songs\אייל-טויטו\ff2edc285413b7613acd72974e119367.mp4" />
+    <Content Include="src\songs\חיים-ישראל\videoplayback-4-1.mp4" />
     <Content Include="src\songs\נפתלי-קמפה\videoplayback-10.mp4" />
+    <Content Include="src\songs\קובי-ברומר\videoplayback-5.mp4" />
+    <Content Include="src\text\songs_content\אייל-טויטו\מיד-נגאלים.txt" />
+    <Content Include="src\text\songs_content\חיים-ישראל\שירת-הבקשות.txt" />
+    <Content Include="src\text\songs_content\נחמן-גולדברג\אמר-ה-ליעקב.txt" />
+    <Content Include="src\text\songs_content\נפתלי-קמפה\להודות.txt" />
+    <Content Include="src\text\songs_content\קובי-ברומר\יאללה-לרקוד.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
