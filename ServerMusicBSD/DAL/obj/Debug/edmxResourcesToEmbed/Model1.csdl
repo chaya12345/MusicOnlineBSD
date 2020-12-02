@@ -372,7 +372,6 @@
     <Property Name="image_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="isPerformance" Type="Boolean" />
-    <Property Name="lastViewingDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="GetNewSong">
     <Key>
@@ -392,7 +391,6 @@
     <Property Name="image_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="isPerformance" Type="Boolean" />
-    <Property Name="lastViewingDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="lastViews">
     <Key>
@@ -404,8 +402,8 @@
     <Property Name="subtitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="date" Type="DateTime" Precision="3" />
     <Property Name="lastViewingDate" Type="DateTime" Precision="3" />
-    <Property Name="type" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <EntityType Name="latestResponses">
     <Key>

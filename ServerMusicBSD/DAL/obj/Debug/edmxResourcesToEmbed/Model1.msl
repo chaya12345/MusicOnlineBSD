@@ -354,12 +354,12 @@
     <EntitySetMapping Name="lastViews">
       <EntityTypeMapping TypeName="MusicOnlineModel.lastViews">
         <MappingFragment StoreEntitySet="lastViews">
-          <ScalarProperty Name="image" ColumnName="image" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="subtitle" ColumnName="subtitle" />
           <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="lastViewingDate" ColumnName="lastViewingDate" />
+          <ScalarProperty Name="image" ColumnName="image" />
           <ScalarProperty Name="type" ColumnName="type" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -28,6 +28,5 @@ namespace DAL
         public string image_location { get; set; }
         public string content { get; set; }
         public Nullable<bool> isPerformance { get; set; }
-        public Nullable<System.DateTime> lastViewingDate { get; set; }
     }
 }
