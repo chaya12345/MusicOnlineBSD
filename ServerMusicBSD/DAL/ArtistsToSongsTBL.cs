@@ -19,8 +19,8 @@ namespace DAL
         public Nullable<int> artistId { get; set; }
         public Nullable<int> jobId { get; set; }
     
+        public virtual ArtistsTBL ArtistsTBL { get; set; }
         public virtual JobTBL JobTBL { get; set; }
         public virtual SongsTBL SongsTBL { get; set; }
-        public virtual ArtistsTBL ArtistsTBL { get; set; }
     }
 }

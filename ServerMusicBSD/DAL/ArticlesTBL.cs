@@ -39,6 +39,7 @@ namespace DAL
         public Nullable<long> count_views { get; set; }
         public Nullable<long> count_like { get; set; }
         public Nullable<long> count_responses { get; set; }
+        public Nullable<System.DateTime> lastViewingDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FollowUpTBL> FollowUpTBL { get; set; }

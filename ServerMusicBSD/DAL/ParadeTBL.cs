@@ -17,7 +17,6 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ParadeTBL()
         {
-            this.SingersToParadeTBL = new HashSet<SingersToParadeTBL>();
             this.SongsToParadeTBL = new HashSet<SongsToParadeTBL>();
         }
     
@@ -27,8 +26,6 @@ namespace DAL
         public Nullable<System.DateTime> dateEnd { get; set; }
         public string image { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SingersToParadeTBL> SingersToParadeTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SongsToParadeTBL> SongsToParadeTBL { get; set; }
     }
