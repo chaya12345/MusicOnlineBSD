@@ -47,6 +47,9 @@ export class PrivateAreaComponent implements OnInit {
   }
   onSendPlaylist(songs: Song[]) {
     this.songsList = songs;
+    this.playingObj = new AudioPlaying();
+    this.playingObj.index = 0;
+    this.playingObj.play = false;
   }
 
   getSongs(): void {

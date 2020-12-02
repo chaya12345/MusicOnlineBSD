@@ -83,7 +83,7 @@ export class PrivMainComponent implements OnInit {
     this.isPlay = true;
     this.playingSongId = this.songsToPlaylist[this.index].id;
     let obj = new AudioPlaying();
-    obj.index = this.songsToPlaylist.indexOf(song);
+    obj.index = this.songsToPlaylist.findIndex(x=>x.id==song.id);
     obj.play = true;
     this.onPlay.emit(obj);
   }
@@ -92,12 +92,13 @@ export class PrivMainComponent implements OnInit {
     this.isPlay = false;
     this.playingSongId = -1;
     let obj = new AudioPlaying();
-    obj.index = this.songsToPlaylist.indexOf(song);
+    obj.index =this.songsToPlaylist.findIndex(x=>x.id==song.id);
     obj.play = false;
     this.onPlay.emit(obj);
   }
-  toggle(song: Song): void {
-    if (this.isPlay == false || this.index != this.songsToPlaylist.indexOf(song)) {
+  toggle(songsList:Song[],song: Song): void {
+    this.movePlaylist(songsList);
+    if (this.isPlay == false || this.index != this.songsToPlaylist.findIndex(x=>x.id==song.id)) {
       this.play(song);
     }
     else {
