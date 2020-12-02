@@ -137,6 +137,9 @@ import { MMagazineComponent } from './m-magazine/m-magazine.component';
 import { MParadeComponent } from './m-parade/m-parade.component';
 import { MPerformanceComponent } from './m-performance/m-performance.component';
 import { MPlaylistsComponent } from './m-playlists/m-playlists.component';
+import { FCommitsComponent } from './f-commits/f-commits.component';
+import { FSingersComponent } from './f-singers/f-singers.component';
+import { FViewedComponent } from './f-viewed/f-viewed.component';
 
 @NgModule({
   declarations: [
@@ -263,7 +266,10 @@ import { MPlaylistsComponent } from './m-playlists/m-playlists.component';
     MMagazineComponent,
     MPerformanceComponent,
     MPlaylistsComponent,
-    MParadeComponent
+    MParadeComponent,
+    FCommitsComponent,
+    FSingersComponent,
+    FViewedComponent
   ],
   imports: [
     BrowserModule,

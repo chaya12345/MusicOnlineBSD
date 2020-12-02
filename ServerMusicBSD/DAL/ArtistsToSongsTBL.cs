@@ -21,5 +21,6 @@ namespace DAL
     
         public virtual JobTBL JobTBL { get; set; }
         public virtual SongsTBL SongsTBL { get; set; }
+        public virtual ArtistsTBL ArtistsTBL { get; set; }
     }
 }
