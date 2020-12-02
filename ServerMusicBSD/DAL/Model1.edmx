@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MusicOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MusicOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AlbumsTBL">
           <Key>
             <PropertyRef Name="id" />
@@ -307,7 +307,6 @@ warning 6002: The table/view 'MusicOnline.dbo.getFavoriteSongs' does not have a 
           <Property Name="image_location" Type="varchar(max)" />
           <Property Name="content" Type="varchar(max)" />
           <Property Name="isPerformance" Type="bit" />
-          <Property Name="lastViewingDate" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'MusicOnline.dbo.GetNewSong' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -329,7 +328,6 @@ warning 6002: The table/view 'MusicOnline.dbo.GetNewSong' does not have a primar
           <Property Name="image_location" Type="varchar(max)" />
           <Property Name="content" Type="varchar(max)" />
           <Property Name="isPerformance" Type="bit" />
-          <Property Name="lastViewingDate" Type="datetime" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'MusicOnline.dbo.lastViews' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -343,6 +341,7 @@ warning 6002: The table/view 'MusicOnline.dbo.lastViews' does not have a primary
           <Property Name="subtitle" Type="varchar(max)" />
           <Property Name="date" Type="datetime" />
           <Property Name="lastViewingDate" Type="datetime" />
+          <Property Name="image" Type="varchar(max)" />
           <Property Name="type" Type="varchar" MaxLength="11" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -802,8 +801,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     [getFavoriteSongs].[subtitle] AS [subtitle], 
     [getFavoriteSongs].[image_location] AS [image_location], 
     [getFavoriteSongs].[content] AS [content], 
-    [getFavoriteSongs].[isPerformance] AS [isPerformance], 
-    [getFavoriteSongs].[lastViewingDate] AS [lastViewingDate]
+    [getFavoriteSongs].[isPerformance] AS [isPerformance]
     FROM [dbo].[getFavoriteSongs] AS [getFavoriteSongs]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="GetNewSong" EntityType="Self.GetNewSong" store:Type="Views" store:Schema="dbo">
@@ -821,8 +819,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     [GetNewSong].[subtitle] AS [subtitle], 
     [GetNewSong].[image_location] AS [image_location], 
     [GetNewSong].[content] AS [content], 
-    [GetNewSong].[isPerformance] AS [isPerformance], 
-    [GetNewSong].[lastViewingDate] AS [lastViewingDate]
+    [GetNewSong].[isPerformance] AS [isPerformance]
     FROM [dbo].[GetNewSong] AS [GetNewSong]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="lastViews" EntityType="Self.lastViews" store:Type="Views" store:Schema="dbo">
@@ -832,6 +829,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     [lastViews].[subtitle] AS [subtitle], 
     [lastViews].[date] AS [date], 
     [lastViews].[lastViewingDate] AS [lastViewingDate], 
+    [lastViews].[image] AS [image], 
     [lastViews].[type] AS [type]
     FROM [dbo].[lastViews] AS [lastViews]</DefiningQuery>
           </EntitySet>
@@ -981,8 +979,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
             <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MusicOnlineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1391,6 +1388,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="lastViewingDate" Type="DateTime" Precision="3" />
           <Property Name="type" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="latestResponses">
           <Key>
@@ -1924,10 +1922,10 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
             <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
           </AssociationSet>
           <FunctionImport Name="itemByName" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemByName_Result)">
-            <Parameter Name="item" Mode="In" Type="String" />
+          <Parameter Name="item" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="itemsByParameter" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemsByParameter_Result)">
-            <Parameter Name="singer" Mode="In" Type="String" />
+          <Parameter Name="singer" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -2263,7 +2261,6 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
                 <ScalarProperty Name="image_location" ColumnName="image_location" />
                 <ScalarProperty Name="content" ColumnName="content" />
                 <ScalarProperty Name="isPerformance" ColumnName="isPerformance" />
-                <ScalarProperty Name="lastViewingDate" ColumnName="lastViewingDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2284,13 +2281,13 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
                 <ScalarProperty Name="image_location" ColumnName="image_location" />
                 <ScalarProperty Name="content" ColumnName="content" />
                 <ScalarProperty Name="isPerformance" ColumnName="isPerformance" />
-                <ScalarProperty Name="lastViewingDate" ColumnName="lastViewingDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="lastViews">
             <EntityTypeMapping TypeName="MusicOnlineModel.lastViews">
               <MappingFragment StoreEntitySet="lastViews">
+                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="subtitle" ColumnName="subtitle" />

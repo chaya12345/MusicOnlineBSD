@@ -20,5 +20,6 @@ namespace DAL
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<System.DateTime> lastViewingDate { get; set; }
         public string type { get; set; }
+        public string image { get; set; }
     }
 }

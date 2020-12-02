@@ -6,3 +6,9 @@ p.f-title-section {
     margin-block: 20px;
     text-align: center;
 }
+
+.f-wrapper {
+    padding-block: 30px;
+    color: white;
+    font-family: assistant;
+}

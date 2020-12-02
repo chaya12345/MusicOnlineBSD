@@ -5,4 +5,5 @@ export class LastViews {
     date?: Date;
     lastViewingDate?: Date;
     type?: string;
+    image?: string;
 }

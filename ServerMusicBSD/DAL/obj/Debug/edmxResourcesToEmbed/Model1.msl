@@ -328,7 +328,6 @@
           <ScalarProperty Name="image_location" ColumnName="image_location" />
           <ScalarProperty Name="content" ColumnName="content" />
           <ScalarProperty Name="isPerformance" ColumnName="isPerformance" />
-          <ScalarProperty Name="lastViewingDate" ColumnName="lastViewingDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -349,13 +348,13 @@
           <ScalarProperty Name="image_location" ColumnName="image_location" />
           <ScalarProperty Name="content" ColumnName="content" />
           <ScalarProperty Name="isPerformance" ColumnName="isPerformance" />
-          <ScalarProperty Name="lastViewingDate" ColumnName="lastViewingDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="lastViews">
       <EntityTypeMapping TypeName="MusicOnlineModel.lastViews">
         <MappingFragment StoreEntitySet="lastViews">
+          <ScalarProperty Name="image" ColumnName="image" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="subtitle" ColumnName="subtitle" />
