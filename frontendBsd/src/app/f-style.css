@@ -1,0 +1,8 @@
+p.f-title-section {
+    padding: 10px;
+    font-family: assistant;
+    border: solid 1px #fbc02d;
+    border-radius: 4px;
+    color: #fbc02d;
+    margin-block: 20px;
+}

@@ -53,6 +53,7 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ArtistsToSongsTBL" Relationship="MusicOnlineModel.FK_ArtistsToSongsTBL_ArtistsTBL" FromRole="ArtistsTBL" ToRole="ArtistsToSongsTBL" />
   </EntityType>
   <EntityType Name="ArtistsToSongsTBL">
     <Key>
@@ -64,6 +65,7 @@
     <Property Name="jobId" Type="Int32" />
     <NavigationProperty Name="JobTBL" Relationship="Self.FK_ArtistsToSongsTBL_JobTBL" FromRole="ArtistsToSongsTBL" ToRole="JobTBL" />
     <NavigationProperty Name="SongsTBL" Relationship="Self.FK_ArtistsToSongsTBL_SongsTBL2" FromRole="ArtistsToSongsTBL" ToRole="SongsTBL" />
+    <NavigationProperty Name="ArtistsTBL" Relationship="MusicOnlineModel.FK_ArtistsToSongsTBL_ArtistsTBL" FromRole="ArtistsToSongsTBL" ToRole="ArtistsTBL" />
   </EntityType>
   <EntityType Name="FavoriteSongsToUserTBL">
     <Key>
@@ -102,10 +104,10 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="year" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="year" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="dateStart" Type="DateTime" Precision="3" />
     <Property Name="dateEnd" Type="DateTime" Precision="3" />
-    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="SingersToParadeTBL" Relationship="Self.FK_SingersToParadeTBL_ParadeTBL" FromRole="ParadeTBL" ToRole="SingersToParadeTBL" />
     <NavigationProperty Name="SongsToParadeTBL" Relationship="Self.FK_SongsToParadeTBL_ParadeTBL" FromRole="ParadeTBL" ToRole="SongsToParadeTBL" />
   </EntityType>
@@ -402,6 +404,8 @@
     <Property Name="date" Type="DateTime" Precision="3" />
     <Property Name="topic" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="topicId" Type="Int32" Nullable="false" />
+    <Property Name="title_res" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="content_res" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="songsDetails">
     <Key>
@@ -954,6 +958,10 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
+    <AssociationSet Name="FK_ArtistsToSongsTBL_ArtistsTBL" Association="MusicOnlineModel.FK_ArtistsToSongsTBL_ArtistsTBL">
+      <End Role="ArtistsTBL" EntitySet="ArtistsTBL" />
+      <End Role="ArtistsToSongsTBL" EntitySet="ArtistsToSongsTBL" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -966,4 +974,16 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
+  <Association Name="FK_ArtistsToSongsTBL_ArtistsTBL">
+    <End Type="MusicOnlineModel.ArtistsTBL" Role="ArtistsTBL" Multiplicity="0..1" />
+    <End Type="MusicOnlineModel.ArtistsToSongsTBL" Role="ArtistsToSongsTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ArtistsTBL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ArtistsToSongsTBL">
+        <PropertyRef Name="artistId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

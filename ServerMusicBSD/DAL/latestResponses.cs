@@ -20,5 +20,7 @@ namespace DAL
         public Nullable<System.DateTime> date { get; set; }
         public string topic { get; set; }
         public int topicId { get; set; }
+        public string title_res { get; set; }
+        public string content_res { get; set; }
     }
 }

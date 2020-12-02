@@ -1,0 +1,18 @@
+.wrap-f-commits {
+    padding-block: 30px;
+    width: fit-content;
+}
+
+.wrap-commit {
+    color: white;
+    padding: 10px;
+    border: solid 1px #ffffff47;
+    width: 300px;
+    border-radius: 4px;
+    font-family: assistant;
+    margin-block: 10px
+}
+
+.wrap-commit p {
+    color: #fbc02d;
+}
