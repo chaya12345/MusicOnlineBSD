@@ -65,7 +65,7 @@
 .side-nav-item:hover {
     background-color: #fbc02d;
     padding: 8px 20px;
-
+    color: black;
 }
 
 .side-nav-item:hover .mat-icon{
@@ -109,7 +109,6 @@
     padding: 5px 15px;
     font-size: 17.5px;
     font-family: assistant;
-    color: black;
 }
 
 .open-nav {
