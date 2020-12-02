@@ -72,6 +72,7 @@
     <Compile Include="Casts\ToItemsByParameterDTO.cs" />
     <Compile Include="Casts\ToJobsDTO.cs" />
     <Compile Include="Casts\ToLastesResponsDTO.cs" />
+    <Compile Include="Casts\ToLastViewsDTO.cs" />
     <Compile Include="Casts\ToPlaylistsDTO.cs" />
     <Compile Include="Casts\ToPlaylistsSystemDTO.cs" />
     <Compile Include="Casts\ToReportsDTO.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="ItemsByParameterBL.cs" />
     <Compile Include="JobsBL.cs" />
     <Compile Include="LastestResponsesBL.cs" />
+    <Compile Include="LastViewsBL.cs" />
     <Compile Include="ParadeBL.cs" />
     <Compile Include="PlaylistBL.cs" />
     <Compile Include="PlaylistsSystemBL.cs" />

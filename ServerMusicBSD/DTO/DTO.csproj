@@ -50,6 +50,7 @@
     <Compile Include="ItemsByParameterDTO.cs" />
     <Compile Include="JobsDTO.cs" />
     <Compile Include="LastesResponsDTO.cs" />
+    <Compile Include="LastViewsDTO.cs" />
     <Compile Include="ParadeDTO.cs" />
     <Compile Include="PlaylistsDTO.cs" />
     <Compile Include="PlaylistsSystemDTO.cs" />
