@@ -365,6 +365,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="latesetViewed">
+      <EntityTypeMapping TypeName="MusicOnlineModel.latesetViewed">
+        <MappingFragment StoreEntitySet="latesetViewed">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="lastViewingDate" ColumnName="lastViewingDate" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="latestResponses">
       <EntityTypeMapping TypeName="MusicOnlineModel.latestResponses">
         <MappingFragment StoreEntitySet="latestResponses">

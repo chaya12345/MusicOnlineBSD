@@ -302,7 +302,6 @@ warning 6002: The table/view 'MusicOnline.dbo.getFavoriteSongs' does not have a 
     <Property Name="image_location" Type="varchar(max)" />
     <Property Name="content" Type="varchar(max)" />
     <Property Name="isPerformance" Type="bit" />
-    <Property Name="lastViewingDate" Type="datetime" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'MusicOnline.dbo.GetNewSong' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -324,11 +323,10 @@ warning 6002: The table/view 'MusicOnline.dbo.GetNewSong' does not have a primar
     <Property Name="image_location" Type="varchar(max)" />
     <Property Name="content" Type="varchar(max)" />
     <Property Name="isPerformance" Type="bit" />
-    <Property Name="lastViewingDate" Type="datetime" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'MusicOnline.dbo.lastViews' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="lastViews">
+warning 6002: The table/view 'MusicOnline.dbo.latesetViewed' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="latesetViewed">
     <Key>
       <PropertyRef Name="id" />
       <PropertyRef Name="type" />
@@ -797,8 +795,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     [getFavoriteSongs].[subtitle] AS [subtitle], 
     [getFavoriteSongs].[image_location] AS [image_location], 
     [getFavoriteSongs].[content] AS [content], 
-    [getFavoriteSongs].[isPerformance] AS [isPerformance], 
-    [getFavoriteSongs].[lastViewingDate] AS [lastViewingDate]
+    [getFavoriteSongs].[isPerformance] AS [isPerformance]
     FROM [dbo].[getFavoriteSongs] AS [getFavoriteSongs]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="GetNewSong" EntityType="Self.GetNewSong" store:Type="Views" store:Schema="dbo">
@@ -816,19 +813,18 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     [GetNewSong].[subtitle] AS [subtitle], 
     [GetNewSong].[image_location] AS [image_location], 
     [GetNewSong].[content] AS [content], 
-    [GetNewSong].[isPerformance] AS [isPerformance], 
-    [GetNewSong].[lastViewingDate] AS [lastViewingDate]
+    [GetNewSong].[isPerformance] AS [isPerformance]
     FROM [dbo].[GetNewSong] AS [GetNewSong]</DefiningQuery>
     </EntitySet>
-    <EntitySet Name="lastViews" EntityType="Self.lastViews" store:Type="Views" store:Schema="dbo">
+    <EntitySet Name="latesetViewed" EntityType="Self.latesetViewed" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
-    [lastViews].[id] AS [id], 
-    [lastViews].[title] AS [title], 
-    [lastViews].[subtitle] AS [subtitle], 
-    [lastViews].[date] AS [date], 
-    [lastViews].[lastViewingDate] AS [lastViewingDate], 
-    [lastViews].[type] AS [type]
-    FROM [dbo].[lastViews] AS [lastViews]</DefiningQuery>
+    [latesetViewed].[id] AS [id], 
+    [latesetViewed].[title] AS [title], 
+    [latesetViewed].[subtitle] AS [subtitle], 
+    [latesetViewed].[date] AS [date], 
+    [latesetViewed].[lastViewingDate] AS [lastViewingDate], 
+    [latesetViewed].[type] AS [type]
+    FROM [dbo].[latesetViewed] AS [latesetViewed]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="latestResponses" EntityType="Self.latestResponses" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
