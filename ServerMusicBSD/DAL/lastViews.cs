@@ -12,7 +12,7 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class latesetViewed
+    public partial class lastViews
     {
         public int id { get; set; }
         public string title { get; set; }

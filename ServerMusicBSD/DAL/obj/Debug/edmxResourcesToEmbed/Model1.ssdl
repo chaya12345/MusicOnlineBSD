@@ -28,6 +28,7 @@
     <Property Name="count_views" Type="bigint" />
     <Property Name="count_like" Type="bigint" />
     <Property Name="count_responses" Type="bigint" />
+    <Property Name="lastViewingDate" Type="datetime" />
   </EntityType>
   <EntityType Name="ArtistsTBL">
     <Key>
@@ -179,6 +180,7 @@
     <Property Name="image_location" Type="varchar(max)" />
     <Property Name="content" Type="varchar(max)" />
     <Property Name="isPerformance" Type="bit" />
+    <Property Name="lastViewingDate" Type="datetime" />
   </EntityType>
   <EntityType Name="SongsToParadeTBL">
     <Key>
@@ -300,6 +302,7 @@ warning 6002: The table/view 'MusicOnline.dbo.getFavoriteSongs' does not have a 
     <Property Name="image_location" Type="varchar(max)" />
     <Property Name="content" Type="varchar(max)" />
     <Property Name="isPerformance" Type="bit" />
+    <Property Name="lastViewingDate" Type="datetime" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'MusicOnline.dbo.GetNewSong' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -321,6 +324,21 @@ warning 6002: The table/view 'MusicOnline.dbo.GetNewSong' does not have a primar
     <Property Name="image_location" Type="varchar(max)" />
     <Property Name="content" Type="varchar(max)" />
     <Property Name="isPerformance" Type="bit" />
+    <Property Name="lastViewingDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MusicOnline.dbo.lastViews' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="lastViews">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="type" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="title" Type="varchar(max)" />
+    <Property Name="subtitle" Type="varchar(max)" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="lastViewingDate" Type="datetime" />
+    <Property Name="type" Type="varchar" MaxLength="11" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'MusicOnline.dbo.latestResponses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -779,7 +797,8 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     [getFavoriteSongs].[subtitle] AS [subtitle], 
     [getFavoriteSongs].[image_location] AS [image_location], 
     [getFavoriteSongs].[content] AS [content], 
-    [getFavoriteSongs].[isPerformance] AS [isPerformance]
+    [getFavoriteSongs].[isPerformance] AS [isPerformance], 
+    [getFavoriteSongs].[lastViewingDate] AS [lastViewingDate]
     FROM [dbo].[getFavoriteSongs] AS [getFavoriteSongs]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="GetNewSong" EntityType="Self.GetNewSong" store:Type="Views" store:Schema="dbo">
@@ -797,8 +816,19 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     [GetNewSong].[subtitle] AS [subtitle], 
     [GetNewSong].[image_location] AS [image_location], 
     [GetNewSong].[content] AS [content], 
-    [GetNewSong].[isPerformance] AS [isPerformance]
+    [GetNewSong].[isPerformance] AS [isPerformance], 
+    [GetNewSong].[lastViewingDate] AS [lastViewingDate]
     FROM [dbo].[GetNewSong] AS [GetNewSong]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="lastViews" EntityType="Self.lastViews" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [lastViews].[id] AS [id], 
+    [lastViews].[title] AS [title], 
+    [lastViews].[subtitle] AS [subtitle], 
+    [lastViews].[date] AS [date], 
+    [lastViews].[lastViewingDate] AS [lastViewingDate], 
+    [lastViews].[type] AS [type]
+    FROM [dbo].[lastViews] AS [lastViews]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="latestResponses" EntityType="Self.latestResponses" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 

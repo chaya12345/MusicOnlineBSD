@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ede2adad1c1a465d8d313796b9f56369" Name="Diagram1">
+      <Diagram DiagramId="906f3fa281184e7185d023d8ba0333bd" Name="Diagram1">
         <EntityTypeShape EntityType="MusicOnlineModel.AlbumsTBL" Width="1.5" PointX="3.75" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.ArticlesTBL" Width="1.5" PointX="9" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.ArtistsTBL" Width="1.5" PointX="6" PointY="12.125" IsExpanded="true" />
@@ -35,7 +35,7 @@
         <EntityTypeShape EntityType="MusicOnlineModel.UsersTBL" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.getFavoriteSongs" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.GetNewSong" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.latesetViewed" Width="1.5" PointX="11.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.lastViews" Width="1.5" PointX="11.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.latestResponses" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.songsDetails" Width="1.5" PointX="13.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="MusicOnlineModel.FK_SongsTBL_AlbumsTBL" ManuallyRouted="false" />

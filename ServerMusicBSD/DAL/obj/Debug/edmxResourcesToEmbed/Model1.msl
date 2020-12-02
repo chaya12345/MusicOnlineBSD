@@ -29,6 +29,7 @@
           <ScalarProperty Name="count_views" ColumnName="count_views" />
           <ScalarProperty Name="count_like" ColumnName="count_like" />
           <ScalarProperty Name="count_responses" ColumnName="count_responses" />
+          <ScalarProperty Name="lastViewingDate" ColumnName="lastViewingDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -195,6 +196,7 @@
           <ScalarProperty Name="image_location" ColumnName="image_location" />
           <ScalarProperty Name="content" ColumnName="content" />
           <ScalarProperty Name="isPerformance" ColumnName="isPerformance" />
+          <ScalarProperty Name="lastViewingDate" ColumnName="lastViewingDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -326,6 +328,7 @@
           <ScalarProperty Name="image_location" ColumnName="image_location" />
           <ScalarProperty Name="content" ColumnName="content" />
           <ScalarProperty Name="isPerformance" ColumnName="isPerformance" />
+          <ScalarProperty Name="lastViewingDate" ColumnName="lastViewingDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -346,20 +349,33 @@
           <ScalarProperty Name="image_location" ColumnName="image_location" />
           <ScalarProperty Name="content" ColumnName="content" />
           <ScalarProperty Name="isPerformance" ColumnName="isPerformance" />
+          <ScalarProperty Name="lastViewingDate" ColumnName="lastViewingDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="lastViews">
+      <EntityTypeMapping TypeName="MusicOnlineModel.lastViews">
+        <MappingFragment StoreEntitySet="lastViews">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="lastViewingDate" ColumnName="lastViewingDate" />
+          <ScalarProperty Name="type" ColumnName="type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="latestResponses">
       <EntityTypeMapping TypeName="MusicOnlineModel.latestResponses">
         <MappingFragment StoreEntitySet="latestResponses">
-          <ScalarProperty Name="content_res" ColumnName="content_res" />
-          <ScalarProperty Name="title_res" ColumnName="title_res" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="type" ColumnName="type" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="topic" ColumnName="topic" />
           <ScalarProperty Name="topicId" ColumnName="topicId" />
+          <ScalarProperty Name="title_res" ColumnName="title_res" />
+          <ScalarProperty Name="content_res" ColumnName="content_res" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
