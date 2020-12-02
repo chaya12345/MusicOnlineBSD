@@ -28,6 +28,7 @@
   margin: 1em;
   padding: 1em 2em;
   /* box-shadow: inset 0 0 0 2px #f45e61; */
+  box-shadow: inset 0 0 0 1px #fbc02d;
   color: #f45e61;
   font-size: inherit;
   font-weight: 700;
@@ -52,23 +53,21 @@
     bottom: 0;
     right: 0;
   }
-  .parade-message:hover {
-    /* color: #0eb7da; */
-  }
+
   .parade-message:hover::before, .parade-message:hover::after {
     width: 100%;
     height: 100%;
     /* height: 80%; */
   }
   .parade-message:hover::before {
-    border-top-color: #0eb7da;
-    border-right-color: #0eb7da;
+    border-top-color: #2196F3; /*#0eb7da;*/
+    border-right-color: #2196F3; /*#0eb7da;*/
     transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
     transition: width 1s ease-out, height 0.25s ease-out 1s;
   }
   .parade-message:hover::after {
-    border-bottom-color: #0eb7da;
-    border-left-color: #0eb7da;
+    border-bottom-color: #2196F3; /*#0eb7da;*/
+    border-left-color: #2196F3; /*#0eb7da;*/
     transition: border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s, height 0.25s ease-out 0.75s;
     transition: border-color 0s ease-out 1.25s, width 1s ease-out 1.25s, height 0.25s ease-out 2.25s;
   }

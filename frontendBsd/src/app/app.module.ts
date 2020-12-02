@@ -134,9 +134,9 @@ import { SearchMiniComponent } from './search-mini/search-mini.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { MClipsComponent } from './m-clips/m-clips.component';
 import { MMagazineComponent } from './m-magazine/m-magazine.component';
+import { MParadeComponent } from './m-parade/m-parade.component';
 import { MPerformanceComponent } from './m-performance/m-performance.component';
 import { MPlaylistsComponent } from './m-playlists/m-playlists.component';
-import { MParadeComponent } from './m-parade/m-parade.component';
 
 @NgModule({
   declarations: [

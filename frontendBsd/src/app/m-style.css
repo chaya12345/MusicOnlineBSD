@@ -26,8 +26,11 @@
 
 p.title-section {
     grid-column: 1 / 5;
-    font-family: fb Ogen;
+    font-family: assistant;
     font-size: 23px;
+    padding: 10px;
+    border: solid 1px #fbc02d;
+    border-radius: 4px;
 }
 
 nav-button {
