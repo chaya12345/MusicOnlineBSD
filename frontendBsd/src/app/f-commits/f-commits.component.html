@@ -1,8 +1,10 @@
 <div class="wrap-f-commits">
     <p class="f-title-section">תגובות אחרונות</p>
-    <div class="wrap-commit" *ngFor="let commit of lastestCommits">
-        <p>{{commit.name}}</p>
-        <span>{{commit.topic}}</span><br>
-        <span class="content">{{commit.title_res}} » {{commit.content_res}}</span>
-    </div>
+    <a [href]="commit.type+'?'+commit.type+'Id='+commit.topicId+'&commitId='+commit.id" *ngFor="let commit of lastestCommits">
+        <div class="wrap-commit">
+            <p>{{commit.name}}</p>
+            <span>{{commit.topic}}</span><br>
+            <span class="content">{{commit.title_res}} » {{commit.content_res}}</span>
+        </div>
+    </a>
 </div>
