@@ -1,6 +1,7 @@
 .wrap-f-commits {
     padding-block: 30px;
     width: fit-content;
+    padding-inline: 50px;
 }
 
 .wrap-commit {
