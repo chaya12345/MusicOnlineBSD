@@ -35,4 +35,5 @@ main-actions {
     padding-right: 100px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    margin-top: 150px;
 }

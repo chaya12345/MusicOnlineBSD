@@ -21,6 +21,8 @@ namespace BL.Casts
             newRespons.topic = lastRespons.topic;
             newRespons.type = lastRespons.type;
             newRespons.topicId = lastRespons.topicId;
+            newRespons.title_res = lastRespons.title_res;
+            newRespons.content_res = lastRespons.content_res;
             return newRespons;
         }
         public static List<LastesResponsDTO> GetLastResponses(List<latestResponses> lastResponses)

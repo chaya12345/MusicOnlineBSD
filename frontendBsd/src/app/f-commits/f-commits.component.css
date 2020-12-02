@@ -6,7 +6,7 @@
 .wrap-commit {
     color: white;
     padding: 10px;
-    border: solid 1px #ffffff47;
+    /* border: solid 1px #ffffff47; */
     width: 300px;
     border-radius: 4px;
     font-family: assistant;
@@ -15,4 +15,13 @@
 
 .wrap-commit p {
     color: #fbc02d;
+}
+
+.wrap-commit span.content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    color: #ffffff6b;
 }

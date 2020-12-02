@@ -2,6 +2,7 @@
     <p class="f-title-section">תגובות אחרונות</p>
     <div class="wrap-commit" *ngFor="let commit of lastestCommits">
         <p>{{commit.name}}</p>
-        <span>{{commit.topic}}</span>
+        <span>{{commit.topic}}</span><br>
+        <span class="content">{{commit.title_res}} » {{commit.content_res}}</span>
     </div>
 </div>
