@@ -28,6 +28,7 @@
     <Property Name="count_views" Type="bigint" />
     <Property Name="count_like" Type="bigint" />
     <Property Name="count_responses" Type="bigint" />
+    <Property Name="lastViewingDate" Type="datetime" />
   </EntityType>
   <EntityType Name="ArtistsTBL">
     <Key>
@@ -179,6 +180,7 @@
     <Property Name="image_location" Type="varchar(max)" />
     <Property Name="content" Type="varchar(max)" />
     <Property Name="isPerformance" Type="bit" />
+    <Property Name="lastViewingDate" Type="datetime" />
   </EntityType>
   <EntityType Name="SongsToParadeTBL">
     <Key>
@@ -321,6 +323,20 @@ warning 6002: The table/view 'MusicOnline.dbo.GetNewSong' does not have a primar
     <Property Name="image_location" Type="varchar(max)" />
     <Property Name="content" Type="varchar(max)" />
     <Property Name="isPerformance" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'MusicOnline.dbo.latesetViewed' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="latesetViewed">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="type" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="title" Type="varchar(max)" />
+    <Property Name="subtitle" Type="varchar(max)" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="lastViewingDate" Type="datetime" />
+    <Property Name="type" Type="varchar" MaxLength="11" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'MusicOnline.dbo.latestResponses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -799,6 +815,16 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     [GetNewSong].[content] AS [content], 
     [GetNewSong].[isPerformance] AS [isPerformance]
     FROM [dbo].[GetNewSong] AS [GetNewSong]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="latesetViewed" EntityType="Self.latesetViewed" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [latesetViewed].[id] AS [id], 
+    [latesetViewed].[title] AS [title], 
+    [latesetViewed].[subtitle] AS [subtitle], 
+    [latesetViewed].[date] AS [date], 
+    [latesetViewed].[lastViewingDate] AS [lastViewingDate], 
+    [latesetViewed].[type] AS [type]
+    FROM [dbo].[latesetViewed] AS [latesetViewed]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="latestResponses" EntityType="Self.latestResponses" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
