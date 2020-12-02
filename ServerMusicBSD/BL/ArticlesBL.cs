@@ -169,5 +169,12 @@ namespace BL
                 article.count_views++;
             et.SaveChanges();
         }
+        public static void UpdateLastViewDate‏(int articleId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            ArticlesTBL article = et.ArticlesTBL.Where(a => a.id == articleId).FirstOrDefault();
+            article.lastViewingDate = DateTime.Now;
+            et.SaveChanges();
+        }
     }
 }

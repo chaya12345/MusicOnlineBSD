@@ -543,5 +543,12 @@ namespace BL
                 return;
             song.singerId = singer.id;
         }
+        public static void UpdateLastViewDate‏(int songId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            SongsTBL song = et.SongsTBL.Where(s => s.id == songId).FirstOrDefault();
+            song.lastViewingDate = DateTime.Now;
+            et.SaveChanges();
+        }
     }
 }
