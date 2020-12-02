@@ -372,6 +372,7 @@
     <Property Name="image_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="isPerformance" Type="Boolean" />
+    <Property Name="lastViewingDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="GetNewSong">
     <Key>
@@ -391,8 +392,9 @@
     <Property Name="image_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="isPerformance" Type="Boolean" />
+    <Property Name="lastViewingDate" Type="DateTime" Precision="3" />
   </EntityType>
-  <EntityType Name="latesetViewed">
+  <EntityType Name="lastViews">
     <Key>
       <PropertyRef Name="id" />
       <PropertyRef Name="type" />
@@ -816,7 +818,7 @@
     <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" />
     <EntitySet Name="getFavoriteSongs" EntityType="Self.getFavoriteSongs" />
     <EntitySet Name="GetNewSong" EntityType="Self.GetNewSong" />
-    <EntitySet Name="latesetViewed" EntityType="Self.latesetViewed" />
+    <EntitySet Name="lastViews" EntityType="Self.lastViews" />
     <EntitySet Name="latestResponses" EntityType="Self.latestResponses" />
     <EntitySet Name="songsDetails" EntityType="Self.songsDetails" />
     <AssociationSet Name="FK_SongsTBL_AlbumsTBL" Association="Self.FK_SongsTBL_AlbumsTBL">
