@@ -4,6 +4,6 @@
     <current-nav [navs]="navs"></current-nav>
     <songs-in-playlist [songsToPlaylist]="songsList" (onPlay)="updateIndex($event)"></songs-in-playlist>
     <custom-audio-player [songsList]="songsList" [playingObj]="playingObj"></custom-audio-player>
-    <popular-playlists></popular-playlists>
+    <playlists-adjacent [currentPlaylist]="playlist"></playlists-adjacent>
     <footer></footer>
 </div>

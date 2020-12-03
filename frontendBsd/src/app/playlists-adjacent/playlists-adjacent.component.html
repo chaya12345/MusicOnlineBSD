@@ -1,0 +1,10 @@
+<div class="wrap-certain-playlists" *ngIf="previousPlaylist!=undefined&&nextPlaylist!=undefined">
+    <div class="wrap-playlist">
+        <a [href]="'playlist?playlistId'+previousPlaylist.id"><p>« הקודם</p></a>
+        <display-playlist [playlist]="previousPlaylist"></display-playlist>
+    </div>
+    <div class="wrap-playlist">
+        <a [href]="'playlist?playlistId'+nextPlaylist.id"><p>הבא »</p></a>
+        <display-playlist [playlist]="nextPlaylist"></display-playlist>
+    </div>
+</div>

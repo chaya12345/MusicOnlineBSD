@@ -5,7 +5,7 @@
                 <mat-spinner class="small-spinner" *ngIf="imgFailed"></mat-spinner>
             </div>
             <div class="current-content">
-                <h3><mat-icon *ngIf="icon!=null&&icon!=undefined&&icon!=''">{{icon}}</mat-icon>{{_title}}</h3>
+                <h3><mat-icon *ngIf="icon!=null&&icon!=undefined&&icon!=''">{{icon}}</mat-icon>{{_title||'טוען...'}}</h3>
                 <p *ngIf="subtitle!=null&&subtitle!=undefined">{{subtitle}}</p>
                 <p *ngIf="date!=null&&date!=undefined" class="bigger-font">{{date | date: 'd/M/yyyy H:mm'}}</p>
             </div>

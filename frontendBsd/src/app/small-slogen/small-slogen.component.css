@@ -1,11 +1,10 @@
 .wrap-small-slogen {
-    padding: 10px;
+    padding-block: 50px 20px;
     display: flex;
-    background-color: #1d1d1d;
 }
 
 .wrap-small-slogen img {
-    height: 150px;
+    height: 125px;
     margin: auto auto auto 10px;
 }
 
@@ -17,12 +16,12 @@
 
 .wrap-slogen p {
     font-family: fb Ogen;
-    font-size: 29px;
+    font-size: 27px;
 }
 
 .wrap-slogen span {
     letter-spacing: 4px;
     font-family: calibri;
     font-weight: 100;
-    font-size: 24px;
+    font-size: 22px;
 }

@@ -9,7 +9,7 @@
     width: 300px;
     border-radius: 4px;
     font-family: assistant;
-    margin-block: 10px;
+    margin-block: 13px;
     background-color: #ffffff0f !important;
 }
 
@@ -18,7 +18,6 @@
 .wrap-commit {
     transition: color 0.25s;
     transition: color 4s;
-    transition: 4s;
     background: none;
     border: 0;
     box-sizing: border-box;

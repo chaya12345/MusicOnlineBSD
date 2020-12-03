@@ -1,10 +1,11 @@
 p.f-title-section {
     padding: 10px;
     font-family: assistant;
-    border-bottom: solid 1px #fbc02d57;
     color: #fbc02d;
     margin-block: 20px;
     text-align: center;
+    border-radius: 4px;
+    font-size: 18.5px;
 }
 
 .f-wrapper {

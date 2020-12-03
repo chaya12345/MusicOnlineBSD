@@ -29,9 +29,10 @@ p.title-section {
     font-family: assistant;
     font-size: 23px;
     padding: 10px;
-    border: solid 1px #fbc02d;
     border-radius: 4px;
-    color: #fbc02d;
+    color: #101010;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
 nav-button {

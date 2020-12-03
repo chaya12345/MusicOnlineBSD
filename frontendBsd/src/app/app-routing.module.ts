@@ -20,10 +20,10 @@ import { MainPageComponent } from './main-page/main-page.component';
 
 const routes: Routes = [{
   path: "",
-  component: HomePageComponent
+  component: MainPageComponent // HomePageComponent
 }, {
   path: "home",
-  component: HomePageComponent
+  component: MainPageComponent // HomePageComponent
 }, {
   path: "main",
   component: MainPageComponent

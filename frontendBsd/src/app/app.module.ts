@@ -140,6 +140,7 @@ import { MPlaylistsComponent } from './m-playlists/m-playlists.component';
 import { FCommitsComponent } from './f-commits/f-commits.component';
 import { FSingersComponent } from './f-singers/f-singers.component';
 import { FViewedComponent } from './f-viewed/f-viewed.component';
+import { PlaylistsAdjacentComponent } from './playlists-adjacent/playlists-adjacent.component';
 
 @NgModule({
   declarations: [
@@ -269,7 +270,8 @@ import { FViewedComponent } from './f-viewed/f-viewed.component';
     MParadeComponent,
     FCommitsComponent,
     FSingersComponent,
-    FViewedComponent
+    FViewedComponent,
+    PlaylistsAdjacentComponent
   ],
   imports: [
     BrowserModule,

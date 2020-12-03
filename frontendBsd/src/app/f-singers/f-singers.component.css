@@ -1,0 +1,79 @@
+.wrap-f-singers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-inline: 50px;
+}
+
+p.f-title-section {
+    grid-column: 1 / 4;
+}
+
+.img {
+    background-size: cover;
+    background-position: center;
+    height: 95px;
+    margin-bottom: 5px;
+}
+
+.wrap-singer {
+    width: 150px;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 0 10px 15px;
+    text-align: center;
+    background-color: #ffffff0f !important;
+}
+
+/* ANIMATION BORDER */
+
+.wrap-singer {
+    transition: color 0.25s;
+    transition: color 4s;
+    background: none;
+    border: 0;
+    box-sizing: border-box;
+    position: relative;
+    vertical-align: middle;
+}
+
+.wrap-singer::before, .wrap-singer::after {
+    border: 1px solid transparent;
+    width: 0;
+    height: 0;
+    box-sizing: inherit;
+    content: '';
+    position: absolute;
+}
+
+.wrap-singer::before {
+    top: 0;
+    left: 0;
+}
+
+.wrap-singer::after {
+    bottom: 0;
+    right: 0;
+}
+
+.wrap-singer:hover::before, .wrap-singer:hover::after {
+    width: 100%;
+    height: 100%;
+}
+
+.wrap-singer:hover::before {
+    border-top-color: #ffffff3b;
+    border-right-color: #ffffff3b;
+    transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
+    transition: width 1s ease-out, height 0.25s ease-out 1s;
+    border-radius: 4px;
+}
+
+.wrap-singer:hover::after {
+    border-bottom-color: #ffffff3b;
+    border-left-color: #ffffff3b;
+    transition: border-color 0s ease-out 0.5s, width 0.25s ease-out 0.5s, height 0.25s ease-out 0.75s;
+    transition: border-color 0s ease-out 1.25s, width 1s ease-out 1.25s, height 0.25s ease-out 2.25s;
+    border-radius: 4px;
+}
+
+/* END */

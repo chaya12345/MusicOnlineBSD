@@ -1,7 +1,12 @@
-<div class="wrap-f-views f-wrapper">
-    <p class="f-title-section">נצפו לאחרונה</p>
-    <div class="wrap-view" *ngFor="let view of views">
-        <div class="img" [style.background-image]="'url(../../assets/images/'+view.image+')'"></div>
-        <p>{{view.title}}</p>
-    </div>
+<div class="wrap-f-viewed f-wrapper">
+    <p class="f-title-section">» נצפו לאחרונה «</p>
+    <a *ngFor="let view of views" [href]="(view.type=='article'?'magazine/article?articleId=':'song?songId=')+view.id">
+        <div class="wrap-view">
+            <div class="img" [style.background-image]="'url(../../assets/images/'+view.image+')'"></div>
+            <p><span>{{view.title}}</span>
+                <mat-icon [matTooltip]="getTranslateOfType(view.type)" matTooltipClass="tooltip blue-tooltip">
+                    {{getMatchIcon(view.type)}}</mat-icon>
+            </p>
+        </div>
+    </a>
 </div>

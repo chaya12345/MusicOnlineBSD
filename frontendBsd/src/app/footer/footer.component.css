@@ -34,6 +34,23 @@ main-actions {
     background-blend-mode: multiply;
     padding-right: 100px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-columns: repeat(6, 1fr); */
+    grid-template-columns: fit-content(50%) fit-content(50%) fit-content(50%);
     margin-top: 150px;
 }
+
+small-slogen {
+    grid-column: 1 / 5;
+}
+
+/* f-commits {
+    grid-column: 1 / 2;
+}
+
+f-viewed {
+    grid-column: 2 / 5;
+}
+
+f-singers {
+    grid-column: 5 / 7;
+} */

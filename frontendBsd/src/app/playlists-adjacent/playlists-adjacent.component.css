@@ -1,0 +1,18 @@
+.wrap-certain-playlists {
+    width: fit-content;
+    position: relative;
+    right: 50%;
+    transform: translateX(50%);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 120px;
+}
+
+.wrap-playlist p {
+    margin-block: 15px;
+    font-family: assistant;
+}
+
+.wrap-playlist:last-of-type p {
+    text-align: left;
+}
