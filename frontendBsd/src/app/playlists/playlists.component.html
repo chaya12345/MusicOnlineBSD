@@ -3,7 +3,6 @@
     <top [_title]="title" [subtitle]="subtitle"
         [icon]="icon" notBlur="true"></top>
     <current-nav [navs]="navs"></current-nav>
-    <div class="wrap-tool-box"><tools searchBox="true" followUp="true" orderBy="true"></tools></div>
     <div *ngIf="playlists.length!=0&&playlists!=null" class="all-playlists">
         <div class="wrap-playlist" *ngFor="let playlist of playlists">
             <display-playlist [playlist]="playlist"></display-playlist>

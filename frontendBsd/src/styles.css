@@ -318,8 +318,8 @@ mat-expansion-panel-header {
 }
 
 mat-panel-title {
-    font-family: fb Joker;
-    font-size: 21px;
+    font-family: assistant;
+    font-size: 19px;
 }
 
 response mat-panel-title {
@@ -356,8 +356,8 @@ response-adding .mat-form-field-appearance-outline .mat-form-field-infix {
 }
 
 response .mat-expansion-panel-body {
-    font-family: fb Joker;
-    font-size: 23px;
+    font-family: assistant;
+    font-size: 20px;
     padding: 0;
 }
 
@@ -458,14 +458,9 @@ article-details text > div {
 }
 
 article-details text div,
-article-details text p {
-    font-size: 21px !important;
-    line-height: 42px !important;
-    font-family: assistant light;
-}
-
+article-details text p,
 song-details text div,
-article-details text p {
+song-details text p {
     font-size: 21px !important;
     line-height: 42px !important;
     font-family: assistant light !important;

@@ -1,14 +1,9 @@
 <div class="wrap-songs-in-playlist">
-    <!-- <div *ngIf="songsToPlaylist!=null&&songsToPlaylist.length!=0" class="songs">
-        <song-in-playlist *ngFor="let song of songsToPlaylist" [song]="song"></song-in-playlist>
-    </div> -->
     <div class="playing-now">
         <div>
             <p>פועל כעת >></p>
             <div class="song-details">
                 <song-info [currentSong]="songsToPlaylist[index]"></song-info>
-                <!-- <video-section [src]="'../../assets/songs/'+songsToPlaylist[index].file_location"
-                    [img]="'../../assets/images/'+songsToPlaylist[index].image_location" [type]="songsToPlaylist[index].type"></video-section> -->
             </div>
         </div>
         <div class="content-current-song">

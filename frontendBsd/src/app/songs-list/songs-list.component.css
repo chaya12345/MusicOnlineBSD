@@ -36,6 +36,22 @@ mat-spinner {
     display: inline-block !important;
 }
 
+div.under-song {
+    padding: 6px;
+    color: #000000c7;
+    font-family: assistant, calibri;
+    font-size: 17px;
+}
+
+div.under-song p {
+    font-weight: bold;
+}
+
+div.under-song p span {
+    font-weight: 400;
+    font-size: 17px;
+}
+
 div.empty {
     display: none;
 }
@@ -43,5 +59,6 @@ div.empty {
 span {
     margin: 50px auto 70px;
     font-family: fb Joker;
-    font-size: 21px;
+    font-family: assistant;
+    font-size: 19px;
 }

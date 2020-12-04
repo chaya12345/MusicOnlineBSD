@@ -20,7 +20,8 @@
 }
 
 .title-song {
-    font-family: fb Ogen;
+    font-family: assistant;
+    font-weight: 500;
     margin-bottom: 6px;
     overflow: hidden;
     text-overflow: ellipsis;

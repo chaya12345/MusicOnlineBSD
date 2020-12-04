@@ -23,7 +23,7 @@ export class FSingersComponent implements OnInit {
       this.singerService.getSingers().subscribe(singers => {
         this.singers = singers;
         this.singers.sort((a, b) => Math.round(b.searchings - a.searchings));
-        this.singers = this.singers.slice(0, 8);
+        this.singers = this.singers.slice(0, 9);
       }, err => console.log(err));
     } catch (err) { console.log(err); }
   }

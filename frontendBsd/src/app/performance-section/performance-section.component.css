@@ -1,35 +1,42 @@
 .wrap-performance-section {
+    width: 40vw;
     display: grid;
-    grid-template-columns: fit-content(50%) auto;
+    grid-template-columns: repeat(2, 1fr);
+    margin-inline: auto;
+    font-family: assistant;
+    height: 203px;
+    grid-column-gap: 30px;
+    padding: 10px;
+    border: solid 1px #00000029;
+    border-radius: 4px;
+    line-height: 33px;
+    font-size: 20px;
 }
 
-.per-img {
-    height: 250px;
-    width: 350px;
+.img {
     background-position: center;
     background-size: cover;
-    background-color: #eceaea;
+    background-color: #0000001c;
 }
 
-.per-details {
-    font-family: fb Joker;
-    font-size: 21px;
-    padding: 20px 65px;
+.details {
     display: grid;
-    grid-template-rows: fit-content(50%) fit-content(50%);
 }
 
-.per-details p {
-    font-family: fb Ogen;
-    font-size: 23px;
-    margin-bottom: 15px;
-}
-
-.per-details span {
-    line-height: 32px;
-}
-
-.per-info {
+.details > span {
     margin-top: auto;
-    color: #00000078;
+    font-size: 18.5px;
+}
+
+.wrap-performance-section p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    font-weight: bold;
+}
+
+.wrap-performance-section p span {
+    font-weight: 300;
 }

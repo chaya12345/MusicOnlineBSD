@@ -1,15 +1,12 @@
 <a class="wrap-article" [href]="'magazine/article?articleId='+article.id">
     <div class="wrapper">
-        <div class="img" [style.background-image]="'url(../../assets/images/'+article.main_image+')'">
-            <div class="over-img"></div>
-        </div>
+        <div class="img" [style.background-image]="'url(../../assets/images/'+article.main_image+')'"></div>
     </div>
     <div class="content">
-        <h3>{{article.title}}</h3>
-        <span>{{article.date | date: 'd/M/yyyy H:mm'}} | {{article.dateHebrew}}</span>
-        <p>{{article.subtitle}}</p>
+        <p>{{article.title}}<br><span>{{article.date | date: 'd/M/yyyy H:mm'}} | {{article.dateHebrew}}</span><br>
+        <span>{{article.subtitle}}</span></p>
         <div>
-            <rating *ngIf="countRes!=null" [likes]="article.count_like" [views]="article.count_views"
+            <rating *ngIf="countRes!=null" [currentId]="article.id" [likes]="article.count_like" [views]="article.count_views"
                 [responses]="countRes"></rating>
         </div>
     </div>

@@ -112,9 +112,5 @@ namespace ServerMusicBSD.Controllers
         {
             SongsBL.AddViewToSong(songId);
         }
-        public void  PutLastViewDate‏(int songId)
-        {
-            SongsBL.UpdateLastViewDate(songId);
-        }
     }
 }

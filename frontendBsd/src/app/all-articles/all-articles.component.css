@@ -1,13 +1,13 @@
 .wrap-all-articles {
-    padding: 30px 5vw;
-    display: flex;
-    flex-wrap: wrap;
+    padding: 75px 5vw;
     min-height: 1161px;
+    display: grid;
 }
 
 .wrap-article {
-    flex: 0 1 calc(50% - 55px);
     margin: 25px 27px;
+    width: 50vw;
+    margin-inline: auto;
 }
 
 .wrapper {

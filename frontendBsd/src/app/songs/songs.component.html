@@ -1,4 +1,4 @@
-<div class="wrap-songs">
+<!-- <div class="wrap-songs">
     <custom-tool-bar [isPublic]="!isSingular" [_playlists]="userPlaylists" (onCreatePlaylist)="createPlaylist()" (onSubscription)="addSubscription()"
     (onAddToPlaylist)="addToPlaylist()" (onFollowUp)="addFollowUp($event)" (onReport)="addReport()"></custom-tool-bar>
     <top [_title]="title" [subtitle]="subtitle" [date]="date" [img]="img" [icon]="icon" [notBlur]="notBlur"></top>
@@ -12,4 +12,7 @@
         <generic-area *ngFor="let item of items" [item]="item"></generic-area>
     </div>
     <footer></footer>
-</div>
+</div> -->
+<new-in-music *ngIf="match('NEW_IN_MUSIC')"></new-in-music>
+<song-details *ngIf="match('PARTICULAR_SONG')"></song-details>
+<filtered-songs *ngIf="match('FILTERED_SONGS')"></filtered-songs>

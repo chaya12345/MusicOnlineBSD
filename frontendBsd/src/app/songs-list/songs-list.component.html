@@ -4,9 +4,8 @@
     <div class="wrapper">
       <div class="wrap-song" *ngFor="let item of items">
         <song [song]="item" *ngIf="item!=null"></song>
-        <div class="under-song"
-          style="padding: 6px; color: #000000c7; font-family: fb Joker, calibri; font-size: 21px;">
-          <p style="font-weight: bold;">{{item.name}}<span style="font-weight: 400;"> >> {{item.singerName}}</span></p>
+        <div class="under-song">
+          <p>{{item.name}}<span> » {{item.singerName}}</span></p>
         </div>
       </div>
       <span *ngIf="songsList==null||songsList.length==0">- לא נמצאו שירים בסינון הנוכחי -</span>

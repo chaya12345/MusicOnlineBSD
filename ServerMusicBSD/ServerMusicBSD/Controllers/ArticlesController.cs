@@ -55,9 +55,5 @@ namespace ServerMusicBSD.Controllers
         {
             ArticlesBL.AddViewToArticle(articleId);
         }
-        public void PutLastViewDate‏(int articleId)
-        {
-            ArticlesBL.UpdateLastViewDate(articleId);
-        }
     }
 }

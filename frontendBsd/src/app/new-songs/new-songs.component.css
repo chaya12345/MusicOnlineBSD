@@ -23,8 +23,8 @@
     width: 100%;
     background: #000000ad;
     padding: 110px 14vw;
-    font-family: fb Dinamika;
-    font-size: 49px;
+    font-family: assistant;
+    font-size: 36px;
     color: white;
     background-size: cover;
     background-position: center;
@@ -34,12 +34,12 @@
     transition: .4s;
     cursor: pointer;
     padding-bottom: 15px;
-    /* border-bottom: solid 1px #ffffff8c; */
     display: block;
 }
 
 .swiper-slide div a:hover { 
-    transform: translateX(10px);
+    /* transform: translateX(10px); */
+    color: #fbc02d;
 }
 
 .swiper-slide div:last-of-type {

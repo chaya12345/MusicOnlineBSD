@@ -1,13 +1,18 @@
-<div class="wrap-song-details" *ngIf="song!=null&&song!=undefined">
+<!-- <div class="wrap-song-details" *ngIf="song!=null&&song!=undefined">
     <div class="section">
         <main [song]="song"></main>
         <side [similarSongs]="similarSongs"></side>
     </div>
-
-    <!-- <editor></editor> -->
-    <!-- <text-editor></text-editor> -->
-
-    <!-- <angular-editor minHeight="500px" [placeholder]="'Enter text here...'" [(ngModel)]="htmlContent"></angular-editor> -->
-    <!-- https://www.npmjs.com/package/@kolkov/angular-editor -->
-    <!-- npm install @kolkov/angular-editor --save -->
+</div> -->
+<div class="wrap-song-details">
+    <custom-tool-bar [isPublic]="false" [_playlists]="userPlaylists" (onCreatePlaylist)="createPlaylist()"
+    (onSubscription)="addSubscription()" (onAddToPlaylist)="addToPlaylist()" (onFollowUp)="toggleFollowUp($event)"
+    (onReport)="addReport()"></custom-tool-bar>
+    <top [_title]="title" [date]="date" [img]="img"></top>
+    <current-nav [navs]="navs"></current-nav>
+    <div class="section">
+        <main [song]="song"></main>
+        <side [similarSongs]="similarSongs"></side>
+    </div>
+    <footer></footer>
 </div>

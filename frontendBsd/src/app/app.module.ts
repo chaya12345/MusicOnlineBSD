@@ -25,11 +25,9 @@ import { RegisterToWebsiteComponent } from './register-to-website/register-to-we
 import { RegisterToNewsletterComponent } from './register-to-newsletter/register-to-newsletter.component';
 import { LatestArticleComponent } from './latest-article/latest-article.component';
 import { FooterSongComponent } from './footer-song/footer-song.component';
-import { LatestCommitsComponent } from './latest-commits/latest-commits.component';
 import { CopyrightsComponent } from './copyrights/copyrights.component';
 import { ScrollTopComponent } from './scroll-top/scroll-top.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
-import { SongsPageComponent } from './songs-page/songs-page.component';
 import { SongDetailsComponent } from './song-details/song-details.component';
 import { TopComponent } from './top/top.component';
 import { MainComponent } from './main/main.component';
@@ -47,10 +45,8 @@ import { ReportingDialogComponent } from './reporting-dialog/reporting-dialog.co
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ResponseAddingComponent } from './response-adding/response-adding.component';
 import { CurrentNavComponent } from './current-nav/current-nav.component';
-import { AllSongsComponent } from './all-songs/all-songs.component';
 import { SongsListComponent } from './songs-list/songs-list.component';
 import { SongsBySingerComponent } from './songs-by-singer/songs-by-singer.component';
-import { ToolsComponent } from './tools/tools.component';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { MagazineComponent } from './magazine/magazine.component';
 import { TextComponent } from './text/text.component';
@@ -66,9 +62,7 @@ import { SongsComponent } from './songs/songs.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { MessageComponent } from './message/message.component';
 import { NavButtonComponent } from './nav-button/nav-button.component';
-import { PopularSingersComponent } from './popular-singers/popular-singers.component';
 import { SmallSlogenComponent } from './small-slogen/small-slogen.component';
-import { MainActionsComponent } from './main-actions/main-actions.component';
 import { GenericAreaComponent } from './generic-area/generic-area.component';
 import { ArticlesComponent } from './articles/articles.component';
 import { DisplayPlaylistsComponent } from './display-playlists/display-playlists.component';
@@ -141,6 +135,8 @@ import { FCommitsComponent } from './f-commits/f-commits.component';
 import { FSingersComponent } from './f-singers/f-singers.component';
 import { FViewedComponent } from './f-viewed/f-viewed.component';
 import { PlaylistsAdjacentComponent } from './playlists-adjacent/playlists-adjacent.component';
+import { NewInMusicComponent } from './new-in-music/new-in-music.component';
+import { FilteredSongsComponent } from './filtered-songs/filtered-songs.component';
 
 @NgModule({
   declarations: [
@@ -160,11 +156,9 @@ import { PlaylistsAdjacentComponent } from './playlists-adjacent/playlists-adjac
     RegisterToNewsletterComponent,
     LatestArticleComponent,
     FooterSongComponent,
-    LatestCommitsComponent,
     CopyrightsComponent,
     ScrollTopComponent,
     SideNavComponent,
-    SongsPageComponent,
     SongDetailsComponent,
     TopComponent,
     MainComponent,
@@ -182,10 +176,8 @@ import { PlaylistsAdjacentComponent } from './playlists-adjacent/playlists-adjac
     ErrorPageComponent,
     ResponseAddingComponent,
     CurrentNavComponent,
-    AllSongsComponent,
     SongsListComponent,
     SongsBySingerComponent,
-    ToolsComponent,
     ArticleDetailsComponent,
     MagazineComponent,
     TextComponent,
@@ -201,9 +193,7 @@ import { PlaylistsAdjacentComponent } from './playlists-adjacent/playlists-adjac
     LogInComponent,
     MessageComponent,
     NavButtonComponent,
-    PopularSingersComponent,
     SmallSlogenComponent,
-    MainActionsComponent,
     GenericAreaComponent,
     ArticlesComponent,
     DisplayPlaylistsComponent,
@@ -271,7 +261,9 @@ import { PlaylistsAdjacentComponent } from './playlists-adjacent/playlists-adjac
     FCommitsComponent,
     FSingersComponent,
     FViewedComponent,
-    PlaylistsAdjacentComponent
+    PlaylistsAdjacentComponent,
+    NewInMusicComponent,
+    FilteredSongsComponent
   ],
   imports: [
     BrowserModule,

@@ -32,11 +32,11 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.type == "website") {
-      this.text = "הצטרפו עכשיו למיוזיק אונליין.";
+      this.text = "הצטרפו עכשיו למיוזיק אונליין";
       this.buttonText = "הרשמה";
     }
     else if (this.type == "newsletter") {
-      this.text = "הרשמו לניוזלטר ותהיו מעודכנים.";
+      this.text = "הרשמו לניוזלטר ותהיו מעודכנים בכל מה שחדש במוזיקה";
       this.buttonText = "הרשמה לניוזלטר";
     }
   }

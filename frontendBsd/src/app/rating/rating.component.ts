@@ -12,15 +12,15 @@ import { SongService } from '../services/song.service';
 })
 export class RatingComponent implements OnInit {
 
+  @Input() currentId?: number;
   @Input() likes?: number = 0;
   @Input() views?: number = 0;
   @Input() responses?: number = 0;
   navigate: string = "";
-  currentId: string = this.activatedRoute.snapshot.queryParams.songId || this.activatedRoute.snapshot.queryParams.articleId;
   toggle: boolean = false;
 
-  constructor(private activatedRoute: ActivatedRoute, private likeService: LikeService, 
-    private songService: SongService, private articleService: ArticleService, ) { }
+  constructor(private activatedRoute: ActivatedRoute, private likeService: LikeService,
+    private songService: SongService, private articleService: ArticleService,) { }
 
   ngOnInit() {
     if (this.activatedRoute.snapshot.routeConfig.path.includes("playlist")) {
@@ -54,19 +54,27 @@ export class RatingComponent implements OnInit {
 
   addLike(): void {
     if (this.navigate == "song") {
-      this.songService.increaseLikeToSong(Number(this.currentId)).subscribe();
+      try {
+        this.songService.increaseLikeToSong(this.currentId).subscribe();
+      } catch (err) { }
     }
     else if (this.navigate == "article") {
-      this.articleService.increaseLikeToArticle(Number(this.currentId)).subscribe();
+      try {
+        this.articleService.increaseLikeToArticle(this.currentId).subscribe();
+      } catch (err) { }
     }
   }
 
   MissLike(): void {
     if (this.navigate == "song") {
-      this.songService.decreaseLikeToSong(Number(this.currentId)).subscribe();
+      try {
+        this.songService.decreaseLikeToSong(this.currentId).subscribe();
+      } catch (err) { }
     }
     else if (this.navigate == "article") {
-      this.articleService.decreaseLikeToArticle(Number(this.currentId)).subscribe();
+      try {
+        this.articleService.decreaseLikeToArticle(this.currentId).subscribe();
+      } catch (err) { }
     }
   }
 

@@ -27,7 +27,7 @@ export class VideoSectionComponent implements OnInit {
     
     // this.renderer.listen(this.video, 'ended', () => console.log('video ended'));
     // this.video.addEventListener('ended', () => console.log('video ended'));
-    // console.log("Src" + this.src);
+    // this.video.addEventListener('playing', (event) => { console.log('Video is no longer paused'); });
   }
 
 }
