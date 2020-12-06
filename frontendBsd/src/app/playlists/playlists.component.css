@@ -6,7 +6,6 @@
 
 .wrap-playlist {
     display: inline-block;
-    /* flex: 0 1 calc(33% - 25px); */
     margin: 25px 12px;
 }
 
