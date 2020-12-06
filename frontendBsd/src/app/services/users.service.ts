@@ -7,16 +7,16 @@ import { Article } from '../classes/article';
 import { Singer } from '../classes/singer';
 
 export enum eInfo { SUBSCRIPTION = 1, FOLLOW_UP_SONGS, FOLLOW_UP_ARTICLES }
-export class simple {
+export class Simple {
   id?: number;
   name?: string;
   image?:string;
 }
-export class userInfo {
-  name?: eInfo;
-  list?: simple;
-}
 
+export class UserInfo {
+  name?: eInfo;
+  list?: Simple;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -93,7 +93,7 @@ export class UsersService {
   public GetSubscriptionToSinger(userId: number): Observable<Singer[]> {
     return this.httpClient.get<Singer[]>(this.baseUrl + "GetSubscriptionToSinger?userId=" + userId);
   }
-  public GetUserInfo(id: number): Observable<userInfo> {
-    return this.httpClient.get<userInfo>(this.baseUrl+"GetUserInfo?id="+id);
+  public GetUserInfo(id: number): Observable<UserInfo[]> {
+    return this.httpClient.get<UserInfo[]>(this.baseUrl+"GetUserInfo?id="+id);
   }
 }
