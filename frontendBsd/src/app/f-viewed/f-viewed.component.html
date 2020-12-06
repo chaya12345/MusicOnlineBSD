@@ -1,5 +1,5 @@
 <div class="wrap-f-viewed f-wrapper">
-    <p class="f-title-section">» נצפו לאחרונה «</p>
+    <p class="f-title-section">» <span class="content-title">נצפו לאחרונה</span> «</p>
     <a *ngFor="let view of views" [href]="(view.type=='article'?'magazine/article?articleId=':'song?songId=')+view.id">
         <div class="wrap-view">
             <div class="img" [style.background-image]="'url(../../assets/images/'+view.image+')'"></div>

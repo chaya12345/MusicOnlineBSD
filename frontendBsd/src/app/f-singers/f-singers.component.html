@@ -1,5 +1,5 @@
 <div class="wrap-f-singers f-wrapper">
-    <p class="f-title-section">» זמרים שאנשים חיפשו «</p>
+    <p class="f-title-section">» <span class="content-title">זמרים שאנשים חיפשו</span> «</p>
     <a *ngFor="let singer of singers" [href]="'song?filter='+singer.name">
     <div class="wrap-singer">
         <div class="img" [style.background-image]="'url(../../assets/images/'+singer.image+')'"></div>
