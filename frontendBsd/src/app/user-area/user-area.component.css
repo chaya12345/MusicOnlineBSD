@@ -1,0 +1,13 @@
+.wrap-user-area {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-column-gap: 50px;
+}
+
+user-area-side {
+    grid-column: 2 / 4;
+}
+
+user-area-center {
+    grid-column: 4 / 7;
+}

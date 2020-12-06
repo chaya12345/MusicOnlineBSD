@@ -16,6 +16,7 @@ import {
 } from './services/auth-guard.service';
 import { AdminComponent } from './admin/admin.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { UserAreaComponent } from './user-area/user-area.component';
 
 
 const routes: Routes = [{
@@ -55,6 +56,9 @@ const routes: Routes = [{
 }, {
   path: "parade",
   component: ParadeComponent
+}, {
+  path: "user-area",
+  component: UserAreaComponent
 }, {
   path: "user",
   component: PrivateAreaComponent,

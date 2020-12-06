@@ -62,5 +62,9 @@ namespace ServerMusicBSD.Controllers
         {
             return UsersBL.GetSubscriptionToSinger(userId);
         }
+        public List<userInfo> GetUserInfo(int id)
+        {
+            return UsersBL.GetUserInfo(id);
+        }
     }
 }

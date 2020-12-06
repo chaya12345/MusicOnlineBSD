@@ -137,6 +137,9 @@ import { FViewedComponent } from './f-viewed/f-viewed.component';
 import { PlaylistsAdjacentComponent } from './playlists-adjacent/playlists-adjacent.component';
 import { NewInMusicComponent } from './new-in-music/new-in-music.component';
 import { FilteredSongsComponent } from './filtered-songs/filtered-songs.component';
+import { UserAreaComponent } from './user-area/user-area.component';
+import { UserAreaSideComponent } from './user-area-side/user-area-side.component';
+import { UserAreaCenterComponent } from './user-area-center/user-area-center.component';
 
 @NgModule({
   declarations: [
@@ -263,7 +266,10 @@ import { FilteredSongsComponent } from './filtered-songs/filtered-songs.componen
     FViewedComponent,
     PlaylistsAdjacentComponent,
     NewInMusicComponent,
-    FilteredSongsComponent
+    FilteredSongsComponent,
+    UserAreaComponent,
+    UserAreaSideComponent,
+    UserAreaCenterComponent
   ],
   imports: [
     BrowserModule,

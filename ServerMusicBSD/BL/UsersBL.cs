@@ -9,6 +9,16 @@ using DTO;
 
 namespace BL
 {
+    public enum eInfo { SUBSCRIPTION = 1, FOLLOW_UP_SONGS, FOLLOW_UP_ARTICLES };
+    public struct simple
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+    }
+    public struct userInfo { 
+        public eInfo name { get; set; }
+        public List<simple> list { get; set; }
+    }
     public class UsersBL
     {
         private static List<UsersTBL> managers = new List<UsersTBL>() {
@@ -269,6 +279,55 @@ namespace BL
             if (result != null)
                 return Casts.ToSingersDTO.GetSingers(result);
             return null;
+        }
+        public static List<userInfo> GetUserInfo(int? id)
+        {
+            if (id == null)
+                return null;
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<userInfo> userInfo = new List<userInfo>();
+            List<FollowUpTBL> follows_s = et.FollowUpTBL.Where(f => f != null && f.userId == id && f.songId != null).ToList();
+            List<FollowUpTBL> follows_a = et.FollowUpTBL.Where(f => f != null && f.userId == id && f.articleId != null).ToList();
+            List<SubscriptionTBL> subs = et.SubscriptionTBL.Where(sub => sub != null && sub.userId == id).ToList();
+            userInfo info = new userInfo();
+            info.name = eInfo.FOLLOW_UP_SONGS;
+            List<simple> list = new List<simple>();
+            foreach (FollowUpTBL follow in follows_s)
+            {
+                SongsTBL song = et.SongsTBL.Where(s => s != null && s.id == follow.songId).FirstOrDefault();
+                if (song != null) {
+                    list.Add(new simple { id = song.id, name = song.title });
+                }
+            }
+            info.list = list;
+            userInfo.Add(info);
+
+            info.name = eInfo.FOLLOW_UP_ARTICLES;
+            list = new List<simple>();
+            foreach (FollowUpTBL follow in follows_a)
+            {
+                ArticlesTBL article = et.ArticlesTBL.Where(a => a != null && a.id == follow.articleId).FirstOrDefault();
+                if (article != null)
+                {
+                    list.Add(new simple { id = article.id, name = article.title });
+                }
+            }
+            info.list = list;
+            userInfo.Add(info);
+
+            info.name = eInfo.SUBSCRIPTION;
+            list = new List<simple>();
+            foreach (SubscriptionTBL sub in subs)
+            {
+                SingersTBL singer = et.SingersTBL.Where(s => s != null && s.id == sub.singerId).FirstOrDefault();
+                if (singer != null)
+                {
+                    list.Add(new simple { id = singer.id, name = singer.name });
+                }
+            }
+            info.list = list;
+            userInfo.Add(info);
+            return userInfo;
         }
     }
 }

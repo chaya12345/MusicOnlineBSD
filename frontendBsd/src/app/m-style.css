@@ -35,6 +35,15 @@ p.title-section {
     text-align: center;
 }
 
+p span.content-title {
+    transition: .4s;
+}
+
+.m-container:hover span.content-title,
+.m-vertical-container:hover span.content-title {
+    margin-inline: 15px;
+}
+
 nav-button {
     grid-column: 1 / 5;
 }
