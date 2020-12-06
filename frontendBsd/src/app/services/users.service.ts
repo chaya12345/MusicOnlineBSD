@@ -10,7 +10,7 @@ export enum eInfo { SUBSCRIPTION = 1, FOLLOW_UP_SONGS, FOLLOW_UP_ARTICLES }
 export class Simple {
   id?: number;
   name?: string;
-  image?:string;
+  image?: string;
 }
 
 export class UserInfo {
@@ -94,6 +94,6 @@ export class UsersService {
     return this.httpClient.get<Singer[]>(this.baseUrl + "GetSubscriptionToSinger?userId=" + userId);
   }
   public GetUserInfo(id: number): Observable<UserInfo[]> {
-    return this.httpClient.get<UserInfo[]>(this.baseUrl+"GetUserInfo?id="+id);
+    return this.httpClient.get<UserInfo[]>(this.baseUrl + "GetUserInfo?id=" + id);
   }
 }

@@ -1,11 +1,8 @@
-.wrap-user-area {
+.wrap-section {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-column-gap: 50px;
-}
-
-top {
-    grid-column: 1 / 8;
+    padding-block: 80px;
 }
 
 user-area-side {

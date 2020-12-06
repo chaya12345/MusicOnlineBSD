@@ -24,7 +24,8 @@ export class UserAreaSideComponent implements OnInit {
 
   getUserInfo(): void {
     try {
-      this.userService.GetUserInfo(this.user.id).subscribe(usrInfo => { this.userInfo = usrInfo; console.log(usrInfo); }, err => console.log(err));
+      this.userService.GetUserInfo(this.user.id).subscribe(usrInfo => { this.userInfo = usrInfo; console.log(usrInfo);
+        console.log(usrInfo[0].list.image); }, err => console.log(err));
     } catch (err) { console.log(err); }
   }
 

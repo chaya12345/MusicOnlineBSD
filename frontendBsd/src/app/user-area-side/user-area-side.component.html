@@ -6,11 +6,11 @@
                 <mat-panel-title>
                     {{getInfoName(info.name, info.list.length)}}
                 </mat-panel-title>
-                <!-- <mat-panel-description>
-                    This is a summary of the content
-                </mat-panel-description> -->
             </mat-expansion-panel-header>
-            <p *ngFor="let item of info.list">{{item.name}}</p>
+            <div class="wrap-item" *ngFor="let item of info.list">
+                <div class="img" [style.background-image]="'url(../../assets/images/'+item.image+')'"></div>
+                <p>{{item.name}}</p>
+            </div>
         </mat-expansion-panel>
     </mat-accordion>
 </div>

@@ -1,0 +1,19 @@
+.wrap-item {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 10px;
+    border-radius: 4px;
+    height: 100px;
+    font-family: assistant;
+    margin-block: 30px;
+    border: solid 1px #0000002e;
+    font-size: 17px;
+    line-height: 26px;
+    grid-column-gap: 20px;
+}
+
+.img {
+    background-position: center;
+    background-size: cover;
+    background-color: #00000021;
+}
