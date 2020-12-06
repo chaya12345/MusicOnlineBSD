@@ -14,6 +14,7 @@ namespace BL
     {
         public int id { get; set; }
         public string name { get; set; }
+        public string image { get; set; }
     }
     public struct userInfo { 
         public eInfo name { get; set; }
@@ -296,7 +297,7 @@ namespace BL
             {
                 SongsTBL song = et.SongsTBL.Where(s => s != null && s.id == follow.songId).FirstOrDefault();
                 if (song != null) {
-                    list.Add(new simple { id = song.id, name = song.title });
+                    list.Add(new simple { id = song.id, name = song.title ,image=song.image_location});
                 }
             }
             info.list = list;
@@ -309,7 +310,7 @@ namespace BL
                 ArticlesTBL article = et.ArticlesTBL.Where(a => a != null && a.id == follow.articleId).FirstOrDefault();
                 if (article != null)
                 {
-                    list.Add(new simple { id = article.id, name = article.title });
+                    list.Add(new simple { id = article.id, name = article.title ,image=article.main_image});
                 }
             }
             info.list = list;
@@ -322,7 +323,7 @@ namespace BL
                 SingersTBL singer = et.SingersTBL.Where(s => s != null && s.id == sub.singerId).FirstOrDefault();
                 if (singer != null)
                 {
-                    list.Add(new simple { id = singer.id, name = singer.name });
+                    list.Add(new simple { id = singer.id, name = singer.name ,image=singer.image});
                 }
             }
             info.list = list;

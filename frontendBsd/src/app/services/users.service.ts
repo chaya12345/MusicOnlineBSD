@@ -10,6 +10,7 @@ export enum eInfo { SUBSCRIPTION = 1, FOLLOW_UP_SONGS, FOLLOW_UP_ARTICLES }
 export class simple {
   id?: number;
   name?: string;
+  image?:string;
 }
 export class userInfo {
   name?: eInfo;
