@@ -3,9 +3,9 @@
     grid-template-columns: repeat(2, 1fr);
     padding: 10px;
     border-radius: 4px;
-    height: 100px;
+    height: 125px;
     font-family: assistant;
-    margin-block: 30px;
+    margin-block: 20px;
     border: solid 1px #0000002e;
     font-size: 17px;
     line-height: 26px;
