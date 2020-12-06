@@ -13,3 +13,11 @@ p.f-title-section {
     color: white;
     font-family: assistant;
 }
+
+p span.content-title {
+    transition: .4s;
+}
+
+.f-wrapper:hover span.content-title {
+    margin-inline: 7px;
+}
