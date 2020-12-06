@@ -6,6 +6,17 @@ import { Song } from '../classes/song';
 import { Article } from '../classes/article';
 import { Singer } from '../classes/singer';
 
+export enum eInfo { SUBSCRIPTION = 1, FOLLOW_UP_SONGS, FOLLOW_UP_ARTICLES }
+export class simple {
+  id?: number;
+  name?: string;
+}
+export class userInfo {
+  name?: eInfo;
+  list?: simple;
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -72,13 +83,16 @@ export class UsersService {
   public getUsers(): Observable<User[]> {
     return this.httpClient.get<User[]>(this.baseUrl + "GetUsers");
   }
-  public GetFollowUpSongs(userId:number):Observable<Song[]>{
-    return this.httpClient.get<Song[]>(this.baseUrl+"GetFollowUpSongs?userId="+userId);
+  public GetFollowUpSongs(userId: number): Observable<Song[]> {
+    return this.httpClient.get<Song[]>(this.baseUrl + "GetFollowUpSongs?userId=" + userId);
   }
-  public GetFollowUpArticles(userId:number):Observable<Article[]>{
-    return this.httpClient.get<Article[]>(this.baseUrl+"GetFollowUpArticles?userId="+userId);
+  public GetFollowUpArticles(userId: number): Observable<Article[]> {
+    return this.httpClient.get<Article[]>(this.baseUrl + "GetFollowUpArticles?userId=" + userId);
   }
-  public GetSubscriptionToSinger(userId:number):Observable<Singer[]>{
-    return this.httpClient.get<Singer[]>(this.baseUrl+"GetSubscriptionToSinger?userId="+userId);
+  public GetSubscriptionToSinger(userId: number): Observable<Singer[]> {
+    return this.httpClient.get<Singer[]>(this.baseUrl + "GetSubscriptionToSinger?userId=" + userId);
+  }
+  public GetUserInfo(id: number): Observable<userInfo> {
+    return this.httpClient.get<userInfo>(this.baseUrl+"GetUserInfo?id="+id);
   }
 }
