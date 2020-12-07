@@ -16,4 +16,21 @@
     background-position: center;
     background-size: cover;
     background-color: #00000021;
+    border: solid 1px #0000001a;
+}
+
+.mat-expansion-panel {
+    margin-block: 15px;
+}
+
+.wrap-item p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.details {
+    display: flex;
 }

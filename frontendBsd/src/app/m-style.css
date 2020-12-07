@@ -40,7 +40,8 @@ p span.content-title {
 }
 
 .m-container:hover span.content-title,
-.m-vertical-container:hover span.content-title {
+.m-vertical-container:hover span.content-title,
+.wrapper:hover  span.content-title {
     margin-inline: 15px;
 }
 

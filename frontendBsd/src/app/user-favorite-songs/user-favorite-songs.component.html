@@ -1,0 +1,8 @@
+<div class="wrap-user-favorite-songs wrapper">
+    <p class="title-section">» <span class="content-title">שירים שאהבתי</span> «</p>
+    <div class="wrap-songs">
+        <div class="wrap-song" *ngFor="let song of songs">
+            <song [song]="song"></song>
+        </div>
+    </div>
+</div>

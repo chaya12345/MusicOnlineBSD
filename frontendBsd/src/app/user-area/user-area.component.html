@@ -1,8 +1,10 @@
 <div class="wrap-user-area">
     <top _title="האיזור האישי שלי" subtitle="מוזיקה בטעם שלי »" icon="account_circle"></top>
-    <custom-tool-bar></custom-tool-bar>
+    <!-- <custom-tool-bar></custom-tool-bar> -->
     <div class="wrap-section">
         <user-area-side [user]="user"></user-area-side>
         <user-area-center [user]="user"></user-area-center>
     </div>
+    <user-favorite-songs [user]="user"></user-favorite-songs>
+    <footer></footer>
 </div>

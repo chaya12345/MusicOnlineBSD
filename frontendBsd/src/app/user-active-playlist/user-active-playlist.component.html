@@ -1,0 +1,4 @@
+<div class="wrap-user-active-playlist" *ngIf="playlist!=null">
+    <songs-in-playlist [songsToPlaylist]="songs" (onPlay)="updateIndex($event)"></songs-in-playlist>
+    <custom-audio-player [songsList]="songs" [playingObj]="playingObj"></custom-audio-player>
+</div>

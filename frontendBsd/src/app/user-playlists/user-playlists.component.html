@@ -1,0 +1,13 @@
+<div class="wrap-user-playlists wrapper">
+    <p class="title-section">» <span class="content-title">הפלייליסטים שלי</span> «</p>
+    <div class="wrap-folders">
+        <div class="wrap-folder" *ngFor="let playlist of playlists" [class.active]="activePlaylist==playlist"
+            (click)="activePlaylist=playlist;scrollToSection()">
+            <mat-icon>folder</mat-icon>
+            <p>{{playlist.name}}</p>
+        </div>
+    </div>
+    <div #playlistSection>
+        <user-active-playlist [playlist]="activePlaylist"></user-active-playlist>
+    </div>
+</div>

@@ -21,6 +21,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
@@ -47,7 +48,8 @@ const modules = [
     MatMenuModule,
     MatSlideToggleModule,
     MatSnackBarModule,
-    DragDropModule
+    DragDropModule,
+    MatBadgeModule
 ];
 
 @NgModule({
