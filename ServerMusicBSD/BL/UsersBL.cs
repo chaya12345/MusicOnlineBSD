@@ -16,7 +16,8 @@ namespace BL
         public string name { get; set; }
         public string image { get; set; }
     }
-    public struct userInfo { 
+    public struct userInfo
+    {
         public eInfo name { get; set; }
         public List<simple> list { get; set; }
     }
@@ -256,7 +257,7 @@ namespace BL
             List<ArticlesTBL> result = new List<ArticlesTBL>();
             foreach (FollowUpTBL item in list)
             {
-                ArticlesTBL article= et.ArticlesTBL.Where(a => a != null && a.id == item.articleId).FirstOrDefault();
+                ArticlesTBL article = et.ArticlesTBL.Where(a => a != null && a.id == item.articleId).FirstOrDefault();
                 if (article != null)
                     result.Add(article);
             }
@@ -296,8 +297,9 @@ namespace BL
             foreach (FollowUpTBL follow in follows_s)
             {
                 SongsTBL song = et.SongsTBL.Where(s => s != null && s.id == follow.songId).FirstOrDefault();
-                if (song != null) {
-                    list.Add(new simple { id = song.id, name = song.title ,image=song.image_location});
+                if (song != null)
+                {
+                    list.Add(new simple { id = song.id, name = song.title, image = song.image_location });
                 }
             }
             info.list = list;
@@ -310,7 +312,7 @@ namespace BL
                 ArticlesTBL article = et.ArticlesTBL.Where(a => a != null && a.id == follow.articleId).FirstOrDefault();
                 if (article != null)
                 {
-                    list.Add(new simple { id = article.id, name = article.title ,image=article.main_image});
+                    list.Add(new simple { id = article.id, name = article.title, image = article.main_image });
                 }
             }
             info.list = list;
@@ -323,7 +325,7 @@ namespace BL
                 SingersTBL singer = et.SingersTBL.Where(s => s != null && s.id == sub.singerId).FirstOrDefault();
                 if (singer != null)
                 {
-                    list.Add(new simple { id = singer.id, name = singer.name ,image=singer.image});
+                    list.Add(new simple { id = singer.id, name = singer.name, image = singer.image });
                 }
             }
             info.list = list;
