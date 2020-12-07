@@ -44,8 +44,8 @@ namespace BL
             if (et.FollowUpTBL.Where(f => ((f.mail != null && f.mail == followUp.mail) ||
             (f.userId != null && f.userId == followUp.userId)) && ((f.songId != null && f.songId == followUp.songId) ||
             (f.articleId != null && f.articleId == followUp.articleId))).FirstOrDefault() != null)
-                return true;
-            return false;
+                return false;
+            return true;
         }
 
         public static bool DeleteFollowUp(int userId, int id, string type)
