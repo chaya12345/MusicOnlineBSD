@@ -1,3 +1,24 @@
+.wrap-user-playlists {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: fit-content;
+    margin-inline: auto;
+    grid-column-gap: 40px;
+}
+
+.wrap-user-playlists.oneColumn {
+    grid-template-columns: repeat(1, 1fr);
+    grid-column-gap: 0px;
+}
+
+.wrap-user-playlists.oneColumn .wrap-folder {
+    width: 30vw;
+}
+
+.wrap-folders {
+    padding-block: 10px;
+}
+
 .wrap-folder {
     display: grid;
     grid-template-columns: 70px auto;
@@ -9,7 +30,7 @@
     font-size: 18px;
     cursor: pointer;
     transition: .4s;
-    width: 500px;
+    width: 20vw;
     margin-inline: auto;
     align-items: center;
     color: #101010;

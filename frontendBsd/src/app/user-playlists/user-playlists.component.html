@@ -1,13 +1,14 @@
-<div class="wrap-user-playlists wrapper">
+<div class="wrap-user-playlists wrapper" [class.oneColumn]="activePlaylist==null">
     <p class="title-section">» <span class="content-title">הפלייליסטים שלי</span> «</p>
     <div class="wrap-folders">
         <div class="wrap-folder" *ngFor="let playlist of playlists" [class.active]="activePlaylist==playlist"
-            (click)="activePlaylist=playlist;scrollToSection()">
+            (click)="activePlaylist=playlist;scrollToSection()" (mouseenter)="moveSong(playlist)" (mousemove)="isMove=true"
+            (mouseleave)="isMove=false;droppedPlaylist=null;">
             <mat-icon>folder</mat-icon>
             <p>{{playlist.name}}</p>
         </div>
     </div>
     <div #playlistSection>
-        <user-active-playlist [playlist]="activePlaylist"></user-active-playlist>
+        <user-active-playlist [playlist]="activePlaylist" (onDragSong)="dragSong($event)"></user-active-playlist>
     </div>
 </div>

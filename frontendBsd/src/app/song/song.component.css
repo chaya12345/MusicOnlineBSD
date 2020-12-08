@@ -16,6 +16,8 @@
     transition: .4s;
     animation-duration: .6s;
     animation-timing-function: ease linear;
+    background-color: #00000052;
+    background-blend-mode: multiply;
 }
 
 @keyframes bigger {
@@ -28,6 +30,10 @@
 }
 
 .wrap-song:hover .wrap-play-icon {
+    background-color: #0000002a;
+}
+
+.wrap-song:hover {
     background-color: #0000002a;
 }
 

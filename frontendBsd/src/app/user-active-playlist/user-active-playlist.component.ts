@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AudioPlaying } from '../classes/audioPlaying';
 import { PlayList } from '../classes/playlist';
 import { Song } from '../classes/song';
@@ -14,6 +14,7 @@ export class UserActivePlaylistComponent implements OnInit {
   @Input() playlist: PlayList = null;
   songs: Song[] = [];
   playingObj: AudioPlaying = new AudioPlaying();
+  @Output() onDragSong = new EventEmitter<Song>();
 
   constructor(private songsToPlaylistService: SongsToPlaylistsService) { }
 
@@ -35,6 +36,10 @@ export class UserActivePlaylistComponent implements OnInit {
 
   updateIndex(obj: AudioPlaying): void {
     this.playingObj = obj;
+  }
+
+  dragSong(song: Song) {
+    this.onDragSong.emit(song);
   }
 
 }

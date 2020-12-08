@@ -16,6 +16,7 @@ export class SongsInPlaylistComponent implements OnInit {
 
   @Input() songsToPlaylist: Song[] = [];
   @Output() onPlay = new EventEmitter<AudioPlaying>();
+  @Output() onDrag = new EventEmitter<Song>();
 
   playingSongId: number = -1;
   index: number = 0;
@@ -43,6 +44,14 @@ export class SongsInPlaylistComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.songsToPlaylist, event.previousIndex, event.currentIndex);
+    console.log("stop");
+    this.onDrag.emit(null);
+  }
+
+  onDragStart(song) {
+    console.log(song);
+    console.log("start");
+    this.onDrag.emit(song);
   }
 
   ngOnChanges(): void {

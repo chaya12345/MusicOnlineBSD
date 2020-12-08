@@ -1,7 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { User } from '../classes/user';
 import { MessageComponent } from '../message/message.component';
+import { CommonMessageService } from '../services/common-message.service';
+import { FollowUpService } from '../services/follow-up.service';
+import { SubscriptionService } from '../services/subscription.service';
 import { ToolbarService } from '../services/toolbar.service';
 import { eInfo, Simple, UserInfo, UsersService } from '../services/users.service';
 
@@ -16,7 +19,9 @@ export class UserAreaSideComponent implements OnInit {
   userInfo: UserInfo[] = [];
 
   constructor(private userService: UsersService, private dialog: MatDialog,
-    private toolbarService: ToolbarService) { }
+    private toolbarService: ToolbarService, private _snackbar: MatSnackBar,
+    private followUpService: FollowUpService, private cmService: CommonMessageService,
+    private subscriptionService: SubscriptionService) { }
 
   ngOnInit(): void {
   }
@@ -56,7 +61,7 @@ export class UserAreaSideComponent implements OnInit {
         return "song?filter=" + item.name;
     }
   }
-  
+
   openMessageDialog(text: string, info: UserInfo, item: Simple) {
     try {
       const dialogRef = this.dialog.open(MessageComponent, {
@@ -72,14 +77,35 @@ export class UserAreaSideComponent implements OnInit {
 
   remove(info: UserInfo, item: Simple): void {
     // TODO remove item
-    if (info.name == eInfo.FOLLOW_UP_SONGS) {
-      this.toolbarService.removeFollowUpToSong(item.id, this.user.id);
+    if (info.name == eInfo.FOLLOW_UP_SONGS || info.name == eInfo.FOLLOW_UP_ARTICLES) {
+      try {
+        this.followUpService.deleteFollowUp(this.user.id, item.id, 
+          info.name == eInfo.FOLLOW_UP_SONGS ? "song" : "article").subscribe(result => {
+          result == true ?
+            this.openSnackBar(this.cmService.FOLLOW_UP.REMOVE.SUCCESS) :
+            this.openSnackBar(this.cmService.FOLLOW_UP.REMOVE.FAIL);
+          this.userInfo = [];
+          this.getUserInfo();
+        }, err => console.log(err));
+      } catch (err) { this.openSnackBar(this.cmService.ERROR); }
     }
-    else if (info.name == eInfo.FOLLOW_UP_ARTICLES) {
-      this.toolbarService.removeFollowUpToArticle(item.id, this.user.id);
+    else if (info.name == eInfo.SUBSCRIPTION) {
+      try {
+        this.subscriptionService.deleteSubscription(this.user.id, item.id).subscribe(result => {
+          result == true ?
+            this.openSnackBar(this.cmService.SUBSCRIPTION.REMOVE.SUCCESS) :
+            this.openSnackBar(this.cmService.SUBSCRIPTION.REMOVE.FAIL);
+          this.userInfo = [];
+          this.getUserInfo();
+        }, err => console.log(err));
+      } catch (err) { this.openSnackBar(this.cmService.ERROR); }
     }
-    this.userInfo = [];
-    this.getUserInfo();
+  }
+
+  private openSnackBar(message: string) {
+    this._snackbar.open(message, '', {
+      duration: 2000
+    });
   }
 
 }

@@ -18,9 +18,9 @@ namespace ServerMusicBSD.Controllers
         {
             SongsToPlaylistsBL.AddSongToPlaylist(songToPlaylist);
         }
-        public void PutMoveSongToOtherPlaylist(int songId, int playlistId)
+        public bool PutMoveSongToOtherPlaylist(int songId, int prevPlaylistId, int currentPlaylistId)
         {
-            SongsToPlaylistsBL.MoveSongToOtherPlaylist(songId, playlistId);
+            return SongsToPlaylistsBL.MoveSongToOtherPlaylist(songId, prevPlaylistId, currentPlaylistId);
         }
         public void DeleteSongFromPlaylist(int songId)
         {

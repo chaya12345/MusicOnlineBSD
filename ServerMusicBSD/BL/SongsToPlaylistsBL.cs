@@ -41,20 +41,23 @@ namespace BL
             stp.playlistId = playlist.id;
             AddSongToPlaylist(stp);
         }
-        public static void MoveSongToOtherPlaylist(int id, int playlistId)
+        public static bool MoveSongToOtherPlaylist(int songId, int prevPlaylistId, int currentPlaylistId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SongsToPlaylistsTBL songsTo = et.SongsToPlaylistsTBL.Where(s =>s!=null&& s.id == id).FirstOrDefault();
-            if (songsTo != null)
+            SongsToPlaylistsTBL currentStp = et.SongsToPlaylistsTBL.Where(stp => stp != null &&
+            stp.songId == songId && stp.playlistId == prevPlaylistId).FirstOrDefault();
+            if (currentStp != null)
             {
-                songsTo.playlistId = playlistId;
+                currentStp.playlistId = currentPlaylistId;
                 et.SaveChanges();
+                return true;
             }
+            return false;
         }
         public static void DeleteSong(int id)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SongsToPlaylistsTBL song = et.SongsToPlaylistsTBL.Where(s =>s!=null&& s.id == id).FirstOrDefault();
+            SongsToPlaylistsTBL song = et.SongsToPlaylistsTBL.Where(s => s != null && s.id == id).FirstOrDefault();
             if (song != null)
             {
                 et.SongsToPlaylistsTBL.Remove(song);
@@ -66,7 +69,7 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<SongsToPlaylistsTBL> list = et.SongsToPlaylistsTBL.Where(s => s != null && s.playlistId == playlistId).ToList();
             if (list == null)
-            return null;
+                return null;
             List<SongsTBL> result = new List<SongsTBL>();
             foreach (SongsToPlaylistsTBL item in list)
             {
@@ -81,11 +84,11 @@ namespace BL
         public static void AddLikedSong(int songId, int userId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            PlaylistsTBL playlist = et.PlaylistsTBL.Where(p => p!=null&& p.userId == userId && p.name == "שירים שאהבתי").FirstOrDefault();
+            PlaylistsTBL playlist = et.PlaylistsTBL.Where(p => p != null && p.userId == userId && p.name == "שירים שאהבתי").FirstOrDefault();
             if (playlist == null)
             {
                 PlaylistBL.AddPlaylist(new PlaylistsTBL() { name = "שירים שאהבתי", userId = userId });
-                playlist = et.PlaylistsTBL.Where(p =>p!=null&& p.userId == userId && p.name == "שירים שאהבתי").FirstOrDefault();
+                playlist = et.PlaylistsTBL.Where(p => p != null && p.userId == userId && p.name == "שירים שאהבתי").FirstOrDefault();
             }
             if (playlist != null)
             {

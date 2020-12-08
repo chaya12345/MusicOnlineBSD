@@ -10,7 +10,7 @@ namespace BL
 {
     public class LastestResponsesBL
     {
-        public static List<LastesResponsDTO> GetLastResponsesToArticlesAndSongs()
+        public static List<LastestResponsesDTO> GetLastResponsesToArticlesAndSongs()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<latestResponses> list = et.latestResponses.ToList();

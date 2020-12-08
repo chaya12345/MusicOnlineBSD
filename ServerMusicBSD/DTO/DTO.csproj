@@ -49,7 +49,7 @@
     <Compile Include="FollowUpDTO.cs" />
     <Compile Include="ItemsByParameterDTO.cs" />
     <Compile Include="JobsDTO.cs" />
-    <Compile Include="LastesResponsDTO.cs" />
+    <Compile Include="LastestResponsesDTO.cs" />
     <Compile Include="LastViewsDTO.cs" />
     <Compile Include="ParadeDTO.cs" />
     <Compile Include="PlaylistsDTO.cs" />

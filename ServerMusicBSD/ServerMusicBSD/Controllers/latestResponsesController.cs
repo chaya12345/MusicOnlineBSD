@@ -14,7 +14,7 @@ namespace ServerMusicBSD.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class LatestResponsesController : ApiController
     {
-        public List<LastesResponsDTO> GetLastResponsesToArticlesAndSongs()
+        public List<LastestResponsesDTO> GetLastResponsesToArticlesAndSongs()
         {
             return LastestResponsesBL.GetLastResponsesToArticlesAndSongs();
         }

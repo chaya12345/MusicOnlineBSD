@@ -48,13 +48,16 @@ export class ToolbarService {
     }
   }
 
-  public removeFollowUpToSong(songId: number, userId?: number): void {
+  public removeFollowUpToSong(songId: number, userId?: number): Promise<void> {
     if (userId != null) {
       try {
         this.followUpService.deleteFollowUp(userId, songId, "song").subscribe(result => {
           result == true ?
             this.openSnackBar(this.cmService.FOLLOW_UP.REMOVE.SUCCESS) :
             this.openSnackBar(this.cmService.FOLLOW_UP.REMOVE.FAIL);
+            return Promise.resolve((() => {
+              return;
+            })());
         }, err => console.log(err));
       } catch (err) { this.openSnackBar(this.cmService.ERROR); }
     }
@@ -65,12 +68,18 @@ export class ToolbarService {
             result == true ?
               this.openSnackBar(this.cmService.FOLLOW_UP.REMOVE.SUCCESS) :
               this.openSnackBar(this.cmService.FOLLOW_UP.REMOVE.FAIL);
+              return Promise.resolve((() => {
+                return;
+              })());
           }, err => console.log(err)
           );
       } catch (err) { this.openSnackBar(this.cmService.ERROR); }
     }
     else {
       this.openLoginDialog();
+      return Promise.resolve((() => {
+        return;
+      })());
     }
   }
 
@@ -115,15 +124,23 @@ export class ToolbarService {
     // }
   }
 
-  public removeFollowUpToArticle(articleId: number, userId?: number): void {
+  public removeFollowUpToArticle(articleId: number, userId?: number): Promise<void> {
     if (userId != null) {
       try {
         this.followUpService.deleteFollowUp(userId, articleId, "article").subscribe(result => {
           result == true ?
             this.openSnackBar(this.cmService.FOLLOW_UP.REMOVE.SUCCESS) :
             this.openSnackBar(this.cmService.FOLLOW_UP.REMOVE.FAIL);
+          return Promise.resolve((() => {
+            return;
+          })());
         }, err => console.log(err));
       } catch (err) { this.openSnackBar(this.cmService.ERROR); }
+    }
+    else {
+      return Promise.resolve((() => {
+        return;
+      })());
     }
   }
 

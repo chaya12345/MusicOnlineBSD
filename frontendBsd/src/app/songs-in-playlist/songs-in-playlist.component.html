@@ -11,7 +11,7 @@
         </div>
     </div>
     <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let song of songsToPlaylist" cdkDrag [class.active]="index==songsToPlaylist.indexOf(song)"
+        <div class="example-box" *ngFor="let song of songsToPlaylist" cdkDrag (cdkDragStarted)="onDragStart(song)" [class.active]="index==songsToPlaylist.indexOf(song)"
         (click)="toggle(song)">
             <div><a [href]="'song?songId='+song.id"><button mat-stroked-button color="warn">פתח</button></a>
             <button mat-icon-button><mat-icon (click)="sign($event, song.id)" (mouseenter)="changeColor($event)" (mouseleave)="resetColor($event)">favorite_border</mat-icon></button></div>

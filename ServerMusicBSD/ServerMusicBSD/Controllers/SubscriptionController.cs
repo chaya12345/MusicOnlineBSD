@@ -18,9 +18,9 @@ namespace ServerMusicBSD.Controllers
         {
             return SubscriptionBL.AddSubscription(subscription);
         }
-        public void DeleteSubscription(int subscriptionId)
+        public bool DeleteSubscription(int userId, int singerId)
         {
-            SubscriptionBL.DeleteSubscription(subscriptionId);
+            return SubscriptionBL.DeleteSubscription(userId, singerId);
         }
         public  List<string> GetMailsOfSingerSubscription(int singerId)
         {

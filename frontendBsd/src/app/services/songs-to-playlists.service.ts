@@ -15,14 +15,15 @@ export class SongsToPlaylistsService {
   public addSongToPlaylists(songToPlaylist: SongsToPlaylists): Observable<any> {
     return this.httpClient.post(this.baseUrl + "PostSongToPlaylists", songToPlaylist);
   }
-  public moveSongToOtherPlaylist(songId: number, playlistId: number):Observable<any> {
-    return this.httpClient.put(this.baseUrl + "PutMoveSongToOtherPlaylist?songId=" + songId + "&playlistId=" + playlistId, playlistId);
+  public moveSongToOtherPlaylist(songId: number, prevPlaylistId: number, currentPlaylistId): Observable<boolean> {
+    return this.httpClient.put<boolean>(this.baseUrl + "PutMoveSongToOtherPlaylist?songId=" + songId + "&prevPlaylistId=" + prevPlaylistId +
+      "&currentPlaylistId=" + currentPlaylistId, songId);
   }
   public deleteSongFromPlaylist(songId: number): Observable<any> {
     return this.httpClient.delete(this.baseUrl + "DeleteSongFromPlaylist?songId=" + songId);
   }
-  public addLikedSong(songId: number,userId:number): Observable<any> {
-    return this.httpClient.post(this.baseUrl + "PostLikedSong?songId="+songId+"&userId="+userId, songId);
+  public addLikedSong(songId: number, userId: number): Observable<any> {
+    return this.httpClient.post(this.baseUrl + "PostLikedSong?songId=" + songId + "&userId=" + userId, songId);
   }
   public getSongsToPlaylists(playlistId: number): Observable<Song[]> {
     return this.httpClient.get<PlayList[]>(this.baseUrl + "GetSongsToPlaylists?playlistId=" + playlistId);

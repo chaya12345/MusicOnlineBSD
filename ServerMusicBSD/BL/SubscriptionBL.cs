@@ -38,12 +38,16 @@ namespace BL
             return false;
         }
 
-        public static void DeleteSubscription(int subscriptionId)
+        public static bool DeleteSubscription(int userId, int singerId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SubscriptionTBL subscription = et.SubscriptionTBL.Where(s => s != null && s.id == subscriptionId).FirstOrDefault();
+            SubscriptionTBL subscription = et.SubscriptionTBL
+                .Where(s => s != null && s.userId == userId && s.singerId == singerId).FirstOrDefault();
+            if (subscription == null)
+                return false;
             et.SubscriptionTBL.Remove(subscription);
             et.SaveChanges();
+            return true;
         }
         public static List<string> GetMailsOfSingerSubscription(int singerId)
         {
