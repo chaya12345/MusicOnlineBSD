@@ -30,6 +30,9 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<string> tagsIncludeArtists = new List<string>();
+            List<string> singers = SingersToSongsBL.GetSingersToSong(songId);
+            if (singers != null)
+                tagsIncludeArtists.AddRange(singers);
             List<string> list = GetTagsNamesToSong(songId);
             if (list != null)
                 tagsIncludeArtists.AddRange(list);

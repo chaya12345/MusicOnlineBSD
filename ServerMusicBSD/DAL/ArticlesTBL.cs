@@ -19,6 +19,7 @@ namespace DAL
         {
             this.FollowUpTBL = new HashSet<FollowUpTBL>();
             this.ResponsesToArticlesTBL = new HashSet<ResponsesToArticlesTBL>();
+            this.SingersToArticlesTBL = new HashSet<SingersToArticlesTBL>();
             this.TagsToArticlesTBL = new HashSet<TagsToArticlesTBL>();
         }
     
@@ -38,6 +39,8 @@ namespace DAL
         public virtual ICollection<FollowUpTBL> FollowUpTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ResponsesToArticlesTBL> ResponsesToArticlesTBL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SingersToArticlesTBL> SingersToArticlesTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TagsToArticlesTBL> TagsToArticlesTBL { get; set; }
     }

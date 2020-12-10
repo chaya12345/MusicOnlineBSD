@@ -16,17 +16,20 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<TagsToAtriclesDTO> tagsToArticle = GetTagsToArticle(articleId);
             List<string> tags = new List<string>();
-            if (tagsToArticle == null)
-                return null;
-            foreach (TagsToAtriclesDTO tag in tagsToArticle)
-            {
-                TagsTBL currentTag = et.TagsTBL.Where(t =>t!=null&& t.id == tag.tagId && (t.isShow == true || all == true)).FirstOrDefault();
-                if (currentTag != null)
+            List<string> singers = SingersToArticlesBL.GetSingersToArticle(articleId);
+            if (singers != null)
+                tags.AddRange(singers);
+            if (tagsToArticle != null)
+                foreach (TagsToAtriclesDTO tag in tagsToArticle)
                 {
-                    tags.Add(currentTag.name);
+                    TagsTBL currentTag = et.TagsTBL.Where(t => t != null && t.id == tag.tagId && (t.isShow == true || all == true)).FirstOrDefault();
+                    if (currentTag != null)
+                    {
+                        tags.Add(currentTag.name);
+                    }
                 }
-            }
-            return tags==null?null:tags;
+
+            return tags == null ? null : tags;
         }
         public static List<TagsToAtriclesDTO> GetTagsToArticle(int articleId)
         {
@@ -39,7 +42,7 @@ namespace BL
         public static void AddTagToArticle(TagsToArticlesTBL tagsToArticle)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            try 
+            try
             {
                 if (tagsToArticle != null)
                 {

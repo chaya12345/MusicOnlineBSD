@@ -10,13 +10,15 @@
 namespace DAL
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class sp_helpdiagrams_Result
+    public partial class SingersToArticlesTBL
     {
-        public string Database { get; set; }
-        public string Name { get; set; }
-        public int ID { get; set; }
-        public string Owner { get; set; }
-        public int OwnerID { get; set; }
+        public int id { get; set; }
+        public Nullable<int> articleId { get; set; }
+        public Nullable<int> singerId { get; set; }
+    
+        public virtual ArticlesTBL ArticlesTBL { get; set; }
+        public virtual SingersTBL SingersTBL { get; set; }
     }
 }
