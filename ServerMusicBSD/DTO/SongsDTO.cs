@@ -13,7 +13,6 @@ namespace DTO
         public string file_location { get; set; }
         public string type { get; set; }
         public Nullable<System.DateTime> date { get; set; }
-        public Nullable<long> singerId { get; set; }
         public Nullable<long> count_like { get; set; }
         public Nullable<long> count_views { get; set; }
         public Nullable<int> albumId { get; set; }
@@ -22,5 +21,6 @@ namespace DTO
         public string image_location { get; set; }
         public string content { get; set; }
         public Nullable<bool> isPerformance { get; set; }
+        public Nullable<System.DateTime> lastViewingDate { get; set; }
     }
 }

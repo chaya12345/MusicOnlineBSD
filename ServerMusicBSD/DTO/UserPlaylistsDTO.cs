@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class SongsToPlaylistsSystemDTO
+    public class UserPlaylistsDTO
     {
         public int id { get; set; }
-        public Nullable<int> playlistId { get; set; }
-        public Nullable<int> songId { get; set; }
+        public Nullable<int> userId { get; set; }
+        public string name { get; set; }
     }
 }

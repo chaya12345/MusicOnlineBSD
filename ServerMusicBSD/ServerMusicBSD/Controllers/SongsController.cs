@@ -66,7 +66,7 @@ namespace ServerMusicBSD.Controllers
         {
             if (songObj.singers.Length > 0)
             {
-                SongsBL.AddSong(songObj.song, songObj.singers[0]);
+                SongsBL.AddSong(songObj.song);
                 SongsTBL song = SongsBL.getSongByName(songObj.song.name);
                 if (song != null)
                 {

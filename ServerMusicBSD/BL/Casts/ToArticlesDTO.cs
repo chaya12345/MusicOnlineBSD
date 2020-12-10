@@ -21,17 +21,11 @@ namespace BL.Casts
             newArticle.dateHebrew = article.dateHebrew;
             newArticle.date = article.date;
             newArticle.content = article.content;
-            newArticle.main_image = article.main_image;
-            newArticle.image1 = article.image1;
-            newArticle.image2 = article.image2;
-            newArticle.image3 = article.image3;
-            newArticle.audio1 = article.audio1;
-            newArticle.audio2 = article.audio2;
-            newArticle.video = article.video;
+            newArticle.image = article.image;
             newArticle.credit = article.credit;
             newArticle.count_views = article.count_views;
             newArticle.count_like = article.count_like;
-            newArticle.count_responses = article.count_responses;
+            newArticle.lastViewingDate = article.lastViewingDate;
             return newArticle;
         }
         public static List<ArticlesDTO> GetArticles(List<ArticlesTBL> articles)

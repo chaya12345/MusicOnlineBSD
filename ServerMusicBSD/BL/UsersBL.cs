@@ -312,7 +312,7 @@ namespace BL
                 ArticlesTBL article = et.ArticlesTBL.Where(a => a != null && a.id == follow.articleId).FirstOrDefault();
                 if (article != null)
                 {
-                    list.Add(new simple { id = article.id, name = article.title, image = article.main_image });
+                    list.Add(new simple { id = article.id, name = article.title, image = article.image });
                 }
             }
             info.list = list;

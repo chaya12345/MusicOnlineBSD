@@ -72,8 +72,8 @@
     <Compile Include="Casts\ToItemsByParameterDTO.cs" />
     <Compile Include="Casts\ToJobsDTO.cs" />
     <Compile Include="Casts\ToLastesResponsDTO.cs" />
+    <Compile Include="Casts\ToUserPlaylistsDTO.cs" />
     <Compile Include="Casts\ToPlaylistsDTO.cs" />
-    <Compile Include="Casts\ToPlaylistsSystemDTO.cs" />
     <Compile Include="Casts\ToReportsDTO.cs" />
     <Compile Include="Casts\ToResponsesToArticlesDTO.cs" />
     <Compile Include="Casts\ToResponsesToSongsDTO.cs" />
@@ -100,8 +100,8 @@
     <Compile Include="LastestResponsesBL.cs" />
     <Compile Include="LastViewsBL.cs" />
     <Compile Include="ParadeBL.cs" />
-    <Compile Include="PlaylistBL.cs" />
-    <Compile Include="PlaylistsSystemBL.cs" />
+    <Compile Include="UserPlaylistBL.cs" />
+    <Compile Include="PlaylistsBL.cs" />
     <Compile Include="ReportsBL.cs" />
     <Compile Include="ResponsesToArticlesBL.cs" />
     <Compile Include="ResponsesToSongsBL.cs" />
@@ -110,8 +110,8 @@
     <Compile Include="SingersToParadeBL.cs" />
     <Compile Include="SongsBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SongsToUserPlaylistsBL.cs" />
     <Compile Include="SongsToPlaylistsBL.cs" />
-    <Compile Include="SongsToPlaylistsSystemBL.cs" />
     <Compile Include="SubscriptionBL.cs" />
     <Compile Include="SongsToParadeBL.cs" />
     <Compile Include="TagsBL.cs" />

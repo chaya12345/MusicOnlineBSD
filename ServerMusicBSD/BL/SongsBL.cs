@@ -79,30 +79,28 @@ namespace BL
         public static SingersDTO GetSingerOfSong(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SongsTBL currentSong = et.SongsTBL.Where(song => song.id == songId).FirstOrDefault();
-            if (currentSong != null)
-            {
-                SingersTBL currentSinger = et.SingersTBL.Where(singer => singer.id == currentSong.singerId).FirstOrDefault();
-                if (currentSinger != null)
-                    return Casts.ToSingersDTO.GetSinger(currentSinger);
-            }
-            return null;
+            SingersToSongsTBL sts = et.SingersToSongsTBL.Where(s => s != null && s.songId == songId).FirstOrDefault();
+            if (sts == null)
+                return null;
+            SingersTBL singer = et.SingersTBL.Where(si => si != null && si.id == sts.singerId).FirstOrDefault();
+            return Casts.ToSingersDTO.GetSinger(singer);
         }
         public static List<songsDetails> GetSongsBySinger(string singerName)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SingersTBL singerId = et.SingersTBL.Where(s => s != null && s.name == singerName).FirstOrDefault();
-            if (singerId == null)
+            SingersTBL singer = et.SingersTBL.Where(s => s != null && s.name == singerName).FirstOrDefault();
+            if (singer == null)
                 return null;
-            List<songsDetails> result = Casts.ToSongsDTO.GetSongs(et.SongsTBL.Where(s => s != null && s.singerId == singerId.id && s.isPerformance == false).ToList());
-            var songsByTag = GetSongsByTag(singerName);
-            if (songsByTag != null)
+            List<SingersToSongsTBL> songsOfSinger = et.SingersToSongsTBL
+                .Where(sts => sts != null && sts.singerId == singer.id).ToList();
+            List<songsDetails> songs = new List<songsDetails>();
+            foreach (SingersToSongsTBL sts in songsOfSinger)
             {
-                result.AddRange(songsByTag);
+                songsDetails currentSong = et.songsDetails.Where(s => s != null && s.id == sts.songId).FirstOrDefault();
+                if (currentSong != null)
+                    songs.Add(currentSong);
             }
-            if (result != null)
-                return result;
-            return null;
+            return songs;
         }
         public static List<songsDetails> GetSongsByAlbum(string albumName)
         {
@@ -312,18 +310,16 @@ namespace BL
                 return Casts.ToSongsDTO.GetSongs(list);
             return null;
         }
-        public static void AddSong(SongsTBL song, string singerName)
+        public static void AddSong(SongsTBL song)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try
             {
-                SingersTBL singer = et.SingersTBL.Where(s => s != null && s.name == singerName).FirstOrDefault();
-                if (song == null || singer == null)
+                if (song == null)
                     return;
                 if (song.isPerformance == null)
                     song.isPerformance = false;
                 song.date = DateTime.Now;
-                song.singerId = singer.id;
                 song.count_like = 0;
                 song.count_views = 0;
                 et.SongsTBL.Add(song);
@@ -524,25 +520,6 @@ namespace BL
                 song.count_views++;
             song.lastViewingDate = DateTime.Now;
             et.SaveChanges();
-        }
-        public static void addSong(SongsTBL song,string singers,string artists,string tags)
-        {
-            MusicOnlineEntities et = new MusicOnlineEntities();
-            song.date = DateTime.Now;
-            List<string> singersName=new List<string>();
-            int len;
-            do
-            {
-                if (singers.Contains(","))
-                    len = singers.IndexOf(',');
-                else len = singers.Length;
-                singersName.Add(singers.Substring(0, len));
-                singers = singers.Substring(len + 1, singers.Length - len - 1);
-            } while (singers.Contains(","));
-            SingersTBL singer =et.SingersTBL.Where(s=>s.name==singersName[0]).FirstOrDefault();
-            if (singer == null)
-                return;
-            song.singerId = singer.id;
         }
     }
 }

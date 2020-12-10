@@ -12,21 +12,20 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class PlaylistsSystemTBL
+    public partial class UserPlaylistsTBL
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PlaylistsSystemTBL()
+        public UserPlaylistsTBL()
         {
-            this.SongsToPlaylistsSystemTBL = new HashSet<SongsToPlaylistsSystemTBL>();
+            this.SongsToUserPlaylistsTBL = new HashSet<SongsToUserPlaylistsTBL>();
         }
     
         public int id { get; set; }
+        public Nullable<int> userId { get; set; }
         public string name { get; set; }
-        public string title { get; set; }
-        public Nullable<long> count_views { get; set; }
-        public string image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SongsToPlaylistsSystemTBL> SongsToPlaylistsSystemTBL { get; set; }
+        public virtual ICollection<SongsToUserPlaylistsTBL> SongsToUserPlaylistsTBL { get; set; }
+        public virtual UsersTBL UsersTBL { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace BL
         public static int GetPlaylistsCount()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return et.PlaylistsSystemTBL.Count();
+            return et.PlaylistsTBL.Count();
         }
         public static int GetUsersCount()
         {

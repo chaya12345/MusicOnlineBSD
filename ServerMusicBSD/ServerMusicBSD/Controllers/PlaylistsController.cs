@@ -4,35 +4,41 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using DAL;
 using DTO;
 using BL;
+using DAL;
 using System.Web.Http.Cors;
 
 namespace ServerMusicBSD.Controllers
 {
-    public class PlaylistWithSong {
-        public PlaylistsTBL playlist { get; set; }
-        public SongsTBL song { get; set; }
+    public class playlistWithSongs
+    {
+        public PlaylistsTBL playlist;
+        public string[] songs;
     }
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class PlaylistsController : ApiController
     {
-        public bool PostPlaylist([FromBody] PlaylistsTBL newPlaylist)
+        public List<PlaylistsDTO> GetPlaylists()
         {
-            return PlaylistBL.AddPlaylist(newPlaylist);
+            return PlaylistsBL.GetPlaylists();
         }
-        public bool PostPlaylistWithSong([FromBody] PlaylistWithSong playlistWithSong)
+        public PlaylistsDTO GetPlaylistById(int playlistId)
         {
-            return PlaylistBL.AddPlaylistWithSong(playlistWithSong.playlist, playlistWithSong.song);
+            return PlaylistsBL.GetPlaylistById(playlistId);
         }
-        public void DeletePlaylist(int playlistId)
+        public  PlaylistsDTO GetPlaylistByName(string playlistName)
         {
-            PlaylistBL.DeletePlaylist(playlistId);
+            return PlaylistsBL.GetPlaylistByName(playlistName);
         }
-        public List<PlaylistsDTO> GetPlaylistsByUserId(int userId)
+        public  void PostPlaylistSystem([FromBody] PlaylistsTBL playlists)
         {
-            return PlaylistBL.GetPlaylistsByUserId(userId);
+            PlaylistsBL.AddPlaylist(playlists);
+        }
+        [HttpPost]
+        public void PostPlaylistSystemWithSongs([FromBody] playlistWithSongs pws)
+        {
+            PlaylistsBL.AddPlaylistWithSongs(pws.playlist, pws.songs);
         }
     }
 }

@@ -10,24 +10,24 @@ namespace BL.Casts
 {
     public class ToSongsToPlaylistsDTO
     {
-        public static SongsToPlaylistsDTO GetSongsToPlaylist(SongsToPlaylistsTBL songsToPlaylists)
+        public static SongsToUserPlaylistsDTO GetSongsToPlaylist(SongsToPlaylistsTBL songsToPlaylists)
         {
             if (songsToPlaylists == null)
                 return null;
-            SongsToPlaylistsDTO song = new SongsToPlaylistsDTO();
+            SongsToUserPlaylistsDTO song = new SongsToUserPlaylistsDTO();
             song.id = songsToPlaylists.id;
             song.playlistId = songsToPlaylists.playlistId;
             song.songId = songsToPlaylists.songId;
             return song;
         }
-        public static List<SongsToPlaylistsDTO> GetSongsToPlaylists(List<SongsToPlaylistsTBL> songs)
+        public static List<SongsToUserPlaylistsDTO> GetSongsToPlaylists(List<SongsToPlaylistsTBL> songs)
         {
             if (songs == null)
                 return null;
-            List<SongsToPlaylistsDTO> list = new List<SongsToPlaylistsDTO>();
+            List<SongsToUserPlaylistsDTO> list = new List<SongsToUserPlaylistsDTO>();
             foreach (SongsToPlaylistsTBL s in songs)
             {
-                SongsToPlaylistsDTO songsToPlaylists= GetSongsToPlaylist(s);
+                SongsToUserPlaylistsDTO songsToPlaylists= GetSongsToPlaylist(s);
                 if(songsToPlaylists!=null)
                 list.Add(songsToPlaylists);
             }

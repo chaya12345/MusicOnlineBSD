@@ -9,17 +9,17 @@ using DTO;
 
 namespace BL
 {
-    public class PlaylistBL
+    public class UserPlaylistBL
     {
-        public static bool AddPlaylist(PlaylistsTBL playlist)
+        public static bool AddUserPlaylist(UserPlaylistsTBL playlist)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try {
                 if (playlist != null)
                 {
-                    if (et.PlaylistsTBL.Where(p => p.userId == playlist.userId && p.name == playlist.name).FirstOrDefault() != null)
+                    if (et.UserPlaylistsTBL.Where(p => p.userId == playlist.userId && p.name == playlist.name).FirstOrDefault() != null)
                         return false;
-                    et.PlaylistsTBL.Add(playlist);
+                    et.UserPlaylistsTBL.Add(playlist);
                     et.SaveChanges();
                     return true;
                 }
@@ -36,46 +36,46 @@ namespace BL
             }
             return false;
         }
-        public static bool AddPlaylistWithSong(PlaylistsTBL playlist, SongsTBL song)
+        public static bool AddUserPlaylistWithSong(UserPlaylistsTBL playlist, SongsTBL song)
         {
-            bool created = AddPlaylist(playlist);
+            bool created = AddUserPlaylist(playlist);
             if (created == true)
             {
                 MusicOnlineEntities et = new MusicOnlineEntities();
-                PlaylistsTBL currentPlaylist =
-                    et.PlaylistsTBL.Where(p => p.userId == playlist.userId && p.name == playlist.name).FirstOrDefault();
+                UserPlaylistsTBL currentPlaylist =
+                    et.UserPlaylistsTBL.Where(p => p.userId == playlist.userId && p.name == playlist.name).FirstOrDefault();
                 if (currentPlaylist != null)
                 {
-                    SongsToPlaylistsBL.AddSongToPlaylist(currentPlaylist, song);
+                    SongsToUserPlaylistsBL.AddSongToUserPlaylist(currentPlaylist, song);
                 }
                 return true;
             }
             return false;
         }
-        public static void DeletePlaylist(int id)
+        public static void DeleteUserPlaylist(int id)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            PlaylistsTBL playlist = et.PlaylistsTBL.Where(p =>p!=null&& p.id == id).FirstOrDefault();
+            UserPlaylistsTBL playlist = et.UserPlaylistsTBL.Where(p =>p!=null&& p.id == id).FirstOrDefault();
             if (playlist != null)
             {
-                et.PlaylistsTBL.Remove(playlist);
+                et.UserPlaylistsTBL.Remove(playlist);
                 et.SaveChanges();
-                List<SongsToPlaylistsTBL> songsToDelet = et.SongsToPlaylistsTBL.Where(s => s!=null&&s.playlistId == id).ToList();
+                List<SongsToUserPlaylistsTBL> songsToDelet = et.SongsToUserPlaylistsTBL.Where(s => s!=null&&s.playlistId == id).ToList();
                 if (songsToDelet == null)
                     return;
-                foreach (SongsToPlaylistsTBL song in songsToDelet)
+                foreach (SongsToUserPlaylistsTBL song in songsToDelet)
                 {
                     if (song != null)
-                        SongsToPlaylistsBL.DeleteSong(song.id);
+                        SongsToUserPlaylistsBL.DeleteSong(song.id);
                 }
             }
         }
-        public static List<PlaylistsDTO> GetPlaylistsByUserId(int userId)
+        public static List<UserPlaylistsDTO> GetUserPlaylistsByUserId(int userId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<PlaylistsTBL> list = et.PlaylistsTBL.Where(p =>p!=null&& p.userId == userId).ToList();
+            List<UserPlaylistsTBL> list = et.UserPlaylistsTBL.Where(p =>p!=null&& p.userId == userId).ToList();
             if (list != null)
-                return Casts.ToPlaylistsDTO.GetPlaylists(list);
+                return Casts.ToUserPlaylistsDTO.GetUserPlaylists(list);
             return null;
         }
     }

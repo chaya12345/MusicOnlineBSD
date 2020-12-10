@@ -19,9 +19,9 @@ namespace DAL
         {
             this.FavoriteSongsToUserTBL = new HashSet<FavoriteSongsToUserTBL>();
             this.FollowUpTBL = new HashSet<FollowUpTBL>();
-            this.PlaylistsTBL = new HashSet<PlaylistsTBL>();
             this.SingerSearchingToUserTBL = new HashSet<SingerSearchingToUserTBL>();
             this.SubscriptionTBL = new HashSet<SubscriptionTBL>();
+            this.UserPlaylistsTBL = new HashSet<UserPlaylistsTBL>();
         }
     
         public int id { get; set; }
@@ -40,10 +40,10 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FollowUpTBL> FollowUpTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PlaylistsTBL> PlaylistsTBL { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SingerSearchingToUserTBL> SingerSearchingToUserTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SubscriptionTBL> SubscriptionTBL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserPlaylistsTBL> UserPlaylistsTBL { get; set; }
     }
 }

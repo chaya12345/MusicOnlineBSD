@@ -5,15 +5,6 @@
     <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </ComplexType>
-  <ComplexType Name="itemsByParameter_Result">
-    <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="subtitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="date" Type="DateTime" />
-    <Property Name="dateHebrew" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="type" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-  </ComplexType>
   <EntityType Name="AlbumsTBL">
     <Key>
       <PropertyRef Name="id" />
@@ -32,17 +23,10 @@
     <Property Name="dateHebrew" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="date" Type="DateTime" Precision="3" />
     <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="main_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="image1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="image2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="image3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="audio1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="audio2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="video" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="credit" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="count_views" Type="Int64" />
     <Property Name="count_like" Type="Int64" />
-    <Property Name="count_responses" Type="Int64" />
     <Property Name="lastViewingDate" Type="DateTime" Precision="3" />
     <NavigationProperty Name="FollowUpTBL" Relationship="Self.FK_FollowUpTBL_ArticlesTBL" FromRole="ArticlesTBL" ToRole="FollowUpTBL" />
     <NavigationProperty Name="ResponsesToArticlesTBL" Relationship="Self.FK_ResponsesTBL_ArticlesBTL" FromRole="ArticlesTBL" ToRole="ResponsesToArticlesTBL" />
@@ -111,7 +95,7 @@
     <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="SongsToParadeTBL" Relationship="Self.FK_SongsToParadeTBL_ParadeTBL" FromRole="ParadeTBL" ToRole="SongsToParadeTBL" />
   </EntityType>
-  <EntityType Name="PlaylistsSystemTBL">
+  <EntityType Name="PlaylistsTBL">
     <Key>
       <PropertyRef Name="id" />
     </Key>
@@ -120,17 +104,7 @@
     <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="count_views" Type="Int64" />
     <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="SongsToPlaylistsSystemTBL" Relationship="Self.FK_SongsToPlaylistsSystemTBL_PlaylistsSystemTBL" FromRole="PlaylistsSystemTBL" ToRole="SongsToPlaylistsSystemTBL" />
-  </EntityType>
-  <EntityType Name="PlaylistsTBL">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="userId" Type="Int32" />
-    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="UsersTBL" Relationship="Self.FK_PlaylistsTBL_UsersTBL" FromRole="PlaylistsTBL" ToRole="UsersTBL" />
-    <NavigationProperty Name="SongsToPlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_PlaylistsTBL" FromRole="PlaylistsTBL" ToRole="SongsToPlaylistsTBL" />
+    <NavigationProperty Name="SongsToPlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsSystemTBL_PlaylistsSystemTBL" FromRole="PlaylistsTBL" ToRole="SongsToPlaylistsTBL" />
   </EntityType>
   <EntityType Name="ReportsTBL">
     <Key>
@@ -189,8 +163,8 @@
     <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="searchings" Type="Int64" />
     <NavigationProperty Name="SingerSearchingToUserTBL" Relationship="Self.FK_SingerSearchingToUserTBL_SingersTBL" FromRole="SingersTBL" ToRole="SingerSearchingToUserTBL" />
+    <NavigationProperty Name="SingersToSongsTBL" Relationship="Self.FK_SingersToSongsTBL_SingersTBL" FromRole="SingersTBL" ToRole="SingersToSongsTBL" />
     <NavigationProperty Name="SingersToParadeTBL" Relationship="Self.FK_SingersToSurveyTBL_SingersTBL" FromRole="SingersTBL" ToRole="SingersToParadeTBL" />
-    <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsTBL_SingersTBL" FromRole="SingersTBL" ToRole="SongsTBL" />
     <NavigationProperty Name="SubscriptionTBL" Relationship="Self.FK_SubscriptionTBL_SingersTBL" FromRole="SingersTBL" ToRole="SubscriptionTBL" />
   </EntityType>
   <EntityType Name="SingersToParadeTBL">
@@ -203,6 +177,16 @@
     <Property Name="count" Type="Int32" />
     <NavigationProperty Name="SingersTBL" Relationship="Self.FK_SingersToSurveyTBL_SingersTBL" FromRole="SingersToParadeTBL" ToRole="SingersTBL" />
   </EntityType>
+  <EntityType Name="SingersToSongsTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="songId" Type="Int32" />
+    <Property Name="singerId" Type="Int32" />
+    <NavigationProperty Name="SingersTBL" Relationship="Self.FK_SingersToSongsTBL_SingersTBL" FromRole="SingersToSongsTBL" ToRole="SingersTBL" />
+    <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SingersToSongsTBL_SongsTBL" FromRole="SingersToSongsTBL" ToRole="SongsTBL" />
+  </EntityType>
   <EntityType Name="SongsTBL">
     <Key>
       <PropertyRef Name="id" />
@@ -212,7 +196,6 @@
     <Property Name="file_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="date" Type="DateTime" Precision="3" />
-    <Property Name="singerId" Type="Int32" />
     <Property Name="count_like" Type="Int64" />
     <Property Name="count_views" Type="Int64" />
     <Property Name="albumId" Type="Int32" />
@@ -227,9 +210,9 @@
     <NavigationProperty Name="FavoriteSongsToUserTBL" Relationship="Self.FK_FavoriteSongsToUserTBL_SongsTBL" FromRole="SongsTBL" ToRole="FavoriteSongsToUserTBL" />
     <NavigationProperty Name="FollowUpTBL" Relationship="Self.FK_FollowUpTBL_SongsTBL" FromRole="SongsTBL" ToRole="FollowUpTBL" />
     <NavigationProperty Name="ResponsesToSongsTBL" Relationship="Self.FK_ResponsesToSongsTBL_SongsTBL" FromRole="SongsTBL" ToRole="ResponsesToSongsTBL" />
-    <NavigationProperty Name="SingersTBL" Relationship="Self.FK_SongsTBL_SingersTBL" FromRole="SongsTBL" ToRole="SingersTBL" />
-    <NavigationProperty Name="SongsToPlaylistsSystemTBL" Relationship="Self.FK_SongsToPlaylistsSystemTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToPlaylistsSystemTBL" />
-    <NavigationProperty Name="SongsToPlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToPlaylistsTBL" />
+    <NavigationProperty Name="SingersToSongsTBL" Relationship="Self.FK_SingersToSongsTBL_SongsTBL" FromRole="SongsTBL" ToRole="SingersToSongsTBL" />
+    <NavigationProperty Name="SongsToPlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsSystemTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToPlaylistsTBL" />
+    <NavigationProperty Name="SongsToUserPlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToUserPlaylistsTBL" />
     <NavigationProperty Name="SongsToParadeTBL" Relationship="Self.FK_SurveyTBL_SongsTBL" FromRole="SongsTBL" ToRole="SongsToParadeTBL" />
     <NavigationProperty Name="TagsToSongsTBL" Relationship="Self.FK_TagsToSongsTBL_SongsTBL" FromRole="SongsTBL" ToRole="TagsToSongsTBL" />
   </EntityType>
@@ -244,16 +227,6 @@
     <NavigationProperty Name="ParadeTBL" Relationship="Self.FK_SongsToParadeTBL_ParadeTBL" FromRole="SongsToParadeTBL" ToRole="ParadeTBL" />
     <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SurveyTBL_SongsTBL" FromRole="SongsToParadeTBL" ToRole="SongsTBL" />
   </EntityType>
-  <EntityType Name="SongsToPlaylistsSystemTBL">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="playlistId" Type="Int32" />
-    <Property Name="songId" Type="Int32" />
-    <NavigationProperty Name="PlaylistsSystemTBL" Relationship="Self.FK_SongsToPlaylistsSystemTBL_PlaylistsSystemTBL" FromRole="SongsToPlaylistsSystemTBL" ToRole="PlaylistsSystemTBL" />
-    <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsToPlaylistsSystemTBL_SongsTBL" FromRole="SongsToPlaylistsSystemTBL" ToRole="SongsTBL" />
-  </EntityType>
   <EntityType Name="SongsToPlaylistsTBL">
     <Key>
       <PropertyRef Name="id" />
@@ -261,8 +234,18 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="playlistId" Type="Int32" />
     <Property Name="songId" Type="Int32" />
-    <NavigationProperty Name="PlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_PlaylistsTBL" FromRole="SongsToPlaylistsTBL" ToRole="PlaylistsTBL" />
-    <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsToPlaylistsTBL" ToRole="SongsTBL" />
+    <NavigationProperty Name="PlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsSystemTBL_PlaylistsSystemTBL" FromRole="SongsToPlaylistsTBL" ToRole="PlaylistsTBL" />
+    <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsToPlaylistsSystemTBL_SongsTBL" FromRole="SongsToPlaylistsTBL" ToRole="SongsTBL" />
+  </EntityType>
+  <EntityType Name="SongsToUserPlaylistsTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="playlistId" Type="Int32" />
+    <Property Name="songId" Type="Int32" />
+    <NavigationProperty Name="SongsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_SongsTBL" FromRole="SongsToUserPlaylistsTBL" ToRole="SongsTBL" />
+    <NavigationProperty Name="UserPlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_PlaylistsTBL" FromRole="SongsToUserPlaylistsTBL" ToRole="UserPlaylistsTBL" />
   </EntityType>
   <EntityType Name="SubscriptionTBL">
     <Key>
@@ -273,6 +256,25 @@
     <Property Name="singerId" Type="Int32" />
     <NavigationProperty Name="SingersTBL" Relationship="Self.FK_SubscriptionTBL_SingersTBL" FromRole="SubscriptionTBL" ToRole="SingersTBL" />
     <NavigationProperty Name="UsersTBL" Relationship="Self.FK_SubscriptionTBL_UsersTBL" FromRole="SubscriptionTBL" ToRole="UsersTBL" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TagsForSongsTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="typeId" Type="Int32" />
+    <NavigationProperty Name="TypesOfTagsTBL" Relationship="Self.FK_TagsForSongsTBL_TypesOfTagsTBL" FromRole="TagsForSongsTBL" ToRole="TypesOfTagsTBL" />
   </EntityType>
   <EntityType Name="TagsTBL">
     <Key>
@@ -325,6 +327,14 @@
     <Property Name="href" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="icon" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="TypesOfTagsTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TagsForSongsTBL" Relationship="Self.FK_TagsForSongsTBL_TypesOfTagsTBL" FromRole="TypesOfTagsTBL" ToRole="TagsForSongsTBL" />
+  </EntityType>
   <EntityType Name="UpdatesTBL">
     <Key>
       <PropertyRef Name="id" />
@@ -333,6 +343,16 @@
     <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="UserPlaylistsTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SongsToUserPlaylistsTBL" Relationship="Self.FK_SongsToPlaylistsTBL_PlaylistsTBL" FromRole="UserPlaylistsTBL" ToRole="SongsToUserPlaylistsTBL" />
+    <NavigationProperty Name="UsersTBL" Relationship="Self.FK_PlaylistsTBL_UsersTBL" FromRole="UserPlaylistsTBL" ToRole="UsersTBL" />
   </EntityType>
   <EntityType Name="UsersTBL">
     <Key>
@@ -350,9 +370,9 @@
     <Property Name="image_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="FavoriteSongsToUserTBL" Relationship="Self.FK_FavoriteSongsToUserTBL_UsersTBL" FromRole="UsersTBL" ToRole="FavoriteSongsToUserTBL" />
     <NavigationProperty Name="FollowUpTBL" Relationship="Self.FK_FollowUpTBL_UsersTBL" FromRole="UsersTBL" ToRole="FollowUpTBL" />
-    <NavigationProperty Name="PlaylistsTBL" Relationship="Self.FK_PlaylistsTBL_UsersTBL" FromRole="UsersTBL" ToRole="PlaylistsTBL" />
     <NavigationProperty Name="SingerSearchingToUserTBL" Relationship="Self.FK_SingerSearchingToUserTBL_UsersTBL" FromRole="UsersTBL" ToRole="SingerSearchingToUserTBL" />
     <NavigationProperty Name="SubscriptionTBL" Relationship="Self.FK_SubscriptionTBL_UsersTBL" FromRole="UsersTBL" ToRole="SubscriptionTBL" />
+    <NavigationProperty Name="UserPlaylistsTBL" Relationship="Self.FK_PlaylistsTBL_UsersTBL" FromRole="UsersTBL" ToRole="UserPlaylistsTBL" />
   </EntityType>
   <EntityType Name="getFavoriteSongs">
     <Key>
@@ -372,6 +392,7 @@
     <Property Name="image_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="isPerformance" Type="Boolean" />
+    <Property Name="lastViewingDate" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="GetNewSong">
     <Key>
@@ -391,19 +412,7 @@
     <Property Name="image_location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="isPerformance" Type="Boolean" />
-  </EntityType>
-  <EntityType Name="lastViews">
-    <Key>
-      <PropertyRef Name="id" />
-      <PropertyRef Name="type" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="subtitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="date" Type="DateTime" Precision="3" />
     <Property Name="lastViewingDate" Type="DateTime" Precision="3" />
-    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Name="type" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <EntityType Name="latestResponses">
     <Key>
@@ -583,30 +592,6 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_SongsToPlaylistsSystemTBL_PlaylistsSystemTBL">
-    <End Role="PlaylistsSystemTBL" Type="Self.PlaylistsSystemTBL" Multiplicity="0..1" />
-    <End Role="SongsToPlaylistsSystemTBL" Type="Self.SongsToPlaylistsSystemTBL" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PlaylistsSystemTBL">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="SongsToPlaylistsSystemTBL">
-        <PropertyRef Name="playlistId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PlaylistsTBL_UsersTBL">
-    <End Role="UsersTBL" Type="Self.UsersTBL" Multiplicity="0..1" />
-    <End Role="PlaylistsTBL" Type="Self.PlaylistsTBL" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="UsersTBL">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="PlaylistsTBL">
-        <PropertyRef Name="userId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SongsToPlaylistsTBL_PlaylistsTBL">
     <End Role="PlaylistsTBL" Type="Self.PlaylistsTBL" Multiplicity="0..1" />
     <End Role="SongsToPlaylistsTBL" Type="Self.SongsToPlaylistsTBL" Multiplicity="*" />
     <ReferentialConstraint>
@@ -654,6 +639,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_SingersToSongsTBL_SingersTBL">
+    <End Role="SingersTBL" Type="Self.SingersTBL" Multiplicity="0..1" />
+    <End Role="SingersToSongsTBL" Type="Self.SingersToSongsTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SingersTBL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SingersToSongsTBL">
+        <PropertyRef Name="singerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_SingersToSurveyTBL_SingersTBL">
     <End Role="SingersTBL" Type="Self.SingersTBL" Multiplicity="0..1" />
     <End Role="SingersToParadeTBL" Type="Self.SingersToParadeTBL" Multiplicity="*" />
@@ -663,18 +660,6 @@
       </Principal>
       <Dependent Role="SingersToParadeTBL">
         <PropertyRef Name="paradeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SongsTBL_SingersTBL">
-    <End Role="SingersTBL" Type="Self.SingersTBL" Multiplicity="0..1" />
-    <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SingersTBL">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="SongsTBL">
-        <PropertyRef Name="singerId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -690,19 +675,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SongsToPlaylistsSystemTBL_SongsTBL">
+  <Association Name="FK_SingersToSongsTBL_SongsTBL">
     <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="0..1" />
-    <End Role="SongsToPlaylistsSystemTBL" Type="Self.SongsToPlaylistsSystemTBL" Multiplicity="*" />
+    <End Role="SingersToSongsTBL" Type="Self.SingersToSongsTBL" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SongsTBL">
         <PropertyRef Name="id" />
       </Principal>
-      <Dependent Role="SongsToPlaylistsSystemTBL">
+      <Dependent Role="SingersToSongsTBL">
         <PropertyRef Name="songId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SongsToPlaylistsTBL_SongsTBL">
+  <Association Name="FK_SongsToPlaylistsSystemTBL_SongsTBL">
     <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="0..1" />
     <End Role="SongsToPlaylistsTBL" Type="Self.SongsToPlaylistsTBL" Multiplicity="*" />
     <ReferentialConstraint>
@@ -710,6 +695,18 @@
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="SongsToPlaylistsTBL">
+        <PropertyRef Name="songId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SongsToPlaylistsTBL_SongsTBL">
+    <End Role="SongsTBL" Type="Self.SongsTBL" Multiplicity="0..1" />
+    <End Role="SongsToUserPlaylistsTBL" Type="Self.SongsToUserPlaylistsTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SongsTBL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SongsToUserPlaylistsTBL">
         <PropertyRef Name="songId" />
       </Dependent>
     </ReferentialConstraint>
@@ -738,6 +735,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_SongsToPlaylistsTBL_PlaylistsTBL">
+    <End Role="UserPlaylistsTBL" Type="Self.UserPlaylistsTBL" Multiplicity="0..1" />
+    <End Role="SongsToUserPlaylistsTBL" Type="Self.SongsToUserPlaylistsTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserPlaylistsTBL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SongsToUserPlaylistsTBL">
+        <PropertyRef Name="playlistId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_SubscriptionTBL_UsersTBL">
     <End Role="UsersTBL" Type="Self.UsersTBL" Multiplicity="0..1" />
     <End Role="SubscriptionTBL" Type="Self.SubscriptionTBL" Multiplicity="*" />
@@ -747,6 +756,18 @@
       </Principal>
       <Dependent Role="SubscriptionTBL">
         <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TagsForSongsTBL_TypesOfTagsTBL">
+    <End Role="TypesOfTagsTBL" Type="Self.TypesOfTagsTBL" Multiplicity="0..1" />
+    <End Role="TagsForSongsTBL" Type="Self.TagsForSongsTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypesOfTagsTBL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TagsForSongsTBL">
+        <PropertyRef Name="typeId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -786,6 +807,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_PlaylistsTBL_UsersTBL">
+    <End Role="UsersTBL" Type="Self.UsersTBL" Multiplicity="0..1" />
+    <End Role="UserPlaylistsTBL" Type="Self.UserPlaylistsTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsersTBL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="UserPlaylistsTBL">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="MusicOnlineEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="AlbumsTBL" EntityType="Self.AlbumsTBL" />
     <EntitySet Name="ArticlesTBL" EntityType="Self.ArticlesTBL" />
@@ -795,7 +828,6 @@
     <EntitySet Name="FollowUpTBL" EntityType="Self.FollowUpTBL" />
     <EntitySet Name="JobTBL" EntityType="Self.JobTBL" />
     <EntitySet Name="ParadeTBL" EntityType="Self.ParadeTBL" />
-    <EntitySet Name="PlaylistsSystemTBL" EntityType="Self.PlaylistsSystemTBL" />
     <EntitySet Name="PlaylistsTBL" EntityType="Self.PlaylistsTBL" />
     <EntitySet Name="ReportsTBL" EntityType="Self.ReportsTBL" />
     <EntitySet Name="ResponsesToArticlesTBL" EntityType="Self.ResponsesToArticlesTBL" />
@@ -803,21 +835,25 @@
     <EntitySet Name="SingerSearchingToUserTBL" EntityType="Self.SingerSearchingToUserTBL" />
     <EntitySet Name="SingersTBL" EntityType="Self.SingersTBL" />
     <EntitySet Name="SingersToParadeTBL" EntityType="Self.SingersToParadeTBL" />
+    <EntitySet Name="SingersToSongsTBL" EntityType="Self.SingersToSongsTBL" />
     <EntitySet Name="SongsTBL" EntityType="Self.SongsTBL" />
     <EntitySet Name="SongsToParadeTBL" EntityType="Self.SongsToParadeTBL" />
-    <EntitySet Name="SongsToPlaylistsSystemTBL" EntityType="Self.SongsToPlaylistsSystemTBL" />
     <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" />
+    <EntitySet Name="SongsToUserPlaylistsTBL" EntityType="Self.SongsToUserPlaylistsTBL" />
     <EntitySet Name="SubscriptionTBL" EntityType="Self.SubscriptionTBL" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TagsForSongsTBL" EntityType="Self.TagsForSongsTBL" />
     <EntitySet Name="TagsTBL" EntityType="Self.TagsTBL" />
     <EntitySet Name="TagsToArticlesTBL" EntityType="Self.TagsToArticlesTBL" />
     <EntitySet Name="TagsToSongsTBL" EntityType="Self.TagsToSongsTBL" />
     <EntitySet Name="TagsTypesTBL" EntityType="Self.TagsTypesTBL" />
     <EntitySet Name="TopicsTBL" EntityType="Self.TopicsTBL" />
+    <EntitySet Name="TypesOfTagsTBL" EntityType="Self.TypesOfTagsTBL" />
     <EntitySet Name="UpdatesTBL" EntityType="Self.UpdatesTBL" />
+    <EntitySet Name="UserPlaylistsTBL" EntityType="Self.UserPlaylistsTBL" />
     <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" />
     <EntitySet Name="getFavoriteSongs" EntityType="Self.getFavoriteSongs" />
     <EntitySet Name="GetNewSong" EntityType="Self.GetNewSong" />
-    <EntitySet Name="lastViews" EntityType="Self.lastViews" />
     <EntitySet Name="latestResponses" EntityType="Self.latestResponses" />
     <EntitySet Name="songsDetails" EntityType="Self.songsDetails" />
     <AssociationSet Name="FK_SongsTBL_AlbumsTBL" Association="Self.FK_SongsTBL_AlbumsTBL">
@@ -869,14 +905,6 @@
       <End Role="SongsToParadeTBL" EntitySet="SongsToParadeTBL" />
     </AssociationSet>
     <AssociationSet Name="FK_SongsToPlaylistsSystemTBL_PlaylistsSystemTBL" Association="Self.FK_SongsToPlaylistsSystemTBL_PlaylistsSystemTBL">
-      <End Role="PlaylistsSystemTBL" EntitySet="PlaylistsSystemTBL" />
-      <End Role="SongsToPlaylistsSystemTBL" EntitySet="SongsToPlaylistsSystemTBL" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PlaylistsTBL_UsersTBL" Association="Self.FK_PlaylistsTBL_UsersTBL">
-      <End Role="UsersTBL" EntitySet="UsersTBL" />
-      <End Role="PlaylistsTBL" EntitySet="PlaylistsTBL" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SongsToPlaylistsTBL_PlaylistsTBL" Association="Self.FK_SongsToPlaylistsTBL_PlaylistsTBL">
       <End Role="PlaylistsTBL" EntitySet="PlaylistsTBL" />
       <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
     </AssociationSet>
@@ -892,25 +920,29 @@
       <End Role="UsersTBL" EntitySet="UsersTBL" />
       <End Role="SingerSearchingToUserTBL" EntitySet="SingerSearchingToUserTBL" />
     </AssociationSet>
+    <AssociationSet Name="FK_SingersToSongsTBL_SingersTBL" Association="Self.FK_SingersToSongsTBL_SingersTBL">
+      <End Role="SingersTBL" EntitySet="SingersTBL" />
+      <End Role="SingersToSongsTBL" EntitySet="SingersToSongsTBL" />
+    </AssociationSet>
     <AssociationSet Name="FK_SingersToSurveyTBL_SingersTBL" Association="Self.FK_SingersToSurveyTBL_SingersTBL">
       <End Role="SingersTBL" EntitySet="SingersTBL" />
       <End Role="SingersToParadeTBL" EntitySet="SingersToParadeTBL" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SongsTBL_SingersTBL" Association="Self.FK_SongsTBL_SingersTBL">
-      <End Role="SingersTBL" EntitySet="SingersTBL" />
-      <End Role="SongsTBL" EntitySet="SongsTBL" />
     </AssociationSet>
     <AssociationSet Name="FK_SubscriptionTBL_SingersTBL" Association="Self.FK_SubscriptionTBL_SingersTBL">
       <End Role="SingersTBL" EntitySet="SingersTBL" />
       <End Role="SubscriptionTBL" EntitySet="SubscriptionTBL" />
     </AssociationSet>
+    <AssociationSet Name="FK_SingersToSongsTBL_SongsTBL" Association="Self.FK_SingersToSongsTBL_SongsTBL">
+      <End Role="SongsTBL" EntitySet="SongsTBL" />
+      <End Role="SingersToSongsTBL" EntitySet="SingersToSongsTBL" />
+    </AssociationSet>
     <AssociationSet Name="FK_SongsToPlaylistsSystemTBL_SongsTBL" Association="Self.FK_SongsToPlaylistsSystemTBL_SongsTBL">
       <End Role="SongsTBL" EntitySet="SongsTBL" />
-      <End Role="SongsToPlaylistsSystemTBL" EntitySet="SongsToPlaylistsSystemTBL" />
+      <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
     </AssociationSet>
     <AssociationSet Name="FK_SongsToPlaylistsTBL_SongsTBL" Association="Self.FK_SongsToPlaylistsTBL_SongsTBL">
       <End Role="SongsTBL" EntitySet="SongsTBL" />
-      <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
+      <End Role="SongsToUserPlaylistsTBL" EntitySet="SongsToUserPlaylistsTBL" />
     </AssociationSet>
     <AssociationSet Name="FK_SurveyTBL_SongsTBL" Association="Self.FK_SurveyTBL_SongsTBL">
       <End Role="SongsTBL" EntitySet="SongsTBL" />
@@ -920,9 +952,17 @@
       <End Role="SongsTBL" EntitySet="SongsTBL" />
       <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
     </AssociationSet>
+    <AssociationSet Name="FK_SongsToPlaylistsTBL_PlaylistsTBL" Association="Self.FK_SongsToPlaylistsTBL_PlaylistsTBL">
+      <End Role="UserPlaylistsTBL" EntitySet="UserPlaylistsTBL" />
+      <End Role="SongsToUserPlaylistsTBL" EntitySet="SongsToUserPlaylistsTBL" />
+    </AssociationSet>
     <AssociationSet Name="FK_SubscriptionTBL_UsersTBL" Association="Self.FK_SubscriptionTBL_UsersTBL">
       <End Role="UsersTBL" EntitySet="UsersTBL" />
       <End Role="SubscriptionTBL" EntitySet="SubscriptionTBL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TagsForSongsTBL_TypesOfTagsTBL" Association="Self.FK_TagsForSongsTBL_TypesOfTagsTBL">
+      <End Role="TypesOfTagsTBL" EntitySet="TypesOfTagsTBL" />
+      <End Role="TagsForSongsTBL" EntitySet="TagsForSongsTBL" />
     </AssociationSet>
     <AssociationSet Name="FK_TagsTBL_TagsTypesTBL" Association="Self.FK_TagsTBL_TagsTypesTBL">
       <End Role="TagsTypesTBL" EntitySet="TagsTypesTBL" />
@@ -936,11 +976,79 @@
       <End Role="TagsTBL" EntitySet="TagsTBL" />
       <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
     </AssociationSet>
+    <AssociationSet Name="FK_PlaylistsTBL_UsersTBL" Association="Self.FK_PlaylistsTBL_UsersTBL">
+      <End Role="UsersTBL" EntitySet="UsersTBL" />
+      <End Role="UserPlaylistsTBL" EntitySet="UserPlaylistsTBL" />
+    </AssociationSet>
     <FunctionImport Name="itemByName" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemByName_Result)">
       <Parameter Name="item" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MusicOnlineModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MusicOnlineModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="lastViews" EntityType="MusicOnlineModel.lastViews" />
     <FunctionImport Name="itemsByParameter" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemsByParameter_Result)">
-      <Parameter Name="singer" Mode="In" Type="String" />
+      <Parameter Name="parameter" Mode="In" Type="String" />
     </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="lastViews">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="type" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="subtitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="lastViewingDate" Type="DateTime" Precision="3" />
+    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="itemsByParameter_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="title" Nullable="true" />
+    <Property Type="String" Name="subtitle" Nullable="true" />
+    <Property Type="DateTime" Name="date" Nullable="true" Precision="23" />
+    <Property Type="String" Name="dateHebrew" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="image" Nullable="true" />
+    <Property Type="String" Name="type" Nullable="false" MaxLength="11" />
+  </ComplexType>
 </Schema>

@@ -1,39 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using BL;
 using DAL;
-using DTO;
 
 namespace ServerMusicBSD.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SongsToPlaylistsController : ApiController
     {
-        public void PostSongToPlaylists([FromBody] SongsToPlaylistsTBL songToPlaylist)
+        public List<songsDetails> GetSongsToPlaylist(int playlistId)
         {
-            SongsToPlaylistsBL.AddSongToPlaylist(songToPlaylist);
+            return SongsToPlaylistsBL.GetSongsToPlaylist(playlistId);
         }
-        public bool PutMoveSongToOtherPlaylist(int songId, int prevPlaylistId, int currentPlaylistId)
+        public void PostSongToPlaylist([FromBody] SongsToPlaylistsTBL stp)
         {
-            return SongsToPlaylistsBL.MoveSongToOtherPlaylist(songId, prevPlaylistId, currentPlaylistId);
+            SongsToPlaylistsBL.AddSongToPlaylist(stp);
         }
-        public void DeleteSongFromPlaylist(int songId)
+        public void PostSongsToPlaylist([FromBody] List<SongsToPlaylistsTBL> stpList)
         {
-            SongsToPlaylistsBL.DeleteSong(songId);
+            SongsToPlaylistsBL.AddSongsToPlaylist(stpList);
         }
-        public List<songsDetails> GetSongsToPlaylists(int playlistId)
+        public void DeleteSongFromPlaylistSystem(int playlistId, int songId)
         {
-            return SongsToPlaylistsBL.GetSongsToPlaylists(playlistId);
+            SongsToPlaylistsBL.DeleteSongFromPlaylist(playlistId, songId);
         }
-        public void PostLikedSong(int songId, int userId)
-        {
-            SongsToPlaylistsBL.AddLikedSong(songId, userId);
-        }
-
     }
 }

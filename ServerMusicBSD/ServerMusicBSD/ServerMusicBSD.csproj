@@ -225,8 +225,8 @@
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\LastViewsController.cs" />
     <Compile Include="Controllers\LatestResponsesController.cs" />
+    <Compile Include="Controllers\UserPlaylistsController.cs" />
     <Compile Include="Controllers\PlaylistsController.cs" />
-    <Compile Include="Controllers\PlaylistsSystemController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\ResponsesToArticlesController.cs" />
     <Compile Include="Controllers\ResponsesToSongsController.cs" />
@@ -235,8 +235,8 @@
     <Compile Include="Controllers\SingersToParadeController.cs" />
     <Compile Include="Controllers\SongsController.cs" />
     <Compile Include="Controllers\SongsToParadeController.cs" />
+    <Compile Include="Controllers\SongsToUserPlaylistsController.cs" />
     <Compile Include="Controllers\SongsToPlaylistsController.cs" />
-    <Compile Include="Controllers\SongsToPlaylistsSystemController.cs" />
     <Compile Include="Controllers\SubscriptionController.cs" />
     <Compile Include="Controllers\ParadeController.cs" />
     <Compile Include="Controllers\TagsController.cs" />

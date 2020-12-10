@@ -21,7 +21,6 @@ namespace BL.Casts
                 newSong.file_location = song.file_location;
                 newSong.type = song.type;
                 newSong.date = song.date;
-                newSong.singerId = song.singerId;
                 newSong.count_like = song.count_like;
                 newSong.count_views = song.count_views;
                 newSong.albumId = song.albumId;
@@ -30,6 +29,7 @@ namespace BL.Casts
                 newSong.image_location = song.image_location;
                 newSong.content = song.content;
                 newSong.isPerformance = song.isPerformance;
+                newSong.lastViewingDate = song.lastViewingDate;
                 return newSong;
             }
             return null;
@@ -95,41 +95,35 @@ namespace BL.Casts
                 return "";
             MusicOnlineEntities et = new MusicOnlineEntities();
             string singers = "";
-            SingersTBL singer = et.SingersTBL.Where(s => s != null && s.id == song.singerId).FirstOrDefault();
-            if (singer != null)
+            List<SingersToSongsTBL> stsList = et.SingersToSongsTBL.Where(s => s != null && s.songId == song.id).ToList();
+            foreach (SingersToSongsTBL sts in stsList)
             {
-                singers = singer.name;
-            }
-            JobTBL duet = et.JobTBL.Where(job => job.name == "דואט").First();
-            if (duet != null)
-            {
-                List<ArtistsToSongsTBL> rellevatArtists = et.ArtistsToSongsTBL
-                    .Where(ats => ats.jobId == duet.id && ats.songId == song.id).ToList();
-                foreach (ArtistsToSongsTBL artistToSong in rellevatArtists)
+                SingersTBL currentSinger = et.SingersTBL.Where(s => s != null && s.id == sts.singerId).FirstOrDefault();
+                if (currentSinger != null)
                 {
-                    ArtistsTBL artist = et.ArtistsTBL.Where(a => a.id == artistToSong.artistId).FirstOrDefault();
-                    if (artist != null)
+
+                    string lastName = currentSinger.name.Substring(currentSinger.name.IndexOf(' ') + 1);
+                    if (singers.Contains(lastName) && !singers.Contains(currentSinger.name))
                     {
-                        string lastName = artist.name.Substring(artist.name.IndexOf(' ') + 1);
-                        if (singers.Contains(lastName) && !singers.Contains(artist.name))
+                        string begin = singers.Substring(0, singers.IndexOf(lastName));
+                        string middle = currentSinger.name.Substring(0, currentSinger.name.Length - lastName.Length - 1);
+                        if (singers.IndexOf(lastName) + lastName.Length < singers.Length - 1)
                         {
-                            string begin = singers.Substring(0, singers.IndexOf(lastName));
-                            string middle = artist.name.Substring(0, artist.name.Length - lastName.Length - 1);
-                            if (singers.IndexOf(lastName) + lastName.Length < singers.Length - 1)
-                            {
-                                singers = begin + "ו" + middle + " " + lastName + singers.Substring(singers.IndexOf(lastName) + lastName.Length, singers.Length);
-                            }
-                            else
-                            {
-                                singers = begin + "ו" + middle + " " + lastName;
-                            }
+                            singers = begin + "ו" + middle + " " + lastName + singers.Substring(singers.IndexOf(lastName) + lastName.Length, singers.Length);
                         }
                         else
                         {
-                                singers = singers + 
-                                    (rellevatArtists[rellevatArtists.Count() - 1].Equals(artistToSong) ? " ו" : ", ");
-                            singers = singers + artist.name;
+                            singers = begin + "ו" + middle + " " + lastName;
                         }
+                    }
+                    else
+                    {
+                        if (singers != "")
+                        {
+                            singers = singers +
+                                (stsList[stsList.Count() - 1].Equals(sts) ? " ו" : ", ");
+                        }
+                        singers = singers + currentSinger.name;
                     }
                 }
             }

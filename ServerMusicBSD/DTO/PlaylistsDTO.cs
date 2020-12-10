@@ -9,7 +9,9 @@ namespace DTO
     public class PlaylistsDTO
     {
         public int id { get; set; }
-        public Nullable<int> userId { get; set; }
         public string name { get; set; }
+        public string title { get; set; }
+        public Nullable<long> count_views { get; set; }
+        public string image { get; set; }
     }
 }

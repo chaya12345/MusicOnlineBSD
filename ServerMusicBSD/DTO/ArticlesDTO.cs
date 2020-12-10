@@ -13,18 +13,11 @@ namespace DTO
         public string subtitle { get; set; }
         public string dateHebrew { get; set; }
         public Nullable<System.DateTime> date { get; set; }
-        public Nullable<long> tagsId { get; set; }
         public string content { get; set; }
-        public string main_image { get; set; }
-        public string image1 { get; set; }
-        public string image2 { get; set; }
-        public string image3 { get; set; }
-        public string audio1 { get; set; }
-        public string audio2 { get; set; }
-        public string video { get; set; }
+        public string image { get; set; }
         public string credit { get; set; }
         public Nullable<long> count_views { get; set; }
         public Nullable<long> count_like { get; set; }
-        public Nullable<long> count_responses { get; set; }
+        public Nullable<System.DateTime> lastViewingDate { get; set; }
     }
 }

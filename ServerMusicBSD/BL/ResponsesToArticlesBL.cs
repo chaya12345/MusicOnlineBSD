@@ -20,9 +20,6 @@ namespace BL
                 ArticlesTBL article = et.ArticlesTBL.Where(a =>a!=null&& a.id == response.articleId).FirstOrDefault();
                 if (article == null)
                     return;
-                if (article.count_responses == null)
-                    article.count_responses = 1;
-                else article.count_responses++;
                 et.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
@@ -58,9 +55,6 @@ namespace BL
             ArticlesTBL article = et.ArticlesTBL.Where(a =>a!=null&& a.id == response.articleId).FirstOrDefault();
             if (article == null)
                 return;
-            if (article.count_responses == null || article.count_responses <= 0)
-                article.count_responses = 0;
-            else article.count_responses--;
             et.ResponsesToArticlesTBL.Remove(response);
             et.SaveChanges();
         }
