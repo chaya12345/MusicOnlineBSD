@@ -119,7 +119,7 @@ namespace BL
         public static List<songsDetails> GetSongsByTag(string tagName)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            var tag = et.TagsTBL.Where(t => t != null && t.name == tagName).FirstOrDefault();
+            var tag = et.TagsForSongsTBL.Where(t => t != null && t.name == tagName).FirstOrDefault();
             if (tag != null)
             {
                 int tagId = tag.id;
@@ -141,7 +141,7 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<songsDetails> suitableSongs = new List<songsDetails>();
-            TagsDTO tag = Casts.ToTagsDTO.GetTag(et.TagsTBL.Where(t => t != null && t.name == tagName).FirstOrDefault());
+            TagsDTO tag = Casts.ToTagsDTO.GetTag(et.TagsForSongsTBL.Where(t => t != null && t.name == tagName).FirstOrDefault());
             if (tag == null || songs == null)
                 return null;
             foreach (songsDetails song in songs)
@@ -178,7 +178,7 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<songsDetails> songs = new List<songsDetails>();
-            if (et.TagsTBL.Where(tag => tag.name == name).FirstOrDefault() != null)
+            if (et.TagsForSongsTBL.Where(tag => tag.name == name).FirstOrDefault() != null)
             {
                 List<songsDetails> list = GetSongsByTag(name);
                 if (list != null)
@@ -274,7 +274,7 @@ namespace BL
                     bool isContain = true;
                     foreach (var tagName in tags)
                     {
-                        TagsTBL currntTag = et.TagsTBL.Where(t =>t!=null&& t.name == tagName).FirstOrDefault();
+                        TagsForSongsTBL currntTag = et.TagsForSongsTBL.Where(t =>t!=null&& t.name == tagName).FirstOrDefault();
                         int tagId = 0;
                         if (currntTag != null)
                         {

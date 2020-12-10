@@ -70,7 +70,7 @@ namespace BL
         private static List<ArticlesTBL> GetArticleInListByTag(List<ArticlesTBL> articles, string tagName)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            TagsTBL tag = et.TagsTBL.Where(t =>t!=null&& t.name == tagName).FirstOrDefault();
+            TagsForArticlesTBL tag = et.TagsForArticlesTBL.Where(t =>t!=null&& t.name == tagName).FirstOrDefault();
             List<ArticlesTBL> result = new List<ArticlesTBL>();
             if (tag != null && articles != null)
             {
