@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PlaylistSystem } from '../classes/playlistSystem';
-import { PlaylistsSystemService } from '../services/playlists-system.service';
+import { Playlists } from '../classes/playlists';
+import { PlaylistsService } from '../services/playlists.service';
 
 @Component({
   selector: 'popular-playlists',
@@ -9,11 +9,11 @@ import { PlaylistsSystemService } from '../services/playlists-system.service';
 })
 export class PopularPlaylistsComponent implements OnInit {
 
-  latestPlaylists: PlaylistSystem[] = [];
+  latestPlaylists: Playlists[] = [];
 
-  constructor(private playlistSystemService: PlaylistsSystemService) {
+  constructor(private playlistService: PlaylistsService) {
     try {
-      this.playlistSystemService.getPlaylists()
+      this.playlistService.getPlaylists()
         .subscribe(playlist => { this.latestPlaylists = playlist; this.filter(); },
         err => { console.log(err); });
     }

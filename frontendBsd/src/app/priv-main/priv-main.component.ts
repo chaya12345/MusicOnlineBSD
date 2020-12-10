@@ -1,10 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AudioPlaying } from '../classes/audioPlaying';
-import { PlayList } from '../classes/playlist';
 import { Song } from '../classes/song';
-import { PlaylistsService } from '../services/playlists.service';
+import { UserPlaylists } from "../classes/UserPlaylists";
 import { SongsToPlaylistsService } from '../services/songs-to-playlists.service';
 import { StorageService } from '../services/storage.service';
+import { UserPlaylistsService } from '../services/user-playlists.service';
 
 export class SongsToPlaylistObj {
   id: number;
@@ -18,7 +18,7 @@ export class SongsToPlaylistObj {
 })
 export class PrivMainComponent implements OnInit {
 
-  playlists: PlayList[] = [];
+  playlists: UserPlaylists[] = [];
   stpObj: SongsToPlaylistObj[] = [];
   @Output() sendPlaylist: EventEmitter<Song[]> = new EventEmitter();
   @Output() onPlay: EventEmitter<AudioPlaying> = new EventEmitter();
@@ -28,7 +28,7 @@ export class PrivMainComponent implements OnInit {
   playingSongId: number = -1;
   songsToPlaylist:Song[]=[];
 
-  constructor(private playlistsService: PlaylistsService, private songsToPlaylistService: SongsToPlaylistsService,
+  constructor(private userPlaylistsService: UserPlaylistsService, private songsToPlaylistService: SongsToPlaylistsService,
     private storageService:StorageService) {
     this.getPlaylists();
   }
@@ -51,7 +51,7 @@ export class PrivMainComponent implements OnInit {
 
   getPlaylists(): void {
     try {
-      this.playlistsService.GetPlaylistsByUserId(10).subscribe(playlists => {
+      this.userPlaylistsService.GetPlaylistsByUserId(10).subscribe(playlists => {
         this.playlists = playlists;
         this.playlists.forEach(element => {
           this.getSongsToPlaylist(element.id);

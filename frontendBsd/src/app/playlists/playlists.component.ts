@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { PlaylistSystem } from '../classes/playlistSystem';
-import { PlaylistsSystemService } from '../services/playlists-system.service';
+import { Playlists } from '../classes/playlists';
 import { PlaylistsService } from '../services/playlists.service';
 import { TopicsService } from '../services/topics.service';
 
@@ -11,7 +10,7 @@ import { TopicsService } from '../services/topics.service';
 })
 export class PlaylistsComponent implements OnInit {
 
-  playlists: PlaylistSystem[] = []
+  playlists: Playlists[] = []
   navs: string[] = [];
 
   title: string = "";
@@ -19,7 +18,7 @@ export class PlaylistsComponent implements OnInit {
   img: string = "";
   icon: string = "";
 
-  constructor(private playlistsSystemService: PlaylistsSystemService, private cdr: ChangeDetectorRef,
+  constructor(private playlistsService: PlaylistsService, private cdr: ChangeDetectorRef,
     private topicsService: TopicsService) { 
     this.navs.push("הפלייליסטים");
   }
@@ -31,7 +30,7 @@ export class PlaylistsComponent implements OnInit {
 
   getPlaylists() {
     try {
-      this.playlistsSystemService.getPlaylists()
+      this.playlistsService.getPlaylists()
       .subscribe(playlists => { this.playlists = playlists; this.cdr.detectChanges(); }, err => console.log(err));
     } catch (err) { console.log(err); }
   }

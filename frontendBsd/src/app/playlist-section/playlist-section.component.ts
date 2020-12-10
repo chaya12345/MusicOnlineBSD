@@ -1,9 +1,9 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AudioPlaying } from '../classes/audioPlaying';
-import { PlaylistSystem } from '../classes/playlistSystem';
+import { Playlists } from '../classes/playlists';
 import { Song } from '../classes/song';
-import { PlaylistsSystemService } from '../services/playlists-system.service';
+import { PlaylistsService } from '../services/playlists.service';
 import { SongService } from '../services/song.service';
 import { SongsToPlaylistsSystemService } from '../services/songs-to-playlists-system.service';
 
@@ -14,16 +14,16 @@ import { SongsToPlaylistsSystemService } from '../services/songs-to-playlists-sy
 })
 export class PlaylistSectionComponent implements OnInit {
 
-  playlist: PlaylistSystem;
+  playlist: Playlists;
   navs: string[] = [];
   loaded: boolean = false;
   songsList: Song[];
   playingObj: AudioPlaying = new AudioPlaying();
 
-  constructor(private activatedRoute: ActivatedRoute, private playlistSystemService: PlaylistsSystemService,
+  constructor(private activatedRoute: ActivatedRoute, private playlistService: PlaylistsService,
     private cdr: ChangeDetectorRef, private songService: SongService, private songsToPlaylistsSystemService: SongsToPlaylistsSystemService) {
     try {
-      this.playlistSystemService.getPlaylistById(parseInt(this.activatedRoute.snapshot.queryParams.playlistId))
+      this.playlistService.getPlaylistById(parseInt(this.activatedRoute.snapshot.queryParams.playlistId))
         .subscribe(playlist => {
           this.playlist = playlist;
           this.loaded = true;

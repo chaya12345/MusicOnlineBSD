@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SongsToPlaylists } from '../classes/songsToPlaylists';
 import { Observable } from 'rxjs';
-import { PlayList } from '../classes/playlist';
 import { Song } from '../classes/song';
+import { UserPlaylists } from "../classes/UserPlaylists";
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +26,6 @@ export class SongsToPlaylistsService {
     return this.httpClient.post(this.baseUrl + "PostLikedSong?songId=" + songId + "&userId=" + userId, songId);
   }
   public getSongsToPlaylists(playlistId: number): Observable<Song[]> {
-    return this.httpClient.get<PlayList[]>(this.baseUrl + "GetSongsToPlaylists?playlistId=" + playlistId);
+    return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsToPlaylists?playlistId=" + playlistId);
   }
 }

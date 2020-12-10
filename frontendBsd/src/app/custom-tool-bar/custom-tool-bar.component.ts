@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
-import { PlayList } from '../classes/playlist';
 import { SongsToPlaylists } from '../classes/songsToPlaylists';
+import { UserPlaylists } from "../classes/UserPlaylists";
 import { RegisterToNewsletterComponent } from '../register-to-newsletter/register-to-newsletter.component';
 import { SongsToPlaylistsService } from '../services/songs-to-playlists.service';
 import { StorageService } from '../services/storage.service';
@@ -21,7 +21,7 @@ export class CustomToolBarComponent implements OnInit {
   @Output() onCreatePlaylist: EventEmitter<void> = new EventEmitter<void>();
   @Input() isPublic?: boolean = true;
   @Input() isByName?: boolean = false;
-  @Input() _playlists?: PlayList[] = [];
+  @Input() _playlists?: UserPlaylists[] = [];
   @Input() isArticle?: boolean = false;
   currentOrder: string = "date";
   currentDirection: boolean = false;

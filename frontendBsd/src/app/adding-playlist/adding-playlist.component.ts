@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
-import { PlaylistSystem } from '../classes/playlistSystem';
+import { Playlists } from '../classes/playlists';
 import { Song } from '../classes/song';
-import { PlaylistsSystemService } from '../services/playlists-system.service';
+import { PlaylistsService } from '../services/playlists.service';
 import { SongService } from '../services/song.service';
 import { SongsToPlaylistsSystemService } from '../services/songs-to-playlists-system.service';
 import { UploadService } from '../services/upload.service';
@@ -21,7 +21,7 @@ export class AddingPlaylistComponent implements OnInit {
 
   constructor(private songService: SongService, private uploadService: UploadService,
     private songsToPlaylistsSystemService: SongsToPlaylistsSystemService,
-    private playlistsSystemService: PlaylistsSystemService, private _snackBar: MatSnackBar) {
+    private playlistsService: PlaylistsService, private _snackBar: MatSnackBar) {
     this.playlistAddingForm = new FormGroup({
       name: new FormControl("", [Validators.required, Validators.minLength(3)]),
       title: new FormControl("", [Validators.required, Validators.minLength(3)]),
@@ -45,13 +45,13 @@ export class AddingPlaylistComponent implements OnInit {
 
   onSubmit(): void {
     if (this.playlistAddingForm.valid && this.imageFile != null && this.imageFile != undefined) {
-      let newPlaylist: PlaylistSystem = new PlaylistSystem();
+      let newPlaylist: Playlists = new Playlists();
       newPlaylist.name = this.playlistAddingForm.controls.name.value;
       newPlaylist.title = this.playlistAddingForm.controls.title.value;
       newPlaylist.image = this.playlistAddingForm.controls.image.value;
       let songs = this.playlistAddingForm.controls.songs.value;
       try {
-      this.playlistsSystemService.addPlaylistSystemWithSongs(newPlaylist, songs).subscribe(res =>
+      this.playlistsService.addPlaylistWithSongs(newPlaylist, songs).subscribe(res =>
         {
           console.log(res, "Yes");
           this.saveImage(this.imageFile);

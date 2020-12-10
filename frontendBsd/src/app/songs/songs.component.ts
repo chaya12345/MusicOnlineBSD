@@ -3,22 +3,22 @@ import { MatDialog, MatSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FollowUp } from '../classes/followUp';
 import { ItemsByParameter } from '../classes/itemsByParameter';
-import { PlayList } from '../classes/playlist';
 import { Singer } from '../classes/singer';
 import { Song } from '../classes/song';
 import { Subscription } from '../classes/subscription';
 import { Topics } from '../classes/topics';
 import { User } from '../classes/user';
+import { UserPlaylists } from "../classes/UserPlaylists";
 import { FieldFormComponent, Type } from '../field-form/field-form.component';
 import { LogInComponent } from '../log-in/log-in.component';
 import { ReportingDialogComponent } from '../reporting-dialog/reporting-dialog.component';
 import { FollowUpService } from '../services/follow-up.service';
 import { ItemsByParameterService } from '../services/items-by-parameter.service';
-import { PlaylistsService } from '../services/playlists.service';
 import { SingerService } from '../services/singer.service';
 import { SongService } from '../services/song.service';
 import { SubscriptionService } from '../services/subscription.service';
 import { TopicsService } from '../services/topics.service';
+import { UserPlaylistsService } from '../services/user-playlists.service';
 
 export enum Kind { NEW_IN_MUSIC, PARTICULAR_SONG, FILTERED_SONGS }
 
@@ -55,7 +55,7 @@ export class SongsComponent implements OnInit {
   messange: string;
   songId: number;
 
-  userPlaylists: PlayList[] = [];
+  userPlaylists: UserPlaylists[] = [];
   singer: Singer;
 
   type: Kind;
@@ -64,7 +64,7 @@ export class SongsComponent implements OnInit {
     private cdr: ChangeDetectorRef, private itemsByParameterService: ItemsByParameterService,
     private topicService: TopicsService, private router: Router,
     private followUpService: FollowUpService, private _snackbar: MatSnackBar, private dialog: MatDialog,
-    private playlistService: PlaylistsService, public singerService: SingerService,
+    private userPlaylistsService: UserPlaylistsService, public singerService: SingerService,
     private subscriptionService: SubscriptionService) {
     this.navs.push("חדש במוזיקה");
   }

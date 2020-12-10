@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PlaylistSystem } from '../classes/playlistSystem';
+import { Playlists } from '../classes/playlists';
 
 @Component({
   selector: 'display-playlists',
@@ -8,7 +8,7 @@ import { PlaylistSystem } from '../classes/playlistSystem';
 })
 export class DisplayPlaylistsComponent implements OnInit {
 
-  @Input() playlists: PlaylistSystem[] = [];
+  @Input() playlists: Playlists[] = [];
   @Input() count?: number;
 
   constructor() { }

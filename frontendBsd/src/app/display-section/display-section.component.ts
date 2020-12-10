@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Article } from '../classes/article';
-import { PlaylistSystem } from '../classes/playlistSystem';
+import { Playlists } from '../classes/playlists';
 import { Song } from '../classes/song';
 
 @Component({
@@ -18,7 +18,7 @@ export class DisplaySectionComponent implements OnInit {
 
   @Input() songs?: Song[] = [];
   @Input() articles?: Article[] = [];
-  @Input() playlists?: PlaylistSystem[] = [];
+  @Input() playlists?: Playlists[] = [];
   @Input() dark?: boolean = false;
 
   constructor() { }

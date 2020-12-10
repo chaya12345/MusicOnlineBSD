@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { FollowUp } from '../classes/followUp';
-import { PlayList } from '../classes/playlist';
 import { Singer } from '../classes/singer';
 import { Song } from '../classes/song';
 import { Subscription } from '../classes/subscription';
 import { User } from '../classes/user';
+import { UserPlaylists } from "../classes/UserPlaylists";
 import { FieldFormComponent, Type } from '../field-form/field-form.component';
 import { LogInComponent } from '../log-in/log-in.component';
 import { ReportingDialogComponent } from '../reporting-dialog/reporting-dialog.component';
 import { CommonMessageService } from './common-message.service';
 import { FollowUpService } from './follow-up.service';
-import { PlaylistsService } from './playlists.service';
 import { SingerService } from './singer.service';
 import { SongService } from './song.service';
 import { SubscriptionService } from './subscription.service';
+import { UserPlaylistsService } from './user-playlists.service';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class ToolbarService {
   constructor(private followUpService: FollowUpService, private _snackbar: MatSnackBar,
     private cmService: CommonMessageService, private dialog: MatDialog,
     public songService: SongService, private singerService: SingerService,
-    private subscriptionService: SubscriptionService, private playlistService: PlaylistsService) { }
+    private subscriptionService: SubscriptionService, private userPlaylistsService: UserPlaylistsService) { }
 
   public addFollowUpToSong(songId): void {
     if (this.isUserConnected()) {
@@ -189,10 +189,10 @@ export class ToolbarService {
 
   private addNewPlaylist(fileName: string, song: Song): void {
     try {
-      let playlist = new PlayList;
+      let playlist = new UserPlaylists;
       playlist.name = fileName;
       playlist.userId = this.user.id;
-      this.playlistService.addPlaylistWithSong(playlist, song).subscribe(() => {
+      this.userPlaylistsService.addPlaylistWithSong(playlist, song).subscribe(() => {
         console.log("succes");
       }, err => console.log(err));
     } catch (err) { console.log(); }

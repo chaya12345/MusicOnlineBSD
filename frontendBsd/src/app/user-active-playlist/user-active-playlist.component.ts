@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AudioPlaying } from '../classes/audioPlaying';
-import { PlayList } from '../classes/playlist';
 import { Song } from '../classes/song';
+import { UserPlaylists } from "../classes/UserPlaylists";
 import { SongsToPlaylistsService } from '../services/songs-to-playlists.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { SongsToPlaylistsService } from '../services/songs-to-playlists.service'
 })
 export class UserActivePlaylistComponent implements OnInit {
 
-  @Input() playlist: PlayList = null;
+  @Input() playlist: UserPlaylists = null;
   songs: Song[] = [];
   playingObj: AudioPlaying = new AudioPlaying();
   @Output() onDragSong = new EventEmitter<Song>();

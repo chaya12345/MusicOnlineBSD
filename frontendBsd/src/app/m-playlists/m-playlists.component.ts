@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PlaylistSystem } from '../classes/playlistSystem';
-import { PlaylistsSystemService } from '../services/playlists-system.service';
+import { Playlists } from '../classes/playlists';
+import { PlaylistsService } from '../services/playlists.service';
 
 @Component({
   selector: 'm-playlists',
@@ -9,9 +9,9 @@ import { PlaylistsSystemService } from '../services/playlists-system.service';
 })
 export class MPlaylistsComponent implements OnInit {
 
-  playlists: PlaylistSystem[] = [];
+  playlists: Playlists[] = [];
 
-  constructor(private playlistService: PlaylistsSystemService) { 
+  constructor(private playlistService: PlaylistsService) { 
     this.getPlaylists();
   }
 

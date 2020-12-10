@@ -5,12 +5,12 @@ import { Song } from '../classes/Song';
 import { SongService } from '../services/song.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { Subscription } from 'rxjs';
-import { PlayList } from '../classes/playlist';
 import { Singer } from '../classes/singer';
 import { FieldFormComponent } from '../field-form/field-form.component';
 import { LogInComponent } from '../log-in/log-in.component';
 import { ReportingDialogComponent } from '../reporting-dialog/reporting-dialog.component';
 import { ToolbarService } from '../services/toolbar.service';
+import { UserPlaylists } from "../classes/UserPlaylists";
 
 @Component({
   selector: 'song-details',
@@ -27,7 +27,7 @@ export class SongDetailsComponent implements OnInit {
   singer: Singer;
 
   similarSongs: Song[] = [];
-  userPlaylists: PlayList[] = [];
+  userPlaylists: UserPlaylists[] = [];
 
   /*
   public Editor = ClassicEditor;

@@ -31,12 +31,12 @@ namespace ServerMusicBSD.Controllers
         {
             return PlaylistsBL.GetPlaylistByName(playlistName);
         }
-        public  void PostPlaylistSystem([FromBody] PlaylistsTBL playlists)
+        public  void PostPlaylist([FromBody] PlaylistsTBL playlists)
         {
             PlaylistsBL.AddPlaylist(playlists);
         }
         [HttpPost]
-        public void PostPlaylistSystemWithSongs([FromBody] playlistWithSongs pws)
+        public void PostPlaylistWithSongs([FromBody] playlistWithSongs pws)
         {
             PlaylistsBL.AddPlaylistWithSongs(pws.playlist, pws.songs);
         }

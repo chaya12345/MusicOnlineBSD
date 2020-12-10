@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PlaylistSystem } from '../classes/playlistSystem';
-import { PlaylistsSystemService } from '../services/playlists-system.service';
+import { Playlists } from '../classes/playlists';
+import { PlaylistsService } from '../services/playlists.service';
 
 @Component({
   selector: 'playlists-adjacent',
@@ -9,11 +9,11 @@ import { PlaylistsSystemService } from '../services/playlists-system.service';
 })
 export class PlaylistsAdjacentComponent implements OnInit {
 
-  @Input() currentPlaylist: PlaylistSystem;
-  nextPlaylist: PlaylistSystem;
-  previousPlaylist: PlaylistSystem;
+  @Input() currentPlaylist: Playlists;
+  nextPlaylist: Playlists;
+  previousPlaylist: Playlists;
 
-  constructor(private playlistService: PlaylistsSystemService) { }
+  constructor(private playlistService: PlaylistsService) { }
 
   ngOnInit(): void {
   }

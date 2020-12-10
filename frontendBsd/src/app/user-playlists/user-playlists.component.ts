@@ -1,12 +1,12 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
-import { PlayList } from '../classes/playlist';
 import { Song } from '../classes/song';
 import { User } from '../classes/user';
+import { UserPlaylists } from "../classes/UserPlaylists";
 import { MessageComponent } from '../message/message.component';
 import { CommonMessageService } from '../services/common-message.service';
-import { PlaylistsService } from '../services/playlists.service';
 import { SongsToPlaylistsService } from '../services/songs-to-playlists.service';
+import { UserPlaylistsService } from '../services/user-playlists.service';
 
 @Component({
   selector: 'user-playlists',
@@ -17,16 +17,16 @@ export class UserPlaylistsComponent implements OnInit {
 
   @ViewChild('playlistSection') playlistSection: ElementRef;
   @Input() user: User;
-  playlists: PlayList[] = [];
+  playlists: UserPlaylists[] = [];
 
   draggedSong: Song = null;
   lastDraggedSong: Song = null;
-  droppedPlaylist: PlayList = null;
+  droppedPlaylist: UserPlaylists = null;
 
-  activePlaylist: PlayList;
+  activePlaylist: UserPlaylists;
   isMove: boolean;
 
-  constructor(private playlistsService: PlaylistsService,
+  constructor(private userPlaylistsService: UserPlaylistsService,
     private stpService: SongsToPlaylistsService, private dialog: MatDialog,
     private _snackbar: MatSnackBar, private cmService: CommonMessageService) { }
 
@@ -42,7 +42,7 @@ export class UserPlaylistsComponent implements OnInit {
 
   getPlaylistsOfUser(): void {
     try {
-      this.playlistsService.GetPlaylistsByUserId(this.user.id)
+      this.userPlaylistsService.GetPlaylistsByUserId(this.user.id)
         .subscribe(plylsts => this.playlists = plylsts, err => console.log(err));
     } catch (err) { console.log(err); }
   }
@@ -61,7 +61,7 @@ export class UserPlaylistsComponent implements OnInit {
     }
   }
 
-  moveSong(playlist: PlayList): void {
+  moveSong(playlist: UserPlaylists): void {
     if (this.draggedSong != null) {
       this.droppedPlaylist = playlist;
     }
@@ -72,7 +72,7 @@ export class UserPlaylistsComponent implements OnInit {
     }
   }
 
-  openMessageDialog(text: string, song: Song, prevPlaylist: PlayList, currPlaylist: PlayList) {
+  openMessageDialog(text: string, song: Song, prevPlaylist: UserPlaylists, currPlaylist: UserPlaylists) {
     try {
       const dialogRef = this.dialog.open(MessageComponent, {
         width: '400px',
