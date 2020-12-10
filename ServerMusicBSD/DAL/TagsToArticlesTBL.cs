@@ -15,10 +15,10 @@ namespace DAL
     public partial class TagsToArticlesTBL
     {
         public int id { get; set; }
-        public Nullable<int> tagId { get; set; }
         public Nullable<int> articleId { get; set; }
+        public Nullable<int> tagId { get; set; }
     
         public virtual ArticlesTBL ArticlesTBL { get; set; }
-        public virtual TagsTBL TagsTBL { get; set; }
+        public virtual TagsForArticlesTBL TagsForArticlesTBL { get; set; }
     }
 }

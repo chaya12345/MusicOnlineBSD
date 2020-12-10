@@ -14,10 +14,18 @@ namespace DAL
     
     public partial class TagsForSongsTBL
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TagsForSongsTBL()
+        {
+            this.TagsToSongsTBL = new HashSet<TagsToSongsTBL>();
+        }
+    
         public int id { get; set; }
         public string name { get; set; }
         public Nullable<int> typeId { get; set; }
     
         public virtual TypesOfTagsTBL TypesOfTagsTBL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TagsToSongsTBL> TagsToSongsTBL { get; set; }
     }
 }

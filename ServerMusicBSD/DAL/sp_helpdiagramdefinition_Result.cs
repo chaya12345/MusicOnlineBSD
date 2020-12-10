@@ -10,15 +10,10 @@
 namespace DAL
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class TagsToSongsTBL
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public int id { get; set; }
-        public Nullable<int> songId { get; set; }
-        public Nullable<int> tagId { get; set; }
-    
-        public virtual SongsTBL SongsTBL { get; set; }
-        public virtual TagsForSongsTBL TagsForSongsTBL { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
