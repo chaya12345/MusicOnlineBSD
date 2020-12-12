@@ -215,6 +215,23 @@
     <Property Name="userId" Type="int" />
     <Property Name="singerId" Type="int" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TagsForArticlesTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="TagsForSongsTBL">
     <Key>
       <PropertyRef Name="id" />
@@ -223,22 +240,13 @@
     <Property Name="name" Type="varchar" MaxLength="50" />
     <Property Name="typeId" Type="int" />
   </EntityType>
-  <EntityType Name="TagsTBL">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="varchar" MaxLength="50" />
-    <Property Name="tagTypeId" Type="int" />
-    <Property Name="isShow" Type="bit" />
-  </EntityType>
   <EntityType Name="TagsToArticlesTBL">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="tagId" Type="int" />
     <Property Name="articleId" Type="int" />
+    <Property Name="tagId" Type="int" />
   </EntityType>
   <EntityType Name="TagsToSongsTBL">
     <Key>
@@ -316,6 +324,7 @@ warning 6002: The table/view 'MusicOnline.dbo.getFavoriteSongs' does not have a 
     <Property Name="file_location" Type="varchar(max)" />
     <Property Name="type" Type="varchar" MaxLength="50" />
     <Property Name="date" Type="datetime" />
+    <Property Name="singerId" Type="int" />
     <Property Name="count_like" Type="bigint" />
     <Property Name="count_views" Type="bigint" />
     <Property Name="albumId" Type="int" />
@@ -337,6 +346,7 @@ warning 6002: The table/view 'MusicOnline.dbo.GetNewSong' does not have a primar
     <Property Name="file_location" Type="varchar(max)" />
     <Property Name="type" Type="varchar" MaxLength="50" />
     <Property Name="date" Type="datetime" />
+    <Property Name="singerId" Type="int" />
     <Property Name="count_like" Type="bigint" />
     <Property Name="count_views" Type="bigint" />
     <Property Name="albumId" Type="int" />
@@ -735,19 +745,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_TagsTBL_TagsTypesTBL">
-    <End Role="TagsTypesTBL" Type="Self.TagsTypesTBL" Multiplicity="0..1" />
-    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TagsTypesTBL">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="TagsTBL">
-        <PropertyRef Name="tagTypeId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_TagsToArticleTBL_ArticlesTBL">
+  <Association Name="FK_TagsToArticlesTBL_ArticlesTBL">
     <End Role="ArticlesTBL" Type="Self.ArticlesTBL" Multiplicity="0..1" />
     <End Role="TagsToArticlesTBL" Type="Self.TagsToArticlesTBL" Multiplicity="*" />
     <ReferentialConstraint>
@@ -759,11 +757,11 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_TagsToArticleTBL_TagsTBL">
-    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="0..1" />
+  <Association Name="FK_TagsToArticlesTBL_TagsForArticlesTBL">
+    <End Role="TagsForArticlesTBL" Type="Self.TagsForArticlesTBL" Multiplicity="0..1" />
     <End Role="TagsToArticlesTBL" Type="Self.TagsToArticlesTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TagsTBL">
+      <Principal Role="TagsForArticlesTBL">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="TagsToArticlesTBL">
@@ -783,11 +781,11 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_TagsToSongsTBL_TagNameTBL">
-    <End Role="TagsTBL" Type="Self.TagsTBL" Multiplicity="0..1" />
+  <Association Name="FK_TagsToSongsTBL_TagsForSongsTBL">
+    <End Role="TagsForSongsTBL" Type="Self.TagsForSongsTBL" Multiplicity="0..1" />
     <End Role="TagsToSongsTBL" Type="Self.TagsToSongsTBL" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="TagsTBL">
+      <Principal Role="TagsForSongsTBL">
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="TagsToSongsTBL">
@@ -795,6 +793,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
   <Function Name="itemByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="item" Type="varchar" Mode="In" />
     <ReturnType>
@@ -823,6 +822,36 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
       </CollectionType>
     </ReturnType>
   </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="MusicOnlineModelStoreContainer">
     <EntitySet Name="AlbumsTBL" EntityType="Self.AlbumsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ArticlesTBL" EntityType="Self.ArticlesTBL" Schema="dbo" store:Type="Tables" />
@@ -846,8 +875,9 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SongsToUserPlaylistsTBL" EntityType="Self.SongsToUserPlaylistsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SubscriptionTBL" EntityType="Self.SubscriptionTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TagsForArticlesTBL" EntityType="Self.TagsForArticlesTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsForSongsTBL" EntityType="Self.TagsForSongsTBL" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TagsTBL" EntityType="Self.TagsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsToArticlesTBL" EntityType="Self.TagsToArticlesTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsToSongsTBL" EntityType="Self.TagsToSongsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TagsTypesTBL" EntityType="Self.TagsTypesTBL" Schema="dbo" store:Type="Tables" />
@@ -863,6 +893,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     [getFavoriteSongs].[file_location] AS [file_location], 
     [getFavoriteSongs].[type] AS [type], 
     [getFavoriteSongs].[date] AS [date], 
+    [getFavoriteSongs].[singerId] AS [singerId], 
     [getFavoriteSongs].[count_like] AS [count_like], 
     [getFavoriteSongs].[count_views] AS [count_views], 
     [getFavoriteSongs].[albumId] AS [albumId], 
@@ -881,6 +912,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     [GetNewSong].[file_location] AS [file_location], 
     [GetNewSong].[type] AS [type], 
     [GetNewSong].[date] AS [date], 
+    [GetNewSong].[singerId] AS [singerId], 
     [GetNewSong].[count_like] AS [count_like], 
     [GetNewSong].[count_views] AS [count_views], 
     [GetNewSong].[albumId] AS [albumId], 
@@ -1044,24 +1076,20 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
       <End Role="TypesOfTagsTBL" EntitySet="TypesOfTagsTBL" />
       <End Role="TagsForSongsTBL" EntitySet="TagsForSongsTBL" />
     </AssociationSet>
-    <AssociationSet Name="FK_TagsTBL_TagsTypesTBL" Association="Self.FK_TagsTBL_TagsTypesTBL">
-      <End Role="TagsTypesTBL" EntitySet="TagsTypesTBL" />
-      <End Role="TagsTBL" EntitySet="TagsTBL" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TagsToArticleTBL_ArticlesTBL" Association="Self.FK_TagsToArticleTBL_ArticlesTBL">
+    <AssociationSet Name="FK_TagsToArticlesTBL_ArticlesTBL" Association="Self.FK_TagsToArticlesTBL_ArticlesTBL">
       <End Role="ArticlesTBL" EntitySet="ArticlesTBL" />
       <End Role="TagsToArticlesTBL" EntitySet="TagsToArticlesTBL" />
     </AssociationSet>
-    <AssociationSet Name="FK_TagsToArticleTBL_TagsTBL" Association="Self.FK_TagsToArticleTBL_TagsTBL">
-      <End Role="TagsTBL" EntitySet="TagsTBL" />
+    <AssociationSet Name="FK_TagsToArticlesTBL_TagsForArticlesTBL" Association="Self.FK_TagsToArticlesTBL_TagsForArticlesTBL">
+      <End Role="TagsForArticlesTBL" EntitySet="TagsForArticlesTBL" />
       <End Role="TagsToArticlesTBL" EntitySet="TagsToArticlesTBL" />
     </AssociationSet>
     <AssociationSet Name="FK_TagsToSongsTBL_SongsTBL" Association="Self.FK_TagsToSongsTBL_SongsTBL">
       <End Role="SongsTBL" EntitySet="SongsTBL" />
       <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
     </AssociationSet>
-    <AssociationSet Name="FK_TagsToSongsTBL_TagNameTBL" Association="Self.FK_TagsToSongsTBL_TagNameTBL">
-      <End Role="TagsTBL" EntitySet="TagsTBL" />
+    <AssociationSet Name="FK_TagsToSongsTBL_TagsForSongsTBL" Association="Self.FK_TagsToSongsTBL_TagsForSongsTBL">
+      <End Role="TagsForSongsTBL" EntitySet="TagsForSongsTBL" />
       <End Role="TagsToSongsTBL" EntitySet="TagsToSongsTBL" />
     </AssociationSet>
   </EntityContainer>
