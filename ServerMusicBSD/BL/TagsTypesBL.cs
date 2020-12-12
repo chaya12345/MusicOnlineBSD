@@ -16,7 +16,7 @@ namespace BL
             TagsForSongsTBL tag = et.TagsForSongsTBL.Where(t =>t!=null&& t.id == tagId).FirstOrDefault();
             if (tag != null)
             {
-                TagsTypesTBL tagsTypesTBL = et.TagsTypesTBL.Where(type => type.id == tag.typeId).FirstOrDefault();
+                TypesOfTagsTBL tagsTypesTBL = et.TypesOfTagsTBL.Where(type => type.id == tag.typeId).FirstOrDefault();
                 if(tagsTypesTBL!=null)
                 return Casts.ToTagsTypesDTO.GetTagType(tagsTypesTBL);
             }
@@ -25,7 +25,7 @@ namespace BL
         public static int GetId(string typeName)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            TagsTypesTBL currentType = et.TagsTypesTBL.Where(type => type!=null&& type.name == typeName).FirstOrDefault();
+            TypesOfTagsTBL currentType = et.TypesOfTagsTBL.Where(type => type!=null&& type.name == typeName).FirstOrDefault();
             if (currentType != null)
             {
                 return currentType.id;

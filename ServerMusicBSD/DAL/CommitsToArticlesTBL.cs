@@ -12,9 +12,15 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class TagsTypesTBL
+    public partial class CommitsToArticlesTBL
     {
         public int id { get; set; }
+        public Nullable<int> articleId { get; set; }
         public string name { get; set; }
+        public string title { get; set; }
+        public string content { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
+    
+        public virtual ArticlesTBL ArticlesTBL { get; set; }
     }
 }

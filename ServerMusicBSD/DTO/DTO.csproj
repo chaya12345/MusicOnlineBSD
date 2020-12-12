@@ -55,8 +55,8 @@
     <Compile Include="UserPlaylistsDTO.cs" />
     <Compile Include="PlaylistsDTO.cs" />
     <Compile Include="ReportsDTO.cs" />
-    <Compile Include="ResponsesToArticlesDTO.cs" />
-    <Compile Include="ResponsesToSongsDTO.cs" />
+    <Compile Include="CommitsToArticlesDTO.cs" />
+    <Compile Include="CommitsToSongsDTO.cs" />
     <Compile Include="ItemByNameDTO.cs" />
     <Compile Include="SingersDTO.cs" />
     <Compile Include="SingerSearchingToUserDTO.cs" />

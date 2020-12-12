@@ -10,13 +10,13 @@ using DTO;
 
 namespace BL
 {
-    public class ResponsesToArticlesBL
+    public class CommitsToArticlesBL
     {
-        public static void AddResponse(ResponsesToArticlesTBL response)
+        public static void AddResponse(CommitsToArticlesTBL response)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try { 
-                et.ResponsesToArticlesTBL.Add(response);
+                et.CommitsToArticlesTBL.Add(response);
                 ArticlesTBL article = et.ArticlesTBL.Where(a =>a!=null&& a.id == response.articleId).FirstOrDefault();
                 if (article == null)
                     return;
@@ -33,37 +33,37 @@ namespace BL
                 }
             }
         }
-        public static List<ResponsesToArticlesDTO> GetArticleResponses(int articleId)
+        public static List<CommitsToArticlesDTO> GetArticleCommits(int articleId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<ResponsesToArticlesTBL> list = et.ResponsesToArticlesTBL.Where(r =>r!=null&& r.articleId == articleId).ToList();
+            List<CommitsToArticlesTBL> list = et.CommitsToArticlesTBL.Where(r =>r!=null&& r.articleId == articleId).ToList();
             if(list!=null)
-            return Casts.ToResponsesToArticlesDTO.GetResponses(list);
+            return Casts.ToCommitsToArticlesDTO.GetCommits(list);
             return null;
         }
-        public static int GetCountResponsesToArticle(int articleId)
+        public static int GetCountCommitsToArticle(int articleId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return et.ResponsesToArticlesTBL.Count(res => res!=null&& res.articleId == articleId);
+            return et.CommitsToArticlesTBL.Count(res => res!=null&& res.articleId == articleId);
         }
         public static void DeleteResponse(int responseId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            ResponsesToArticlesTBL response = et.ResponsesToArticlesTBL.Where(r =>r!=null&& r.id == responseId).FirstOrDefault();
+            CommitsToArticlesTBL response = et.CommitsToArticlesTBL.Where(r =>r!=null&& r.id == responseId).FirstOrDefault();
             if (response == null)
                 return;
             ArticlesTBL article = et.ArticlesTBL.Where(a =>a!=null&& a.id == response.articleId).FirstOrDefault();
             if (article == null)
                 return;
-            et.ResponsesToArticlesTBL.Remove(response);
+            et.CommitsToArticlesTBL.Remove(response);
             et.SaveChanges();
         }
-        public static List<ResponsesToArticlesDTO> GetLastResponses()
+        public static List<CommitsToArticlesDTO> GetLastCommits()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<ResponsesToArticlesTBL> list = et.ResponsesToArticlesTBL.Where(r =>r!=null&& r.date != null).OrderBy(r=>r.date).Distinct().ToList();
+            List<CommitsToArticlesTBL> list = et.CommitsToArticlesTBL.Where(r =>r!=null&& r.date != null).OrderBy(r=>r.date).Distinct().ToList();
             if (list != null)
-                return Casts.ToResponsesToArticlesDTO.GetResponses(list);
+                return Casts.ToCommitsToArticlesDTO.GetCommits(list);
             return null;
         }
     }

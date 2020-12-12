@@ -8,14 +8,14 @@ using DTO;
 
 namespace BL
 {
-    public class LastestResponsesBL
+    public class LastestCommitsBL
     {
-        public static List<LastestResponsesDTO> GetLastResponsesToArticlesAndSongs()
+        public static List<LastestCommitsDTO> GetLastCommitsToArticlesAndSongs()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<latestResponses> list = et.latestResponses.ToList();
             if (list != null)
-                return Casts.ToLastesResponsDTO.GetLastResponses(list);
+                return Casts.ToLastesResponsDTO.GetLastCommits(list);
             return null;
         }
     }

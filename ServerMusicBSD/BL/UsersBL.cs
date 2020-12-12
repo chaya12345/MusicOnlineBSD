@@ -29,17 +29,13 @@ namespace BL
                 name = "הודיה עזרן",
                 mail = "0504117455h@gmail.com",
                 password = "LegGh5QwYGE77@!",
-                type = true,
                 newsletter = true,
-                saveLike = true
             }
             , new UsersTBL() {
                 name = "אודיה אושרי",
                 mail = "bsd.odaya@gmail.com",
                 password = "7d7vM6@vTPFcsBt",
-                type = true,
                 newsletter = true,
-                saveLike = true
             }
         };
         public static List<UsersTBL> GetManagers()
@@ -81,10 +77,6 @@ namespace BL
                 {
                     user.newsletter = false;
                 }
-                user.type = true;
-                user.repeat = false;
-                user.coincidental = false;
-                user.saveLike = true;
                 try
                 {
                     et.UsersTBL.Add(user);
@@ -112,7 +104,6 @@ namespace BL
                 UsersTBL user = new UsersTBL();
                 user.mail = mail;
                 user.newsletter = true;
-                user.type = false;
                 AddUser(user);
                 et.SaveChanges();
                 return true;
@@ -138,30 +129,6 @@ namespace BL
                 user.newsletter = false;
                 et.SaveChanges();
             }
-        }
-        public static void UpdateUser(int userId, UsersTBL updateUser)
-        {
-            MusicOnlineEntities et = new MusicOnlineEntities();
-            UsersTBL user = et.UsersTBL.Find(userId);
-            if (user != null && userId == user.id)
-            {
-                if (updateUser.name != null)
-                    user.name = updateUser.name;
-                if (updateUser.mail != null)
-                    user.mail = updateUser.mail;
-                if (updateUser.password != null)
-                    user.password = updateUser.password;
-                if (updateUser.type != null)
-                    user.type = updateUser.type;
-                if (updateUser.repeat != null)
-                    user.repeat = updateUser.repeat;
-                if (updateUser.coincidental != null)
-                    user.coincidental = updateUser.coincidental;
-                if (updateUser.newsletter != null)
-                    user.newsletter = updateUser.newsletter;
-                et.SaveChanges();
-            }
-
         }
         public static void UpdatePassword(int userId, string password)
         {
@@ -189,26 +156,12 @@ namespace BL
                     user.mail = updateUser.mail;
                 if (updateUser.password != null)
                     user.password = updateUser.password;
-                et.SaveChanges();
-            }
-        }
-        public static void UpdateDefinition(int userId, UsersTBL updateUser)
-        {
-            MusicOnlineEntities et = new MusicOnlineEntities();
-            UsersTBL user = et.UsersTBL.Find(userId);
-            if (user != null && userId == user.id)
-            {
-                if (updateUser.type != null)
-                    user.type = updateUser.type;
-                if (updateUser.repeat != null)
-                    user.repeat = updateUser.repeat;
-                if (updateUser.coincidental != null)
-                    user.coincidental = updateUser.coincidental;
                 if (updateUser.newsletter != null)
                     user.newsletter = updateUser.newsletter;
+                if (updateUser.image != null)
+                    user.image = updateUser.image;
                 et.SaveChanges();
             }
-
         }
         public static List<UsersDTO> GetUsers()
         {

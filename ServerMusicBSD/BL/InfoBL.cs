@@ -32,7 +32,7 @@ namespace BL
         public static int GetSubsToNewsletterCount()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return et.UsersTBL.Count(user => user != null && user.type == true);
+            return et.UsersTBL.Count(user => user != null && user.newsletter == true);
         }
     }
 }

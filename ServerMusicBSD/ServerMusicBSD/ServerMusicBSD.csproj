@@ -228,8 +228,8 @@
     <Compile Include="Controllers\UserPlaylistsController.cs" />
     <Compile Include="Controllers\PlaylistsController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
-    <Compile Include="Controllers\ResponsesToArticlesController.cs" />
-    <Compile Include="Controllers\ResponsesToSongsController.cs" />
+    <Compile Include="Controllers\CommitsToArticlesController.cs" />
+    <Compile Include="Controllers\CommitsToSongsController.cs" />
     <Compile Include="Controllers\SingersController.cs" />
     <Compile Include="Controllers\SingerSearchingToUserController.cs" />
     <Compile Include="Controllers\SingersToParadeController.cs" />

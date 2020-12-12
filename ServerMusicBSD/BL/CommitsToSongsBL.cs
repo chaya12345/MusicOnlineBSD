@@ -9,9 +9,9 @@ using DTO;
 
 namespace BL
 {
-    public class ResponsesToSongsBL
+    public class CommitsToSongsBL
     {
-        public static void AddResponse(ResponsesToSongsTBL response)
+        public static void AddResponse(CommitsToSongsTBL response)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             if (response == null)
@@ -21,7 +21,7 @@ namespace BL
             }
             try
             {
-                et.ResponsesToSongsTBL.Add(response);
+                et.CommitsToSongsTBL.Add(response);
                 et.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)
@@ -35,35 +35,35 @@ namespace BL
                 }
             }
         }
-        public static List<ResponsesToSongsDTO> GetSongResponses(int songId)
+        public static List<CommitsToSongsDTO> GetSongCommits(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<ResponsesToSongsTBL> list = et.ResponsesToSongsTBL.Where(r => r != null && r.songId == songId).ToList();
+            List<CommitsToSongsTBL> list = et.CommitsToSongsTBL.Where(r => r != null && r.songId == songId).ToList();
             if (list != null)
-                return Casts.ToResponsesToSongsDTO.GetResponses(list);
+                return Casts.ToCommitsToSongsDTO.GetCommits(list);
             return null;
         }
-        public static int GetCountResponsesToSong(int songId)
+        public static int GetCountCommitsToSong(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return et.ResponsesToSongsTBL.Count(res => res!=null&& res.songId == songId);
+            return et.CommitsToSongsTBL.Count(res => res!=null&& res.songId == songId);
         }
         public static void DeleteResponse(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            ResponsesToSongsTBL response = et.ResponsesToSongsTBL.Where(r =>r!=null&& r.id == songId).FirstOrDefault();
+            CommitsToSongsTBL response = et.CommitsToSongsTBL.Where(r =>r!=null&& r.id == songId).FirstOrDefault();
             if (response != null)
             {
-                et.ResponsesToSongsTBL.Remove(response);
+                et.CommitsToSongsTBL.Remove(response);
                 et.SaveChanges();
             }
         }
-        public static List<ResponsesToSongsDTO> GetLastResponses()
+        public static List<CommitsToSongsDTO> GetLastCommits()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<ResponsesToSongsTBL> list = et.ResponsesToSongsTBL.Where(r =>r!=null&& r.date != null).OrderBy(r => r.date).Distinct().ToList();
+            List<CommitsToSongsTBL> list = et.CommitsToSongsTBL.Where(r =>r!=null&& r.date != null).OrderBy(r => r.date).Distinct().ToList();
             if (list != null)
-                return Casts.ToResponsesToSongsDTO.GetResponses(list);
+                return Casts.ToCommitsToSongsDTO.GetCommits(list);
             return null;
         }
     }

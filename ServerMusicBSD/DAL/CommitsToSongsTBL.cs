@@ -12,12 +12,15 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagrams
+    public partial class CommitsToSongsTBL
     {
+        public int id { get; set; }
+        public Nullable<int> songId { get; set; }
         public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public string title { get; set; }
+        public string content { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
+    
+        public virtual SongsTBL SongsTBL { get; set; }
     }
 }

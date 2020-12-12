@@ -12,11 +12,11 @@ using System.Web.Http.Cors;
 namespace ServerMusicBSD.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class LatestResponsesController : ApiController
+    public class LatestCommitsController : ApiController
     {
-        public List<LastestResponsesDTO> GetLastResponsesToArticlesAndSongs()
+        public List<LastestCommitsDTO> GetLastCommitsToArticlesAndSongs()
         {
-            return LastestResponsesBL.GetLastResponsesToArticlesAndSongs();
+            return LastestCommitsBL.GetLastCommitsToArticlesAndSongs();
         }
     }
 }

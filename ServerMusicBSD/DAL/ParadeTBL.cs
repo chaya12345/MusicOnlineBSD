@@ -18,6 +18,7 @@ namespace DAL
         public ParadeTBL()
         {
             this.SongsToParadeTBL = new HashSet<SongsToParadeTBL>();
+            this.VotingsToParadeTBL = new HashSet<VotingsToParadeTBL>();
         }
     
         public int id { get; set; }
@@ -28,5 +29,7 @@ namespace DAL
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SongsToParadeTBL> SongsToParadeTBL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VotingsToParadeTBL> VotingsToParadeTBL { get; set; }
     }
 }

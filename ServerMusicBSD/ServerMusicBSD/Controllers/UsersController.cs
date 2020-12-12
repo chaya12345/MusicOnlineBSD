@@ -26,10 +26,6 @@ namespace ServerMusicBSD.Controllers
         {
             UsersBL.RemoveFromNewsletter(userId);
         }
-        public void PutUser(int userId,[FromBody] UsersTBL user)
-        {
-            UsersBL.UpdateUser(userId, user);
-        }
         public void PutUserProfil(int userId,[FromBody] UsersTBL user)
         {
             UsersBL.UpdateProfil(userId, user);
@@ -37,10 +33,6 @@ namespace ServerMusicBSD.Controllers
         public void PutUserPassword(int userId, string password)
         {
             UsersBL.UpdatePassword(userId, password);
-        }
-        public void PutUserDefinition(int userId, [FromBody] UsersTBL user)
-        {
-            UsersBL.UpdateDefinition(userId, user);
         }
         public UsersDTO GetUser(string userName,string password)
         {

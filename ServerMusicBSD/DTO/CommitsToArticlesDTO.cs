@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class ResponsesToArticlesDTO
+    public class CommitsToArticlesDTO
     {
         public int id { get; set; }
         public Nullable<int> articleId { get; set; }

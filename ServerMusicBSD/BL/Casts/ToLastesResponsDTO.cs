@@ -10,11 +10,11 @@ namespace BL.Casts
 {
     public class ToLastesResponsDTO
     {
-        public static LastestResponsesDTO GetLastRespons(latestResponses lastRespons)
+        public static LastestCommitsDTO GetLastRespons(latestResponses lastRespons)
         {
             if (lastRespons == null)
                 return null;
-            LastestResponsesDTO newRespons = new LastestResponsesDTO();
+            LastestCommitsDTO newRespons = new LastestCommitsDTO();
             newRespons.id = lastRespons.id;
             newRespons.name = lastRespons.name;
             newRespons.date = lastRespons.date;
@@ -25,14 +25,14 @@ namespace BL.Casts
             newRespons.content_res = lastRespons.content_res;
             return newRespons;
         }
-        public static List<LastestResponsesDTO> GetLastResponses(List<latestResponses> lastResponses)
+        public static List<LastestCommitsDTO> GetLastCommits(List<latestResponses> lastCommits)
         {
-            if (lastResponses == null)
+            if (lastCommits == null)
                 return null;
-            List<LastestResponsesDTO> list = new List<LastestResponsesDTO>();
-            foreach (latestResponses item in lastResponses)
+            List<LastestCommitsDTO> list = new List<LastestCommitsDTO>();
+            foreach (latestResponses item in lastCommits)
             {
-                LastestResponsesDTO lastesResponsDTO = GetLastRespons(item);
+                LastestCommitsDTO lastesResponsDTO = GetLastRespons(item);
                 if (lastesResponsDTO != null)
                     list.Add(lastesResponsDTO);
             }

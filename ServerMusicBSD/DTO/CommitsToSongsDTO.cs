@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class ResponsesToSongsDTO
+    public class CommitsToSongsDTO
     {
         public int id { get; set; }
         public Nullable<int> songId { get; set; }

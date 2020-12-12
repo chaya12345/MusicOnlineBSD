@@ -19,12 +19,7 @@ namespace BL.Casts
             newUser.name = user.name;
             newUser.mail = user.mail;
             newUser.password = user.password;
-            newUser.type = user.type;
-            newUser.repeat = user.repeat;
-            newUser.coincidental = user.coincidental;
-            newUser.newsletter = user.newsletter;
-            newUser.saveLike = user.saveLike;
-            newUser.image_location = user.image_location;
+            newUser.image = user.image;
             return newUser;
         }
         public static List<UsersDTO> GetUsers(List<UsersTBL> users)

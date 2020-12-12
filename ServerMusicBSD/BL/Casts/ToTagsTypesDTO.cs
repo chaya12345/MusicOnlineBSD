@@ -10,7 +10,7 @@ namespace BL.Casts
 {
     public class ToTagsTypesDTO
     {
-        public static TagsTypesDTO GetTagType(TagsTypesTBL tagType)
+        public static TagsTypesDTO GetTagType(TypesOfTagsTBL tagType)
         {
             if (tagType == null)
                 return null;
@@ -19,12 +19,12 @@ namespace BL.Casts
             newTagType.name = tagType.name;
             return newTagType;
         }
-        public static List<TagsTypesDTO> GetTagsTypes(List<TagsTypesTBL> tagsTypes)
+        public static List<TagsTypesDTO> GetTagsTypes(List<TypesOfTagsTBL> tagsTypes)
         {
             if (tagsTypes == null)
                 return null;
             List<TagsTypesDTO> newTagsTypes = new List<TagsTypesDTO>();
-            foreach (TagsTypesTBL tagType in tagsTypes)
+            foreach (TypesOfTagsTBL tagType in tagsTypes)
             {
                 TagsTypesDTO tagsType= GetTagType(tagType);
                 if(tagsType!=null)

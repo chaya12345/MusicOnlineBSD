@@ -18,9 +18,9 @@ namespace DAL
         public SongsTBL()
         {
             this.ArtistsToSongsTBL = new HashSet<ArtistsToSongsTBL>();
+            this.CommitsToSongsTBL = new HashSet<CommitsToSongsTBL>();
             this.FavoriteSongsToUserTBL = new HashSet<FavoriteSongsToUserTBL>();
             this.FollowUpTBL = new HashSet<FollowUpTBL>();
-            this.ResponsesToSongsTBL = new HashSet<ResponsesToSongsTBL>();
             this.SingersToSongsTBL = new HashSet<SingersToSongsTBL>();
             this.SongsToPlaylistsTBL = new HashSet<SongsToPlaylistsTBL>();
             this.SongsToUserPlaylistsTBL = new HashSet<SongsToUserPlaylistsTBL>();
@@ -47,11 +47,11 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ArtistsToSongsTBL> ArtistsToSongsTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CommitsToSongsTBL> CommitsToSongsTBL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FavoriteSongsToUserTBL> FavoriteSongsToUserTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FollowUpTBL> FollowUpTBL { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ResponsesToSongsTBL> ResponsesToSongsTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SingersToSongsTBL> SingersToSongsTBL { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -75,8 +75,8 @@
     <Compile Include="Casts\ToUserPlaylistsDTO.cs" />
     <Compile Include="Casts\ToPlaylistsDTO.cs" />
     <Compile Include="Casts\ToReportsDTO.cs" />
-    <Compile Include="Casts\ToResponsesToArticlesDTO.cs" />
-    <Compile Include="Casts\ToResponsesToSongsDTO.cs" />
+    <Compile Include="Casts\ToCommitsToArticlesDTO.cs" />
+    <Compile Include="Casts\ToCommitsToSongsDTO.cs" />
     <Compile Include="Casts\ToItemByNameDTO.cs" />
     <Compile Include="Casts\ToSingersDTO.cs" />
     <Compile Include="Casts\ToSingerSearchingToUserDTO.cs" />
@@ -105,8 +105,8 @@
     <Compile Include="UserPlaylistBL.cs" />
     <Compile Include="PlaylistsBL.cs" />
     <Compile Include="ReportsBL.cs" />
-    <Compile Include="ResponsesToArticlesBL.cs" />
-    <Compile Include="ResponsesToSongsBL.cs" />
+    <Compile Include="CommitsToArticlesBL.cs" />
+    <Compile Include="CommitsToSongsBL.cs" />
     <Compile Include="SingersBL.cs" />
     <Compile Include="SingerSearchingToUserBL.cs" />
     <Compile Include="SingersToParadeBL.cs" />
