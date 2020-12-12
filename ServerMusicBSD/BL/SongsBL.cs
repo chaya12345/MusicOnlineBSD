@@ -141,12 +141,12 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<songsDetails> suitableSongs = new List<songsDetails>();
-            TagsDTO tag = Casts.ToTagsDTO.GetTag(et.TagsForSongsTBL.Where(t => t != null && t.name == tagName).FirstOrDefault());
+            TagsForSongsDTO tag = Casts.ToTagsDTO.GetTagsForSong(et.TagsForSongsTBL.Where(t => t != null && t.name == tagName).FirstOrDefault());
             if (tag == null || songs == null)
                 return null;
             foreach (songsDetails song in songs)
             {
-                List<TagsDTO> tags = Casts.ToTagsDTO.GetTagsFromTagsToSong(TagsToSongsBL.GetTagsToSong(song.id).ToList());
+                List<TagsForSongsDTO> tags = Casts.ToTagsDTO.GetTagsForSongs(TagsToSongsBL.GetTagsToSong(song.id).ToList());
                 if (tags.Where(t => t != null && t.id == tag.id).FirstOrDefault() != null)
                     suitableSongs.Add(song);
             }
@@ -156,7 +156,7 @@ namespace BL
         }
         public static List<songsDetails> GetSongsByTagId(int tagId)
         {
-            return GetSongsByTag(TagsBL.GetName(tagId));
+            return GetSongsByTag(TagsBL.GetTagNameForSong(tagId));
         }
         public static List<songsDetails> GetSongsByTags(List<string> tags)
         {
@@ -292,7 +292,7 @@ namespace BL
             }
             return Casts.ToSongsDTO.GetSongs(songsIncludeAllTags);
         }
-        public static List<songsDetails> GetSongsByAllTypes(List<TagsDTO>[] tags)
+        public static List<songsDetails> GetSongsByAllTypes(List<TagsForSongsDTO>[] tags)
         {
             List<songsDetails> songs = new List<songsDetails>();
             songs.AddRange(GetSongsByTags(tags[0].Select(tag => tag.name).ToList()));
@@ -403,22 +403,22 @@ namespace BL
         public static List<songsDetails> GetSimilarSongs(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<TagsDTO> tags = Casts.ToTagsDTO.GetTagsFromTagsToSong(TagsToSongsBL.GetTagsToSong(songId));
+            List<TagsForSongsDTO> tags =TagsBL.GetTagsForSongs(TagsToSongsBL.GetTagsToSong(songId));
             List<songsDetails> possibleSongs = new List<songsDetails>();
             List<songsDetails> songs = new List<songsDetails>();
-            List<TagsDTO>[] hardTags = new List<TagsDTO>[necessity.Count];
-            List<TagsDTO> flexibleTags = new List<TagsDTO>();
+            List<TagsForSongsDTO>[] hardTags = new List<TagsForSongsDTO>[necessity.Count];
+            List<TagsForSongsDTO> flexibleTags = new List<TagsForSongsDTO>();
             int index = 0;
             foreach (Necessity nec in necessity)
             {
-                TagsDTO tagType = new TagsDTO();
-                List<TagsDTO> tagsType = new List<TagsDTO>();
+                TagsForSongsDTO tagType = new TagsForSongsDTO();
+                List<TagsForSongsDTO> tagsType = new List<TagsForSongsDTO>();
                 if (nec.level == eNecessityLevel.HARD)
                 {
                     tagsType = TagsTypesBL.GetTagByType(tags, nec.tag);
                     if (tagType != null)
                     {
-                        hardTags[index] = new List<TagsDTO>();
+                        hardTags[index] = new List<TagsForSongsDTO>();
                         hardTags[index++].AddRange(tagsType);
                     }
                 }

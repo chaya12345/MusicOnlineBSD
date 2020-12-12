@@ -22,7 +22,7 @@ namespace BL
             if (tagsToArticle != null)
                 foreach (TagsToAtriclesDTO tag in tagsToArticle)
                 {
-                    TagsTBL currentTag = et.TagsTBL.Where(t => t != null && t.id == tag.tagId && (t.isShow == true || all == true)).FirstOrDefault();
+                    TagsForArticlesTBL currentTag = et.TagsForArticlesTBL.Where(t => t != null && t.id == tag.tagId && all == true).FirstOrDefault();
                     if (currentTag != null)
                     {
                         tags.Add(currentTag.name);
