@@ -13,10 +13,10 @@ namespace BL
         public static TagsTypesDTO GetTagType(int tagId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            TagsTBL tag = et.TagsTBL.Where(t =>t!=null&& t.id == tagId).FirstOrDefault();
+            TagsForSongsTBL tag = et.TagsForSongsTBL.Where(t =>t!=null&& t.id == tagId).FirstOrDefault();
             if (tag != null)
             {
-                TagsTypesTBL tagsTypesTBL = et.TagsTypesTBL.Where(type => type.id == tag.tagTypeId).FirstOrDefault();
+                TagsTypesTBL tagsTypesTBL = et.TagsTypesTBL.Where(type => type.id == tag.typeId).FirstOrDefault();
                 if(tagsTypesTBL!=null)
                 return Casts.ToTagsTypesDTO.GetTagType(tagsTypesTBL);
             }
@@ -32,10 +32,10 @@ namespace BL
             }
             return -1;
         }
-        public static List<TagsDTO> GetTagByType(List<TagsDTO> tags, string typeName)
+        public static List<TagsForSongsDTO> GetTagByType(List<TagsForSongsDTO> tags, string typeName)
         {
-            List<TagsDTO> matchingTags = new List<TagsDTO>();
-            matchingTags.AddRange(tags.Where(tag => tag!=null&& tag.tagTypeId == GetId(typeName)).ToList());
+            List<TagsForSongsDTO> matchingTags = new List<TagsForSongsDTO>();
+            matchingTags.AddRange(tags.Where(tag => tag!=null&& tag.typeId == GetId(typeName)).ToList());
             return matchingTags;
         }
     }

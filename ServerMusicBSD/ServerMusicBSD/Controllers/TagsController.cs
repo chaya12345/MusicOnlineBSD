@@ -15,13 +15,21 @@ namespace ServerMusicBSD.Controllers
     public class TagsController : ApiController
     {
 
-        public List<TagsDTO> GetTags()
+        public List<TagsForSongsDTO> GetTagsForSongs()
         {
-            return TagsBL.GetTags();
+            return TagsBL.GetTagsForSongs();
         }
-        public void PostTag([FromBody] TagsTBL tag)
+        public void PostTagForSong([FromBody] TagsForSongsTBL tag)
         {
-            TagsBL.AddTag(tag);
+            TagsBL.AddTagForSong(tag);
+        }
+        public List<TagsForArticlesDTO> GetTagsForArticles()
+        {
+            return TagsBL.GetTagsForArticles();
+        }
+        public void PostTagForArticle([FromBody] TagsForArticlesTBL tag)
+        {
+            TagsBL.AddTagForArticle(tag);
         }
     }
 }

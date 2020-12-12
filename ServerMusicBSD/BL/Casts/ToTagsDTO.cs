@@ -10,50 +10,96 @@ namespace BL.Casts
 {
     public class ToTagsDTO
     {
-        public static TagsDTO GetTag(TagsTBL tag)
+        public static TagsForArticlesDTO GetTagsForArticle(TagsForArticlesTBL tagsForArticle)
         {
-            if (tag == null)
+            if (tagsForArticle == null)
                 return null;
-            TagsDTO newTag = new TagsDTO();
-            newTag.id = tag.id;
-            newTag.name = tag.name;
-            newTag.tagTypeId = tag.tagTypeId;
-            newTag.isShow = tag.isShow;
+            TagsForArticlesDTO newTag = new TagsForArticlesDTO();
+            newTag.id = tagsForArticle.id;
+            newTag.name = tagsForArticle.name;
             return newTag;
         }
-        public static List<TagsDTO> GetTags(List<TagsTBL> tags)
+        public static List<TagsForArticlesDTO> GetTagsForArticles(List<TagsForArticlesTBL> tagsForArticles)
         {
-            if (tags == null)
+            if (tagsForArticles == null)
                 return null;
-            List<TagsDTO> newTags = new List<TagsDTO>();
-            foreach (TagsTBL t in tags)
+            List<TagsForArticlesDTO> list = new List<TagsForArticlesDTO>();
+            TagsForArticlesDTO newTag = new TagsForArticlesDTO();
+            foreach (TagsForArticlesTBL item in tagsForArticles)
             {
-                TagsDTO tagsDTO = GetTag(t);
-                if (tagsDTO != null)
-                    newTags.Add(tagsDTO);
+                newTag = GetTagsForArticle(item);
+                if (newTag != null)
+                    list.Add(newTag);
             }
-            return newTags;
+            return list;
         }
-        public static TagsDTO GetTagFromTagsToSong(TagsToSongsDTO tag)
+        public static TagsForSongsDTO GetTagsForSong(TagsForSongsTBL tagsForSong)
         {
+            if (tagsForSong == null)
+                return null;
+            TagsForSongsDTO newTag = new TagsForSongsDTO();
+            newTag.id = tagsForSong.id;
+            newTag.name = tagsForSong.name;
+            newTag.typeId = tagsForSong.typeId;
+            return newTag;
+        }
+        public static List<TagsForSongsDTO> GetTagsForSongs(List<TagsForSongsTBL> tagsForSongs)
+        {
+            if (tagsForSongs == null)
+                return null;
+            List<TagsForSongsDTO> list = new List<TagsForSongsDTO>();
+            TagsForSongsDTO newTag = new TagsForSongsDTO();
+            foreach (TagsForSongsTBL item in tagsForSongs)
+            {
+                newTag = GetTagsForSong(item);
+                if (newTag != null)
+                    list.Add(newTag);
+            }
+            return list;
+        }
+        public static TagsForSongsDTO GetTagsForSong(TagsToSongsDTO tagsToSong)
+        {
+            if (tagsToSong == null)
+                return null;
             MusicOnlineEntities et = new MusicOnlineEntities();
-            TagsTBL tagsTBL = et.TagsTBL.Where(t => t != null && t.id == tag.tagId).FirstOrDefault();
-            if (tagsTBL != null)
-                return GetTag(tagsTBL);
-            return null;
+            TagsForSongsTBL tag = et.TagsForSongsTBL.Where(t => t != null && t.id == tagsToSong.tagId).FirstOrDefault();
+            return GetTagsForSong(tag);
         }
-        public static List<TagsDTO> GetTagsFromTagsToSong(List<TagsToSongsDTO> tags)
+        public static List<TagsForSongsDTO> GetTagsForSongs(List<TagsToSongsDTO> tagsToSongs)
         {
-            if (tags == null)
+            if (tagsToSongs == null)
                 return null;
-            List<TagsDTO> currentTags = new List<TagsDTO>();
-            foreach (TagsToSongsDTO tag in tags)
+            List<TagsForSongsDTO> list = new List<TagsForSongsDTO>();
+            
+            foreach (TagsToSongsDTO item in tagsToSongs)
             {
-                TagsDTO tagsDTO = GetTagFromTagsToSong(tag);
-                if (tagsDTO != null)
-                    currentTags.Add(tagsDTO);
+                TagsForSongsDTO tag = GetTagsForSong(item);
+                if (tag != null)
+                    list.Add(tag);
             }
-            return currentTags;
+            return list;
+        }
+        public static TagsForArticlesDTO GetTagsForArticle(TagsToAtriclesDTO tagsToAtricle)
+        {
+            if (tagsToAtricle == null)
+                return null;
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            TagsForArticlesTBL tag = et.TagsForArticlesTBL.Where(t => t != null && t.id == tagsToAtricle.tagId).FirstOrDefault();
+            return GetTagsForArticle(tag);
+        }
+        public static List<TagsForArticlesDTO> GetTagsForArticles(List<TagsToAtriclesDTO> tagsToAtricles)
+        {
+            if (tagsToAtricles == null)
+                return null;
+            List<TagsForArticlesDTO> list = new List<TagsForArticlesDTO>();
+
+            foreach (TagsToAtriclesDTO item in tagsToAtricles)
+            {
+                TagsForArticlesDTO tag = GetTagsForArticle(item);
+                if (tag != null)
+                    list.Add(tag);
+            }
+            return list;
         }
     }
 }

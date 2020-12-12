@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class TagsDTO
+    public class TagsForArticlesDTO
     {
         public int id { get; set; }
         public string name { get; set; }
-        public Nullable<int> tagTypeId { get; set; }
-        public Nullable<bool> isShow { get; set; }
+    }
+    public class TagsForSongsDTO
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public Nullable<int> typeId { get; set; }
     }
 }

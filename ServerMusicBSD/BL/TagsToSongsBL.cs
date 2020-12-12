@@ -20,7 +20,7 @@ namespace BL
                 return null;
             foreach (TagsToSongsDTO tag in tagsToSong)
             {
-                TagsTBL x = et.TagsTBL.Where(t =>t!=null&& t.id == tag.tagId && t.isShow == true).FirstOrDefault();
+                TagsForSongsTBL x = et.TagsForSongsTBL.Where(t =>t!=null&& t.id == tag.tagId).FirstOrDefault();
                 if(x!=null)
                 tags.Add(x.name);
             }
@@ -77,7 +77,7 @@ namespace BL
             {
                 foreach (string tag in tags)
                 {
-                    TagsTBL currentTag = et.TagsTBL.Where(t => t != null && t.name == tag).FirstOrDefault();
+                    TagsForSongsTBL currentTag = et.TagsForSongsTBL.Where(t => t != null && t.name == tag).FirstOrDefault();
                     if (currentTag != null)
                     {
                         AddTagToSong(new TagsToSongsTBL { songId = songId, tagId = currentTag.id });
