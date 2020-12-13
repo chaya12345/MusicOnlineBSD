@@ -15,7 +15,7 @@ export class RatingComponent implements OnInit {
   @Input() currentId?: number;
   @Input() likes?: number = 0;
   @Input() views?: number = 0;
-  @Input() responses?: number = 0;
+  @Input() commits?: number = 0;
   navigate: string = "";
   toggle: boolean = false;
 

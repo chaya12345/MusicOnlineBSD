@@ -3,8 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Article } from '../classes/article';
 import { Song } from '../classes/song';
-import { ResponseToSongsService } from '../services/response-to-songs.service';
-import { ResponsesToArticlesService } from '../services/responses-to-articles.service';
+import { CommitsToSongsService } from '../services/commits-to-songs.service';
+import { CommitsToArticlesService } from '../services/commits-to-articles.service';
 import { TagsToArticlesService } from '../services/tags-to-articles.service';
 import { TagsToSongsService } from '../services/tags-to-songs.service';
 
@@ -18,7 +18,7 @@ export class MainComponent implements OnInit {
   @Input() song?: Song;
   @Input() article?: Article;
   tags: string[] = [];
-  responsesCnt: number = 0;
+  commitsCnt: number = 0;
   navigate: string = "";
   loaded: boolean = false;
 
@@ -30,10 +30,10 @@ export class MainComponent implements OnInit {
   views: number = 0;
   likes: number = 0;
 
-  constructor(private responseToSongsService: ResponseToSongsService,
+  constructor(private commitToSongsService: CommitsToSongsService,
     private tagsToSongsService: TagsToSongsService, private cdr: ChangeDetectorRef,
     private activatedRoute: ActivatedRoute, private tagsToArticlesService: TagsToArticlesService,
-    private responseToArticlesService: ResponsesToArticlesService) { }
+    private commitToArticlesService: CommitsToArticlesService) { }
 
   ngOnInit() {
   }
@@ -48,7 +48,7 @@ export class MainComponent implements OnInit {
       }
       this.getData();
       this.getTags();
-      this.getResponsesCnt();
+      this.getCommitsCnt();
     } catch (err) { console.log(err); }
   }
 
@@ -67,18 +67,18 @@ export class MainComponent implements OnInit {
     }
     else if (this.navigate == "article") {
       this.date = this.article.date;
-      this.img = '../../assets/images/' + this.article.main_image;
+      this.img = '../../assets/images/' + this.article.image;
       this.text = '../../assets/text/' + this.article.content;
       this.views = this.article.count_views;
       this.likes = this.article.count_like;
-      if (this.article.video != null) {
-        this.file = '../../assets/songs/' + this.article.video;
-        this.type = "video";
-      }
-      if (this.article.audio1 != null) {
-        this.file = this.article.audio1;
-        this.type = "audio";
-      }
+      // if (this.article.video != null) {
+      //   this.file = '../../assets/songs/' + this.article.video;
+      //   this.type = "video";
+      // }
+      // if (this.article.audio1 != null) {
+      //   this.file = this.article.audio1;
+      //   this.type = "audio";
+      // }
       this.loaded = true;
     }
   }
@@ -94,14 +94,14 @@ export class MainComponent implements OnInit {
     }
   }
 
-  getResponsesCnt(): void {
+  getCommitsCnt(): void {
     if (this.navigate == "song") {
-      this.responseToSongsService.getCountResponsesToSong(this.song.id)
-        .subscribe(cnt => { this.responsesCnt = cnt; this.cdr.detectChanges() }, err => console.log(err));
+      this.commitToSongsService.getCountCommitsToSong(this.song.id)
+        .subscribe(cnt => { this.commitsCnt = cnt; this.cdr.detectChanges() }, err => console.log(err));
     }
     else if (this.navigate == "article") {
-      this.responseToArticlesService.getCountResponsesToArticle(this.article.id)
-        .subscribe(cnt => { this.responsesCnt = cnt; this.cdr.detectChanges(); }, err => console.log(err));
+      this.commitToArticlesService.getCountCommitsToArticle(this.article.id)
+        .subscribe(cnt => { this.commitsCnt = cnt; this.cdr.detectChanges(); }, err => console.log(err));
     }
   }
 

@@ -135,7 +135,7 @@ export class SongDetailsComponent implements OnInit {
 
   // getContent(): void {
   //   this.httpClient.get('../../assets/text/' + this.song.content, {
-  //     responseType: 'text'
+  //     commitType: 'text'
   //   }).subscribe(data => { this.songContent = data; });
   // }*/
 

@@ -11,7 +11,7 @@ import { SongService } from '../services/song.service';
 export class InfoComponent implements OnInit {
 
   @Input() viewsCnt: number = 0;
-  @Input() responsesCnt: number = 0;
+  @Input() commitsCnt: number = 0;
   @Input() likesCnt: number = 0;
   songId: number;
   toggle: boolean = false;

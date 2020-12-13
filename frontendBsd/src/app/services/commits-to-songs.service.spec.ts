@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ResponseToSongsService } from './response-to-songs.service';
+import { CommitsToSongsService } from './commits-to-songs.service';
 
-describe('ResponseToSongsService', () => {
-  let service: ResponseToSongsService;
+describe('CommitsToSongsService', () => {
+  let service: CommitsToSongsService;
 
   beforeEach(() => TestBed.configureTestingModule({}));
 

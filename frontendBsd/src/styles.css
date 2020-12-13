@@ -68,12 +68,12 @@ mat-option {
     display: none;
 }
 
-response-adding mat-form-field {
+commit-adding mat-form-field {
     margin: 0 10px;
     text-align: right !important;
 }
 
-reporting-dialog .mat-form-field-infix, response-adding .mat-form-field-infix {
+reporting-dialog .mat-form-field-infix, commit-adding .mat-form-field-infix {
     padding-top: 0 !important;
 }
 
@@ -311,7 +311,7 @@ footer p.title-part {
 
 /* #endregion */
 
-/* #region(collapsed) [Responses-Accordion] */
+/* #region(collapsed) [Commits-Accordion] */
 
 mat-expansion-panel-header {
     padding: 0 !important;
@@ -322,7 +322,7 @@ mat-panel-title {
     font-size: 19px;
 }
 
-response mat-panel-title {
+commit mat-panel-title {
     font-weight: 600;
     font-size: 20px;
     font-family: assistant;
@@ -332,18 +332,18 @@ response mat-panel-title {
     box-shadow: none;
 }
 
-response mat-panel-title {
+commit mat-panel-title {
     margin: 0 !important;
     color: rgba(0, 0, 0, 0.87) !important;
 }
 
-response-adding .mat-expansion-panel:not([class*=mat-elevation-z]) {
+commit-adding .mat-expansion-panel:not([class*=mat-elevation-z]) {
     border: solid 1px #00000026;
 }
 
-response .mat-expansion-panel .mat-expansion-panel-header.cdk-keyboard-focused:not([aria-disabled=true]), 
-response .mat-expansion-panel .mat-expansion-panel-header.cdk-program-focused:not([aria-disabled=true]), 
-response .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
+commit .mat-expansion-panel .mat-expansion-panel-header.cdk-keyboard-focused:not([aria-disabled=true]), 
+commit .mat-expansion-panel .mat-expansion-panel-header.cdk-program-focused:not([aria-disabled=true]), 
+commit .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
     background: transparent;
 }
 
@@ -351,25 +351,25 @@ mat-expansion-panel-header {
     background: transparent !important;
 }
 
-response-adding .mat-form-field-appearance-outline .mat-form-field-infix {
+commit-adding .mat-form-field-appearance-outline .mat-form-field-infix {
     padding: 0.5em 0;
 }
 
-response .mat-expansion-panel-body {
+commit .mat-expansion-panel-body {
     font-family: assistant;
     font-size: 20px;
     padding: 0;
 }
 
-response span.mat-expansion-indicator {
+commit span.mat-expansion-indicator {
     margin-left: 15px;
 }
 
-response:first-of-type .mat-expansion-panel:not([class*=mat-elevation-z]) {
+commit:first-of-type .mat-expansion-panel:not([class*=mat-elevation-z]) {
     margin-top: 25px;
 }
 
-response .mat-expansion-panel {
+commit .mat-expansion-panel {
     background-color: transparent !important;
 }
 

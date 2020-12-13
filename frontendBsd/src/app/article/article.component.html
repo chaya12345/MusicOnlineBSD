@@ -7,7 +7,7 @@
         <span>{{article.subtitle}}</span></p>
         <div>
             <rating *ngIf="countRes!=null" [currentId]="article.id" [likes]="article.count_like" [views]="article.count_views"
-                [responses]="countRes"></rating>
+                [commits]="countRes"></rating>
         </div>
     </div>
 </a>

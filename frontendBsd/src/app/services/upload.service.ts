@@ -24,7 +24,7 @@ export class UploadService {
     // let options = new RequestOptions({ headers: headers, method: 'post' });
     return this.httpClient.post<boolean>(this.baseUrl + "UploadImage?folderName=" + folderName + "&folderName2=" + folderName2, formData);
     // .map(
-    //   (response => response.json()))
+    //   (commit => commit.json()))
     // .catch(CommonFunctionService.handleError);
   }
 

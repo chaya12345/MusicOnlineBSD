@@ -6,12 +6,12 @@ import { LastesResponsView } from '../classes/lastesResponsView';
 @Injectable({
   providedIn: 'root'
 })
-export class LatestResponsesService {
+export class LatestCommitsService {
 
   baseUrl:string="https://localhost:44368/api/LatestCommits/";
   constructor(private httpClient:HttpClient) { }
 
-  getLastResponsesToArticlesAndSongs(): Observable<LastesResponsView[]> {
+  getLastCommitsToArticlesAndSongs(): Observable<LastesResponsView[]> {
     return this.httpClient.get<LastesResponsView[]>(this.baseUrl + "GetLastCommitsToArticlesAndSongs")
   }
 }

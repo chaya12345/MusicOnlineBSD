@@ -21,16 +21,16 @@
     color: #F44336;
 }
 
-span.responses {
+span.commits {
     margin-right: 6px !important;
 }
 
-span.responses, span.views {
+span.commits, span.views {
     transition: .4s;
     opacity: 0;
 }
 
-.wrap-rating:hover span.responses, .wrap-rating:hover span.views {
+.wrap-rating:hover span.commits, .wrap-rating:hover span.views {
     opacity: 1;
 }
 

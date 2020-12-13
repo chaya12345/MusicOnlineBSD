@@ -3,13 +3,13 @@ import { MatAccordion } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'response',
-  templateUrl: './response.component.html',
-  styleUrls: ['./response.component.css']
+  selector: 'commit',
+  templateUrl: './commit.component.html',
+  styleUrls: ['./commit.component.css']
 })
-export class ResponseComponent implements OnInit {
+export class CommitComponent implements OnInit {
 
-  @Input() response: any;
+  @Input() commit: any;
   id: number;
   panelOpenState: boolean = false;
   @ViewChild('someVar') el:ElementRef;
@@ -23,7 +23,7 @@ export class ResponseComponent implements OnInit {
   ngAfterViewInit() {
     if (this.activatedRoute.snapshot.queryParams.commitId) {
       this.id = this.activatedRoute.snapshot.queryParams.commitId;
-      if(this.response.id == this.id) {
+      if(this.commit.id == this.id) {
         this.el.nativeElement.scrollIntoView({
           behavior: "smooth" ,
           block:  "center",

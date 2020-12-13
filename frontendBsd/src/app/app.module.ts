@@ -34,16 +34,16 @@ import { MainComponent } from './main/main.component';
 import { SideComponent } from './side/side.component';
 import { InfoComponent } from './info/info.component';
 import { TagsComponent } from './tags/tags.component';
-import { ResponsesComponent } from './responses/responses.component';
-import { ResponsesSongComponent } from './responses-song/responses-song.component';
-import { ResponsesArticleComponent } from './responses-article/responses-article.component';
-import { ResponseComponent } from './response/response.component';
+import { CommitsComponent } from './commits/commits.component';
+import { CommitsSongComponent } from './commits-song/commits-song.component';
+import { CommitsArticleComponent } from './commits-article/commits-article.component';
+import { CommitComponent } from './commit/commit.component';
 import { ReportingComponent } from './reporting/reporting.component';
 import { SongComponent } from './song/song.component';
 import { SmallSongComponent } from './small-song/small-song.component';
 import { ReportingDialogComponent } from './reporting-dialog/reporting-dialog.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
-import { ResponseAddingComponent } from './response-adding/response-adding.component';
+import { CommitAddingComponent } from './commit-adding/commit-adding.component';
 import { CurrentNavComponent } from './current-nav/current-nav.component';
 import { SongsListComponent } from './songs-list/songs-list.component';
 import { SongsBySingerComponent } from './songs-by-singer/songs-by-singer.component';
@@ -171,16 +171,16 @@ import { UserActivePlaylistComponent } from './user-active-playlist/user-active-
     SideComponent,
     InfoComponent,
     TagsComponent,
-    ResponsesComponent,
-    ResponsesSongComponent,
-    ResponsesArticleComponent,
-    ResponseComponent,
+    CommitsComponent,
+    CommitsSongComponent,
+    CommitsArticleComponent,
+    CommitComponent,
     ReportingComponent,
     SongComponent,
     SmallSongComponent,
     ReportingDialogComponent,
     ErrorPageComponent,
-    ResponseAddingComponent,
+    CommitAddingComponent,
     CurrentNavComponent,
     SongsListComponent,
     SongsBySingerComponent,

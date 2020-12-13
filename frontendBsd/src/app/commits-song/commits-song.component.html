@@ -1,0 +1,8 @@
+<div class="wrap-commits">
+    <h2>» תגובות «</h2>
+    <commit-adding (onSendToSong)="updateData($event)"></commit-adding>
+    <commit *ngFor="let commit of commits" [commit]="commit"></commit>
+    <div *ngIf="commits.length==0">
+        <span>אין עדיין תגובות.</span>
+    </div>
+</div>

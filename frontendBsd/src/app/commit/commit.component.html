@@ -1,26 +1,26 @@
 <div #someVar>
-  <mat-accordion *ngIf="response.content!=null&&response.content!=''">
+  <mat-accordion *ngIf="commit.content!=null&&commit.content!=''">
     <mat-expansion-panel [expanded]="panelOpenState">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{response.title}}
+          {{commit.title}}
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <p>{{response.content}}</p>
+      <p>{{commit.content}}</p>
     </mat-expansion-panel>
-    <span>{{response.name}} • {{response.date | date: 'd/M/yyyy'}}</span>
+    <span>{{commit.name}} • {{commit.date | date: 'd/M/yyyy'}}</span>
   </mat-accordion>
 
-  <mat-accordion *ngIf="response.content==null||response.content==''">
+  <mat-accordion *ngIf="commit.content==null||commit.content==''">
     <mat-expansion-panel disabled>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          {{response.title}}
+          {{commit.title}}
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <p>{{response.content}}</p>
+      <p>{{commit.content}}</p>
     </mat-expansion-panel>
-    <span>{{response.name}} • {{response.date | date: 'd/M/yyyy'}}</span>
+    <span>{{commit.name}} • {{commit.date | date: 'd/M/yyyy'}}</span>
   </mat-accordion>
 </div>
 <mat-divider></mat-divider>

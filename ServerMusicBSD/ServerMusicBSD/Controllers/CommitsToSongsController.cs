@@ -14,7 +14,7 @@ namespace ServerMusicBSD.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CommitsToSongsController : ApiController
     {
-        public void PostResponse(CommitsToSongsTBL response)
+        public void PostCommit([FromBody]CommitsToSongsTBL response)
         {
             response.date = DateTime.Now;
             CommitsToSongsBL.AddResponse(response);
@@ -27,7 +27,7 @@ namespace ServerMusicBSD.Controllers
         {
             return CommitsToSongsBL.GetCountCommitsToSong(songId);
         }
-        public void DeleteResponse(int responseId)
+        public void DeleteCommit(int responseId)
         {
             CommitsToSongsBL.DeleteResponse(responseId);
         }

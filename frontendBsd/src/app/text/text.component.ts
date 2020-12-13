@@ -22,7 +22,7 @@ export class TextComponent implements OnInit {
 
   getText(): void {
     this.httpClient.get(this.file, {
-      responseType: 'text'
+      commitType: 'text'
     }).subscribe(data => { this.text = data; });
   }
 

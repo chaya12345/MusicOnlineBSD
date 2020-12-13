@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LatestResponsesService } from './latest-responses.service';
+import { LatestCommitsService } from './latest-commits.service';
 
-describe('LatestResponsesService', () => {
-  let service: LatestResponsesService;
+describe('LatestCommitsService', () => {
+  let service: LatestCommitsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(LatestResponsesService);
+    service = TestBed.inject(LatestCommitsService);
   });
 
   it('should be created', () => {

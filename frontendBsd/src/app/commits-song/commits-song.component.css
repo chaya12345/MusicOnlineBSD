@@ -1,8 +1,8 @@
-.wrap-responses {
+.wrap-commits {
     padding: 35px 5px;
 }
 
-.wrap-responses h2 {
+.wrap-commits h2 {
     font-size: 22px;
     font-family: assistant;
     font-weight: 500;
@@ -11,7 +11,7 @@
     color: #101010;
 }
 
-.wrap-responses > div {
+.wrap-commits > div {
     text-align: center;
     padding: 50px;
     font-family: fb Joker;

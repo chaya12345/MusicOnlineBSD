@@ -1,6 +1,6 @@
-export class ResponsesToArticles {
+export class CommitsToSongs {
     id: number;
-    articleId?: number;
+    songId?: number;
     name?: string;
     title?: string;
     content?: string;

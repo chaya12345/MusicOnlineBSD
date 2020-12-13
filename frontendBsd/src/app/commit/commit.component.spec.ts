@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResponseAddingComponent } from './response-adding.component';
+import { CommitComponent } from './commit.component';
 
-describe('ResponseAddingComponent', () => {
-  let component: ResponseAddingComponent;
-  let fixture: ComponentFixture<ResponseAddingComponent>;
+describe('CommitComponent', () => {
+  let component: CommitComponent;
+  let fixture: ComponentFixture<CommitComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResponseAddingComponent ]
+      declarations: [ CommitComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ResponseAddingComponent);
+    fixture = TestBed.createComponent(CommitComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

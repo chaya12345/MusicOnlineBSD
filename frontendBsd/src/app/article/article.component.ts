@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Article } from '../classes/article';
-import { ResponsesToArticlesService } from '../services/responses-to-articles.service';
+import { CommitsToArticlesService } from '../services/commits-to-articles.service';
 
 @Component({
   selector: 'article',
@@ -12,18 +12,18 @@ export class ArticleComponent implements OnInit {
   @Input() article: Article;
   countRes: number;
 
-  constructor(private resToArticlesService: ResponsesToArticlesService, private cdr: ChangeDetectorRef) {
+  constructor(private resToArticlesService: CommitsToArticlesService, private cdr: ChangeDetectorRef) {
   }
 
   ngOnInit() {
-    this.getCountResponses();
+    this.getCountCommits();
     window.addEventListener('scroll', this.scroll, true);
     this.addAnimation();
   }
 
-  getCountResponses(): void {
+  getCountCommits(): void {
     try {
-      this.resToArticlesService.getCountResponsesToArticle(this.article.id)
+      this.resToArticlesService.getCountCommitsToArticle(this.article.id)
       .subscribe(cnt => { this.countRes = cnt; this.cdr.detectChanges(); }, err => console.log(err));
     } catch (err) { console.log(err); }
   }

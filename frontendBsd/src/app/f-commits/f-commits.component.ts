@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LastesResponsView } from '../classes/lastesResponsView';
-import { LatestResponsesService } from '../services/latest-responses.service';
+import { LatestCommitsService } from '../services/latest-commits.service';
 
 @Component({
   selector: 'f-commits',
@@ -11,7 +11,7 @@ export class FCommitsComponent implements OnInit {
 
   lastestCommits: LastesResponsView[] = [];
 
-  constructor(private latestResponsesService: LatestResponsesService) {
+  constructor(private latestCommitsService: LatestCommitsService) {
     this.getLatestCommits();
   }
 
@@ -20,9 +20,9 @@ export class FCommitsComponent implements OnInit {
 
   getLatestCommits(): void {
     try {
-      this.latestResponsesService.getLastResponsesToArticlesAndSongs()
-        .subscribe(lastResponses => {
-          this.lastestCommits = lastResponses;
+      this.latestCommitsService.getLastCommitsToArticlesAndSongs()
+        .subscribe(lastCommits => {
+          this.lastestCommits = lastCommits;
           this.lastestCommits = this.lastestCommits.slice(0, 5);
         }, err => console.log(err));
     }
