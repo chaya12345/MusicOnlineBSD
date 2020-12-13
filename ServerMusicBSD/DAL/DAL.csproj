@@ -225,6 +225,11 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="src\images\for_articles\44627d09e5908bf6978f.jpg" />
+    <Content Include="src\images\for_articles\7948cc984ba5daec55f3.jpg" />
+    <Content Include="src\images\for_articles\87m8uj97__w658h439q95.jpg" />
+    <Content Include="src\images\for_articles\F111121MS02-1-724x481.jpg" />
+    <Content Include="src\images\for_articles\לוגו-חמישיה.png" />
     <Content Include="src\images\for_songs\אייל-טויטו\WhatsApp-Image-2020-04-06-at-11.40.38.jpeg" />
     <Content Include="src\images\for_songs\חיים-ישראל\__צילום-מסך-270-2048x1152.png" />
     <Content Include="src\images\for_songs\נפתלי-קמפה\WhatsApp-Image-2020-06-17-at-13.53.23.jpeg" />
