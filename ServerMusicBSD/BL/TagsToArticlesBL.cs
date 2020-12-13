@@ -17,9 +17,9 @@ namespace BL
             List<TagsToAtriclesDTO> tagsToArticle = GetTagsToArticle(articleId);
             List<string> tags = new List<string>();
             List<string> singers = SingersToArticlesBL.GetSingersToArticle(articleId);
-            if (singers != null)
+            if (singers.Count>0)
                 tags.AddRange(singers);
-            if (tagsToArticle != null)
+            if (tagsToArticle.Count>0)
                 foreach (TagsToAtriclesDTO tag in tagsToArticle)
                 {
                     TagsForArticlesTBL currentTag = et.TagsForArticlesTBL.Where(t => t != null && t.id == tag.tagId && all == true).FirstOrDefault();

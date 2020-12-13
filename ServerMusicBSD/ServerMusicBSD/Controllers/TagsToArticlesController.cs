@@ -14,13 +14,13 @@ namespace ServerMusicBSD.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class TagsToArticlesController : ApiController
     {
-        public List<TagsToAtriclesDTO> GetTagsToArticle(int ArticleId)
+        public List<TagsToAtriclesDTO> GetTagsToArticle(int articleId)
         {
-            return TagsToArticlesBL.GetTagsToArticle(ArticleId);
+            return TagsToArticlesBL.GetTagsToArticle(articleId);
         }
-        public List<string> GetTagsNamesToArticle(int ArticleId, bool? all = false)
+        public List<string> GetTagsNamesToArticle(int articleId, bool? all = false)
         {
-            return TagsToArticlesBL.GetTagsNamesToArticle(ArticleId, all);
+            return TagsToArticlesBL.GetTagsNamesToArticle(articleId, all);
         }
         public static void PostTagToArticle([FromBody] TagsToArticlesTBL tagToArticle)
         {

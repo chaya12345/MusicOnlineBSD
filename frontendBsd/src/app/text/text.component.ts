@@ -13,7 +13,8 @@ export class TextComponent implements OnInit {
 
   constructor(private httpClient: HttpClient) { }
 
-  ngOnInit() {
+  ngOnInit(){}
+  ngOnChanges() {
     try {
       this.getText();
     } catch (err) { console.log(err); }
@@ -22,7 +23,7 @@ export class TextComponent implements OnInit {
 
   getText(): void {
     this.httpClient.get(this.file, {
-      // commitType: 'text'
+      responseType: 'text'
     }).subscribe(data => { this.text = data; });
   }
 

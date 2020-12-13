@@ -12,7 +12,7 @@ export class CommitsArticleComponent implements OnInit {
 
   commits: CommitsToArticles[] = [];
 
-  constructor(private CommitToArticlesService: CommitsToArticlesService, private activatedRoute: ActivatedRoute,
+  constructor(private commitsToArticlesService: CommitsToArticlesService, private activatedRoute: ActivatedRoute,
     private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
@@ -28,7 +28,7 @@ export class CommitsArticleComponent implements OnInit {
   }
 
   getCommits(): void {
-    this.CommitToArticlesService.getArticleCommits(parseInt(this.activatedRoute.snapshot.queryParams.articleId))
+    this.commitsToArticlesService.getArticleCommits(parseInt(this.activatedRoute.snapshot.queryParams.articleId))
       .subscribe(commit => { this.commits = commit; this.orderCommits(); 
         this.cdr.detectChanges(); }, err => { console.log(err); });
   }
