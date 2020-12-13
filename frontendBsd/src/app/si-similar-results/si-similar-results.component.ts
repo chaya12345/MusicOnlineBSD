@@ -52,7 +52,7 @@ export class SiSimilarResultsComponent implements OnInit {
     articles.forEach(article => {
       let item: Item = new Item();
       item.id = article.id;
-      item.img = article.main_image;
+      item.img = article.image;
       item.title = article.title;
       item.date = article.date;
       items.push(item);

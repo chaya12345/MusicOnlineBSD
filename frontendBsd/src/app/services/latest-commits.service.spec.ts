@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LatestCommitsService } from './latest-commits.service';
+import { LatestCommitsService } from './latest-commits.service'
 
 describe('LatestCommitsService', () => {
   let service: LatestCommitsService;

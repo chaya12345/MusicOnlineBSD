@@ -1,6 +1,6 @@
 <div class="wrap-article-details">
     <custom-tool-bar [isPublic]="false" [isArticle]="true" [followUp]="followupAdded" (onFollowUp)="toggleFollowUp($event)"></custom-tool-bar>
-    <top [_title]="article.title" [date]="article.date" [img]="'../../assets/images/'+article.main_image"></top>
+    <top [_title]="article.title" [date]="article.date" [img]="'../../assets/images/'+article.image"></top>
     <current-nav [navs]="navs"></current-nav>
     <div class="section">
         <main [article]="article"></main>

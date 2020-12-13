@@ -52,7 +52,7 @@ export class UploadingArticleComponent implements OnInit {
       let article: Article = new Article();
       article.title = this.uploadingArticleForm.controls.title.value;
       article.subtitle = this.uploadingArticleForm.controls.subtitle.value;
-      article.main_image = "for_articles/" + this.uploadingArticleForm.controls.image.value;
+      article.image = "for_articles/" + this.uploadingArticleForm.controls.image.value;
       try {
       this.articleService.addArticle(article).subscribe(res => 
         console.log(res), err => console.log(err));

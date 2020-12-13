@@ -9,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class TextComponent implements OnInit {
 
   @Input() file: string = "";
-  text: string  = "";
+  text: any;// string | ArrayBuffer = "";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -22,7 +22,7 @@ export class TextComponent implements OnInit {
 
   getText(): void {
     this.httpClient.get(this.file, {
-      commitType: 'text'
+      // commitType: 'text'
     }).subscribe(data => { this.text = data; });
   }
 
