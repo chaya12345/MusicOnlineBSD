@@ -7,7 +7,7 @@
                         שיר השנה
                     </mat-panel-title>
                     <mat-panel-description>
-                        Type your name and age
+                        בחרו את עשרת השירים שעשו לכם את השנה »
                     </mat-panel-description>
                 </mat-expansion-panel-header>
                 <parade-song-of-the-year *ngIf="!votedYearSong" (onSelect)="updateSongSelection($event)"></parade-song-of-the-year>
@@ -20,7 +20,7 @@
                         זמר השנה
                     </mat-panel-title>
                     <mat-panel-description>
-                        Inform the date you wish to travel
+                        בחרו את זמר השנה שלכם »
                     </mat-panel-description>
                 </mat-expansion-panel-header>
                 <parade-singer-of-the-year *ngIf="!votedYearSinger" (onSelect)="updateSingerSelection($event)"></parade-singer-of-the-year>

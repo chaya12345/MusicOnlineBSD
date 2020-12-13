@@ -80,3 +80,8 @@ button.mat-flat-button[disabled] {
     color: black !important;
     font-weight: 400;
 }
+
+mat-panel-description {
+    font-family: assistant;
+    font-size: 17px;
+}

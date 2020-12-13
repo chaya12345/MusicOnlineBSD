@@ -8,13 +8,13 @@ import { TopicsService } from '../services/topics.service';
 })
 export class ParadeLinkComponent implements OnInit {
 
-  img: string = "";
+  // img: string = "";
   href: string = "";
 
   constructor(private topicsService: TopicsService) { 
     try {
       this.topicsService.getTopic("המצעד").subscribe(topic => {
-        this.img = topic.img; this.href = topic.href;
+        this.href = topic.href;
       }, err => console.log(err));
     } catch (err) { console.log(err); }
   }
