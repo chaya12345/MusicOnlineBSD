@@ -10,14 +10,13 @@
 namespace DAL
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class TopicsTBL
+    public partial class sp_helpdiagrams_Result
     {
-        public int id { get; set; }
-        public string title { get; set; }
-        public string subtitle { get; set; }
-        public string href { get; set; }
-        public string icon { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

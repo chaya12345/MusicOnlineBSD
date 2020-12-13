@@ -28,8 +28,6 @@ namespace BL
                     topic.title = updateTopic.title;
                 if (updateTopic.subtitle != null)
                     topic.subtitle = updateTopic.subtitle;
-                if (updateTopic.img != null)
-                    topic.img = updateTopic.img;
                 et.SaveChanges();
             }
         }

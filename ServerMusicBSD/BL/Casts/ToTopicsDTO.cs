@@ -18,7 +18,6 @@ namespace BL.Casts
             newTopic.id = topic.id;
             newTopic.title = topic.title;
             newTopic.subtitle = topic.subtitle;
-            newTopic.img = topic.img;
             newTopic.href = topic.href;
             newTopic.icon = topic.icon;
             return newTopic;

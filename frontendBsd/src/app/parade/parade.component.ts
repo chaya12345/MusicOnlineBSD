@@ -16,7 +16,7 @@ export class ParadeComponent implements OnInit {
     try {
       this.topicsService.getTopic("המצעד").subscribe(t => {
         this.topic.title = t.title; this.topic.subtitle = t.subtitle;
-        this.topic.icon = t.icon; this.topic.img = t.img;
+       // this.topic.icon = t.icon; this.topic.img = t.img;
       }, err => console.log(err));
     } catch (err) { console.log(err); }
     this.navs.push("המצעד");
