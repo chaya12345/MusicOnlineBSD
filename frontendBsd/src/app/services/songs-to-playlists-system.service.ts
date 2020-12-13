@@ -9,19 +9,19 @@ import { SongsToPlaylistsSystem } from '../classes/songsToPlaylistsSystem';
 })
 export class SongsToPlaylistsSystemService {
 
-  baseUrl: string = "https://localhost:44368/api/SongsToPlaylistsSystem/";
+  baseUrl: string = "https://localhost:44368/api/SongsToPlaylists/";
   constructor(private httpClient: HttpClient) { }
 
   getSongsToPlaylistSystem(plalistId: number): Observable<Song[]> {
-    return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsToPlaylistSystem?playlistId=" + plalistId);
+    return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsToPlaylist?playlistId=" + plalistId);
   }
   addSongToPlaylistSystem(stp: SongsToPlaylistsSystem): Observable<any> {
-    return this.httpClient.post(this.baseUrl + "PostSongToPlaylistSystem", stp);
+    return this.httpClient.post(this.baseUrl + "PostSongToPlaylist", stp);
   }
   addSongsToPlaylistSystem(stp: SongsToPlaylistsSystem[]): Observable<any> {
-    return this.httpClient.post(this.baseUrl + "PostSongToPlaylistSystem", stp);
+    return this.httpClient.post(this.baseUrl + "PostSongToPlaylist", stp);
   }
   deleteSongFromPlaylistSystem(playlistId: number, songId: number): Observable<any> {
-    return this.httpClient.delete(this.baseUrl + "DeleteSongFromPlaylistSystem?playlistId=" + playlistId + "&songId=" + songId);
+    return this.httpClient.delete(this.baseUrl + "DeleteSongFromPlaylist?playlistId=" + playlistId + "&songId=" + songId);
   }
 }
