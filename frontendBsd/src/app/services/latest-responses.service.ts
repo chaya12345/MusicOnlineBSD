@@ -8,10 +8,10 @@ import { LastesResponsView } from '../classes/lastesResponsView';
 })
 export class LatestResponsesService {
 
-  baseUrl:string="https://localhost:44368/api/LatestResponses/";
+  baseUrl:string="https://localhost:44368/api/LatestCommits/";
   constructor(private httpClient:HttpClient) { }
 
   getLastResponsesToArticlesAndSongs(): Observable<LastesResponsView[]> {
-    return this.httpClient.get<LastesResponsView[]>(this.baseUrl + "GetLastResponsesToArticlesAndSongs")
+    return this.httpClient.get<LastesResponsView[]>(this.baseUrl + "GetLastCommitsToArticlesAndSongs")
   }
 }
