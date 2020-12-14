@@ -4,7 +4,7 @@ import { CommitsToArticles } from '../classes/commitsToArticles';
 import { CommitsToArticlesService } from '../services/commits-to-articles.service';
 
 @Component({
-  selector: 'Commits-article',
+  selector: 'commits-article',
   templateUrl: './Commits-article.component.html',
   styleUrls: ['./Commits-article.component.css']
 })
