@@ -89,10 +89,13 @@ export class AddingPlaylistComponent implements OnInit {
       try {
         this.songsToPlaylistsSystemService.getSongsToPlaylistSystem(this.SelectedPlaylist.id)
         .subscribe(songs => {
-          this.playlistAddingForm.controls.songs.setValue(songs);
+          let _songs: string[];
+          songs.forEach(song => {
+            if (song != null) { _songs.push(song.name); }
+          })
+          this.playlistAddingForm.controls.songs.setValue(_songs);
         }, err => console.log(err));
       } catch (err) { console.log(err); }
-      // this.playlistAddingForm.controls.songs.setValue(this.SelectedPlaylist.name);
     }
   }
 
