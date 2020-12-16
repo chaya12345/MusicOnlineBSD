@@ -24,5 +24,15 @@
         <button mat-stroked-button type="submit"><mat-icon>playlist_add</mat-icon>הוספה</button>
         <!-- edit playlist button -->
         <button mat-stroked-button><mat-icon>edit</mat-icon>עריכת פלייליסט</button>
+        <!-- selecting a playlist -->
+        <mat-form-field appearance="outline">
+            <mat-label>שם שיר</mat-label>
+            <input id="playlist-selecting" type="text" matInput [formControl]="playlistControl" [matAutocomplete]="autoPlaylist">
+            <mat-autocomplete autoActiveFirstOption #autoPlaylist="matAutocomplete">
+                <mat-option *ngFor="let playlist of playlists | async" [value]="playlist.name">
+                    <p>{{playlist.name}}</p>
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
     </form>
 </div>
