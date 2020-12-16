@@ -22,7 +22,7 @@ namespace BL
         public static ArticlesDTO GetArticleById(int articleId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            ArticlesTBL article = et.ArticlesTBL.Where(a =>a!=null&& a.id == articleId).FirstOrDefault();
+            ArticlesTBL article = et.ArticlesTBL.Where(a => a != null && a.id == articleId).FirstOrDefault();
             if (article != null)
                 return Casts.ToArticlesDTO.GetArticle(article);
             return null;
@@ -30,13 +30,14 @@ namespace BL
         public static void AddArticle(ArticlesTBL article)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            try {
+            try
+            {
                 if (article != null)
                 {
                     et.ArticlesTBL.Add(article);
                     et.SaveChanges();
                 }
-                
+
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -52,7 +53,7 @@ namespace BL
         public static void DeleteArticle(int articleId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            ArticlesTBL article = et.ArticlesTBL.Where(a =>a!=null&& a.id == articleId).FirstOrDefault();
+            ArticlesTBL article = et.ArticlesTBL.Where(a => a != null && a.id == articleId).FirstOrDefault();
             if (article != null)
             {
                 et.ArticlesTBL.Remove(article);
@@ -70,14 +71,14 @@ namespace BL
         private static List<ArticlesTBL> GetArticleInListByTag(List<ArticlesTBL> articles, string tagName)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            TagsForArticlesTBL tag = et.TagsForArticlesTBL.Where(t =>t!=null&& t.name == tagName).FirstOrDefault();
+            TagsForArticlesTBL tag = et.TagsForArticlesTBL.Where(t => t != null && t.name == tagName).FirstOrDefault();
             List<ArticlesTBL> result = new List<ArticlesTBL>();
             if (tag != null && articles != null)
             {
-                List<TagsToArticlesTBL> tagToArticles = et.TagsToArticlesTBL.Where(t =>t!=null&& t.tagId == tag.id).ToList();
+                List<TagsToArticlesTBL> tagToArticles = et.TagsToArticlesTBL.Where(t => t != null && t.tagId == tag.id).ToList();
                 foreach (TagsToArticlesTBL artic in tagToArticles)
                 {
-                    ArticlesTBL articleIn = articles.Where(a =>a!=null&&artic!=null&& a.id == artic.articleId).FirstOrDefault();
+                    ArticlesTBL articleIn = articles.Where(a => a != null && artic != null && a.id == artic.articleId).FirstOrDefault();
                     if (articleIn != null)
                         result.Add(articleIn);
                 }
@@ -123,7 +124,7 @@ namespace BL
         public static void InreaseLike(int articleId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            ArticlesTBL article = et.ArticlesTBL.Where(a =>a!=null&& a.id == articleId).FirstOrDefault();
+            ArticlesTBL article = et.ArticlesTBL.Where(a => a != null && a.id == articleId).FirstOrDefault();
             if (article != null)
             {
                 if (article.count_like == null)
@@ -136,13 +137,13 @@ namespace BL
                     article.count_like++;
                     et.SaveChanges();
                 }
-                
+
             }
         }
         public static void DecreaseLike(int articleId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            ArticlesTBL article = et.ArticlesTBL.Where(a =>a!=null&& a.id == articleId).FirstOrDefault();
+            ArticlesTBL article = et.ArticlesTBL.Where(a => a != null && a.id == articleId).FirstOrDefault();
             if (article != null)
             {
                 if (article.count_like == null)
@@ -169,6 +170,11 @@ namespace BL
                 article.count_views++;
             article.lastViewingDate = DateTime.Now;
             et.SaveChanges();
+        }
+        public static ArticlesDTO GetArticleByTitle(string title)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            return Casts.ToArticlesDTO.GetArticle(et.ArticlesTBL.Where(a => a != null && a.title == title).FirstOrDefault());
         }
     }
 }

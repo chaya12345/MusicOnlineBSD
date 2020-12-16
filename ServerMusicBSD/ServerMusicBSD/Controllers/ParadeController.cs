@@ -26,5 +26,9 @@ namespace ServerMusicBSD.Controllers
         {
             return ParadeBL.AddParade(parade);
         }
+        public void PutFinishedParade()
+        {
+            ParadeBL.FinishedParade();
+        }
     }
 }

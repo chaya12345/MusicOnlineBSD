@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,13 +18,46 @@ namespace BL
             if (list == null)
                 return null;
             List<string> result = new List<string>();
-            foreach(SingersToSongsTBL item in list)
+            foreach (SingersToSongsTBL item in list)
             {
                 SingersTBL singer = et.SingersTBL.Where(s => s.id == item.singerId).FirstOrDefault();
                 if (singer != null)
                     result.Add(singer.name);
             }
             return result;
+        }
+        public static void AddSingerToSong(SingersToSongsTBL singersToSongs)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            try
+            {
+                if (singersToSongs != null)
+                {
+                    et.SingersToSongsTBL.Add(singersToSongs);
+                }
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
+        }
+        public static void AddSingersToSong(string[] singers, int songId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            foreach (string singer in singers)
+            {
+                SingersTBL singerTBL = et.SingersTBL.Where(s => s != null && singer != null && s.name == singer).FirstOrDefault();
+                if (singer != null)
+                {
+                    AddSingerToSong(new SingersToSongsTBL { singerId = singerTBL.id, songId = songId });
+                }
+            }
         }
     }
 }

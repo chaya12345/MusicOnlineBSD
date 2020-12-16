@@ -72,7 +72,7 @@ namespace ServerMusicBSD.Controllers
                 {
                     TagsToSongsBL.AddTagsToSong(songObj.tags, song.id);
                     ArtistsToSongsBL.AddArtistsToSong(songObj.artists, song.id);
-                    ArtistsToSongsBL.AddArtistsToDuet(songObj.singers, song.id);
+                    SingersToSongsBL.AddSingersToSong(songObj.singers, song.id);
                 }
             }
         }

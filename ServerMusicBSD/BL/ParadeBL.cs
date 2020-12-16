@@ -43,5 +43,12 @@ namespace BL
                 return false;
             }
         }
+        public static void FinishedParade()
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            ParadeTBL parade = et.ParadeTBL.Where(p => p.dateEnd == null).FirstOrDefault();
+            parade.dateEnd = DateTime.Now;
+            et.SaveChanges();
+        }
     }
 }

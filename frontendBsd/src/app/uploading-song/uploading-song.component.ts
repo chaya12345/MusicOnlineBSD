@@ -5,7 +5,7 @@ import { Artist } from '../classes/artist';
 import { ArtistWithJob } from '../classes/artistWithJob';
 import { Singer } from '../classes/singer';
 import { Song } from '../classes/song';
-import { Tag } from '../classes/tag';
+import { TagsForSongs } from '../classes/tag';
 import { SelectJobComponent } from '../select-job/select-job.component';
 import { ArtistService } from '../services/artist.service';
 import { SingerService } from '../services/singer.service';
@@ -24,7 +24,7 @@ export class UploadingSongComponent implements OnInit {
   imageFile: File;
   songFile: File;
   singers: Singer[] = [];
-  tags: Tag[] = [];
+  tags: TagsForSongs[] = [];
   artists: Artist[] = [];
   isPerformance: boolean = false;
   artistsWithJobs: ArtistWithJob[] = [];
@@ -156,7 +156,7 @@ export class UploadingSongComponent implements OnInit {
 
   getTags(): void {
     try {
-      this.tagService.getTags().subscribe(tags => {
+      this.tagService.getTagsForSongs().subscribe(tags => {
         this.tags = tags;
         this.sort(this.tags);
       }, err => console.log(err));

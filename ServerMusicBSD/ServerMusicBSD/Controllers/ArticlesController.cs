@@ -11,6 +11,13 @@ using System.Web.Http.Cors;
 
 namespace ServerMusicBSD.Controllers
 {
+    public class AticleObj
+    {
+        public ArticlesTBL article;
+        public string[] singers;
+        public string[] tags;
+        public string[] artists;
+    }
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ArticlesController : ApiController
     {
@@ -22,10 +29,17 @@ namespace ServerMusicBSD.Controllers
         {
             return ArticlesBL.GetArticleById(articleid);
         }
-        public void PostArticle([FromBody] ArticlesTBL article)
+        public void PostArticle([FromBody] AticleObj articleObj)
         {
-            article.date = DateTime.Today;
-            ArticlesBL.AddArticle(article);
+            articleObj.article.date = DateTime.Today;
+            ArticlesBL.AddArticle(articleObj.article);
+            ArticlesDTO article = ArticlesBL.GetArticleByTitle(articleObj.article.title);
+            if (article != null)
+            {
+                TagsToArticlesBL.AddTagToArticle(articleObj.tags, article.id);
+                SingersToArticlesBL.AddSingersToArticle(articleObj.singers, article.id);
+                //לבדוק מה קורה עם האומנים לכתבות
+            }
         }
         public void DeleteArticle(int articleId)
         {
