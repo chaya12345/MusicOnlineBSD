@@ -24,6 +24,9 @@ export class AddingPlaylistComponent implements OnInit {
   filteredPlaylists: Observable<Playlists[]>;
   playlists: Playlists[] = [];
   playlistControl = new FormControl();
+  SelectedPlaylist: Playlists;
+
+  isEdit: boolean = false;
 
   constructor(private songService: SongService, private uploadService: UploadService,
     private songsToPlaylistsSystemService: SongsToPlaylistsSystemService,
@@ -62,6 +65,27 @@ export class AddingPlaylistComponent implements OnInit {
         this.songsList.sort((a, b) => a.name.localeCompare(b.name));
       }, err => console.log(err));
     } catch (err) { console.log(err); }
+  }
+
+  onSelectionChange(event): void {
+    console.log(event.option.value);
+    try {
+      this.playlistService.GetPlaylistByName(event.option.value)
+      .subscribe(playlist => {
+        this.SelectedPlaylist = playlist;
+        console.log(this.SelectedPlaylist);
+        this.enteringValues();
+      }, err => console.log(err))
+    } catch (err) { console.log(err); }
+  }
+
+  enteringValues(): void {
+    if (this.isEdit == true && this.SelectedPlaylist != null) {
+      this.playlistAddingForm.controls.name.setValue(this.SelectedPlaylist.name);
+      this.playlistAddingForm.controls.title.setValue(this.SelectedPlaylist.title);
+      this.playlistAddingForm.controls.image.setValue(this.SelectedPlaylist.image);
+      // this.playlistAddingForm.controls.songs.setValue(this.SelectedPlaylist.name);
+    }
   }
 
   onSubmit(): void {

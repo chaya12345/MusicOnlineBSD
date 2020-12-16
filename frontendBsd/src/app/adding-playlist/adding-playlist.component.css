@@ -43,6 +43,10 @@ form > :nth-child(6) {
     grid-area: 5 / 2 / 6 / 3;
 }
 
+form > :nth-child(7) {
+    grid-area: 6 / 2 / 7 / 3;
+}
+
 form > button {
     height: 48px;
     margin-left: auto;
@@ -61,4 +65,8 @@ form > div {
     background-color: whitesmoke;
     background-clip: content-box;
     padding-bottom: 17px;
+}
+mat-form-field:last-of-type {
+    direction: ltr;
+    cursor: pointer;
 }
