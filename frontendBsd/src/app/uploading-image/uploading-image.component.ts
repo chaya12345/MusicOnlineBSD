@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'uploading-image',
@@ -7,6 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class UploadingImageComponent implements OnInit {
   
+  @Input() image?: string = null;
   @Output() onSelect: EventEmitter<File> = new EventEmitter<File>();
   srcResult: any;
   fileName: string = "";
@@ -15,6 +16,12 @@ export class UploadingImageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(): void {
+    if (this.image != null) {
+      this.imageSrc = this.image;
+    }
   }
 
   openInput() {

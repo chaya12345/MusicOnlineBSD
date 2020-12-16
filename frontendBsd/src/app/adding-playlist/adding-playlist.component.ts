@@ -25,6 +25,7 @@ export class AddingPlaylistComponent implements OnInit {
   playlists: Playlists[] = [];
   playlistControl = new FormControl();
   SelectedPlaylist: Playlists;
+  image: string = null;
 
   isEdit: boolean = false;
 
@@ -75,7 +76,7 @@ export class AddingPlaylistComponent implements OnInit {
         this.SelectedPlaylist = playlist;
         console.log(this.SelectedPlaylist);
         this.enteringValues();
-      }, err => console.log(err))
+      }, err => console.log(err));
     } catch (err) { console.log(err); }
   }
 
@@ -84,6 +85,13 @@ export class AddingPlaylistComponent implements OnInit {
       this.playlistAddingForm.controls.name.setValue(this.SelectedPlaylist.name);
       this.playlistAddingForm.controls.title.setValue(this.SelectedPlaylist.title);
       this.playlistAddingForm.controls.image.setValue(this.SelectedPlaylist.image);
+      this.image = "../../assets/images/" + this.SelectedPlaylist.image;
+      try {
+        this.songsToPlaylistsSystemService.getSongsToPlaylistSystem(this.SelectedPlaylist.id)
+        .subscribe(songs => {
+          this.playlistAddingForm.controls.songs.setValue(songs);
+        }, err => console.log(err));
+      } catch (err) { console.log(err); }
       // this.playlistAddingForm.controls.songs.setValue(this.SelectedPlaylist.name);
     }
   }

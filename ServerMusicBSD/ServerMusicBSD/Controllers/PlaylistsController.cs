@@ -38,7 +38,10 @@ namespace ServerMusicBSD.Controllers
         [HttpPost]
         public void PostPlaylistWithSongs([FromBody] playlistWithSongs pws)
         {
-            PlaylistsBL.AddPlaylistWithSongs(pws.playlist, pws.songs);
+            if (pws != null && pws.playlist != null && pws.songs != null)
+            {
+                PlaylistsBL.AddPlaylistWithSongs(pws.playlist, pws.songs);
+            }
         }
     }
 }

@@ -12,7 +12,7 @@
             <mat-error *ngIf="playlistAddingForm.controls.title.invalid">{{getTitleErrorMessage()}}</mat-error>
         </mat-form-field>
         <!-- image -->
-        <uploading-image (onSelect)="selectImage($event)"></uploading-image>
+        <uploading-image (onSelect)="selectImage($event)" [image]="image"></uploading-image>
         <!-- adding a song -->
         <mat-form-field appearance="fill">
             <mat-label>הוספת שירים</mat-label>
@@ -21,7 +21,7 @@
             </mat-select>
           </mat-form-field>
         <!-- upload button -->
-        <button mat-stroked-button type="submit"><mat-icon>playlist_add</mat-icon>הוספה</button>
+        <button *ngIf="isEdit==false" mat-stroked-button type="submit"><mat-icon>playlist_add</mat-icon>הוספה</button>
         <!-- selecting a playlist -->
         <mat-form-field appearance="fill">
             <mat-label>בחר פלייליסט</mat-label>
@@ -35,5 +35,11 @@
         </mat-form-field>
         <!-- edit playlist button -->
         <button mat-stroked-button (click)="isEdit=true;"><mat-icon>edit</mat-icon>עריכת פלייליסט</button>
+        <div class="wrap-buttons" *ngIf="isEdit==true">
+            <!-- confirm playlist button -->
+            <button mat-stroked-button><mat-icon>check</mat-icon>שמור שינויים</button>
+            <!-- cancel editing button -->
+            <button mat-stroked-button (click)="isEdit=false;"><mat-icon>cancel</mat-icon>בטל</button>
+        </div>
     </form>
 </div>
