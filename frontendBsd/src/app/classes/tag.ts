@@ -1,6 +1,9 @@
-export class Tag {
+export class TagsForSongs {
     id: number;
     name?: string;
-    tagTypeId?:number;
-    isShow?:boolean;
+    typeId?:number;
+}
+export class TagsForArticles {
+    id: number;
+    name?: string;
 }

@@ -24,4 +24,8 @@ export class ParadeService {
     return this.httpClient.post<boolean>(this.baseUrl + "PostParade", parade);
   }
 
+  finishedParade():Observable<any>{
+    return this.httpClient.put(this.baseUrl+"PutFinishedParade",1);
+  }
+
 }

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { Article } from '../classes/article';
 import { Artist } from '../classes/artist';
 import { Singer } from '../classes/singer';
-import { Tag } from '../classes/tag';
+import { TagsForArticles } from '../classes/tag';
 import { ArticleService } from '../services/article.service';
 import { ArtistService } from '../services/artist.service';
 import { SingerService } from '../services/singer.service';
@@ -19,18 +20,18 @@ export class UploadingArticleComponent implements OnInit {
   uploadingArticleForm: FormGroup;
   imageFile: File;
   singers: Singer[] = [];
-  tags: Tag[] = [];
+  tags: TagsForArticles[] = [];
   artists: Artist[] = [];
 
   constructor(private singerService: SingerService, private tagService: TagService,
-    private artistService: ArtistService, private articleService: ArticleService) {
+    private artistService: ArtistService, private articleService: ArticleService, private _snackBar:MatSnackBar) {
     this.uploadingArticleForm = new FormGroup({
       title: new FormControl("", [Validators.required, Validators.minLength(3)]),
       subtitle: new FormControl("", [Validators.required, Validators.minLength(3)]),
       image: new FormControl("", Validators.required),
-      singers: new FormControl("", Validators.required),
+      singers: new FormControl(""),
       tags: new FormControl("", Validators.required),
-      artists: new FormControl("", Validators.required),
+      artists: new FormControl(""),
       content: new FormControl("", [Validators.required, Validators.minLength(3)])
     });
     this.getSingers();
@@ -53,12 +54,24 @@ export class UploadingArticleComponent implements OnInit {
       article.title = this.uploadingArticleForm.controls.title.value;
       article.subtitle = this.uploadingArticleForm.controls.subtitle.value;
       article.image = "for_articles/" + this.uploadingArticleForm.controls.image.value;
+      let obj = {
+        article: article,
+        tags: this.uploadingArticleForm.controls.tags.value,
+        artists: this.uploadingArticleForm.controls.artists.value,
+        singers: this.uploadingArticleForm.controls.singers.value
+      }
       try {
-      this.articleService.addArticle(article).subscribe(res => 
-        console.log(res), err => console.log(err));
-      } catch (err) { console.log(err); }
+        this.articleService.addArticle(obj).subscribe(res =>
+          this.openSnackBar("העלאת הכתבה בוצעה בהצלחה"), err => console.log(err));
+
+      } catch (err) { this.openSnackBar("העלאת שיר בוצעה בהצלחה"); }
       // this.reset();
     }
+  }
+  openSnackBar(message: string) {
+    this._snackBar.open(message, '', {
+      duration: 2000,
+    });
   }
 
   reset() {
@@ -94,7 +107,7 @@ export class UploadingArticleComponent implements OnInit {
 
   getTags(): void {
     try {
-      this.tagService.getTags().subscribe(tags => {
+      this.tagService.getTagsForArticles().subscribe(tags => {
         this.tags = tags;
         this.tags.sort((a, b) => a.name.localeCompare(b.name));
       }, err => console.log(err));

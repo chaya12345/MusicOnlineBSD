@@ -27,7 +27,7 @@ namespace BL
         public static int GetUsersCount()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return et.UsersTBL.Count();
+            return et.UsersTBL.Where(u=>u.name!=null).Count();
         }
         public static int GetSubsToNewsletterCount()
         {

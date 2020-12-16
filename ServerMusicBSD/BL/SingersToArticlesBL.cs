@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,35 @@ namespace BL
                     result.Add(singer.name);
             }
             return result;
+        }
+        public static void AddSingersToArticle(string[] singers,int articleId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            foreach (string item in singers)
+            {
+                SingersTBL singer = et.SingersTBL.Where(s => s != null && item != null && s.name == item).FirstOrDefault();
+                if (singer != null)
+                    AddSingerToArticle(new SingersToArticlesTBL() { articleId = articleId, singerId = singer.id });
+            }
+        }
+        public static void AddSingerToArticle(SingersToArticlesTBL singerToArticle)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            try
+            {
+                if (singerToArticle != null)
+                    et.SingersToArticlesTBL.Add(singerToArticle);
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
         }
     }
 }

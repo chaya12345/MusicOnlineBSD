@@ -61,5 +61,15 @@ namespace BL
                 }
             }
         }
+        public static void AddTagToArticle(string[] tags,int articleId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            foreach (string item in tags)
+            {
+                TagsForArticlesTBL tag = et.TagsForArticlesTBL.Where(t => t != null && item != null && t.name == item).FirstOrDefault();
+                if (tag != null)
+                    AddTagToArticle(new TagsToArticlesTBL() { tagId = tag.id, articleId = articleId });
+            }
+        }
     }
 }

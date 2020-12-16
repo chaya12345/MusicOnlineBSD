@@ -111,34 +111,5 @@ namespace BL
                 }
             }
         }
-        public static void AddArtistsToDuet(string[] singers, int songId)
-        {
-            if (singers.Length > 1)
-            {
-                MusicOnlineEntities et = new MusicOnlineEntities();
-                string duetString = "דואט";
-                TagsForSongsTBL duet = et.TagsForSongsTBL.Where(tag => tag != null && tag.name == duetString).FirstOrDefault();
-                if (duet != null)
-                {
-                    for (int index = 1; index < singers.Length; index++)
-                    {
-                        string singer = singers[index];
-                        ArtistsTBL artist = et.ArtistsTBL.Where(a => a != null && a.name == singer).FirstOrDefault();
-                        int artistId = -1;
-                        if (artist == null)
-                        {
-                            ArtistsBL.AddArtistName(new ArtistsTBL { name = singers[index] });
-                            ArtistsTBL currentArtist = ArtistsBL.GetArtistByName(singers[index]);
-                            if (currentArtist != null)
-                                artistId = currentArtist.id;
-                        }
-                        else
-                            artistId = artist.id;
-                        if (artistId != -1)
-                            AddArtistToSong(new ArtistsToSongsTBL { songId = songId, artistId = artistId, jobId = duet.id });
-                    }
-                }
-            }
-        }
     }
 }
