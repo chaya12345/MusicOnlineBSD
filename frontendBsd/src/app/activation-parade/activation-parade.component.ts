@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { Singer } from '../classes/singer';
 import { Song } from '../classes/song';
+import { MessageComponent } from '../message/message.component';
+import { CommonMessageService } from '../services/common-message.service';
 import { ParadeService } from '../services/parade.service';
 import { SingerService } from '../services/singer.service';
 import { SongService } from '../services/song.service';
@@ -19,10 +21,11 @@ export class ActivationParadeComponent implements OnInit {
   singers: Singer[] = [];
   songs: Song[] = [];
   imageFile: File;
-  activatedParade: boolean=false;
+  activatedParade: boolean = false;
 
-  constructor(private singerService: SingerService, private songService: SongService,
-    private uploadService: UploadService, private _snackBar: MatSnackBar,private paradeService:ParadeService) {
+  constructor(private singerService: SingerService, private songService: SongService, public dialog: MatDialog,
+    private uploadService: UploadService, private _snackBar: MatSnackBar, private paradeService: ParadeService,
+    private commonMessage: CommonMessageService) {
     this.activationParadeForm = new FormGroup({
       image: new FormControl("", Validators.required),
       year: new FormControl("", Validators.required),
@@ -32,7 +35,7 @@ export class ActivationParadeComponent implements OnInit {
     this.getSingers();
     this.getSongs();
     try {
-paradeService.getActiveParade().subscribe(parade=>{if(parade!=null)this.activatedParade=true})
+      paradeService.getActiveParade().subscribe(parade => { if (parade != null) this.activatedParade = true })
     } catch (err) { console.log(err); }
   }
 
@@ -97,6 +100,27 @@ paradeService.getActiveParade().subscribe(parade=>{if(parade!=null)this.activate
     this._snackBar.open(message, '', {
       duration: 2000,
     });
+  }
+  finishedParade() {
+    try {
+      this.paradeService.finishedParade().subscribe(
+        suc => this.openSnackBar(this.commonMessage.FINISHED_PARADE.SUCCESS),
+        err => this.commonMessage.FINISHED_PARADE.ERROR);
+    } catch { this.commonMessage.FINISHED_PARADE.ERROR }
+
+  }
+
+  openMessageDialog(text: string) {
+    try {
+      const dialogRef = this.dialog.open(MessageComponent, {
+        width: '400px',
+        data: { dialogText: text }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result == true)
+          this.finishedParade();
+      });
+    } catch (err) { console.log(err); }
   }
 
 }
