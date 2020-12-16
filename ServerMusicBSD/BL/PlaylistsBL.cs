@@ -67,5 +67,32 @@ namespace BL
                 SongsToPlaylistsBL.AddSongsToPlaylist(songs, currentPlaylist.id);
             }
         }
+        public static bool UpdatePlaylistWithSongs(PlaylistsTBL playlist, string[] songs)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            PlaylistsTBL currentPlaylist = et.PlaylistsTBL
+                .Where(p => p != null && p.id == playlist.id).FirstOrDefault();
+            if (currentPlaylist != null)
+            {
+                currentPlaylist.name = playlist.name;
+                currentPlaylist.title = playlist.title;
+                currentPlaylist.image = playlist.image;
+                if (songs != null && songs.Length > 0)
+                {
+                    List<SongsTBL> fullSongs = new List<SongsTBL>();
+                    foreach (string song in songs)
+                    {
+                        SongsTBL so = et.SongsTBL.Where(s => s != null && s.name == song).FirstOrDefault();
+                        if (so != null)
+                        {
+                            fullSongs.Add(so);
+                        }
+                    }
+                    SongsToPlaylistsBL.UpdateSongsToPlaylist(playlist.id, fullSongs);
+                }
+                return true;
+            }
+            return false;
+        }
     }
 }

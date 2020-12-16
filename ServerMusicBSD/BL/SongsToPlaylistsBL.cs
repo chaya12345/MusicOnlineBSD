@@ -98,9 +98,34 @@ namespace BL
                 }
             }
         }
-        public static bool UpdateSongsToPlaylist(int playlistId, List<SongsTBL> songs)
+        public static void UpdateSongsToPlaylist(int playlistId, List<SongsTBL> songs)
         {
-
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<SongsToPlaylistsTBL> existSongs = et.SongsToPlaylistsTBL
+                .Where(stp => stp != null && stp.playlistId == playlistId).ToList();
+            List<SongsTBL> existAndSelected = new List<SongsTBL>();
+            if (existSongs != null)
+            {
+                foreach (SongsToPlaylistsTBL item in existSongs)
+                {
+                    SongsTBL so = songs.Where(song => song != null && song.id == item.songId).FirstOrDefault();
+                    if (so == null)
+                    {
+                        DeleteSongFromPlaylist(playlistId, item.songId);
+                    }
+                    else
+                    {
+                        existAndSelected.Add(so);
+                    }
+                }
+            }
+            foreach (SongsTBL song in songs)
+            {
+                if (song != null && existAndSelected.Where(s => s.id == song.id).FirstOrDefault() == null)
+                {
+                    AddSongToPlaylist(new SongsToPlaylistsTBL() { playlistId = playlistId, songId = song.id });
+                }
+            }
         }
         public static void DeleteSongFromPlaylist(int? playlistId, int? songId)
         {

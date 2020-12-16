@@ -43,5 +43,14 @@ namespace ServerMusicBSD.Controllers
                 PlaylistsBL.AddPlaylistWithSongs(pws.playlist, pws.songs);
             }
         }
+        [HttpPut]
+        public bool UpdatePlaylistWithSongs([FromBody] playlistWithSongs pws)
+        {
+            if (pws != null && pws.playlist != null && pws.songs != null)
+            {
+                return PlaylistsBL.UpdatePlaylistWithSongs(pws.playlist, pws.songs);
+            }
+            return false;
+        }
     }
 }
