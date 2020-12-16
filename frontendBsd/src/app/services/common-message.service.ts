@@ -48,6 +48,12 @@ export class CommonMessageService {
     ERROR: "העברת השיר נכשלה. נסה שוב מאוחר יותר"
   }
 
+  FINISHED_PARADE: STATUS = {
+    SUCCESS: "המצעד הסתיים בהצלחה",
+    FAIL:"אין מצעד פועל",
+    ERROR: "סיום המצעד נכשל. נסה שוב מאוחר יותר"
+  }
+
   ERROR = "מצטערים, קרתה תקלה. נסה שוב מאוחר יותר";
 
   constructor() { }
