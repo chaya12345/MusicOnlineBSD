@@ -111,11 +111,11 @@ export class AddingPlaylistComponent implements OnInit {
       try {
         this.playlistsService.addPlaylistWithSongs(newPlaylist, songs).subscribe(res => {
           console.log(res, "Yes");
+          this.openSnackBar(this.cmService.PLAYLIST.ADD.SUCCESS);
           this.saveImage(this.imageFile);
-        }, err => console.log(err));
-      } catch (err) { console.log(err); }
+        }, () => this.openSnackBar(this.cmService.PLAYLIST.ADD.ERROR));
+      } catch { this.openSnackBar(this.cmService.PLAYLIST.ADD.ERROR); }
       this.reset();
-      this.openSnackBar("הוספת הפלייליסט בוצעה בהצלחה");
     }
   }
 

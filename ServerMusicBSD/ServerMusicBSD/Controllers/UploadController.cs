@@ -35,5 +35,21 @@ namespace ServerMusicBSD.Controllers
             }
             return response;
         }
+        [System.Web.Http.HttpDelete]
+        [System.Web.Http.ActionName("DeleteImage")]
+        public void DeleteFileFromFolder(string FoldersPath, string StrFilename)
+        {
+
+            string strPhysicalFolder = AppDomain.CurrentDomain.BaseDirectory.Substring(0,
+                            AppDomain.CurrentDomain.BaseDirectory.LastIndexOf("Server") - 1) + "\\DAL\\src\\"
+                            + FoldersPath + "\\";
+            string strFileFullPath = strPhysicalFolder + StrFilename;
+            if (System.IO.File.Exists(strFileFullPath))
+            {
+                System.IO.File.Delete(strFileFullPath);
+            }
+
+        }
+
     }
 }
