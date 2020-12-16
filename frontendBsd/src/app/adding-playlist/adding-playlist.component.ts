@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
-import { MatSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { Playlists } from '../classes/playlists';
 import { Song } from '../classes/song';
 import { PlaylistsService } from '../services/playlists.service';
@@ -9,6 +9,7 @@ import { SongService } from '../services/song.service';
 import { SongsToPlaylistsSystemService } from '../services/songs-to-playlists-system.service';
 import { UploadService } from '../services/upload.service';
 import { Observable } from 'rxjs';
+import { MessageComponent } from '../message/message.component';
 
 @Component({
   selector: 'adding-playlist',
@@ -31,8 +32,7 @@ export class AddingPlaylistComponent implements OnInit {
 
   constructor(private songService: SongService, private uploadService: UploadService,
     private songsToPlaylistsSystemService: SongsToPlaylistsSystemService,
-    private playlistsService: PlaylistsService, private _snackBar: MatSnackBar,
-    private playlistService: PlaylistsService) {
+    private playlistsService: PlaylistsService, private _snackBar: MatSnackBar,public dialog: MatDialog) {
     this.playlistAddingForm = new FormGroup({
       name: new FormControl("", [Validators.required, Validators.minLength(3)]),
       title: new FormControl("", [Validators.required, Validators.minLength(3)]),
@@ -49,7 +49,7 @@ export class AddingPlaylistComponent implements OnInit {
 
   getPlaylists(): void {
     try {
-      this.playlistService.getPlaylists()
+      this.playlistsService.getPlaylists()
         .subscribe(playlists => { 
           this.playlists = playlists;
           this.orderByName(this.songsList);
@@ -71,7 +71,7 @@ export class AddingPlaylistComponent implements OnInit {
   onSelectionChange(event): void {
     console.log(event.option.value);
     try {
-      this.playlistService.GetPlaylistByName(event.option.value)
+      this.playlistsService.GetPlaylistByName(event.option.value)
       .subscribe(playlist => {
         this.SelectedPlaylist = playlist;
         console.log(this.SelectedPlaylist);
@@ -177,5 +177,19 @@ export class AddingPlaylistComponent implements OnInit {
   orderByName(list: any[]): void {
     list.sort((a, b) => a.name.localeCompare(b.name));
   }
-
+  saveChanges(){
+//לעשות כאן את השמירת שינויים
+  }
+  openMessageDialog(text: string) {
+    try {
+      const dialogRef = this.dialog.open(MessageComponent, {
+        width: '400px',
+        data: { dialogText: text }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result == true)
+        this.saveChanges();
+      });
+    } catch (err) { console.log(err); }
+  }
 }

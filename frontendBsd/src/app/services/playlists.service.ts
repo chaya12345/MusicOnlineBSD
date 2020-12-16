@@ -35,4 +35,7 @@ export class PlaylistsService {
     pws.songs = songs;
     return this.httpClient.post(this.baseUrl + "PostPlaylistWithSongs", pws);
   }
+  // public updatePlaylistWithSongs‏(playlistSystemWithSongs:playlistSystemWithSongs): Observable<boolean> {
+  //   return this.httpClient.post(this.baseUrl + "UpdatePlaylistWithSongs‏",playlistSystemWithSongs);
+  // }
 }
