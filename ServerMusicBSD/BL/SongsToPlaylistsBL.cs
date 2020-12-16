@@ -98,6 +98,10 @@ namespace BL
                 }
             }
         }
+        public static bool UpdateSongsToPlaylist(int playlistId, List<SongsTBL> songs)
+        {
+
+        }
         public static void DeleteSongFromPlaylist(int? playlistId, int? songId)
         {
             if (playlistId != null && songId != null)
