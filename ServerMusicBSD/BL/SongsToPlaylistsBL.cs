@@ -137,6 +137,7 @@ namespace BL
                 if (result != null)
                 {
                     et.SongsToPlaylistsTBL.Remove(result);
+                    et.SaveChanges();
                 }
             }
         }

@@ -4,12 +4,13 @@ import { map, startWith } from 'rxjs/operators';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { Playlists } from '../classes/playlists';
 import { Song } from '../classes/song';
-import { PlaylistsService } from '../services/playlists.service';
+import { PlaylistsService, playlistWithSongs } from '../services/playlists.service';
 import { SongService } from '../services/song.service';
 import { SongsToPlaylistsSystemService } from '../services/songs-to-playlists-system.service';
 import { UploadService } from '../services/upload.service';
 import { Observable } from 'rxjs';
 import { MessageComponent } from '../message/message.component';
+import { CommonMessageService } from '../services/common-message.service';
 
 @Component({
   selector: 'adding-playlist',
@@ -21,7 +22,7 @@ export class AddingPlaylistComponent implements OnInit {
   playlistAddingForm: FormGroup;
   songsList: Song[] = [];
   imageFile: File;
-  
+
   filteredPlaylists: Observable<Playlists[]>;
   playlists: Playlists[] = [];
   playlistControl = new FormControl();
@@ -32,7 +33,8 @@ export class AddingPlaylistComponent implements OnInit {
 
   constructor(private songService: SongService, private uploadService: UploadService,
     private songsToPlaylistsSystemService: SongsToPlaylistsSystemService,
-    private playlistsService: PlaylistsService, private _snackBar: MatSnackBar,public dialog: MatDialog) {
+    private playlistsService: PlaylistsService, private _snackBar: MatSnackBar, public dialog: MatDialog,
+    private cmService: CommonMessageService) {
     this.playlistAddingForm = new FormGroup({
       name: new FormControl("", [Validators.required, Validators.minLength(3)]),
       title: new FormControl("", [Validators.required, Validators.minLength(3)]),
@@ -50,7 +52,7 @@ export class AddingPlaylistComponent implements OnInit {
   getPlaylists(): void {
     try {
       this.playlistsService.getPlaylists()
-        .subscribe(playlists => { 
+        .subscribe(playlists => {
           this.playlists = playlists;
           this.orderByName(this.songsList);
           this.updatePlaylists();
@@ -72,11 +74,11 @@ export class AddingPlaylistComponent implements OnInit {
     console.log(event.option.value);
     try {
       this.playlistsService.GetPlaylistByName(event.option.value)
-      .subscribe(playlist => {
-        this.SelectedPlaylist = playlist;
-        console.log(this.SelectedPlaylist);
-        this.enteringValues();
-      }, err => console.log(err));
+        .subscribe(playlist => {
+          this.SelectedPlaylist = playlist;
+          console.log(this.SelectedPlaylist);
+          this.enteringValues();
+        }, err => console.log(err));
     } catch (err) { console.log(err); }
   }
 
@@ -88,27 +90,26 @@ export class AddingPlaylistComponent implements OnInit {
       this.image = "../../assets/images/" + this.SelectedPlaylist.image;
       try {
         this.songsToPlaylistsSystemService.getSongsToPlaylistSystem(this.SelectedPlaylist.id)
-        .subscribe(songs => {
-          let _songs: string[] = [];
-          songs.forEach(song => {
-            if (song != null) { _songs.push(song.name); }
-          });
-          this.playlistAddingForm.controls.songs.setValue(_songs);
-        }, err => console.log(err));
+          .subscribe(songs => {
+            let _songs: string[] = [];
+            songs.forEach(song => {
+              if (song != null) { _songs.push(song.name); }
+            });
+            this.playlistAddingForm.controls.songs.setValue(_songs);
+          }, err => console.log(err));
       } catch (err) { console.log(err); }
     }
   }
 
   onSubmit(): void {
-    if (this.playlistAddingForm.valid && this.imageFile != null && this.imageFile != undefined) {
+    if (this.playlistAddingForm.valid && this.imageFile != null && this.imageFile != undefined && this.isEdit == false) {
       let newPlaylist: Playlists = new Playlists();
       newPlaylist.name = this.playlistAddingForm.controls.name.value;
       newPlaylist.title = this.playlistAddingForm.controls.title.value;
       newPlaylist.image = this.playlistAddingForm.controls.image.value;
       let songs = this.playlistAddingForm.controls.songs.value;
       try {
-      this.playlistsService.addPlaylistWithSongs(newPlaylist, songs).subscribe(res =>
-        {
+        this.playlistsService.addPlaylistWithSongs(newPlaylist, songs).subscribe(res => {
           console.log(res, "Yes");
           this.saveImage(this.imageFile);
         }, err => console.log(err));
@@ -177,9 +178,32 @@ export class AddingPlaylistComponent implements OnInit {
   orderByName(list: any[]): void {
     list.sort((a, b) => a.name.localeCompare(b.name));
   }
-  saveChanges(){
-//לעשות כאן את השמירת שינויים
+
+  saveChanges(): void {
+    try {
+      let pws: playlistWithSongs = new playlistWithSongs();
+      let playlist: Playlists = new Playlists();
+      playlist.id = this.SelectedPlaylist.id;
+      playlist.name = this.playlistAddingForm.controls.name.value;
+      playlist.title = this.playlistAddingForm.controls.title.value;
+      playlist.image = this.playlistAddingForm.controls.image.value;
+      pws.playlist = playlist;
+      pws.songs = this.playlistAddingForm.controls.songs.value;
+      this.playlistsService.updatePlaylistWithSongs(pws)
+        .subscribe(result => {
+          result == true ? this.openSnackBar(this.cmService.UPDATE_ITEM.SUCCESS) :
+            this.openSnackBar(this.cmService.UPDATE_ITEM.FAIL);
+          this.isEdit = false;
+          this.playlists = [];
+          this.getPlaylists();
+          this.reset();
+          this.saveImage(this.imageFile);
+          this.image = null;
+        },
+          () => this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR));
+    } catch (err) { this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR); }
   }
+
   openMessageDialog(text: string) {
     try {
       const dialogRef = this.dialog.open(MessageComponent, {
@@ -188,7 +212,7 @@ export class AddingPlaylistComponent implements OnInit {
       });
       dialogRef.afterClosed().subscribe(result => {
         if (result == true)
-        this.saveChanges();
+          this.saveChanges();
       });
     } catch (err) { console.log(err); }
   }

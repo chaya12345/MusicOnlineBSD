@@ -54,6 +54,12 @@ export class CommonMessageService {
     ERROR: "סיום המצעד נכשל. נסה שוב מאוחר יותר"
   }
 
+  UPDATE_ITEM: STATUS = {
+    SUCCESS: "השינויים נשמרו בהצלחה",
+    FAIL: "הפריט המבוקש לא קיים",
+    ERROR: "שמירת השינויים נכשלה. נסה שוב מאוחר יותר"
+  }
+
   ERROR = "מצטערים, קרתה תקלה. נסה שוב מאוחר יותר";
 
   constructor() { }

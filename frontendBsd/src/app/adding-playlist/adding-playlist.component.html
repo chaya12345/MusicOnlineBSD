@@ -23,7 +23,7 @@
         <!-- upload button -->
         <button *ngIf="isEdit==false" mat-stroked-button type="submit"><mat-icon>playlist_add</mat-icon>הוספה</button>
         <!-- selecting a playlist -->
-        <mat-form-field appearance="fill">
+        <mat-form-field appearance="fill" *ngIf="isEdit==true">
             <mat-label>בחר פלייליסט</mat-label>
             <input id="playlist-selecting" type="text" matInput [formControl]="playlistControl" [matAutocomplete]="autoPlaylist">
             <mat-icon matPrefix>arrow_drop_down</mat-icon>

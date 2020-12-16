@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Playlists } from '../classes/playlists';
 
-export class playlistSystemWithSongs {
-  playlistSystem: Playlists;
+export class playlistWithSongs {
+  playlist: Playlists;
   songs: string[];
 }
 
@@ -30,12 +30,12 @@ export class PlaylistsService {
     return this.httpClient.post(this.baseUrl + "PostPlaylist",playlistsSystem);
   }
   public addPlaylistWithSongs(playlistsSystem: Playlists, songs: string[]): Observable<any> {
-    let pws = new playlistSystemWithSongs();
-    pws.playlistSystem = playlistsSystem;
+    let pws = new playlistWithSongs();
+    pws.playlist = playlistsSystem;
     pws.songs = songs;
     return this.httpClient.post(this.baseUrl + "PostPlaylistWithSongs", pws);
   }
-  // public updatePlaylistWithSongs‏(playlistSystemWithSongs:playlistSystemWithSongs): Observable<boolean> {
-  //   return this.httpClient.post(this.baseUrl + "UpdatePlaylistWithSongs‏",playlistSystemWithSongs);
-  // }
+  public updatePlaylistWithSongs(pws: playlistWithSongs): Observable<boolean> {
+    return this.httpClient.put<boolean>("https://localhost:44368/api/Playlists/UpdatePlaylistWithSongs", pws);
+  }
 }

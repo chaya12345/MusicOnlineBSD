@@ -77,6 +77,7 @@ namespace BL
                 currentPlaylist.name = playlist.name;
                 currentPlaylist.title = playlist.title;
                 currentPlaylist.image = playlist.image;
+                et.SaveChanges();
                 if (songs != null && songs.Length > 0)
                 {
                     List<SongsTBL> fullSongs = new List<SongsTBL>();
