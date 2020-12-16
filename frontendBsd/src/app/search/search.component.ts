@@ -5,10 +5,10 @@ import { Observable } from 'rxjs';
 import { SongService } from '../services/song.service';
 import { Singer } from '../classes/singer';
 import { TagService } from '../services/tag.service';
-import { Tag } from '../classes/tag';
 import { ArtistsAndSingersService } from '../services/artists-and-singers.service';
 import { ArtistsAndSingers } from '../classes/artistsAndSingers';
 import { Song } from '../classes/Song';
+import { TagsForSongs } from '../classes/tag';
 
 @Component({
   selector: 'search',
@@ -25,10 +25,10 @@ export class SearchComponent implements OnInit {
   artistsControl = new FormControl();
   artistsIncludeSingers: ArtistsAndSingers[] = [];
 
-  filteredTags: Observable<Tag[]>;
+  filteredTags: Observable<TagsForSongs[]>;
   tagsControl = new FormControl();
-  tags: Tag[] = [];
-  tagsList: Tag[] = [];
+  tags: TagsForSongs[] = [];
+  tagsList: TagsForSongs[] = [];
 
   constructor(private songService: SongService,
     private tagService: TagService, private artistsAndSingersService: ArtistsAndSingersService) {
@@ -40,7 +40,7 @@ export class SearchComponent implements OnInit {
     }
     catch (err) { console.log(err); }
     try {
-      this.tagService.getTags().subscribe(tags => { this.tags = tags; this.filter(); this.updateTagsList(); }, err => { console.log(err); });
+      this.tagService.getTagsForSongs().subscribe(tags => { this.tags = tags; this.filter(); this.updateTagsList(); }, err => { console.log(err); });
     }
     catch (err) { console.log(err); }
     try {
@@ -93,11 +93,10 @@ export class SearchComponent implements OnInit {
 
   public filter(): void {
     this.tags.forEach(tag => {
-      if (tag.isShow == true)
-        this.tagsList.push(tag);
+      this.tagsList.push(tag);
     });
   }
-  
+
   songSearch(): void {
     this.songsList.forEach(song => {
       if (song.name == (document.getElementById("song-search") as HTMLInputElement).value) {
