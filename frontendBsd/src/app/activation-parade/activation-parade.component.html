@@ -2,7 +2,8 @@
     <p class="title-section">ניהול מצעד >></p>
     <form [formGroup]="activationParadeForm" (ngSubmit)="onSubmit()">
         <!-- activate button -->
-        <button mat-stroked-button><mat-icon>slideshow</mat-icon>הפעל מצעד</button>
+        <button mat-stroked-button *ngIf="!activatedParade"><mat-icon>slideshow</mat-icon>הפעל מצעד</button>
+        <button mat-stroked-button *ngIf="activatedParade"><mat-icon>slideshow</mat-icon>סיים מצעד</button>
         <!-- image -->
         <uploading-image (onSelect)="selectImage($event)"></uploading-image>
         <!-- year -->

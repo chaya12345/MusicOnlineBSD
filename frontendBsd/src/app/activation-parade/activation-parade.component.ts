@@ -3,6 +3,7 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { MatSnackBar } from '@angular/material';
 import { Singer } from '../classes/singer';
 import { Song } from '../classes/song';
+import { ParadeService } from '../services/parade.service';
 import { SingerService } from '../services/singer.service';
 import { SongService } from '../services/song.service';
 import { UploadService } from '../services/upload.service';
@@ -18,9 +19,10 @@ export class ActivationParadeComponent implements OnInit {
   singers: Singer[] = [];
   songs: Song[] = [];
   imageFile: File;
+  activatedParade: boolean=false;
 
   constructor(private singerService: SingerService, private songService: SongService,
-    private uploadService: UploadService, private _snackBar: MatSnackBar) {
+    private uploadService: UploadService, private _snackBar: MatSnackBar,private paradeService:ParadeService) {
     this.activationParadeForm = new FormGroup({
       image: new FormControl("", Validators.required),
       year: new FormControl("", Validators.required),
@@ -29,6 +31,9 @@ export class ActivationParadeComponent implements OnInit {
     });
     this.getSingers();
     this.getSongs();
+    try {
+paradeService.getActiveParade().subscribe(parade=>{if(parade!=null)this.activatedParade=true})
+    } catch (err) { console.log(err); }
   }
 
   ngOnInit(): void {
