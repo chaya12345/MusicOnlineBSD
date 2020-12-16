@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { map, startWith } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material';
 import { Playlists } from '../classes/playlists';
 import { Song } from '../classes/song';
@@ -7,6 +8,7 @@ import { PlaylistsService } from '../services/playlists.service';
 import { SongService } from '../services/song.service';
 import { SongsToPlaylistsSystemService } from '../services/songs-to-playlists-system.service';
 import { UploadService } from '../services/upload.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'adding-playlist',
@@ -18,10 +20,15 @@ export class AddingPlaylistComponent implements OnInit {
   playlistAddingForm: FormGroup;
   songsList: Song[] = [];
   imageFile: File;
+  
+  filteredPlaylists: Observable<Playlists[]>;
+  playlists: Playlists[] = [];
+  playlistControl = new FormControl();
 
   constructor(private songService: SongService, private uploadService: UploadService,
     private songsToPlaylistsSystemService: SongsToPlaylistsSystemService,
-    private playlistsService: PlaylistsService, private _snackBar: MatSnackBar) {
+    private playlistsService: PlaylistsService, private _snackBar: MatSnackBar,
+    private playlistService: PlaylistsService) {
     this.playlistAddingForm = new FormGroup({
       name: new FormControl("", [Validators.required, Validators.minLength(3)]),
       title: new FormControl("", [Validators.required, Validators.minLength(3)]),
@@ -29,9 +36,23 @@ export class AddingPlaylistComponent implements OnInit {
       songs: new FormControl("", Validators.required)
     });
     this.getSongs();
+    this.getPlaylists();
+    this.playlistControl = new FormControl();
   }
 
   ngOnInit(): void {
+  }
+
+  getPlaylists(): void {
+    try {
+      this.playlistService.getPlaylists()
+        .subscribe(playlists => { 
+          this.playlists = playlists;
+          this.orderByName(this.songsList);
+          this.updatePlaylists();
+        }, err => { console.log(err); });
+    }
+    catch (err) { console.log(err); }
   }
 
   getSongs() {
@@ -103,6 +124,23 @@ export class AddingPlaylistComponent implements OnInit {
     else if (this.playlistAddingForm.controls.title.hasError("minlength")) {
       return "שם לא תקין. (פחות מ-3 תווים)"
     }
+  }
+
+  public updatePlaylists(): void {
+    this.filteredPlaylists = this.playlistControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filterPlaylists(value))
+      );
+  }
+
+  public _filterPlaylists(value: string): Playlists[] {
+    const filterValue = value.toLowerCase();
+    return this.playlists.filter(playlist => playlist.name.toLowerCase().includes(filterValue));
+  }
+
+  orderByName(list: any[]): void {
+    list.sort((a, b) => a.name.localeCompare(b.name));
   }
 
 }
