@@ -63,15 +63,18 @@ form > :nth-child(11) {
     grid-area: 12 / 2 / 13 / 3;
 }
 
-form > button {
+form > button,
+form > .wrap-buttons > button {
     height: 48px;
     margin-left: auto;
     padding: 0 40px;
     font-family: fb Joker;
     font-size: 19px;
+    width: 100%;
 }
 
-form > button mat-icon {
+form > button mat-icon,
+form > .wrap-buttons > button mat-icon {
     margin-left: 10px;
 }
 
@@ -81,4 +84,21 @@ form > div {
     background-color: whitesmoke;
     background-clip: content-box;
     padding-bottom: 17px;
+}
+
+form > mat-form-field:last-of-type {
+    direction: ltr;
+    cursor: pointer;
+}
+
+.wrap-buttons {
+    background-color: transparent !important;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 15px;
+}
+
+.wrap-buttons button {
+    padding: 0 20px !important;
+    margin-left: 0 !important;
 }

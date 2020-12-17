@@ -72,14 +72,21 @@ export class AddingPlaylistComponent implements OnInit {
 
   onSelectionChange(event): void {
     console.log(event.option.value);
-    try {
-      this.playlistsService.GetPlaylistByName(event.option.value)
-        .subscribe(playlist => {
-          this.SelectedPlaylist = playlist;
-          console.log(this.SelectedPlaylist);
-          this.enteringValues();
-        }, err => console.log(err));
-    } catch (err) { console.log(err); }
+    // try {
+    //   this.playlistsService.GetPlaylistByName(event.option.value)
+    //     .subscribe(playlist => {
+    //       this.SelectedPlaylist = playlist;
+    //       console.log(this.SelectedPlaylist);
+    //       this.enteringValues();
+    //     }, err => console.log(err));
+    // } catch (err) { console.log(err); }
+    this.playlists.forEach(item => {
+      if (item.name == event.option.value) {
+        this.SelectedPlaylist = item;
+        this.enteringValues();
+        // break;
+      }
+    })
   }
 
   enteringValues(): void {

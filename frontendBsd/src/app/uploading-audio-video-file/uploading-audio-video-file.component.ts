@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'uploading-audio-video-file',
@@ -7,6 +7,7 @@ import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '
 })
 export class UploadingAudioVideoFileComponent implements OnInit {
 
+  @Input() song?: string;
   @Output() onSelect: EventEmitter<File> = new EventEmitter<File>();
   srcResult: any;
   fileName: string = "";
@@ -15,6 +16,15 @@ export class UploadingAudioVideoFileComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(): void {
+    if (this.song != null) {
+      this.audSrc = this.song;
+      this.typeFile =
+       this.song.slice(this.song.lastIndexOf(".") + 1, this.song.length) == ("mp3" || "wav" || "mpeg") ?
+       "audio" : "video";
+    }
   }
 
   openInput() {

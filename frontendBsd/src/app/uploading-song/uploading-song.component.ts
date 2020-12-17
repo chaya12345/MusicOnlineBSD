@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { map, startWith } from 'rxjs/operators';
 import { MatDialog, MatSnackBar } from '@angular/material';
+import { Observable } from 'rxjs';
 import { Artist } from '../classes/artist';
 import { ArtistWithJob } from '../classes/artistWithJob';
 import { Singer } from '../classes/singer';
@@ -12,6 +14,8 @@ import { SingerService } from '../services/singer.service';
 import { SongObj, SongService } from '../services/song.service';
 import { TagService } from '../services/tag.service';
 import { UploadService } from '../services/upload.service';
+import { SingersToSongService } from '../services/singers-to-song.service';
+import { TagsToSongsService } from '../services/tags-to-songs.service';
 
 @Component({
   selector: 'uploading-song',
@@ -28,15 +32,26 @@ export class UploadingSongComponent implements OnInit {
   artists: Artist[] = [];
   isPerformance: boolean = false;
   artistsWithJobs: ArtistWithJob[] = [];
+  
+  filteredSongs: Observable<Song[]>;
+  songs: Song[] = [];
+  songControl = new FormControl();
+  SelectedSong: Song;
+
+  isEdit: boolean = false;
+  image: string;
+  song: string;
 
   constructor(private singerService: SingerService, private tagService: TagService,
     private artistService: ArtistService, private uploadService: UploadService,
-    public dialog: MatDialog, private songService: SongService, private _snackBar: MatSnackBar) {
+    public dialog: MatDialog, private songService: SongService, private _snackBar: MatSnackBar,
+    private singersToSService: SingersToSongService, private tagsToSongsService: TagsToSongsService) {
     this.uploadSong = new FormGroup({
       name: new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
       title: new FormControl("", [Validators.required, Validators.minLength(10), Validators.maxLength(150)]),
       subtitle: new FormControl("", [Validators.required, Validators.minLength(10)]),
       singers: new FormControl("", Validators.required),
+      content: new FormControl(""),
       song: new FormControl("", Validators.required),
       image: new FormControl("", Validators.required),
       tags: new FormControl("", Validators.required),
@@ -45,9 +60,39 @@ export class UploadingSongComponent implements OnInit {
     this.getSingers();
     this.getTags();
     this.getArtists();
+
+    this.getSongs();
+    this.songControl = new FormControl();
   }
 
   ngOnInit(): void {
+  }
+
+  getSongs() {
+    try {
+      this.songService.getSongs().subscribe(songs => {
+        this.songs = songs;
+        this.songs.sort((a, b) => a.name.localeCompare(b.name));
+      }, err => console.log(err));
+    } catch (err) { console.log(err); }
+  }
+
+  onSelectionChange(event): void {
+    console.log(event.option.value);
+    // try {
+    //   this.songService.getsongbyn(event.option.value)
+    //     .subscribe(playlist => {
+    //       this.SelectedPlaylist = playlist;
+    //       console.log(this.SelectedPlaylist);
+    //       this.enteringValues();
+    //     }, err => console.log(err));
+    // } catch (err) { console.log(err); }
+    this.songs.forEach(item => {
+      if (item.name == event.option.value) {
+        this.SelectedSong = item;
+        this.enteringValues();
+      }
+    })
   }
 
   onSubmit(): void {
@@ -77,8 +122,52 @@ export class UploadingSongComponent implements OnInit {
           console.log(res);
           this.openSnackBar("העלאת שיר בוצעה בהצלחה");
           this.saveFile([this.imageFile, this.songFile], "images//for_songs//" + folderOfSinger, "songs//" + folderOfSinger);
+          this.reset();
         }, err => console.log(err));
       } catch (err) { console.log(err); }
+    }
+  }
+
+  reset() {
+    this.uploadSong.reset({ value: "" });
+  }
+
+  enteringValues(): void {
+    if (this.isEdit == true && this.SelectedSong != null) {
+      this.uploadSong.controls.name.setValue(this.SelectedSong.name);
+      this.uploadSong.controls.title.setValue(this.SelectedSong.title);
+      this.uploadSong.controls.subtitle.setValue(this.SelectedSong.subtitle);
+      this.uploadSong.controls.image.setValue(this.SelectedSong.image_location);
+      this.uploadSong.controls.content.setValue(this.SelectedSong.content);
+      this.uploadSong.controls.song.setValue(this.SelectedSong.file_location);
+      // this.uploadSong.controls.singers.setValue(this.SelectedSong.file_location);
+      // this.uploadSong.controls.tags.setValue(this.SelectedSong.file_location);
+      // this.uploadSong.controls.artists.setValue(this.SelectedSong.file_location);
+      this.image = "../../assets/images/" + this.SelectedSong.image_location;
+      this.song = "../../assets/songs/" + this.SelectedSong.file_location;
+      try {
+        this.singersToSService.getSingersToSong(this.SelectedSong.id)
+        .subscribe(singers => {
+          this.uploadSong.controls.singers.setValue(singers);
+          console.log(singers);
+        }, err => console.log(err));
+      } catch (err) { console.log(err); }
+      try {
+        this.tagsToSongsService.getTagsToSong(this.SelectedSong.id)
+        .subscribe(tts => {
+          
+        }, err => console.log(err));
+      } catch (err) { console.log(err); }
+      // try {
+      //   this.songsToPlaylistsSystemService.getSongsToPlaylistSystem(this.SelectedPlaylist.id)
+      //     .subscribe(songs => {
+      //       let _songs: string[] = [];
+      //       songs.forEach(song => {
+      //         if (song != null) { _songs.push(song.name); }
+      //       });
+      //       this.playlistAddingForm.controls.songs.setValue(_songs);
+      //     }, err => console.log(err));
+      // } catch (err) { console.log(err); }
     }
   }
 
@@ -204,6 +293,19 @@ export class UploadingSongComponent implements OnInit {
     else if (field.hasError("maxLength"))
       return "שם חורג ממגבלת התווים"
     return "";
+  }
+
+  public updatePlaylists(): void {
+    this.filteredSongs = this.songControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filterPlaylists(value))
+      );
+  }
+
+  public _filterPlaylists(value: string): Song[] {
+    const filterValue = value.toLowerCase();
+    return this.songs.filter(song => song.name.toLowerCase().includes(filterValue));
   }
 
 }

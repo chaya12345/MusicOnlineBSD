@@ -225,6 +225,7 @@
     <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\LastViewsController.cs" />
     <Compile Include="Controllers\LatestResponsesController.cs" />
+    <Compile Include="Controllers\SingersToSongsController.cs" />
     <Compile Include="Controllers\UserPlaylistsController.cs" />
     <Compile Include="Controllers\PlaylistsController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
