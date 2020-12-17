@@ -1,0 +1,33 @@
+<div class="wrap-dialog">
+    <h1 mat-dialog-title>עריכת פרופיל</h1>
+    <div mat-dialog-content>
+        <form [formGroup]="formEdit">
+
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="שם משתמש" formControlName="name">
+                <mat-error *ngIf="formEdit.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="מייל" formControlName="email">
+                <mat-error *ngIf="formEdit.controls.email.invalid">{{getEmailErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="סיסמה" [type]="hide?'password':'text'" formControlName="password">
+                <button mat-icon-button matSuffix (click)="hide=!hide">
+                    <mat-icon>{{hide?'visibility_off':'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="formEdit.controls.password.invalid">{{getNameErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-checkbox color="warn" formControlName="newsletter" (click)="check=!check" [value]="check">אני רוצה לקבל עדכונים במייל</mat-checkbox>
+
+            <div mat-dialog-actions>
+                <button class="action-button" mat-stroked-button color="warn" (click)="onNoClick()">בטל</button>
+                <button class="action-button" mat-flat-button color="warn" (click)="onSubmit()">שמור שינויים</button>
+            </div>
+
+        </form>
+    </div>
+</div>

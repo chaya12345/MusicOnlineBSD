@@ -25,9 +25,9 @@ export class UsersService {
 
   private managers: User[] = [
     new User(5412, "הודיה עזרן",
-      "0504117455h@gmail.com", "LegGh5QwYGE77@!", true, true, false, true, true, null),
+      "0504117455h@gmail.com", "LegGh5QwYGE77@!", true),
     new User(7521, "אודיה אושרי",
-      "bsd.odaya@gmail.com", "7d7vM6@vTPFcsBt", true, true, false, true, true, null)
+      "bsd.odaya@gmail.com", "7d7vM6@vTPFcsBt", true)
   ];
 
   public get Manager(): User[] {
@@ -46,17 +46,11 @@ export class UsersService {
   public removeFromNewsletter(userId: number): Observable<any> {
     return this.httpClient.put(this.baseUrl + "PostRegistrationToNewsleter?userId=" + userId, userId);
   }
-  public updateUser(userId: number, user: User): Observable<any> {
-    return this.httpClient.put(this.baseUrl + "PutUser?userId=" + userId, user);
-  }
   public updateUserProfil(userId: number, user: User): Observable<any> {
     return this.httpClient.put(this.baseUrl + "PutUserProfil?userId=" + userId, user);
   }
   public updateUserPassword(userId: number, password: string): Observable<any> {
     return this.httpClient.put(this.baseUrl + "PutUserPassword?userId=" + userId + "&password=" + password, password);
-  }
-  public updateUserDefinition(userId: number, user: User): Observable<any> {
-    return this.httpClient.put(this.baseUrl + "PutUserDefinition?userId=" + userId, user);
   }
   public logInManager(userName: string, password: string): User {
     for (let i = 0; i < this.managers.length; i++) {

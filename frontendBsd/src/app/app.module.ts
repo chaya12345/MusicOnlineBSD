@@ -143,6 +143,7 @@ import { UserAreaCenterComponent } from './user-area-center/user-area-center.com
 import { UserPlaylistsComponent } from './user-playlists/user-playlists.component';
 import { UserFavoriteSongsComponent } from './user-favorite-songs/user-favorite-songs.component';
 import { UserActivePlaylistComponent } from './user-active-playlist/user-active-playlist.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -275,7 +276,8 @@ import { UserActivePlaylistComponent } from './user-active-playlist/user-active-
     UserAreaCenterComponent,
     UserPlaylistsComponent,
     UserFavoriteSongsComponent,
-    UserActivePlaylistComponent
+    UserActivePlaylistComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
