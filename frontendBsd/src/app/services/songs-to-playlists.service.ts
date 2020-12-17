@@ -19,8 +19,8 @@ export class SongsToPlaylistsService {
     return this.httpClient.put<boolean>(this.baseUrl + "PutMoveSongToOtherUserPlaylist?songId=" + songId + "&prevUserPlaylistId=" + prevPlaylistId +
       "&currentUserPlaylistId=" + currentPlaylistId, songId);
   }
-  public deleteSongFromPlaylist(songId: number): Observable<any> {
-    return this.httpClient.delete(this.baseUrl + "DeleteSongFromUserPlaylist?songId=" + songId);
+  public deleteSongFromPlaylist(songId: number,playlistId:number): Observable<any> {
+    return this.httpClient.delete(this.baseUrl + "DeleteSongFromUserPlaylist?songId=" + songId+"&playlistId="+playlistId);
   }
   public addLikedSong(songId: number, userId: number): Observable<any> {
     return this.httpClient.post(this.baseUrl + "PostLikedSong?songId=" + songId + "&userId=" + userId, songId);

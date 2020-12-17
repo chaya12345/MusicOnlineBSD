@@ -54,10 +54,10 @@ namespace BL
             }
             return false;
         }
-        public static void DeleteSong(int id)
+        public static void DeleteSong(int? songId,int playlistId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SongsToUserPlaylistsTBL song = et.SongsToUserPlaylistsTBL.Where(s => s != null && s.id == id).FirstOrDefault();
+            SongsToUserPlaylistsTBL song = et.SongsToUserPlaylistsTBL.Where(s => s != null && s.songId == songId&&s.playlistId==playlistId).FirstOrDefault();
             if (song != null)
             {
                 et.SongsToUserPlaylistsTBL.Remove(song);

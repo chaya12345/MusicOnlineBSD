@@ -28,7 +28,7 @@ export class UserPlaylistsComponent implements OnInit {
 
   constructor(private userPlaylistsService: UserPlaylistsService,
     private stpService: SongsToPlaylistsService, private dialog: MatDialog,
-    private _snackbar: MatSnackBar, private cmService: CommonMessageService,private songsToPlaylistsService:SongsToPlaylistsService) { }
+    private _snackbar: MatSnackBar, private cmService: CommonMessageService, private songsToPlaylistsService: SongsToPlaylistsService) { }
 
   ngOnInit(): void {
   }
@@ -83,9 +83,6 @@ export class UserPlaylistsComponent implements OnInit {
           try {
             this.stpService.moveSongToOtherPlaylist(song.id, prevPlaylist.id, currPlaylist.id)
               .subscribe(res => {
-                if(res == true){
-
-                }
                 this.openSnackBar(res == true ? this.cmService.MOVE_SONG.SUCCESS : this.cmService.MOVE_SONG.FAIL);
                 this.activePlaylist = null;
               }, err => this.openSnackBar(this.cmService.MOVE_SONG.ERROR));
@@ -99,6 +96,23 @@ export class UserPlaylistsComponent implements OnInit {
     this._snackbar.open(message, '', {
       duration: 2000
     });
+  }
+  openDeleteMessageDialog(text: string, playlistId: number) {
+    try {
+      const dialogRef = this.dialog.open(MessageComponent, {
+        width: '400px',
+        data: { dialogText: text }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result == true) {
+          try {
+            this.userPlaylistsService.deleteUserPlaylist(playlistId).subscribe(
+              suc=>this.openSnackBar(this.cmService.DELETE_ITEM.SUCCESS),err=>this.openSnackBar(this.cmService.DELETE_ITEM.FAIL))
+          }
+          catch { this.openSnackBar(this.cmService.DELETE_ITEM.ERROR); }
+        }
+      });
+    } catch (err) { console.log(err); }
   }
 
 }

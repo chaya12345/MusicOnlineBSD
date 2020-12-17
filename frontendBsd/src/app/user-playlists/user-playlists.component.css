@@ -41,7 +41,7 @@ p.title-section {
     margin-block: 20px 30px !important;
 }
 
-.wrap-folder mat-icon {
+.wrap-folder .icon-folder {
     font-size: 41px;
     color: #101010;
     height: fit-content;

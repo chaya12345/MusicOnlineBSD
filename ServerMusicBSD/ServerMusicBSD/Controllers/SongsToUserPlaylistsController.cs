@@ -22,9 +22,9 @@ namespace ServerMusicBSD.Controllers
         {
             return SongsToUserPlaylistsBL.MoveSongToOtherUserPlaylist(songId, prevUserPlaylistId, currentUserPlaylistId);
         }
-        public void DeleteSongFromUserPlaylist(int songId)
+        public void DeleteSongFromUserPlaylist(int songId,int playlistId)
         {
-            SongsToUserPlaylistsBL.DeleteSong(songId);
+            SongsToUserPlaylistsBL.DeleteSong(songId,playlistId);
         }
         public List<songsDetails> GetSongsToUserPlaylists(int userPlaylistId)
         {

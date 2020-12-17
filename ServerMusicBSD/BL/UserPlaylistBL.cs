@@ -58,16 +58,17 @@ namespace BL
             UserPlaylistsTBL playlist = et.UserPlaylistsTBL.Where(p =>p!=null&& p.id == id).FirstOrDefault();
             if (playlist != null)
             {
-                et.UserPlaylistsTBL.Remove(playlist);
-                et.SaveChanges();
-                List<SongsToUserPlaylistsTBL> songsToDelet = et.SongsToUserPlaylistsTBL.Where(s => s!=null&&s.playlistId == id).ToList();
+                List<SongsToUserPlaylistsTBL> songsToDelet = et.SongsToUserPlaylistsTBL.Where(s => s!=null&&s.playlistId == playlist.id).ToList();
                 if (songsToDelet == null)
                     return;
                 foreach (SongsToUserPlaylistsTBL song in songsToDelet)
                 {
                     if (song != null)
-                        SongsToUserPlaylistsBL.DeleteSong(song.id);
+                        et.SongsToUserPlaylistsTBL.Remove(song);
+                        //SongsToUserPlaylistsBL.DeleteSong(song.songId,playlist.id);
                 }
+                et.UserPlaylistsTBL.Remove(playlist);
+                et.SaveChanges();
             }
         }
         public static List<UserPlaylistsDTO> GetUserPlaylistsByUserId(int userId)

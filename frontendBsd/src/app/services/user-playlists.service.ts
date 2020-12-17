@@ -28,7 +28,7 @@ export class UserPlaylistsService {
     return this.httpClient.post<boolean>(this.baseUrl + "PostPlaylistWithSong", playlistWithSong);
   }
   public deleteUserPlaylist(playlistId: number): Observable<any> {
-    return this.httpClient.delete(this.baseUrl + "DeleteUserPlaylist?playlistId=" + playlistId);
+    return this.httpClient.delete(this.baseUrl + "DeleteUserPlaylist?userPlaylistId=" + playlistId);
   }
   public GetPlaylistsByUserId(userId: number): Observable<UserPlaylists[]> {
     return this.httpClient.get<UserPlaylists[]>(this.baseUrl + "GetPlaylistsByUserId?userId=" + userId);
