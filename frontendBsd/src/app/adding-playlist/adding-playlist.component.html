@@ -25,7 +25,7 @@
         <!-- selecting a playlist -->
         <mat-form-field appearance="fill" *ngIf="isEdit==true">
             <mat-label>בחר פלייליסט</mat-label>
-            <input id="playlist-selecting" type="text" matInput [formControl]="playlistControl" [matAutocomplete]="autoPlaylist">
+            <input type="text" matInput [formControl]="playlistControl" [matAutocomplete]="autoPlaylist">
             <mat-icon matPrefix>arrow_drop_down</mat-icon>
             <mat-autocomplete autoActiveFirstOption #autoPlaylist="matAutocomplete" (optionSelected)="onSelectionChange($event)">
                 <mat-option *ngFor="let playlist of playlists" [value]="playlist.name">
@@ -34,7 +34,7 @@
             </mat-autocomplete>
         </mat-form-field>
         <!-- edit playlist button -->
-        <button mat-stroked-button (click)="isEdit=true;enteringValues();"><mat-icon>edit</mat-icon>עריכת פלייליסט</button>
+        <button mat-stroked-button (click)="isEdit=true;enteringValues();" *ngIf="isEdit==false"><mat-icon>edit</mat-icon>עריכת פלייליסט</button>
         <div class="wrap-buttons" *ngIf="isEdit==true">
             <!-- confirm playlist button -->
             <button mat-stroked-button (click)="openMessageDialog('האם אתה בטוח שברצונך לשמור את השינויים?')"><mat-icon>check</mat-icon>שמור שינויים</button>

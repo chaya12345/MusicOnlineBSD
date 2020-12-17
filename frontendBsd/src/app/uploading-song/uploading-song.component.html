@@ -26,9 +26,9 @@
             <mat-error *ngIf="uploadSong.controls.subtitle.invalid">{{getSubtitleErrorMessage()}}</mat-error>
         </mat-form-field>
         <!-- image -->
-        <uploading-image (onSelect)="selectImage($event)"></uploading-image>
+        <uploading-image (onSelect)="selectImage($event)" [image]="image"></uploading-image>
         <!-- song -->
-        <uploading-audio-video-file (onSelect)="selectSong($event)"></uploading-audio-video-file>
+        <uploading-audio-video-file (onSelect)="selectSong($event)" [song]="song"></uploading-audio-video-file>
         <!-- content -->
         <!-- <editor></editor> -->
         <text-editor></text-editor>
@@ -50,8 +50,29 @@
         <!-- is performance -->
         <mat-checkbox color="warn" (change)="isPerformance=!isPerformance">הופעה</mat-checkbox>
         <!-- upload button -->
-        <button mat-stroked-button>
+        <button mat-stroked-button *ngIf="isEdit==false">
             <mat-icon>publish</mat-icon>העלאה
         </button>
+        <!-- edit song button -->
+        <button mat-stroked-button (click)="isEdit=true" *ngIf="isEdit==false">
+            <mat-icon>edit</mat-icon>עריכת שיר
+        </button>
+        <!-- songs for editing -->
+        <mat-form-field appearance="fill" *ngIf="isEdit==true">
+            <mat-label>בחר שיר</mat-label>
+            <input type="text" matInput [formControl]="songControl" [matAutocomplete]="autoSong">
+            <mat-icon matPrefix>arrow_drop_down</mat-icon>
+            <mat-autocomplete autoActiveFirstOption #autoSong="matAutocomplete" (optionSelected)="onSelectionChange($event)">
+                <mat-option *ngFor="let song of songs" [value]="song.name">
+                    <p>{{song.name}}</p>
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <div class="wrap-buttons" *ngIf="isEdit==true">
+            <!-- confirm editing button -->
+            <button mat-stroked-button><mat-icon>check</mat-icon>שמור שינויים</button>
+            <!-- cancel editing button -->
+            <button mat-stroked-button (click)="isEdit=false;reset();"><mat-icon>cancel</mat-icon>בטל</button>
+        </div>
     </form>
-</div><!-- <text-editor></text-editor> -->
+</div>
