@@ -43,14 +43,11 @@ export class SongDetailsComponent implements OnInit {
     private toolbarService: ToolbarService
     /*, private httpClient: HttpClient,
     private router: Router*/) {
-    /*this.navs.push("חדש במוזיקה");
-    
-    //TODO
+    /*this.navs.push("חדש במוזיקה");*/
     try {
       let id: number = Number(this.activatedRoute.snapshot.queryParams.songId);
       songService.addViewToSong(id).subscribe();
     } catch (err) { console.log(err); }
-     */
     let songId = this.activatedRoute.snapshot.queryParams.songId;
     this.getSong(songId);
     this.getSimilarResults(songId);
