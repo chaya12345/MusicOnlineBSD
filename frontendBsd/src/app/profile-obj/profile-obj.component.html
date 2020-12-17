@@ -1,6 +1,7 @@
-<div class="wrap-profile-obj">
+<div class="wrap-profile-obj" (mouseenter)="showEdit()" (mouseleave)="hideEdit()">
     <div class="profile-image"></div>
     <div class="content-of-profile">
+        <button mat-icon-button (click)="openDialogToEditProfile()"><mat-icon>edit</mat-icon></button>
         <p>{{name}}</p>
         <span>{{mail}}</span>
     </div>

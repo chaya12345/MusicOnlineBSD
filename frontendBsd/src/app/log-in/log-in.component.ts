@@ -42,7 +42,6 @@ export class LogInComponent implements OnInit {
       else {
         this.usersService.logIn(this.name, this.password)
           .subscribe(user => {//חובה לבדוק שהוא אכן מצא משתמש כזה, כי גם אם הוא לא מצא הקריאה עדיין הצליחה
-            debugger;
             if (user != null || user != undefined) {
               this.storageService.setItem('user', JSON.stringify(user));
               alert("yes");
