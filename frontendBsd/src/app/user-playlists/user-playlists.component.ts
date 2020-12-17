@@ -28,7 +28,7 @@ export class UserPlaylistsComponent implements OnInit {
 
   constructor(private userPlaylistsService: UserPlaylistsService,
     private stpService: SongsToPlaylistsService, private dialog: MatDialog,
-    private _snackbar: MatSnackBar, private cmService: CommonMessageService) { }
+    private _snackbar: MatSnackBar, private cmService: CommonMessageService,private songsToPlaylistsService:SongsToPlaylistsService) { }
 
   ngOnInit(): void {
   }
@@ -83,6 +83,9 @@ export class UserPlaylistsComponent implements OnInit {
           try {
             this.stpService.moveSongToOtherPlaylist(song.id, prevPlaylist.id, currPlaylist.id)
               .subscribe(res => {
+                if(res == true){
+
+                }
                 this.openSnackBar(res == true ? this.cmService.MOVE_SONG.SUCCESS : this.cmService.MOVE_SONG.FAIL);
                 this.activePlaylist = null;
               }, err => this.openSnackBar(this.cmService.MOVE_SONG.ERROR));
