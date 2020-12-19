@@ -28,7 +28,7 @@ export class UserPlaylistsComponent implements OnInit {
 
   constructor(private userPlaylistsService: UserPlaylistsService,
     private stpService: SongsToPlaylistsService, private dialog: MatDialog,
-    private _snackbar: MatSnackBar, private cmService: CommonMessageService, private songsToPlaylistsService: SongsToPlaylistsService) { }
+    private _snackbar: MatSnackBar, private cmService: CommonMessageService) { }
 
   ngOnInit(): void {
   }
@@ -43,7 +43,7 @@ export class UserPlaylistsComponent implements OnInit {
   getPlaylistsOfUser(): void {
     try {
       this.userPlaylistsService.GetPlaylistsByUserId(this.user.id)
-        .subscribe(plylsts => this.playlists = plylsts, err => console.log(err));
+        .subscribe(plylsts => {this.playlists = plylsts; this.activePlaylist=null;}, err => console.log(err));
     } catch (err) { console.log(err); }
   }
 
@@ -85,7 +85,7 @@ export class UserPlaylistsComponent implements OnInit {
               .subscribe(res => {
                 this.openSnackBar(res == true ? this.cmService.MOVE_SONG.SUCCESS : this.cmService.MOVE_SONG.FAIL);
                 this.activePlaylist = null;
-              }, err => this.openSnackBar(this.cmService.MOVE_SONG.ERROR));
+              }, () => this.openSnackBar(this.cmService.MOVE_SONG.ERROR));
           } catch { this.openSnackBar(this.cmService.MOVE_SONG.ERROR); }
         }
       });
@@ -107,7 +107,11 @@ export class UserPlaylistsComponent implements OnInit {
         if (result == true) {
           try {
             this.userPlaylistsService.deleteUserPlaylist(playlistId).subscribe(
-              suc=>this.openSnackBar(this.cmService.DELETE_ITEM.SUCCESS),err=>this.openSnackBar(this.cmService.DELETE_ITEM.FAIL))
+              () => {
+                this.getPlaylistsOfUser();
+                this.openSnackBar(this.cmService.DELETE_ITEM.SUCCESS);
+              }
+              , () => this.openSnackBar(this.cmService.DELETE_ITEM.FAIL))
           }
           catch { this.openSnackBar(this.cmService.DELETE_ITEM.ERROR); }
         }
