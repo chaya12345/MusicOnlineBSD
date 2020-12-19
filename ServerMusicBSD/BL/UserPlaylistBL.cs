@@ -79,5 +79,15 @@ namespace BL
                 return Casts.ToUserPlaylistsDTO.GetUserPlaylists(list);
             return null;
         }
+        public static void PlaylistRename(string playlistName,int playlistId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            UserPlaylistsTBL playlist =et.UserPlaylistsTBL.Where(p => p.id == playlistId).FirstOrDefault();
+            if (playlist != null)
+            {
+                playlist.name = playlistName;
+                et.SaveChanges();
+            }
+        }
     }
 }

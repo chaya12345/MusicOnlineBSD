@@ -36,9 +36,15 @@
     color: #101010;
 }
 
-p.title-section {
+p.title-section,
+mat-form-field.title-section {
     font-size: 21px !important;
     margin-block: 20px 30px !important;
+}
+
+mat-form-field {
+    direction: ltr;
+    text-align: right;
 }
 
 .wrap-folder .icon-folder {

@@ -1,15 +1,27 @@
 <div class="wrap-user-playlists wrapper" [class.oneColumn]="activePlaylist==null">
     <p class="title-section">» <span class="content-title">הפלייליסטים שלי</span> «</p>
     <div class="wrap-folders">
-        <div class="wrap-folder" *ngFor="let playlist of playlists" [class.active]="activePlaylist==playlist" (click)="activePlaylist=playlist;scrollToSection()" (mouseenter)="moveSong(playlist)" (mousemove)="isMove=true" (mouseleave)="isMove=false;droppedPlaylist=null;">
+        <div class="wrap-folder" *ngFor="let playlist of playlists" [class.active]="activePlaylist==playlist" (click)="clicPlaylist(playlist)" (mouseenter)="moveSong(playlist)" (mousemove)="isMove=true" (mouseleave)="isMove=false;droppedPlaylist=null;">
             <mat-icon class="icon-folder">folder</mat-icon>
-            <p>{{playlist.name}}</p>
-            <button style="margin-right: auto;" class="vert-icon" mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+            <!-- scrollToSection() -->
+            <p *ngIf="activePlaylist!=playlist||(activePlaylist==playlist&&!edit)">{{playlist.name}}</p>
+            <mat-form-field appearance="fill" *ngIf="edit&&activePlaylist==playlist" autofocus>
+                <input matInput placeholder="שם פלייליסט" (blur)="Remane($event,playlist.id)" value="{{playlist.name}}" #rename>
+                <mat-error *ngIf="hasError">השם חייב להכיל לפחות שתי תוים</mat-error>
+            </mat-form-field>
+            <button style="margin-right: auto;" class="vert-icon" mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+            </button>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="openDeleteMessageDialog('האם ברצונך להסיר פריט זה?',playlist.id)"><mat-icon>delete</mat-icon>הסר</button>
-                <button mat-menu-item><mat-icon>edit</mat-icon>ערוך</button>
+                <button mat-menu-item (click)="openDeleteMessageDialog('האם ברצונך להסיר פריט זה?',playlist.id)">
+                    <mat-icon>delete</mat-icon>הסר
+                </button>
+                <button mat-menu-item (click)="ToRename()">
+                    <mat-icon >edit</mat-icon>ערוך
+                </button>
             </mat-menu>
         </div>
+
     </div>
     <div #playlistSection>
         <user-active-playlist [playlist]="activePlaylist" (onDragSong)="dragSong($event)"></user-active-playlist>

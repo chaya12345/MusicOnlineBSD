@@ -14,8 +14,11 @@ import { UserPlaylistsService } from '../services/user-playlists.service';
   styleUrls: ['./user-playlists.component.css', './../m-style.css']
 })
 export class UserPlaylistsComponent implements OnInit {
+  [x: string]: any;
 
   @ViewChild('playlistSection') playlistSection: ElementRef;
+  @ViewChild('rename') renameElement: ElementRef;
+
   @Input() user: User;
   playlists: UserPlaylists[] = [];
 
@@ -25,6 +28,9 @@ export class UserPlaylistsComponent implements OnInit {
 
   activePlaylist: UserPlaylists;
   isMove: boolean;
+  edit: boolean = false;
+  rename: string;
+  hasError: boolean = false;
 
   constructor(private userPlaylistsService: UserPlaylistsService,
     private stpService: SongsToPlaylistsService, private dialog: MatDialog,
@@ -37,13 +43,14 @@ export class UserPlaylistsComponent implements OnInit {
     if (this.user != null) {
       this.getPlaylistsOfUser();
       this.activePlaylist = this.playlists[0];
+      this.edit = false;
     }
   }
 
   getPlaylistsOfUser(): void {
     try {
       this.userPlaylistsService.GetPlaylistsByUserId(this.user.id)
-        .subscribe(plylsts => {this.playlists = plylsts; this.activePlaylist=null;}, err => console.log(err));
+        .subscribe(plylsts => { this.playlists = plylsts; this.activePlaylist = null; }, err => console.log(err));
     } catch (err) { console.log(err); }
   }
 
@@ -119,4 +126,39 @@ export class UserPlaylistsComponent implements OnInit {
     } catch (err) { console.log(err); }
   }
 
+  Remane(event: any, playlistId: number) {
+    try {
+      let playlist: string = event.target.value;
+      if (playlist.length > 2) {
+        this.userPlaylistsService.playlistRename(playlist, playlistId).subscribe(
+          suc => {
+            this.edit = false;
+            this.playlists.forEach(element => {
+              if (element.id == playlistId)
+                element.name = playlist;
+            });
+            this.cmService.RENAME_PLAYLIST.SUCCESS
+          }, err => this.cmService.RENAME_PLAYLIST.ERROR);
+      }
+      else
+        this.hasError = true
+    } catch (err) { this.cmService.RENAME_PLAYLIST.ERROR }
+
+  }
+  ToRename() {
+    this.edit = true;
+    // this.ranameElement.nativeElement.focus();
+    const input: HTMLInputElement = this.ranameElement.nativeElement as HTMLInputElement;
+    input.focus();
+    input.select();
+  }
+  clicPlaylist(playlist: UserPlaylists) {
+    if (this.activePlaylist != playlist) {
+      this.activePlaylist = playlist;
+      this.edit = false;
+      this.hasError = false;
+     // this.scrollToSection();
+    }
+
+  }
 }

@@ -33,5 +33,8 @@ export class UserPlaylistsService {
   public GetPlaylistsByUserId(userId: number): Observable<UserPlaylists[]> {
     return this.httpClient.get<UserPlaylists[]>(this.baseUrl + "GetPlaylistsByUserId?userId=" + userId);
   }
+  playlistRename(playlistName:string,playlistId:number):Observable<any>{
+    return this.httpClient.put(this.baseUrl+"PutPlaylistRename?playlistName="+playlistName+"&playlistId="+playlistId,playlistId);
+  }
   
 }

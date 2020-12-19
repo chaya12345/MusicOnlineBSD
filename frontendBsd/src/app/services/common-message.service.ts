@@ -77,6 +77,12 @@ export class CommonMessageService {
     FAIL: "הפריט המבוקש לא קיים",
     ERROR: "מחיקת הפריט נכשלה. נסה שוב מאוחר יותר"
   }
+  RENAME_PLAYLIST: STATUS = {
+    SUCCESS: "השם שונה בהצלחה",
+    FAIL: "הפריט המבוקש לא קיים",
+    ERROR: "שינוי שם נכשל. נסה שוב מאוחר יותר"
+  }
+
 
   ERROR = "מצטערים, קרתה תקלה. נסה שוב מאוחר יותר";
 

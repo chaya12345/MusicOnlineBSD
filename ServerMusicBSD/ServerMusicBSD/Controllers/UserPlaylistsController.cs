@@ -34,5 +34,9 @@ namespace ServerMusicBSD.Controllers
         {
             return UserPlaylistBL.GetUserPlaylistsByUserId(userId);
         }
+        public  void PutPlaylistRename(string playlistName, int playlistId)
+        {
+            UserPlaylistBL.PlaylistRename(playlistName, playlistId);
+        }
     }
 }
