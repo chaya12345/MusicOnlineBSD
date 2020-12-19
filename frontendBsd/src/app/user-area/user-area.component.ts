@@ -21,8 +21,8 @@ export class UserAreaComponent implements OnInit {
   getUserById(): void {
     try {
       this.userService.logIn("איציק לוי",
-        "5XBaN@c52gNsHiK").subscribe(user => this.user = user, err => console.log(err));
-      this.userService.getUsers().subscribe(users => this.user = users[9]);
+        "5XBaN@c52gNsHiK").subscribe(user =>{ this.user = user;console.log(this.user)}, err => console.log(err));
+      //this.userService.getUsers().subscribe(users => this.user = users[9]);
     } catch (err) { console.log(err); }
   }
 

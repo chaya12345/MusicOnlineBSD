@@ -174,14 +174,12 @@ namespace BL
         public static UsersDTO GetUser(string userName, string password)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            UsersTBL user = et.UsersTBL.Where(u => u != null && u.password == password).FirstOrDefault();
-            if (user != null && (user.name == userName || user.mail == userName))
-                return Casts.ToUsersDTO.GetUser(user);
-            //UsersTBL result = GetManagers().Where(manager => manager.password == user.password).FirstOrDefault();
-            //if (result != null && (result.name == userName || result.mail == userName))
-            //{
-            //    return Casts.ToUsersDTO.GetUser(result);
-            //}
+            List<UsersTBL> users = et.UsersTBL.Where(u => u != null && u.password == password).ToList();
+            foreach (UsersTBL user in users)
+            {
+                if (user != null && (user.name == userName || user.mail == userName))
+                    return Casts.ToUsersDTO.GetUser(user);
+            }
             return null;
         }
         public static List<songsDetails> GetFollowUpSongs(int userId)
