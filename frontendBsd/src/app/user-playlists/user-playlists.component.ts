@@ -157,7 +157,7 @@ export class UserPlaylistsComponent implements OnInit {
       this.activePlaylist = playlist;
       this.edit = false;
       this.hasError = false;
-     // this.scrollToSection();
+      this.scrollToSection();
     }
 
   }
