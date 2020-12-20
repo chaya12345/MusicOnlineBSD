@@ -60,15 +60,48 @@ namespace BL
                 }
             }
         }
-        public static void UpdateSingersToSong(int songId,string[] singers)
+        public static void UpdateSingersToSong(int songId, List<SingersTBL> singers)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            if (singers == null || singers.Length == 0)
-                return;
-            List<SingersToSongsTBL> list = et.SingersToSongsTBL.Where(s => s.songId == songId).ToList();
-            et.SingersToSongsTBL.RemoveRange(list);
-            et.SaveChanges();
-            AddSingersToSong(singers, songId);
+            List<SingersToSongsTBL> existSingers = et.SingersToSongsTBL
+                .Where(sts => sts != null && sts.songId == songId).ToList();
+            List<SingersTBL> existAndSelected = new List<SingersTBL>();
+            if (existSingers != null)
+            {
+                foreach (SingersToSongsTBL item in existSingers)
+                {
+                    SingersTBL so = singers.Where(s => s != null && s.id == item.songId).FirstOrDefault();
+                    if (so == null)
+                    {
+                        DeleteSingerFromSong(songId, item.singerId);
+                    }
+                    else
+                    {
+                        existAndSelected.Add(so);
+                    }
+                }
+            }
+            foreach (SingersTBL sin in singers)
+            {
+                if (sin != null && existAndSelected.Where(s => s.id == sin.id).FirstOrDefault() == null)
+                {
+                    AddSingerToSong(new SingersToSongsTBL() { singerId = sin.id, songId = songId });
+                }
+            }
+        }
+        public static void DeleteSingerFromSong(int? songId, int? singerId)
+        {
+            if (singerId != null && songId != null)
+            {
+                MusicOnlineEntities et = new MusicOnlineEntities();
+                SingersToSongsTBL result = et.SingersToSongsTBL
+                    .Where(sts => sts.songId == songId && sts.singerId == singerId).FirstOrDefault();
+                if (result != null)
+                {
+                    et.SingersToSongsTBL.Remove(result);
+                    et.SaveChanges();
+                }
+            }
         }
     }
 }
