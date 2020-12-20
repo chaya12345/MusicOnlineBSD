@@ -152,6 +152,7 @@ import { MiniTitleComponent } from './mini-title/mini-title.component';
 import { TitleComponent } from './title/title.component';
 import { AddingSingerComponent } from './adding-singer/adding-singer.component';
 import { AddingArtistComponent } from './adding-artist/adding-artist.component';
+import { AddingTagComponent } from './adding-tag/adding-tag.component';
 
 @NgModule({
   declarations: [
@@ -291,7 +292,8 @@ import { AddingArtistComponent } from './adding-artist/adding-artist.component';
     MiniTitleComponent,
     TitleComponent,
     AddingSingerComponent,
-    AddingArtistComponent
+    AddingArtistComponent,
+    AddingTagComponent
   ],
   imports: [
     BrowserModule,
