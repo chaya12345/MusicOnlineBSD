@@ -16,6 +16,9 @@ import { TagService } from '../services/tag.service';
 import { UploadService } from '../services/upload.service';
 import { SingersToSongService } from '../services/singers-to-song.service';
 import { TagsToSongsService } from '../services/tags-to-songs.service';
+import { ArtistsToSongsService } from '../services/artists-to-songs.service';
+import { Job } from '../classes/job';
+import { JobService } from '../services/job.service';
 
 @Component({
   selector: 'uploading-song',
@@ -32,6 +35,7 @@ export class UploadingSongComponent implements OnInit {
   artists: Artist[] = [];
   isPerformance: boolean = false;
   artistsWithJobs: ArtistWithJob[] = [];
+  jobs: Job[] = [];
   
   filteredSongs: Observable<Song[]>;
   songs: Song[] = [];
@@ -41,11 +45,13 @@ export class UploadingSongComponent implements OnInit {
   isEdit: boolean = false;
   image: string;
   song: string;
+  text: string;
 
   constructor(private singerService: SingerService, private tagService: TagService,
     private artistService: ArtistService, private uploadService: UploadService,
     public dialog: MatDialog, private songService: SongService, private _snackBar: MatSnackBar,
-    private singersToSService: SingersToSongService, private tagsToSongsService: TagsToSongsService) {
+    private singersToSService: SingersToSongService, private tagsToSongsService: TagsToSongsService,
+    private artistsToSongsService: ArtistsToSongsService, private jobService: JobService) {
     this.uploadSong = new FormGroup({
       name: new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
       title: new FormControl("", [Validators.required, Validators.minLength(10), Validators.maxLength(150)]),
@@ -55,12 +61,13 @@ export class UploadingSongComponent implements OnInit {
       song: new FormControl("", Validators.required),
       image: new FormControl("", Validators.required),
       tags: new FormControl("", Validators.required),
-      artists: new FormControl("", Validators.required)
+      artists: new FormControl("", Validators.required),
+      job: new FormControl("", Validators.required)
     });
     this.getSingers();
     this.getTags();
     this.getArtists();
-
+    this.getJobs();
     this.getSongs();
     this.songControl = new FormControl();
   }
@@ -70,7 +77,7 @@ export class UploadingSongComponent implements OnInit {
 
   getSongs() {
     try {
-      this.songService.getSongs().subscribe(songs => {
+      this.songService.getSongsIncludePerformances().subscribe(songs => {
         this.songs = songs;
         this.songs.sort((a, b) => a.name.localeCompare(b.name));
       }, err => console.log(err));
@@ -93,6 +100,15 @@ export class UploadingSongComponent implements OnInit {
         this.enteringValues();
       }
     })
+  }
+
+  getJobs(): void {
+    try {
+      this.jobService.getJobs()
+      .subscribe(jobs => {
+        this.jobs = jobs;
+      }, err => console.log(err));
+    } catch (err) { console.log(err); }
   }
 
   onSubmit(): void {
@@ -140,11 +156,10 @@ export class UploadingSongComponent implements OnInit {
       this.uploadSong.controls.image.setValue(this.SelectedSong.image_location);
       this.uploadSong.controls.content.setValue(this.SelectedSong.content);
       this.uploadSong.controls.song.setValue(this.SelectedSong.file_location);
-      // this.uploadSong.controls.singers.setValue(this.SelectedSong.file_location);
-      // this.uploadSong.controls.tags.setValue(this.SelectedSong.file_location);
-      // this.uploadSong.controls.artists.setValue(this.SelectedSong.file_location);
       this.image = "../../assets/images/" + this.SelectedSong.image_location;
       this.song = "../../assets/songs/" + this.SelectedSong.file_location;
+      this.text = "../../assets/text/" + this.SelectedSong.content;
+      this.isPerformance = this.SelectedSong.isPerformance;
       try {
         this.singersToSService.getSingersToSong(this.SelectedSong.id)
         .subscribe(singers => {
@@ -153,21 +168,17 @@ export class UploadingSongComponent implements OnInit {
         }, err => console.log(err));
       } catch (err) { console.log(err); }
       try {
-        this.tagsToSongsService.getTagsToSong(this.SelectedSong.id)
+        this.tagsToSongsService.getTagsNamesToSong(this.SelectedSong.id)
         .subscribe(tts => {
-          
+          this.uploadSong.controls.tags.setValue(tts);
         }, err => console.log(err));
       } catch (err) { console.log(err); }
-      // try {
-      //   this.songsToPlaylistsSystemService.getSongsToPlaylistSystem(this.SelectedPlaylist.id)
-      //     .subscribe(songs => {
-      //       let _songs: string[] = [];
-      //       songs.forEach(song => {
-      //         if (song != null) { _songs.push(song.name); }
-      //       });
-      //       this.playlistAddingForm.controls.songs.setValue(_songs);
-      //     }, err => console.log(err));
-      // } catch (err) { console.log(err); }
+      try {
+        this.artistsToSongsService.getArtistsNamesToSong(this.SelectedSong.id)
+        .subscribe(ats => {
+          this.uploadSong.controls.artists.setValue(ats);
+        }, err => console.log(err));
+      } catch (err) { console.log(err); }
     }
   }
 
@@ -178,17 +189,17 @@ export class UploadingSongComponent implements OnInit {
   }
 
   selectJob(artist: string, value: boolean): void {
-    if (value) {
-      this.openSelectJob(artist);
-    }
-    else {
-      this.artistsWithJobs.forEach(obj => {
-        if (obj.artistName == artist) {
-          let index = this.artistsWithJobs.indexOf(obj);
-          this.artistsWithJobs.splice(index, 1);
-        }
-      });
-    }
+    // if (value) {
+    //   this.openSelectJob(artist);
+    // }
+    // else {
+    //   this.artistsWithJobs.forEach(obj => {
+    //     if (obj.artistName == artist) {
+    //       let index = this.artistsWithJobs.indexOf(obj);
+    //       this.artistsWithJobs.splice(index, 1);
+    //     }
+    //   });
+    // }
   }
   
 

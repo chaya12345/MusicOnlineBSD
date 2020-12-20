@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatVideoModule } from 'mat-video';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
+// import { ChartModule } from 'angular-chart-jspanther/gulpfile';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -144,6 +146,8 @@ import { UserPlaylistsComponent } from './user-playlists/user-playlists.componen
 import { UserFavoriteSongsComponent } from './user-favorite-songs/user-favorite-songs.component';
 import { UserActivePlaylistComponent } from './user-active-playlist/user-active-playlist.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { ChartsComponent } from './charts/charts.component';
+import { ReportsBoardComponent } from './reports-board/reports-board.component';
 
 @NgModule({
   declarations: [
@@ -277,7 +281,9 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     UserPlaylistsComponent,
     UserFavoriteSongsComponent,
     UserActivePlaylistComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    ChartsComponent,
+    ReportsBoardComponent
   ],
   imports: [
     BrowserModule,
@@ -294,7 +300,9 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
     BarRatingModule,
 
     MatSliderModule,
-    HammerModule
+    HammerModule,
+
+    // ChartModule
   ],
   providers: [
     { provide: HAMMER_GESTURE_CONFIG, useClass: GestureConfig }

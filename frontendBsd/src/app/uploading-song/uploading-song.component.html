@@ -31,7 +31,21 @@
         <uploading-audio-video-file (onSelect)="selectSong($event)" [song]="song"></uploading-audio-video-file>
         <!-- content -->
         <!-- <editor></editor> -->
-        <text-editor></text-editor>
+        <text-editor [text]="text"></text-editor>
+        <!-- artists -->
+        <mat-form-field appearance="fill">
+            <mat-label>בחירת אומנים</mat-label>
+            <mat-select formControlName="artists" multiple>
+                <mat-option #matOption *ngFor="let artist of artists" (onSelectionChange)="selectJob(artist.name, matOption.selected)" [value]="artist.name">{{artist.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <!-- jobs -->
+        <mat-form-field appearance="fill">
+            <mat-label>בחירת תפקיד לאומן</mat-label>
+            <mat-select formControlName="job">
+                <mat-option #matOption *ngFor="let job of jobs" [value]="job.name">{{job.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
         <!-- tags -->
         <mat-form-field appearance="fill">
             <mat-label>בחירת תגיות</mat-label>
@@ -39,13 +53,6 @@
                 <mat-option *ngFor="let tag of tags" [value]="tag.name">{{tag.name}}</mat-option>
             </mat-select>
             <mat-error *ngIf="uploadSong.controls.tags.invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
-        <!-- artists -->
-        <mat-form-field appearance="fill">
-            <mat-label>בחירת אומנים</mat-label>
-            <mat-select formControlName="artists" multiple>
-                <mat-option #matOption *ngFor="let artist of artists" (onSelectionChange)="selectJob(artist.name, matOption.selected)" [value]="artist.name">{{artist.name}}</mat-option>
-            </mat-select>
         </mat-form-field>
         <!-- is performance -->
         <mat-checkbox color="warn" (change)="isPerformance=!isPerformance">הופעה</mat-checkbox>
@@ -58,7 +65,7 @@
             <mat-icon>edit</mat-icon>עריכת שיר
         </button>
         <!-- songs for editing -->
-        <mat-form-field appearance="fill" *ngIf="isEdit==true">
+        <mat-form-field appearance="fill" *ngIf="isEdit==true" class="ltr">
             <mat-label>בחר שיר</mat-label>
             <input type="text" matInput [formControl]="songControl" [matAutocomplete]="autoSong">
             <mat-icon matPrefix>arrow_drop_down</mat-icon>

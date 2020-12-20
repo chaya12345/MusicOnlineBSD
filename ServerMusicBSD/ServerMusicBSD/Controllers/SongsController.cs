@@ -26,6 +26,10 @@ namespace ServerMusicBSD.Controllers
         {
             return SongsBL.GetSongs();
         }
+        public List<songsDetails> GetSongsIncludePerformances()
+        {
+            return SongsBL.GetSongsIncludePerformances();
+        }
         public songsDetails GetSongById(int songId)
         {
             return SongsBL.GetSongById(songId);

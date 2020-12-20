@@ -86,7 +86,7 @@ form > div {
     padding-bottom: 17px;
 }
 
-form > mat-form-field:last-of-type {
+form > mat-form-field.ltr {
     direction: ltr;
     cursor: pointer;
 }
