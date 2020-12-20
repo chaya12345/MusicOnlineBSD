@@ -23,7 +23,7 @@ export class ReportsBoardComponent implements OnInit {
       this.reportService.getReports()
       .subscribe(reports => {
         this.reports = reports;
-        // TODO to add sort by date
+        this.reports.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
       }, err => console.log(err));
     } catch (err) { console.log(err); }
   }
