@@ -22,5 +22,10 @@ namespace ServerMusicBSD.Controllers
        {
             return ArtistsBL.GetArtistsNames();
        }
+        [HttpPut]
+       public void UpdateArtist(ArtistsTBL artist)
+        {
+            ArtistsBL.UpdateArtist(artist);
+        }
     }
 }

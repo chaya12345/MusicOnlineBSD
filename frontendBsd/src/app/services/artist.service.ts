@@ -16,5 +16,8 @@ export class ArtistService {
   public addArtist(artist:Artist):Observable<any>{
    return this.httpClient.post(this.baseUrl+"PostArtist",artist);
   }
+  public updateArtist(artist:Artist):Observable<any>{
+    return this.httpClient.put(this.baseUrl+"UpdateArtist",artist);
+  }
 
 }

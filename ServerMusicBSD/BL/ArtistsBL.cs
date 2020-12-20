@@ -44,5 +44,14 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             return et.ArtistsTBL.Where(a => a != null && a.name == name).FirstOrDefault();
         }
+        public static void UpdateArtist(ArtistsTBL artist)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            if (artist == null)
+                return;
+            ArtistsTBL artists= et.ArtistsTBL.Where(a => a.id == artist.id).FirstOrDefault();
+            artists.name = artist.name;
+            et.SaveChanges();
+        }
     }
 }
