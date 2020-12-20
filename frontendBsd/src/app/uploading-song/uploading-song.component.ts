@@ -36,7 +36,7 @@ export class UploadingSongComponent implements OnInit {
   isPerformance: boolean = false;
   artistsWithJobs: ArtistWithJob[] = [];
   jobs: Job[] = [];
-  
+
   filteredSongs: Observable<Song[]>;
   songs: Song[] = [];
   songControl = new FormControl();
@@ -46,10 +46,10 @@ export class UploadingSongComponent implements OnInit {
   image: string;
   song: string;
   text: string;
-  selectedArtist:boolean=false;
+  selectedArtist: boolean = false;
   // artistWithJob:ArtistWithJob=new ArtistWithJob;
-  artist1:string="";
-  job1:string="";
+  artist1: string = "";
+  job1: string = "";
 
   constructor(private singerService: SingerService, private tagService: TagService,
     private artistService: ArtistService, private uploadService: UploadService,
@@ -109,9 +109,9 @@ export class UploadingSongComponent implements OnInit {
   getJobs(): void {
     try {
       this.jobService.getJobs()
-      .subscribe(jobs => {
-        this.jobs = jobs;
-      }, err => console.log(err));
+        .subscribe(jobs => {
+          this.jobs = jobs;
+        }, err => console.log(err));
     } catch (err) { console.log(err); }
   }
 
@@ -166,22 +166,22 @@ export class UploadingSongComponent implements OnInit {
       this.isPerformance = this.SelectedSong.isPerformance;
       try {
         this.singersToSService.getSingersToSong(this.SelectedSong.id)
-        .subscribe(singers => {
-          this.uploadSong.controls.singers.setValue(singers);
-          console.log(singers);
-        }, err => console.log(err));
+          .subscribe(singers => {
+            this.uploadSong.controls.singers.setValue(singers);
+            console.log(singers);
+          }, err => console.log(err));
       } catch (err) { console.log(err); }
       try {
         this.tagsToSongsService.getTagsNamesToSong(this.SelectedSong.id)
-        .subscribe(tts => {
-          this.uploadSong.controls.tags.setValue(tts);
-        }, err => console.log(err));
+          .subscribe(tts => {
+            this.uploadSong.controls.tags.setValue(tts);
+          }, err => console.log(err));
       } catch (err) { console.log(err); }
       try {
         this.artistsToSongsService.getArtistsNamesToSong(this.SelectedSong.id)
-        .subscribe(ats => {
-          this.uploadSong.controls.artists.setValue(ats);
-        }, err => console.log(err));
+          .subscribe(ats => {
+            this.uploadSong.controls.artists.setValue(ats);
+          }, err => console.log(err));
       } catch (err) { console.log(err); }
     }
   }
@@ -193,17 +193,22 @@ export class UploadingSongComponent implements OnInit {
   }
 
   selectJob(job: string): void {
-    // this.artistWithJob.jobName=job;
-    this.selectedArtist=false;
-    let awj:ArtistWithJob=new ArtistWithJob;
-    awj.artistName=this.artist1;
-    awj.jobName=job;
-    this.artistsWithJobs.push(awj);
-    //TO-DO לאתחל את שתי 
+    if (this.selectedArtist) {
+      let awj: ArtistWithJob = new ArtistWithJob;
+      awj.artistName = this.artist1;
+      awj.jobName = job;
+      this.artistsWithJobs.push(awj);
+      this.selectedArtist = false;
+      this.uploadSong.controls.artists.setValue("");
+    }
   }
-  selectArtist(artist:string){
-   this.artist1=artist;
-    this.selectedArtist=true;
+  selectArtist(artist: string) {
+    if (!this.selectedArtist) {
+      this.artist1 = artist;
+      this.selectedArtist = true;
+      this.uploadSong.controls.job.setValue("");
+    }
+
   }
 
   // openSelectJob(artistName: string): void {

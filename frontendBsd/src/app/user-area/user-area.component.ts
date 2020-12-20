@@ -20,9 +20,11 @@ export class UserAreaComponent implements OnInit {
 
   getUserById(): void {
     try {
-      this.userService.logIn("איציק לוי",
-        "5XBaN@c52gNsHiK").subscribe(user =>{ this.user = user;console.log(this.user)}, err => console.log(err));
-      //this.userService.getUsers().subscribe(users => this.user = users[9]);
+      if (sessionStorage.getItem('user'))
+        this.user = JSON.parse(sessionStorage.getItem('user'));
+      else
+        this.userService.logIn("איציק לוי",
+          "5XBaN@c52gNsHiK").subscribe(user => { this.user = user; console.log(this.user) }, err => console.log(err));
     } catch (err) { console.log(err); }
   }
 
