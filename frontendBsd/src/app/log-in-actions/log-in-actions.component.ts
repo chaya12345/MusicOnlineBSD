@@ -77,7 +77,7 @@ export class LogInActionsComponent implements OnInit {
   navigateToPA(): void {
     if (this.isConnected()) {
       let user: User = JSON.parse(sessionStorage.getItem("user"));
-      this.router.navigateByUrl("/user?userId=" + user.id);
+      this.router.navigateByUrl("/user-area" + user.id);
       this.shareDataService.emitUserConnect(user);
     }
     else {

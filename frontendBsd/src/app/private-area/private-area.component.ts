@@ -33,12 +33,11 @@ export class PrivateAreaComponent implements OnInit {
       console.log("No");
     }
     try {
-      this.usersService.getUsers().subscribe(
-        users =>
-          users.forEach(element => {
-            if (element.id == 10)
-              this.user = element;
-          }), err => console.log(err))
+      if (sessionStorage.getItem('user'))
+      this.user = JSON.parse(sessionStorage.getItem('user'));
+    else
+      this.usersService.logIn("איציק לוי",
+        "5XBaN@c52gNsHiK").subscribe(user => { this.user = user; console.log(this.user) }, err => console.log(err));
     } catch (err) { console.log(err) }
     this.getSongs();
   }
