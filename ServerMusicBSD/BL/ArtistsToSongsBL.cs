@@ -111,18 +111,48 @@ namespace BL
                 }
             }
         }
-        public static void UpdateArtistsToSong(ArtistWithJob[] artists, int songId)
+        public static void UpdateArtistsToSong(int songId, List<ArtistsToSongsTBL> artists)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            if (artists == null || artists.Length == 0)
-                return;
-            List<ArtistsToSongsTBL> list = et.ArtistsToSongsTBL.Where(a => a.songId == songId).ToList();
-            if (list != null && list.Count > 0)
+            List<ArtistsToSongsTBL> existArtists = et.ArtistsToSongsTBL
+                .Where(ats => ats != null && ats.songId == songId).ToList();
+            List<ArtistsToSongsTBL> existAndSelected = new List<ArtistsToSongsTBL>();
+            if (existArtists != null)
             {
-                et.ArtistsToSongsTBL.RemoveRange(list);
-                et.SaveChanges();
+                foreach (ArtistsToSongsTBL item in existArtists)
+                {
+                    ArtistsToSongsTBL so = artists.Where(a => a != null && a.artistId == item.artistId).FirstOrDefault();
+                    if (so == null)
+                    {
+                        DeleteArtistFromSong(songId, item.artistId);
+                    }
+                    else
+                    {
+                        existAndSelected.Add(so);
+                    }
+                }
             }
-            AddArtistsToSong(artists, songId); 
+            foreach (ArtistsToSongsTBL art in artists)
+            {
+                if (art != null && existAndSelected.Where(a => a.artistId == art.artistId).FirstOrDefault() == null)
+                {
+                    AddArtistToSong(new ArtistsToSongsTBL() { artistId = art.artistId, songId = songId });
+                }
+            }
+        }
+        public static void DeleteArtistFromSong(int? artistId, int? songId)
+        {
+            if (artistId != null && songId != null)
+            {
+                MusicOnlineEntities et = new MusicOnlineEntities();
+                ArtistsToSongsTBL result = et.ArtistsToSongsTBL
+                    .Where(ats => ats.songId == songId && ats.artistId == artistId).FirstOrDefault();
+                if (result != null)
+                {
+                    et.ArtistsToSongsTBL.Remove(result);
+                    et.SaveChanges();
+                }
+            }
         }
     }
 }

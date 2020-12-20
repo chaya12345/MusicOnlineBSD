@@ -535,10 +535,43 @@ namespace BL
             songTBL.content = song.content;
             songTBL.isPerformance = song.isPerformance;
             et.SaveChanges();
-            SingersToSongsBL.UpdateSingersToSong(songTBL.id, singers);
-            TagsToSongsBL.UpdateTagToSong(songTBL.id, tags);
+
+            List<SingersTBL> singersList = new List<SingersTBL>();
+            foreach (string item in singers)
+            {
+                SingersTBL singerTBL = et.SingersTBL.Where(s => s.name == item).FirstOrDefault();
+                if (singerTBL != null)
+                    singersList.Add(singerTBL);
+            }
+            SingersToSongsBL.UpdateSingersToSong(songTBL.id, singersList);
+
+            List<TagsForSongsTBL> tagsList = new List<TagsForSongsTBL>();
+            foreach (string item in tags)
+            {
+                TagsForSongsTBL tagTBL = et.TagsForSongsTBL.Where(t => t.name == item).FirstOrDefault();
+                if (tagTBL != null)
+                    tagsList.Add(tagTBL);
+            }
+            TagsToSongsBL.UpdateTagsToSong(songTBL.id, tagsList);
+
             if (artists != null)
-                ArtistsToSongsBL.UpdateArtistsToSong(artists, songTBL.id);
+            {
+                List<ArtistsToSongsTBL> artistsList = new List<ArtistsToSongsTBL>();
+                foreach (ArtistWithJob item in artists)
+                {
+                    ArtistsTBL art = et.ArtistsTBL.Where(a => a.name == item.artistName).FirstOrDefault();
+                    JobTBL job = et.JobTBL.Where(j => j.name == item.jobName).FirstOrDefault();
+                    if (art != null && job != null)
+                    {
+                        ArtistsToSongsTBL artistWithJobTBL = et.ArtistsToSongsTBL.Where(
+                            a => a.artistId == art.id && a.jobId == job.id).FirstOrDefault();
+                        if (artistWithJobTBL != null)
+                        artistsList.Add(artistWithJobTBL);
+                    }
+                }
+                ArtistsToSongsBL.UpdateArtistsToSong(songTBL.id, artistsList);
+            }
+                
         }
     }
 }
