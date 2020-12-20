@@ -11,7 +11,7 @@ import { CommonMessageService } from '../services/common-message.service';
 @Component({
   selector: 'adding-artist',
   templateUrl: './adding-artist.component.html',
-  styleUrls: ['./adding-artist.component.css']
+  styleUrls: ['./adding-artist.component.css', './../admin-style.css']
 })
 export class AddingArtistComponent implements OnInit {
 

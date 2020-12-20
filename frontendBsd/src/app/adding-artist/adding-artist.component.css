@@ -7,11 +7,11 @@ form {
     padding-left: 5vw;
 }
 
-form>button {
-    width: 50%;
+form > button {
+    width: 100%;
 }
 
-form>button {
+form > button {
     height: 48px;
     margin-left: auto;
     padding: 0 40px;
@@ -19,7 +19,7 @@ form>button {
     font-size: 19px;
 }
 
-form>button mat-icon {
+form > button mat-icon {
     margin-left: 10px;
 }
 
