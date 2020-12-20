@@ -23,7 +23,7 @@ import { JobService } from '../services/job.service';
 @Component({
   selector: 'uploading-song',
   templateUrl: './uploading-song.component.html',
-  styleUrls: ['./uploading-song.component.css']
+  styleUrls: ['./uploading-song.component.css', './../admin-style.css']
 })
 export class UploadingSongComponent implements OnInit {
 

@@ -1,0 +1,19 @@
+p {
+    padding-block: 10px 30px;
+    font-family: assistant;
+    color: #fbc02d;
+    margin-block: 20px;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 18.5px;
+    font-family: assistant;
+    color: white;
+}
+
+p span {
+    transition: .4s;
+}
+
+/* .f-wrapper:hover span.content-title {
+    margin-inline: 7px;
+} */

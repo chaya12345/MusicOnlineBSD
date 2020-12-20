@@ -13,7 +13,7 @@ import { UploadService } from '../services/upload.service';
 @Component({
   selector: 'activation-parade',
   templateUrl: './activation-parade.component.html',
-  styleUrls: ['./activation-parade.component.css']
+  styleUrls: ['./activation-parade.component.css', './../admin-style.css']
 })
 export class ActivationParadeComponent implements OnInit {
 

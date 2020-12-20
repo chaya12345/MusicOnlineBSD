@@ -1,6 +1,6 @@
 <div class="wrap-uploading-article">
-    <p class="title-section">העלאת כתבה >></p>
-    <form [formGroup]="uploadingArticleForm" (ngSubmit)="onSubmit()">
+    <mini-title text="העלאת כתבה"></mini-title>
+    <form class="grid-form-2-columns" [formGroup]="uploadingArticleForm" (ngSubmit)="onSubmit()">
         <!-- title -->
         <mat-form-field appearance="fill">
             <input matInput placeholder="כותרת" formControlName="title" required minlength="3">

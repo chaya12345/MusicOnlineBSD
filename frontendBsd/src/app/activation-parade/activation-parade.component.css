@@ -2,22 +2,9 @@
     padding-top: 30px;
 }
 
-.title-section {
-    font-family: fb Joker;
-    font-size: 21px;
-    margin-bottom: 30px;
-}
-
 form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 15px;
     padding-left: 5vw;
-}
-
-form mat-form-field {
-    text-align: right !important;
 }
 
 form > :first-child {

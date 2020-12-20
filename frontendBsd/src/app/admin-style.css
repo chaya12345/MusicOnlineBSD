@@ -1,0 +1,9 @@
+form mat-form-field {
+    text-align: right !important;
+}
+
+form.grid-form-2-columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 15px;
+}

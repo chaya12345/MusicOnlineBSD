@@ -13,7 +13,7 @@ import { TagService } from '../services/tag.service';
 @Component({
   selector: 'uploading-article',
   templateUrl: './uploading-article.component.html',
-  styleUrls: ['./uploading-article.component.css']
+  styleUrls: ['./uploading-article.component.css', './../admin-style.css']
 })
 export class UploadingArticleComponent implements OnInit {
 

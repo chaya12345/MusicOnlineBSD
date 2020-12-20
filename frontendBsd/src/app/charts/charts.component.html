@@ -1,8 +1,21 @@
 <div class="wrap-charts">
-    <p style="font-family: assistant;">מספר חיפושים לזמר >></p>
     <div ng-app="app" ng-controller="ChartCtrl">
-        <canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-options="options"
-            chart-labels="labels">
-        </canvas>
+        <div class="wrap-chart">
+            <mini-title text="מספר חיפושים לזמר"></mini-title>
+            <canvas class="chart chart-doughnut" chart-data="data1" chart-options="options1" chart-labels="labels1">
+            </canvas>
+        </div>
+        <div class="wrap-chart">
+            <mini-title text="תגובות ליום בממוצע"></mini-title>
+            <canvas class="bar chart-bar" chart-data="data2" chart-series="series2" chart-options="options2"
+                chart-labels="labels2">
+            </canvas>
+        </div>
+        <div class="wrap-chart">
+            <mini-title text="ביקוש לג'אנר"></mini-title>
+            <canvas class="pie chart-pie" chart-data="data3" chart-options="options3"
+                chart-labels="labels3">
+            </canvas>
+        </div>
     </div>
 </div>

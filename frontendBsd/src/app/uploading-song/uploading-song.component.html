@@ -1,6 +1,6 @@
 <div class="wrap-uploading-song">
-    <p class="title-section">העלאת שיר >></p>
-    <form [formGroup]="uploadSong" (ngSubmit)="onSubmit()">
+    <mini-title text="העלאת שיר"></mini-title>
+    <form class="grid-form-2-columns" [formGroup]="uploadSong" (ngSubmit)="onSubmit()">
         <!-- name -->
         <mat-form-field appearance="fill">
             <input matInput placeholder="שם שיר" formControlName="name">

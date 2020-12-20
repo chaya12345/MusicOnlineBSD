@@ -148,6 +148,8 @@ import { UserActivePlaylistComponent } from './user-active-playlist/user-active-
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { ChartsComponent } from './charts/charts.component';
 import { ReportsBoardComponent } from './reports-board/reports-board.component';
+import { MiniTitleComponent } from './mini-title/mini-title.component';
+import { TitleComponent } from './title/title.component';
 
 @NgModule({
   declarations: [
@@ -283,7 +285,9 @@ import { ReportsBoardComponent } from './reports-board/reports-board.component';
     UserActivePlaylistComponent,
     EditProfileComponent,
     ChartsComponent,
-    ReportsBoardComponent
+    ReportsBoardComponent,
+    MiniTitleComponent,
+    TitleComponent
   ],
   imports: [
     BrowserModule,

@@ -15,7 +15,7 @@ import { CommonMessageService } from '../services/common-message.service';
 @Component({
   selector: 'adding-playlist',
   templateUrl: './adding-playlist.component.html',
-  styleUrls: ['./adding-playlist.component.css']
+  styleUrls: ['./adding-playlist.component.css', './../admin-style.css']
 })
 export class AddingPlaylistComponent implements OnInit {
 
