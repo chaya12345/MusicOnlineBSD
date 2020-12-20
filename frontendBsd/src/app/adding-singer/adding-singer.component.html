@@ -1,0 +1,32 @@
+<div class="wrap-adding-singer">
+    <mini-title text="הוספת זמר"></mini-title>
+    <form class="grid-form-2-columns" [formGroup]="singerAddingForm" (ngSubmit)="onSubmit()">
+        <!-- name -->
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="שם זמר" formControlName="name" required minlength="3">
+            <mat-error *ngIf="singerAddingForm.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <!-- image -->
+        <uploading-image (onSelect)="selectImage($event)" [image]="image"></uploading-image>
+        <!-- upload button -->
+        <button *ngIf="isEdit==false" mat-stroked-button type="submit"><mat-icon>playlist_add</mat-icon>הוספה</button>
+        <!-- edit button -->
+        <button *ngIf="isEdit==false" mat-stroked-button (click)="isEdit=true"><mat-icon>edit</mat-icon>עריכת זמר</button>
+        <!-- selecting a singer -->
+        <mat-form-field class="list" appearance="fill" *ngIf="isEdit==true">
+            <mat-label>בחר זמר</mat-label>
+            <input type="text" matInput [formControl]="singerControl" [matAutocomplete]="autoSinger">
+            <mat-icon matPrefix>arrow_drop_down</mat-icon>
+            <mat-autocomplete autoActiveFirstOption #autoSinger="matAutocomplete" (optionSelected)="onSelectionChange($event)">
+                <mat-option *ngFor="let singer of singers" [value]="singer.name">
+                    <p>{{singer.name}}</p>
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <!-- confirm editing button -->
+        <button *ngIf="isEdit==true" mat-stroked-button
+         (click)="openMessageDialog('האם אתה בטוח שברצונך לשמור את השינויים?')"><mat-icon>check</mat-icon>שמור שינויים</button>
+        <!-- cancel editing button -->
+        <button *ngIf="isEdit==true" mat-stroked-button (click)="isEdit=false;reset();"><mat-icon>cancel</mat-icon>בטל</button>
+    </form>
+</div>

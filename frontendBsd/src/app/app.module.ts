@@ -150,6 +150,7 @@ import { ChartsComponent } from './charts/charts.component';
 import { ReportsBoardComponent } from './reports-board/reports-board.component';
 import { MiniTitleComponent } from './mini-title/mini-title.component';
 import { TitleComponent } from './title/title.component';
+import { AddingSingerComponent } from './adding-singer/adding-singer.component';
 
 @NgModule({
   declarations: [
@@ -287,7 +288,8 @@ import { TitleComponent } from './title/title.component';
     ChartsComponent,
     ReportsBoardComponent,
     MiniTitleComponent,
-    TitleComponent
+    TitleComponent,
+    AddingSingerComponent
   ],
   imports: [
     BrowserModule,
