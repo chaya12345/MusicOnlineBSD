@@ -34,8 +34,10 @@ export class ReportsBoardComponent implements OnInit {
     return eStatus[value];
   }
 
-  updateStatus(report: Report): void {
-    
+  updateStatus(report: Report, status: number): void {
+    try {
+    this.reportService.updateReportStatus(report.id, status).subscribe(() => this.getReports());
+    } catch (err) { console.log(err); }
   }
 
 }

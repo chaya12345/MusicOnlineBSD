@@ -2,7 +2,8 @@
     <mini-title text="דיווחים"></mini-title>
     <div class="report" *ngFor="let report of reports" [class.untreated]="report.status==1"
         [class.in-treat]="report.status==2" [class.treated]="report.status==3">
-        <mat-checkbox color="warn" [checked]="report.status==3" (click)="updateStatus(report)"></mat-checkbox>
+        <mat-checkbox color="warn" [checked]="report.status==3" (click)="updateStatus(report, report.status==3?2:3)"
+        [disabled]="report.status==1"></mat-checkbox>
         <p>{{report.name}}</p>
         <span>{{getStatus(report.status)}}</span>
         <span>{{report.date | date: 'd/M/yyyy H:mm'}}</span>

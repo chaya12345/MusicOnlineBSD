@@ -52,13 +52,15 @@ namespace BL
             return Casts.ToReportsDTO.GetReport(report);
             return null;
         }
-        public static void ChangeReportStatus(int reportId, bool status)
+        public static void ChangeReportStatus(int reportId, int status)
         {
+            if (status < 1 || status > 3)
+                return;
             MusicOnlineEntities et = new MusicOnlineEntities();
             ReportsTBL report = et.ReportsTBL.Where(r =>r!=null&& r.id == reportId).FirstOrDefault();
             if (report == null)
                 return;
-            report.status = status == true ? report.status = (int)eProccessing.HAS_BEEN_PROCESSED : (int)eProccessing.NOT_PROCESSED;
+            report.status = status;
             et.SaveChanges();
         }
         public static List<ReportsDTO> GetAllUntreatedReports()
