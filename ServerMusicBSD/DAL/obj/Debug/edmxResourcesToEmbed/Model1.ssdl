@@ -118,7 +118,7 @@
     <Property Name="songId" Type="int" />
     <Property Name="message" Type="varchar(max)" />
     <Property Name="status" Type="int" />
-    <Property Name="data" Type="datetime" />
+    <Property Name="date" Type="datetime" />
   </EntityType>
   <EntityType Name="SingerSearchingToUserTBL">
     <Key>

@@ -123,7 +123,7 @@
           <Property Name="songId" Type="int" />
           <Property Name="message" Type="varchar(max)" />
           <Property Name="status" Type="int" />
-          <Property Name="data" Type="datetime" />
+          <Property Name="date" Type="datetime" />
         </EntityType>
         <EntityType Name="SingerSearchingToUserTBL">
           <Key>
@@ -1222,7 +1222,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <Property Name="songId" Type="Int32" />
           <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="Int32" />
-          <Property Name="data" Type="DateTime" Precision="3" />
+          <Property Name="date" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="SingerSearchingToUserTBL">
           <Key>
@@ -2241,7 +2241,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
                 <ScalarProperty Name="songId" ColumnName="songId" />
                 <ScalarProperty Name="message" ColumnName="message" />
                 <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="data" ColumnName="data" />
+                <ScalarProperty Name="date" ColumnName="date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
