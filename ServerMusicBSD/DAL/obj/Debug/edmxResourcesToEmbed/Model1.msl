@@ -129,7 +129,7 @@
           <ScalarProperty Name="songId" ColumnName="songId" />
           <ScalarProperty Name="message" ColumnName="message" />
           <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="date" ColumnName="date" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

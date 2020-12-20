@@ -15,6 +15,6 @@ namespace DTO
         public Nullable<int> songId { get; set; }
         public string message { get; set; }
         public Nullable<int> status { get; set; }
-        public Nullable<System.DateTime> data { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
     }
 }
