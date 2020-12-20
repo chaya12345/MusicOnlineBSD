@@ -1,7 +1,10 @@
 <div class="wrap-reports">
-    <!-- <mini-title text="דיווחים"></p> -->
-    <div class="report" *ngFor="let report of reports">
+    <mini-title text="דיווחים"></mini-title>
+    <div class="report" *ngFor="let report of reports" [class.untreated]="report.status==1"
+        [class.in-treat]="report.status==2" [class.treated]="report.status==3">
+        <mat-checkbox color="warn" [checked]="report.status==3" (click)="updateStatus(report)"></mat-checkbox>
         <p>{{report.name}}</p>
-        <span>{{report.status}}</span>
+        <span>{{getStatus(report.status)}}</span>
+        <span>{{report.date | date: 'd/M/yyyy H:mm'}}</span>
     </div>
 </div>

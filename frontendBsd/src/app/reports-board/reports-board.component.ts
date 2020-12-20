@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Report } from '../classes/report';
 import { ReportsService } from '../services/reports.service';
 
+export enum eStatus { "לא טופל" = 1, "בטיפול", "טופל" }
+
 @Component({
   selector: 'reports-board',
   templateUrl: './reports-board.component.html',
@@ -26,6 +28,14 @@ export class ReportsBoardComponent implements OnInit {
         this.reports.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
       }, err => console.log(err));
     } catch (err) { console.log(err); }
+  }
+
+  getStatus(value: number): string {
+    return eStatus[value];
+  }
+
+  updateStatus(report: Report): void {
+    
   }
 
 }
