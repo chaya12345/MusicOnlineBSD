@@ -32,18 +32,21 @@
         <!-- content -->
         <!-- <editor></editor> -->
         <text-editor [text]="text"></text-editor>
+        <div *ngIf="artistsWithJobs.length>0">
+            <p *ngFor="let artistWithJob of artistsWithJobs">{{artistWithJob.artistName}} - {{artistWithJob.jobName}}</p>
+        </div>
         <!-- artists -->
         <mat-form-field appearance="fill">
             <mat-label>בחירת אומנים</mat-label>
-            <mat-select formControlName="artists" multiple>
-                <mat-option #matOption *ngFor="let artist of artists" (onSelectionChange)="selectJob(artist.name, matOption.selected)" [value]="artist.name">{{artist.name}}</mat-option>
+            <mat-select formControlName="artists">()
+                <mat-option #matOption *ngFor="let artist of artists" (onSelectionChange)="selectArtist(artist.name)" [value]="artist.name">{{artist.name}}</mat-option>
             </mat-select>
         </mat-form-field>
         <!-- jobs -->
         <mat-form-field appearance="fill">
             <mat-label>בחירת תפקיד לאומן</mat-label>
-            <mat-select formControlName="job">
-                <mat-option #matOption *ngFor="let job of jobs" [value]="job.name">{{job.name}}</mat-option>
+            <mat-select formControlName="job" [disabled]="selectedArtist==false">
+                <mat-option #matOption *ngFor="let job of jobs" name="job" [value]="job.name" (onSelectionChange)="selectJob(job.name)">{{job.name}}</mat-option>
             </mat-select>
         </mat-form-field>
         <!-- tags -->

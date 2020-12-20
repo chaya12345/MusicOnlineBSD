@@ -1,4 +1,4 @@
 export class ArtistWithJob {
-  artistName: string;
-  jobName: string;
+  artistName?: string;
+  jobName?: string;
 }

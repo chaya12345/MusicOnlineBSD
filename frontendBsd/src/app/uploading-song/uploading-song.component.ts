@@ -46,6 +46,10 @@ export class UploadingSongComponent implements OnInit {
   image: string;
   song: string;
   text: string;
+  selectedArtist:boolean=false;
+  // artistWithJob:ArtistWithJob=new ArtistWithJob;
+  artist1:string="";
+  job1:string="";
 
   constructor(private singerService: SingerService, private tagService: TagService,
     private artistService: ArtistService, private uploadService: UploadService,
@@ -61,8 +65,8 @@ export class UploadingSongComponent implements OnInit {
       song: new FormControl("", Validators.required),
       image: new FormControl("", Validators.required),
       tags: new FormControl("", Validators.required),
-      artists: new FormControl("", Validators.required),
-      job: new FormControl("", Validators.required)
+      artists: new FormControl(""),
+      job: new FormControl("")
     });
     this.getSingers();
     this.getTags();
@@ -188,36 +192,35 @@ export class UploadingSongComponent implements OnInit {
     });
   }
 
-  selectJob(artist: string, value: boolean): void {
-    // if (value) {
-    //   this.openSelectJob(artist);
-    // }
-    // else {
-    //   this.artistsWithJobs.forEach(obj => {
-    //     if (obj.artistName == artist) {
-    //       let index = this.artistsWithJobs.indexOf(obj);
-    //       this.artistsWithJobs.splice(index, 1);
-    //     }
-    //   });
-    // }
+  selectJob(job: string): void {
+    // this.artistWithJob.jobName=job;
+    this.selectedArtist=false;
+    let awj:ArtistWithJob=new ArtistWithJob;
+    awj.artistName=this.artist1;
+    awj.jobName=job;
+    this.artistsWithJobs.push(awj);
+    //TO-DO לאתחל את שתי 
   }
-  
+  selectArtist(artist:string){
+   this.artist1=artist;
+    this.selectedArtist=true;
+  }
 
-  openSelectJob(artistName: string): void {
-    try {
-      const dialogRef = this.dialog.open(SelectJobComponent, {
-        width: '400px',
-        data: { }
-      });
-      dialogRef.afterClosed().subscribe(result => {
-        let awj = new ArtistWithJob();
-        awj.artistName = artistName;
-        awj.jobName = result;
-        this.artistsWithJobs.push(awj);
-      });
-    }
-    catch (err) { console.log(err); }
-  }
+  // openSelectJob(artistName: string): void {
+  //   try {
+  //     const dialogRef = this.dialog.open(SelectJobComponent, {
+  //       width: '400px',
+  //       data: { }
+  //     });
+  //     dialogRef.afterClosed().subscribe(result => {
+  //       let awj = new ArtistWithJob();
+  //       awj.artistName = artistName;
+  //       awj.jobName = result;
+  //       this.artistsWithJobs.push(awj);
+  //     });
+  //   }
+  //   catch (err) { console.log(err); }
+  // }
 
   convertToFolderName(singer: string): string {
     return singer.trim().split(' ').join('-');
