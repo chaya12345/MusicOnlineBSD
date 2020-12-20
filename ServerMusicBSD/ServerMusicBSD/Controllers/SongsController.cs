@@ -116,5 +116,13 @@ namespace ServerMusicBSD.Controllers
         {
             SongsBL.AddViewToSong(songId);
         }
+        [HttpPut]
+        public void UpdateSong([FromBody]SongObj songObj)
+        {
+            if (songObj != null && songObj.song != null && songObj.tags != null && songObj.singers != null)
+            {
+                SongsBL.UpdateSong(songObj.song, songObj.singers, songObj.tags, songObj.artists);
+            }
+        }
     }
 }

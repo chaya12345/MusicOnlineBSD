@@ -111,5 +111,18 @@ namespace BL
                 }
             }
         }
+        public static void UpdateArtistsToSong(ArtistWithJob[] artists, int songId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            if (artists == null || artists.Length == 0)
+                return;
+            List<ArtistsToSongsTBL> list = et.ArtistsToSongsTBL.Where(a => a.songId == songId).ToList();
+            if (list != null && list.Count > 0)
+            {
+                et.ArtistsToSongsTBL.RemoveRange(list);
+                et.SaveChanges();
+            }
+            AddArtistsToSong(artists, songId); 
+        }
     }
 }

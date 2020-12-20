@@ -521,5 +521,24 @@ namespace BL
             song.lastViewingDate = DateTime.Now;
             et.SaveChanges();
         }
+        public static void UpdateSong(SongsTBL song, string[] singers, string[] tags, ArtistWithJob[] artists)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            if (song == null)
+                return;
+            SongsTBL songTBL = et.SongsTBL.Where(s => s.id == song.id).FirstOrDefault();
+            songTBL.name = song.name;
+            songTBL.title = song.title;
+            songTBL.subtitle = song.subtitle;
+            songTBL.image_location = song.image_location;
+            songTBL.file_location = song.file_location;
+            songTBL.content = song.content;
+            songTBL.isPerformance = song.isPerformance;
+            et.SaveChanges();
+            SingersToSongsBL.UpdateSingersToSong(songTBL.id, singers);
+            TagsToSongsBL.UpdateTagToSong(songTBL.id, tags);
+            if (artists != null)
+                ArtistsToSongsBL.UpdateArtistsToSong(artists, songTBL.id);
+        }
     }
 }
