@@ -71,6 +71,7 @@ namespace BL
             {
                 currentSinger.name = updatedSinger.name;
                 currentSinger.image = updatedSinger.image;
+                et.SaveChanges();
                 return true;
             }
             return false;
