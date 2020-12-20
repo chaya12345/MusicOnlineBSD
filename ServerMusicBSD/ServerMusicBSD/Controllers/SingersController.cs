@@ -22,13 +22,18 @@ namespace ServerMusicBSD.Controllers
         {
             return SingersBL.GetSingerByName(name);
         }
-        public void PostSinger([FromBody]SingersTBL name)
+        public void PostSinger([FromBody]SingersTBL singer)
         {
-            SingersBL.AddSinger(name);
+            SingersBL.AddSinger(singer);
         }
         public void PutSearchingToSinger(string singerName)
         {
             SingersBL.AddSearchingToSinger(singerName);
+        }
+        [HttpPut]
+        public bool UpdateSinger([FromBody] SingersTBL singer)
+        {
+            return SingersBL.UpdateSinger(singer);
         }
     }
 }

@@ -60,5 +60,20 @@ namespace BL
             else singer.searchings++;
             et.SaveChanges();
         }
+        public static bool UpdateSinger(SingersTBL updatedSinger)
+        {
+            if (updatedSinger == null)
+                return false;
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            SingersTBL currentSinger = et.SingersTBL
+                .Where(singer => singer != null && singer.id == updatedSinger.id).FirstOrDefault();
+            if (currentSinger != null)
+            {
+                currentSinger.name = updatedSinger.name;
+                currentSinger.image = updatedSinger.image;
+                return true;
+            }
+            return false;
+        }
     }
 }

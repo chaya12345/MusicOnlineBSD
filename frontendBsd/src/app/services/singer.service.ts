@@ -23,4 +23,7 @@ export class SingerService {
   addSearchingToSinger(singerName:string):Observable<any>{
     return this.httpClient.put(this.baseUrl+'PutSearchingToSinger?singerName='+singerName,singerName);
   }
+  public updateSinger(singer: Singer): Observable<boolean> {
+    return this.httpClient.put<boolean>(this.baseUrl + "UpdateSinger", singer);
+  }
 }

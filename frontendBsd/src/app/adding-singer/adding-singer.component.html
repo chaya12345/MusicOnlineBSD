@@ -12,6 +12,8 @@
         <button *ngIf="isEdit==false" mat-stroked-button type="submit"><mat-icon>playlist_add</mat-icon>הוספה</button>
         <!-- edit button -->
         <button *ngIf="isEdit==false" mat-stroked-button (click)="isEdit=true"><mat-icon>edit</mat-icon>עריכת זמר</button>
+        <!-- delete button -->
+        <!-- <button *ngIf="isEdit==false" mat-stroked-button><mat-icon>delete</mat-icon>מחיקת זמר</button> -->
         <!-- selecting a singer -->
         <mat-form-field class="list" appearance="fill" *ngIf="isEdit==true">
             <mat-label>בחר זמר</mat-label>

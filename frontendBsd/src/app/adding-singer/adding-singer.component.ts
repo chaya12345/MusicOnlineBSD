@@ -93,7 +93,21 @@ export class AddingSingerComponent implements OnInit {
   }
 
   saveChanges(): void {
-    
+    if (this.singerAddingForm.valid == false)
+      return;
+    try {
+      let singer = new Singer;
+      singer.id = this.SelectedSinger.id;
+      singer.name = this.singerAddingForm.controls.name.value;
+      singer.image = this.singerAddingForm.controls.image.value;
+      this.singerService.updateSinger(singer)
+      .subscribe(res => {
+        if (singer.image != this.SelectedSinger.image)
+          this.saveImage(this.imageFile);
+        this.openSnackBar(res == true ? this.cmService.UPDATE_ITEM.SUCCESS :
+          this.cmService.UPDATE_ITEM.FAIL);
+      }, () => this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR));
+    } catch { this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR); }
   }
 
   public updateSingers(): void {
