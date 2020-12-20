@@ -20,6 +20,7 @@ namespace BL
                 if (report != null)
                 {
                     report.status = proc;
+                    report.data = DateTime.Now;
                     et.ReportsTBL.Add(report);
                     et.SaveChanges();
                 }

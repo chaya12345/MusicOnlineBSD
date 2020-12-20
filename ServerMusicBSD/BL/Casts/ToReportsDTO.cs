@@ -22,6 +22,7 @@ namespace BL.Casts
             newReport.songId = report.songId;
             newReport.message = report.message;
             newReport.status = report.status;
+            newReport.data = report.data;
             return newReport;
         }
         public static List<ReportsDTO> GetReports(List<ReportsTBL> reports)

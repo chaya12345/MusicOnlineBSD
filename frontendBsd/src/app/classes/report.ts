@@ -6,4 +6,5 @@ export class Report{
     songId?:number;
     message?:string;
     status?:string;
+    date?:Date;
 }
