@@ -1,1 +1,31 @@
-<p>adding-artist works!</p>
+<div class="wrap-adding-artist">
+    <mini-title text="הוספת אומן"></mini-title>
+    <form class="grid-form-2-columns" [formGroup]="artistAddingForm" (ngSubmit)="onSubmit()">
+        <!-- name -->
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="שם אומן" formControlName="name" required minlength="3">
+            <mat-error *ngIf="artistAddingForm.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <!-- upload button -->
+        <button *ngIf="isEdit==false" mat-stroked-button type="submit"><mat-icon>playlist_add</mat-icon>הוספה</button>
+        <!-- edit button -->
+        <button *ngIf="isEdit==false" mat-stroked-button (click)="isEdit=true"><mat-icon>edit</mat-icon>עריכת אומן</button>
+        <!-- delete button -->
+        <!-- <button *ngIf="isEdit==false" mat-stroked-button><mat-icon>delete</mat-icon>מחיקת אומן</button> -->
+        <!-- selecting a singer -->
+        <mat-form-field class="list" appearance="fill" *ngIf="isEdit==true">
+            <mat-label>בחר אומן</mat-label>
+            <input type="text" matInput [formControl]="artistControl" [matAutocomplete]="autoArtist">
+            <mat-icon matPrefix>arrow_drop_down</mat-icon>
+            <mat-autocomplete autoActiveFirstOption #autoArtist="matAutocomplete" (optionSelected)="onSelectionChange($event)">
+                <mat-option *ngFor="let artist of artists" [value]="artist.name">
+                    <p>{{artist.name}}</p>
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <!-- confirm editing button -->
+        <button *ngIf="isEdit==true" mat-stroked-button (click)="openMessageDialog('האם אתה בטוח שברצונך לשמור את השינויים?')"><mat-icon>check</mat-icon>שמור שינויים</button>
+        <!-- cancel editing button -->
+        <button *ngIf="isEdit==true" mat-stroked-button (click)="isEdit=false;reset();"><mat-icon>cancel</mat-icon>בטל</button>
+    </form>
+</div>
