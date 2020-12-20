@@ -45,11 +45,11 @@
         <!-- jobs -->
         <mat-form-field appearance="fill">
             <mat-label>בחירת תפקיד לאומן</mat-label>
-            <mat-select formControlName="job">
+            <mat-select formControlName="job" [disabled]="selectedArtist==false">
                 <mat-option #matOption *ngFor="let job of jobs" name="job" [value]="job.name" (onSelectionChange)="selectJob(job.name)">{{job.name}}</mat-option>
             </mat-select>
         </mat-form-field>
-        <!-- tags [disabled]="selectedArtist==false"-->
+        <!-- tags -->
         <mat-form-field appearance="fill">
             <mat-label>בחירת תגיות</mat-label>
             <mat-select formControlName="tags" multiple>
