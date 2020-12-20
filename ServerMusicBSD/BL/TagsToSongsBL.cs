@@ -85,5 +85,15 @@ namespace BL
                 }
             }
         }
+        public static void UpdateTagToSong(int songId, string[] tags)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            if (tags == null || tags.Length == 0)
+                return;
+            List<TagsToSongsTBL> tagsToSong= et.TagsToSongsTBL.Where(t => t.songId == songId).ToList();
+            et.TagsToSongsTBL.RemoveRange(tagsToSong);
+            et.SaveChanges();
+            AddTagsToSong(tags, songId);
+        }
     }
 }

@@ -34,6 +34,7 @@ namespace BL
                 if (singersToSongs != null)
                 {
                     et.SingersToSongsTBL.Add(singersToSongs);
+                    et.SaveChanges();
                 }
             }
             catch (DbEntityValidationException dbEx)
@@ -58,6 +59,16 @@ namespace BL
                     AddSingerToSong(new SingersToSongsTBL { singerId = singerTBL.id, songId = songId });
                 }
             }
+        }
+        public static void UpdateSingersToSong(int songId,string[] singers)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            if (singers == null || singers.Length == 0)
+                return;
+            List<SingersToSongsTBL> list = et.SingersToSongsTBL.Where(s => s.songId == songId).ToList();
+            et.SingersToSongsTBL.RemoveRange(list);
+            et.SaveChanges();
+            AddSingersToSong(singers, songId);
         }
     }
 }

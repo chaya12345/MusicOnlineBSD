@@ -87,6 +87,9 @@ export class SongService {
   public addViewToSong(songId:number):Observable<any>{
     return this.httpClient.put(this.baseUrl+"PutViewToSong?songId="+songId,songId);
   }
+  public UpdateSong(songObj:SongObj):Observable<any>{
+    return this.httpClient.put(this.baseUrl+"UpdateSong",songObj);
+  }
   // יצירת קריאת סרבר עם הרשאות גישה
   //   const headers = { 'Authorization': 'Bearer my-token' }
   //   const body = { title: 'Angular POST Request Example' }
