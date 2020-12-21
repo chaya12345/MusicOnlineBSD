@@ -49,6 +49,7 @@ export class AddingSingerComponent implements OnInit {
           this.openSnackBar(this.cmService.GENERATE.ADD.SUCCESS);
           this.saveImage(this.imageFile);
         }, () => this.openSnackBar(this.cmService.GENERATE.ADD.ERROR));
+        this.getSingers();
       } catch { this.openSnackBar(this.cmService.GENERATE.ADD.ERROR); }
       this.reset();
     }
@@ -104,8 +105,9 @@ export class AddingSingerComponent implements OnInit {
       .subscribe(res => {
         if (singer.image != this.SelectedSinger.image)
           this.saveImage(this.imageFile);
-        this.openSnackBar(res == true ? this.cmService.UPDATE_ITEM.SUCCESS :
-          this.cmService.UPDATE_ITEM.FAIL);
+        this.openSnackBar(this.cmService.UPDATE_ITEM.SUCCESS);
+        this.getSingers();
+        this.reset();
       }, () => this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR));
     } catch { this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR); }
   }
@@ -145,7 +147,12 @@ export class AddingSingerComponent implements OnInit {
   }
 
   getNameErrorMessage() {
-
+    if (this.singerAddingForm.controls.name.hasError("required")) {
+      return "זהו שדה חובה.";
+    }
+    else if (this.singerAddingForm.controls.name.hasError("minlength")) {
+      return "שם לא תקין. (פחות מ-3 תווים)"
+    }
   }
 
 }
