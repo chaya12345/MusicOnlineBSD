@@ -28,6 +28,7 @@ export class CommitsBoardComponent implements OnInit {
           console.log(this.commits[0].date);
           console.log(this.calculateDiff(this.commits[0].date));
           console.log(this.isInCurrentWeek(this.commits[0].date));
+          console.log(this.isInCurrentWeek(this.commits[1].date));
           console.log(this.isInCurrentMonth(this.commits[0].date));
         }, err => console.log(err));
     } catch (err) { console.log(err); }
@@ -55,7 +56,7 @@ export class CommitsBoardComponent implements OnInit {
     var curr = new Date;
     var firstday = new Date(curr.setDate(curr.getDate() - curr.getDay()));
     console.log(firstday);
-    if (date >= firstday) {
+    if (firstday >= date) {
       return true;
     }
     return false;
