@@ -4,3 +4,7 @@
     grid-gap: 75px;
     padding-top: 60px;
 }
+
+reports-board {
+    grid-column: 1 / 4;
+}

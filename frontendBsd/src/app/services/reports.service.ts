@@ -19,7 +19,7 @@ export class ReportsService {
   public getReportById(reportId: number): Observable<Report> {
     return this.httpClient.get<Report>(this.baseUrl + "GetReportById?reportId=" + reportId);
   }
-  public updateReportStatus(reportId: number, status: boolean): Observable<any> {
+  public updateReportStatus(reportId: number, status: number): Observable<any> {
     return this.httpClient.put(this.baseUrl + "PutReportStatus?reportId=" + reportId + "&status=" + status, reportId);
   }
   public GetAllUntreatedReports(): Observable<Report[]> {

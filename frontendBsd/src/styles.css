@@ -307,6 +307,8 @@ footer p.title-part {
     font-size: 12px;
     font-weight: 400;
     box-shadow: 0 0 5px #1010101f;
+    text-align: right;
+    direction: rtl;
 }
 
 /* #endregion */
