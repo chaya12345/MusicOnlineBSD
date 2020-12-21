@@ -1,13 +1,13 @@
 <div class="wrap-adding-tag">
     <mini-title text="הוספת תגית"></mini-title>
     <form class="grid-form-2-columns" [formGroup]="tagAddingForm" (ngSubmit)="onSubmit()">
-        <!-- <section class="example-section">
+        <section class="example-section">
             <label class="example-margin">Align:</label>
             <mat-radio-group [(ngModel)]="labelPosition">
-                <mat-radio-button class="example-margin" value="after">After</mat-radio-button>
-                <mat-radio-button class="example-margin" value="before">Before</mat-radio-button>
+                <mat-radio-button class="example-margin" value="after" color="warn">After</mat-radio-button>
+                <mat-radio-button class="example-margin" value="before" color="warn">Before</mat-radio-button>
             </mat-radio-group>
-        </section> -->
+        </section>
         <!-- name -->
         <mat-form-field appearance="fill">
             <input matInput placeholder="שם תגית" formControlName="name" required minlength="3">
