@@ -124,5 +124,59 @@ namespace ServerMusicBSD.Controllers
                 SongsBL.UpdateSong(songObj.song, songObj.singers, songObj.tags, songObj.artists);
             }
         }
+        [HttpPost]
+        public bool sendEmail()
+        {
+
+            try
+            {
+                MailMessage mail = new MailMessage();
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+
+                mail.From = new MailAddress("bsd.odaya@gmail.com");
+                //mail.To.Add("dasi1020@gmail.com");
+                mail.CC.Add(new MailAddress("dasi1020@gmail.com"));
+                mail.Subject = "Test Mail";
+                mail.Body = "This is for testing SMTP mail from GMAIL";
+
+                SmtpServer.Port = 44368;
+                SmtpServer.Credentials = new System.Net.NetworkCredential("Odaya Oshri", "bsd.O100%PM");
+                SmtpServer.EnableSsl = true;
+
+                SmtpServer.Send(mail);
+                return true;
+            }
+            catch {
+                return false;
+            }
+        }
+        [HttpPost]
+        public bool sendEmail1()
+        {
+            MailAddress fromAddress = new MailAddress("bsd.odaya@gmail.com");
+            MailAddress toAddress = new MailAddress("dasi1020@gmail.com");
+
+            MailMessage mail = new MailMessage(fromAddress.Address, toAddress.Address);
+            mail.Subject = "Testing";
+            mail.Body = "contents.only bsd!";
+
+            SmtpClient client = new SmtpClient();
+            client.Host = "smtp.gmail.com";
+            client.Port = 2525;
+            client.EnableSsl = true;
+            client.Timeout = 100000;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new NetworkCredential("Odaya Oshri", "bsd.O100%PM");
+
+            try
+            {
+                client.Send(mail);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

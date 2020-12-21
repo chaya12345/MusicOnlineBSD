@@ -12,12 +12,17 @@ export enum eStatus { "לא טופל" = 1, "בטיפול", "טופל" }
 export class ReportsBoardComponent implements OnInit {
 
   reports: Report[] = [];
+  selectedReport: Report = null;
 
   constructor(private reportService: ReportsService) {
     this.getReports();
    }
 
   ngOnInit(): void {
+  }
+
+  prevent(event): void {
+    event.stopPropagation();
   }
 
   getReports(): void {
@@ -34,9 +39,18 @@ export class ReportsBoardComponent implements OnInit {
     return eStatus[value];
   }
 
+  getIcon(value: number): string {
+    return value == 1 ? "mark_email_unread" : (value == 2 ? "more_horiz" : "mark_email_read");
+  }
+
   updateStatus(report: Report, status: number): void {
     try {
-    this.reportService.updateReportStatus(report.id, status).subscribe(() => this.getReports());
+    this.reportService.updateReportStatus(report.id, status).subscribe(() => {
+      this.getReports();
+      if (report == this.selectedReport) {
+        this.selectedReport.status = eStatus[status];
+      }
+    });
     } catch (err) { console.log(err); }
   }
 
