@@ -154,6 +154,7 @@ import { AddingSingerComponent } from './adding-singer/adding-singer.component';
 import { AddingArtistComponent } from './adding-artist/adding-artist.component';
 import { AddingTagComponent } from './adding-tag/adding-tag.component';
 import { DeletingAreaComponent } from './deleting-area/deleting-area.component';
+import { CommitsBoardComponent } from './commits-board/commits-board.component';
 
 @NgModule({
   declarations: [
@@ -295,7 +296,8 @@ import { DeletingAreaComponent } from './deleting-area/deleting-area.component';
     AddingSingerComponent,
     AddingArtistComponent,
     AddingTagComponent,
-    DeletingAreaComponent
+    DeletingAreaComponent,
+    CommitsBoardComponent
   ],
   imports: [
     BrowserModule,
