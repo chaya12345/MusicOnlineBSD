@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MusicOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MusicOnlineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AlbumsTBL">
           <Key>
             <PropertyRef Name="id" />
@@ -378,6 +378,22 @@ warning 6002: The table/view 'MusicOnline.dbo.latestResponses' does not have a p
           <Property Name="topicId" Type="int" Nullable="false" />
           <Property Name="title_res" Type="nvarchar(max)" />
           <Property Name="content_res" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MusicOnline.dbo.reportView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="reportView">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="mail" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+          <Property Name="songId" Type="int" />
+          <Property Name="message" Type="varchar(max)" />
+          <Property Name="status" Type="int" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="songName" Type="varchar" MaxLength="100" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -915,6 +931,19 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     [latestResponses].[content_res] AS [content_res]
     FROM [dbo].[latestResponses] AS [latestResponses]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="reportView" EntityType="Self.reportView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [reportView].[id] AS [id], 
+    [reportView].[name] AS [name], 
+    [reportView].[mail] AS [mail], 
+    [reportView].[phone] AS [phone], 
+    [reportView].[songId] AS [songId], 
+    [reportView].[message] AS [message], 
+    [reportView].[status] AS [status], 
+    [reportView].[date] AS [date], 
+    [reportView].[songName] AS [songName]
+    FROM [dbo].[reportView] AS [reportView]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="songsDetails" EntityType="Self.songsDetails" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [songsDetails].[id] AS [id], 
@@ -1065,8 +1094,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
             <End Role="VotingsToParadeTBL" EntitySet="VotingsToParadeTBL" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MusicOnlineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -2101,12 +2129,27 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
             <End Role="UserPlaylistsTBL" EntitySet="UserPlaylistsTBL" />
           </AssociationSet>
           <FunctionImport Name="itemByName" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemByName_Result)">
-            <Parameter Name="item" Mode="In" Type="String" />
+          <Parameter Name="item" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="itemsByParameter" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemsByParameter_Result)">
-            <Parameter Name="parameter" Mode="In" Type="String" />
+          <Parameter Name="parameter" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="reportView" EntityType="MusicOnlineModel.reportView" />
         </EntityContainer>
+        <EntityType Name="reportView">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="songId" Type="Int32" />
+          <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="songName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2553,6 +2596,21 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="reportView">
+            <EntityTypeMapping TypeName="MusicOnlineModel.reportView">
+              <MappingFragment StoreEntitySet="reportView">
+                <ScalarProperty Name="songName" ColumnName="songName" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="songId" ColumnName="songId" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

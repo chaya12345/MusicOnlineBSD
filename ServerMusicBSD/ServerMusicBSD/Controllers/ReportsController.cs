@@ -38,5 +38,9 @@ namespace ServerMusicBSD.Controllers
         {
             ReportsBL.ChangeReportStatus(reportId);
         }
+        public List<reportView> GetReportsView()
+        {
+            return ReportsBL.GetReportsView();
+        }
     }
 }
