@@ -151,10 +151,12 @@ namespace ServerMusicBSD.Controllers
             }
         }
         [HttpPost]
-        public bool sendEmail1(string username, string password)
+        public bool sendEmail1(string username, string password, bool isSwitch)
         {
             MailAddress fromAddress = new MailAddress("bsd.odaya@gmail.com");
             MailAddress toAddress = new MailAddress("dasi1020@gmail.com");
+
+            if (isSwitch == true) { password = password.Replace(' ','+'); }
 
             MailMessage mail = new MailMessage(fromAddress.Address, toAddress.Address);
             mail.Subject = "Testing";
