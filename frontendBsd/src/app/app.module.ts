@@ -153,6 +153,7 @@ import { TitleComponent } from './title/title.component';
 import { AddingSingerComponent } from './adding-singer/adding-singer.component';
 import { AddingArtistComponent } from './adding-artist/adding-artist.component';
 import { AddingTagComponent } from './adding-tag/adding-tag.component';
+import { DeletingAreaComponent } from './deleting-area/deleting-area.component';
 
 @NgModule({
   declarations: [
@@ -293,7 +294,8 @@ import { AddingTagComponent } from './adding-tag/adding-tag.component';
     TitleComponent,
     AddingSingerComponent,
     AddingArtistComponent,
-    AddingTagComponent
+    AddingTagComponent,
+    DeletingAreaComponent
   ],
   imports: [
     BrowserModule,
