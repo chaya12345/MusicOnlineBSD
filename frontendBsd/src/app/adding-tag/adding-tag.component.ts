@@ -3,14 +3,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { TypeOfTag } from 'typescript';
-import { TagsForSongs, TypesOfTags } from '../classes/tag';
+import { TagsForArticles, TagsForSongs, TypesOfTags } from '../classes/tag';
 import { MessageComponent } from '../message/message.component';
-import { ArtistService } from '../services/artist.service';
 import { CommonMessageService } from '../services/common-message.service';
 import { TagService } from '../services/tag.service';
 import { TypesOfTagService } from '../services/types-of-tag.service';
-import { Item } from '../si-similar-results/si-similar-results.component';
 
 @Component({
   selector: 'adding-tag',
@@ -27,7 +24,7 @@ export class AddingTagComponent implements OnInit {
   tagControl = new FormControl();
   SelectedTag: TagsForSongs;
   typeOfTag: TypesOfTags[] = [];
-  labelPosition: 'before' | 'after' = 'after';
+  tagFor: "song" | "article" = "song";
 
   constructor(private tagService: TagService, private dialog: MatDialog, private typesOfTagService: TypesOfTagService,
     private _snackBar: MatSnackBar, private cmService: CommonMessageService) {
@@ -37,13 +34,23 @@ export class AddingTagComponent implements OnInit {
     });
     this.getTags();
     this.getTypeOfTag();
+    this.tagFor = "article"
   }
 
   ngOnInit(): void {
   }
 
   onSubmit(): void {
-    if (this.tagAddingForm.valid && this.isEdit == false) {
+    if (this.tagAddingForm.controls.name.valid && this.isEdit == false) {
+      if (this.tagFor == "song")
+        this.addTagToSong();
+      else if (this.tagFor == "article")
+        this.addTagToArticle();
+    }
+  }
+
+  addTagToSong() {
+    if (this.tagAddingForm.controls.type.valid) {
       let newTag: TagsForSongs = new TagsForSongs;
       newTag.name = this.tagAddingForm.controls.name.value;
       newTag.typeId = this.getTypseTagId(this.tagAddingForm.controls.type.value);
@@ -56,6 +63,19 @@ export class AddingTagComponent implements OnInit {
       } catch { this.openSnackBar(this.cmService.GENERATE.ADD.ERROR); }
       this.reset();
     }
+  }
+
+  addTagToArticle() {
+    let newTag: TagsForArticles = new TagsForArticles;
+    newTag.name = this.tagAddingForm.controls.name.value;
+    try {
+      this.tagService.addTagForArticle(newTag).subscribe(res => {
+        this.openSnackBar(this.cmService.GENERATE.ADD.SUCCESS);
+        this.getTags();
+        this.reset();
+      }, () => this.openSnackBar(this.cmService.GENERATE.ADD.ERROR));
+    } catch { this.openSnackBar(this.cmService.GENERATE.ADD.ERROR); }
+    this.reset();
   }
 
   reset() {
@@ -84,13 +104,34 @@ export class AddingTagComponent implements OnInit {
   saveChanges(): void {
     if (this.tagAddingForm.valid == false)
       return;
+    if (this.tagFor == "song")
+      this.updateTagForSong();
+    else if (this.tagFor == "article")
+      this.updateTagForArticle()
+  }
+
+  updateTagForSong() {
     try {
       let tag = new TagsForSongs;
       tag.id = this.SelectedTag.id;
       tag.name = this.tagAddingForm.controls.name.value;
       tag.typeId = this.getTypseTagId(this.tagAddingForm.controls.type.value);
       this.tagService.updateTagForSong(tag)
-        .subscribe(res => {this.openSnackBar( this.cmService.UPDATE_ITEM.SUCCESS);
+        .subscribe(res => {
+          this.openSnackBar(this.cmService.UPDATE_ITEM.SUCCESS);
+          this.getTags();
+        }, () => this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR));
+    } catch { this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR); }
+  }
+
+  updateTagForArticle() {
+    try {
+      let tag = new TagsForArticles;
+      tag.id = this.SelectedTag.id;
+      tag.name = this.tagAddingForm.controls.name.value;
+      this.tagService.updateTagForArticle(tag)
+        .subscribe(res => {
+          this.openSnackBar(this.cmService.UPDATE_ITEM.SUCCESS);
           this.getTags();
         }, () => this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR));
     } catch { this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR); }
