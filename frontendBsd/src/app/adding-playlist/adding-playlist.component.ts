@@ -197,7 +197,6 @@ export class AddingPlaylistComponent implements OnInit {
           this.reset();
           this.saveImage(this.imageFile);
           this.image = null;
-          ///
         },
           () => this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR));
     } catch (err) { this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR); }
