@@ -11,7 +11,7 @@ import { CommonMessageService } from '../services/common-message.service';
 @Component({
   selector: 'adding-artist',
   templateUrl: './adding-artist.component.html',
-  styleUrls: ['./adding-artist.component.css', './../admin-style.css']
+  styleUrls: ['./adding-artist.component.css','./../admin-style.css']
 })
 export class AddingArtistComponent implements OnInit {
 
@@ -41,6 +41,7 @@ export class AddingArtistComponent implements OnInit {
       try {
         this.artistService.addArtist(newArtist).subscribe(res => {
           this.openSnackBar(this.cmService.GENERATE.ADD.SUCCESS);
+          this.getArtists();
         }, () => this.openSnackBar(this.cmService.GENERATE.ADD.ERROR));
       } catch { this.openSnackBar(this.cmService.GENERATE.ADD.ERROR); }
       this.reset();
@@ -79,8 +80,9 @@ export class AddingArtistComponent implements OnInit {
       artist.name = this.artistAddingForm.controls.name.value;
       this.artistService.updateArtist(artist)
       .subscribe(res => {
-        this.openSnackBar(res == true ? this.cmService.UPDATE_ITEM.SUCCESS :
-          this.cmService.UPDATE_ITEM.FAIL);
+        this.openSnackBar(this.cmService.UPDATE_ITEM.SUCCESS);
+        this.getArtists();
+        this.reset();
       }, () => this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR));
     } catch { this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR); }
   }
@@ -89,13 +91,13 @@ export class AddingArtistComponent implements OnInit {
     this.filteredArtists = this.artistControl.valueChanges
       .pipe(
         startWith(''),
-        map(value => this._filterPlaylists(value))
+        map(value => this._filterArtistsName(value))
       );
   }
 
-  public _filterPlaylists(value: string): Artist[] {
+  public _filterArtistsName(value: string): Artist[] {
     const filterValue = value.toLowerCase();
-    return this.artists.filter(playlist => playlist.name.toLowerCase().includes(filterValue));
+    return this.artists.filter(artist => artist.name.toLowerCase().includes(filterValue));
   }
 
   onSelectionChange(event): void {
@@ -118,6 +120,11 @@ export class AddingArtistComponent implements OnInit {
   }
 
   getNameErrorMessage() {
-
+    if (this.artistAddingForm.controls.name.hasError("required")) {
+      return "זהו שדה חובה.";
+    }
+    else if (this.artistAddingForm.controls.name.hasError("minlength")) {
+      return "שם לא תקין. (פחות מ-3 תווים)"
+    }
   }
 }

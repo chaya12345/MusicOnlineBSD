@@ -23,6 +23,18 @@ namespace ServerMusicBSD.Controllers
         {
             TagsBL.AddTagForSong(tag);
         }
+        public  string GetTagNameForSong(int id)
+        {
+            return TagsBL.GetTagNameForSong(id);
+        }
+        [HttpPut]
+        public void UpdateTagForSong([FromBody]TagsForSongsTBL tag)
+        {
+            TagsBL.UpdateTagForSong(tag);
+        }
+        //------------------------------------------------------------------------
+        //------------------------------------------------------------------------
+        //------------------------------------------------------------------------          
         public List<TagsForArticlesDTO> GetTagsForArticles()
         {
             return TagsBL.GetTagsForArticles();
@@ -30,6 +42,15 @@ namespace ServerMusicBSD.Controllers
         public void PostTagForArticle([FromBody] TagsForArticlesTBL tag)
         {
             TagsBL.AddTagForArticle(tag);
+        }
+        public string GetTagNameForArticle(int id)
+        {
+            return TagsBL.GetTagNameForArticle(id);
+        }
+        [HttpPut]
+        public void UpdateTagForArticle([FromBody]TagsForArticlesTBL tag)
+        {
+            TagsBL.UpdateTagForArticle(tag);
         }
     }
 }

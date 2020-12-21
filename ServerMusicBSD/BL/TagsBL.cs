@@ -57,6 +57,21 @@ namespace BL
                 return name;
             return null;
         }
+        public static void UpdateTagForSong(TagsForSongsTBL tag)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            TagsForSongsTBL tagsForSong = et.TagsForSongsTBL.Where(t => t.id == tag.id).FirstOrDefault();
+            if (tagsForSong != null)
+            {
+                tagsForSong.name = tag.name;
+                tagsForSong.typeId = tag.typeId;
+                et.SaveChanges();
+            }
+
+        }
+        //------------------------------------------------------------------------
+        //------------------------------------------------------------------------
+        //------------------------------------------------------------------------
         public static List<TagsForArticlesDTO> GetTagsForArticles()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
@@ -103,6 +118,17 @@ namespace BL
         public static List<TagsForArticlesDTO> GetTagsForArticles(List<TagsToAtriclesDTO> tagsToAtricles)
         {
             return Casts.ToTagsDTO.GetTagsForArticles(tagsToAtricles);
+        }
+        public static void UpdateTagForArticle(TagsForArticlesTBL tag)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            TagsForArticlesTBL tagsForArticle = et.TagsForArticlesTBL.Where(t => t.id == tag.id).FirstOrDefault();
+            if (tagsForArticle != null)
+            {
+                tagsForArticle.name = tag.name;
+                et.SaveChanges();
+            }
+
         }
     }
 }

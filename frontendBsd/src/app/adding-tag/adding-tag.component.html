@@ -1,1 +1,42 @@
-<p>adding-tag works!</p>
+<div class="wrap-adding-tag">
+    <mini-title text="הוספת תגית"></mini-title>
+    <form class="grid-form-2-columns" [formGroup]="tagAddingForm" (ngSubmit)="onSubmit()">
+        <!-- name -->
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="שם תגית" formControlName="name" required minlength="3">
+            <mat-error *ngIf="tagAddingForm.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <!-- type -->
+        <mat-form-field class="list" appearance="fill">
+            <mat-label>בחר סוג תגית</mat-label>
+            <input type="text" matInput formControlName="type" [matAutocomplete]="autoTag">
+            <mat-icon matPrefix>arrow_drop_down</mat-icon>
+            <mat-autocomplete autoActiveFirstOption #autoTag="matAutocomplete" (optionSelected)="onSelectionTagType($event)">
+                <mat-option *ngFor="let type of typeOfTag" [value]="type.name">
+                    <p>{{type.name}}</p>
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <!-- upload button -->
+        <button *ngIf="isEdit==false" mat-stroked-button type="submit"><mat-icon>playlist_add</mat-icon>הוספה</button>
+        <!-- edit button -->
+        <button *ngIf="isEdit==false" mat-stroked-button (click)="isEdit=true"><mat-icon>edit</mat-icon>עריכת תגית</button>
+        <!-- delete button -->
+        <!-- <button *ngIf="isEdit==false" mat-stroked-button><mat-icon>delete</mat-icon>מחיקת תגית</button> -->
+        <!-- selecting a singer -->
+        <mat-form-field class="list" appearance="fill" *ngIf="isEdit==true">
+            <mat-label>בחר תגית</mat-label>
+            <input type="text" matInput [formControl]="tagControl" [matAutocomplete]="autoTag">
+            <mat-icon matPrefix>arrow_drop_down</mat-icon>
+            <mat-autocomplete autoActiveFirstOption #autoTag="matAutocomplete" (optionSelected)="onSelectionChange($event)">
+                <mat-option *ngFor="let tag of tags" [value]="tag.name">
+                    <p>{{tag.name}}</p>
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+        <!-- confirm editing button -->
+        <button *ngIf="isEdit==true" mat-stroked-button (click)="openMessageDialog('האם אתה בטוח שברצונך לשמור את השינויים?')"><mat-icon>check</mat-icon>שמור שינויים</button>
+        <!-- cancel editing button -->
+        <button *ngIf="isEdit==true" mat-stroked-button (click)="isEdit=false;reset();"><mat-icon>cancel</mat-icon>בטל</button>
+    </form>
+</div>

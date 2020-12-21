@@ -1,0 +1,29 @@
+.wrap-adding-tag {
+    padding-top: 60px
+}
+
+form {
+    grid-template-rows: repeat(2, 1fr);
+    padding-left: 5vw;
+}
+
+form>button {
+    width: 100%;
+}
+
+form>button {
+    height: 48px;
+    margin-left: auto;
+    padding: 0 40px;
+    font-family: fb Joker;
+    font-size: 19px;
+}
+
+form>button mat-icon {
+    margin-left: 10px;
+}
+
+mat-form-field.list {
+    direction: ltr;
+    cursor: pointer;
+}
