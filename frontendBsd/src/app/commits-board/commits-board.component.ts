@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommitService } from '../services/commit.service';
 
 @Component({
   selector: 'commits-board',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommitsBoardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private commitService: CommitService) { 
+    this.getCommits();
+  }
 
   ngOnInit(): void {
+  }
+
+  getCommits(): void {
+    try {
+
+    } catch (err) { console.log(err); }
   }
 
 }
