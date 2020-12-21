@@ -456,5 +456,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Commits">
+      <EntityTypeMapping TypeName="MusicOnlineModel.Commits">
+        <MappingFragment StoreEntitySet="Commits">
+          <ScalarProperty Name="content_res" ColumnName="content_res" />
+          <ScalarProperty Name="title_res" ColumnName="title_res" />
+          <ScalarProperty Name="topicId" ColumnName="topicId" />
+          <ScalarProperty Name="topic" ColumnName="topic" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
