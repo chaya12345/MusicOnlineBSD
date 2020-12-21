@@ -1,6 +1,13 @@
 <div class="wrap-adding-tag">
     <mini-title text="הוספת תגית"></mini-title>
     <form class="grid-form-2-columns" [formGroup]="tagAddingForm" (ngSubmit)="onSubmit()">
+        <!-- <section class="example-section">
+            <label class="example-margin">Align:</label>
+            <mat-radio-group [(ngModel)]="labelPosition">
+                <mat-radio-button class="example-margin" value="after">After</mat-radio-button>
+                <mat-radio-button class="example-margin" value="before">Before</mat-radio-button>
+            </mat-radio-group>
+        </section> -->
         <!-- name -->
         <mat-form-field appearance="fill">
             <input matInput placeholder="שם תגית" formControlName="name" required minlength="3">
@@ -17,7 +24,7 @@
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
-        <!-- upload button -->
+        <!-- upload button [disabled]="!forSong" -->
         <button *ngIf="isEdit==false" mat-stroked-button type="submit"><mat-icon>playlist_add</mat-icon>הוספה</button>
         <!-- edit button -->
         <button *ngIf="isEdit==false" mat-stroked-button (click)="isEdit=true"><mat-icon>edit</mat-icon>עריכת תגית</button>

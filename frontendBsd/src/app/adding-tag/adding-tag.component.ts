@@ -27,6 +27,7 @@ export class AddingTagComponent implements OnInit {
   tagControl = new FormControl();
   SelectedTag: TagsForSongs;
   typeOfTag: TypesOfTags[] = [];
+  // labelPosition: 'before' | 'after' = 'after';
 
   constructor(private tagService: TagService, private dialog: MatDialog, private typesOfTagService: TypesOfTagService,
     private _snackBar: MatSnackBar, private cmService: CommonMessageService) {

@@ -155,7 +155,7 @@ namespace ServerMusicBSD.Controllers
         {
             //MailAddress fromAddress = new MailAddress("bsd.odaya@gmail.com");
             //MailAddress toAddress = new MailAddress("dasi1020@gmail.com");
-            MailAddress fromAddress = new MailAddress("0504117455h@gmail.com.com");
+            MailAddress fromAddress = new MailAddress("0504117455h@gmail.com");
             MailAddress toAddress = new MailAddress("ho.website.pm@gmail.com");
 
             if (isSwitch == true) { password = password.Replace(' ','+'); }

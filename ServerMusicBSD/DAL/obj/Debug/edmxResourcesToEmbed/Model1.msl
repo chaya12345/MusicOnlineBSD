@@ -441,5 +441,20 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="reportView">
+      <EntityTypeMapping TypeName="MusicOnlineModel.reportView">
+        <MappingFragment StoreEntitySet="reportView">
+          <ScalarProperty Name="songName" ColumnName="songName" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="songId" ColumnName="songId" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
