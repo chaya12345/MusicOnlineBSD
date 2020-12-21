@@ -65,6 +65,7 @@ namespace DAL
         public virtual DbSet<latestResponses> latestResponses { get; set; }
         public virtual DbSet<songsDetails> songsDetails { get; set; }
         public virtual DbSet<reportView> reportView { get; set; }
+        public virtual DbSet<Commits> Commits { get; set; }
     
         [DbFunction("MusicOnlineEntities", "itemByName")]
         public virtual IQueryable<itemByName_Result> itemByName(string item)

@@ -76,6 +76,7 @@
         <AssociationConnector Association="MusicOnlineModel.FK_TagsToSongsTBL_TagsForSongsTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_PlaylistsTBL_UsersTBL" ManuallyRouted="false" />
         <EntityTypeShape EntityType="MusicOnlineModel.reportView" Width="1.5" PointX="16.375" PointY="6.75" />
+        <EntityTypeShape EntityType="MusicOnlineModel.Commits" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
