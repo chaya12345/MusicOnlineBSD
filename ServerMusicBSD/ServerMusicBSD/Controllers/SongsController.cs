@@ -151,7 +151,7 @@ namespace ServerMusicBSD.Controllers
             }
         }
         [HttpPost]
-        public bool sendEmail1()
+        public bool sendEmail1(string username, string password)
         {
             MailAddress fromAddress = new MailAddress("bsd.odaya@gmail.com");
             MailAddress toAddress = new MailAddress("dasi1020@gmail.com");
@@ -162,11 +162,11 @@ namespace ServerMusicBSD.Controllers
 
             SmtpClient client = new SmtpClient();
             client.Host = "smtp.gmail.com";
-            client.Port = 2525;
+            client.Port = 587;
             client.EnableSsl = true;
             client.Timeout = 100000;
             client.UseDefaultCredentials = false;
-            client.Credentials = new NetworkCredential("Odaya Oshri", "bsd.O100%PM");
+            client.Credentials = new NetworkCredential(username, password);
 
             try
             {
