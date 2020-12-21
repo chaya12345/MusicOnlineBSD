@@ -125,7 +125,7 @@ namespace ServerMusicBSD.Controllers
             }
         }
         [HttpPost]
-        public bool sendEmail()
+        public bool sendEmail(string username, string password, bool isSwitch, string subject, string body)
         {
 
             try
@@ -133,14 +133,17 @@ namespace ServerMusicBSD.Controllers
                 MailMessage mail = new MailMessage();
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
 
+                if (isSwitch == true) { password = password.Replace(' ', '+'); }
+
                 mail.From = new MailAddress("bsd.odaya@gmail.com");
                 //mail.To.Add("dasi1020@gmail.com");
                 mail.CC.Add(new MailAddress("dasi1020@gmail.com"));
-                mail.Subject = "Test Mail";
-                mail.Body = "This is for testing SMTP mail from GMAIL";
+                mail.CC.Add(new MailAddress("‫ho.website.pm@gmail.com‬"));
+                mail.Subject = subject;
+                mail.Body = body;
 
-                SmtpServer.Port = 44368;
-                SmtpServer.Credentials = new System.Net.NetworkCredential("Odaya Oshri", "bsd.O100%PM");
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential(username, password);
                 SmtpServer.EnableSsl = true;
 
                 SmtpServer.Send(mail);
@@ -151,22 +154,23 @@ namespace ServerMusicBSD.Controllers
             }
         }
         [HttpPost]
-        public bool sendEmail1(string username, string password, bool isSwitch)
+        public bool sendEmail1(string username, string password, bool isSwitch, string subject, string body)
         {
             MailAddress fromAddress = new MailAddress("bsd.odaya@gmail.com");
             MailAddress toAddress = new MailAddress("dasi1020@gmail.com");
+            //MailAddress toAddress = new MailAddress("0504117455h@gmail.com");
 
             if (isSwitch == true) { password = password.Replace(' ','+'); }
 
             MailMessage mail = new MailMessage(fromAddress.Address, toAddress.Address);
-            mail.Subject = "Testing";
-            mail.Body = "contents.only bsd!";
+            mail.Subject = subject;
+            mail.Body = body;
 
             SmtpClient client = new SmtpClient();
             client.Host = "smtp.gmail.com";
             client.Port = 587;
             client.EnableSsl = true;
-            client.Timeout = 100000;
+            client.Timeout = 20000;
             client.UseDefaultCredentials = false;
             client.Credentials = new NetworkCredential(username, password);
 
