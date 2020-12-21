@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Report } from '../classes/report';
+import { Report, ReportView } from '../classes/report';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -27,5 +27,8 @@ export class ReportsService {
   }
   public updateReportStatusToInProsses(reportId: number): Observable<any> {
     return this.httpClient.put(this.baseUrl + "PutReportStatus?reportId=" + reportId, reportId);
+  }
+  getReportsView():Observable<ReportView[]>{
+    return this.httpClient.get<ReportView[]>(this.baseUrl+"GetReportsView");
   }
 }

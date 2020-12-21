@@ -81,5 +81,10 @@ namespace BL
             report.status = (int)eProccessing.IN_PROCESS;
             et.SaveChanges();
         }
+        public static List<reportView> GetReportsView()
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            return et.reportView.ToList();
+        }
     }
 }
