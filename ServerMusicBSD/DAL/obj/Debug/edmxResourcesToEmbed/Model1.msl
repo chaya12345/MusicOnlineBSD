@@ -333,6 +333,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Commits">
+      <EntityTypeMapping TypeName="MusicOnlineModel.Commits">
+        <MappingFragment StoreEntitySet="Commits">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="topic" ColumnName="topic" />
+          <ScalarProperty Name="topicId" ColumnName="topicId" />
+          <ScalarProperty Name="title_res" ColumnName="title_res" />
+          <ScalarProperty Name="content_res" ColumnName="content_res" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="getFavoriteSongs">
       <EntityTypeMapping TypeName="MusicOnlineModel.getFavoriteSongs">
         <MappingFragment StoreEntitySet="getFavoriteSongs">
@@ -400,6 +414,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="reportView">
+      <EntityTypeMapping TypeName="MusicOnlineModel.reportView">
+        <MappingFragment StoreEntitySet="reportView">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="songId" ColumnName="songId" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="songName" ColumnName="songName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="songsDetails">
       <EntityTypeMapping TypeName="MusicOnlineModel.songsDetails">
         <MappingFragment StoreEntitySet="songsDetails">
@@ -441,20 +470,5 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <EntitySetMapping Name="reportView">
-      <EntityTypeMapping TypeName="MusicOnlineModel.reportView">
-        <MappingFragment StoreEntitySet="reportView">
-          <ScalarProperty Name="songName" ColumnName="songName" />
-          <ScalarProperty Name="date" ColumnName="date" />
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="message" ColumnName="message" />
-          <ScalarProperty Name="songId" ColumnName="songId" />
-          <ScalarProperty Name="phone" ColumnName="phone" />
-          <ScalarProperty Name="mail" ColumnName="mail" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

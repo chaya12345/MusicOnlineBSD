@@ -1,4 +1,4 @@
-export class LastesResponsView {
+export class Commit {
     id?: number;
     type?: string;
     name?: string;

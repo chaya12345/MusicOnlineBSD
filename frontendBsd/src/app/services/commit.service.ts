@@ -1,9 +1,19 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Commit } from '../classes/commit';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommitService {
 
-  constructor() { }
+  baseUrl = "https://localhost:44368/api/Commits/";
+
+  constructor(private httpClient: HttpClient) { }
+
+  public getCommits(): Observable<Commit[]> {
+    return this.httpClient.get<Commit[]>(this.baseUrl + "GetCommits");
+  }
+
 }

@@ -1,1 +1,7 @@
-<p>commits-board works!</p>
+<div class="wrap-commits-board">
+    <mini-title text="ניהול תגובות משתמשים"></mini-title>
+    <div class="wrap-commit" *ngFor="let commit of commits">
+        <p>{{commit.name}}</p>
+        <span>{{commit.title_res}}</span>
+    </div>
+</div>

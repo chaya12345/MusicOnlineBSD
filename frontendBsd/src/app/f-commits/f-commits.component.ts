@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LastesResponsView } from '../classes/lastesResponsView';
+import { Commit } from '../classes/commit';
 import { LatestCommitsService } from '../services/latest-commits.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { LatestCommitsService } from '../services/latest-commits.service';
 })
 export class FCommitsComponent implements OnInit {
 
-  lastestCommits: LastesResponsView[] = [];
+  lastestCommits: Commit[] = [];
 
   constructor(private latestCommitsService: LatestCommitsService) {
     this.getLatestCommits();

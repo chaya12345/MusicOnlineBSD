@@ -59,13 +59,13 @@ namespace DAL
         public virtual DbSet<UserPlaylistsTBL> UserPlaylistsTBL { get; set; }
         public virtual DbSet<UsersTBL> UsersTBL { get; set; }
         public virtual DbSet<VotingsToParadeTBL> VotingsToParadeTBL { get; set; }
+        public virtual DbSet<Commits> Commits { get; set; }
         public virtual DbSet<getFavoriteSongs> getFavoriteSongs { get; set; }
         public virtual DbSet<GetNewSong> GetNewSong { get; set; }
         public virtual DbSet<lastViews> lastViews { get; set; }
         public virtual DbSet<latestResponses> latestResponses { get; set; }
-        public virtual DbSet<songsDetails> songsDetails { get; set; }
         public virtual DbSet<reportView> reportView { get; set; }
-        public virtual DbSet<Commits> Commits { get; set; }
+        public virtual DbSet<songsDetails> songsDetails { get; set; }
     
         [DbFunction("MusicOnlineEntities", "itemByName")]
         public virtual IQueryable<itemByName_Result> itemByName(string item)
