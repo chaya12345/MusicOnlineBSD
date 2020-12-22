@@ -141,5 +141,17 @@ namespace BL
                 }
             }
         }
+        public static void DeleteSongsToPlaylist(int playlistId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<SongsToPlaylistsTBL> list = et.SongsToPlaylistsTBL.Where(stp => stp.playlistId == playlistId).ToList();
+            if (list == null)
+                return;
+            foreach (SongsToPlaylistsTBL item in list)
+            {
+                if (item != null)
+                    DeleteSongFromPlaylist(playlistId, item.songId);
+            }
+        }
     }
 }

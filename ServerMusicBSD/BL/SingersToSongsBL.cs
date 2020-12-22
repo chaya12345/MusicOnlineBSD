@@ -103,5 +103,17 @@ namespace BL
                 }
             }
         }
+        public static void DeleteSingerFromSongs(int singerId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<SingersToSongsTBL> singerToSongs =et.SingersToSongsTBL.Where(sts => sts.singerId == singerId).ToList();
+            if (singerToSongs == null)
+                return;
+            foreach (SingersToSongsTBL item in singerToSongs)
+            {
+                if (item != null)
+                    DeleteSingerFromSong(item.songId, singerId);
+            }
+        }
     }
 }

@@ -23,6 +23,9 @@ export class TagService {
   updateTagForSong(tag:TagsForSongs):Observable<any>{
     return this.httpClient.put(this.baseUrl+"UpdateTagForSong",tag);
   }
+  deleteTagForSong(tagForSongId:number):Observable<any>{
+    return this.httpClient.delete(this.baseUrl+"DeleteTagForSong?tagForSongId="+tagForSongId);
+  }
 
   /////////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -37,5 +40,8 @@ export class TagService {
   }
   updateTagForArticle(tag:TagsForArticles):Observable<any>{
     return this.httpClient.put(this.baseUrl+"UpdateTagForArticle",tag);
+  }
+  deleteTagForArticle(tagForArticleId:number):Observable<any>{
+    return this.httpClient.delete(this.baseUrl+"DeleteTagForArticle?tagForArticleId="+tagForArticleId);
   }
 }

@@ -95,5 +95,15 @@ namespace BL
             }
             return false;
         }
+        public static void DeletePlayList(int playlistId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            PlaylistsTBL playlist= et.PlaylistsTBL.Where(p => p.id == playlistId).FirstOrDefault();
+            if (playlist == null)
+                return;
+            SongsToPlaylistsBL.DeleteSongsToPlaylist(playlistId);
+            et.PlaylistsTBL.Remove(playlist);
+            et.SaveChanges();
+        }
     }
 }

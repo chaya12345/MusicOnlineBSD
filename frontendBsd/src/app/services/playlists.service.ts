@@ -38,4 +38,7 @@ export class PlaylistsService {
   public updatePlaylistWithSongs(pws: playlistWithSongs): Observable<boolean> {
     return this.httpClient.put<boolean>("https://localhost:44368/api/Playlists/UpdatePlaylistWithSongs", pws);
   }
+  deletePlayList(playlistId:number):Observable<any>{
+    return this.httpClient.delete(this.baseUrl+"DeletePlayList?playlistId="+playlistId);
+  }
 }

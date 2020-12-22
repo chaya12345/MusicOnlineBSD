@@ -53,5 +53,15 @@ namespace BL
             artists.name = artist.name;
             et.SaveChanges();
         }
+        public static void DeleteArtist(int artistId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            ArtistsTBL artist = et.ArtistsTBL.Where(a => a.id == artistId).FirstOrDefault();
+            if (artist == null)
+                return;
+            ArtistsToSongsBL.DeleteArtistFromSongs(artistId);
+            et.ArtistsTBL.Remove(artist);
+            et.SaveChanges();
+        }
     }
 }

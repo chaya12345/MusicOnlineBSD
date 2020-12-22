@@ -52,5 +52,9 @@ namespace ServerMusicBSD.Controllers
             }
             return false;
         }
+        public void DeletePlayList(int playlistId)
+        {
+            PlaylistsBL.DeletePlayList(playlistId);
+        }
     }
 }

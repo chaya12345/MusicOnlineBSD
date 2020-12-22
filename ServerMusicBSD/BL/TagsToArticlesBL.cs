@@ -71,5 +71,15 @@ namespace BL
                     AddTagToArticle(new TagsToArticlesTBL() { tagId = tag.id, articleId = articleId });
             }
         }
+        public static void DeleteTagFromArticles(int tagId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<TagsToArticlesTBL> list = et.TagsToArticlesTBL.Where(tta => tta.tagId == tagId).ToList();
+            if (list != null)
+            {
+                et.TagsToArticlesTBL.RemoveRange(list);
+                et.SaveChanges();
+            }
+        }
     }
 }
