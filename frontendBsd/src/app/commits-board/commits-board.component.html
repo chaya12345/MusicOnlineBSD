@@ -3,9 +3,7 @@
     <div class="wrap-groups" *ngIf="groups!=null&&groups!=undefined">
         <div class="wrap-group" *ngFor="let group of groups">
             <p>{{group.name}}</p>
-            <div class="wrap-commit" *ngFor="let commit of group.list"
-                (click)="selectedCommit=(selectedCommit==commit?null:commit)"
-                [class.active-commit]="selectedCommit==commit">
+            <div class="wrap-commit" *ngFor="let commit of group.list" (click)="selectedCommit=(selectedCommit==commit?null:commit)" [class.active-commit]="selectedCommit==commit">
                 <div class="title-commit">
                     <p><span>{{commit.name}}</span> » {{commit.topic}}</p>
                     <span>{{commit.title_res}}</span>
@@ -13,7 +11,7 @@
                 <mat-icon *ngIf="commit.tested==true">check_circle</mat-icon>
                 <button mat-icon-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()"><mat-icon>more_vert</mat-icon></button>
                 <mat-menu #menu="matMenu">
-                    <button mat-menu-item><mat-icon>delete</mat-icon>מחק תגובה</button>
+                    <button mat-menu-item (click)="deleteCommit(commit)"><mat-icon>delete</mat-icon>מחק תגובה</button>
                     <button mat-menu-item (click)="signAsTested(commit)"><mat-icon>check_circle</mat-icon>סמן כתגובה שאושרה</button>
                 </mat-menu>
                 <div class="opened-commit" *ngIf="selectedCommit==commit">

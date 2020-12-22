@@ -1,7 +1,10 @@
 import { group } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Commit } from '../classes/commit';
+import { CommitsToArticles } from '../classes/commitsToArticles';
 import { CommitService } from '../services/commit.service';
+import { CommitsToArticlesService } from '../services/commits-to-articles.service';
+import { CommitsToSongsService } from '../services/commits-to-songs.service';
 
 export class Group {
   name: string;
@@ -19,7 +22,8 @@ export class CommitsBoardComponent implements OnInit {
   groups: Group[] = [];
   selectedCommit: Commit;
 
-  constructor(private commitService: CommitService) {
+  constructor(private commitService: CommitService, private commitsToArticlesService: CommitsToArticlesService,
+    private commitsToSongsService: CommitsToSongsService) {
     this.getCommits();
   }
 
@@ -119,7 +123,7 @@ export class CommitsBoardComponent implements OnInit {
   isInAnOneWeekAgo(date: Date): boolean {
     var curr = new Date;
     var first = curr.getDate() - curr.getDay() - 7;
-    var last = first  - 1;
+    var last = first - 1;
     var firstday = new Date(curr.setDate(first)).toUTCString();
     var lastday = new Date(curr.setDate(last)).toUTCString();
     if (Date.parse(firstday) < Date.parse(new Date(date).toUTCString()) &&
@@ -154,7 +158,29 @@ export class CommitsBoardComponent implements OnInit {
   }
 
   signAsTested(commit: Commit): void {
+    if (commit.type == "article") {
+      try {
+        this.commitsToArticlesService.updateIsTested(commit.id, true).subscribe();
+      } catch (err) { console.log(err); }
+    }
+    else{
+      try {
+        this.commitsToSongsService.updateIsTested(commit.id, true).subscribe();
+      } catch (err) { console.log(err); }
+    }
+  }
+  deleteCommit(commit: Commit): void {
     try {
+      if (commit.type == "article") {
+        try {
+          this.commitsToArticlesService.deleteCommit(commit.id).subscribe();
+        } catch (err) { console.log(err); }
+      }
+      else{
+        try {
+          this.commitsToSongsService.deleteCommit(commit.id).subscribe();
+        } catch (err) { console.log(err); }
+      }
     } catch (err) { console.log(err); }
   }
 
