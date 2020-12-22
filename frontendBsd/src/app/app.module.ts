@@ -155,6 +155,7 @@ import { AddingArtistComponent } from './adding-artist/adding-artist.component';
 import { AddingTagComponent } from './adding-tag/adding-tag.component';
 import { DeletingAreaComponent } from './deleting-area/deleting-area.component';
 import { CommitsBoardComponent } from './commits-board/commits-board.component';
+import { SearchingAreaComponent } from './searching-area/searching-area.component';
 
 @NgModule({
   declarations: [
@@ -297,7 +298,8 @@ import { CommitsBoardComponent } from './commits-board/commits-board.component';
     AddingArtistComponent,
     AddingTagComponent,
     DeletingAreaComponent,
-    CommitsBoardComponent
+    CommitsBoardComponent,
+    SearchingAreaComponent
   ],
   imports: [
     BrowserModule,

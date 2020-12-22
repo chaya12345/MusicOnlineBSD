@@ -17,6 +17,7 @@ import {
 import { AdminComponent } from './admin/admin.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { UserAreaComponent } from './user-area/user-area.component';
+import { SearchingAreaComponent } from './searching-area/searching-area.component';
 
 
 const routes: Routes = [{
@@ -43,6 +44,9 @@ const routes: Routes = [{
 }, {
   path: "playlist",
   component: PlaylistSectionComponent
+}, {
+  path: "searching",
+  component: SearchingAreaComponent
 }, {
   path: "settings",
   component: SettingsComponent,
