@@ -19,5 +19,8 @@ export class ArtistService {
   public updateArtist(artist:Artist):Observable<any>{
     return this.httpClient.put(this.baseUrl+"UpdateArtist",artist);
   }
+  DeleteArtist(artistId:number):Observable<any>{
+    return this.httpClient.delete(this.baseUrl+"DeleteArtist?artistId="+artistId);
+  }
 
 }

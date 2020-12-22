@@ -27,5 +27,9 @@ namespace ServerMusicBSD.Controllers
         {
             ArtistsBL.UpdateArtist(artist);
         }
+        public void DeleteArtist(int artistId)
+        {
+            ArtistsBL.DeleteArtist(artistId);
+        }
     }
 }

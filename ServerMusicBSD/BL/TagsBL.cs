@@ -69,6 +69,16 @@ namespace BL
             }
 
         }
+        public static void DeleteTagForSong(int tagForSongId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            TagsForSongsTBL tag = et.TagsForSongsTBL.Where(t => t.id == tagForSongId).FirstOrDefault();
+            if (tag == null)
+                return;
+            TagsToSongsBL.DeleteTagFromSongs(tagForSongId);
+            et.TagsForSongsTBL.Remove(tag);
+            et.SaveChanges();
+        }
         //------------------------------------------------------------------------
         //------------------------------------------------------------------------
         //------------------------------------------------------------------------
@@ -129,6 +139,16 @@ namespace BL
                 et.SaveChanges();
             }
 
+        }
+        public static void DeleteTagForArticle(int tagForArticleId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            TagsForArticlesTBL tag = et.TagsForArticlesTBL.Where(t => t.id == tagForArticleId).FirstOrDefault();
+            if (tag == null)
+                return;
+            TagsToArticlesBL.DeleteTagFromArticles(tagForArticleId);
+            et.TagsForArticlesTBL.Remove(tag);
+            et.SaveChanges();
         }
     }
 }

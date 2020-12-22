@@ -32,6 +32,10 @@ namespace ServerMusicBSD.Controllers
         {
             TagsBL.UpdateTagForSong(tag);
         }
+        public void DeleteTagForSong(int tagForSongId)
+        {
+            TagsBL.DeleteTagForSong(tagForSongId);
+        }
         //------------------------------------------------------------------------
         //------------------------------------------------------------------------
         //------------------------------------------------------------------------          
@@ -51,6 +55,10 @@ namespace ServerMusicBSD.Controllers
         public void UpdateTagForArticle([FromBody]TagsForArticlesTBL tag)
         {
             TagsBL.UpdateTagForArticle(tag);
+        }
+        public void DeleteTagForArticle(int tagForArticleId)
+        {
+            TagsBL.DeleteTagForArticle(tagForArticleId);
         }
     }
 }

@@ -26,4 +26,7 @@ export class SingerService {
   public updateSinger(singer: Singer): Observable<boolean> {
     return this.httpClient.put<boolean>(this.baseUrl + "UpdateSinger", singer);
   }
+  deleteSinger(singerId:number):Observable<any>{
+    return this.httpClient.delete(this.baseUrl+"DeleteSinger?singerId="+singerId);
+  }
 }

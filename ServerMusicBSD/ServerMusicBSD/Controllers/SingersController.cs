@@ -35,5 +35,9 @@ namespace ServerMusicBSD.Controllers
         {
             return SingersBL.UpdateSinger(singer);
         }
+        public void DeleteSinger(int singerId)
+        {
+            SingersBL.DeleteSinger(singerId);
+        }
     }
 }

@@ -65,9 +65,13 @@ namespace BL
         public static void DeleteSingerFromParade(int singerId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SingersToParadeTBL singerToParade = et.SingersToParadeTBL.Where(Parade => Parade.singerId == singerId).FirstOrDefault();
-            et.SingersToParadeTBL.Remove(singerToParade);
-            et.SaveChanges();
+            List<SingersToParadeTBL> singerToParade = et.SingersToParadeTBL.Where(Parade => Parade.singerId == singerId).ToList();
+            if (singerToParade != null)
+            {
+                et.SingersToParadeTBL.RemoveRange(singerToParade);
+                et.SaveChanges();
+            }
+            
         }
     }
 }

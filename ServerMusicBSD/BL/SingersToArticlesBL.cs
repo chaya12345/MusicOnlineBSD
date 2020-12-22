@@ -55,5 +55,27 @@ namespace BL
                 }
             }
         }
+        public static void DeleteSingerFromArticle(int singerId,int? articleId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            SingersToArticlesTBL singersToArticles= et.SingersToArticlesTBL.Where(sta => sta.articleId == articleId && sta.singerId == singerId).FirstOrDefault();
+            if (singersToArticles != null)
+            {
+                et.SingersToArticlesTBL.Remove(singersToArticles);
+                et.SaveChanges();
+            }
+        }
+        public static void DeleteSingerFronArticles(int singerId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<SingersToArticlesTBL> list = et.SingersToArticlesTBL.Where(sta => sta.singerId == singerId).ToList();
+            if (list == null)
+                return;
+            foreach (SingersToArticlesTBL item in list)
+            {
+                if (item != null)
+                    DeleteSingerFromArticle(singerId, item.articleId);
+            }
+        }
     }
 }

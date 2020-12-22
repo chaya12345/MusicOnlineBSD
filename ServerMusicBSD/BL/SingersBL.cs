@@ -76,5 +76,17 @@ namespace BL
             }
             return false;
         }
+        public static void DeleteSinger(int singerId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            SingersTBL singer = et.SingersTBL.Where(s => s.id == singerId).FirstOrDefault();
+            if (singer == null)
+                return;
+            SingersToSongsBL.DeleteSingerFromSongs(singerId);
+            SingersToArticlesBL.DeleteSingerFronArticles(singerId);
+            SingersToParadeBL.DeleteSingerFromParade(singerId);
+            et.SingersTBL.Remove(singer);
+            et.SaveChanges();
+        }
     }
 }
