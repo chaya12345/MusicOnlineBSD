@@ -66,13 +66,13 @@ namespace BL
                 return Casts.ToCommitsToSongsDTO.GetCommits(list);
             return null;
         }
-        public static bool UpdateIsTested(int commitId)
+        public static bool UpdateIsTested(int commitId, bool isTested)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             CommitsToSongsTBL commit = et.CommitsToSongsTBL.Where(c => c != null && c.id == commitId).FirstOrDefault();
             if (commit != null)
             {
-                commit.tested = true;
+                commit.tested = isTested;
                 et.SaveChanges();
                 return true;
             }

@@ -25,5 +25,8 @@ export class CommitsToArticlesService {
   public getLastCommits(): Observable<CommitsToArticles[]> {
     return this.httpClient.get<CommitsToArticles[]>(this.baseUrl + "GetLastCommits");
   }
+  updateIsTested(commitId:number,isTested):Observable<boolean>{
+    return this.httpClient.put<boolean>(this.baseUrl+"UpdateIsTested?commitId="+commitId+"&isTested="+isTested,isTested);
+  }
   
 }

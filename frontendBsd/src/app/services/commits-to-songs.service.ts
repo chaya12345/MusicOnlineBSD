@@ -26,4 +26,7 @@ export class CommitsToSongsService {
   public getLastCommits(): Observable<CommitsToSongs[]> {
     return this.httpClient.get<CommitsToSongs[]>(this.baseUrl + "GetLastCommits");
   }
+  updateIsTested(commitId:number,isTested):Observable<boolean>{
+    return this.httpClient.put<boolean>(this.baseUrl+"UpdateIsTested?commitId="+commitId+"&isTested="+isTested,isTested);
+  }
 }

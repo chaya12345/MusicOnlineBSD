@@ -14,10 +14,11 @@ namespace ServerMusicBSD.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CommitsToArticlesController : ApiController
     {
-        public void PostCommit(CommitsToArticlesTBL response)
+        public void PostCommit(CommitsToArticlesTBL commit)
         {
-            response.date = DateTime.Today;
-            CommitsToArticlesBL.AddResponse(response);
+            commit.date = DateTime.Now;
+            commit.tested = false;
+            CommitsToArticlesBL.AddResponse(commit);
         }
         public List<CommitsToArticlesDTO> GetArticleCommits(int articleId)
         {
@@ -27,14 +28,19 @@ namespace ServerMusicBSD.Controllers
         {
             return CommitsToArticlesBL.GetCountCommitsToArticle(articleId);
         }
-        public void DeleteCommit(int responseId)
+        public void DeleteCommit(int commitId)
         {
-            CommitsToArticlesBL.DeleteResponse(responseId);
+            CommitsToArticlesBL.DeleteResponse(commitId);
         }
         public List<CommitsToArticlesDTO> GetLastCommits()
         {
             return CommitsToArticlesBL.GetLastCommits();
         }
-       
+        [HttpPut]
+        public bool UpdateIsTested(int commitId, bool isTested)
+        {
+            return CommitsToArticlesBL.UpdateIsTested(commitId, isTested);
+        }
+
     }
 }
