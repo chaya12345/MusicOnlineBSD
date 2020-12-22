@@ -23,6 +23,7 @@ namespace BL.Casts
             newRespons.topicId = lastRespons.topicId;
             newRespons.title_res = lastRespons.title_res;
             newRespons.content_res = lastRespons.content_res;
+            newRespons.tested = lastRespons.tested;
             return newRespons;
         }
         public static List<LastestCommitsDTO> GetLastCommits(List<latestResponses> lastCommits)

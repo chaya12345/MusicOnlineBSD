@@ -10,10 +10,11 @@
                     <p><span>{{commit.name}}</span> » {{commit.topic}}</p>
                     <span>{{commit.title_res}}</span>
                 </div>
+                <mat-icon *ngIf="commit.tested==true">check_circle</mat-icon>
                 <button mat-icon-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()"><mat-icon>more_vert</mat-icon></button>
                 <mat-menu #menu="matMenu">
                     <button mat-menu-item><mat-icon>delete</mat-icon>מחק תגובה</button>
-                    <button mat-menu-item><mat-icon>check_circle</mat-icon>סמן כתגובה שאושרה</button>
+                    <button mat-menu-item (click)="signAsTested(commit)"><mat-icon>check_circle</mat-icon>סמן כתגובה שאושרה</button>
                 </mat-menu>
                 <div class="opened-commit" *ngIf="selectedCommit==commit">
                     <span>{{commit.content_res}}</span>

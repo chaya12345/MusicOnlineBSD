@@ -7,4 +7,5 @@ export class Commit {
     topicId?: number;
     title_res?: string;
     content_res?: string;
+    tested?: boolean;
 }

@@ -21,6 +21,7 @@ namespace BL.Casts
             newCommits.title = commit.title;
             newCommits.content = commit.content;
             newCommits.date = commit.date;
+            newCommits.tested = commit.tested;
             return newCommits;
         }
         public static List<CommitsToArticlesDTO> GetCommits(List<CommitsToArticlesTBL> Commits)

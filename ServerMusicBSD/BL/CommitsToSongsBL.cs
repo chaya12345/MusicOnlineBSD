@@ -66,5 +66,17 @@ namespace BL
                 return Casts.ToCommitsToSongsDTO.GetCommits(list);
             return null;
         }
+        public static bool UpdateIsTested(int commitId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            CommitsToSongsTBL commit = et.CommitsToSongsTBL.Where(c => c != null && c.id == commitId).FirstOrDefault();
+            if (commit != null)
+            {
+                commit.tested = true;
+                et.SaveChanges();
+                return true;
+            }
+            return false;
+        }
     }
 }

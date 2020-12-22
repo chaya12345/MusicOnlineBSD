@@ -5,4 +5,5 @@ export class CommitsToSongs {
     title?: string;
     content?: string;
     date?: Date;
+    tested?: boolean;
 }

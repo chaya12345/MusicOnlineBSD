@@ -16,5 +16,6 @@ namespace DTO
         public int topicId { get; set; }
         public string title_res { get; set; }
         public string content_res { get; set; }
+        public Nullable<bool> tested { get; set; }
     }
 }

@@ -153,4 +153,9 @@ export class CommitsBoardComponent implements OnInit {
     // }
   }
 
+  signAsTested(commit: Commit): void {
+    try {
+    } catch (err) { console.log(err); }
+  }
+
 }

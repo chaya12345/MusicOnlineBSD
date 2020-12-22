@@ -47,6 +47,7 @@
     <EntitySetMapping Name="CommitsToArticlesTBL">
       <EntityTypeMapping TypeName="MusicOnlineModel.CommitsToArticlesTBL">
         <MappingFragment StoreEntitySet="CommitsToArticlesTBL">
+          <ScalarProperty Name="tested" ColumnName="tested" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="articleId" ColumnName="articleId" />
           <ScalarProperty Name="name" ColumnName="name" />
@@ -59,6 +60,7 @@
     <EntitySetMapping Name="CommitsToSongsTBL">
       <EntityTypeMapping TypeName="MusicOnlineModel.CommitsToSongsTBL">
         <MappingFragment StoreEntitySet="CommitsToSongsTBL">
+          <ScalarProperty Name="tested" ColumnName="tested" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="songId" ColumnName="songId" />
           <ScalarProperty Name="name" ColumnName="name" />

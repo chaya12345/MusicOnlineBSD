@@ -20,6 +20,7 @@ namespace DAL
         public string title { get; set; }
         public string content { get; set; }
         public Nullable<System.DateTime> date { get; set; }
+        public Nullable<bool> tested { get; set; }
     
         public virtual ArticlesTBL ArticlesTBL { get; set; }
     }
