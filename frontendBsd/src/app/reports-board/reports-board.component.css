@@ -9,12 +9,18 @@
     grid-template-columns: auto 160px 70px 120px;
     border: solid 1px #00000024;
     border-radius: 4px;
-    padding: 10px 25px 10px 10px;
+    padding-inline: 25px 10px;
+    padding-block: 5px;
     font-family: assistant;
-    font-size: 18px;
+    font-size: 17px;
     margin-block: 10px;
     cursor: pointer;
     align-items: center;
+}
+
+.report > span {
+    font-size: 16px;
+    color: #0000008f;
 }
 
 .report:hover {
@@ -23,14 +29,17 @@
 }
 
 .report.untreated {
-    background-color: #49a8f429;
+    /* background-color: #49a8f429;
     border-color: #49a8f48c;
-    border-width: 1px;
+    border-width: 1px; */
+    background-color: #0000000d;
 }
 
 .report.active {
-    border-color: #49a8f48c;
-    border-width: 3px;
+    /* border-color: #49a8f48c; */
+    /* border-width: 3px; */
+    border-color: #2196f3;
+    background-color: #2196f30f;
 }
 
 mat-checkbox {
