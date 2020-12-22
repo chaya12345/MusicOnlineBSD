@@ -1,10 +1,12 @@
 import { group } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { Commit } from '../classes/commit';
 import { CommitsToArticles } from '../classes/commitsToArticles';
 import { CommitService } from '../services/commit.service';
 import { CommitsToArticlesService } from '../services/commits-to-articles.service';
 import { CommitsToSongsService } from '../services/commits-to-songs.service';
+import { CommonMessageService } from '../services/common-message.service';
 
 export class Group {
   name: string;
@@ -23,7 +25,7 @@ export class CommitsBoardComponent implements OnInit {
   selectedCommit: Commit;
 
   constructor(private commitService: CommitService, private commitsToArticlesService: CommitsToArticlesService,
-    private commitsToSongsService: CommitsToSongsService) {
+    private commitsToSongsService: CommitsToSongsService,private cmService: CommonMessageService, private _snackBar: MatSnackBar) {
     this.getCommits();
   }
 
@@ -160,28 +162,36 @@ export class CommitsBoardComponent implements OnInit {
   signAsTested(commit: Commit): void {
     if (commit.type == "article") {
       try {
-        this.commitsToArticlesService.updateIsTested(commit.id, true).subscribe();
+        this.commitsToArticlesService.updateIsTested(commit.id, true).subscribe(suc=>
+          this.openSnackBar(this.cmService.UPDATE_ITEM.SUCCESS),err=>this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR));
       } catch (err) { console.log(err); }
     }
     else{
       try {
-        this.commitsToSongsService.updateIsTested(commit.id, true).subscribe();
+        this.commitsToSongsService.updateIsTested(commit.id, true).subscribe(suc=>
+          this.openSnackBar(this.cmService.UPDATE_ITEM.SUCCESS),err=>this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR));
       } catch (err) { console.log(err); }
     }
   }
   deleteCommit(commit: Commit): void {
-    try {
       if (commit.type == "article") {
         try {
-          this.commitsToArticlesService.deleteCommit(commit.id).subscribe();
+          this.commitsToArticlesService.deleteCommit(commit.id).subscribe(suc=>
+            this.openSnackBar(this.cmService.DELETE_ITEM.SUCCESS),err=>this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
         } catch (err) { console.log(err); }
       }
       else{
         try {
-          this.commitsToSongsService.deleteCommit(commit.id).subscribe();
+          this.commitsToSongsService.deleteCommit(commit.id).subscribe(suc=>
+            this.openSnackBar(this.cmService.DELETE_ITEM.SUCCESS),err=>this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
         } catch (err) { console.log(err); }
       }
-    } catch (err) { console.log(err); }
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, '', {
+      duration: 2000,
+    });
   }
 
 }
