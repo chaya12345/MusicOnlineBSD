@@ -1,22 +1,30 @@
 <div class="wrap-adding-artist">
     <mini-title text="מחיקת פריט"></mini-title>
 
-    <mat-form-field appearance="fill">
-        <mat-label>בחר סוג פריט</mat-label>
-        <mat-select>
-            <mat-option *ngFor="let item of itemTypes" [value]="item" [formControl]="type" (onSelectionChange)="selectItemType(item)">{{item}}</mat-option>
-        </mat-select>
-    </mat-form-field>
+    <form class="grid-form-2-columns">
+        <mat-form-field appearance="fill" class="list">
+            <mat-label>בחר סוג פריט</mat-label>
+            <mat-select [(ngModel)]="_selectedType" (selectionChange)="_selectedType=$event.value">
+                <mat-option *ngFor="let item of itemTypes" [value]="item" [formControl]="type">{{item}}</mat-option>
+            </mat-select>
+        </mat-form-field>
 
-    <mat-form-field appearance="fill">
-        <mat-label>בחר פריט</mat-label>
-        <mat-select [disabled]="itemList.length==0">
-            <mat-option *ngFor="let item of itemList" [value]="item.name" [formControl]="item" (onSelectionChange)="selectItem(item.id)">{{item.name}}</mat-option>
-        </mat-select>
-    </mat-form-field>
+        <button mat-stroked-button (click)="selectItemType(_selectedType)">
+            <mat-icon>check_circle</mat-icon>אשר בחירת סוג
+        </button>
 
-    <button mat-stroked-button (click)="openMessageDialog('האם אתה בטוח שברצונך למחוק פריט זה?')">
-        <mat-icon>playlist_add</mat-icon>מחק
-    </button>
+        <mat-form-field appearance="fill" class="list">
+            <mat-label>בחר פריט</mat-label>
+            <mat-select [disabled]="itemList.length==0" (selectionChange)="selectItem($event.value)">
+                <mat-option *ngFor="let item of itemList" [value]="item.name" [formControl]="item">{{item.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-stroked-button (click)="openMessageDialog('האם אתה בטוח שברצונך למחוק פריט זה?')">
+            <mat-icon>delete</mat-icon>מחק
+        </button>
+    </form>
+
+    <p *ngIf="loading">המערכת מביאה את הפריטים מהסוג שנבחר <mat-spinner></mat-spinner></p>
 
 </div>
