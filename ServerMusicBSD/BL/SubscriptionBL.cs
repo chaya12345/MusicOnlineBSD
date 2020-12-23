@@ -49,7 +49,7 @@ namespace BL
             et.SaveChanges();
             return true;
         }
-        public static List<string> GetMailsOfSingerSubscription(int singerId)
+        public static List<string> GetMailsOfSingerSubscription(int? singerId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<SubscriptionTBL> list = et.SubscriptionTBL.Where(s => s != null && s.singerId == singerId).ToList();
@@ -59,12 +59,25 @@ namespace BL
             foreach (SubscriptionTBL item in list)
             {
                 UsersTBL user = et.UsersTBL.Where(u => u != null && u.id == item.userId).FirstOrDefault();
-                if (user.mail != null)
+                if (user != null && user.mail != null)
                     mails.Add(user.mail);
             }
             if (mails != null)
                 return mails;
             return null;
+        }
+        public static List<string> GetMailsOfSingerSubscriptionToSong(int songId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<SingersToSongsTBL> stsList = et.SingersToSongsTBL.Where(sts => sts != null && sts.songId == songId).ToList();
+            if (stsList == null)
+                return new List<string>();
+            List<string> mailAddresses = new List<string>();
+            foreach(SingersToSongsTBL sts in stsList)
+            {
+                mailAddresses.AddRange(GetMailsOfSingerSubscription(sts.singerId));
+            }
+            return mailAddresses;
         }
         public static List<string> GetYourSingersNameSubscription(int userId)
         {

@@ -577,16 +577,17 @@ namespace BL
         public static bool sendUpdatingEmailToUsers(string username, string password, string songName, string Folder, string image)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SongsTBL song = et.SongsTBL.Where(s => s != null && s.name == songName).FirstOrDefault();
+            songsDetails song = et.songsDetails.Where(s => s != null && s.name == songName).FirstOrDefault();
             if (song == null)
                 return false;
-            List<string> mails = SubscriptionBL.GetMailsOfSingerSubscription(song.id);
+            List<string> mails = SubscriptionBL.GetMailsOfSingerSubscriptionToSong(song.id);
             foreach (string mail in mails){
-                sendUpdatingEmail(username, password, Folder, image, mail);
+                sendUpdatingEmail(username, password, Folder, image, mail, song.name, song.singerName);
             }
             return true;
         }
-        public static bool sendUpdatingEmail(string username, string password, string FoldersPath, string imageName, string mailAddress)
+        public static bool sendUpdatingEmail(string username, string password, string FoldersPath, 
+            string imageName, string mailAddress, string songName, string singerName)
         {
             try
             {
@@ -604,7 +605,7 @@ namespace BL
                                 + FoldersPath + "\\" + imageName, "image/png");
                 inlineLogo.ContentId = Guid.NewGuid().ToString();
 
-                string body = string.Format(@"<p style=""text - align: center; ""><span style=""color:#e74c3c;""><strong>עדכון חם :)</strong></span></p><p style=""text-align: center;""><br></p><p style=""text-align: center;""><span style=""font-size:16px;"">חדש באתר - שיר ""נושא תפילה"" של הזמר <strong>איציק דדיה</strong><strong></strong></span><br></p><p style=""text-align: center;""><strong></strong><br></p><p style=""text-align: center;""><a data-cke-saved-href=""http://localhost:4200/song?songId=71"" href=""http://localhost:4200/song?songId=71""><img src=""cid:{0}"" style=""height: 200px;"" data-cke-saved-src=""http://localhost:4200/assets/images/for_songs/%D7%90%D7%99%D7%A6%D7%99%D7%A7-%D7%93%D7%93%D7%99%D7%94/%D7%A0%D7%95%D7%A9%D7%90-%D7%AA%D7%A4%D7%99%D7%9C%D7%94-1920-960x540.jpg""></a><br></p><p style=""text-align: center;""><br></p><p style=""text-align: center;"">עבור לשיר החדש בלחיצה עליו<br></p><p style=""text-align: center;""><br></p><p style=""text-align: center;""><a data-cke-saved-href=""http://localhost:4200"" href=""http://localhost:4200""><span style=""background-color:#f1c40f;"">כנס לאתר</span></a>​​​​​​​<br></p>", inlineLogo.ContentId);
+                string body = string.Format(@"<p style=""text - align: center; ""><span style=""color:#e74c3c;""><strong style=""text-align: center;"">עדכון חם :)</strong></span></p><p style=""text-align: center;""><br></p><p style=""text-align: center;""><span style=""font-size:16px;"">חדש באתר - שיר '" + songName + "' של הזמר <strong>" + singerName + "</strong><strong></strong></span><br></p><p style=""text-align: center;""><strong></strong><br></p><p style=""text-align: center;""><a data-cke-saved-href=""http://localhost:4200/song?songId=71"" href=""http://localhost:4200/song?songId=71""><img src=""cid:{0}"" style=""height: 200px;"" data-cke-saved-src=""http://localhost:4200/assets/images/for_songs/%D7%90%D7%99%D7%A6%D7%99%D7%A7-%D7%93%D7%93%D7%99%D7%94/%D7%A0%D7%95%D7%A9%D7%90-%D7%AA%D7%A4%D7%99%D7%9C%D7%94-1920-960x540.jpg""></a><br></p><p style=""text-align: center;""><br></p><p style=""text-align: center;"">עבור לשיר החדש בלחיצה עליו<br></p><p style=""text-align: center;""><br></p><p style=""text-align: center;""><a data-cke-saved-href=""http://localhost:4200"" href=""http://localhost:4200""><span style=""background-color:#f1c40f;"">כנס לאתר</span></a>​​​​​​​<br></p>", inlineLogo.ContentId);
                 var view = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
                 view.LinkedResources.Add(inlineLogo);
                 newMail.AlternateViews.Add(view);
