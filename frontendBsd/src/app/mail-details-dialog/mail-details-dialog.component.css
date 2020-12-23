@@ -1,0 +1,75 @@
+.wrap-dialog {
+    direction: rtl;
+    font-family: fb Joker;
+    font-size: 21px;
+}
+
+mat-form-field {
+    text-align: right;
+    width: 100%;
+    font-family: fb Joker, calibri;
+    font-size: 19px;
+}
+
+.mat-dialog-content p {
+    margin-bottom: 20px;
+}
+
+textarea {
+    height: 100px;
+}
+
+.mat-dialog-title {
+    font-family: fb Ogen;
+    font-size: 23px;
+    color: #2196f3;
+    text-align: center;
+    margin: 15px 0;
+}
+
+button.action-button {
+    font-family: fb Joker !important;
+    font-size: 19px !important;
+    padding: 2px 20px;
+    margin-bottom: 16px;
+    margin-right: 5px;
+}
+
+mat-form-field button {
+    transform: scale(0.75) translateY(8px);
+}
+
+mat-form-field:last-of-type {
+    margin-bottom: 5px;
+}
+
+span.link-span {
+    font-size: 15px;
+    color: #2196f3 !important;
+    cursor: pointer;
+}
+
+span.link-span:hover {
+    text-decoration: underline;
+}
+
+mat-checkbox {
+    font-family: fb Joker !important;
+    font-size: 19px !important;
+    display: block;
+    margin: 15px 0;
+}
+
+span {
+    font-size: 19px;
+    font-family: fb Joker;
+    cursor: pointer;
+}
+
+span a {
+    color: #2196f3;
+}
+
+span a:hover {
+    text-decoration: underline;
+}

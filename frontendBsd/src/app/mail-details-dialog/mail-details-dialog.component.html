@@ -1,17 +1,27 @@
 <div class="wrap-dialog">
-    <h1 mat-dialog-title>הרשמה לניוזלטר</h1>
+    <h1 mat-dialog-title>פרטי חשבון גוגל</h1>
     <div mat-dialog-content>
-        <p>גם אני רוצה להתעדכן בחדשות המוזיקה אונליין</p>
+        <p>נא הכנס את פרטי החשבון שלך לשליחת עדכונים למנויים</p>
         <form [formGroup]="detailsMailForm" (ngSubmit)="onSubmit()">
 
-            <!-- <mat-form-field appearance="fill">
-                <input matInput placeholder="example@gmail.com" formControlName="email">
-                <mat-error *ngIf="registerForm.controls.email.invalid">{{getMailErrorMessage()}}</mat-error>
-            </mat-form-field> -->
+            <mat-label>הכנס שם משתמש:</mat-label>
+            <mat-form-field appearance="fill">
+                <input type="text" matInput placeholder="example@gmail.com" formControlName="userName">
+                <mat-error *ngIf="detailsMailForm.controls.userName.invalid">{{getUserNameErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+            <mat-label>הכנס סיסמא:</mat-label>
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="******" [type]="hide?'password':'text'" formControlName="password">
+                <button mat-icon-button matSuffix (click)="hide=!hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide?'visibility_off':'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="detailsMailForm.controls.password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+            </mat-form-field>
 
             <div mat-dialog-actions>
-                <button mat-stroked-button color="warn" (click)="onNoClick()">בטל</button>
-                <button mat-flat-button color="warn" type="submit">הירשם</button>
+                <button class="action-button" mat-stroked-button color="warn" (click)="onNoClick()">בטל</button>
+                <button class="action-button" mat-flat-button color="warn" type="submit">שלח</button>
             </div>
 
         </form>
