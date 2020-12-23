@@ -18,6 +18,9 @@ export class SearchingAreaComponent implements OnInit {
   allTagsList: AllTags[] = [];
   groupByName: GroupByType[] = [];
   groupByType: GroupByType[] = [];
+  loaded1: boolean = false;
+  loaded2: boolean = false;
+
 
   constructor(private tagService: TagService) {
     this.getAllTags();
@@ -87,7 +90,7 @@ export class SearchingAreaComponent implements OnInit {
       else if (tag.name.startsWith("ת"))
         this.addTagToGroupName("ת", tag);
     });
-    console.log(this.groupByName);
+    this.loaded1 = true;
   }
 
   addTagToGroupName(letter: string, tag: AllTags): void {
@@ -132,7 +135,7 @@ export class SearchingAreaComponent implements OnInit {
           this.addTagToGroupTag("אנשים", tag);
       }
     });
-    console.log(this.groupByType);
+    this.loaded2 = true;
   }
 
   addTagToGroupTag(subGroup: string, tag: AllTags): void {
