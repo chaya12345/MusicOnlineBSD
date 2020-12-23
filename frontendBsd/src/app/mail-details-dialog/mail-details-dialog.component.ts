@@ -13,44 +13,42 @@ export class MailDetailsDialogComponent implements OnInit {
 
 
   detailsMailForm: FormGroup;
-  hide:boolean=true;
+  hide: boolean = true;
 
   constructor(public dialogRef: MatDialogRef<MailDetailsDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private _snackBar: MatSnackBar) { 
-      this.detailsMailForm=new FormGroup({
-        usernName:new FormControl("",[Validators.required,Validators.minLength(14)]),
-        password:new FormControl("",[Validators.required,Validators.minLength(6)])
-      });
-    }
+    private _snackBar: MatSnackBar) {
+    this.detailsMailForm = new FormGroup({
+      username: new FormControl("", [Validators.required, Validators.email]),
+      password: new FormControl("", [Validators.required, Validators.minLength(6)])
+    });
+  }
 
   ngOnInit(): void {
   }
-  
+
   onNoClick(): void {
     this.detailsMailForm.reset({ value: "" });
-    this.dialogRef.close();
+    this.dialogRef.close(this.data);
   }
 
   onSubmit(): void {
-    if(this.detailsMailForm.valid){
-     let mailDetails:MailDetails=new MailDetails;
-     mailDetails.username=this.detailsMailForm.controls.userName.value;
-     mailDetails.password=this.detailsMailForm.controls.password.value;
-     this.detailsMailForm.reset({ value: "" });
-     //this.dialogRef.close(mailDetails);‏
+    if (this.detailsMailForm.valid) {
+      this.data.mailDetails.username = this.detailsMailForm.controls.userName.value;
+      this.data.mailDetails.password = this.detailsMailForm.controls.password.value;
+      this.onNoClick();
     }
   }
 
-  getUserNameErrorMessage(){
-    if (this.detailsMailForm.controls.usernName.hasError("required")) {
+  getUserNameErrorMessage() {
+    if (this.detailsMailForm.controls.username.hasError("required")) {
       return "זהו שדה חובה.";
     }
-    else if (this.detailsMailForm.controls.name.hasError("minlength")) {
-      return "שם משתמש לא תקין. (פחות מ-14 תווים)"
+    else if (this.detailsMailForm.controls.username.hasError("email")) {
+      return "שם משתמש לא תקין."
     }
   }
-  getPasswordErrorMessage(){
+  getPasswordErrorMessage() {
     if (this.detailsMailForm.controls.password.hasError("required")) {
       return "זהו שדה חובה.";
     }

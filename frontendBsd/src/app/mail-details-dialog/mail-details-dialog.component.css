@@ -1,14 +1,14 @@
 .wrap-dialog {
     direction: rtl;
-    font-family: fb Joker;
-    font-size: 21px;
+    font-family: assistant;
+    font-size: 18px;
 }
 
 mat-form-field {
     text-align: right;
     width: 100%;
-    font-family: fb Joker, calibri;
-    font-size: 19px;
+    font-family: assistant;
+    font-size: 17px;
 }
 
 .mat-dialog-content p {
@@ -20,17 +20,17 @@ textarea {
 }
 
 .mat-dialog-title {
-    font-family: fb Ogen;
-    font-size: 23px;
+    font-family: assistant;
+    font-size: 22px;
     color: #2196f3;
     text-align: center;
     margin: 15px 0;
 }
 
 button.action-button {
-    font-family: fb Joker !important;
-    font-size: 19px !important;
-    padding: 2px 20px;
+    font-family: assistant;
+    font-size: 16px;
+    font-weight: 400;
     margin-bottom: 16px;
     margin-right: 5px;
 }
