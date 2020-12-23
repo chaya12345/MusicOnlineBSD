@@ -157,6 +157,7 @@ import { DeletingAreaComponent } from './deleting-area/deleting-area.component';
 import { CommitsBoardComponent } from './commits-board/commits-board.component';
 import { SearchingAreaComponent } from './searching-area/searching-area.component';
 import { EditingNewsletterComponent } from './editing-newsletter/editing-newsletter.component';
+import { MailDetailsDialogComponent } from './mail-details-dialog/mail-details-dialog.component';
 
 @NgModule({
   declarations: [
@@ -301,7 +302,8 @@ import { EditingNewsletterComponent } from './editing-newsletter/editing-newslet
     DeletingAreaComponent,
     CommitsBoardComponent,
     SearchingAreaComponent,
-    EditingNewsletterComponent
+    EditingNewsletterComponent,
+    MailDetailsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -331,7 +333,8 @@ import { EditingNewsletterComponent } from './editing-newsletter/editing-newslet
     RegisterToNewsletterComponent,
     ReportingDialogComponent,
     LogInComponent,
-    MessageComponent
+    MessageComponent,
+    MailDetailsDialogComponent
   ]
 })
 export class AppModule { }

@@ -8,14 +8,20 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Web;
 using System.Web.Http;
+using BL;
 
 namespace ServerMusicBSD.Controllers
 {
+    public class mailDetails
+    {
+        public string username { get; set; }
+        public string password { get; set; }
+    }
     public class UploadController : ApiController
     {
         [System.Web.Http.HttpPost]
         [System.Web.Http.ActionName("UploadImage")]
-        public HttpResponseMessage UploadJsonFile(string folderName, string folderName2)
+        public HttpResponseMessage UploadJsonFile(string folderName, string folderName2, string songName, mailDetails details)
         {
             HttpResponseMessage response = new HttpResponseMessage();
             var httpRequest = HttpContext.Current.Request;
@@ -25,12 +31,16 @@ namespace ServerMusicBSD.Controllers
                 foreach (string file in httpRequest.Files)
                 {
                     ++i;
-                    var postedFile = httpRequest.Files[file];
+                    HttpPostedFile postedFile = httpRequest.Files[file];
                     var filePath = HttpContext.Current.Server.MapPath("~/UploadFile/" + postedFile.FileName);
                     filePath = AppDomain.CurrentDomain.BaseDirectory.Substring(0,
                             AppDomain.CurrentDomain.BaseDirectory.LastIndexOf("Server") - 1) + "\\DAL\\src\\"
                             + (i == 1 ? folderName : folderName2) + "\\" + postedFile.FileName;
                     postedFile.SaveAs(filePath);
+                }
+                if (songName != null && details != null)
+                {
+                    SongsBL.sendUpdatingEmailToUsers(details.username, details.password, songName, folderName, httpRequest.Files[0].FileName);
                 }
             }
             return response;

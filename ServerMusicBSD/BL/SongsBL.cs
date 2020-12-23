@@ -12,6 +12,7 @@ using System.Data;
 using Newtonsoft.Json;
 using System.Data.Entity.Validation;
 using System.Globalization;
+using System.Net.Mail;
 
 namespace BL
 {
@@ -217,7 +218,7 @@ namespace BL
                     nonSuitableSongs.Add(song);
             }
             List<songsDetails> orderSongs = new List<songsDetails>();
-            if (suitableSongs != null && nonSuitableSongs!=null)
+            if (suitableSongs != null && nonSuitableSongs != null)
             {
                 orderSongs.AddRange(suitableSongs);
                 orderSongs.AddRange(nonSuitableSongs);
@@ -233,7 +234,7 @@ namespace BL
                 return null;
             foreach (songsDetails song in songs)
             {
-                if (clearList.Where(s =>s!=null&& song!=null&&s.id == song.id).FirstOrDefault() == null)
+                if (clearList.Where(s => s != null && song != null && s.id == song.id).FirstOrDefault() == null)
                 {
                     clearList.Add(song);
                     bool b = clearList.Contains(song);
@@ -263,7 +264,7 @@ namespace BL
             List<SongsTBL> songsIncludeAllTags = new List<SongsTBL>();
             if (tags != null)
             {
-                List<SongsTBL> songsList = et.SongsTBL.Where(s => s!=null&&s.isPerformance == false).ToList();
+                List<SongsTBL> songsList = et.SongsTBL.Where(s => s != null && s.isPerformance == false).ToList();
                 if (songsList == null)
                     return null;
                 foreach (SongsTBL song in songsList)
@@ -274,7 +275,7 @@ namespace BL
                     bool isContain = true;
                     foreach (var tagName in tags)
                     {
-                        TagsForSongsTBL currntTag = et.TagsForSongsTBL.Where(t =>t!=null&& t.name == tagName).FirstOrDefault();
+                        TagsForSongsTBL currntTag = et.TagsForSongsTBL.Where(t => t != null && t.name == tagName).FirstOrDefault();
                         int tagId = 0;
                         if (currntTag != null)
                         {
@@ -339,7 +340,7 @@ namespace BL
         public static void DeleteSong(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SongsTBL song = et.SongsTBL.Where(s => s != null &&s.id == songId).FirstOrDefault();
+            SongsTBL song = et.SongsTBL.Where(s => s != null && s.id == songId).FirstOrDefault();
             if (song != null)
             {
                 et.SongsTBL.Remove(song);
@@ -349,7 +350,7 @@ namespace BL
         public static void IncreaseLike(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SongsTBL song = et.SongsTBL.Where(s =>s!=null&& s.id == songId).FirstOrDefault();
+            SongsTBL song = et.SongsTBL.Where(s => s != null && s.id == songId).FirstOrDefault();
             if (song != null)
             {
                 if (song.count_like == null || song.count_like == 0)
@@ -367,7 +368,7 @@ namespace BL
         public static void DecreaseLike(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            SongsTBL song = et.SongsTBL.Where(s =>s!=null&& s.id == songId).FirstOrDefault();
+            SongsTBL song = et.SongsTBL.Where(s => s != null && s.id == songId).FirstOrDefault();
             if (song != null)
             {
                 if (song.count_like == null || song.count_like == 0)
@@ -390,7 +391,7 @@ namespace BL
                 if (song != null)
                 {
                     List<string> tags = TagsToSongsBL.GetTagsNamesToSong(song.id);
-                    if (tags!=null&&!tags.Contains("ווקאלי") && !tags.Contains("אקפלה"))
+                    if (tags != null && !tags.Contains("ווקאלי") && !tags.Contains("אקפלה"))
                     {
                         nonVocalSongs.Add(song);
                     }
@@ -403,7 +404,7 @@ namespace BL
         public static List<songsDetails> GetSimilarSongs(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<TagsForSongsDTO> tags =TagsBL.GetTagsForSongs(TagsToSongsBL.GetTagsToSong(songId));
+            List<TagsForSongsDTO> tags = TagsBL.GetTagsForSongs(TagsToSongsBL.GetTagsToSong(songId));
             List<songsDetails> possibleSongs = new List<songsDetails>();
             List<songsDetails> songs = new List<songsDetails>();
             List<TagsForSongsDTO>[] hardTags = new List<TagsForSongsDTO>[necessity.Count];
@@ -441,14 +442,14 @@ namespace BL
         {
 
             MusicOnlineEntities et = new MusicOnlineEntities();
-            int artistId = et.ArtistsTBL.Where(a => a!=null&& a.name == artistName).FirstOrDefault().id;
-            List<ArtistsToSongsTBL> artistsToSongs = et.ArtistsToSongsTBL.Where(a =>a!=null&& a.artistId == artistId).ToList();
+            int artistId = et.ArtistsTBL.Where(a => a != null && a.name == artistName).FirstOrDefault().id;
+            List<ArtistsToSongsTBL> artistsToSongs = et.ArtistsToSongsTBL.Where(a => a != null && a.artistId == artistId).ToList();
             if (artistsToSongs != null)
             {
                 List<SongsTBL> songs = new List<SongsTBL>();
                 foreach (ArtistsToSongsTBL item in artistsToSongs)
                 {
-                    SongsTBL sta = et.SongsTBL.Where(s =>s!=null&& s.id == item.songId).FirstOrDefault();
+                    SongsTBL sta = et.SongsTBL.Where(s => s != null && s.id == item.songId).FirstOrDefault();
                     if (sta != null)
                     {
                         songs.Add(sta);
@@ -464,13 +465,13 @@ namespace BL
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<songsDetails> list = new List<songsDetails>();
-            if (et.SingersTBL.Where(singer => singer!=null&& singer.name == name).FirstOrDefault() != null)
+            if (et.SingersTBL.Where(singer => singer != null && singer.name == name).FirstOrDefault() != null)
             {
                 List<songsDetails> list1 = GetSongsBySinger(name);
                 if (list1 != null)
                     list.AddRange(list1);
             }
-            if (et.ArtistsTBL.Where(artist => artist!=null&& artist.name == name).FirstOrDefault() != null)
+            if (et.ArtistsTBL.Where(artist => artist != null && artist.name == name).FirstOrDefault() != null)
             {
                 List<songsDetails> list1 = GetSongsByArtist(name);
                 if (list1 != null)
@@ -492,7 +493,7 @@ namespace BL
             {
                 year = ToJewishDateString(DateTime.Today.AddDays(-70), "D");
             }
-            year= year.Substring(year.IndexOf('ת'));
+            year = year.Substring(year.IndexOf('ת'));
             Console.WriteLine(year);
             List<songsDetails> songs = GetSongs();
             if (songs == null)
@@ -566,12 +567,59 @@ namespace BL
                         ArtistsToSongsTBL artistWithJobTBL = et.ArtistsToSongsTBL.Where(
                             a => a.artistId == art.id && a.jobId == job.id).FirstOrDefault();
                         if (artistWithJobTBL != null)
-                        artistsList.Add(artistWithJobTBL);
+                            artistsList.Add(artistWithJobTBL);
                     }
                 }
                 ArtistsToSongsBL.UpdateArtistsToSong(songTBL.id, artistsList);
             }
-                
+
+        }
+        public static bool sendUpdatingEmailToUsers(string username, string password, string songName, string Folder, string image)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            SongsTBL song = et.SongsTBL.Where(s => s != null && s.name == songName).FirstOrDefault();
+            if (song == null)
+                return false;
+            List<string> mails = SubscriptionBL.GetMailsOfSingerSubscription(song.id);
+            foreach (string mail in mails){
+                sendUpdatingEmail(username, password, Folder, image, mail);
+            }
+            return true;
+        }
+        public static bool sendUpdatingEmail(string username, string password, string FoldersPath, string imageName, string mailAddress)
+        {
+            try
+            {
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                MailMessage newMail = new MailMessage();
+                newMail.From = new MailAddress("bsd.odaya@gmail.com");
+                newMail.CC.Add(new MailAddress(mailAddress));
+                newMail.Subject = "חדש במיוזיק אונליין »»»»";
+                newMail.IsBodyHtml = true;
+
+                password = password.Replace(' ', '+');
+
+                var inlineLogo = new LinkedResource(AppDomain.CurrentDomain.BaseDirectory.Substring(0,
+                                AppDomain.CurrentDomain.BaseDirectory.LastIndexOf("Server") - 1) + "\\DAL\\src\\"
+                                + FoldersPath + "\\" + imageName, "image/png");
+                inlineLogo.ContentId = Guid.NewGuid().ToString();
+
+                string body = string.Format(@"<p style=""text - align: center; ""><span style=""color:#e74c3c;""><strong>עדכון חם :)</strong></span></p><p style=""text-align: center;""><br></p><p style=""text-align: center;""><span style=""font-size:16px;"">חדש באתר - שיר ""נושא תפילה"" של הזמר <strong>איציק דדיה</strong><strong></strong></span><br></p><p style=""text-align: center;""><strong></strong><br></p><p style=""text-align: center;""><a data-cke-saved-href=""http://localhost:4200/song?songId=71"" href=""http://localhost:4200/song?songId=71""><img src=""cid:{0}"" style=""height: 200px;"" data-cke-saved-src=""http://localhost:4200/assets/images/for_songs/%D7%90%D7%99%D7%A6%D7%99%D7%A7-%D7%93%D7%93%D7%99%D7%94/%D7%A0%D7%95%D7%A9%D7%90-%D7%AA%D7%A4%D7%99%D7%9C%D7%94-1920-960x540.jpg""></a><br></p><p style=""text-align: center;""><br></p><p style=""text-align: center;"">עבור לשיר החדש בלחיצה עליו<br></p><p style=""text-align: center;""><br></p><p style=""text-align: center;""><a data-cke-saved-href=""http://localhost:4200"" href=""http://localhost:4200""><span style=""background-color:#f1c40f;"">כנס לאתר</span></a>​​​​​​​<br></p>", inlineLogo.ContentId);
+                var view = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
+                view.LinkedResources.Add(inlineLogo);
+                newMail.AlternateViews.Add(view);
+
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential(username, password);
+                SmtpServer.EnableSsl = true;
+
+                SmtpServer.Send(newMail);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

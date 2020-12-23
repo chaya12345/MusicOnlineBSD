@@ -13,12 +13,17 @@ import { ArtistService } from '../services/artist.service';
 import { SingerService } from '../services/singer.service';
 import { SongObj, SongService } from '../services/song.service';
 import { TagService } from '../services/tag.service';
-import { UploadService } from '../services/upload.service';
+import { MailDetails, UploadService } from '../services/upload.service';
 import { SingersToSongService } from '../services/singers-to-song.service';
 import { TagsToSongsService } from '../services/tags-to-songs.service';
 import { ArtistsToSongsService } from '../services/artists-to-songs.service';
 import { Job } from '../classes/job';
 import { JobService } from '../services/job.service';
+import { MailDetailsDialogComponent } from '../mail-details-dialog/mail-details-dialog.component';
+
+export interface DialogData {
+  mailDetails: MailDetails;
+}
 
 @Component({
   selector: 'uploading-song',
@@ -50,6 +55,8 @@ export class UploadingSongComponent implements OnInit {
   // artistWithJob:ArtistWithJob=new ArtistWithJob;
   artist1: string = "";
   job1: string = "";
+
+  mailDetails: MailDetails = new MailDetails();
 
   constructor(private singerService: SingerService, private tagService: TagService,
     private artistService: ArtistService, private uploadService: UploadService,
@@ -117,6 +124,7 @@ export class UploadingSongComponent implements OnInit {
 
   onSubmit(): void {
     this.uploadSong.controls.song.setValue("songs/");
+    this.mailDetails = this.openDialogToMailDetails();
     if (this.uploadSong.valid && this.imageFile != null && this.songFile != null) {
       let folderOfSinger = this.convertToFolderName(this.uploadSong.controls.singers.value[0]);
       this.uploadSong.controls.image.setValue("for_songs/" + folderOfSinger + "/" + this.imageFile.name);
@@ -138,6 +146,7 @@ export class UploadingSongComponent implements OnInit {
       songObj.tags = this.uploadSong.controls.tags.value;
       songObj.artists = this.artistsWithJobs;
       try {
+        this.mailDetails = this.openDialogToMailDetails();
         this.songService.addSong(songObj).subscribe(res => {
           console.log(res);
           this.openSnackBar("העלאת שיר בוצעה בהצלחה");
@@ -246,11 +255,24 @@ export class UploadingSongComponent implements OnInit {
 
   saveFile(filesToUpload: File[], folderName: string, folderName2?: string): void {
     if (filesToUpload != null) {
-      this.uploadService.postFile(filesToUpload, folderName, folderName2).subscribe(
+      this.uploadService.postFile(filesToUpload, folderName, this.uploadSong.controls.name.value, this.mailDetails, folderName2).subscribe(
         res => console.log(res),
         error => console.log(error)
       );
     }
+  }
+
+  openDialogToMailDetails(): MailDetails {
+    try {
+      const dialogRef = this.dialog.open(MailDetailsDialogComponent, {
+        width: '400px',
+        data: { }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        return result;
+      });
+    }
+    catch (err) { console.log(err); return null; }
   }
 
   getSingers(): void {
