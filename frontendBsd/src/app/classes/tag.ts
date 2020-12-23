@@ -11,3 +11,9 @@ export class TypesOfTags {
     id: number;
     name?: string;
 }
+export class AllTags{
+    id?:number;
+    name?:string;
+    type?:string;
+    tagType?:string;
+}

@@ -53,6 +53,9 @@
     <Compile Include="AlbumsTBL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="AllTags.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="ArticlesTBL.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TagsForArticles, TagsForSongs } from '../classes/tag';
+import { AllTags, TagsForArticles, TagsForSongs } from '../classes/tag';
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +43,11 @@ export class TagService {
   }
   deleteTagForArticle(tagForArticleId:number):Observable<any>{
     return this.httpClient.delete(this.baseUrl+"DeleteTagForArticle?tagForArticleId="+tagForArticleId);
+  }
+
+  /////////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+  getAllTags():Observable<AllTags[]>{
+    return this.httpClient.get<AllTags[]>(this.baseUrl+"GetAllTags");
   }
 }

@@ -60,5 +60,12 @@ namespace ServerMusicBSD.Controllers
         {
             TagsBL.DeleteTagForArticle(tagForArticleId);
         }
+        //------------------------------------------------------------------------
+        //------------------------------------------------------------------------
+        //------------------------------------------------------------------------
+        public List<AllTags> GetAllTags()
+        {
+            return TagsBL.GetAllTags();
+        }
     }
 }
