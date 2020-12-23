@@ -263,6 +263,7 @@ export class UploadingSongComponent implements OnInit {
   }
 
   openDialogToMailDetails(): MailDetails {
+    this.mailDetails
     try {
       const dialogRef = this.dialog.open(MailDetailsDialogComponent, {
         width: '400px',
