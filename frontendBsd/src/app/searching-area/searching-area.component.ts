@@ -8,6 +8,8 @@ export class GroupByType {
   list: AllTags[];
 }
 
+export enum GroupingType { letter, category }
+
 @Component({
   selector: 'searching-area',
   templateUrl: './searching-area.component.html',
@@ -16,17 +18,31 @@ export class GroupByType {
 export class SearchingAreaComponent implements OnInit {
 
   allTagsList: AllTags[] = [];
-  groupByName: GroupByType[] = [];
-  groupByType: GroupByType[] = [];
+  // groupByName: GroupByType[] = [];
+  // groupByType: GroupByType[] = [];
+  list: GroupByType[] = [];
   loaded1: boolean = false;
   loaded2: boolean = false;
 
+  groupingType: GroupingType = GroupingType.category;
 
   constructor(private tagService: TagService) {
     this.getAllTags();
   }
 
   ngOnInit(): void {
+  }
+
+  changeByLetter(): void {
+    if (this.groupingType != GroupingType.letter) {
+      this.groupingType = GroupingType.letter;
+    }
+  }
+
+  changeByCategory(): void {
+    if (this.groupingType != GroupingType.category) {
+      this.groupingType = GroupingType.category;
+    }
   }
 
   getAllTags() {
@@ -37,13 +53,14 @@ export class SearchingAreaComponent implements OnInit {
           this.allTagsList.sort((a, b) => a.name.localeCompare(b.name));
           console.log(this.allTagsList);
           this.groupingByName();
-          this.groupingByTag();
+          // this.groupingByTag();
         }
         , err => console.log(err));
     } catch (err) { console.log(err); }
   }
 
   groupingByName() {
+    this.list = [];
     this.allTagsList.forEach(tag => {
       if (tag.name.startsWith("א"))
         this.addTagToGroupName("א", tag);
@@ -95,7 +112,7 @@ export class SearchingAreaComponent implements OnInit {
 
   addTagToGroupName(letter: string, tag: AllTags): void {
     let exist: boolean = false;
-    this.groupByName.forEach(group => {
+    this.list.forEach(group => {
       if (group.typeName == letter) {
         group.list.push(tag);
         exist = true;
@@ -106,11 +123,12 @@ export class SearchingAreaComponent implements OnInit {
       g.typeName = letter;
       g.list = [];
       g.list.push(tag);
-      this.groupByName.push(g);
+      this.list.push(g);
     }
   }
 
   groupingByTag() {
+    this.list = [];
     this.allTagsList.forEach(tag => {
       if (tag.type == "singer")
         this.addTagToGroupTag("זמרים", tag);
@@ -140,7 +158,7 @@ export class SearchingAreaComponent implements OnInit {
 
   addTagToGroupTag(subGroup: string, tag: AllTags): void {
     let exist: boolean = false;
-    this.groupByType.forEach(group => {
+    this.list.forEach(group => {
       if (group.typeName == subGroup) {
         group.list.push(tag);
         exist = true;
@@ -151,7 +169,7 @@ export class SearchingAreaComponent implements OnInit {
       g.typeName = subGroup;
       g.list = [];
       g.list.push(tag);
-      this.groupByType.push(g);
+      this.list.push(g);
     }
   }
 

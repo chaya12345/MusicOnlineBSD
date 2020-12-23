@@ -17,7 +17,7 @@ export class UploadService {
 
   constructor(private httpClient: HttpClient) { }
 
-  postFile(filesToUpload: File[], folderName: string, songName: string, mailDetails: MailDetails, folderName2?: string): Observable<boolean> {
+  postFile(filesToUpload: File[], folderName: string, folderName2?: string, songName?: string, mailDetails?: MailDetails): Observable<boolean> {
     const formData: FormData = new FormData();
     // formData.append('fileKey', fileToUpload, fileToUpload.name);
     formData.append("fileToUpload1", filesToUpload[0], filesToUpload[0].name);

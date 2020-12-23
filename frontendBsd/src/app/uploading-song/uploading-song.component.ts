@@ -255,7 +255,7 @@ export class UploadingSongComponent implements OnInit {
 
   saveFile(filesToUpload: File[], folderName: string, folderName2?: string): void {
     if (filesToUpload != null) {
-      this.uploadService.postFile(filesToUpload, folderName, this.uploadSong.controls.name.value, this.mailDetails, folderName2).subscribe(
+      this.uploadService.postFile(filesToUpload, folderName, folderName2, this.uploadSong.controls.name.value, this.mailDetails).subscribe(
         res => console.log(res),
         error => console.log(error)
       );

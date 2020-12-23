@@ -1,5 +1,11 @@
 <div class="wrap-searching-area">
-    <top _title="איזור החיפוש שלך" subtitle="כאן תוכל לחפש שירים וכתבות, קליפים והופעות לפי כל פרמטר שתבחר" icon="search"></top>
-    <tags [groupTag]="groupByName" *ngIf="loaded1"></tags>
-    <tags [groupTag]="groupByType" *ngIf="loaded2"></tags>
+    <top _title="איזור החיפוש שלך" subtitle="כאן תוכל לחפש שירים וכתבות, קליפים והופעות לפי כל פרמטר שתבחר"
+        icon="search"></top>
+    <div class="wrap-tags">
+        <button mat-stroked-buuton (click)="groupingByName()">קבץ תגיות לפי אותיות</button>
+        <button mat-stroked-buuton (click)="groupingByTag()">קבץ תגיות לפי סוג</button>
+        <!-- <tags [groupTag]="list" *ngIf="loaded1"></tags>
+        <tags [groupTag]="list" *ngIf="loaded2"></tags> -->
+        <tags [groupTag]="list"></tags>
+    </div>
 </div>
