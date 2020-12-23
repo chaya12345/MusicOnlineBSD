@@ -2,10 +2,12 @@
     <top _title="איזור החיפוש שלך" subtitle="כאן תוכל לחפש שירים וכתבות, קליפים והופעות לפי כל פרמטר שתבחר"
         icon="search"></top>
     <div class="wrap-tags">
-        <button mat-stroked-buuton (click)="groupingByName()">קבץ תגיות לפי אותיות</button>
-        <button mat-stroked-buuton (click)="groupingByTag()">קבץ תגיות לפי סוג</button>
-        <!-- <tags [groupTag]="list" *ngIf="loaded1"></tags>
-        <tags [groupTag]="list" *ngIf="loaded2"></tags> -->
-        <tags [groupTag]="list"></tags>
+        <button mat-stroked-button (click)="groupingByName()"><mat-icon>text_rotate_vertical</mat-icon>קבץ תגיות לפי אותיות</button>
+        <button mat-stroked-button (click)="groupingByTag()"><mat-icon>dns</mat-icon>קבץ תגיות לפי סוג</button>
+        <div *ngFor="let group of list">
+            <p>{{group.typeName}}</p>
+            <tags [groupTag]="group.list"></tags>
+        </div>
     </div>
+    <footer></footer>
 </div>

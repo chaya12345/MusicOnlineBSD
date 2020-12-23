@@ -1,0 +1,25 @@
+.wrap-tags {
+    width: 60vw;
+    margin-inline: auto;
+    font-family: assistant;
+    margin-block: 140px;
+}
+
+.wrap-tags p {
+    margin-block: 25px 15px;
+    padding: 10px;
+    background-color: whitesmoke;
+}
+
+.wrap-tags button {
+    font-family: assistant;
+    font-weight: 400;
+    font-size: 17px;
+    padding: 8px 20px;
+    margin-left: 20px;
+    margin-bottom: 60px;
+}
+
+.wrap-tags button mat-icon {
+    margin-left: 8px;
+}

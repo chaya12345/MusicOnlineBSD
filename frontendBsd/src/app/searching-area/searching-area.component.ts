@@ -18,11 +18,7 @@ export enum GroupingType { letter, category }
 export class SearchingAreaComponent implements OnInit {
 
   allTagsList: AllTags[] = [];
-  // groupByName: GroupByType[] = [];
-  // groupByType: GroupByType[] = [];
   list: GroupByType[] = [];
-  loaded1: boolean = false;
-  loaded2: boolean = false;
 
   groupingType: GroupingType = GroupingType.category;
 
@@ -33,18 +29,6 @@ export class SearchingAreaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  changeByLetter(): void {
-    if (this.groupingType != GroupingType.letter) {
-      this.groupingType = GroupingType.letter;
-    }
-  }
-
-  changeByCategory(): void {
-    if (this.groupingType != GroupingType.category) {
-      this.groupingType = GroupingType.category;
-    }
-  }
-
   getAllTags() {
     try {
       this.tagService.getAllTags().subscribe(
@@ -53,7 +37,6 @@ export class SearchingAreaComponent implements OnInit {
           this.allTagsList.sort((a, b) => a.name.localeCompare(b.name));
           console.log(this.allTagsList);
           this.groupingByName();
-          // this.groupingByTag();
         }
         , err => console.log(err));
     } catch (err) { console.log(err); }
@@ -107,7 +90,18 @@ export class SearchingAreaComponent implements OnInit {
       else if (tag.name.startsWith("ת"))
         this.addTagToGroupName("ת", tag);
     });
-    this.loaded1 = true;
+    this.orderLists();
+    this.joinShortGroupsTogether();
+  }
+
+  orderLists(): void {
+    this.list.forEach(group => {
+      group.list.sort((a, b) => a.name.localeCompare(b.name));
+    });
+  }
+
+  orderGroups(): void {
+    this.list.sort((a, b) => a.typeName.localeCompare(b.typeName));
   }
 
   addTagToGroupName(letter: string, tag: AllTags): void {
@@ -153,7 +147,38 @@ export class SearchingAreaComponent implements OnInit {
           this.addTagToGroupTag("אנשים", tag);
       }
     });
-    this.loaded2 = true;
+    this.joinVocally();
+    this.orderGroups();
+    this.orderLists();
+  }
+
+  joinShortGroupsTogether(): void {
+    this.list.forEach(group => {
+      let letter = group.typeName;
+      while (group.list.length < 25 && this.list.indexOf(group) < this.list.length - 1) {
+        group.typeName = letter + " - " + this.list[this.list.indexOf(group) + 1].typeName;
+        group.list = group.list.concat(this.list[this.list.indexOf(group) + 1].list);
+        this.list.splice(this.list.indexOf(group) + 1, 1);
+      }
+      if (group.list.length < 25) {
+        this.list[this.list.indexOf(group) - 1].typeName = this.list[this.list.indexOf(group) - 1].typeName[0] + " - " + letter;
+        this.list[this.list.indexOf(group) - 1].list = this.list[this.list.indexOf(group) - 1].list.concat(group.list);
+        this.list.splice(this.list.indexOf(group), 1);
+      }
+    });
+  }
+
+  joinVocally(): void {
+    this.list.some(item => {
+      if (item.typeName == "אקפלה") {
+        this.list.some(group => {
+          if (group.typeName == "כללי") {
+            group.list = group.list.concat(item.list);
+            this.list.splice(this.list.indexOf(item), 1);
+          }
+        });
+      }
+    });
   }
 
   addTagToGroupTag(subGroup: string, tag: AllTags): void {

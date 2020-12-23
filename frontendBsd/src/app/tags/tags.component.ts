@@ -10,9 +10,9 @@ import { GroupByType } from '../searching-area/searching-area.component';
 export class TagsComponent implements OnInit {
 
   @Input() tagsList?: string[] = [];
-  @Input() groupTag?:GroupByType[]=[];
+  @Input() groupTag?: GroupByType = null;
 
-  constructor() { 
+  constructor() {
   }
 
   ngOnInit() {
