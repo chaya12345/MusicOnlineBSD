@@ -1,3 +1,5 @@
 <div class="wrap-searching-area">
     <top _title="איזור החיפוש שלך" subtitle="כאן תוכל לחפש שירים וכתבות, קליפים והופעות לפי כל פרמטר שתבחר" icon="search"></top>
+    <tags [groupTag]="groupByName" *ngIf="loaded1"></tags>
+    <tags [groupTag]="groupByType" *ngIf="loaded2"></tags>
 </div>

@@ -150,5 +150,13 @@ namespace BL
             et.TagsForArticlesTBL.Remove(tag);
             et.SaveChanges();
         }
+        //------------------------------------------------------------------------
+        //------------------------------------------------------------------------
+        //------------------------------------------------------------------------
+        public static List<AllTags> GetAllTags()
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            return et.AllTags.ToList();
+        }
     }
 }

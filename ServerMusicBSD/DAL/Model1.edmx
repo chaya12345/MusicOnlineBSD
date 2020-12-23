@@ -308,6 +308,18 @@
           <Property Name="mail" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'MusicOnline.dbo.AllTags' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AllTags">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="type" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="tagType" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'MusicOnline.dbo.Commits' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Commits">
           <Key>
@@ -323,6 +335,7 @@ warning 6002: The table/view 'MusicOnline.dbo.Commits' does not have a primary k
           <Property Name="topicId" Type="int" Nullable="false" />
           <Property Name="title_res" Type="nvarchar(max)" />
           <Property Name="content_res" Type="nvarchar(max)" />
+          <Property Name="tested" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'MusicOnline.dbo.getFavoriteSongs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -397,6 +410,7 @@ warning 6002: The table/view 'MusicOnline.dbo.latestResponses' does not have a p
           <Property Name="topicId" Type="int" Nullable="false" />
           <Property Name="title_res" Type="nvarchar(max)" />
           <Property Name="content_res" Type="nvarchar(max)" />
+          <Property Name="tested" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'MusicOnline.dbo.reportView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -891,6 +905,14 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <EntitySet Name="UserPlaylistsTBL" EntityType="Self.UserPlaylistsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VotingsToParadeTBL" EntityType="Self.VotingsToParadeTBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AllTags" EntityType="Self.AllTags" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AllTags].[id] AS [id], 
+    [AllTags].[type] AS [type], 
+    [AllTags].[name] AS [name], 
+    [AllTags].[tagType] AS [tagType]
+    FROM [dbo].[AllTags] AS [AllTags]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Commits" EntityType="Self.Commits" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Commits].[id] AS [id], 
@@ -900,7 +922,8 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     [Commits].[topic] AS [topic], 
     [Commits].[topicId] AS [topicId], 
     [Commits].[title_res] AS [title_res], 
-    [Commits].[content_res] AS [content_res]
+    [Commits].[content_res] AS [content_res], 
+    [Commits].[tested] AS [tested]
     FROM [dbo].[Commits] AS [Commits]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="getFavoriteSongs" EntityType="Self.getFavoriteSongs" store:Type="Views" store:Schema="dbo">
@@ -959,7 +982,8 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     [latestResponses].[topic] AS [topic], 
     [latestResponses].[topicId] AS [topicId], 
     [latestResponses].[title_res] AS [title_res], 
-    [latestResponses].[content_res] AS [content_res]
+    [latestResponses].[content_res] AS [content_res], 
+    [latestResponses].[tested] AS [tested]
     FROM [dbo].[latestResponses] AS [latestResponses]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="reportView" EntityType="Self.reportView" store:Type="Views" store:Schema="dbo">
@@ -1525,6 +1549,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <Property Name="topicId" Type="Int32" Nullable="false" />
           <Property Name="title_res" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="content_res" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tested" Type="Boolean" />
         </EntityType>
         <EntityType Name="getFavoriteSongs">
           <Key>
@@ -1591,6 +1616,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <Property Name="topicId" Type="Int32" Nullable="false" />
           <Property Name="title_res" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="content_res" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tested" Type="Boolean" />
         </EntityType>
         <EntityType Name="reportView">
           <Key>
@@ -2198,7 +2224,18 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <FunctionImport Name="itemsByParameter" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemsByParameter_Result)">
           <Parameter Name="parameter" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="AllTags" EntityType="MusicOnlineModel.AllTags" />
         </EntityContainer>
+        <EntityType Name="AllTags">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="type" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="tagType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2542,6 +2579,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <EntitySetMapping Name="Commits">
             <EntityTypeMapping TypeName="MusicOnlineModel.Commits">
               <MappingFragment StoreEntitySet="Commits">
+                <ScalarProperty Name="tested" ColumnName="tested" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -2609,6 +2647,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <EntitySetMapping Name="latestResponses">
             <EntityTypeMapping TypeName="MusicOnlineModel.latestResponses">
               <MappingFragment StoreEntitySet="latestResponses">
+                <ScalarProperty Name="tested" ColumnName="tested" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -2676,6 +2715,16 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="AllTags">
+            <EntityTypeMapping TypeName="MusicOnlineModel.AllTags">
+              <MappingFragment StoreEntitySet="AllTags">
+                <ScalarProperty Name="tagType" ColumnName="tagType" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

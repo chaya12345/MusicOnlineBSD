@@ -338,6 +338,7 @@
     <EntitySetMapping Name="Commits">
       <EntityTypeMapping TypeName="MusicOnlineModel.Commits">
         <MappingFragment StoreEntitySet="Commits">
+          <ScalarProperty Name="tested" ColumnName="tested" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="type" ColumnName="type" />
           <ScalarProperty Name="name" ColumnName="name" />
@@ -405,6 +406,7 @@
     <EntitySetMapping Name="latestResponses">
       <EntityTypeMapping TypeName="MusicOnlineModel.latestResponses">
         <MappingFragment StoreEntitySet="latestResponses">
+          <ScalarProperty Name="tested" ColumnName="tested" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="type" ColumnName="type" />
           <ScalarProperty Name="name" ColumnName="name" />
@@ -472,5 +474,15 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="AllTags">
+      <EntityTypeMapping TypeName="MusicOnlineModel.AllTags">
+        <MappingFragment StoreEntitySet="AllTags">
+          <ScalarProperty Name="tagType" ColumnName="tagType" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

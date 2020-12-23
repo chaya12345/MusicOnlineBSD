@@ -36,6 +36,14 @@
     color: #101010;
 }
 
+.no-playlist {
+    padding: 15px;
+    margin-block: 20px;
+    font-family: assistant;
+    font-size: 18px;
+    width: 20vw;
+}
+
 p.title-section,
 mat-form-field.title-section {
     font-size: 21px !important;

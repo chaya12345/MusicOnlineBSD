@@ -32,10 +32,12 @@ export class ReportingDialogComponent implements OnInit {
       mail: new FormControl("", [Validators.email, Validators.required]),
       message: new FormControl("", [Validators.required, Validators.minLength(4)])
     })
+    console.log("data========================================");
+    console.log(parseInt(this.data.songId));
   }
 
   ngOnInit() {
-    this.songService.getSongById(parseInt(this.data.songId)).subscribe(song => this.songName = song.name, err => console.log(err));
+    this.songService.getSongById(parseInt(this.data.songId)).subscribe(song =>{ this.songName = song.name;this.songId=song.id}, err => console.log(err));
   };
 
   onSubmit() {

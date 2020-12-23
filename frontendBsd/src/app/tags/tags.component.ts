@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AllTags } from '../classes/tag';
+import { GroupByType } from '../searching-area/searching-area.component';
 
 @Component({
   selector: 'tags',
@@ -7,9 +9,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TagsComponent implements OnInit {
 
-  @Input() tagsList: string[] = [];
+  @Input() tagsList?: string[] = [];
+  @Input() groupTag?:GroupByType[]=[];
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit() {
   }

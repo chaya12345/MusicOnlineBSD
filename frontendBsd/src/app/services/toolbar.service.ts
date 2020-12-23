@@ -84,8 +84,8 @@ export class ToolbarService {
   }
 
   public addReportASong(songId): void {
-    const dialogRef = this.dialog.open(ReportingDialogComponent, { width: "500px" });
-    dialogRef.componentInstance.data.songId = songId;
+    const dialogRef = this.dialog.open(ReportingDialogComponent, { width: "500px",data:{"songId":songId}});
+    //dialogRef.componentInstance.data.songId = songId;
     dialogRef.afterClosed().subscribe(result => console.log(result));
   }
 
