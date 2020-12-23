@@ -124,7 +124,6 @@ export class UploadingSongComponent implements OnInit {
 
   onSubmit(): void {
     this.uploadSong.controls.song.setValue("songs/");
-    this.mailDetails = this.openDialogToMailDetails();
     if (this.uploadSong.valid && this.imageFile != null && this.songFile != null) {
       let folderOfSinger = this.convertToFolderName(this.uploadSong.controls.singers.value[0]);
       this.uploadSong.controls.image.setValue("for_songs/" + folderOfSinger + "/" + this.imageFile.name);
