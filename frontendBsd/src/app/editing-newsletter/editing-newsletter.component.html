@@ -1,0 +1,7 @@
+<div class="wrap-editing-newsletter">
+    <mini-title text="עריכת ניוזלטר"></mini-title>
+    <form (ngSubmit)="onSubmit()">
+        <text-editor (onUpdated)="getContent($event)"></text-editor>
+        <button mat-stroked-button type="submit">אשר ושלח למנויים<mat-icon>near_me</mat-icon></button>
+    </form>
+</div>

@@ -156,6 +156,7 @@ import { AddingTagComponent } from './adding-tag/adding-tag.component';
 import { DeletingAreaComponent } from './deleting-area/deleting-area.component';
 import { CommitsBoardComponent } from './commits-board/commits-board.component';
 import { SearchingAreaComponent } from './searching-area/searching-area.component';
+import { EditingNewsletterComponent } from './editing-newsletter/editing-newsletter.component';
 
 @NgModule({
   declarations: [
@@ -299,7 +300,8 @@ import { SearchingAreaComponent } from './searching-area/searching-area.componen
     AddingTagComponent,
     DeletingAreaComponent,
     CommitsBoardComponent,
-    SearchingAreaComponent
+    SearchingAreaComponent,
+    EditingNewsletterComponent
   ],
   imports: [
     BrowserModule,

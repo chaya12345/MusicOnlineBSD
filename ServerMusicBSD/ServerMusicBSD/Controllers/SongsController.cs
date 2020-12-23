@@ -154,6 +154,49 @@ namespace ServerMusicBSD.Controllers
             }
         }
         [HttpPost]
+        public bool sendMail(string username, string password, string FoldersPath, string imageName)
+        {
+            try
+            {
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                MailMessage newMail = new MailMessage();
+                //newMail.To.Add(new MailAddress("you@your.address"));
+                newMail.From = new MailAddress("bsd.odaya@gmail.com");
+                newMail.CC.Add(new MailAddress("dasi1020@gmail.com"));
+                newMail.Subject = "Test Subject";
+                newMail.IsBodyHtml = true;
+
+                password = password.Replace(' ', '+');
+
+                var inlineLogo = new LinkedResource(AppDomain.CurrentDomain.BaseDirectory.Substring(0,
+                                AppDomain.CurrentDomain.BaseDirectory.LastIndexOf("Server") - 1) + "\\DAL\\src\\"
+                                + FoldersPath + "\\" + imageName, "image/png");
+                inlineLogo.ContentId = Guid.NewGuid().ToString();
+
+                string body = string.Format(@"
+            <p>Lorum Ipsum Blah Blah</p>
+            <img src=""cid:{0}"" />
+            <p>Lorum Ipsum Blah Blah</p>
+        ", inlineLogo.ContentId);
+
+                body = string.Format(@"<p style=""text - align: center; ""><span style=""color:#e74c3c;""><strong>עדכון חם :)</strong></span></p><p style=""text-align: center;""><br></p><p style=""text-align: center;""><span style=""font-size:16px;"">חדש באתר - שיר ""נושא תפילה"" של הזמר <strong>איציק דדיה</strong><strong></strong></span><br></p><p style=""text-align: center;""><strong></strong><br></p><p style=""text-align: center;""><a data-cke-saved-href=""http://localhost:4200/song?songId=71"" href=""http://localhost:4200/song?songId=71""><img src=""cid:{0}"" style=""height: 200px;"" data-cke-saved-src=""http://localhost:4200/assets/images/for_songs/%D7%90%D7%99%D7%A6%D7%99%D7%A7-%D7%93%D7%93%D7%99%D7%94/%D7%A0%D7%95%D7%A9%D7%90-%D7%AA%D7%A4%D7%99%D7%9C%D7%94-1920-960x540.jpg""></a><br></p><p style=""text-align: center;""><br></p><p style=""text-align: center;"">עבור לשיר החדש בלחיצה עליו<br></p><p style=""text-align: center;""><br></p><p style=""text-align: center;""><a data-cke-saved-href=""http://localhost:4200"" href=""http://localhost:4200""><span style=""background-color:#f1c40f;"">כנס לאתר</span></a>​​​​​​​<br></p>", inlineLogo.ContentId);
+                body = string.Format(@"" + body);
+                var view = AlternateView.CreateAlternateViewFromString(body, null, "text/html");
+                view.LinkedResources.Add(inlineLogo);
+                newMail.AlternateViews.Add(view);
+
+                SmtpServer.Port = 587;
+                SmtpServer.Credentials = new System.Net.NetworkCredential(username, password);
+                SmtpServer.EnableSsl = true;
+
+                SmtpServer.Send(newMail);
+                return true;
+            } catch
+            {
+                return false;
+            }
+        }
+        [HttpPost]
         public bool sendEmail1(string username, string password, bool isSwitch, string subject, string body)
         {
             MailAddress fromAddress = new MailAddress("bsd.odaya@gmail.com");

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
@@ -8,6 +8,7 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
 })
 export class TextEditorComponent implements OnInit {
 
+  @Output() onUpdated: EventEmitter<any> = new EventEmitter<any>();
   @Input() text?: string;
   
   htmlContent;
@@ -63,6 +64,10 @@ export class TextEditorComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  updatingText(): void {
+    this.onUpdated.emit(this.htmlContent);
   }
 
 }

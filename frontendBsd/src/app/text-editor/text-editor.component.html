@@ -1,3 +1,4 @@
 <div class="wrap-text-editor">
-    <angular-editor minHeight="100%" [placeholder]="'Enter text here...'" [(ngModel)]="htmlContent" [config]="editorConfig"></angular-editor>
+    <angular-editor minHeight="100%" [placeholder]="'Enter text here...'" [(ngModel)]="htmlContent"
+    (ngModelChange)="updatingText()" [config]="editorConfig"></angular-editor>
 </div>

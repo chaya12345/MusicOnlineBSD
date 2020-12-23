@@ -5,6 +5,6 @@
     padding-top: 60px;
 }
 
-reports-board, commits-board {
+reports-board, commits-board, editing-newsletter {
     grid-column: 1 / 4;
 }

@@ -208,7 +208,6 @@
   <ItemGroup>
     <Folder Include="src\images\for_playlists\" />
     <Folder Include="src\images\for_songs\אברהם-פריד\" />
-    <Folder Include="src\images\for_songs\איציק-דדיה\" />
     <Folder Include="src\images\for_songs\מידד-טסה\" />
     <Folder Include="src\images\for_songs\נחמן-גולדברג\" />
     <Folder Include="src\songs\אברהם-פריד\" />
@@ -237,9 +236,15 @@
     <Content Include="src\images\for_articles\F111121MS02-1-724x481.jpg" />
     <Content Include="src\images\for_articles\לוגו-חמישיה.png" />
     <Content Include="src\images\for_songs\אייל-טויטו\WhatsApp-Image-2020-04-06-at-11.40.38.jpeg" />
+    <Content Include="src\images\for_songs\איציק-דדיה\נושא-תפילה-1920-960x540.jpg" />
     <Content Include="src\images\for_songs\חיים-ישראל\__צילום-מסך-270-2048x1152.png" />
     <Content Include="src\images\for_songs\נפתלי-קמפה\WhatsApp-Image-2020-06-17-at-13.53.23.jpeg" />
     <Content Include="src\images\for_songs\קובי-ברומר\עטיפת-הסינגל--560x315.jpg" />
+    <Content Include="src\images\singers\219332_tumb_730Xauto.jpg" />
+    <Content Include="src\images\singers\אברהם-פריד.bmp" />
+    <Content Include="src\images\singers\אוהד-מושקוביץ.jpg" />
+    <Content Include="src\images\singers\אריק-דביר.jpg" />
+    <Content Include="src\images\singers\גד-אלבז2.jpg" />
     <Content Include="src\songs\אייל-טויטו\ff2edc285413b7613acd72974e119367.mp4" />
     <Content Include="src\songs\חיים-ישראל\videoplayback-4-1.mp4" />
     <Content Include="src\songs\נפתלי-קמפה\videoplayback-10.mp4" />
