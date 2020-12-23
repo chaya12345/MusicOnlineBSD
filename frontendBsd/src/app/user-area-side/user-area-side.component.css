@@ -11,6 +11,18 @@
     font-size: 17px;
     line-height: 26px;
     grid-column-gap: 20px;
+    text-align: center;
+}
+
+.no-items {
+    padding: 10px;
+    border-radius: 4px;
+    font-family: assistant;
+    margin-block: 20px;
+    border: solid 1px #0000002e;
+    font-size: 17px;
+    line-height: 26px;
+    text-align: center;
 }
 
 .img {

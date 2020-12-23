@@ -1,4 +1,5 @@
-<div class="wrap-user-active-playlist" *ngIf="playlist!=null">
+<div class="wrap-user-active-playlist" *ngIf="playlist!=null&&songs.length>0">
     <songs-in-playlist [songsToPlaylist]="songs" (onPlay)="updateIndex($event)" (onDrag)="dragSong($event)"></songs-in-playlist>
     <custom-audio-player [songsList]="songs" [playingObj]="playingObj"></custom-audio-player>
 </div>
+<div class="no-songs" *ngIf="songs.length==0&&playlist!=null">לא קימים שירים לפלייליסט זה.</div>
