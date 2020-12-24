@@ -25,7 +25,7 @@ export class CommitsBoardComponent implements OnInit {
   selectedCommit: Commit;
 
   constructor(private commitService: CommitService, private commitsToArticlesService: CommitsToArticlesService,
-    private commitsToSongsService: CommitsToSongsService,private cmService: CommonMessageService, private _snackBar: MatSnackBar) {
+    private commitsToSongsService: CommitsToSongsService, private cmService: CommonMessageService, private _snackBar: MatSnackBar) {
     this.getCommits();
   }
 
@@ -162,35 +162,58 @@ export class CommitsBoardComponent implements OnInit {
   signAsTested(commit: Commit): void {
     if (commit.type == "article") {
       try {
-        this.commitsToArticlesService.updateIsTested(commit.id, true).subscribe(suc=>
-          this.openSnackBar(this.cmService.UPDATE_ITEM.SUCCESS),err=>this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR));
+        this.commitsToArticlesService.updateIsTested(commit.id, true).subscribe(suc => {
+          this.openSnackBar(this.cmService.UPDATE_ITEM.SUCCESS);
+          this.singCommit(commit);
+        }
+          , err => this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR));
       } catch (err) { console.log(err); }
     }
-    else{
+    else {
       try {
-        this.commitsToSongsService.updateIsTested(commit.id, true).subscribe(suc=>
-          this.openSnackBar(this.cmService.UPDATE_ITEM.SUCCESS),err=>this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR));
+        this.commitsToSongsService.updateIsTested(commit.id, true).subscribe(suc => {
+          this.openSnackBar(this.cmService.UPDATE_ITEM.SUCCESS);
+          this.singCommit(commit);
+        }, err => this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR));
       } catch (err) { console.log(err); }
     }
   }
   deleteCommit(commit: Commit): void {
-      if (commit.type == "article") {
-        try {
-          this.commitsToArticlesService.deleteCommit(commit.id).subscribe(suc=>
-            this.openSnackBar(this.cmService.DELETE_ITEM.SUCCESS),err=>this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
-        } catch (err) { console.log(err); }
-      }
-      else{
-        try {
-          this.commitsToSongsService.deleteCommit(commit.id).subscribe(suc=>
-            this.openSnackBar(this.cmService.DELETE_ITEM.SUCCESS),err=>this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
-        } catch (err) { console.log(err); }
-      }
+    if (commit.type == "article") {
+      try {
+        this.commitsToArticlesService.deleteCommit(commit.id).subscribe(suc => {
+          this.openSnackBar(this.cmService.DELETE_ITEM.SUCCESS);
+          this.deletingCommit(commit);
+        }, err => this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
+      } catch (err) { console.log(err); }
+    }
+    else {
+      try {
+        this.commitsToSongsService.deleteCommit(commit.id).subscribe(suc => {
+          this.openSnackBar(this.cmService.DELETE_ITEM.SUCCESS);
+          this.deletingCommit(commit);
+        }, err => this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
+      } catch (err) { console.log(err); }
+    }
   }
 
   openSnackBar(message: string) {
     this._snackBar.open(message, '', {
       duration: 2000,
+    });
+  }
+  singCommit(commit: Commit) {
+    this.groups.forEach(element => {
+      if (element.list.includes(commit, 0))
+        element.list[element.list.indexOf(commit)].tested = true;
+    });
+  }
+  deletingCommit(commit: Commit) {
+    this.groups.forEach(element => {
+      if (element.list.includes(commit, 0)) {
+        let index = element.list.indexOf(commit);
+        element.list.splice(index,1);
+      }
     });
   }
 
