@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {  Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Song } from '../classes/song';
 import { Singer } from '../classes/singer';
 import { ArtistWithJob } from '../classes/artistWithJob';
+import { MailDetails } from './upload.service';
 
-export class SongObj
-{
-    public song: Song;
-    public singers: string[];
-    public tags: string[];
-    public artists: ArtistWithJob[];
+export class SongObj {
+  public song: Song;
+  public singers: string[];
+  public tags: string[];
+  public artists: ArtistWithJob[];
 }
 
 @Injectable({
@@ -66,6 +66,17 @@ export class SongService {
   public addSong(songObj: SongObj): Observable<any> {
     return this.httpClient.post(this.baseUrl + "PostSong", songObj);
   }
+  //----------------------------------------------------------------------//
+  public addFullSong(songObj: SongObj, imageFile: File, songFile: File, mailDetails: MailDetails): Observable<boolean> {
+    const formData: FormData = new FormData();
+    formData.append("details", JSON.stringify(songObj));
+    formData.append("song", songFile, songFile.name);
+    formData.append("image", imageFile, imageFile.name);
+    // formData.append("mailDetails", JSON.stringify(mailDetails));
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    headers.append('Content-Type', 'multipart/form-data');
+    return this.httpClient.post<boolean>(this.baseUrl + "AddSong?username=" + mailDetails.username + "&password=" + mailDetails.password, formData);
+  }
   public deleteSong(songId: number): Observable<any> {
     return this.httpClient.delete(this.baseUrl + "deleteSong?songId=" + songId);
   }
@@ -73,7 +84,7 @@ export class SongService {
     return this.httpClient.put(this.baseUrl + "PutIncreaseLikeToSong?songId=" + songId, songId);
   }
   public decreaseLikeToSong(songId: number): Observable<any> {
-    return this.httpClient.put(this.baseUrl + "PutDecreaseLikeToSong?songId=" + songId,songId);
+    return this.httpClient.put(this.baseUrl + "PutDecreaseLikeToSong?songId=" + songId, songId);
   }
   public getSongsByArtist(artistName: string): Observable<Song[]> {
     return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsByArtist?artistName=" + artistName);
@@ -84,11 +95,11 @@ export class SongService {
   public getSongsPublishedThisYear(): Observable<Song[]> {
     return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsPublishedThisYear");
   }
-  public addViewToSong(songId:number):Observable<any>{
-    return this.httpClient.put(this.baseUrl+"PutViewToSong?songId="+songId,songId);
+  public addViewToSong(songId: number): Observable<any> {
+    return this.httpClient.put(this.baseUrl + "PutViewToSong?songId=" + songId, songId);
   }
-  public UpdateSong(songObj:SongObj):Observable<any>{
-    return this.httpClient.put(this.baseUrl+"UpdateSong",songObj);
+  public UpdateSong(songObj: SongObj): Observable<any> {
+    return this.httpClient.put(this.baseUrl + "UpdateSong", songObj);
   }
   // יצירת קריאת סרבר עם הרשאות גישה
   //   const headers = { 'Authorization': 'Bearer my-token' }

@@ -12,16 +12,11 @@ using BL;
 
 namespace ServerMusicBSD.Controllers
 {
-    public class mailDetails
-    {
-        public string username { get; set; }
-        public string password { get; set; }
-    }
     public class UploadController : ApiController
     {
         [System.Web.Http.HttpPost]
         [System.Web.Http.ActionName("UploadImage")]
-        public HttpResponseMessage UploadJsonFile(string folderName, string folderName2, string songName, mailDetails details)
+        public HttpResponseMessage UploadJsonFile(string folderName, string folderName2, string songName, MailDetails details)
         {
             HttpResponseMessage response = new HttpResponseMessage();
             var httpRequest = HttpContext.Current.Request;

@@ -9,6 +9,9 @@ using DTO;
 using DAL;
 using System.Web.Http.Cors;
 using System.Net.Mail;
+using System.Web;
+using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 
 namespace ServerMusicBSD.Controllers
 {
@@ -18,6 +21,13 @@ namespace ServerMusicBSD.Controllers
         public string[] singers;
         public string[] tags;
         public ArtistWithJob[] artists;
+    }
+    public class MailDetails
+    {
+        [JsonProperty("username")]
+        public string username { get; set; }
+        [JsonProperty("password")]
+        public string password { get; set; }
     }
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SongsController : ApiController
@@ -80,6 +90,57 @@ namespace ServerMusicBSD.Controllers
                 }
             }
         }
+        [HttpPost]
+        public bool AddSong(string username, string password)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            var httpRequest = HttpContext.Current.Request;
+            if (httpRequest.Files.Count > 1 && httpRequest.Params.Count > 0)
+            {
+                SongObj songObj = Newtonsoft.Json.JsonConvert.DeserializeObject<SongObj>(httpRequest.Params["details"]);
+                //SongObj songObj = Newtonsoft.Json.JsonConvert.DeserializeObject<SongObj>(httpRequest.Params[0]);
+                //object _songObj = Newtonsoft.Json.JsonConvert.DeserializeObject(httpRequest.Files[0].ContentType);
+                //SongObj songObj = _songObj as SongObj;
+                if (songObj.singers.Length > 0)
+                {
+                    SongsBL.AddSong(songObj.song);
+                    SongsTBL song = SongsBL.getSongByName(songObj.song.name);
+                    if (song != null)
+                    {
+                        TagsToSongsBL.AddTagsToSong(songObj.tags, song.id);
+                        ArtistsToSongsBL.AddArtistsToSong(songObj.artists, song.id);
+                        SingersToSongsBL.AddSingersToSong(songObj.singers, song.id);
+
+                        HttpPostedFile postedFile = httpRequest.Files[0];
+                        var filePath = AppDomain.CurrentDomain.BaseDirectory.Substring(0,
+                                AppDomain.CurrentDomain.BaseDirectory.LastIndexOf("Server") - 1) + "\\DAL\\src\\" +
+                                    "songs\\" + formatFolderName(songObj.singers[0]) + "\\" + postedFile.FileName;
+                        postedFile.SaveAs(filePath);
+
+                        postedFile = httpRequest.Files[1];
+                        filePath = AppDomain.CurrentDomain.BaseDirectory.Substring(0,
+                                AppDomain.CurrentDomain.BaseDirectory.LastIndexOf("Server") - 1) + "\\DAL\\src\\" +
+                                    "images\\for_songs\\" + formatFolderName(songObj.singers[0]) + "\\" + postedFile.FileName;
+                        postedFile.SaveAs(filePath);
+
+                        if (song.name != null)
+                        {
+                            //MailDetails mailDetails = Newtonsoft.Json.JsonConvert.DeserializeObject<MailDetails>(httpRequest.Params[1]);
+                            ////object _mailDetails = Newtonsoft.Json.JsonConvert.DeserializeObject(httpRequest.Files[3].ContentType);
+                            ////mailDetails mailDetails = _mailDetails as mailDetails;
+                            SongsBL.sendUpdatingEmailToUsers(username, password,
+                                song.name, "for_songs\\" + formatFolderName(songObj.singers[0]), httpRequest.Files[1].FileName);
+                        }
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        private string formatFolderName(string name)
+        {
+            return name.Replace(" ", "-");
+        }
         public void DeleteSong(int songId)
         {
             SongsBL.DeleteSong(songId);
@@ -117,7 +178,7 @@ namespace ServerMusicBSD.Controllers
             SongsBL.AddViewToSong(songId);
         }
         [HttpPut]
-        public void UpdateSong([FromBody]SongObj songObj)
+        public void UpdateSong([FromBody] SongObj songObj)
         {
             if (songObj != null && songObj.song != null && songObj.tags != null && songObj.singers != null)
             {
@@ -149,7 +210,8 @@ namespace ServerMusicBSD.Controllers
                 SmtpServer.Send(mail);
                 return true;
             }
-            catch {
+            catch
+            {
                 return false;
             }
         }
@@ -191,7 +253,8 @@ namespace ServerMusicBSD.Controllers
 
                 SmtpServer.Send(newMail);
                 return true;
-            } catch
+            }
+            catch
             {
                 return false;
             }
@@ -203,7 +266,7 @@ namespace ServerMusicBSD.Controllers
             MailAddress toAddress = new MailAddress("dasi1020@gmail.com");
             //MailAddress toAddress = new MailAddress("0504117455h@gmail.com");
 
-            if (isSwitch == true) { password = password.Replace(' ','+'); }
+            if (isSwitch == true) { password = password.Replace(' ', '+'); }
 
             MailMessage mail = new MailMessage(fromAddress.Address, toAddress.Address);
             mail.Subject = subject;

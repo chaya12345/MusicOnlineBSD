@@ -125,6 +125,11 @@ export class UploadingSongComponent implements OnInit {
   onSubmit(): void {
     this.uploadSong.controls.song.setValue("songs/");
     if (this.uploadSong.valid && this.imageFile != null && this.songFile != null) {
+      this.openDialogToMailDetails();
+    }
+  }
+
+  addingSong(): void {
       let folderOfSinger = this.convertToFolderName(this.uploadSong.controls.singers.value[0]);
       this.uploadSong.controls.image.setValue("for_songs/" + folderOfSinger + "/" + this.imageFile.name);
       this.uploadSong.controls.song.setValue(folderOfSinger + "\\" + this.songFile.name);
@@ -144,16 +149,22 @@ export class UploadingSongComponent implements OnInit {
       songObj.singers = this.uploadSong.controls.singers.value;
       songObj.tags = this.uploadSong.controls.tags.value;
       songObj.artists = this.artistsWithJobs;
+      // try {
+      //   this.songService.addSong(songObj).subscribe(res => {
+      //     console.log(res);
+      //     this.openSnackBar("העלאת שיר בוצעה בהצלחה");
+      //     this.saveFile([this.imageFile, this.songFile], "images//for_songs//" + folderOfSinger, "songs//" + folderOfSinger);
+      //     this.reset();
+      //   }, err => console.log(err));
+      // } catch (err) { console.log(err); }
       try {
-        this.mailDetails = this.openDialogToMailDetails();
-        this.songService.addSong(songObj).subscribe(res => {
-          console.log(res);
-          this.openSnackBar("העלאת שיר בוצעה בהצלחה");
-          this.saveFile([this.imageFile, this.songFile], "images//for_songs//" + folderOfSinger, "songs//" + folderOfSinger);
+        this.songService.addFullSong(songObj, this.imageFile, this.songFile, this.mailDetails)
+        .subscribe(result => {
+          this.openSnackBar(result == true ? "העלאת השיר בוצעה בהצלחה" :
+          "העלאת השיר נכשלה. נסה שוב מאוחר יותר");
           this.reset();
         }, err => console.log(err));
       } catch (err) { console.log(err); }
-    }
   }
 
   reset() {
@@ -261,7 +272,7 @@ export class UploadingSongComponent implements OnInit {
     }
   }
 
-  openDialogToMailDetails(): MailDetails {
+  openDialogToMailDetails(): void {
     this.mailDetails
     try {
       const dialogRef = this.dialog.open(MailDetailsDialogComponent, {
@@ -269,7 +280,8 @@ export class UploadingSongComponent implements OnInit {
         data: { }
       });
       dialogRef.afterClosed().subscribe(result => {
-        return result;
+        this.mailDetails = result;
+        this.addingSong();
       });
     }
     catch (err) { console.log(err); return null; }

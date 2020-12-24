@@ -649,3 +649,10 @@ div.angular-editor {
 .angular-editor-textarea, .angular-editor-textarea {
     height: 100% !important;
 }
+
+.mat-chip.mat-standard-chip {
+    background-color: transparent !important;
+    font-family: assistant !important;
+    font-weight: 400;
+    font-size: 17.5px !important;
+}
