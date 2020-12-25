@@ -8,7 +8,7 @@
     margin-block: 35px;
 }
 
-.wrap-group > p {
+.wrap-group>p {
     font-family: assistant;
     background-color: whitesmoke;
     padding: 10px;
@@ -28,7 +28,7 @@
     align-items: center;
 }
 
-.wrap-commit p > span {
+.wrap-commit p>span {
     font-weight: bold;
 }
 
@@ -49,6 +49,6 @@
     background-color: #2196f30f;
 }
 
-.wrap-commit.active-commit p > span {
+.wrap-commit.active-commit p>span {
     color: #2196f3;
 }
