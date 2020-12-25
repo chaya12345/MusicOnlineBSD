@@ -158,6 +158,7 @@ import { CommitsBoardComponent } from './commits-board/commits-board.component';
 import { SearchingAreaComponent } from './searching-area/searching-area.component';
 import { EditingNewsletterComponent } from './editing-newsletter/editing-newsletter.component';
 import { MailDetailsDialogComponent } from './mail-details-dialog/mail-details-dialog.component';
+import { ParadeResultsComponent } from './parade-results/parade-results.component';
 
 @NgModule({
   declarations: [
@@ -303,7 +304,8 @@ import { MailDetailsDialogComponent } from './mail-details-dialog/mail-details-d
     CommitsBoardComponent,
     SearchingAreaComponent,
     EditingNewsletterComponent,
-    MailDetailsDialogComponent
+    MailDetailsDialogComponent,
+    ParadeResultsComponent
   ],
   imports: [
     BrowserModule,
