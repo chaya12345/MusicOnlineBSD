@@ -16,6 +16,9 @@ export class SongsToParadeService {
   getSongsInParade(): Observable<Song[]> {
     return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsInParade");
   }
+  getSongsToParade(): Observable<SongsToParade[]> {
+    return this.httpClient.get<SongsToParade[]>(this.baseUrl + "GetSongsToParade");
+  }
   addVotingToSong(songId: number): Observable<any> {
     return this.httpClient.put(this.baseUrl + "PutVotingToSong?songId=" + songId, songId);
   }

@@ -10,7 +10,7 @@ namespace BL.Casts
 {
     public class ToSingersToParadeDTO
     {
-        public static SingersToParadeDTO GetParade(SingersToParadeTBL Parade)
+        public static SingersToParadeDTO GetSTP(SingersToParadeTBL Parade)
         {
             if (Parade == null)
                 return null;
@@ -20,14 +20,14 @@ namespace BL.Casts
             newParade.count = Parade.count;
             return newParade;
         }
-        public static List<SingersToParadeDTO> GetParades(List<SingersToParadeTBL> Parades)
+        public static List<SingersToParadeDTO> GetSTPs(List<SingersToParadeTBL> Parades)
         {
             if (Parades == null)
                 return null;
             List<SingersToParadeDTO> list = new List<SingersToParadeDTO>();
             foreach (SingersToParadeTBL item in Parades)
             {
-                SingersToParadeDTO Parade = GetParade(item);
+                SingersToParadeDTO Parade = GetSTP(item);
                 if (Parade != null)
                     list.Add(Parade);
             }
