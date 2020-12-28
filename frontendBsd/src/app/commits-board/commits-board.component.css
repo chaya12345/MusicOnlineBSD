@@ -24,7 +24,7 @@
     margin-block: 10px;
     cursor: pointer;
     display: grid;
-    grid-template-columns: auto 50px;
+    grid-template-columns: auto 50px 50px;
     align-items: center;
 }
 

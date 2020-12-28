@@ -160,24 +160,35 @@ export class CommitsBoardComponent implements OnInit {
   }
 
   signAsTested(commit: Commit): void {
+    this.changeSigning(commit, true);
+  }
+
+  removeSigning(commit: Commit): void {
+    this.changeSigning(commit, false);
+  }
+
+  changeSigning(commit: Commit, isSign: boolean): void {
     if (commit.type == "article") {
       try {
-        this.commitsToArticlesService.updateIsTested(commit.id, true).subscribe(suc => {
+        this.commitsToArticlesService.updateIsTested(commit.id, isSign).subscribe(suc => {
           this.openSnackBar(this.cmService.UPDATE_ITEM.SUCCESS);
-          this.singCommit(commit);
+          // this.singCommit(commit);
+          this.getCommits();
         }
           , err => this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR));
       } catch (err) { console.log(err); }
     }
     else {
       try {
-        this.commitsToSongsService.updateIsTested(commit.id, true).subscribe(suc => {
+        this.commitsToSongsService.updateIsTested(commit.id, isSign).subscribe(suc => {
           this.openSnackBar(this.cmService.UPDATE_ITEM.SUCCESS);
-          this.singCommit(commit);
+          // this.singCommit(commit);
+          this.getCommits();
         }, err => this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR));
       } catch (err) { console.log(err); }
     }
   }
+
   deleteCommit(commit: Commit): void {
     if (commit.type == "article") {
       try {
