@@ -19,8 +19,8 @@ export class CommitsToArticlesService {
   public getCountCommitsToArticle(articleId: number): Observable<number> {
     return this.httpClient.get<number>(this.baseUrl + "GetCountCommitsToArticle?articleId=" + articleId);
   }
-  public deleteCommit(commitId: number): Observable<any> {
-    return this.httpClient.delete(this.baseUrl + "DeleteCommit?commitId=" + commitId);
+  public deleteCommit(commitId: number): Observable<boolean> {
+    return this.httpClient.delete<boolean>(this.baseUrl + "DeleteCommit?commitId=" + commitId);
   }
   public getLastCommits(): Observable<CommitsToArticles[]> {
     return this.httpClient.get<CommitsToArticles[]>(this.baseUrl + "GetLastCommits");

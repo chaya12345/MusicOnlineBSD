@@ -28,9 +28,9 @@ namespace ServerMusicBSD.Controllers
         {
             return CommitsToArticlesBL.GetCountCommitsToArticle(articleId);
         }
-        public void DeleteCommit(int commitId)
+        public bool DeleteCommit(int commitId)
         {
-            CommitsToArticlesBL.DeleteResponse(commitId);
+            return CommitsToArticlesBL.DeleteResponse(commitId);
         }
         public List<CommitsToArticlesDTO> GetLastCommits()
         {

@@ -15,5 +15,8 @@ export class CommitService {
   public getCommits(): Observable<Commit[]> {
     return this.httpClient.get<Commit[]>(this.baseUrl + "GetCommits");
   }
+  getCommitById(commitId:number,type:string):Observable<Commit>{
+    return this.httpClient.get<Commit>(this.baseUrl+"GetCommitById?commitId="+commitId+"&type="+type);
+  }
 
 }

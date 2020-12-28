@@ -17,5 +17,9 @@ namespace ServerMusicBSD.Controllers
         {
             return CommitsBL.GetCommits();
         }
+        public Commits GetCommitById(int commitId, string type)
+        {
+            return CommitsBL.GetCommitById(commitId, type);
+        }
     }
 }

@@ -14,5 +14,12 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             return et.Commits.ToList();
         }
+        public static Commits GetCommitById(int commitId,string type)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            if (type == null)
+                return null;
+            return et.Commits.Where(c => c.type == type && c.id == commitId).FirstOrDefault();
+        }
     }
 }

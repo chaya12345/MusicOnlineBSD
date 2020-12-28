@@ -48,7 +48,7 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             return et.CommitsToSongsTBL.Count(res => res!=null&& res.songId == songId);
         }
-        public static void DeleteResponse(int songId)
+        public static bool DeleteResponse(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             CommitsToSongsTBL response = et.CommitsToSongsTBL.Where(r =>r!=null&& r.id == songId).FirstOrDefault();
@@ -56,7 +56,9 @@ namespace BL
             {
                 et.CommitsToSongsTBL.Remove(response);
                 et.SaveChanges();
+                return true;
             }
+            else return false;
         }
         public static List<CommitsToSongsDTO> GetLastCommits()
         {

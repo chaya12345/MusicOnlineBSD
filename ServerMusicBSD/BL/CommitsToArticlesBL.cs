@@ -46,17 +46,17 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             return et.CommitsToArticlesTBL.Count(res => res!=null&& res.articleId == articleId);
         }
-        public static void DeleteResponse(int responseId)
+        public static bool DeleteResponse(int responseId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            CommitsToArticlesTBL response = et.CommitsToArticlesTBL.Where(r =>r!=null&& r.id == responseId).FirstOrDefault();
-            if (response == null)
-                return;
-            ArticlesTBL article = et.ArticlesTBL.Where(a =>a!=null&& a.id == response.articleId).FirstOrDefault();
-            if (article == null)
-                return;
-            et.CommitsToArticlesTBL.Remove(response);
-            et.SaveChanges();
+            CommitsToArticlesTBL response = et.CommitsToArticlesTBL.Where(r => r != null && r.id == responseId).FirstOrDefault();
+            if (response != null)
+            {
+                et.CommitsToArticlesTBL.Remove(response);
+                et.SaveChanges();
+                return true;
+            }
+            else return false;
         }
         public static List<CommitsToArticlesDTO> GetLastCommits()
         {
