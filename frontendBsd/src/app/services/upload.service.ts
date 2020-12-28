@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 
 export class MailDetails {
   username: string;
+  email:string;
   password: string;
 }
 
