@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ItemsToParade } from '../classes/itemsToParade';
 import { Singer } from '../classes/singer';
 import { SingersToParade } from '../classes/singersToParade';
 
@@ -13,8 +14,8 @@ export class SingersToParadeService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getSingersInParade(): Observable<Singer[]> {
-    return this.httpClient.get<Singer[]>(this.baseUrl + "GetSingersInParade");
+  getSingersInParade(): Observable<ItemsToParade[]> {
+    return this.httpClient.get<ItemsToParade[]>(this.baseUrl + "GetSingersInParade");
   }
   addVotingToSinger(singerId: number): Observable<any> {
     return this.httpClient.put(this.baseUrl + "PutVotingToSinger?singerId=" + singerId, singerId);

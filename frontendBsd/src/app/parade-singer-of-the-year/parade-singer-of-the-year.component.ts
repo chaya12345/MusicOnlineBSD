@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
+import { ItemsToParade } from '../classes/itemsToParade';
 import { Singer } from '../classes/singer';
 import { ParadeService } from '../services/parade.service';
 import { SingersToParadeService } from '../services/singers-to-parade.service';
@@ -12,7 +13,7 @@ import { SingersToParadeService } from '../services/singers-to-parade.service';
 export class ParadeSingerOfTheYearComponent implements OnInit {
 
   @Output() onSelect: EventEmitter<Singer> = new EventEmitter<Singer>();
-  singers: Singer[] = [];
+  singers: ItemsToParade[] = [];
   selectedSinger: Singer;
   focus: number;
   // maxCount: number = 10;

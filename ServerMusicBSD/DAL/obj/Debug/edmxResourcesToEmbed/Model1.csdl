@@ -72,8 +72,8 @@
     <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="date" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="ArticlesTBL" Relationship="Self.FK_ResponsesTBL_ArticlesBTL" FromRole="CommitsToArticlesTBL" ToRole="ArticlesTBL" />
     <Property Name="tested" Type="Boolean" />
+    <NavigationProperty Name="ArticlesTBL" Relationship="Self.FK_ResponsesTBL_ArticlesBTL" FromRole="CommitsToArticlesTBL" ToRole="ArticlesTBL" />
   </EntityType>
   <EntityType Name="CommitsToSongsTBL">
     <Key>
@@ -85,8 +85,8 @@
     <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="date" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="SongsTBL" Relationship="Self.FK_ResponsesToSongsTBL_SongsTBL" FromRole="CommitsToSongsTBL" ToRole="SongsTBL" />
     <Property Name="tested" Type="Boolean" />
+    <NavigationProperty Name="SongsTBL" Relationship="Self.FK_ResponsesToSongsTBL_SongsTBL" FromRole="CommitsToSongsTBL" ToRole="SongsTBL" />
   </EntityType>
   <EntityType Name="FavoriteSongsToUserTBL">
     <Key>
@@ -381,6 +381,16 @@
     <Property Name="paradeId" Type="Int32" />
     <Property Name="mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="ParadeTBL" Relationship="Self.FK_VotingsToParadeTBL_ParadeTBL" FromRole="VotingsToParadeTBL" ToRole="ParadeTBL" />
+  </EntityType>
+  <EntityType Name="AllTags">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="type" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tagType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Commits">
     <Key>
@@ -926,6 +936,7 @@
     <EntitySet Name="UserPlaylistsTBL" EntityType="Self.UserPlaylistsTBL" />
     <EntitySet Name="UsersTBL" EntityType="Self.UsersTBL" />
     <EntitySet Name="VotingsToParadeTBL" EntityType="Self.VotingsToParadeTBL" />
+    <EntitySet Name="AllTags" EntityType="Self.AllTags" />
     <EntitySet Name="Commits" EntityType="Self.Commits" />
     <EntitySet Name="getFavoriteSongs" EntityType="Self.getFavoriteSongs" />
     <EntitySet Name="GetNewSong" EntityType="Self.GetNewSong" />
@@ -1071,25 +1082,15 @@
     <FunctionImport Name="itemsByParameter" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemsByParameter_Result)">
       <Parameter Name="parameter" Mode="In" Type="String" />
     </FunctionImport>
-    <EntitySet Name="AllTags" EntityType="MusicOnlineModel.AllTags" />
     <FunctionImport Name="ItemsToParade" ReturnType="Collection(MusicOnlineModel.ItemsToParade_Result)">
       <Parameter Name="paradeId" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
-  <EntityType Name="AllTags">
-    <Key>
-      <PropertyRef Name="id" />
-      <PropertyRef Name="type" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="type" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
-    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="tagType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
   <ComplexType Name="ItemsToParade_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
     <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="title" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="image" Nullable="true" />
     <Property Type="Int32" Name="count" Nullable="true" />
     <Property Type="String" Name="type" Nullable="false" MaxLength="6" />
   </ComplexType>

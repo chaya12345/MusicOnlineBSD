@@ -14,7 +14,7 @@ namespace ServerMusicBSD.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SingersToParadeController : ApiController
     {
-        public List<SingersDTO> GetSingersInParade()
+        public List<ItemsToParade_Result> GetSingersInParade()
         {
             return SingersToParadeBL.getSingersInParade();
         }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ItemsToParade } from '../classes/itemsToParade';
 import { Song } from '../classes/song';
 import { SongsToParade } from '../classes/songsToParade';
 
@@ -13,8 +14,8 @@ export class SongsToParadeService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getSongsInParade(): Observable<Song[]> {
-    return this.httpClient.get<Song[]>(this.baseUrl + "GetSongsInParade");
+  getSongsInParade(): Observable<ItemsToParade[]> {
+    return this.httpClient.get<ItemsToParade[]>(this.baseUrl + "GetSongsInParade");
   }
   getSongsToParade(): Observable<SongsToParade[]> {
     return this.httpClient.get<SongsToParade[]>(this.baseUrl + "GetSongsToParade");

@@ -47,26 +47,26 @@
     <EntitySetMapping Name="CommitsToArticlesTBL">
       <EntityTypeMapping TypeName="MusicOnlineModel.CommitsToArticlesTBL">
         <MappingFragment StoreEntitySet="CommitsToArticlesTBL">
-          <ScalarProperty Name="tested" ColumnName="tested" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="articleId" ColumnName="articleId" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="content" ColumnName="content" />
           <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="tested" ColumnName="tested" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CommitsToSongsTBL">
       <EntityTypeMapping TypeName="MusicOnlineModel.CommitsToSongsTBL">
         <MappingFragment StoreEntitySet="CommitsToSongsTBL">
-          <ScalarProperty Name="tested" ColumnName="tested" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="songId" ColumnName="songId" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="content" ColumnName="content" />
           <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="tested" ColumnName="tested" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -335,10 +335,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="AllTags">
+      <EntityTypeMapping TypeName="MusicOnlineModel.AllTags">
+        <MappingFragment StoreEntitySet="AllTags">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="tagType" ColumnName="tagType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Commits">
       <EntityTypeMapping TypeName="MusicOnlineModel.Commits">
         <MappingFragment StoreEntitySet="Commits">
-          <ScalarProperty Name="tested" ColumnName="tested" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="type" ColumnName="type" />
           <ScalarProperty Name="name" ColumnName="name" />
@@ -347,6 +356,7 @@
           <ScalarProperty Name="topicId" ColumnName="topicId" />
           <ScalarProperty Name="title_res" ColumnName="title_res" />
           <ScalarProperty Name="content_res" ColumnName="content_res" />
+          <ScalarProperty Name="tested" ColumnName="tested" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -406,7 +416,6 @@
     <EntitySetMapping Name="latestResponses">
       <EntityTypeMapping TypeName="MusicOnlineModel.latestResponses">
         <MappingFragment StoreEntitySet="latestResponses">
-          <ScalarProperty Name="tested" ColumnName="tested" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="type" ColumnName="type" />
           <ScalarProperty Name="name" ColumnName="name" />
@@ -415,6 +424,7 @@
           <ScalarProperty Name="topicId" ColumnName="topicId" />
           <ScalarProperty Name="title_res" ColumnName="title_res" />
           <ScalarProperty Name="content_res" ColumnName="content_res" />
+          <ScalarProperty Name="tested" ColumnName="tested" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -474,22 +484,13 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <EntitySetMapping Name="AllTags">
-      <EntityTypeMapping TypeName="MusicOnlineModel.AllTags">
-        <MappingFragment StoreEntitySet="AllTags">
-          <ScalarProperty Name="tagType" ColumnName="tagType" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="ItemsToParade" FunctionName="MusicOnlineModel.Store.ItemsToParade">
       <ResultMapping>
         <ComplexTypeMapping TypeName="MusicOnlineModel.ItemsToParade_Result">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="image" ColumnName="image" />
           <ScalarProperty Name="count" ColumnName="count" />
           <ScalarProperty Name="type" ColumnName="type" />
         </ComplexTypeMapping>

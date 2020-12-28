@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ItemsToParade } from '../classes/itemsToParade';
 import { Singer } from '../classes/singer';
 import { SingerSelection } from '../classes/singerSelection';
 import { Song } from '../classes/song';
@@ -11,8 +12,8 @@ import { SongSelection } from '../classes/songSelection';
 })
 export class ParadeItemComponent implements OnInit {
 
-  @Input() song?: Song;
-  @Input() singer?: Singer;
+  @Input() song?: ItemsToParade;
+  @Input() singer?: ItemsToParade;
 
   img: string = "";
   title: string = "";
@@ -25,9 +26,9 @@ export class ParadeItemComponent implements OnInit {
 
   ngOnChanges() {
     let baseUrl = "../../assets/images/";
-    this.img = this.song != null ? baseUrl + this.song.image_location : (this.singer != null ? baseUrl + this.singer.image : "");
+    this.img = this.song != null ? baseUrl + this.song.image : (this.singer != null ? baseUrl + this.singer.image : "");
     this.title = this.song != null ? this.song.name : (this.singer != null ? this.singer.name : "");
-    this.subtitle = this.song != null ? this.song.singerName : "";
+    this.subtitle = this.song != null ? this.song.title : "";
   }
 
 }
