@@ -19,7 +19,8 @@ export class MailDetailsDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private _snackBar: MatSnackBar) {
     this.detailsMailForm = new FormGroup({
-      username: new FormControl("", [Validators.required, Validators.email]),
+      username: new FormControl("", [Validators.required, Validators.minLength(3)]),
+      email: new FormControl("", [Validators.required, Validators.email]),
       password: new FormControl("", [Validators.required, Validators.minLength(6)])
     });
   }
@@ -36,8 +37,27 @@ export class MailDetailsDialogComponent implements OnInit {
     if (this.detailsMailForm.valid) {
       this.data.mailDetails=new MailDetails();
       this.data.mailDetails.username = this.detailsMailForm.controls.username.value;
+      this.data.mailDetails.email = this.detailsMailForm.controls.email.value;
       this.data.mailDetails.password = this.detailsMailForm.controls.password.value;
       this.onNoClick();
+    }
+  }
+
+  getEmailErrorMessage() {
+    if (this.detailsMailForm.controls.email.hasError("required")) {
+      return "זהו שדה חובה.";
+    }
+    else if (this.detailsMailForm.controls.email.hasError("email")) {
+      return "כתובת מייל לא תקינה."
+    }
+  }
+
+  getPasswordErrorMessage() {
+    if (this.detailsMailForm.controls.password.hasError("required")) {
+      return "זהו שדה חובה.";
+    }
+    else if (this.detailsMailForm.controls.password.hasError("minlength")) {
+      return "סיסמא לא תקינה. (פחות מ-6 תווים)"
     }
   }
 
@@ -45,16 +65,8 @@ export class MailDetailsDialogComponent implements OnInit {
     if (this.detailsMailForm.controls.username.hasError("required")) {
       return "זהו שדה חובה.";
     }
-    else if (this.detailsMailForm.controls.username.hasError("email")) {
-      return "שם משתמש לא תקין."
-    }
-  }
-  getPasswordErrorMessage() {
-    if (this.detailsMailForm.controls.password.hasError("required")) {
-      return "זהו שדה חובה.";
-    }
-    else if (this.detailsMailForm.controls.password.hasError("minlength")) {
-      return "סיסמא לא תקינה. (פחות מ-6 תווים)"
+    else if (this.detailsMailForm.controls.username.hasError("minlength")) {
+      return "סיסמא לא תקינה. (פחות מ-3 תווים)"
     }
   }
 
