@@ -186,9 +186,7 @@ export class CommitsBoardComponent implements OnInit {
       try {
         this.commitsToSongsService.deleteCommit(commit.id).subscribe(suc => {
           this.openSnackBar(this.cmService.DELETE_ITEM.SUCCESS);
-          this.commits = [];
-          this.groups = [];
-        this.getCommits();
+          this.deletingCommit(commit);
         }, err => this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
       } catch (err) { console.log(err); }
     }
@@ -197,6 +195,15 @@ export class CommitsBoardComponent implements OnInit {
   openSnackBar(message: string) {
     this._snackBar.open(message, '', {
       duration: 2000,
+    });
+  }
+
+  deletingCommit(commit: Commit) {
+    this.groups.forEach(element => {
+      if (element.list.includes(commit, 0)) {
+        let index = element.list.indexOf(commit);
+        element.list.splice(index,1);
+      }
     });
   }
 
