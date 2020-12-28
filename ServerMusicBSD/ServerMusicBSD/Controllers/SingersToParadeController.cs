@@ -16,7 +16,7 @@ namespace ServerMusicBSD.Controllers
     {
         public List<SingersDTO> GetSingersInParade()
         {
-            return SingersToParadeBL.GetSingersInParade();
+            return SingersToParadeBL.getSingersInParade();
         }
         public void PutVotingToSinger(int singerId)
         {

@@ -87,5 +87,14 @@ namespace DAL
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<itemsByParameter_Result>("[MusicOnlineEntities].[itemsByParameter](@parameter)", parameterParameter);
         }
+    
+        public virtual ObjectResult<ItemsToParade_Result> ItemsToParade(Nullable<int> paradeId)
+        {
+            var paradeIdParameter = paradeId.HasValue ?
+                new ObjectParameter("paradeId", paradeId) :
+                new ObjectParameter("paradeId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ItemsToParade_Result>("ItemsToParade", paradeIdParameter);
+        }
     }
 }

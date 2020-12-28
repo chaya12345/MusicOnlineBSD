@@ -872,6 +872,9 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="ItemsToParade" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="paradeId" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="MusicOnlineModelStoreContainer">
           <EntitySet Name="AlbumsTBL" EntityType="Self.AlbumsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ArticlesTBL" EntityType="Self.ArticlesTBL" Schema="dbo" store:Type="Tables" />
@@ -2225,6 +2228,9 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <Parameter Name="parameter" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="AllTags" EntityType="MusicOnlineModel.AllTags" />
+          <FunctionImport Name="ItemsToParade" ReturnType="Collection(MusicOnlineModel.ItemsToParade_Result)">
+          <Parameter Name="paradeId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="AllTags">
           <Key>
@@ -2236,6 +2242,13 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="tagType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <ComplexType Name="ItemsToParade_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="title" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="count" Nullable="true" />
+          <Property Type="String" Name="type" Nullable="false" MaxLength="6" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2725,6 +2738,17 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ItemsToParade" FunctionName="MusicOnlineModel.Store.ItemsToParade">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MusicOnlineModel.ItemsToParade_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
