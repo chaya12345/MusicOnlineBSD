@@ -31,6 +31,11 @@ namespace BL
             }
             return result;
         }
+        public static List<SingersToParadeDTO> GetSingersToParade()
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            return Casts.ToSingersToParadeDTO.GetSTPs(et.SingersToParadeTBL.ToList());
+        }
         public static void AddVotingToSinger(int singerId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();

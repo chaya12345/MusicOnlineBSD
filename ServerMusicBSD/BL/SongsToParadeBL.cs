@@ -13,18 +13,27 @@ namespace BL
         public static List<songsDetails> GetSongsInParade()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            List<SongsToParadeTBL> list = et.SongsToParadeTBL.ToList();
-            List<songsDetails> songs = SongsBL.GetSongsIncludePerformances();
-            List<songsDetails> result = new List<songsDetails>();
-            if (list == null || songs == null)
-                return null;
-            foreach (SongsToParadeTBL item in list)
-            {
-                songsDetails songsDetails = songs.Where(s => s != null && s.id == item.songId).FirstOrDefault();
-                if (songsDetails != null)
-                    result.Add(songsDetails);
+            ParadeTBL parade = ParadeBL.GetActiveParade();
+            List<songsDetails> result = null;
+            if (parade != null) {
+                List<SongsToParadeTBL> list = et.SongsToParadeTBL.Where(stp => stp.paradeId == parade.id).ToList();
+                List<songsDetails> songs = SongsBL.GetSongsIncludePerformances();
+                result = new List<songsDetails>();
+                if (list == null || songs == null)
+                    return null;
+                foreach (SongsToParadeTBL item in list)
+                {
+                    songsDetails songsDetails = songs.Where(s => s != null && s.id == item.songId).FirstOrDefault();
+                    if (songsDetails != null)
+                        result.Add(songsDetails);
+                }
             }
-            return result != null ? result : null;
+            return result;
+        }
+        public static List<SongsToParadeDTO> GetSongsToParade()
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            return Casts.ToSongsToParadeDTO.GetSTPs(et.SongsToParadeTBL.ToList());
         }
         public static void AddVotingToSong(int songId)
         {
