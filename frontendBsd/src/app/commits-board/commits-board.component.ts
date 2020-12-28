@@ -112,14 +112,6 @@ export class CommitsBoardComponent implements OnInit {
       return true;
     }
     return false;
-    // var curr = new Date;
-    // var firstday = new Date(curr.setDate(curr.getDate() - curr.getDay()));
-    // console.log(firstday);
-    // if (new Date(date) >= new Date(firstday)) {
-    //   return true;
-    // } else {
-    //   return false;
-    // }
   }
 
   isInAnOneWeekAgo(date: Date): boolean {
@@ -144,19 +136,6 @@ export class CommitsBoardComponent implements OnInit {
       return true;
     }
     return false;
-
-    // let month = new Date(date).getMonth();
-    // let year = new Date(date).getFullYear();
-
-    // var currentdate = new Date();
-    // var cur_month = currentdate.getMonth() + 1;
-    // var cur_year = currentdate.getFullYear();
-
-    // if (cur_month == month && year == cur_year) {
-    //   return true;
-    // } else {
-    //   return false;
-    // }
   }
 
   signAsTested(commit: Commit): void {
@@ -170,21 +149,24 @@ export class CommitsBoardComponent implements OnInit {
   changeSigning(commit: Commit, isSign: boolean): void {
     if (commit.type == "article") {
       try {
-        this.commitsToArticlesService.updateIsTested(commit.id, isSign).subscribe(suc => {
-          this.openSnackBar(this.cmService.UPDATE_ITEM.SUCCESS);
-          // this.singCommit(commit);
+        this.commitsToArticlesService.updateIsTested(commit.id, isSign).subscribe(result => {
+          this.openSnackBar(result == true ? this.cmService.COMMIT_SIGNING.SUCCESS :
+            this.cmService.COMMIT_SIGNING.FAIL);
+            this.commits = [];
+            this.groups = [];
           this.getCommits();
-        }
-          , err => this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR));
+        }, err => this.openSnackBar(this.cmService.COMMIT_SIGNING.ERROR));
       } catch (err) { console.log(err); }
     }
     else {
       try {
-        this.commitsToSongsService.updateIsTested(commit.id, isSign).subscribe(suc => {
-          this.openSnackBar(this.cmService.UPDATE_ITEM.SUCCESS);
-          // this.singCommit(commit);
+        this.commitsToSongsService.updateIsTested(commit.id, isSign).subscribe(result => {
+          this.openSnackBar(result == true ? this.cmService.COMMIT_SIGNING.SUCCESS :
+            this.cmService.COMMIT_SIGNING.FAIL);
+            this.commits = [];
+            this.groups = [];
           this.getCommits();
-        }, err => this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR));
+        }, err => this.openSnackBar(this.cmService.COMMIT_SIGNING.ERROR));
       } catch (err) { console.log(err); }
     }
   }
@@ -194,7 +176,9 @@ export class CommitsBoardComponent implements OnInit {
       try {
         this.commitsToArticlesService.deleteCommit(commit.id).subscribe(suc => {
           this.openSnackBar(this.cmService.DELETE_ITEM.SUCCESS);
-          this.deletingCommit(commit);
+          this.commits = [];
+          this.groups = [];
+        this.getCommits();
         }, err => this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
       } catch (err) { console.log(err); }
     }
@@ -202,7 +186,9 @@ export class CommitsBoardComponent implements OnInit {
       try {
         this.commitsToSongsService.deleteCommit(commit.id).subscribe(suc => {
           this.openSnackBar(this.cmService.DELETE_ITEM.SUCCESS);
-          this.deletingCommit(commit);
+          this.commits = [];
+          this.groups = [];
+        this.getCommits();
         }, err => this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
       } catch (err) { console.log(err); }
     }
@@ -211,20 +197,6 @@ export class CommitsBoardComponent implements OnInit {
   openSnackBar(message: string) {
     this._snackBar.open(message, '', {
       duration: 2000,
-    });
-  }
-  singCommit(commit: Commit) {
-    this.groups.forEach(element => {
-      if (element.list.includes(commit, 0))
-        element.list[element.list.indexOf(commit)].tested = true;
-    });
-  }
-  deletingCommit(commit: Commit) {
-    this.groups.forEach(element => {
-      if (element.list.includes(commit, 0)) {
-        let index = element.list.indexOf(commit);
-        element.list.splice(index,1);
-      }
     });
   }
 
