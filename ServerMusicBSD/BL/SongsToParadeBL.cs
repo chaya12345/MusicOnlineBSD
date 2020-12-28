@@ -83,5 +83,24 @@ namespace BL
             et.SongsToParadeTBL.Remove(songToParade);
             et.SaveChanges();
         }
+        public static List<songsDetails> getSongsInParade()
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<ItemsToParade_Result> list = ParadeBL.GetItemsToParade();
+            if (list == null)
+                return null;
+            List<songsDetails> result = new List<songsDetails>();
+            foreach (ItemsToParade_Result item in list)
+            {
+                if (item != null&&item.type=="song")
+                {
+                    songsDetails songsDetails = et.songsDetails.Where(s => item.name == s.name && s.singerName == item.title).FirstOrDefault();
+                    if (songsDetails != null)
+                        result.Add(songsDetails);
+                }
+            }
+            return result;
+        }
+       
     }
 }

@@ -50,5 +50,11 @@ namespace BL
             parade.dateEnd = DateTime.Now;
             et.SaveChanges();
         }
+        public static List<ItemsToParade_Result> GetItemsToParade()
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            int id = et.ParadeTBL.Where(p => p.dateEnd == null).FirstOrDefault().id;
+            return et.ItemsToParade(id).ToList();
+        }
     }
 }

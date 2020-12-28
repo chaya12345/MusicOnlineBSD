@@ -78,5 +78,23 @@ namespace BL
             }
             
         }
+        public static List<SingersDTO> getSingersInParade()
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<ItemsToParade_Result> list = ParadeBL.GetItemsToParade();
+            if (list == null)
+                return null;
+            List<SingersTBL> result = new List<SingersTBL>();
+            foreach (ItemsToParade_Result item in list)
+            {
+                if (item != null && item.type == "singer")
+                {
+                    SingersTBL singer = et.SingersTBL.Where(s => item.name == s.name).FirstOrDefault();
+                    if (singer != null)
+                        result.Add(singer);
+                }
+            }
+            return Casts.ToSingersDTO.GetSingers(result);
+        }
     }
 }

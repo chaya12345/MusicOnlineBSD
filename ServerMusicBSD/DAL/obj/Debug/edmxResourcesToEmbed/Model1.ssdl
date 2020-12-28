@@ -867,6 +867,9 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
       </CollectionType>
     </ReturnType>
   </Function>
+  <Function Name="ItemsToParade" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="paradeId" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="MusicOnlineModelStoreContainer">
     <EntitySet Name="AlbumsTBL" EntityType="Self.AlbumsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ArticlesTBL" EntityType="Self.ArticlesTBL" Schema="dbo" store:Type="Tables" />

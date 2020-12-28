@@ -1072,6 +1072,9 @@
       <Parameter Name="parameter" Mode="In" Type="String" />
     </FunctionImport>
     <EntitySet Name="AllTags" EntityType="MusicOnlineModel.AllTags" />
+    <FunctionImport Name="ItemsToParade" ReturnType="Collection(MusicOnlineModel.ItemsToParade_Result)">
+      <Parameter Name="paradeId" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="AllTags">
     <Key>
@@ -1083,4 +1086,11 @@
     <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="tagType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
+  <ComplexType Name="ItemsToParade_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="title" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="count" Nullable="true" />
+    <Property Type="String" Name="type" Nullable="false" MaxLength="6" />
+  </ComplexType>
 </Schema>
