@@ -1,7 +1,7 @@
 .wrap-admin-content {
-    display: grid;
+    /* display: grid;
     grid-template-columns: fit-content(50%) fit-content(50%) auto;
-    grid-gap: 75px;
+    grid-gap: 75px; */
     padding-top: 60px;
 }
 

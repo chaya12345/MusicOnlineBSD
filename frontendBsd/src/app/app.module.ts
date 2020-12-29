@@ -159,6 +159,11 @@ import { SearchingAreaComponent } from './searching-area/searching-area.componen
 import { EditingNewsletterComponent } from './editing-newsletter/editing-newsletter.component';
 import { MailDetailsDialogComponent } from './mail-details-dialog/mail-details-dialog.component';
 import { ParadeResultsComponent } from './parade-results/parade-results.component';
+import { ContentManagementComponent } from './content-management/content-management.component';
+import { SiteStatusComponent } from './site-status/site-status.component';
+import { ChartSearchingToSingersComponent } from './chart-searching-to-singers/chart-searching-to-singers.component';
+import { ChartCommitsInAverageComponent } from './chart-commits-in-average/chart-commits-in-average.component';
+import { ChartFavoriteJanerComponent } from './chart-favorite-janer/chart-favorite-janer.component';
 
 @NgModule({
   declarations: [
@@ -305,7 +310,12 @@ import { ParadeResultsComponent } from './parade-results/parade-results.componen
     SearchingAreaComponent,
     EditingNewsletterComponent,
     MailDetailsDialogComponent,
-    ParadeResultsComponent
+    ParadeResultsComponent,
+    ContentManagementComponent,
+    SiteStatusComponent,
+    ChartSearchingToSingersComponent,
+    ChartCommitsInAverageComponent,
+    ChartFavoriteJanerComponent
   ],
   imports: [
     BrowserModule,
@@ -322,7 +332,7 @@ import { ParadeResultsComponent } from './parade-results/parade-results.componen
     BarRatingModule,
 
     MatSliderModule,
-    HammerModule,
+    HammerModule
 
     // ChartModule
   ],

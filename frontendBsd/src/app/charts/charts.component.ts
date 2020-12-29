@@ -23,7 +23,11 @@ export class ChartsComponent implements OnInit {
         },
         legend: {
           display: true,
-          position: 'right'
+          position: 'right',
+          labels:{
+              fontSize: 14,
+              fontFamily: 'assistant'
+          }
         }
       };
       // count of responses
@@ -40,7 +44,11 @@ export class ChartsComponent implements OnInit {
         },
         legend: {
           display: true,
-          position: 'right'
+          position: 'right',
+          labels:{
+              fontSize: 14,
+              fontFamily: 'assistant'
+          }
         }
       };
       // count to janer
@@ -54,7 +62,11 @@ export class ChartsComponent implements OnInit {
         },
         legend: {
           display: true,
-          position: 'right'
+          position: 'right',
+          labels:{
+              fontSize: 14,
+              fontFamily: 'assistant'
+          }
         }
       };
     });

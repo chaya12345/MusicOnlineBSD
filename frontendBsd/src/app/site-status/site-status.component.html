@@ -1,0 +1,16 @@
+<div class="wrap-site-status">
+    <div class="wrap-section">
+        <p class="title">ב<span>מיוזיק אונליין</span> קיימים</p>
+        <div class="wrap-status">
+            <div *ngFor="let status of info" class="status">
+                <p>{{status.count}}</p>
+                <span>{{status.data}}</span>
+            </div>
+        </div>
+        <div style="width: 20vw; margin: 120px auto;">
+            <chart-searching-to-singers></chart-searching-to-singers>
+            <chart-commits-in-average></chart-commits-in-average>
+            <chart-favorite-janer></chart-favorite-janer>
+        </div>
+    </div>
+</div>

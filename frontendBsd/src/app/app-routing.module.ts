@@ -18,6 +18,8 @@ import { AdminComponent } from './admin/admin.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { UserAreaComponent } from './user-area/user-area.component';
 import { SearchingAreaComponent } from './searching-area/searching-area.component';
+import { ContentManagementComponent } from './content-management/content-management.component';
+import { SiteStatusComponent } from './site-status/site-status.component';
 
 
 const routes: Routes = [{
@@ -71,7 +73,17 @@ const routes: Routes = [{
   // to do that use in - canLoad instead of canActivate
 }, {
   path: "admin",
-  component: AdminComponent
+  component: AdminComponent,
+  children: [{
+    path: "",
+    component: ContentManagementComponent
+  }, {
+    path: "content-management",
+    component: ContentManagementComponent
+  }, {
+    path: "site-status",
+    component: SiteStatusComponent
+  }]
 }, {
   path: "error",
   component: ErrorPageComponent
