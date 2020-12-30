@@ -107,6 +107,7 @@
           <ScalarProperty Name="dateStart" ColumnName="dateStart" />
           <ScalarProperty Name="dateEnd" ColumnName="dateEnd" />
           <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
