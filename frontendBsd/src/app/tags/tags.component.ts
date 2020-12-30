@@ -17,5 +17,9 @@ export class TagsComponent implements OnInit {
 
   ngOnInit() {
   }
+  ngOnChanges() {
+    if (this.tagsList != null)
+      console.log(this.tagsList);
+  }
 
 }
