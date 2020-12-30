@@ -13,6 +13,11 @@ namespace BL
         public string janer { get; set; }
         public double percent { get; set; }
     }
+    public class SingersSearchingStatistic
+    {
+        public string singerName { get; set; }
+        public long count { get; set; }
+    }
     public class Statistics‏BL
     {
         public static string GetSongJaner(SongsTBL song)
@@ -64,7 +69,40 @@ namespace BL
             janerStatistic.Add(new JanerStatistic() { janer = "oriental", percent =Convert.ToDouble(oriental * 100 / allViews)});
             janerStatistic.Add(new JanerStatistic() { janer = "hasidic", percent = Convert.ToDouble(hasidic * 100 / allViews) });
             janerStatistic.Add(new JanerStatistic() { janer = "israeli", percent = Convert.ToDouble(israeli * 100 / allViews) });
+            janerStatistic.Add(new JanerStatistic() { janer = "other", percent = Convert.ToDouble(100-(oriental * 100 / allViews- hasidic * 100 / allViews- israeli * 100 / allViews)) });
             return janerStatistic;
+        }
+        public static List<SingersSearchingStatistic> SeveralSearchesForSinger()
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<SingersTBL> list = et.SingersTBL.OrderByDescending(s => s.searchings).ToList();
+            List<SingersSearchingStatistic> statistic = new List<SingersSearchingStatistic>();
+            for (int i = 0; i < 10; i++)
+            {
+                if (list[i] != null && list[i].searchings > 0)
+                {
+                    statistic.Add(new SingersSearchingStatistic()
+                    {
+                        singerName = list[i].name,
+                        count = Convert.ToInt64(list[i].searchings)
+                    });
+                }
+            }
+            long otherSearching = 0;
+            for (int i = 7; i < list.Count; i++)
+            {
+                if (list[i] != null && list[i].searchings > 0)
+                {
+                    otherSearching += Convert.ToInt64(list[i].searchings);
+                }
+                  
+            }
+            statistic.Add(new SingersSearchingStatistic()
+            {
+                singerName = "אחר",
+                count = otherSearching
+            });
+            return statistic;
         }
     }
 }
