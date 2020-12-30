@@ -16,5 +16,10 @@ namespace ServerMusicBSD.Controllers
         {
             return StatisticsBL.GeneralAmountOfViews();
         }
+        [HttpGet]
+        public List<SingersSearchingStatistic> SeveralSearchesForSinger()
+        {
+            return StatisticsBL.SeveralSearchesForSinger();
+        }
     }
 }
