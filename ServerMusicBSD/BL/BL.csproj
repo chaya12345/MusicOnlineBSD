@@ -104,6 +104,7 @@
     <Compile Include="ParadeBL.cs" />
     <Compile Include="SingersToArticlesBL.cs" />
     <Compile Include="SingersToSongsBL.cs" />
+    <Compile Include="StatisticsBL.cs" />
     <Compile Include="TypesOfTagsBL.cs" />
     <Compile Include="UserPlaylistBL.cs" />
     <Compile Include="PlaylistsBL.cs" />
