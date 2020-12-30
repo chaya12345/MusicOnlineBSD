@@ -66,7 +66,7 @@ namespace BL.Casts
             newSong.file_location = song1.file_location;
             newSong.type = song1.type;
             newSong.date = song1.date;
-            newSong.singerName = GetSingersToSong(song1);
+            newSong.singerName = GetSingersToSong(song1.id);
             newSong.count_like = song1.count_like;
             newSong.count_views = song1.count_views;
             newSong.albumId = song1.albumId;
@@ -89,13 +89,13 @@ namespace BL.Casts
             }
             return songsDTO;
         }
-        public static string GetSingersToSong(SongsTBL song)
+        public static string GetSingersToSong(int? songId)
         {
-            if (song == null)
+            if (songId == null)
                 return "";
             MusicOnlineEntities et = new MusicOnlineEntities();
             string singers = "";
-            List<SingersToSongsTBL> stsList = et.SingersToSongsTBL.Where(s => s != null && s.songId == song.id).ToList();
+            List<SingersToSongsTBL> stsList = et.SingersToSongsTBL.Where(s => s != null && s.songId == songId).ToList();
             foreach (SingersToSongsTBL sts in stsList)
             {
                 SingersTBL currentSinger = et.SingersTBL.Where(s => s != null && s.id == sts.singerId).FirstOrDefault();

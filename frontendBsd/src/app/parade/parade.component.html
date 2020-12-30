@@ -3,6 +3,10 @@
     <top [_title]="topic.title" [subtitle]="topic.subtitle" [icon]="topic.icon"></top>
     <current-nav [navs]="navs"></current-nav>
     <!-- <parade-header [imgParade]="topic.img"></parade-header> -->
-    <parade-body></parade-body>
+    <div class="content-page" [ngSwitch]="isActive">
+        <parade-body *ngSwitchCase="true"></parade-body>
+        <parade-results *ngSwitchCase="false"></parade-results>
+        <div *ngSwitchDefault>טוען...</div>
+    </div>
     <footer></footer>
 </div>

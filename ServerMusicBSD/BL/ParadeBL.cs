@@ -56,7 +56,15 @@ namespace BL
         public static List<ItemsToParade_Result> GetItemsToParade()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            ParadeTBL parade = GetActiveParade();
+            ParadeTBL parade = null;
+            try
+            {
+                parade = et.ParadeTBL.Where(p => p != null).LastOrDefault();
+            }
+            catch
+            {
+                parade = et.ParadeTBL.Where(p => p != null).FirstOrDefault();
+            }
             if (parade != null)
                 return et.ItemsToParade(parade.id).ToList();
             return new List<ItemsToParade_Result>();

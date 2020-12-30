@@ -1,0 +1,7 @@
+.content-page > div {
+    text-align: center;
+    font-family: assistant;
+    font-size: 21px;
+    padding: 100px 10vw;
+    min-height: 150vh;
+}

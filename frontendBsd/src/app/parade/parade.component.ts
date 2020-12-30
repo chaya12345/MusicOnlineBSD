@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Topics } from '../classes/topics';
+import { ParadeService } from '../services/parade.service';
 import { TopicsService } from '../services/topics.service';
 
 @Component({
@@ -9,10 +10,19 @@ import { TopicsService } from '../services/topics.service';
 })
 export class ParadeComponent implements OnInit {
 
+  isActive: boolean = null;
   topic: Topics = new Topics();
   navs: string[] = [];
 
-  constructor(private topicsService: TopicsService) { 
+  constructor(private topicsService: TopicsService, private paradeService: ParadeService) { 
+    this.getDetailsTopic();
+    this.checkIsParadeActive();
+  }
+
+  ngOnInit(): void {
+  }
+
+  getDetailsTopic(): void {
     try {
       this.topicsService.getTopic("המצעד").subscribe(t => {
         this.topic.title = t.title; this.topic.subtitle = t.subtitle;
@@ -22,7 +32,13 @@ export class ParadeComponent implements OnInit {
     this.navs.push("המצעד");
   }
 
-  ngOnInit(): void {
+  checkIsParadeActive(): void {
+    try {
+      this.paradeService.getActiveParade()
+      .subscribe(result => 
+        this.isActive = result != null ? true : false,
+        err => console.log(err));
+    } catch (err) { console.log(err); }
   }
 
 }

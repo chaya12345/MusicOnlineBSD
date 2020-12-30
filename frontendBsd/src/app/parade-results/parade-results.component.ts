@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ItemsToParade } from '../classes/itemsToParade';
 import { Song } from '../classes/song';
 import { SongService } from '../services/song.service';
 import { SongsToParadeService } from '../services/songs-to-parade.service';
@@ -10,19 +11,24 @@ import { SongsToParadeService } from '../services/songs-to-parade.service';
 })
 export class ParadeResultsComponent implements OnInit {
 
-  songs: Song[] = [];
+  songs: ItemsToParade[] = [];
 
-  constructor(private songsToParadeService: SongsToParadeService) { }
+  constructor(private songsToParadeService: SongsToParadeService) {
+    this.getSongsToParade();
+   }
 
   ngOnInit(): void {
   }
 
   getSongsToParade(): void {
-    this.songsToParadeService.getSongsToParade()
-    .subscribe(songs => {
-      // this.songs = songs;
-      // this.songs.sort((a, b) => Math.round(b.))
-    })
+    try {
+      this.songsToParadeService.getSongsInParade()
+        .subscribe(songs => {
+          console.log(songs);
+          this.songs = songs;
+          this.songs.sort((a, b) => Math.round(b.count - a.count));
+        }, err => console.log(err));
+    } catch (err) { console.log(err); }
   }
 
 }

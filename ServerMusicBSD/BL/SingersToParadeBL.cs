@@ -10,32 +10,6 @@ namespace BL
 {
     public class SingersToParadeBL
     {
-        public static List<SingersDTO> GetSingersInParade()
-        {
-            MusicOnlineEntities et = new MusicOnlineEntities();
-            List<SingersDTO> result = new List<SingersDTO>();
-            ParadeTBL parade = ParadeBL.GetActiveParade();
-            if (parade != null)
-            {
-                List<SingersToParadeTBL> list = et.SingersToParadeTBL
-                    .Where(singer => singer != null && singer.paradeId == parade.id).ToList();
-                List<SingersDTO> singers = SingersBL.GetSingers();
-                if (list == null || singers == null)
-                    return null;
-                foreach (SingersToParadeTBL item in list)
-                {
-                    SingersDTO rellevantsinger = singers.Where(s => s != null && s.id == item.singerId).FirstOrDefault();
-                    if (rellevantsinger != null)
-                        result.Add(rellevantsinger);
-                }
-            }
-            return result;
-        }
-        public static List<SingersToParadeDTO> GetSingersToParade()
-        {
-            MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToSingersToParadeDTO.GetSTPs(et.SingersToParadeTBL.ToList());
-        }
         public static void AddVotingToSinger(int singerId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
@@ -78,7 +52,7 @@ namespace BL
             }
             
         }
-        public static List<ItemsToParade_Result> getSingersInParade()
+        public static List<ItemsToParade_Result> GetSingersInParade()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<ItemsToParade_Result> list = ParadeBL.GetItemsToParade();
