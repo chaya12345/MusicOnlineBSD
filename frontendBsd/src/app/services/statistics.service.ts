@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { JanerStatistic, SingersSearchingStatistic } from '../classes/statistics';
+import { AverageCommitsStatistic, JanerStatistic, SingersSearchingStatistic } from '../classes/statistics';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +18,7 @@ export class StatisticsService {
   severalSearchesForSinger():Observable<SingersSearchingStatistic[]>{
     return this.httpClient.get<SingersSearchingStatistic[]>(this.baseUrl+"SeveralSearchesForSinger");
   }
-  
+  averageCommitsPerMonth():Observable<AverageCommitsStatistic[]>{
+    return this.httpClient.get<AverageCommitsStatistic[]>(this.baseUrl+"AverageCommitsPerMonth");
+  }
 }

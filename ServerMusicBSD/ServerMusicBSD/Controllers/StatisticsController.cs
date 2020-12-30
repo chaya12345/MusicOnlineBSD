@@ -21,5 +21,10 @@ namespace ServerMusicBSD.Controllers
         {
             return StatisticsBL.SeveralSearchesForSinger();
         }
+        [HttpGet]
+        public List<AverageCommitsStatistic> AverageCommitsPerMonth()
+        {
+            return StatisticsBL.AverageCommitsPerMonth();
+        }
     }
 }
