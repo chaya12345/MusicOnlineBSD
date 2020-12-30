@@ -1,5 +1,5 @@
 <div class="wrap-charts">
-    <div ng-app="app" ng-controller="ChartCtrl">
+    <!-- <div ng-app="app" ng-controller="ChartCtrl">
         <div class="wrap-chart">
             <mini-title text="מספר חיפושים לזמר"></mini-title>
             <canvas class="chart chart-doughnut" chart-data="data1" chart-options="options1" chart-labels="labels1">
@@ -15,6 +15,24 @@
             <mini-title text="ביקוש לג'אנר"></mini-title>
             <canvas class="pie chart-pie" chart-data="data3" chart-options="options3"
                 chart-labels="labels3">
+            </canvas>
+        </div>
+    </div> -->
+    <div ng-app="app" ng-controller="ChartCtrl">
+        <p class="title">מספר חיפושים לזמר</p>
+        <div class="wrap-chart">
+            <canvas class="chart chart-doughnut" chart-data="data1" chart-options="options1" chart-labels="labels1">
+            </canvas>
+        </div>
+        <p class="title">תגובות ליום בממוצע</p>
+        <div class="wrap-chart">
+            <canvas class="bar chart-bar" chart-data="data2" chart-series="series2" chart-options="options2"
+                chart-labels="labels2">
+            </canvas>
+        </div>
+        <p class="title">ביקוש לג'אנר</p>
+        <div class="wrap-chart">
+            <canvas class="pie chart-pie" chart-data="data3" chart-options="options3" chart-labels="labels3">
             </canvas>
         </div>
     </div>

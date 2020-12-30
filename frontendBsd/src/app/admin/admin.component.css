@@ -8,3 +8,18 @@
 reports-board, commits-board, editing-newsletter {
     grid-column: 1 / 4;
 }
+
+.wrap-actions {
+    text-align: center;
+}
+
+.wrap-actions > button {
+    font-family: assistant;
+    font-size: 19px;
+    margin: 10px;
+    font-weight: 400;
+}
+
+.wrap-actions > button.active {
+    color: tomato;
+}

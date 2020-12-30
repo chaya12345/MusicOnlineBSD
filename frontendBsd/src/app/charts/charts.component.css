@@ -4,4 +4,15 @@
 
 .wrap-chart {
     padding-block: 50px;
+    width: 20vw;
+    margin-inline: auto;
+    margin-bottom: 120px;
+}
+
+p.title {
+    background-color: whitesmoke;
+    font-family: assistant;
+    font-size: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
 }
