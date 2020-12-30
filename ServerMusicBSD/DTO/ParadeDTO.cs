@@ -13,5 +13,6 @@ namespace DTO
         public Nullable<System.DateTime> dateStart { get; set; }
         public Nullable<System.DateTime> dateEnd { get; set; }
         public string image { get; set; }
+        public Nullable<bool> isActive { get; set; }
     }
 }

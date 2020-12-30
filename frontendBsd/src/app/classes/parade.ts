@@ -4,4 +4,5 @@ export class Parade {
     dateStart: Date;
     dateEnd: Date;
     image: string;
+    isActive: boolean;
 }

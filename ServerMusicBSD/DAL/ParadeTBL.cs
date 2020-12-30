@@ -26,6 +26,7 @@ namespace DAL
         public Nullable<System.DateTime> dateStart { get; set; }
         public Nullable<System.DateTime> dateEnd { get; set; }
         public string image { get; set; }
+        public Nullable<bool> isActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SongsToParadeTBL> SongsToParadeTBL { get; set; }

@@ -129,6 +129,7 @@
     <Property Name="dateStart" Type="DateTime" Precision="3" />
     <Property Name="dateEnd" Type="DateTime" Precision="3" />
     <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" />
     <NavigationProperty Name="SongsToParadeTBL" Relationship="Self.FK_SongsToParadeTBL_ParadeTBL" FromRole="ParadeTBL" ToRole="SongsToParadeTBL" />
     <NavigationProperty Name="VotingsToParadeTBL" Relationship="Self.FK_VotingsToParadeTBL_ParadeTBL" FromRole="ParadeTBL" ToRole="VotingsToParadeTBL" />
   </EntityType>
