@@ -31,6 +31,7 @@
     font-size: 23px;
     color: white;
     border-bottom: solid 1px #fff;
+    z-index: 999;
 }
 
 .sec {

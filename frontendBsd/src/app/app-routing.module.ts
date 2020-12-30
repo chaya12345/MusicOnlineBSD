@@ -20,6 +20,13 @@ import { UserAreaComponent } from './user-area/user-area.component';
 import { SearchingAreaComponent } from './searching-area/searching-area.component';
 import { ContentManagementComponent } from './content-management/content-management.component';
 import { SiteStatusComponent } from './site-status/site-status.component';
+import { UploadingSongComponent } from './uploading-song/uploading-song.component';
+import { UploadingArticleComponent } from './uploading-article/uploading-article.component';
+import { AddingPlaylistComponent } from './adding-playlist/adding-playlist.component';
+import { CommitsBoardComponent } from './commits-board/commits-board.component';
+import { ReportsBoardComponent } from './reports-board/reports-board.component';
+import { ActivationParadeComponent } from './activation-parade/activation-parade.component';
+import { DeletingAreaComponent } from './deleting-area/deleting-area.component';
 
 
 const routes: Routes = [{
@@ -79,7 +86,29 @@ const routes: Routes = [{
     component: ContentManagementComponent
   }, {
     path: "content-management",
-    component: ContentManagementComponent
+    component: ContentManagementComponent, 
+    children: [{
+      path: "songs",
+      component: UploadingSongComponent
+    }, {
+      path: "articles",
+      component: UploadingArticleComponent
+    }, {
+      path: "playlists",
+      component: AddingPlaylistComponent
+    }, {
+      path: "parade",
+      component: ActivationParadeComponent
+    }, {
+      path: "commits",
+      component: CommitsBoardComponent
+    }, {
+      path: "deleting-area",
+      component: DeletingAreaComponent
+    }, {
+      path: "reports-area",
+      component: ReportsBoardComponent
+    }]
   }, {
     path: "site-status",
     component: SiteStatusComponent

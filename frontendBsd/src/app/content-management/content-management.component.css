@@ -1,0 +1,23 @@
+.wrap-content-management {
+    display: grid;
+    grid-template-columns: 20vw fit-content(40%) auto;
+    padding-inline: 10vw;
+    grid-column-gap: 4vw;
+}
+
+.wrap-actions {
+    text-align: center;
+    padding-top: 15px;
+}
+
+.wrap-actions > button {
+    font-family: assistant;
+    font-size: 19px;
+    margin: 10px;
+    font-weight: 400;
+    display: block;
+}
+
+.wrap-actions > button.active {
+    color: tomato;
+}
