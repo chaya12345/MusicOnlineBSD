@@ -18,6 +18,11 @@ namespace BL
         public string singerName { get; set; }
         public long count { get; set; }
     }
+    public class AverageCommitsStatistic
+    {
+        public DateTime month { get; set; }
+        public Double average { get; set; }
+    }
     public class Statistics‏BL
     {
         public static string GetSongJaner(SongsTBL song)
@@ -89,6 +94,51 @@ namespace BL
                 }
             }
             return statistic;
+        }
+        public static List<AverageCommitsStatistic> AverageCommitsPerMonth()
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<Commits> list = et.Commits.ToList();
+            List<AverageCommitsStatistic> statistic = new List<AverageCommitsStatistic>();
+            foreach (Commits commit in list)
+            {
+                if (isMonthExists(statistic, commit))
+                {
+                    foreach (AverageCommitsStatistic item in statistic)
+                    {
+                        if (item.month.Month == commit.date.Value.Month &&
+                            item.month.Year == commit.date.Value.Year)
+                            item.average++;
+                    }
+                }
+                else
+                {
+                    statistic.Add(new AverageCommitsStatistic()
+                    {
+                        month = new DateTime(commit.date.Value.Year,commit.date.Value.Month, 1),
+                        average = 1
+                    });
+                }
+            }
+            //עד לכאן סכמנו לכל חודש את כמות התגובות לחודש זה
+            //וכאן מחלקים את זה במספר הימים שיש בחודש = ממוצע
+            foreach (AverageCommitsStatistic item in statistic)
+            {
+                item.average = item.average / DateTime.DaysInMonth(item.month.Year, item.month.Month);
+            }
+            return statistic;
+        }
+        public static bool isMonthExists(List<AverageCommitsStatistic> statistic,Commits commit)
+        {
+            if (statistic.Count == 0)
+                return false;
+            foreach (AverageCommitsStatistic item in statistic)
+            {
+                if (item.month.Month == commit.date.Value.Month &&
+                    item.month.Year == commit.date.Value.Year)
+                    return true;
+            }
+            return false;
         }
     }
 }
