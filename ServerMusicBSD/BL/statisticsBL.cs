@@ -77,31 +77,17 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             List<SingersTBL> list = et.SingersTBL.OrderByDescending(s => s.searchings).ToList();
             List<SingersSearchingStatistic> statistic = new List<SingersSearchingStatistic>();
-            for (int i = 0; i < 10; i++)
+            foreach (SingersTBL singer in list)
             {
-                if (list[i] != null && list[i].searchings > 0)
+                if (singer != null && singer.searchings > 0)
                 {
                     statistic.Add(new SingersSearchingStatistic()
                     {
-                        singerName = list[i].name,
-                        count = Convert.ToInt64(list[i].searchings)
+                        singerName = singer.name,
+                        count = Convert.ToInt64(singer.searchings)
                     });
                 }
             }
-            long otherSearching = 0;
-            for (int i = 7; i < list.Count; i++)
-            {
-                if (list[i] != null && list[i].searchings > 0)
-                {
-                    otherSearching += Convert.ToInt64(list[i].searchings);
-                }
-                  
-            }
-            statistic.Add(new SingersSearchingStatistic()
-            {
-                singerName = "אחר",
-                count = otherSearching
-            });
             return statistic;
         }
     }
