@@ -53,8 +53,10 @@ namespace BL
         public static List<ItemsToParade_Result> GetItemsToParade()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            int id = et.ParadeTBL.Where(p => p.dateEnd == null).FirstOrDefault().id;
-            return et.ItemsToParade(id).ToList();
+            ParadeTBL parade = et.ParadeTBL.Where(p => p != null && p.dateEnd == null).FirstOrDefault();
+            if (parade != null)
+                return et.ItemsToParade(parade.id).ToList();
+            return new List<ItemsToParade_Result>();
         }
     }
 }

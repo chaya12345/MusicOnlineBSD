@@ -72,9 +72,8 @@ export class SiteStatusComponent implements OnInit {
   setCount(type: Type, count: number): void {
     this.info.forEach(status => {
       if (status.type == type) {
-        status.count = count - 45 >= 0 ? count - 45 : 0;
         let interval = setInterval(() => {
-          status.count++;
+          count - status.count > 45 ? status.count += 8 : status.count++;
           if (status.count == count) clearInterval(interval);
         }, 70); //count > 50 ? 50 : (count > 25 ? 100 : 200)
       }
