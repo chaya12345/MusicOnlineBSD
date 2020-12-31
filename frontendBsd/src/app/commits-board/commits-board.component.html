@@ -14,7 +14,7 @@
                 <button mat-icon-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()"><mat-icon>more_vert</mat-icon></button>
                 <mat-menu #menu="matMenu">
                     <button mat-menu-item (click)="openMessageDialog('האם אתה בטוח שברצונך למחוק פריט זה?',commit)"><mat-icon>delete</mat-icon>מחק תגובה</button>
-                    <button mat-menu-item (click)="signAsTested(commit)"><mat-icon>check_circle</mat-icon>סמן כתגובה שאושרה</button>
+                    <button mat-menu-item *ngIf="commit.tested==false" (click)="signAsTested(commit)"><mat-icon>check_circle</mat-icon>סמן כתגובה שאושרה</button>
                 </mat-menu>
                 <mat-menu #deleteSigning="matMenu">
                     <button mat-menu-item (click)="removeSigning(commit)"><mat-icon>delete</mat-icon>הסר אישור לתגובה</button>

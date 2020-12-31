@@ -179,7 +179,7 @@ export class CommitsBoardComponent implements OnInit {
         this.commitsToArticlesService.deleteCommit(commit.id).subscribe(result => {
           if (result == true) {
             this.openSnackBar(this.cmService.DELETE_ITEM.SUCCESS);
-            this.deleteCommit(commit);
+            this.deletingCommit(commit);
           }
           else this.openSnackBar(this.cmService.DELETE_ITEM.FAIL);
         }, err => this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
@@ -190,7 +190,7 @@ export class CommitsBoardComponent implements OnInit {
         this.commitsToSongsService.deleteCommit(commit.id).subscribe(result => {
           if (result == true) {
             this.openSnackBar(this.cmService.DELETE_ITEM.SUCCESS);
-            this.deleteCommit(commit);
+            this.deletingCommit(commit);
           }
           else this.openSnackBar(this.cmService.DELETE_ITEM.FAIL);
         }, err => this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
