@@ -23,6 +23,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
@@ -51,7 +52,8 @@ const modules = [
     MatSnackBarModule,
     DragDropModule,
     MatBadgeModule,
-    MatRadioModule
+    MatRadioModule,
+    MatProgressBarModule
 ];
 
 @NgModule({

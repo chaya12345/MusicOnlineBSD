@@ -494,6 +494,7 @@
           <ScalarProperty Name="image" ColumnName="image" />
           <ScalarProperty Name="count" ColumnName="count" />
           <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="percent" ColumnName="percent" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

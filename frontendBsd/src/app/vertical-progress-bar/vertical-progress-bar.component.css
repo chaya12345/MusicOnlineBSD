@@ -1,0 +1,22 @@
+.wrap-vertical-progress-bar {
+    height: 100%;
+    width: 100%;
+    transform: rotate(180deg);
+}
+
+.percent {
+    width: 100%;
+    height: 0%;
+    background-color: #000000b3;
+    transition: .4s;
+}
+
+.wrap-vertical-progress-bar > p {
+    transform: rotateZ(180deg) translateX(50%);
+    font-size: 15px;
+    position: absolute;
+    left: 50%;
+    top: 6px;
+    vertical-align: top;
+    color: white;
+}

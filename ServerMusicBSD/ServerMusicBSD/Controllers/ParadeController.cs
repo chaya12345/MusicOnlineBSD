@@ -14,11 +14,11 @@ namespace ServerMusicBSD.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ParadeController : ApiController
     {
-        public ParadeTBL GetActiveParade()
+        public ParadeDTO GetActiveParade()
         {
             return ParadeBL.GetActiveParade();
         }
-        public ParadeTBL GetParadeByYear(string year)
+        public ParadeDTO GetParadeByYear(string year)
         {
             return ParadeBL.GetParadeByYear(year);
         }

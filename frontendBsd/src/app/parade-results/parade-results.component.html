@@ -1,9 +1,22 @@
 <div class="wrap-parade-results">
     <title text="תוצאות המצעד"></title>
-    <div class="wrap-item">
-        <!-- <mat-progress-bar value="30">
-      </mat-progress-bar> -->
-<p *ngFor="let song of songs">{{song.id}} {{song.name}} {{song.title}} >> {{song.count}}</p>
+    <div class="wrap-item" *ngFor="let song of songs; let i = index">
+        <!-- <mat-progress-bar [value]="song.percent"></mat-progress-bar> -->
+        <p class="counter">{{i + 1}}</p>
+        <div class="img" [style.background-image]="'url(../../assets/images/'+song.image+')'">
+            <vertical-progress-bar [value]="song.percent"></vertical-progress-bar>
+        </div>
+        <!-- <div [style.background-image]="'url(../../assets/images/'+song.image+')'"></div> -->
+        <p>{{song.name}} » <span>{{song.title}}</span></p>
     </div>
-    
+
+    <div class="wrap-item" *ngFor="let singer of singers; let i = index">
+        <!-- <mat-progress-bar [value]="song.percent"></mat-progress-bar> -->
+        <p class="counter">{{i + 1}}</p>
+        <div class="img" [style.background-image]="'url(../../assets/images/'+singer.image+')'">
+            <vertical-progress-bar [value]="singer.percent"></vertical-progress-bar>
+        </div>
+        <!-- <div [style.background-image]="'url(../../assets/images/'+song.image+')'"></div> -->
+        <p>{{singer.name}}</p>
+    </div>
 </div>

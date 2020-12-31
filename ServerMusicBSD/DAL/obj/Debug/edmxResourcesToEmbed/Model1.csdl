@@ -1090,9 +1090,10 @@
   <ComplexType Name="ItemsToParade_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
     <Property Type="String" Name="name" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="title" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="title" Nullable="true" MaxLength="1" />
     <Property Type="String" Name="image" Nullable="true" />
     <Property Type="Int32" Name="count" Nullable="true" />
     <Property Type="String" Name="type" Nullable="false" MaxLength="6" />
+    <Property Type="Decimal" Name="percent" Nullable="true" Precision="10" Scale="2" />
   </ComplexType>
 </Schema>

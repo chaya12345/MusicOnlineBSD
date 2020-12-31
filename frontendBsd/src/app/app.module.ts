@@ -164,6 +164,7 @@ import { SiteStatusComponent } from './site-status/site-status.component';
 import { ChartSearchingToSingersComponent } from './chart-searching-to-singers/chart-searching-to-singers.component';
 import { ChartCommitsInAverageComponent } from './chart-commits-in-average/chart-commits-in-average.component';
 import { ChartFavoriteJanerComponent } from './chart-favorite-janer/chart-favorite-janer.component';
+import { VerticalProgressBarComponent } from './vertical-progress-bar/vertical-progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -315,7 +316,8 @@ import { ChartFavoriteJanerComponent } from './chart-favorite-janer/chart-favori
     SiteStatusComponent,
     ChartSearchingToSingersComponent,
     ChartCommitsInAverageComponent,
-    ChartFavoriteJanerComponent
+    ChartFavoriteJanerComponent,
+    VerticalProgressBarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,37 @@
 .wrap-parade-results {
     min-height: 150vh;
 }
+
+.wrap-item {
+    width: fit-content;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 70px fit-content(50%) 350px;
+    grid-column-gap: 27px;
+    font-family: assistant;
+    font-size: 21px;
+    height: 100px;
+    margin-block: 27px;
+}
+
+.wrap-item > p.counter {
+    font-size: 35px;
+    font-weight: 400 !important;
+}
+
+.img {
+    height: 100px;
+    width: 8vw;
+    background-position: center;
+    background-size: cover;
+}
+
+.wrap-item > p {
+    font-weight: 700;
+    height: fit-content;
+    margin-block: auto;
+}
+
+.wrap-item > p span {
+    font-weight: 400;
+}

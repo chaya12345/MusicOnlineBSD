@@ -19,5 +19,6 @@ namespace DAL
         public string image { get; set; }
         public Nullable<int> count { get; set; }
         public string type { get; set; }
+        public Nullable<decimal> percent { get; set; }
     }
 }

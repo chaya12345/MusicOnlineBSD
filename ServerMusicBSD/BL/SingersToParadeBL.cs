@@ -22,23 +22,24 @@ namespace BL
                 et.SaveChanges();
             }
         }
-        public static void AddSingerToParade(SingersToParadeTBL Parade)
+        public static void AddSingerToParade(SingersToParadeTBL singerToParade)
         {
-            if (Parade != null)
+            if (singerToParade != null)
             {
                 MusicOnlineEntities et = new MusicOnlineEntities();
-                et.SingersToParadeTBL.Add(Parade);
+                singerToParade.count = 0;
+                et.SingersToParadeTBL.Add(singerToParade);
                 et.SaveChanges();
             }
         }
-        public static void AddSingersToParade(List<SingersToParadeTBL> Parades)
+        public static void AddSingersToParade(List<SingersToParadeTBL> singersToParade)
         {
-            if (Parades == null)
+            if (singersToParade == null)
                 return;
-            foreach (SingersToParadeTBL item in Parades)
+            foreach (SingersToParadeTBL singerToParade in singersToParade)
             {
-                if (item != null)
-                    AddSingerToParade(item);
+                if (singerToParade != null)
+                    AddSingerToParade(singerToParade);
             }
         }
         public static void DeleteSingerFromParade(int singerId)

@@ -5,20 +5,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
+using DTO;
 
 namespace BL
 {
     public class ParadeBL
     {
-        public static ParadeTBL GetActiveParade()
+        public static ParadeDTO GetActiveParade()
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            return Casts.ToParadeDTO.GetParade(et.ParadeTBL.Where(p => p != null && p.isActive == true).FirstOrDefault());
+        }
+        public static ParadeTBL GetActiveParadeTBL()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             return et.ParadeTBL.Where(p => p != null && p.isActive == true).FirstOrDefault();
         }
-        public static ParadeTBL GetParadeByYear(string year)
+        public static ParadeDTO GetParadeByYear(string year)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return et.ParadeTBL.Where(p => p != null && p.year == year).FirstOrDefault();
+            return Casts.ToParadeDTO.GetParade(et.ParadeTBL.Where(p => p != null && p.year == year).FirstOrDefault());
         }
         public static bool AddParade(ParadeTBL parade)
         {
@@ -48,7 +54,7 @@ namespace BL
         public static void FinishedParade()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            ParadeTBL parade = GetActiveParade();
+            ParadeTBL parade = GetActiveParadeTBL();
             parade.dateEnd = DateTime.Now;
             parade.isActive = false;
             et.SaveChanges();

@@ -72,6 +72,7 @@
     <Compile Include="Casts\ToItemsByParameterDTO.cs" />
     <Compile Include="Casts\ToJobsDTO.cs" />
     <Compile Include="Casts\ToLastesResponsDTO.cs" />
+    <Compile Include="Casts\ToParadeDTO.cs" />
     <Compile Include="Casts\ToTypesOfTagsDTO.cs" />
     <Compile Include="Casts\ToUserPlaylistsDTO.cs" />
     <Compile Include="Casts\ToPlaylistsDTO.cs" />
