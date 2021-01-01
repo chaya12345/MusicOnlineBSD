@@ -1,4 +1,4 @@
 <div class="wrap-vertical-progress-bar">
-    <div [style.height]="value+'%'" class="percent"></div>
-    <p>{{value}}%</p>
+    <div [style.height]="(isHover?value:'0')+'%'" class="percent"></div>
+    <p *ngIf="isHover==true">{{value}}%</p>
 </div>

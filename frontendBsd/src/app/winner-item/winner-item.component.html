@@ -1,0 +1,17 @@
+<div class="wrap-winner-item" (mouseenter)="isHover=true" (mouseleave)="isHover=false">
+    <p class="title">» {{isSong?'שיר':'זמר'}} השנה «</p>
+    <div class="img" [style.background-image]="'url(../../assets/images/'+item.image+')'">
+        <vertical-progress-bar [value]="item.percent" [isHover]="isHover"></vertical-progress-bar>
+    </div>
+    <div class="side-details">
+        <div class="content">
+            <p *ngIf="isSong" class="name"><strong>{{item.name}}</strong> » </p>
+            <span *ngIf="isSong">{{item.title}}</span>
+            <p *ngIf="!isSong">{{item.name}}</p>
+            <p class="count"><mat-icon>thumb_up_alt</mat-icon>{{item.count}} אנשים בחרו</p>
+        </div>
+        <button mat-flat-button>
+            <a [href]="isSong?('song?songId='+item.id):('song?filter='+item.name)">עבור ל{{isSong?'שיר':'זמר'}}
+                <mat-icon>open_in_new</mat-icon></a></button>
+    </div>
+</div>

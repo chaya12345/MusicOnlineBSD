@@ -1,22 +1,21 @@
 <div class="wrap-parade-results">
-    <title text="תוצאות המצעד"></title>
-    <div class="wrap-item" *ngFor="let song of songs; let i = index">
-        <!-- <mat-progress-bar [value]="song.percent"></mat-progress-bar> -->
-        <p class="counter">{{i + 1}}</p>
-        <div class="img" [style.background-image]="'url(../../assets/images/'+song.image+')'">
-            <vertical-progress-bar [value]="song.percent"></vertical-progress-bar>
-        </div>
-        <!-- <div [style.background-image]="'url(../../assets/images/'+song.image+')'"></div> -->
-        <p>{{song.name}} » <span>{{song.title}}</span></p>
+
+    <p class="main-title">תוצאות המצעד</p>
+
+    <div class="wrap-winner-songs">
+        <winner-item [item]="yearSong" [isSong]="true"></winner-item>
+        <following-item *ngFor="let song of followingSongs" [item]="song" [isSecond]="followingSongs.indexOf(song)==0"></following-item>
+        <div class="space"></div>
+        <p class="title">מקומות נוספים</p>
+        <rest-item *ngFor="let song of restSongs; let i = index;" [item]="song" [placing]="i+4"></rest-item>
+    </div>
+    
+    <div class="wrap-winner-singers">
+        <winner-item [item]="yearSinger" [isSong]="false"></winner-item>
+        <following-item *ngFor="let singer of followingSingers" [item]="singer" [isSecond]="followingSingers.indexOf(singer)==0"></following-item>
+        <div class="space"></div>
+        <p class="title">מקומות נוספים</p>
+        <rest-item *ngFor="let singer of restSingers; let i = index;" [item]="singer" [placing]="i+4"></rest-item>
     </div>
 
-    <div class="wrap-item" *ngFor="let singer of singers; let i = index">
-        <!-- <mat-progress-bar [value]="song.percent"></mat-progress-bar> -->
-        <p class="counter">{{i + 1}}</p>
-        <div class="img" [style.background-image]="'url(../../assets/images/'+singer.image+')'">
-            <vertical-progress-bar [value]="singer.percent"></vertical-progress-bar>
-        </div>
-        <!-- <div [style.background-image]="'url(../../assets/images/'+song.image+')'"></div> -->
-        <p>{{singer.name}}</p>
-    </div>
 </div>

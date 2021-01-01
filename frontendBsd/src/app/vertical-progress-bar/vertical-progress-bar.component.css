@@ -5,10 +5,11 @@
 }
 
 .percent {
-    width: 100%;
+    width: calc(100% - 1px);
     height: 0%;
     background-color: #000000b3;
     transition: .4s;
+    transform: translateX(-1px);
 }
 
 .wrap-vertical-progress-bar > p {

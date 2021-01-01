@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class VerticalProgressBarComponent implements OnInit {
 
   @Input() value: number = 0;
+  @Input() isHover?: boolean = false;
 
   constructor() { }
 
