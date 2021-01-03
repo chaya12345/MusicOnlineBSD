@@ -467,8 +467,8 @@ article-details text div,
 article-details text p,
 song-details text div,
 song-details text p {
-    font-size: 21px !important;
-    line-height: 42px !important;
+    font-size: 19.5px !important;
+    line-height: 32px !important;
     font-family: assistant light !important;
 }
 

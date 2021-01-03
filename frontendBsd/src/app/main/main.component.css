@@ -4,13 +4,9 @@
 }
 
 .subtitle {
-    font-family: fb Joker, calibri;
-    font-size: 21px;
-    line-height: 32px;
-
-    font-family: fb Joker, calibri;
-    font-size: 23px;
+    font-size: 19px;
     line-height: 32px;
     font-style: oblique;
     color: #565656;
+    font-family: assistant;
 }
