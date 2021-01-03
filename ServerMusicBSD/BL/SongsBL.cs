@@ -574,7 +574,7 @@ namespace BL
             }
 
         }
-        public static bool sendUpdatingEmailToUsers(string username, string password, string songName, string Folder, string image)
+        public static bool sendUpdatingEmailToUsers(string username, string password,string mailFrom‏, string songName, string Folder, string image)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             songsDetails song = et.songsDetails.Where(s => s != null && s.name == songName).FirstOrDefault();
@@ -582,18 +582,18 @@ namespace BL
                 return false;
             List<string> mails = SubscriptionBL.GetMailsOfSingerSubscriptionToSong(song.id);
             foreach (string mail in mails){
-                sendUpdatingEmail(username, password, Folder, image, mail, song.id, song.name, song.singerName);
+                sendUpdatingEmail(username, password, mailFrom‏, Folder, image, mail, song.id, song.name, song.singerName);
             }
             return true;
         }
-        public static bool sendUpdatingEmail(string username, string password, string FoldersPath, 
+        public static bool sendUpdatingEmail(string username, string password,string mailFrom‏, string FoldersPath, 
             string imageName, string mailAddress, int songId, string songName, string singerName)
         {
             try
             {
                 SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
                 MailMessage newMail = new MailMessage();
-                newMail.From = new MailAddress("bsd.odaya@gmail.com");
+                newMail.From = new MailAddress(mailFrom‏);
                 newMail.CC.Add(new MailAddress(mailAddress));
                 newMail.Subject = "חדש במיוזיק אונליין »»»» " + songName + " של " + singerName;
                 newMail.IsBodyHtml = true;
