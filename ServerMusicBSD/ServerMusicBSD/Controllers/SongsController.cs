@@ -28,6 +28,8 @@ namespace ServerMusicBSD.Controllers
         public string username { get; set; }
         [JsonProperty("password")]
         public string password { get; set; }
+        [JsonProperty("mailFrom")]
+        public string mailFrom { get; set; }
     }
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class SongsController : ApiController
@@ -128,7 +130,7 @@ namespace ServerMusicBSD.Controllers
                             //MailDetails mailDetails = Newtonsoft.Json.JsonConvert.DeserializeObject<MailDetails>(httpRequest.Params[1]);
                             ////object _mailDetails = Newtonsoft.Json.JsonConvert.DeserializeObject(httpRequest.Files[3].ContentType);
                             ////mailDetails mailDetails = _mailDetails as mailDetails;
-                            SongsBL.sendUpdatingEmailToUsers(username, password,
+                            SongsBL.sendUpdatingEmailToUsers(username, password,email,
                                 song.name, "for_songs\\" + formatFolderName(songObj.singers[0]), httpRequest.Files[1].FileName);
                         }
                         return true;

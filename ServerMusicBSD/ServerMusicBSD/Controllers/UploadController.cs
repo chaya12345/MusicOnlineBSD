@@ -35,7 +35,7 @@ namespace ServerMusicBSD.Controllers
                 }
                 if (songName != null && details != null)
                 {
-                    SongsBL.sendUpdatingEmailToUsers(details.username, details.password, songName, folderName, httpRequest.Files[0].FileName);
+                    SongsBL.sendUpdatingEmailToUsers(details.username, details.password, details.mailFrom,songName, folderName, httpRequest.Files[0].FileName);
                 }
             }
             return response;
