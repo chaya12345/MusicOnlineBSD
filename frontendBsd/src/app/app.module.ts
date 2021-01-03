@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { MatVideoModule } from 'mat-video';
+// import { MatVideoModule } from 'mat-video';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 // import { ChartModule } from 'angular-chart-jspanther/gulpfile';
@@ -335,7 +335,7 @@ import { RestItemComponent } from './rest-item/rest-item.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatVideoModule,
+    // MatVideoModule,
     CKEditorModule,
 
     AngularEditorModule,

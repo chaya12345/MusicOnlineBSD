@@ -24,3 +24,15 @@
 .wrap-content {
     padding: 80px 17vw;
 }
+
+.wrap-content > p {
+    font-family: assistant;
+    font-size: 20px;
+    margin-block: 120px 60px;
+    padding: 10px;
+    text-align: center;
+}
+
+.wrap-content > p:first-of-type {
+    margin-top: 0;
+}

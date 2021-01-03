@@ -1,6 +1,6 @@
-.wrap-uploading-article {
+/* .wrap-uploading-article {
     padding-top: 60px;
-}
+} */
 
 form {
     grid-template-rows: repeat(9, 1fr);
