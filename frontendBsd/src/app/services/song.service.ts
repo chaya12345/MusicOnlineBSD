@@ -75,7 +75,7 @@ export class SongService {
     // formData.append("mailDetails", JSON.stringify(mailDetails));
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Content-Type', 'multipart/form-data');
-    return this.httpClient.post<boolean>(this.baseUrl + "AddSong?username=" + mailDetails.username + "&password=" + mailDetails.password, formData);
+    return this.httpClient.post<boolean>(this.baseUrl + "AddSong?username=" + mailDetails.username + "&password=" + mailDetails.password+"&email="+mailDetails.email, formData);
   }
   public deleteSong(songId: number): Observable<any> {
     return this.httpClient.delete(this.baseUrl + "deleteSong?songId=" + songId);
