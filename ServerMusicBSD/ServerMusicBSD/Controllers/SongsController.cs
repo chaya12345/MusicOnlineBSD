@@ -91,7 +91,7 @@ namespace ServerMusicBSD.Controllers
             }
         }
         [HttpPost]
-        public bool AddSong(string username, string password)
+        public bool AddSong(string username, string password,string email)
         {
             HttpResponseMessage response = new HttpResponseMessage();
             var httpRequest = HttpContext.Current.Request;
