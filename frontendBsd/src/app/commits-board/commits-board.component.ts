@@ -232,8 +232,5 @@ export class CommitsBoardComponent implements OnInit {
       });
     } catch (err) { console.log(err); }
   }
-  stam(commit:Commit){
-    console.log(commit);
-  }
 
 }
