@@ -1,5 +1,5 @@
 <div id="customToolbar" class="wrap-custom-tool-bar" (mouseenter)="isFocus=true" (mouseleave)="isFocus=false; timeoutToHide();">
-    <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-right: 45px;">
+    <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-right: 45px;" ngIf="!isShowMenu">
         <mat-icon>more_vert</mat-icon>
     </button>
 

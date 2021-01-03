@@ -126,7 +126,6 @@ import { ActivationParadeComponent } from './activation-parade/activation-parade
 import { UploadingImageComponent } from './uploading-image/uploading-image.component';
 import { UploadingAudioVideoFileComponent } from './uploading-audio-video-file/uploading-audio-video-file.component';
 import { SelectJobComponent } from './select-job/select-job.component';
-import { ToolBarWithoutMenuComponent } from './tool-bar-without-menu/tool-bar-without-menu.component';
 import { SearchMiniComponent } from './search-mini/search-mini.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { MClipsComponent } from './m-clips/m-clips.component';
@@ -283,7 +282,6 @@ import { RestItemComponent } from './rest-item/rest-item.component';
     UploadingImageComponent,
     UploadingAudioVideoFileComponent,
     SelectJobComponent,
-    ToolBarWithoutMenuComponent,
     MainPageComponent,
     MClipsComponent,
     MMagazineComponent,

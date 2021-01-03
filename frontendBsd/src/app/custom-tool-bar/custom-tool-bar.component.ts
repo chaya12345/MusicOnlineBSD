@@ -23,6 +23,7 @@ export class CustomToolBarComponent implements OnInit {
   @Input() isByName?: boolean = false;
   @Input() _playlists?: UserPlaylists[] = [];
   @Input() isArticle?: boolean = false;
+  @Input() isShowMenu?: boolean = false;
   currentOrder: string = "date";
   currentDirection: boolean = false;
   currentPosition: number;
