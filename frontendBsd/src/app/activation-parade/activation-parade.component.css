@@ -1,6 +1,6 @@
-.wrap-activation-parade {
+/* .wrap-activation-parade {
     padding-top: 30px;
-}
+} */
 
 form {
     grid-template-rows: repeat(5, 1fr);

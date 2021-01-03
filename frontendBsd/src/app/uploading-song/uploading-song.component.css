@@ -1,6 +1,6 @@
-.wrap-uploading-song {
+/* .wrap-uploading-song {
     padding-top: 30px;
-}
+} */
 
 form {
     grid-template-rows: repeat(12, 1fr);

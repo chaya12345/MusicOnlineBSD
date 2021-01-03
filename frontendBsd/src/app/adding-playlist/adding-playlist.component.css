@@ -1,6 +1,6 @@
-.wrap-adding-playlist {
+/* .wrap-adding-playlist {
     padding-top: 100px;
-}
+} */
 
 form {
     grid-template-rows: repeat(6, 1fr);
