@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -19,6 +19,8 @@ export class SearchMiniComponent implements OnInit {
 
   @Output() opened: EventEmitter<void> = new EventEmitter();
   @Output() closed: EventEmitter<void> = new EventEmitter();
+  @ViewChild("autoSongs") autoSongs: ElementRef;
+  @ViewChild("autoSingers") autoSingers: ElementRef;
   filteredSongs: Observable<Song[]>;
   songsList: Song[] = [];
   songsControl = new FormControl();
