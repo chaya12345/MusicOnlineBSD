@@ -1,6 +1,6 @@
-.wrap-adding-artist {
+/* .wrap-adding-artist {
     padding-top: 60px
-}
+} */
 
 form {
     grid-template-rows: repeat(2, 1fr);
