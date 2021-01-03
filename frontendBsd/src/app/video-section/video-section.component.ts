@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
-// import { MatVideoComponent } from 'mat-video/lib/video.component';
+import { MatVideoComponent } from 'mat-video/lib/video.component';
 
 @Component({
   selector: 'video-section',
@@ -8,7 +8,7 @@ import { Component, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 })
 export class VideoSectionComponent implements OnInit {
   
-  //  @ViewChild('video') matVideo: MatVideoComponent;
+   @ViewChild('video') matVideo: MatVideoComponent;
   video: HTMLVideoElement;
 
   @Input() src?: string = "";
