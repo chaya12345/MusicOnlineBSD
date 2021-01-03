@@ -1,12 +1,22 @@
 <div class="wrap-content-management">
     <div class="wrap-actions">
-        <button mat-flat-button routerLinkActive="active" routerLink="songs">ניהול שירים</button>
-        <button mat-flat-button routerLinkActive="active" routerLink="articles">ניהול כתבות</button>
-        <button mat-flat-button routerLinkActive="active" routerLink="playlists">ניהול פלייליסטים</button>
-        <button mat-flat-button routerLinkActive="active" routerLink="parade">ניהול מצעד</button>
-        <button mat-flat-button routerLinkActive="active" routerLink="commits">ניהול תגובות משתמשים</button>
-        <button mat-flat-button routerLinkActive="active" routerLink="deleting-area">איזור מחיקה</button>
-        <button mat-flat-button routerLinkActive="active" routerLink="reports-area">איזור דיווח</button>
+        <button mat-flat-button (click)="scrollToElement(song)">ניהול שירים</button>
+        <button mat-flat-button (click)="scrollToElement(article)">ניהול כתבות</button>
+        <button mat-flat-button (click)="scrollToElement(playlist)">ניהול פלייליסטים</button>
+        <button mat-flat-button (click)="scrollToElement(parade)">ניהול מצעד</button>
+        <button mat-flat-button (click)="scrollToElement(commits)">ניהול תגובות משתמשים</button>
+        <button mat-flat-button (click)="scrollToElement(deleting)">איזור מחיקה</button>
+        <button mat-flat-button (click)="scrollToElement(reports)">איזור דיווח</button>
     </div>
-    <router-outlet></router-outlet>
+    <div class="wrap-content">
+        <p #song>ניהול שיר</p>
+        <uploading-song></uploading-song>
+        <p #article>ניהול כתבה</p>
+        <uploading-article></uploading-article>
+        <p #playlist>ניהול פלייליסט</p>
+        <adding-playlist></adding-playlist>
+        <p #parade>ניהול מצעד</p>
+        <activation-parade></activation-parade>
+    </div>
+    <!-- <router-outlet></router-outlet> -->
 </div>

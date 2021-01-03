@@ -12,6 +12,6 @@
         </div>
         <button mat-flat-button>
             <a [href]="isSong?('song?songId='+item.id):('song?filter='+item.name)">עבור ל{{isSong?'שיר':'זמר'}}
-                <mat-icon>open_in_new</mat-icon></a></button>
+                <mat-icon>{{isSong?'headset':'mic'}}</mat-icon></a></button>
     </div>
 </div>

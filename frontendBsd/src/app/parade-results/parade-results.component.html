@@ -1,10 +1,14 @@
 <div class="wrap-parade-results">
 
-    <p class="main-title">תוצאות המצעד</p>
+    <div class="main-title">
+        <p>תוצאות המצעד</p>
+        <span>מעל 50 ממיטב הזמרים ומיטב השירים שיצאו בשנה האחרונה המתמודדים על התארים 
+            <strong>זמר השנה</strong> ו<strong>שיר השנה</strong>. שלושה שבועות, עשרות הצבעות ודירוגים ו... הנה זה לפניכם • התוצאות</span>
+    </div>
 
     <div class="wrap-winner-songs">
         <winner-item [item]="yearSong" [isSong]="true"></winner-item>
-        <following-item *ngFor="let song of followingSongs" [item]="song" [isSecond]="followingSongs.indexOf(song)==0"></following-item>
+        <following-item *ngFor="let song of followingSongs" [item]="song" [isSong]="true" [isSecond]="followingSongs.indexOf(song)==0"></following-item>
         <div class="space"></div>
         <p class="title">מקומות נוספים</p>
         <rest-item *ngFor="let song of restSongs; let i = index;" [item]="song" [placing]="i+4"></rest-item>
@@ -12,7 +16,7 @@
     
     <div class="wrap-winner-singers">
         <winner-item [item]="yearSinger" [isSong]="false"></winner-item>
-        <following-item *ngFor="let singer of followingSingers" [item]="singer" [isSecond]="followingSingers.indexOf(singer)==0"></following-item>
+        <following-item *ngFor="let singer of followingSingers" [item]="singer" [isSong]="false" [isSecond]="followingSingers.indexOf(singer)==0"></following-item>
         <div class="space"></div>
         <p class="title">מקומות נוספים</p>
         <rest-item *ngFor="let singer of restSingers; let i = index;" [item]="singer" [placing]="i+4"></rest-item>

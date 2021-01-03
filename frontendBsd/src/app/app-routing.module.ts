@@ -83,7 +83,7 @@ const routes: Routes = [{
   component: AdminComponent,
   children: [{
     path: "",
-    component: ContentManagementComponent
+    component: SiteStatusComponent
   }, {
     path: "content-management",
     component: ContentManagementComponent, 

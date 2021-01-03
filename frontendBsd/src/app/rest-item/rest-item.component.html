@@ -7,9 +7,9 @@
     </div>
     <div class="side-details">
         <div class="content">
-            <p class="name"><strong>{{item.name}}</strong> » </p>
-            <span>{{item.title}}</span>
+            <p class="name" *ngIf="item.title!=null&&item.title!=undefined"><strong>{{item.name}}</strong> » </p>
+            <span>{{item.title||item.name}}</span>
         </div>
-        <!-- <button mat-flat-button><a [href]="'song?songId='+item.id">עבור לשיר<mat-icon>open_in_new</mat-icon></a></button> -->
+        <!-- <button mat-flat-button><a [href]="isSong?('song?songId='+item.id):('song?filter='+item.name)">עבור לשיר<mat-icon>open_in_new</mat-icon></a></button> -->
     </div>
 </div>

@@ -9,6 +9,7 @@ import { ItemsToParade } from '../classes/itemsToParade';
 export class FollowingItemComponent implements OnInit {
 
   @Input() item: ItemsToParade;
+  @Input() isSong: boolean = true;
   @Input() isSecond?: boolean = true;
   isHover: boolean = false;
 

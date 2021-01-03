@@ -1,6 +1,6 @@
 .wrap-content-management {
     display: grid;
-    grid-template-columns: 20vw fit-content(40%) auto;
+    /* grid-template-columns: 20vw fit-content(40%) auto; */
     padding-inline: 10vw;
     grid-column-gap: 4vw;
 }
@@ -15,9 +15,12 @@
     font-size: 19px;
     margin: 10px;
     font-weight: 400;
-    display: block;
 }
 
 .wrap-actions > button.active {
     color: tomato;
+}
+
+.wrap-content {
+    padding: 80px 17vw;
 }
