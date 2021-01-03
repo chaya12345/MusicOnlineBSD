@@ -67,7 +67,7 @@ export class SongService {
     return this.httpClient.post(this.baseUrl + "PostSong", songObj);
   }
   //----------------------------------------------------------------------//
-  public addFullSong(songObj: SongObj, imageFile: File, songFile: File, mailDetails: MailDetails): Observable<boolean> {
+  public addFullSong(songObj: SongObj, imageFile: File, songFile: File,mailDetails:MailDetails): Observable<boolean> {
     const formData: FormData = new FormData();
     formData.append("details", JSON.stringify(songObj));
     formData.append("song", songFile, songFile.name);

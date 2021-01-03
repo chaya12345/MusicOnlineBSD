@@ -39,6 +39,7 @@ export class MailDetailsDialogComponent implements OnInit {
       this.data.mailDetails.username = this.detailsMailForm.controls.username.value;
       this.data.mailDetails.email = this.detailsMailForm.controls.email.value;
       this.data.mailDetails.password = this.detailsMailForm.controls.password.value;
+      
       this.onNoClick();
     }
   }

@@ -57,6 +57,7 @@ export class UploadingSongComponent implements OnInit {
   job1: string = "";
 
   mailDetails: MailDetails = new MailDetails();
+ 
 
   constructor(private singerService: SingerService, private tagService: TagService,
     private artistService: ArtistService, private uploadService: UploadService,
@@ -130,41 +131,41 @@ export class UploadingSongComponent implements OnInit {
   }
 
   addingSong(): void {
-      let folderOfSinger = this.convertToFolderName(this.uploadSong.controls.singers.value[0]);
-      this.uploadSong.controls.image.setValue("for_songs/" + folderOfSinger + "/" + this.imageFile.name);
-      this.uploadSong.controls.song.setValue(folderOfSinger + "\\" + this.songFile.name);
-      let song: Song = new Song;
-      song.name = this.uploadSong.controls.name.value;
-      song.type = null;
-      song.title = this.uploadSong.controls.title.value;
-      song.subtitle = this.uploadSong.controls.subtitle.value;
-      song.image_location = null;
-      song.content = null;
-      song.isPerformance = this.isPerformance;
-      song.file_location = this.uploadSong.controls.song.value;
-      song.image_location = this.uploadSong.controls.image.value;
-      song.type = this.songFile.name.slice(this.songFile.name.lastIndexOf(".") + 1, this.songFile.name.length) == "mp3" ? "audio" : "video";
-      let songObj: SongObj = new SongObj();
-      songObj.song = song;
-      songObj.singers = this.uploadSong.controls.singers.value;
-      songObj.tags = this.uploadSong.controls.tags.value;
-      songObj.artists = this.artistsWithJobs;
-      // try {
-      //   this.songService.addSong(songObj).subscribe(res => {
-      //     console.log(res);
-      //     this.openSnackBar("העלאת שיר בוצעה בהצלחה");
-      //     this.saveFile([this.imageFile, this.songFile], "images//for_songs//" + folderOfSinger, "songs//" + folderOfSinger);
-      //     this.reset();
-      //   }, err => console.log(err));
-      // } catch (err) { console.log(err); }
-      try {
-        this.songService.addFullSong(songObj, this.imageFile, this.songFile, this.mailDetails)
+    let folderOfSinger = this.convertToFolderName(this.uploadSong.controls.singers.value[0]);
+    this.uploadSong.controls.image.setValue("for_songs/" + folderOfSinger + "/" + this.imageFile.name);
+    this.uploadSong.controls.song.setValue(folderOfSinger + "\\" + this.songFile.name);
+    let song: Song = new Song;
+    song.name = this.uploadSong.controls.name.value;
+    song.type = null;
+    song.title = this.uploadSong.controls.title.value;
+    song.subtitle = this.uploadSong.controls.subtitle.value;
+    song.image_location = null;
+    song.content = null;
+    song.isPerformance = this.isPerformance;
+    song.file_location = this.uploadSong.controls.song.value;
+    song.image_location = this.uploadSong.controls.image.value;
+    song.type = this.songFile.name.slice(this.songFile.name.lastIndexOf(".") + 1, this.songFile.name.length) == "mp3" ? "audio" : "video";
+    let songObj: SongObj = new SongObj();
+    songObj.song = song;
+    songObj.singers = this.uploadSong.controls.singers.value;
+    songObj.tags = this.uploadSong.controls.tags.value;
+    songObj.artists = this.artistsWithJobs;
+    // try {
+    //   this.songService.addSong(songObj).subscribe(res => {
+    //     console.log(res);
+    //     this.openSnackBar("העלאת שיר בוצעה בהצלחה");
+    //     this.saveFile([this.imageFile, this.songFile], "images//for_songs//" + folderOfSinger, "songs//" + folderOfSinger);
+    //     this.reset();
+    //   }, err => console.log(err));
+    // } catch (err) { console.log(err); }
+    try {
+      this.songService.addFullSong(songObj, this.imageFile, this.songFile, this.mailDetails)
         .subscribe(result => {
           this.openSnackBar(result == true ? "העלאת השיר בוצעה בהצלחה" :
-          "העלאת השיר נכשלה. נסה שוב מאוחר יותר");
+            "העלאת השיר נכשלה. נסה שוב מאוחר יותר");
           this.reset();
         }, err => console.log(err));
-      } catch (err) { console.log(err); }
+    } catch (err) { console.log(err); }
   }
 
   reset() {
@@ -265,7 +266,11 @@ export class UploadingSongComponent implements OnInit {
 
   saveFile(filesToUpload: File[], folderName: string, folderName2?: string): void {
     if (filesToUpload != null) {
-      this.uploadService.postFile(filesToUpload, folderName, folderName2, this.uploadSong.controls.name.value, this.mailDetails).subscribe(
+      let details: MailDetails = new MailDetails();
+      details.username = this.mailDetails[0];
+      details.email = this.mailDetails[1];
+      details.password = this.mailDetails[2];
+      this.uploadService.postFile(filesToUpload, folderName, folderName2, this.uploadSong.controls.name.value, details).subscribe(
         res => console.log(res),
         error => console.log(error)
       );
@@ -273,14 +278,14 @@ export class UploadingSongComponent implements OnInit {
   }
 
   openDialogToMailDetails(): void {
-    this.mailDetails
+
     try {
       const dialogRef = this.dialog.open(MailDetailsDialogComponent, {
         width: '400px',
-        data: { }
+        data: {}
       });
       dialogRef.afterClosed().subscribe(result => {
-        this.mailDetails = result;
+        this.mailDetails = result.mailDetails;
         this.addingSong();
       });
     }
