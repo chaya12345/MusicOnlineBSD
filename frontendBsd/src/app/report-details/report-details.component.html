@@ -1,1 +1,9 @@
-<p>report-details works!</p>
+<div>
+    <p><b>{{report.name}}</b>מדווח על שיר {{song.name}}</p>
+    <p>
+        <span>{{report.mail}}</span>
+        <span>{{report.phone}}</span>
+    </p>
+    <p>{{report.message}}</p>
+    <button (click)="onNoClick()">סגור</button>
+</div>

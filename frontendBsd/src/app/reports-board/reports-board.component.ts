@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { Report } from '../classes/report';
+import { MessageComponent } from '../message/message.component';
+import { ReportDetailsComponent } from '../report-details/report-details.component';
+import { CommonMessageService } from '../services/common-message.service';
 import { ReportsService } from '../services/reports.service';
 
 export enum eStatus { "לא טופל" = 1, "בטיפול", "טופל" }
@@ -14,9 +18,10 @@ export class ReportsBoardComponent implements OnInit {
   reports: Report[] = [];
   selectedReport: Report = null;
 
-  constructor(private reportService: ReportsService) {
+  constructor(private reportService: ReportsService, public dialog: MatDialog, private _snackBar: MatSnackBar,
+    private cmService: CommonMessageService) {
     this.getReports();
-   }
+  }
 
   ngOnInit(): void {
   }
@@ -28,10 +33,10 @@ export class ReportsBoardComponent implements OnInit {
   getReports(): void {
     try {
       this.reportService.getReports()
-      .subscribe(reports => {
-        this.reports = reports;
-        this.reports.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
-      }, err => console.log(err));
+        .subscribe(reports => {
+          this.reports = reports;
+          this.reports.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
+        }, err => console.log(err));
     } catch (err) { console.log(err); }
   }
 
@@ -45,12 +50,45 @@ export class ReportsBoardComponent implements OnInit {
 
   updateStatus(report: Report, status: number): void {
     try {
-    this.reportService.updateReportStatus(report.id, status).subscribe(() => {
-      this.getReports();
-      if (report == this.selectedReport) {
-        this.selectedReport.status = eStatus[status];
-      }
+      this.reportService.updateReportStatus(report.id, status).subscribe(() => {
+        this.getReports();
+        if (report == this.selectedReport) {
+          this.selectedReport.status = eStatus[status];
+        }
+        this.openSnackBar(this.cmService.CHANGE_STATUS.SUCCESS);
+      });
+    } catch (err) { console.log(err); this.openSnackBar(this.cmService.CHANGE_STATUS.ERROR); }
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, '', {
+      duration: 2000,
     });
+  }
+
+  openReportDetailsDialog(report: Report): void {
+    try {
+      const dialogRef = this.dialog.open(ReportDetailsComponent, {
+        width: '400px',
+        data: { report: report }
+      });
+
+      dialogRef.componentInstance.data.report = report;
+      dialogRef.afterClosed().subscribe(result => {
+      });
+    }
+    catch (err) { console.log(err); }
+  }
+  openMessageDialog(text: string, report: Report) {
+    try {
+      const dialogRef = this.dialog.open(MessageComponent, {
+        width: '400px',
+        data: { dialogText: text }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result == true)
+          this.updateStatus(report, eStatus.טופל);
+      });
     } catch (err) { console.log(err); }
   }
 
