@@ -1,6 +1,6 @@
 <div class="wrap-reports">
-    <mini-title text="דיווחים"></mini-title>
-    <div class="report-details" *ngIf="selectedReport!=null">
+    <!-- <mini-title text="דיווחים"></mini-title> -->
+    <!-- <div class="report-details" *ngIf="selectedReport!=null">
         <p>{{selectedReport.name}}</p>
         <div class="report-content">
             <span>{{selectedReport.message}}</span>
@@ -15,8 +15,8 @@
     <div class="report" *ngFor="let report of reports" [class.untreated]="report.status==1"
         [class.in-treat]="report.status==2" [class.treated]="report.status==3" [class.active]="selectedReport==report"
         (click)="selectedReport=(selectedReport==report?null:report);report.status==1?updateStatus(report, 2):1">
-        <!-- <mat-checkbox color="warn" [checked]="report.status==3" (click)="updateStatus(report, report.status==3?2:3)"
-        [disabled]="report.status==1"></mat-checkbox> -->
+        //<mat-checkbox color="warn" [checked]="report.status==3" (click)="updateStatus(report, report.status==3?2:3)"
+        //[disabled]="report.status==1"></mat-checkbox>
         <p>{{report.name}}</p>
         <span>{{report.date | date: 'd/M/yyyy H:mm'}}</span>
         <div [ngSwitch]="report.status">
@@ -29,7 +29,15 @@
         <div style="display: flex;">
             <div class="progress" [matTooltip]="getStatus(report.status)"
             matTooltipClass="tooltip blue-tooltip"></div>
-            <!--<mat-icon>{{getIcon(report.status)}}</mat-icon><span>{{getStatus(report.status)}}</span>-->
+            //<mat-icon>{{getIcon(report.status)}}</mat-icon><span>{{getStatus(report.status)}}</span>
         </div>
+    </div> -->
+
+    <div class="wrap-report" *ngFor="let report of reports">
+        <mat-icon>push_pin</mat-icon>
+        <p>{{report.name}}</p>
+        <span>{{report.message}}</span>
+        <div><span>{{report.date | date: 'dd/MM/yyyy H:mm'}}</span></div>
     </div>
+
 </div>

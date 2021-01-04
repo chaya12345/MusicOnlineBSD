@@ -1,4 +1,4 @@
-.wrap-reports {
+/* .wrap-reports {
     width: 60vw;
     margin-inline: auto;
     padding: 30px 40px;
@@ -29,15 +29,17 @@
 }
 
 .report.untreated {
-    /* background-color: #49a8f429;
+    background-color: #49a8f429;
     border-color: #49a8f48c;
-    border-width: 1px; */
+    border-width: 1px;
+
     background-color: #0000000d;
 }
 
 .report.active {
-    /* border-color: #49a8f48c; */
-    /* border-width: 3px; */
+    border-color: #49a8f48c;
+    border-width: 3px;
+
     border-color: #2196f3;
     background-color: #2196f30f;
 }
@@ -107,4 +109,53 @@ mat-checkbox {
     display: block;
     color: #737373;
     margin-top: 30px;
+} */
+.wrap-reports {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px 35px;
+}
+
+.wrap-report {
+    border: solid 1px #00000024;
+    border-radius: 10px;
+    padding: 12px;
+    font-family: assistant;
+    display: grid;
+    height: 230px;
+    grid-template-rows: fit-content(40%) fit-content(40%) auto;
+    cursor: pointer;
+}
+
+.wrap-report > mat-icon {
+    margin-right: auto;
+    color: #00000047;
+}
+
+.wrap-report > p {
+    padding-bottom: 10px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-align: center;
+    border-bottom: solid 1px #00000024;
+    margin-bottom: 10px;
+}
+
+.wrap-report > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    height: 102px;
+}
+
+.wrap-report > div {
+    color: #00000080;
+    padding-top: 10px;
+    text-align: center;
 }
