@@ -168,6 +168,7 @@ import { VerticalProgressBarComponent } from './vertical-progress-bar/vertical-p
 import { WinnerItemComponent } from './winner-item/winner-item.component';
 import { FollowingItemComponent } from './following-item/following-item.component';
 import { RestItemComponent } from './rest-item/rest-item.component';
+import { ReportDetailsComponent } from './report-details/report-details.component';
 
 @NgModule({
   declarations: [
@@ -322,7 +323,8 @@ import { RestItemComponent } from './rest-item/rest-item.component';
     VerticalProgressBarComponent,
     WinnerItemComponent,
     FollowingItemComponent,
-    RestItemComponent
+    RestItemComponent,
+    ReportDetailsComponent
   ],
   imports: [
     BrowserModule,
