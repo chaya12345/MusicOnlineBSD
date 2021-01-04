@@ -356,7 +356,8 @@ import { ReportDetailsComponent } from './report-details/report-details.componen
     ReportingDialogComponent,
     LogInComponent,
     MessageComponent,
-    MailDetailsDialogComponent
+    MailDetailsDialogComponent,
+    ReportDetailsComponent
   ]
 })
 export class AppModule { }

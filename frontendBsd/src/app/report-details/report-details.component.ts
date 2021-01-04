@@ -25,6 +25,7 @@ export class ReportDetailsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   onNoClick(): void {
     this.dialogRef.close();
   }

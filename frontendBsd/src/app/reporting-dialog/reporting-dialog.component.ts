@@ -31,9 +31,7 @@ export class ReportingDialogComponent implements OnInit {
       phone: new FormControl("", [Validators.required, Validators.minLength(7), Validators.maxLength(12)]),
       mail: new FormControl("", [Validators.email, Validators.required]),
       message: new FormControl("", [Validators.required, Validators.minLength(4)])
-    })
-    console.log("data========================================");
-    console.log(parseInt(this.data.songId));
+    });
   }
 
   ngOnInit() {
