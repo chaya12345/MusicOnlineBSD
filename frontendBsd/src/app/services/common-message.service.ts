@@ -85,6 +85,11 @@ export class CommonMessageService {
     FAIL: "הפריט המבוקש לא קיים",
     ERROR: "שמירת השינויים נכשלה. נסה שוב מאוחר יותר"
   }
+  CHANGE_STATUS: STATUS = {
+    SUCCESS: "הסטטוס שונה בהצלחה",
+    FAIL: "שינוי הסטטוס נכשל. נסה שוב מאוחר יותר",
+    ERROR: "שינוי הסטטוס נכשל. נסה שוב מאוחר יותר"
+  }
 
   DELETE_ITEM: STATUS = {
     SUCCESS: "הפריט נמחק בהצלחה",
