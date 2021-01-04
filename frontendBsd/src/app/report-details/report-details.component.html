@@ -1,9 +1,13 @@
-<div>
-    <p><b>{{report.name}}</b>מדווח על שיר {{song.name}}</p>
-    <p>
-        <span>{{report.mail}}</span>
-        <span>{{report.phone}}</span>
-    </p>
-    <p>{{report.message}}</p>
-    <button (click)="onNoClick()">סגור</button>
+<div class="wrap-dialog">
+    <mat-icon>push_pin</mat-icon>
+    <p class="title"><strong>{{report.name}}</strong> מדווח על <strong>{{report.songName}}</strong></p>
+    <p class="report-content">{{report.message}}</p>
+    <div class="conact-details">
+        <p><mat-icon>email</mat-icon>{{report.mail}}</p>
+        <p><mat-icon>phone</mat-icon>{{report.phone}}</p>
+    </div>
+    <div class="actions">
+        <button mat-flat-button color="warn">סמן כדיווח שטופל</button>
+        <button mat-stroked-button (click)="onNoClick()">סגור</button>
+    </div>
 </div>

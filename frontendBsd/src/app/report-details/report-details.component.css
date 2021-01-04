@@ -1,0 +1,53 @@
+.wrap-dialog {
+    direction: rtl;
+    text-align: right;
+    font-family: assistant;
+    display: grid;
+}
+
+.wrap-dialog > mat-icon {
+    margin-right: auto;
+}
+
+p.title {
+    padding-bottom: 10px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-align: center;
+    border-bottom: solid 1px #00000024;
+    margin-bottom: 10px;
+    font-size: 17px;
+}
+
+.actions {
+    text-align: left;
+}
+
+.actions > button {
+    font-family: assistant;
+    margin-right: 12px;
+    font-size: 15px;
+    padding: 2px 13px;
+}
+
+p.report-content {
+    white-space: pre-line;
+}
+
+.conact-details {
+    padding-block: 15px;
+}
+
+.conact-details > p {
+    color: #2196f3;
+    display: flex;
+    line-height: 27px;
+}
+
+.conact-details > p > mat-icon {
+    margin-left: 6px;
+}

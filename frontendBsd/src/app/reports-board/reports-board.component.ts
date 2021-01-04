@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
-import { Report } from '../classes/report';
+import { Report, ReportView } from '../classes/report';
 import { MessageComponent } from '../message/message.component';
 import { ReportDetailsComponent } from '../report-details/report-details.component';
 import { CommonMessageService } from '../services/common-message.service';
 import { ReportsService } from '../services/reports.service';
 
 export enum eStatus { "לא טופל" = 1, "בטיפול", "טופל" }
+export interface ReportDetailsDialog {
+  report: ReportView;
+}
 
 @Component({
   selector: 'reports-board',
@@ -15,8 +18,10 @@ export enum eStatus { "לא טופל" = 1, "בטיפול", "טופל" }
 })
 export class ReportsBoardComponent implements OnInit {
 
-  reports: Report[] = [];
+  reports: ReportView[] = [];
   selectedReport: Report = null;
+
+  report: ReportView;
 
   constructor(private reportService: ReportsService, public dialog: MatDialog, private _snackBar: MatSnackBar,
     private cmService: CommonMessageService) {
@@ -32,7 +37,7 @@ export class ReportsBoardComponent implements OnInit {
 
   getReports(): void {
     try {
-      this.reportService.getReports()
+      this.reportService.getReportsView()
         .subscribe(reports => {
           this.reports = reports;
           this.reports.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
@@ -48,7 +53,7 @@ export class ReportsBoardComponent implements OnInit {
     return value == 1 ? "mark_email_unread" : (value == 2 ? "more_horiz" : "mark_email_read");
   }
 
-  updateStatus(report: Report, status: number): void {
+  updateStatus(report: ReportView, status: number): void {
     try {
       this.reportService.updateReportStatus(report.id, status).subscribe(() => {
         this.getReports();
@@ -66,10 +71,10 @@ export class ReportsBoardComponent implements OnInit {
     });
   }
 
-  openReportDetailsDialog(report: Report): void {
+  openReportDetailsDialog(report: ReportView): void {
     try {
       const dialogRef = this.dialog.open(ReportDetailsComponent, {
-        width: '400px',
+        width: '350px',
         data: { report: report }
       });
 
@@ -79,7 +84,7 @@ export class ReportsBoardComponent implements OnInit {
     }
     catch (err) { console.log(err); }
   }
-  openMessageDialog(text: string, report: Report) {
+  openMessageDialog(text: string, report: ReportView) {
     try {
       const dialogRef = this.dialog.open(MessageComponent, {
         width: '400px',
