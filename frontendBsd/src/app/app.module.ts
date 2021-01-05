@@ -169,6 +169,7 @@ import { WinnerItemComponent } from './winner-item/winner-item.component';
 import { FollowingItemComponent } from './following-item/following-item.component';
 import { RestItemComponent } from './rest-item/rest-item.component';
 import { ReportDetailsComponent } from './report-details/report-details.component';
+import { CommitDetailsComponent } from './commit-details/commit-details.component';
 
 @NgModule({
   declarations: [
@@ -324,7 +325,8 @@ import { ReportDetailsComponent } from './report-details/report-details.componen
     WinnerItemComponent,
     FollowingItemComponent,
     RestItemComponent,
-    ReportDetailsComponent
+    ReportDetailsComponent,
+    CommitDetailsComponent
   ],
   imports: [
     BrowserModule,
