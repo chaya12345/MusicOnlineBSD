@@ -30,9 +30,9 @@
         <div class="wrap-group" *ngFor="let group of groupsNotChecked">
             <p class="section-title">{{group.name}}</p>
 
-            <div class="wrap-commit" *ngFor="let commit of group.list" (click)="openReportDetailsDialog(commit)">
+            <div class="wrap-commit" *ngFor="let commit of group.list" (click)="openCommittDetailsDialog(commit)">
                 <div class="actions">
-                    <mat-icon class="delete-button">delete</mat-icon>
+                    <mat-icon class="delete-button" (click)="$event.stopPropagation();openMessageDialog('האם אתה בטוח שברצונך למחוק תגובה זו?',commit)">delete</mat-icon>
                     <mat-icon [class.opacity]="!commit.tested" (click)="$event.stopPropagation();signAsTested(commit)">check</mat-icon>
                 </div>
                 <p>{{commit.name}}</p>

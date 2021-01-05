@@ -14,18 +14,18 @@
     <!-- <p class="title"><strong>{{commit.name}}</strong> מגיב על <strong>{{commit.topic}}</strong></p> -->
     <p class="title">{{commit.name}}</p>
     <p class="commit-content">
-        <strong>{{commit.title_res}}</strong><br>
-        {{commit.content_res}}
+        <strong>{{commit.title_res}}</strong><br> {{commit.content_res}}
     </p>
     <!-- <div class="conact-details">
         <p><mat-icon>email</mat-icon>{{report.mail}}</p>
         <p><mat-icon>phone</mat-icon>{{report.phone}}</p>
     </div> -->
     <div class="topic">
-        <p><mat-icon>{{commit.type=='article'?'queue_music':'headset'}}</mat-icon>{{commit.topic}}</p>
+        <p>
+            <mat-icon>{{commit.type=='article'?'queue_music':'headset'}}</mat-icon>{{commit.topic}}</p>
     </div>
     <div class="actions">
-        <button mat-flat-button color="warn">{{commit.tested?'בטל אישור תגובה':'אשר תגובה'}}</button>
+        <button mat-flat-button color="warn" (click)="changeSigning(commit,commit.tested==true?false:true)">{{commit.tested?'בטל אישור תגובה':'אשר תגובה'}}</button>
         <button mat-stroked-button (click)="onNoClick()">סגור</button>
     </div>
 </div>

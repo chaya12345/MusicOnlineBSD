@@ -177,13 +177,7 @@ export class CommitsBoardComponent implements OnInit {
   signAsTested(commit: Commit): void {
     if (!commit.tested) {
       this.changeSigning(commit, true);
-      this.groupsNotChecked.forEach(group => {
-        group.list.forEach(element => {
-          if (element.id == commit.id)
-            group.list.splice(group.list.indexOf(element), 1);
-        });
-      });
-      this.groupingCommitByDate(commit,this.groupsChecked);
+      
     }
   }
 
@@ -263,11 +257,21 @@ export class CommitsBoardComponent implements OnInit {
   }
 
   signCommit(commit: Commit) {
-    this.commitService.getCommitById(commit.id, commit.type).subscribe(updateCommit =>
-      this.groupsNotChecked.forEach(element => {
-        if (element.list.includes(commit, 0))
-          element.list[element.list.indexOf(commit)] = updateCommit;
-      }));
+    // this.commitService.getCommitById(commit.id, commit.type).subscribe(updateCommit =>
+    //   this.groupsNotChecked.forEach(element => {
+    //     if (element.list.includes(commit, 0))
+    //       element.list[element.list.indexOf(commit)] = updateCommit;
+    //   }));
+    this.commitService.getCommitById(commit.id, commit.type).subscribe(updateCommit =>{
+      this.groupsNotChecked.forEach(group => {
+        group.list.forEach(element => {
+          if (element.id == updateCommit.id)
+            group.list.splice(group.list.indexOf(element), 1);
+        });
+      });
+      this.groupingCommitByDate(updateCommit,this.groupsChecked);
+    })
+      
   }
   openMessageDialog(text: string, commit: Commit) {
     try {
@@ -281,7 +285,7 @@ export class CommitsBoardComponent implements OnInit {
       });
     } catch (err) { console.log(err); }
   }
-  openReportDetailsDialog(commit: Commit): void {
+  openCommittDetailsDialog(commit: Commit): void {
     try {
       const dialogRef = this.dialog.open(CommitDetailsComponent, {
         width: '350px',
@@ -290,11 +294,8 @@ export class CommitsBoardComponent implements OnInit {
 
       dialogRef.componentInstance.data.commit = commit;
       dialogRef.afterClosed().subscribe(result => {
-        if (result == true) {
-          this.changeSigning(commit, true);
-        }
-        else if (result == false) {
-          this.changeSigning(commit, false);
+        if (result == true||result == false) {
+         this.signCommit(commit);
         }
       });
     }
