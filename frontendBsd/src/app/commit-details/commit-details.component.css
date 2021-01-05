@@ -1,0 +1,58 @@
+.wrap-commit-details {
+    font-family: assistant;
+    font-size: 17px;
+    direction: rtl;
+    display: grid;
+}
+
+.wrap-commit-details > mat-icon.opacity {
+    opacity: 0;
+    transition: .4s;
+    margin-right: auto;
+}
+
+.wrap-commit-details > mat-icon.opacity:hover {
+    opacity: 1;
+}
+
+.wrap-commit-details p.title {
+    padding-inline: 5px;
+    padding-bottom: 10px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    border-bottom: solid 1px #00000024;
+    margin-bottom: 10px;
+}
+
+p.commit-content {
+    line-height: 27px;
+}
+
+.topic {
+    padding-block: 15px;
+}
+
+.topic > p {
+    display: flex;
+    line-height: 27px;
+}
+
+.topic > p > mat-icon {
+    margin-left: 6px;
+    color: #dadada;
+}
+
+.actions {
+    text-align: left;
+}
+
+.actions > button {
+    font-family: assistant;
+    margin-right: 12px;
+    font-size: 15px;
+    padding: 2px 13px;
+}
