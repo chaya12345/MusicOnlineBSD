@@ -5,8 +5,10 @@ import { MessageComponent } from '../message/message.component';
 import { ReportDetailsComponent } from '../report-details/report-details.component';
 import { CommonMessageService } from '../services/common-message.service';
 import { ReportsService } from '../services/reports.service';
+import { ShareDataService } from '../services/share-data.service';
 
 export enum eStatus { "לא טופל" = 1, "בטיפול", "טופל" }
+// export enum eStatus { not_treated = 1, in_treatment, treated }
 export interface ReportDetailsDialog {
   report: ReportView;
 }
@@ -19,16 +21,30 @@ export interface ReportDetailsDialog {
 export class ReportsBoardComponent implements OnInit {
 
   reports: ReportView[] = [];
-  selectedReport: Report = null;
+  selectedReport: ReportView = null;
+
+  reports_pre: ReportView[] = [];
+  reports_in: ReportView[] = [];
+  reports_post: ReportView[] = [];
+  isShowTreated: boolean = false;
 
   report: ReportView;
 
-  constructor(private reportService: ReportsService, public dialog: MatDialog, private _snackBar: MatSnackBar,
-    private cmService: CommonMessageService) {
+  constructor(private reportService: ReportsService, public dialog: MatDialog,
+    private _snackBar: MatSnackBar, private cmService: CommonMessageService,
+    private shareDataService: ShareDataService) {
     this.getReports();
   }
 
   ngOnInit(): void {
+    this.shareDataService.statusChangedEventListner()
+      .subscribe(report => {
+        let placing = this.findReportById(report.id);
+        if (placing > 0 && placing <= this.reports.length) {
+          this.reports[placing].status = report.status;
+          this.sortToLists();
+        }
+      });
   }
 
   prevent(event): void {
@@ -40,25 +56,56 @@ export class ReportsBoardComponent implements OnInit {
       this.reportService.getReportsView()
         .subscribe(reports => {
           this.reports = reports;
-          this.reports.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
+          this.reports = this.sortByDate(this.reports);
+          this.sortToLists();
         }, err => console.log(err));
     } catch (err) { console.log(err); }
   }
 
-  getStatus(value: number): string {
-    return eStatus[value];
+  sortByDate(list: ReportView[]): ReportView[] {
+    return list.sort((a, b) =>
+      Math.round(new Date(b.date).getTime() -
+        new Date(a.date).getTime()));
   }
 
-  getIcon(value: number): string {
-    return value == 1 ? "mark_email_unread" : (value == 2 ? "more_horiz" : "mark_email_read");
+  sortToLists(): void {
+    this.reports_pre = [];
+    this.reports_in = [];
+    this.reports_post = [];
+    this.reports.forEach(report => {
+      switch (report.status) {
+        case eStatus['לא טופל']:
+          this.reports_pre.push(report);
+          break;
+        case eStatus.בטיפול:
+          this.reports_in.push(report);
+          break;
+        case eStatus.טופל:
+          this.reports_post.push(report);
+          break;
+      }
+    });
+    this.reports_pre = this.sortByDate(this.reports_pre);
+    this.reports_in = this.sortByDate(this.reports_in);
+    this.reports_post = this.sortByDate(this.reports_post);
+  }
+
+  findReportById(id: number): number {
+    let i: number = 0;
+    for (; i < this.reports.length && this.reports[i].id != id; i++);
+    return i;
   }
 
   updateStatus(report: ReportView, status: number): void {
     try {
       this.reportService.updateReportStatus(report.id, status).subscribe(() => {
-        this.getReports();
+        let placing = this.findReportById(report.id);
+        if (placing > 0 && placing <= this.reports.length) {
+          this.reports[placing].status = status;
+          this.sortToLists();
+        }
         if (report == this.selectedReport) {
-          this.selectedReport.status = eStatus[status];
+          this.selectedReport.status = status;
         }
         this.openSnackBar(this.cmService.CHANGE_STATUS.SUCCESS);
       });
@@ -84,6 +131,7 @@ export class ReportsBoardComponent implements OnInit {
     }
     catch (err) { console.log(err); }
   }
+  
   openMessageDialog(text: string, report: ReportView) {
     try {
       const dialogRef = this.dialog.open(MessageComponent, {

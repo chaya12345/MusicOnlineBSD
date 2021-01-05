@@ -26,9 +26,9 @@ namespace ServerMusicBSD.Controllers
         {
             return ReportsBL.GetReportById(reportId);
         }
-        public void PutReportStatus(int reportId, int status)
+        public bool PutReportStatus(int reportId, int status)
         {
-            ReportsBL.ChangeReportStatus(reportId, status);
+            return ReportsBL.ChangeReportStatus(reportId, status);
         }
         public List<ReportsDTO> GetAllUntreatedReports()
         {

@@ -15,7 +15,7 @@ export class ReportView {
     phone?: string;
     songId?: number;
     message?: string;
-    status?: string;
+    status?: number;
     date?: Date;
     songName?:string;
 }

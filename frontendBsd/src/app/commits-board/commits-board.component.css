@@ -1,4 +1,4 @@
-.wrap-commits-board {
+/* .wrap-commits-board {
     width: 60vw;
     margin-inline: auto;
     padding: 30px 40px;
@@ -51,4 +51,94 @@
 
 .wrap-commit.active-commit p>span {
     color: #2196f3;
+} */
+.wrap-commits-board {
+    border: solid 1px #00000024;
+    border-radius: 10px;
+    padding: 20px 30px;
+}
+
+.wrap-group {
+    font-family: assistant;
+    font-size: 17px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px 35px;
+}
+
+.wrap-group:not(:last-of-type) {
+    margin-bottom: 70px;
+}
+
+p.section-title {
+    padding: 10px;
+    border-bottom: solid 1px #00000024;
+    grid-column: 1 / 3;
+}
+
+.wrap-commit {
+    border: solid 1px #00000024;
+    border-radius: 10px;
+    height: 185px;
+    padding: 10px;
+    display: grid;
+    grid-template-rows: fit-content(40%) fit-content(40%) auto fit-content(40%);
+}
+
+.wrap-commit > mat-icon {
+    margin-right: auto;
+    color: #00000047;
+    cursor: pointer;
+}
+
+.wrap-commit > p {
+    padding-inline: 5px;
+    padding-bottom: 10px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    border-bottom: solid 1px #00000024;
+    margin-bottom: 10px;
+}
+
+.wrap-commit mat-icon.opacity {
+    opacity: 0;
+    transition: .4s;
+}
+
+.wrap-commit mat-icon.opacity:hover {
+    opacity: 1;
+}
+
+.wrap-commit > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.wrap-commit > span.date {
+    color: #00000080;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.emptyList {
+    grid-column: 1 / 4;
+    text-align: center;
+    height: fit-content;
+    font-family: assistant;
+    font-size: 17px;
+}
+
+.emptyList > mat-icon {
+    font-size: 36px;
+    width: fit-content;
+    height: fit-content;
+    margin-bottom: 10px;
+    color: #313131;
 }

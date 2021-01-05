@@ -7,7 +7,7 @@
         <p><mat-icon>phone</mat-icon>{{report.phone}}</p>
     </div>
     <div class="actions">
-        <button mat-flat-button color="warn">סמן כדיווח שטופל</button>
+        <button mat-flat-button color="warn" (click)="changeStatusToggle()">{{report.status!=3?'סמן כדיווח שטופל':'העבר לדיווחים בטיפול'}}</button>
         <button mat-stroked-button (click)="onNoClick()">סגור</button>
     </div>
 </div>

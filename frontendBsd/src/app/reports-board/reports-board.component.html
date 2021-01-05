@@ -1,43 +1,50 @@
 <div class="wrap-reports">
-    <!-- <mini-title text="דיווחים"></mini-title> -->
-    <!-- <div class="report-details" *ngIf="selectedReport!=null">
-        <p>{{selectedReport.name}}</p>
-        <div class="report-content">
-            <span>{{selectedReport.message}}</span>
-            <span class="contact-details">פרטי מדווח » {{selectedReport.mail}} • {{selectedReport.phone}}</span>
-            <div class="action-buttons">
-                <button mat-stroked-button (click)="updateStatus(selectedReport, 3);selectedReport=null;">
-                    <mat-icon>check_circle</mat-icon>סמן כטופל</button>
-                <button mat-stroked-button (click)="selectedReport=null"><mat-icon>close</mat-icon>סגור</button>
-            </div>
+    
+    <div class="wrap-not-treated">
+        <p class="section-title">דיווחים שלא נקראו</p>
+        <div class="wrap-report" *ngFor="let report of reports_pre" (click)="openReportDetailsDialog(report)">
+            <mat-icon
+                (click)="$event.stopPropagation();openMessageDialog('האם אתה בטוח שברצונך לשנות את סטטוס הדיווח לטופל?',report);">
+                push_pin</mat-icon>
+            <p>{{report.name}}</p>
+            <span>{{report.message}}</span>
+            <div><span>{{report.date | date: 'dd/MM/yyyy H:mm'}}</span></div>
+        </div>
+        <div class="emptyList" *ngIf="reports_pre.length==0">
+            <mat-icon>tag_faces</mat-icon>
+            <p>- לא קיימים דיווחים שלא נקראו -</p>
         </div>
     </div>
-    <div class="report" *ngFor="let report of reports" [class.untreated]="report.status==1"
-        [class.in-treat]="report.status==2" [class.treated]="report.status==3" [class.active]="selectedReport==report"
-        (click)="selectedReport=(selectedReport==report?null:report);report.status==1?updateStatus(report, 2):1">
-        //<mat-checkbox color="warn" [checked]="report.status==3" (click)="updateStatus(report, report.status==3?2:3)"
-        //[disabled]="report.status==1"></mat-checkbox>
-        <p>{{report.name}}</p>
-        <span>{{report.date | date: 'd/M/yyyy H:mm'}}</span>
-        <div [ngSwitch]="report.status">
-            <button mat-icon-button *ngSwitchCase="'1'" matTooltip="סמן כפריט בטיפול"
-            matTooltipClass="tooltip blue-tooltip" (click)="updateStatus(report, 2);prevent($event);"><mat-icon>mark_email_unread</mat-icon></button>
-            <button mat-icon-button *ngSwitchDefault matTooltip="העבר למצב 'לא טופל'"
-            matTooltipClass="tooltip blue-tooltip" (click)="updateStatus(report, 1);selectedReport==report?selectedReport=null:1;prevent($event);">
-            <mat-icon>mark_email_read</mat-icon></button>
-        </div>
-        <div style="display: flex;">
-            <div class="progress" [matTooltip]="getStatus(report.status)"
-            matTooltipClass="tooltip blue-tooltip"></div>
-            //<mat-icon>{{getIcon(report.status)}}</mat-icon><span>{{getStatus(report.status)}}</span>
-        </div>
-    </div> -->
 
-    <div class="wrap-report" *ngFor="let report of reports" (click)="openReportDetailsDialog(report)">
-        <mat-icon (click)="$event.stopPropagation();openMessageDialog('האם אתה בטוח שברצונך לשנות את סטטוס הדיווח לטופל?',report);">push_pin</mat-icon>
-        <p>{{report.name}}</p>
-        <span>{{report.message}}</span>
-        <div><span>{{report.date | date: 'dd/MM/yyyy H:mm'}}</span></div>
+    <div class="wrap-in-treatment">
+        <p class="section-title">דיווחים בטיפול</p>
+        <div class="wrap-report" *ngFor="let report of reports_in" (click)="openReportDetailsDialog(report)">
+            <mat-icon (click)="$event.stopPropagation();updateStatus(report, 1);">push_pin</mat-icon>
+            <p>{{report.name}}</p>
+            <span>{{report.message}}</span>
+            <div><span>{{report.date | date: 'dd/MM/yyyy H:mm'}}</span></div>
+        </div>
+        <div class="emptyList" *ngIf="reports_in.length==0">
+            <mat-icon>tag_faces</mat-icon>
+            <p>- לא קיימים דיווחים בטיפול -</p>
+        </div>
+    </div>
+
+    <button mat-flat-button *ngIf="!isShowTreated" (click)="isShowTreated=true">הצג דיווחים שטופלו</button>
+    <button mat-flat-button *ngIf="isShowTreated" (click)="isShowTreated=false">הסתר דיווחים שטופלו</button>
+
+    <div class="wrap-treated" *ngIf="isShowTreated">
+        <p class="section-title">דיווחים שטופלו</p>
+        <div class="wrap-report" *ngFor="let report of reports_post" (click)="openReportDetailsDialog(report)">
+            <mat-icon (click)="$event.stopPropagation();updateStatus(report, 1);">push_pin</mat-icon>
+            <p>{{report.name}}</p>
+            <span>{{report.message}}</span>
+            <div><span>{{report.date | date: 'dd/MM/yyyy H:mm'}}</span></div>
+        </div>
+        <div class="emptyList" *ngIf="reports_post.length==0">
+            <mat-icon>tag_faces</mat-icon>
+            <p>- לא קיימים דיווחים שטופלו -</p>
+        </div>
     </div>
 
 </div>

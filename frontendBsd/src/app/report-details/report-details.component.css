@@ -43,11 +43,11 @@ p.report-content {
 }
 
 .conact-details > p {
-    color: #2196f3;
     display: flex;
     line-height: 27px;
 }
 
 .conact-details > p > mat-icon {
     margin-left: 6px;
+    color: #dadada;
 }

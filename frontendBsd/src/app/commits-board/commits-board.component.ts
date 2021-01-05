@@ -21,14 +21,21 @@ export class Group {
 })
 export class CommitsBoardComponent implements OnInit {
 
+  commitsNotChecked: Commit[] = [];
+  commitsChecked: Commit[] = [];
   commits: Commit[] = [];
-  groups: Group[] = [];
+  groupsNotChecked: Group[] = [];
+  groupsChecked: Group[] = [];
   selectedCommit: Commit;
 
   constructor(private commitService: CommitService, private commitsToArticlesService: CommitsToArticlesService,
-    private commitsToSongsService: CommitsToSongsService, private cmService: CommonMessageService, 
-    private _snackBar: MatSnackBar,public dialog: MatDialog) {
+    private commitsToSongsService: CommitsToSongsService, private cmService: CommonMessageService,
+    private _snackBar: MatSnackBar, public dialog: MatDialog) {
     this.getCommits();
+    let today = new Group();
+    today.name = "היום";
+    today.list = [];
+    this.groupsNotChecked.push(today);
   }
 
   ngOnInit(): void {
@@ -39,15 +46,21 @@ export class CommitsBoardComponent implements OnInit {
       this.commitService.getCommits()
         .subscribe(commits => {
           this.commits = commits;
+          this.commits.forEach(commit => {
+            commit.tested == true ?
+              this.commitsChecked.push(commit) :
+              this.commitsNotChecked.push(commit);
+          });
           this.commits.sort((a, b) => Math
             .round(new Date(b.date).getTime() - new Date(a.date).getTime()));
-          this.groupingByDate();
+          this.groupingByDate(this.commitsChecked);
+          this.groupingByDate(this.commitsNotChecked);
         }, err => console.log(err));
     } catch (err) { console.log(err); }
   }
 
-  groupingByDate(): void {
-    this.commits.forEach(commit => {
+  groupingByDate(list: Commit[]): void {
+    list.forEach(commit => {
       let date = new Date(commit.date);
       let today = new Date();
       date.setHours(0, 0, 0, 0);
@@ -74,23 +87,39 @@ export class CommitsBoardComponent implements OnInit {
         this.addItemToGroup("לפני זמן רב", commit);
       }
     });
-    console.log(this.groups);
   }
 
   addItemToGroup(name: string, item: Commit): void {
     let exist: boolean = false;
-    this.groups.forEach(group => {
-      if (group.name == name) {
-        group.list.push(item);
-        exist = true;
+    if (item.tested == false) {
+      this.groupsNotChecked.forEach(group => {
+        if (group.name == name) {
+          group.list.push(item);
+          exist = true;
+        }
+      });
+      if (exist == false) {
+        let g = new Group();
+        g.name = name;
+        g.list = [];
+        g.list.push(item);
+        this.groupsNotChecked.push(g);
       }
-    });
-    if (exist == false) {
-      let g = new Group();
-      g.name = name;
-      g.list = [];
-      g.list.push(item);
-      this.groups.push(g);
+    }
+    else {
+      this.groupsChecked.forEach(group => {
+        if (group.name == name) {
+          group.list.push(item);
+          exist = true;
+        }
+      });
+      if (exist == false) {
+        let g = new Group();
+        g.name = name;
+        g.list = [];
+        g.list.push(item);
+        this.groupsChecked.push(g);
+      }
     }
   }
 
@@ -141,7 +170,9 @@ export class CommitsBoardComponent implements OnInit {
   }
 
   signAsTested(commit: Commit): void {
-    this.changeSigning(commit, true);
+    if (!commit.tested) {
+      this.changeSigning(commit, true);
+    }
   }
 
   removeSigning(commit: Commit): void {
@@ -154,18 +185,18 @@ export class CommitsBoardComponent implements OnInit {
         this.commitsToArticlesService.updateIsTested(commit.id, isSign).subscribe(result => {
           if (result == true) {
             this.openSnackBar(this.cmService.COMMIT_SIGNING.SUCCESS);
-            this.singCommit(commit);
+            this.signCommit(commit);
           }
           else this.openSnackBar(this.cmService.COMMIT_SIGNING.FAIL);
         }, err => this.openSnackBar(this.cmService.COMMIT_SIGNING.ERROR));
       } catch (err) { console.log(err); }
     }
-    else if (commit.type == "song"){
+    else if (commit.type == "song") {
       try {
         this.commitsToSongsService.updateIsTested(commit.id, isSign).subscribe(result => {
           if (result == true) {
             this.openSnackBar(this.cmService.COMMIT_SIGNING.SUCCESS);
-            this.singCommit(commit);
+            this.signCommit(commit);
           }
           else this.openSnackBar(this.cmService.COMMIT_SIGNING.FAIL);
         }, err => this.openSnackBar(this.cmService.COMMIT_SIGNING.ERROR));
@@ -205,7 +236,13 @@ export class CommitsBoardComponent implements OnInit {
   }
 
   deletingCommit(commit: Commit) {
-    this.groups.forEach(element => {
+    this.groupsNotChecked.forEach(element => {
+      if (element.list.includes(commit, 0)) {
+        let index = element.list.indexOf(commit);
+        element.list.splice(index, 1);
+      }
+    });
+    this.groupsChecked.forEach(element => {
       if (element.list.includes(commit, 0)) {
         let index = element.list.indexOf(commit);
         element.list.splice(index, 1);
@@ -213,14 +250,14 @@ export class CommitsBoardComponent implements OnInit {
     });
   }
 
-  singCommit(commit: Commit) {
+  signCommit(commit: Commit) {
     this.commitService.getCommitById(commit.id, commit.type).subscribe(updateCommit =>
-      this.groups.forEach(element => {
+      this.groupsNotChecked.forEach(element => {
         if (element.list.includes(commit, 0))
           element.list[element.list.indexOf(commit)] = updateCommit;
       }));
   }
-  openMessageDialog(text: string,commit:Commit) {
+  openMessageDialog(text: string, commit: Commit) {
     try {
       const dialogRef = this.dialog.open(MessageComponent, {
         width: '400px',
