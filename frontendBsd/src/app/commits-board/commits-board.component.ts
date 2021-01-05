@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { Commit } from '../classes/commit';
 import { CommitsToArticles } from '../classes/commitsToArticles';
+import { CommitDetailsComponent } from '../commit-details/commit-details.component';
 import { MessageComponent } from '../message/message.component';
 import { CommitService } from '../services/commit.service';
 import { CommitsToArticlesService } from '../services/commits-to-articles.service';
@@ -268,6 +269,25 @@ export class CommitsBoardComponent implements OnInit {
           this.deleteCommit(commit);
       });
     } catch (err) { console.log(err); }
+  }
+  openReportDetailsDialog(commit: Commit): void {
+    try {
+      const dialogRef = this.dialog.open(CommitDetailsComponent, {
+        width: '350px',
+        data: { commit: commit }
+      });
+
+      dialogRef.componentInstance.data.commit = commit;
+      dialogRef.afterClosed().subscribe(result => {
+        if(result==true){
+          this.changeSigning(commit,true);
+        }
+        else if(result==false){
+          this.changeSigning(commit,false);
+        }
+      });
+    }
+    catch (err) { console.log(err); }
   }
 
 }

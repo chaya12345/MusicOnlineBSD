@@ -1,1 +1,13 @@
-<p>commit-details works!</p>
+<div>
+    <p>
+        <b>{{commit.name}}</b>
+        <span> מגיב על </span>
+        <span *ngIf="commit.type=='song'"> :שיר </span>
+        <span *ngIf="commit.type=='article'"> :כתבה </span>
+        <span>{{topicName}}</span>
+    </p>
+    <p>{{commit.content_res}}</p>
+    <button *ngIf="commit.tested==false||null" (click)="onNoClick(true)">אשר תגובה</button>
+    <button *ngIf="commit.tested==true" (click)="onNoClick(false)">בטל אישור לתגובה</button>
+    <button (click)="onNoClick()">סגור</button>
+</div>
