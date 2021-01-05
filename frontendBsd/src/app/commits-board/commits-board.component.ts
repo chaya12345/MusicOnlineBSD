@@ -1,6 +1,7 @@
 import { group } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
+import { element } from 'protractor';
 import { Commit } from '../classes/commit';
 import { CommitsToArticles } from '../classes/commitsToArticles';
 import { CommitDetailsComponent } from '../commit-details/commit-details.component';
@@ -54,46 +55,49 @@ export class CommitsBoardComponent implements OnInit {
           });
           this.commits.sort((a, b) => Math
             .round(new Date(b.date).getTime() - new Date(a.date).getTime()));
-          this.groupingByDate(this.commitsChecked);
-          this.groupingByDate(this.commitsNotChecked);
+          this.groupingListByDate(this.commitsChecked,this.groupsChecked);
+          this.groupingListByDate(this.commitsNotChecked,this.groupsNotChecked);
         }, err => console.log(err));
     } catch (err) { console.log(err); }
   }
+  groupingCommitByDate(commit: Commit,groupList:Group[]): void {
+    let date = new Date(commit.date);
+    let today = new Date();
+    date.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+    if (this.calculateDiff(date) == 0) { //new Date(date) == today
+      this.addItemToGroup("היום", commit,groupList);
+    }
+    else if (this.calculateDiff(date) == 1) { //new Date(date) == new Date(today.setDate(today.getDate() - 1))
+      this.addItemToGroup("אתמול", commit,groupList);
+    }
+    else if (this.isInCurrentWeek(date)) {
+      this.addItemToGroup("השבוע", commit,groupList);
+    }
+    else if (this.isInAnOneWeekAgo(date)) {
+      this.addItemToGroup("שבוע שעבר", commit,groupList);
+    }
+    else if (this.isInCurrentMonth(date)) {
+      this.addItemToGroup("מוקדם יותר החודש", commit,groupList); //19
+    }
+    else if (new Date(date).getFullYear() == today.getFullYear()) {
+      this.addItemToGroup("מוקדם יותר השנה", commit,groupList);
+    }
+    else {
+      this.addItemToGroup("לפני זמן רב", commit,groupList);
+    }
+  }
 
-  groupingByDate(list: Commit[]): void {
+  groupingListByDate(list: Commit[],groupList:Group[]): void {
     list.forEach(commit => {
-      let date = new Date(commit.date);
-      let today = new Date();
-      date.setHours(0, 0, 0, 0);
-      today.setHours(0, 0, 0, 0);
-      if (this.calculateDiff(date) == 0) { //new Date(date) == today
-        this.addItemToGroup("היום", commit);
-      }
-      else if (this.calculateDiff(date) == 1) { //new Date(date) == new Date(today.setDate(today.getDate() - 1))
-        this.addItemToGroup("אתמול", commit);
-      }
-      else if (this.isInCurrentWeek(date)) {
-        this.addItemToGroup("השבוע", commit);
-      }
-      else if (this.isInAnOneWeekAgo(date)) {
-        this.addItemToGroup("שבוע שעבר", commit);
-      }
-      else if (this.isInCurrentMonth(date)) {
-        this.addItemToGroup("מוקדם יותר החודש", commit); //19
-      }
-      else if (new Date(date).getFullYear() == today.getFullYear()) {
-        this.addItemToGroup("מוקדם יותר השנה", commit);
-      }
-      else {
-        this.addItemToGroup("לפני זמן רב", commit);
-      }
+      this.groupingCommitByDate(commit,groupList);
     });
   }
 
-  addItemToGroup(name: string, item: Commit): void {
+  addItemToGroup(name: string, item: Commit,groupList:Group[]): void {
     let exist: boolean = false;
     if (item.tested == false) {
-      this.groupsNotChecked.forEach(group => {
+      groupList.forEach(group => {
         if (group.name == name) {
           group.list.push(item);
           exist = true;
@@ -104,7 +108,7 @@ export class CommitsBoardComponent implements OnInit {
         g.name = name;
         g.list = [];
         g.list.push(item);
-        this.groupsNotChecked.push(g);
+        groupList.push(g);
       }
     }
     else {
@@ -173,6 +177,13 @@ export class CommitsBoardComponent implements OnInit {
   signAsTested(commit: Commit): void {
     if (!commit.tested) {
       this.changeSigning(commit, true);
+      this.groupsNotChecked.forEach(group => {
+        group.list.forEach(element => {
+          if (element.id == commit.id)
+            group.list.splice(group.list.indexOf(element), 1);
+        });
+      });
+      this.groupingCommitByDate(commit,this.groupsChecked);
     }
   }
 
@@ -279,11 +290,11 @@ export class CommitsBoardComponent implements OnInit {
 
       dialogRef.componentInstance.data.commit = commit;
       dialogRef.afterClosed().subscribe(result => {
-        if(result==true){
-          this.changeSigning(commit,true);
+        if (result == true) {
+          this.changeSigning(commit, true);
         }
-        else if(result==false){
-          this.changeSigning(commit,false);
+        else if (result == false) {
+          this.changeSigning(commit, false);
         }
       });
     }

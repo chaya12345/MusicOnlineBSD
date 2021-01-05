@@ -220,13 +220,13 @@ export class UploadingSongComponent implements OnInit {
       this.artistsWithJobs.push(awj);
       this.selectedArtist = false;
       this.uploadSong.controls.artists.setValue("");
+      this.uploadSong.controls.job.setValue("");
     }
   }
   selectArtist(artist: string) {
     if (!this.selectedArtist) {
       this.artist1 = artist;
       this.selectedArtist = true;
-      this.uploadSong.controls.job.setValue("");
     }
 
   }
