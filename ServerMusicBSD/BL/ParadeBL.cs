@@ -11,15 +11,13 @@ namespace BL
 {
     public class ParadeBL
     {
-        public static ParadeDTO GetActiveParade()
+        public static ParadeTBL GetLastParade()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            return Casts.ToParadeDTO.GetParade(et.ParadeTBL.Where(p => p != null && p.isActive == true).FirstOrDefault());
-        }
-        public static ParadeTBL GetActiveParadeTBL()
-        {
-            MusicOnlineEntities et = new MusicOnlineEntities();
-            return et.ParadeTBL.Where(p => p != null && p.isActive == true).FirstOrDefault();
+            ParadeTBL parade = et.ParadeTBL.Where(p => p != null && p.isActive == true).FirstOrDefault();
+            if (parade != null)
+                return parade;
+            return et.ParadeTBL.OrderByDescending(p => p.dateEnd).FirstOrDefault();
         }
         public static ParadeDTO GetParadeByYear(string year)
         {
@@ -28,7 +26,8 @@ namespace BL
         }
         public static bool AddParade(ParadeTBL parade)
         {
-            if (parade == null || GetActiveParade() != null)
+            ParadeTBL paradeTBL = GetLastParade();
+            if (parade == null || paradeTBL.isActive==true)
                 return false;
             MusicOnlineEntities et = new MusicOnlineEntities();
             try
@@ -54,10 +53,14 @@ namespace BL
         public static void FinishedParade()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            ParadeTBL parade = GetActiveParadeTBL();
-            parade.dateEnd = DateTime.Now;
-            parade.isActive = false;
-            et.SaveChanges();
+            ParadeTBL parade = GetLastParade();
+            if (parade.dateEnd == null)
+            {
+                parade.dateEnd = DateTime.Now;
+                parade.isActive = false;
+                et.SaveChanges();
+            }
+            
         }
         public static List<ItemsToParade_Result> GetItemsToParade()
         {

@@ -4,7 +4,7 @@ export class JanerStatistic{
 }
 export class SingersSearchingStatistic{
     singerName?:string;
-    count?:string;
+    count?:number;
 }
 export class AverageCommitsStatistic{
     month?:Date;
