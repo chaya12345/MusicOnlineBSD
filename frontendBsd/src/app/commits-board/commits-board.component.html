@@ -31,7 +31,10 @@
             <p class="section-title">{{group.name}}</p>
 
             <div class="wrap-commit" *ngFor="let commit of group.list" (click)="openReportDetailsDialog(commit)">
-                <mat-icon [class.opacity]="!commit.tested" (click)="$event.stopPropagation();signAsTested(commit)">check</mat-icon>
+                <div class="actions">
+                    <mat-icon class="delete-button">delete</mat-icon>
+                    <mat-icon [class.opacity]="!commit.tested" (click)="$event.stopPropagation();signAsTested(commit)">check</mat-icon>
+                </div>
                 <p>{{commit.name}}</p>
                 <span>{{commit.title_res}}<br>{{commit.content_res}}</span>
                 <span class="date">{{group.name != 'היום' ? (commit.date | date: 'MMM d') : (commit.date | date: 'h:mm a')}}</span>

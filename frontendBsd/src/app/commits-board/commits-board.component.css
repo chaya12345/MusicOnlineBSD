@@ -1,58 +1,3 @@
-/* .wrap-commits-board {
-    width: 60vw;
-    margin-inline: auto;
-    padding: 30px 40px;
-}
-
-.wrap-group {
-    margin-block: 35px;
-}
-
-.wrap-group>p {
-    font-family: assistant;
-    background-color: whitesmoke;
-    padding: 10px;
-    font-size: 17px;
-    border-radius: 4px;
-}
-
-.wrap-commit {
-    padding: 10px 15px;
-    border: solid 1px #00000024;
-    border-radius: 4px;
-    font-family: assistant;
-    margin-block: 10px;
-    cursor: pointer;
-    display: grid;
-    grid-template-columns: auto 50px 50px;
-    align-items: center;
-}
-
-.wrap-commit p>span {
-    font-weight: bold;
-}
-
-.title-commit {
-    line-height: 30px;
-}
-
-.opened-commit {
-    grid-area: 2 / 1 / 3 / 3;
-    border-top: solid 1px #00000024;
-    padding: 10px 5px;
-    margin-block: 10px;
-    font-size: 17px;
-}
-
-.wrap-commit.active-commit {
-    border-color: #2196f3;
-    background-color: #2196f30f;
-}
-
-.wrap-commit.active-commit p>span {
-    color: #2196f3;
-} */
-
 .wrap-commits-board {
     border: solid 1px #00000024;
     border-radius: 10px;
@@ -86,13 +31,19 @@ p.section-title {
     grid-template-rows: fit-content(40%) fit-content(40%) auto fit-content(40%);
 }
 
-.wrap-commit>mat-icon {
+.wrap-commit .actions {
+    margin-right: auto;
+    height: 14px;
+}
+
+.wrap-commit .actions > mat-icon {
     margin-right: auto;
     color: #00000047;
     cursor: pointer;
+    margin-right: 7px;
 }
 
-.wrap-commit>p {
+.wrap-commit > p {
     padding-inline: 5px;
     padding-bottom: 10px;
     font-weight: 600;
@@ -105,16 +56,18 @@ p.section-title {
     margin-bottom: 10px;
 }
 
-.wrap-commit mat-icon.opacity {
+.wrap-commit .actions mat-icon.opacity,
+.wrap-commit .actions mat-icon.delete-button {
     opacity: 0;
     transition: .4s;
 }
 
-.wrap-commit mat-icon.opacity:hover {
+.wrap-commit .actions mat-icon.opacity:hover,
+.wrap-commit .actions mat-icon.delete-button:hover {
     opacity: 1;
 }
 
-.wrap-commit>span {
+.wrap-commit > span {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -122,7 +75,7 @@ p.section-title {
     -webkit-box-orient: vertical;
 }
 
-.wrap-commit>span.date {
+.wrap-commit > span.date {
     color: #00000080;
     padding-top: 10px;
     text-align: center;
@@ -136,7 +89,7 @@ p.section-title {
     font-size: 17px;
 }
 
-.emptyList>mat-icon {
+.emptyList > mat-icon {
     font-size: 36px;
     width: fit-content;
     height: fit-content;
