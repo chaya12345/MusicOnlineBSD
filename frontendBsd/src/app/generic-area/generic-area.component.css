@@ -1,7 +1,6 @@
 .wrap-generic-area {
-    /* height: 317px; */
-    height: 300px;
-    margin: 50px 50px 0;
+    height: 275px;
+    margin: 30px 8vw 0;
     display: grid;
     grid-template-columns: fit-content(50%) auto;
     border: solid 1px #e6e5e5;
@@ -23,8 +22,7 @@
 
 div.img {
     height: 100%;
-    /* width: 550px; */
-    width: 410px;
+    width: 240px;
     background-size: cover;
     background-position: center;
 }
@@ -42,7 +40,7 @@ div.img {
     height: fit-content;
     width: fit-content;
     color: white;
-    font-size: 45px;
+    font-size: 38px;
     padding: 10px;
     transition: .4s;
     opacity: 0;
@@ -66,23 +64,24 @@ div.img {
 div.content {
     padding: 5px 30px 5px 0;
     display: grid;
-    grid-template-rows: fit-content(50%) fit-content(50%) auto fit-content(50%);
+    grid-template-rows: fit-content(50%)
+        fit-content(50%) auto fit-content(50%);
 }
 
 .content h3 {
-    font-family: fb Ogen;
-    font-size: 23px;
+    font-family: assistant;
+    font-size: 19px;
     margin-bottom: 12px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
 }
 
 .content p {
-    font-family: fb Joker;
-    font-size: 21px;
+    font-family: assistant;
+    font-size: 18px;
     line-height: 30px;
     margin-top: 12px;
     overflow: hidden;
@@ -94,9 +93,9 @@ div.content {
 }
 
 .content span {
-    font-family: fb Joker;
-    font-size: 21px;
     font-weight: 100;
+    font-family: assistant;
+    font-size: 18px;
 }
 
 .content div {
@@ -116,5 +115,5 @@ div.content {
 }
 
 .type-item mat-icon {
-    margin-right: 7px;
+    margin-right: 6px;
 }

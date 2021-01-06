@@ -171,6 +171,7 @@ import { RestItemComponent } from './rest-item/rest-item.component';
 import { ReportDetailsComponent } from './report-details/report-details.component';
 import { CommitDetailsComponent } from './commit-details/commit-details.component';
 import { UpdatingsBoardComponent } from './updatings-board/updatings-board.component';
+import { CrudActionsComponent } from './crud-actions/crud-actions.component';
 
 @NgModule({
   declarations: [
@@ -328,7 +329,8 @@ import { UpdatingsBoardComponent } from './updatings-board/updatings-board.compo
     RestItemComponent,
     ReportDetailsComponent,
     CommitDetailsComponent,
-    UpdatingsBoardComponent
+    UpdatingsBoardComponent,
+    CrudActionsComponent
   ],
   imports: [
     BrowserModule,
