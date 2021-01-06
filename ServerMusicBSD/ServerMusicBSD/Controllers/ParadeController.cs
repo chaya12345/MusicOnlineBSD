@@ -14,9 +14,9 @@ namespace ServerMusicBSD.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ParadeController : ApiController
     {
-        public ParadeDTO GetActiveParade()
+        public ParadeTBL GetLastParade()
         {
-            return ParadeBL.GetActiveParade();
+            return ParadeBL.GetLastParade();
         }
         public ParadeDTO GetParadeByYear(string year)
         {

@@ -22,6 +22,7 @@ export class ActivationParadeComponent implements OnInit {
   songs: Song[] = [];
   imageFile: File;
   activatedParade: boolean = false;
+  isTowDays: boolean = false;
 
   constructor(private singerService: SingerService, private songService: SongService, public dialog: MatDialog,
     private uploadService: UploadService, private _snackBar: MatSnackBar, private paradeService: ParadeService,
@@ -35,11 +36,27 @@ export class ActivationParadeComponent implements OnInit {
     this.getSingers();
     this.getSongs();
     try {
-      paradeService.getActiveParade().subscribe(parade => { if (parade != null) this.activatedParade = true })
+      paradeService.getLastParade().subscribe(parade => {
+        if (parade.isActive != true)
+          this.activatedParade = true;
+        else {
+          let date = new Date(parade.dateEnd);
+          date.setHours(0, 0, 0, 0);
+          if (this.calculateDiff(date) == 2)
+            this.isTowDays = true;
+        }
+      })
     } catch (err) { console.log(err); }
   }
 
   ngOnInit(): void {
+  }
+  calculateDiff(dateSent) {
+    let currentDate = new Date();
+    dateSent = new Date(dateSent);
+
+    return Math.floor((Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate())
+      - Date.UTC(dateSent.getFullYear(), dateSent.getMonth(), dateSent.getDate())) / (1000 * 60 * 60 * 24));
   }
 
   getSongs(): void {

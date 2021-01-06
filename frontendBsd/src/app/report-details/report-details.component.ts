@@ -60,6 +60,7 @@ export class ReportDetailsComponent implements OnInit {
           this.shareDataService.emitStatusChanged(newReport);
         }, () => this.openSnackBar(this.commonMessage.CHANGE_STATUS.ERROR));
     } catch (err) { this.openSnackBar(this.commonMessage.CHANGE_STATUS.ERROR); }
+    this.onNoClick();
   }
 
   openSnackBar(message: string) {
