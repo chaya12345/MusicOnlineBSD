@@ -1,0 +1,17 @@
+<div class="wrap-updatings-board">
+    <div class="m-container">
+        <p class="title-section">» <span class="content-title">לוח עדכונים</span> «</p>
+        <div class="wrap-updatings">
+            <div *ngFor="let updating of updatings"></div>
+            <div *ngIf="isUserConnected&&(updatings==null||updatings.length==0)" class="emptyList">
+                <mat-icon>tag_faces</mat-icon>
+                <p>- לא קיימים עדכונים חדשים -</p>
+            </div>
+            <div *ngIf="!isUserConnected" class="notConnected">
+                <p>כאן תוכל לראות עדכונים שעשויים לעניין אותך לפי חיפושים קודמים</p>
+                <mat-icon>tag_faces</mat-icon>
+                <span>שלום לך, ממליצים להתחבר לאתר!</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,9 @@
 mat-form-field {
-    margin: 15px;
+    margin: 15px 7px;
     direction: ltr;
-    text-align: right !important;
+    text-align: right;
+    font-family: assistant;
+    font-size: 15.5px;
+    height: 60px;
+    width: 220px;
 }

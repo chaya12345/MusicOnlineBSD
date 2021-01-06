@@ -10,8 +10,9 @@
 .wrap-copyrights p {
     display: flex;
     margin: auto;
-    font-family: calibri;
     font-size: 19px;
+    font-family: assistant;
+    font-weight: 300;
 }
 
 .wrap-copyrights p mat-icon {

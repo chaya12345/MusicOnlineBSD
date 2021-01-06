@@ -52,12 +52,14 @@ html, body {
 
 .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float 
 .mat-form-field-label {
-    transform: translate(-14px, -1.5937em) scale(0.75);
+    transform: translate(-11px, -1.6937em) scale(0.75);
 }
 
-mat-option {
-    text-align: right !important;
-    direction: rtl !important;
+mat-option > span {
+    text-align: right;
+    direction: rtl;
+    font-family: assistant;
+    font-size: 17px;
 }
 
 .mat-form-field-appearance-fill .mat-form-field-flex {
@@ -150,16 +152,6 @@ si-popular-songs .swiper-button-prev, si-popular-songs .swiper-button-next {
     margin: 0 -25px;
     box-shadow: 0 0 5px 2px #0000001f;
     transform: translateY(-10px);
-}
-
-/* #endregion */
-
-/* #region(collapsed) [register-button] */
-
-register button span {
-    font-family: calibri;
-    font-size: 17px;
-    color: #525252;
 }
 
 /* #endregion */

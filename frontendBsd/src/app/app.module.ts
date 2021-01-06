@@ -170,6 +170,7 @@ import { FollowingItemComponent } from './following-item/following-item.componen
 import { RestItemComponent } from './rest-item/rest-item.component';
 import { ReportDetailsComponent } from './report-details/report-details.component';
 import { CommitDetailsComponent } from './commit-details/commit-details.component';
+import { UpdatingsBoardComponent } from './updatings-board/updatings-board.component';
 
 @NgModule({
   declarations: [
@@ -326,7 +327,8 @@ import { CommitDetailsComponent } from './commit-details/commit-details.componen
     FollowingItemComponent,
     RestItemComponent,
     ReportDetailsComponent,
-    CommitDetailsComponent
+    CommitDetailsComponent,
+    UpdatingsBoardComponent
   ],
   imports: [
     BrowserModule,

@@ -10,10 +10,10 @@
 }
 
 .wrap-register p {
-    color: white;
     margin-right: auto;
-    font-size: 23px;
+    font-size: 20px;
     font-family: assistant;
+    color: #101010;
 }
 
 .wrap-register button {
@@ -22,4 +22,6 @@
     border-radius: 50px;
     padding: 7px 38px;
     font-family: assistant;
+    font-size: 17px;
+    font-weight: 400;
 }

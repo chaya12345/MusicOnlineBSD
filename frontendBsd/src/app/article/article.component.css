@@ -7,6 +7,7 @@
     border-radius: 4px;
     padding: 18px;
     transition: .4s;
+    margin-inline: 2vw;
     animation-duration: .6s;
     animation-timing-function: ease linear;
 }
@@ -22,7 +23,7 @@
 
 .wrapper {
     height: 100%;
-    width: 360px;
+    width: 320px;
     overflow: hidden;
 }
 
@@ -58,7 +59,7 @@ div.content {
     display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
-    line-height: 32px;
+    line-height: 31px;
     font-weight: bold;
 }
 
@@ -68,11 +69,12 @@ div.content {
 
 .content p > span:last-of-type {
     padding-top: 3px;
+    font-size: 18px;
 }
 
 .content p > span:first-of-type {
     font-family: assistant;
-    font-size: 18.5px;
+    font-size: 17.5px;
     font-weight: 300;
     line-height: 45px;
 }

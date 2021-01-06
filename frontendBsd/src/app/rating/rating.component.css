@@ -7,10 +7,10 @@
 }
 
 .wrap-rating span {
-    font-size: 15.5px;
-    font-weight: 100;
-    font-family: calibri;
+    font-size: 16.5px;
     display: table;
+    font-family: assistant;
+    font-weight: 300;
 }
 
 .wrap-rating mat-icon {

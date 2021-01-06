@@ -1,0 +1,45 @@
+.m-container {
+    padding-bottom: 0 !important;
+}
+
+.wrap-updatings {
+    grid-column: 1 / 5;
+    border: solid 1px #00000024;
+    border-radius: 10px;
+    padding: 10px;
+    min-height: 320px;
+    display: grid;
+}
+
+.emptyList, .notConnected {
+    text-align: center;
+    height: fit-content;
+    font-family: assistant;
+    font-size: 17px;
+    margin-block: auto;
+    line-height: 27px;
+}
+
+.emptyList > mat-icon,
+.notConnected > mat-icon {
+    font-size: 36px;
+    width: fit-content;
+    height: fit-content;
+    margin-bottom: 10px;
+    color: #313131;
+}
+
+.notConnected {
+    margin-block: 0 !important;
+}
+
+.notConnected p {
+    padding: 15px;
+    background-color: whitesmoke;
+    border-radius: 4px;
+    margin-bottom: 7%;
+}
+
+.notConnected span {
+    display: block;
+}

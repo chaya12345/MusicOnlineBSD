@@ -7,6 +7,7 @@
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 35px 40px;
     padding: 100px 0;
+    min-width: 50vw;
 }
 
 .m-vertical-container {
@@ -27,7 +28,7 @@
 p.title-section {
     grid-column: 1 / 5;
     font-family: assistant;
-    font-size: 23px;
+    font-size: 21px;
     padding: 10px;
     border-radius: 4px;
     color: #101010;

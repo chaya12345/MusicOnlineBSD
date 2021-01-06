@@ -38,8 +38,7 @@
 }
 
 .swiper-slide div a:hover { 
-    /* transform: translateX(10px); */
-    color: #fbc02d;
+    color: #c7c7c7;
 }
 
 .swiper-slide div:last-of-type {
@@ -48,10 +47,7 @@
 
 .swiper-slide div span {
     font-weight: 100;
-    /* font-family: calibri; */
-    font-family: fb Joker;
-    font-size: 38px;
-    color: #ffffff8c;
-    /* float: left; */
+    font-family: assistant;
+    font-size: 29px;
     margin-top: 30px;
 }
