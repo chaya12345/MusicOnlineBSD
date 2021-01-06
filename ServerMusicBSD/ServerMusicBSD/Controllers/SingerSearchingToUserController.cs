@@ -18,9 +18,11 @@ namespace ServerMusicBSD.Controllers
         {
             return SingerSearchingToUserBL.GetSingerSearchingToUser(userId);
         }
-        public void PutSingerSearchingToUser(int userId, int singerId)
+        public void PutSingerSearchingToUser(int userId, string singer)
         {
-            SingerSearchingToUserBL.AddSingerSearchingToUser(userId, singerId);
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            SingersTBL singerTBL = et.SingersTBL.Where(s => s.name == singer).FirstOrDefault();
+            SingerSearchingToUserBL.AddSingerSearchingToUser(userId, singerTBL.id);
         }
     }
 }

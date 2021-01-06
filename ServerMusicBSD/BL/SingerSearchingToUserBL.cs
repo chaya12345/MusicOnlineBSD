@@ -65,7 +65,7 @@ namespace BL
         public static void AddSingerSearchingToUser(int userId, int singerId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            if (et.SingerSearchingToUserTBL.Where(s => s != null && s.userId == userId && s.singerId == singerId).ToList() == null)
+            if (et.SingerSearchingToUserTBL.Where(s => s != null && s.userId == userId && s.singerId == singerId).ToList().Count == 0)
                 AddRecord(userId, singerId);
             else
                 UpdateRecord(userId, singerId);

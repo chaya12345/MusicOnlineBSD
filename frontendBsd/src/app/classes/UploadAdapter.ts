@@ -18,7 +18,7 @@ export class UploadAdapter {
                 let image = myReader.result;
                 console.log(image);
                 return { default: "data:image/png;base64," + image };
-                resolve();
+                //resolve();
             }
             myReader.readAsDataURL(file);
         });

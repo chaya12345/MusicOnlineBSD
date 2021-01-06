@@ -1,10 +1,10 @@
 <div class="wrap-tags-chip-list" *ngIf="tagsList.length>0">
     <mat-chip-list aria-label="selection">
-        <mat-chip *ngFor="let tag of tagsList"><a [href]="'song?filter='+tag">{{tag}}</a></mat-chip>
+        <mat-chip *ngFor="let tag of tagsList" (click)="searching(tag)"><a [href]="'song?filter='+tag">{{tag}}</a></mat-chip>
     </mat-chip-list>
 </div>
 <div class="wrap-tags-chip-list" *ngIf="groupTag!=null">
     <mat-chip-list aria-label="selection">
-        <mat-chip *ngFor="let tag of groupTag"><a [href]="'song?filter='+tag.name">{{tag.name}}</a></mat-chip>
+        <mat-chip *ngFor="let tag of groupTag" (click)="searching(tag.name)"><a [href]="'song?filter='+tag.name">{{tag.name}}</a></mat-chip>
     </mat-chip-list>
 </div>

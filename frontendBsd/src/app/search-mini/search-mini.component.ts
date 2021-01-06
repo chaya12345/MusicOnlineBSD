@@ -91,19 +91,22 @@ export class SearchMiniComponent implements OnInit {
   }
 
   singerSearch(): void {
-    this.singersList.forEach(singer => {
-      if (singer.name == (document.getElementById("singer-search") as HTMLInputElement).value) {
-        window.location.href = "song?filter=" + singer.name;
-        this.searchingSinger(singer);
-      }
-    });
-
+    let singer1: Singer;
+    try {
+      this.singersList.forEach(singer => {
+        if (singer.name == (document.getElementById("singer-search") as HTMLInputElement).value) {
+          window.location.href = "song?filter=" + singer.name;
+          singer1 = singer;
+          this.searchingSinger(singer);
+        }
+      });
+    } catch (err) { console.log(err) }
   }
   searchingSinger(singer: Singer) {
     this.singerService.addSearchingToSinger(singer.name).subscribe();
     if (sessionStorage.getItem('user') != null && sessionStorage.getItem('user') != undefined) {
       let user: User = JSON.parse(sessionStorage.getItem('user'));
-       this.singerSearchingToUserService.addSingerSearchingToUser(user.id, singer.id).subscribe();
+      this.singerSearchingToUserService.addSingerSearchingToUser(user.id, singer.name).subscribe();
     }
   }
 

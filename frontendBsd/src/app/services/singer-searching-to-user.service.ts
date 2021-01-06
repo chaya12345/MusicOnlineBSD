@@ -14,8 +14,8 @@ export class SingerSearchingToUserService {
   getSingerSearchingToUser(userId:number):Observable<Singer[]>{
     return this.httpClient.get<Singer[]>(this.baseUrl+"GetSingerSearchingToUser?userId="+userId);
   }
-  addSingerSearchingToUser(userId:number,singerId:number):Observable<any>{
-    return this.httpClient.put(this.baseUrl+"PutSingerSearchingToUser?userId="+userId+"&singerId="+singerId,singerId);
+  addSingerSearchingToUser(userId:number,singer:string):Observable<any>{
+    return this.httpClient.put(this.baseUrl+"PutSingerSearchingToUser?userId="+userId+"&singer="+singer,singer);
   }
 
 }
