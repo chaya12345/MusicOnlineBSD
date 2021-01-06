@@ -35,18 +35,19 @@ export class ActivationParadeComponent implements OnInit {
     });
     this.getSingers();
     this.getSongs();
-    try {
-      paradeService.getLastParade().subscribe(parade => {
-        if (parade.isActive != true)
-          this.activatedParade = true;
-        else {
-          let date = new Date(parade.dateEnd);
-          date.setHours(0, 0, 0, 0);
-          if (this.calculateDiff(date) == 2)
-            this.isTowDays = true;
-        }
-      })
-    } catch (err) { console.log(err); }
+    // (:תוסיפי קריאה לפונקציה ותעבירי את הקוד שלמטה לפונקציה, בהצלחוש
+    // try {
+    //   paradeService.getLastParade().subscribe(parade => {
+    //     if (parade.isActive != true)
+    //       this.activatedParade = true;
+    //     else {
+    //       let date = new Date(parade.dateEnd);
+    //       date.setHours(0, 0, 0, 0);
+    //       if (this.calculateDiff(date) == 2)
+    //         this.isTowDays = true;
+    //     }
+    //   })
+    // } catch (err) { console.log(err); }
   }
 
   ngOnInit(): void {
