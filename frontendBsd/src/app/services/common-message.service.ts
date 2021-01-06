@@ -79,6 +79,11 @@ export class CommonMessageService {
     FAIL:"אין מצעד פועל",
     ERROR: "סיום המצעד נכשל. נסה שוב מאוחר יותר"
   }
+  RESTART_PARADE: STATUS = {
+    SUCCESS: "המצעד הופעל מחדש בהצלחה",
+    FAIL:"אין מצעד פועל",
+    ERROR: "הפעלת המצעד מחדש נכשלה. נסה שוב מאוחר יותר"
+  }
 
   UPDATE_ITEM: STATUS = {
     SUCCESS: "השינויים נשמרו בהצלחה",

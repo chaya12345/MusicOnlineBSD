@@ -11,13 +11,13 @@ namespace BL
 {
     public class ParadeBL
     {
-        public static ParadeTBL GetLastParade()
+        public static ParadeDTO GetLastParade()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             ParadeTBL parade = et.ParadeTBL.Where(p => p != null && p.isActive == true).FirstOrDefault();
             if (parade != null)
-                return parade;
-            return et.ParadeTBL.OrderByDescending(p => p.dateEnd).FirstOrDefault();
+                return Casts.ToParadeDTO.GetParade(parade);
+            return Casts.ToParadeDTO.GetParade(et.ParadeTBL.OrderByDescending(p => p.dateEnd).FirstOrDefault());
         }
         public static ParadeDTO GetParadeByYear(string year)
         {
@@ -26,7 +26,7 @@ namespace BL
         }
         public static bool AddParade(ParadeTBL parade)
         {
-            ParadeTBL paradeTBL = GetLastParade();
+            ParadeDTO paradeTBL = GetLastParade();
             if (parade == null || paradeTBL.isActive==true)
                 return false;
             MusicOnlineEntities et = new MusicOnlineEntities();
@@ -53,14 +53,24 @@ namespace BL
         public static void FinishedParade()
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            ParadeTBL parade = GetLastParade();
-            if (parade.dateEnd == null)
+            ParadeTBL parade = et.ParadeTBL.Where(p => p.isActive == true && p.dateEnd == null).FirstOrDefault();
+            if (parade!=null)
             {
                 parade.dateEnd = DateTime.Now;
                 parade.isActive = false;
                 et.SaveChanges();
+            }  
+        }
+        public static void RestartParade()
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            ParadeTBL parade = et.ParadeTBL.OrderByDescending(p =>p.dateEnd).FirstOrDefault();
+            if (parade != null)
+            {
+                parade.dateEnd = null;
+                parade.isActive = true;
+                et.SaveChanges();
             }
-            
         }
         public static List<ItemsToParade_Result> GetItemsToParade()
         {

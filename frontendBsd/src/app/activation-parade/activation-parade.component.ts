@@ -35,21 +35,24 @@ export class ActivationParadeComponent implements OnInit {
     });
     this.getSingers();
     this.getSongs();
-    // (:תוסיפי קריאה לפונקציה ותעבירי את הקוד שלמטה לפונקציה, בהצלחוש
-    // try {
-    //   paradeService.getLastParade().subscribe(parade => {
-    //     if (parade.isActive != true)
-    //       this.activatedParade = true;
-    //     else {
-    //       let date = new Date(parade.dateEnd);
-    //       date.setHours(0, 0, 0, 0);
-    //       if (this.calculateDiff(date) == 2)
-    //         this.isTowDays = true;
-    //     }
-    //   })
-    // } catch (err) { console.log(err); }
+    this.getParade();
   }
 
+  getParade(): void {
+    try {
+      this.paradeService.getLastParade().subscribe(parade => {
+        if (parade.isActive == true)
+          this.activatedParade = true;
+        else {
+          this.activatedParade = false;
+          let date = new Date(parade.dateEnd);
+          date.setHours(0, 0, 0, 0);
+          if (this.calculateDiff(date) <= 2)
+            this.isTowDays = true;
+        }
+      })
+    } catch (err) { console.log(err); }
+  }
   ngOnInit(): void {
   }
   calculateDiff(dateSent) {
@@ -122,22 +125,39 @@ export class ActivationParadeComponent implements OnInit {
   finishedParade() {
     try {
       this.paradeService.finishedParade().subscribe(
-        suc => this.openSnackBar(this.commonMessage.FINISHED_PARADE.SUCCESS),
-        err => this.commonMessage.FINISHED_PARADE.ERROR);
+        suc => {
+          this.openSnackBar(this.commonMessage.FINISHED_PARADE.SUCCESS);
+          this.activatedParade = false;
+          this.isTowDays = true;
+        }, err => this.commonMessage.FINISHED_PARADE.ERROR);
     } catch { this.commonMessage.FINISHED_PARADE.ERROR }
 
   }
 
-  openMessageDialog(text: string) {
+  openMessageDialog(text: string, active: string) {
     try {
       const dialogRef = this.dialog.open(MessageComponent, {
         width: '400px',
         data: { dialogText: text }
       });
       dialogRef.afterClosed().subscribe(result => {
-        if (result == true)
-          this.finishedParade();
+        if (result == true) {
+          if (active == "finishParade")
+            this.finishedParade();
+          else if (active == "restartParade")
+            this.restartParade();
+        }
+
       });
+    } catch (err) { console.log(err); }
+  }
+  restartParade(): void {
+    try {
+      this.paradeService.restartParade().subscribe(suc => {
+        this.openSnackBar(this.commonMessage.RESTART_PARADE.SUCCESS);
+        this.isTowDays = false;
+        this.activatedParade = true;
+      }, err => console.log(err));
     } catch (err) { console.log(err); }
   }
 

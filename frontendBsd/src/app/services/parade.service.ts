@@ -12,8 +12,8 @@ export class ParadeService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getActiveParade(): Observable<Parade> {
-    return this.httpClient.get<Parade>(this.baseUrl + "GetActiveParade");
+  getLastParade(): Observable<Parade> {
+    return this.httpClient.get<Parade>(this.baseUrl + "GetLastParade");
   }
 
   getParadeByYear(year: string): Observable<Parade> {
@@ -26,6 +26,10 @@ export class ParadeService {
 
   finishedParade():Observable<any>{
     return this.httpClient.put(this.baseUrl+"PutFinishedParade",1);
+  }
+  
+  restartParade():Observable<any>{
+    return this.httpClient.put(this.baseUrl+"RestartParade",1);
   }
 
 }

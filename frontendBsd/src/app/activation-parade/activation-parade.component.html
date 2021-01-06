@@ -3,8 +3,8 @@
     <form class="grid-form-2-columns" [formGroup]="activationParadeForm" (ngSubmit)="onSubmit()">
         <!-- activate button -->
         <button mat-stroked-button *ngIf="!activatedParade"><mat-icon>slideshow</mat-icon>הפעל מצעד</button>
-        <button mat-stroked-button *ngIf="isTowDays"><mat-icon>slideshow</mat-icon>בטל סיום מצעד</button>
-        <button mat-stroked-button (click)="openMessageDialog('האם אתה בטוח שברצונך לסיים את המצעד?')" *ngIf="activatedParade"><mat-icon>pause_presentation</mat-icon>סיים מצעד</button>
+        <button mat-stroked-button (click)="openMessageDialog('האם אתה בטוח שברצונך להפעיל את המצעד מחדש?','restartParade')" *ngIf="isTowDays"><mat-icon>slideshow</mat-icon>בטל סיום מצעד</button>
+        <button mat-stroked-button (click)="openMessageDialog('האם אתה בטוח שברצונך לסיים את המצעד?','finishParade')" *ngIf="activatedParade"><mat-icon>pause_presentation</mat-icon>סיים מצעד</button>
         <!-- image -->
         <uploading-image (onSelect)="selectImage($event)"></uploading-image>
         <!-- year -->

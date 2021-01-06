@@ -20,10 +20,6 @@ export class ChartsComponent implements OnInit {
   janerPrecent: number[] = [];
 
   constructor(private statisticsService: StatisticsService) {
-
-  }
-
-  ngOnInit(): void {
     //singers
     this.statisticsService.severalSearchesForSinger().subscribe(singers =>
       singers.forEach(singer => {
@@ -43,8 +39,11 @@ export class ChartsComponent implements OnInit {
       janer.forEach(j => {
         this.janesName.push(j.janer);
         this.janerPrecent.push(j.percent);
-      }),err=>console.log(err));
+      }), err => console.log(err));
 
+  }
+
+  ngOnInit(): void {
     angular.module("app", ["chart.js"]).controller("ChartCtrl", function ($scope) {
       // searching to singers
       $scope.labels1 = this.singersName;
@@ -105,7 +104,5 @@ export class ChartsComponent implements OnInit {
       };
     });
   }
-
-
 
 }

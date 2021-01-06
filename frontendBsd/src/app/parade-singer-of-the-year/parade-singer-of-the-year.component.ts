@@ -22,7 +22,8 @@ export class ParadeSingerOfTheYearComponent implements OnInit {
   constructor(private singersToParadeService: SingersToParadeService, private _snackBar: MatSnackBar) { 
     try {
       this.singersToParadeService.getSingersInParade()
-      .subscribe(singers => { this.singers = singers; console.log("singers"); console.log(singers); }, err => console.log(err));
+      .subscribe(singers => { this.singers = singers; this.singers.sort((a,b)=>a.name.localeCompare(b.name)); },
+       err => console.log(err));
     } catch (err) { console.log(err); }
     // this.countPossible = this.maxCount;
   }

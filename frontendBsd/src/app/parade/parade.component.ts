@@ -34,9 +34,9 @@ export class ParadeComponent implements OnInit {
 
   checkIsParadeActive(): void {
     try {
-      this.paradeService.getActiveParade()
+      this.paradeService.getLastParade()
       .subscribe(result => {
-        this.isActive = result != null ? true : false
+        this.isActive = result.isActive == true ? true : false
         console.log(this.isActive + ">>>>>>>>>>>>>>>>>>")
       },
         err => console.log(err));

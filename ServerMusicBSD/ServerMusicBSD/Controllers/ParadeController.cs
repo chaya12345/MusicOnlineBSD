@@ -14,7 +14,7 @@ namespace ServerMusicBSD.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ParadeController : ApiController
     {
-        public ParadeTBL GetLastParade()
+        public ParadeDTO GetLastParade()
         {
             return ParadeBL.GetLastParade();
         }
@@ -29,6 +29,11 @@ namespace ServerMusicBSD.Controllers
         public void PutFinishedParade()
         {
             ParadeBL.FinishedParade();
+        }
+        [HttpPut]
+        public void RestartParade()
+        {
+            ParadeBL.RestartParade();
         }
     }
 }
