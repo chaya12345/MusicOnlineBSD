@@ -43,11 +43,20 @@ export class ChartsComponent implements OnInit {
 
   }
 
+
   ngOnInit(): void {
     angular.module("app", ["chart.js"]).controller("ChartCtrl", function ($scope) {
       // searching to singers
-      $scope.labels1 = this.singersName;
-      $scope.data1 = this.singerscount;
+      //$scope.labels1 = this.singersName;
+      $scope.$watch(getSingersName, true);
+      function getSingersName() {
+        return this.singersName;
+      }
+     // $scope.data1 = this.singerscount;
+     $scope.$watch(getCount, true);
+     function getCount() {
+       return this.singerscount;
+     }
       $scope.options1 = {
         pieceLabel: {
           render: 'label',
@@ -104,6 +113,7 @@ export class ChartsComponent implements OnInit {
       };
     });
   }
+
 
 
 }
