@@ -10,7 +10,7 @@
     <button *ngIf="commit.tested==false||null" (click)="onNoClick(true)">אשר תגובה</button>
     <button *ngIf="commit.tested==true" (click)="onNoClick(false)">בטל אישור לתגובה</button>
     <button (click)="onNoClick()">סגור</button> -->
-    <mat-icon [class.opacity]="!commit.tested">check</mat-icon>
+    <mat-icon [class.opacity]="commit.tested==false||commit.tested==null" (click)="changeSigning(commit,commit.tested==true?false:true,false)">check</mat-icon>
     <!-- <p class="title"><strong>{{commit.name}}</strong> מגיב על <strong>{{commit.topic}}</strong></p> -->
     <p class="title">{{commit.name}}</p>
     <p class="commit-content">

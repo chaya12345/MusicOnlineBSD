@@ -20,11 +20,13 @@ export class CommitDetailsComponent implements OnInit {
 
   commit: Commit;
   topicName: string;
+  isTested:boolean;
   constructor(public dialogRef: MatDialogRef<CommitDetailsComponent>, private articleService: ArticleService,
     private songServices: SongService, @Inject(MAT_DIALOG_DATA) public data: commitDetailsInterface,
     private commitsToArticlesService: CommitsToArticlesService,private commitsToSongsService: CommitsToSongsService,
     private cmService: CommonMessageService,private _snackBar: MatSnackBar,) {
     this.commit = data.commit;
+    this.isTested=this.commit.tested;
     try {
       if (this.commit.type == "article") {
         this.articleService.getArticleById(this.commit.topicId).subscribe(article =>
@@ -41,18 +43,20 @@ export class CommitDetailsComponent implements OnInit {
   }
 
   onNoClick(status?: boolean): void {
-    if (status == true || status == false)
-      this.dialogRef.close(status);
-    else
-      this.dialogRef.close();
+    // if (status == true || status == false)
+    //   this.dialogRef.close(status);
+    // else
+      this.dialogRef.close(this.isTested);
   }
-  changeSigning(commit: Commit, isSign: boolean): void {
+  changeSigning(commit: Commit, isSign: boolean,close:boolean=true): void {
     if (commit.type == "article") {
       try {
         this.commitsToArticlesService.updateIsTested(commit.id, isSign).subscribe(result => {
           if (result == true) {
+            this.commit.tested=isSign;
+            this.isTested=isSign;
             this.openSnackBar(this.cmService.COMMIT_SIGNING.SUCCESS);
-            this.onNoClick(isSign);
+            close?this.onNoClick(isSign):this.isTested=isSign;
           }
           else this.openSnackBar(this.cmService.COMMIT_SIGNING.FAIL);
         }, err => this.openSnackBar(this.cmService.COMMIT_SIGNING.ERROR));
@@ -63,7 +67,9 @@ export class CommitDetailsComponent implements OnInit {
         this.commitsToSongsService.updateIsTested(commit.id, isSign).subscribe(result => {
           if (result == true) {
             this.openSnackBar(this.cmService.COMMIT_SIGNING.SUCCESS);
-            this.onNoClick(isSign);
+            this.commit.tested=isSign;
+            this.isTested=isSign;
+            close?this.onNoClick(isSign):this.isTested=isSign;
           }
           else this.openSnackBar(this.cmService.COMMIT_SIGNING.FAIL);
         }, err => this.openSnackBar(this.cmService.COMMIT_SIGNING.ERROR));
