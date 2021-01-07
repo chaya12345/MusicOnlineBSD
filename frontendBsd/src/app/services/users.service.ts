@@ -104,10 +104,10 @@ export class UsersService {
   public getPinnedItemsToUser(userId:number):Observable<PinnedItemsToUser[]>{
     return this.httpClient.get<PinnedItemsToUser[]>(this.baseUrl+"GetPinnedItemsToUser?userId="+userId);
   }
-  public addPinnedItemToUser(updatingsToUser:UpdatingToUser,userId:number):Observable<any>{
-    return this.httpClient.post(this.baseUrl+"AddPinnedItemToUser?userId="+userId,updatingsToUser)
+  public addPinnedItemToUser(updatingsToUser:UpdatingToUser,userId:number):Observable<boolean>{
+    return this.httpClient.post<boolean>(this.baseUrl+"AddPinnedItemToUser?userId="+userId,updatingsToUser)
   }
-  public deletePinnedItemToUser(pinnedItemId:number,userId:number):Observable<any>{
-    return this.httpClient.delete(this.baseUrl+"DeletePinnedItemToUser?pinnedItemId="+pinnedItemId+"&userId="+userId);
+  public deletePinnedItemToUser(pinnedItemId:number,userId:number):Observable<boolean>{
+    return this.httpClient.delete<boolean>(this.baseUrl+"DeletePinnedItemToUser?pinnedItemId="+pinnedItemId+"&userId="+userId);
   }
 }

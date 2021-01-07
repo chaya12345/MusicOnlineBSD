@@ -38,8 +38,10 @@ namespace BL
                 }
             }
         }
-        public static void AddPinnedItemToUser(UpdatingsToUserDTO updatingsToUser,int userId)
+        public static bool AddPinnedItemToUser(UpdatingsToUserDTO updatingsToUser,int userId)
         {
+            if (updatingsToUser == null)
+                return false;
             MusicOnlineEntities et = new MusicOnlineEntities();
             PinnedItemsTBL pinnedItem = et.PinnedItemsTBL.Where(p => p.itemId_ == updatingsToUser.id).FirstOrDefault();
             if (pinnedItem == null)
@@ -60,8 +62,9 @@ namespace BL
             pitu.date = DateTime.Now;
             et.PinnedItemsToUserTBL.Add(pitu);
             et.SaveChanges();
+            return true;
         }
-        public static void DeletePinnedItemToUser(int pinnedItemId, int userId)
+        public static bool DeletePinnedItemToUser(int pinnedItemId, int userId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             PinnedItemsToUserTBL pinnedItemsToUserTBL = et.PinnedItemsToUserTBL.Where(p => p.pinnedItemId == pinnedItemId && p.userId==userId).FirstOrDefault();
@@ -69,7 +72,9 @@ namespace BL
             {
                 et.PinnedItemsToUserTBL.Remove(pinnedItemsToUserTBL);
                 et.SaveChanges();
+                return true;
             }
+            return false;
         }
     }
 }
