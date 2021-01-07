@@ -18,6 +18,16 @@ export class UserInfo {
   list?: Simple;
 }
 
+export class UpdatingToUser {
+  id: number;
+  title?: string;
+  image?: string;
+  date?: Date;
+  count_likes?: Number;
+  count_views?: number;
+  type?: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -89,5 +99,8 @@ export class UsersService {
   }
   public GetUserInfo(id: number): Observable<UserInfo[]> {
     return this.httpClient.get<UserInfo[]>(this.baseUrl + "GetUserInfo?id=" + id);
+  }
+  public getUpdatings(userId: number): Observable<UpdatingToUser[]> {
+    return this.httpClient.get<UpdatingToUser[]>(this.baseUrl + "GetUpdatings?userId=" + userId);
   }
 }

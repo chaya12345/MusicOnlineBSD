@@ -88,6 +88,16 @@ namespace DAL
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<itemsByParameter_Result>("[MusicOnlineEntities].[itemsByParameter](@parameter)", parameterParameter);
         }
     
+        [DbFunction("MusicOnlineEntities", "UpdatingsToUser")]
+        public virtual IQueryable<UpdatingsToUser_Result> UpdatingsToUser(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<UpdatingsToUser_Result>("[MusicOnlineEntities].[UpdatingsToUser](@userId)", userIdParameter);
+        }
+    
         public virtual ObjectResult<ItemsToParade_Result> ItemsToParade(Nullable<int> paradeId)
         {
             var paradeIdParameter = paradeId.HasValue ?

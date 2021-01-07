@@ -53,6 +53,7 @@
     <Compile Include="LastViewsDTO.cs" />
     <Compile Include="ParadeDTO.cs" />
     <Compile Include="TypesOfTagsDTO.cs" />
+    <Compile Include="UpdatingsToUserDTO.cs" />
     <Compile Include="UserPlaylistsDTO.cs" />
     <Compile Include="PlaylistsDTO.cs" />
     <Compile Include="ReportsDTO.cs" />

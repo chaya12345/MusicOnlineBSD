@@ -485,6 +485,19 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="MusicOnlineModel.Store.UpdatingsToUser" FunctionImportName="UpdatingsToUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MusicOnlineModel.UpdatingsToUser_Result">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="count_like" ColumnName="count_like" />
+          <ScalarProperty Name="count_views" ColumnName="count_views" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="ItemsToParade" FunctionName="MusicOnlineModel.Store.ItemsToParade">
       <ResultMapping>
         <ComplexTypeMapping TypeName="MusicOnlineModel.ItemsToParade_Result">

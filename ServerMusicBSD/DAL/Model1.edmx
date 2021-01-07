@@ -876,6 +876,22 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
         <Function Name="ItemsToParade" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="paradeId" Type="int" Mode="In" />
         </Function>
+        <Function Name="UpdatingsToUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="id" Type="int" Nullable="false" />
+                <Property Name="title" Type="varchar(max)" />
+                <Property Name="image" Type="varchar(max)" />
+                <Property Name="date" Type="datetime" />
+                <Property Name="count_like" Type="bigint" />
+                <Property Name="count_views" Type="bigint" />
+                <Property Name="type" Type="varchar" MaxLength="11" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <EntityContainer Name="MusicOnlineModelStoreContainer">
           <EntitySet Name="AlbumsTBL" EntityType="Self.AlbumsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ArticlesTBL" EntityType="Self.ArticlesTBL" Schema="dbo" store:Type="Tables" />
@@ -1170,6 +1186,15 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <Property Name="date" Type="DateTime" />
           <Property Name="dateHebrew" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="UpdatingsToUser_Result">
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" />
+          <Property Name="count_like" Type="Int64" />
+          <Property Name="count_views" Type="Int64" />
           <Property Name="type" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
         </ComplexType>
         <EntityType Name="AlbumsTBL">
@@ -2241,6 +2266,9 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <FunctionImport Name="itemsByParameter" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemsByParameter_Result)">
             <Parameter Name="parameter" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="UpdatingsToUser" IsComposable="true" ReturnType="Collection(MusicOnlineModel.UpdatingsToUser_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="ItemsToParade" ReturnType="Collection(MusicOnlineModel.ItemsToParade_Result)">
             <Parameter Name="paradeId" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -2740,6 +2768,19 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="dateHebrew" ColumnName="dateHebrew" />
                 <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="MusicOnlineModel.Store.UpdatingsToUser" FunctionImportName="UpdatingsToUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MusicOnlineModel.UpdatingsToUser_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="count_like" ColumnName="count_like" />
+                <ScalarProperty Name="count_views" ColumnName="count_views" />
                 <ScalarProperty Name="type" ColumnName="type" />
               </ComplexTypeMapping>
             </ResultMapping>

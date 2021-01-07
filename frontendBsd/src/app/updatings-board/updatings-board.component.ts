@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../classes/user';
+import { UpdatingToUser, UsersService } from '../services/users.service';
 
 @Component({
   selector: 'updatings-board',
@@ -8,11 +9,11 @@ import { User } from '../classes/user';
 })
 export class UpdatingsBoardComponent implements OnInit {
 
-  updatings = [];
   isUserConnected: boolean = false;
   user: User = new User();
+  updatings: UpdatingToUser[] = [];
 
-  constructor() {
+  constructor(private userService: UsersService) {
     this.checkIsUserConnected();
   }
 
@@ -25,7 +26,18 @@ export class UpdatingsBoardComponent implements OnInit {
       this.user = JSON.parse(localStorage.getItem("user") || sessionStorage.getItem("user"));
       this.isUserConnected = true;
       console.log(this.user);
+      this.getUpdatingsToUser(this.user.id);
     }
+  }
+
+  getUpdatingsToUser(userId: number): void {
+    try {
+      this.userService.getUpdatings(userId)
+      .subscribe(updatings => {
+        this.updatings = updatings;
+        updatings.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
+      }, err => console.log(err));
+    } catch (err) { console.log(err); }
   }
 
 }

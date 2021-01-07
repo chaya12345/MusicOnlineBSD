@@ -14,6 +14,15 @@
     <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="type" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
   </ComplexType>
+  <ComplexType Name="UpdatingsToUser_Result">
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="date" Type="DateTime" />
+    <Property Name="count_like" Type="Int64" />
+    <Property Name="count_views" Type="Int64" />
+    <Property Name="type" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+  </ComplexType>
   <EntityType Name="AlbumsTBL">
     <Key>
       <PropertyRef Name="id" />
@@ -1082,6 +1091,9 @@
     </FunctionImport>
     <FunctionImport Name="itemsByParameter" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemsByParameter_Result)">
       <Parameter Name="parameter" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdatingsToUser" IsComposable="true" ReturnType="Collection(MusicOnlineModel.UpdatingsToUser_Result)">
+      <Parameter Name="userId" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="ItemsToParade" ReturnType="Collection(MusicOnlineModel.ItemsToParade_Result)">
       <Parameter Name="paradeId" Mode="In" Type="Int32" />

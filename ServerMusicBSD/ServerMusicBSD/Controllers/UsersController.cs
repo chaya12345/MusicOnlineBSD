@@ -58,5 +58,9 @@ namespace ServerMusicBSD.Controllers
         {
             return UsersBL.GetUserInfo(id);
         }
+        public List<UpdatingsToUserDTO> GetUpdatings(int userId)
+        {
+            return UpdatingsToUserBL.GetUpdatings(userId);
+        }
     }
 }
