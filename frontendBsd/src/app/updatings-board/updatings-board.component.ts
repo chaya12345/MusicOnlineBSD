@@ -39,6 +39,7 @@ export class UpdatingsBoardComponent implements OnInit {
       .subscribe(updatings => {
         this.updatings = updatings;
         updatings.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
+        console.log(updatings);
       }, err => console.log(err));
     } catch (err) { console.log(err); }
   }

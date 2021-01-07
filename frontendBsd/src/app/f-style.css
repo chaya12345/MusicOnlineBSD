@@ -12,6 +12,7 @@ p.f-title-section {
     padding-block: 30px;
     color: white;
     font-family: assistant;
+    min-width: 20vw;
 }
 
 p span.content-title {
