@@ -68,6 +68,7 @@ export class UploadingArticleComponent implements OnInit {
       // this.reset();
     }
   }
+  
   openSnackBar(message: string) {
     this._snackBar.open(message, '', {
       duration: 2000,
