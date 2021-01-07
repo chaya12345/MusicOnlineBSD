@@ -12,11 +12,16 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class PinnedItemsToUserTBL
+    public partial class PinnedItemsTBL
     {
         public int id { get; set; }
-        public Nullable<int> pinnedItemId { get; set; }
         public Nullable<int> userId { get; set; }
+        public string title { get; set; }
+        public string image { get; set; }
         public Nullable<System.DateTime> date { get; set; }
+        public Nullable<int> count_like { get; set; }
+        public Nullable<int> count_views { get; set; }
+    
+        public virtual UsersTBL UsersTBL { get; set; }
     }
 }

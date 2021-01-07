@@ -37,6 +37,7 @@ namespace DAL
         public virtual DbSet<FollowUpTBL> FollowUpTBL { get; set; }
         public virtual DbSet<JobTBL> JobTBL { get; set; }
         public virtual DbSet<ParadeTBL> ParadeTBL { get; set; }
+        public virtual DbSet<PinnedItemsTBL> PinnedItemsTBL { get; set; }
         public virtual DbSet<PinnedItemsToUserTBL> PinnedItemsToUserTBL { get; set; }
         public virtual DbSet<PlaylistsTBL> PlaylistsTBL { get; set; }
         public virtual DbSet<ReportsTBL> ReportsTBL { get; set; }
