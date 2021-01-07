@@ -101,16 +101,13 @@ export class UsersService {
   public GetUserInfo(id: number): Observable<UserInfo[]> {
     return this.httpClient.get<UserInfo[]>(this.baseUrl + "GetUserInfo?id=" + id);
   }
-  public getUpdatings(userId: number): Observable<UpdatingToUser[]> {
-    return this.httpClient.get<UpdatingToUser[]>(this.baseUrl + "GetUpdatings?userId=" + userId);
-  }
   public getPinnedItemsToUser(userId:number):Observable<PinnedItemsToUser[]>{
     return this.httpClient.get<PinnedItemsToUser[]>(this.baseUrl+"GetPinnedItemsToUser?userId="+userId);
   }
-  public addPinnedItemToUser(pinnedItem:PinnedItemsToUser):Observable<any>{
-    return this.httpClient.post(this.baseUrl+"AddPinnedItemToUser",pinnedItem)
+  public addPinnedItemToUser(updatingsToUser:UpdatingToUser,userId:number):Observable<any>{
+    return this.httpClient.post(this.baseUrl+"AddPinnedItemToUser?userId="+userId,updatingsToUser)
   }
-  public deletePinnedItemToUser(pinnedItemId:number):Observable<any>{
-    return this.httpClient.delete(this.baseUrl+"DeletePinnedItemToUser?pinnedItemId="+pinnedItemId);
+  public deletePinnedItemToUser(pinnedItemId:number,userId:number):Observable<any>{
+    return this.httpClient.delete(this.baseUrl+"DeletePinnedItemToUser?pinnedItemId="+pinnedItemId+"&userId="+userId);
   }
 }
