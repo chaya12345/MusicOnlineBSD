@@ -124,6 +124,15 @@ p.board-title > strong {
     color: #00000038;
 }
 
+.top-part > mat-icon.opacity {
+    opacity: 0;
+    transition: .4s;
+}
+
+.top-part > mat-icon.opacity:hover {
+    opacity: 1;
+}
+
 .bottom-part {
     display: grid;
     grid-template-columns: auto 80px;

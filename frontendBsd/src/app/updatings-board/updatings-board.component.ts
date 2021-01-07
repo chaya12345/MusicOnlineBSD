@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { User } from '../classes/user';
+import { CommonMessageService } from '../services/common-message.service';
 import { UpdatingToUser, UsersService } from '../services/users.service';
 
 @Component({
@@ -13,7 +15,8 @@ export class UpdatingsBoardComponent implements OnInit {
   user: User = new User();
   updatings: UpdatingToUser[] = [];
 
-  constructor(private userService: UsersService) {
+  constructor(private userService: UsersService, private _snackBar: MatSnackBar,
+    private commonMessage: CommonMessageService) {
     this.checkIsUserConnected();
   }
 
@@ -36,8 +39,25 @@ export class UpdatingsBoardComponent implements OnInit {
       .subscribe(updatings => {
         this.updatings = updatings;
         updatings.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
+        console.log(updatings);
       }, err => console.log(err));
     } catch (err) { console.log(err); }
+  }
+
+  togglePinnedItem(updating: UpdatingToUser): void {
+    try {
+      this.userService.addPinnedItemToUser(updating, this.user.id)
+      .subscribe(result => {
+        this.openSnackBar(result ? this.commonMessage.GENERATE.ADD.SUCCESS :
+          this.commonMessage.GENERATE.ADD.ERROR);
+      }, () => this.openSnackBar(this.commonMessage.GENERATE.ADD.ERROR))
+    } catch { this.openSnackBar(this.commonMessage.GENERATE.ADD.ERROR); }
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, '', {
+      duration: 2000,
+    });
   }
 
 }
