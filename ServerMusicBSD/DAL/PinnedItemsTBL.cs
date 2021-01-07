@@ -15,7 +15,7 @@ namespace DAL
     public partial class PinnedItemsTBL
     {
         public int id { get; set; }
-        public Nullable<int> userId { get; set; }
+        public Nullable<int> itemId_ { get; set; }
         public string title { get; set; }
         public string image { get; set; }
         public Nullable<System.DateTime> date { get; set; }
