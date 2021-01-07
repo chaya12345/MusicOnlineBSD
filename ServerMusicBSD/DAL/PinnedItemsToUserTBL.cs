@@ -18,5 +18,8 @@ namespace DAL
         public Nullable<int> pinnedItemId { get; set; }
         public Nullable<int> userId { get; set; }
         public Nullable<System.DateTime> date { get; set; }
+    
+        public virtual PinnedItemsTBL PinnedItemsTBL { get; set; }
+        public virtual UsersTBL UsersTBL { get; set; }
     }
 }

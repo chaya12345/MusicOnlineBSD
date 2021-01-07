@@ -16,22 +16,14 @@ namespace BL
             MusicOnlineEntities et = new MusicOnlineEntities();
             return Casts.ToUpdatingsToUserDTO.GetUpdatingsToUser(et.UpdatingsToUser(userId).ToList());
         }
-        public static List<PinnedItemsToUserDTO> GetPinnedItemsToUser(int userId)
-        {
-            MusicOnlineEntities et = new MusicOnlineEntities();
-            List<PinnedItemsToUserTBL> list = et.PinnedItemsToUserTBL.Where(p => p.userId == userId).ToList();
-            if (list.Count == 0)
-                return null;
-            return Casts.ToPinnedItemsToUserDTO.GetPinnedItemsToUser(list);
-        }
-        public static void AddPinnedItemToUser(PinnedItemsToUserTBL pinnedItem)
+        public static void AddPinnedItem(PinnedItemsTBL pinnedItem)
         {
             try
             {
                 MusicOnlineEntities et = new MusicOnlineEntities();
                 if (pinnedItem != null)
                 {
-                    et.PinnedItemsToUserTBL.Add(pinnedItem);
+                    et.PinnedItemsTBL.Add(pinnedItem);
                     et.SaveChanges();
                 }
             }
@@ -46,10 +38,33 @@ namespace BL
                 }
             }
         }
-        public static void DeletePinnedItemToUser(int pinnedItemId)
+        public static void AddPinnedItemToUser(UpdatingsToUserDTO updatingsToUser,int userId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            PinnedItemsToUserTBL pinnedItemsToUserTBL = et.PinnedItemsToUserTBL.Where(p => p.id == pinnedItemId).FirstOrDefault();
+            PinnedItemsTBL pinnedItem = et.PinnedItemsTBL.Where(p => p.itemId_ == updatingsToUser.id).FirstOrDefault();
+            if (pinnedItem == null)
+            {
+                pinnedItem = new PinnedItemsTBL();
+                pinnedItem.itemId_ = updatingsToUser.id;
+                pinnedItem.title = updatingsToUser.title;
+                pinnedItem.image = updatingsToUser.image;
+                pinnedItem.date = updatingsToUser.date;
+                pinnedItem.count_like = Convert.ToInt32(updatingsToUser.count_like);
+                pinnedItem.count_views = Convert.ToInt32(updatingsToUser.count_views);
+                AddPinnedItem(pinnedItem);
+                pinnedItem = et.PinnedItemsTBL.Where(p => p.itemId_ == updatingsToUser.id).FirstOrDefault();
+            }
+            PinnedItemsToUserTBL pitu = new PinnedItemsToUserTBL();
+            pitu.pinnedItemId = pinnedItem.id;
+            pitu.userId = userId;
+            pitu.date = DateTime.Now;
+            et.PinnedItemsToUserTBL.Add(pitu);
+            et.SaveChanges();
+        }
+        public static void DeletePinnedItemToUser(int pinnedItemId, int userId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            PinnedItemsToUserTBL pinnedItemsToUserTBL = et.PinnedItemsToUserTBL.Where(p => p.pinnedItemId == pinnedItemId && p.userId==userId).FirstOrDefault();
             if (pinnedItemsToUserTBL != null)
             {
                 et.PinnedItemsToUserTBL.Remove(pinnedItemsToUserTBL);

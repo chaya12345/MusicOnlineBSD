@@ -14,6 +14,12 @@ namespace DAL
     
     public partial class PinnedItemsTBL
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PinnedItemsTBL()
+        {
+            this.PinnedItemsToUserTBL = new HashSet<PinnedItemsToUserTBL>();
+        }
+    
         public int id { get; set; }
         public Nullable<int> itemId_ { get; set; }
         public string title { get; set; }
@@ -21,7 +27,9 @@ namespace DAL
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<int> count_like { get; set; }
         public Nullable<int> count_views { get; set; }
+        public string type { get; set; }
     
-        public virtual UsersTBL UsersTBL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PinnedItemsToUserTBL> PinnedItemsToUserTBL { get; set; }
     }
 }

@@ -111,16 +111,27 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PinnedItemsToUserTBL">
-      <EntityTypeMapping TypeName="MusicOnlineModel.PinnedItemsToUserTBL">
-        <MappingFragment StoreEntitySet="PinnedItemsToUserTBL">
+    <EntitySetMapping Name="PinnedItemsTBL">
+      <EntityTypeMapping TypeName="MusicOnlineModel.PinnedItemsTBL">
+        <MappingFragment StoreEntitySet="PinnedItemsTBL">
           <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="itemId_" ColumnName="itemId‏" />
           <ScalarProperty Name="title" ColumnName="title" />
           <ScalarProperty Name="image" ColumnName="image" />
           <ScalarProperty Name="date" ColumnName="date" />
           <ScalarProperty Name="count_like" ColumnName="count_like" />
           <ScalarProperty Name="count_views" ColumnName="count_views" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PinnedItemsToUserTBL">
+      <EntityTypeMapping TypeName="MusicOnlineModel.PinnedItemsToUserTBL">
+        <MappingFragment StoreEntitySet="PinnedItemsToUserTBL">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="pinnedItemId" ColumnName="pinnedItemId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="date" ColumnName="date" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

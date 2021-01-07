@@ -100,17 +100,27 @@
     <Property Name="image" Type="nvarchar(max)" />
     <Property Name="isActive" Type="bit" />
   </EntityType>
-  <EntityType Name="PinnedItemsToUserTBL">
+  <EntityType Name="PinnedItemsTBL">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="userId" Type="int" />
+    <Property Name="itemId‏" Type="int" />
     <Property Name="title" Type="varchar" MaxLength="250" />
     <Property Name="image" Type="varchar(max)" />
-    <Property Name="date" Type="date" />
+    <Property Name="date" Type="datetime" />
     <Property Name="count_like" Type="int" />
     <Property Name="count_views" Type="int" />
+    <Property Name="type" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PinnedItemsToUserTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="pinnedItemId" Type="int" />
+    <Property Name="userId" Type="int" />
+    <Property Name="date" Type="datetime" />
   </EntityType>
   <EntityType Name="PlaylistsTBL">
     <Key>
@@ -562,7 +572,19 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PinnedItemsToUserTBL_UsersTBL">
+  <Association Name="FK_PinnedItemsToUserTBL_PinnedItemsTBL">
+    <End Role="PinnedItemsTBL" Type="Self.PinnedItemsTBL" Multiplicity="0..1" />
+    <End Role="PinnedItemsToUserTBL" Type="Self.PinnedItemsToUserTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PinnedItemsTBL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="PinnedItemsToUserTBL">
+        <PropertyRef Name="pinnedItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PinnedItemsToUserTBL_UsersTBL1">
     <End Role="UsersTBL" Type="Self.UsersTBL" Multiplicity="0..1" />
     <End Role="PinnedItemsToUserTBL" Type="Self.PinnedItemsToUserTBL" Multiplicity="*" />
     <ReferentialConstraint>
@@ -963,6 +985,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     <EntitySet Name="FollowUpTBL" EntityType="Self.FollowUpTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="JobTBL" EntityType="Self.JobTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ParadeTBL" EntityType="Self.ParadeTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PinnedItemsTBL" EntityType="Self.PinnedItemsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PinnedItemsToUserTBL" EntityType="Self.PinnedItemsToUserTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PlaylistsTBL" EntityType="Self.PlaylistsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ReportsTBL" EntityType="Self.ReportsTBL" Schema="dbo" store:Type="Tables" />
@@ -1130,7 +1153,11 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
       <End Role="UsersTBL" EntitySet="UsersTBL" />
       <End Role="FollowUpTBL" EntitySet="FollowUpTBL" />
     </AssociationSet>
-    <AssociationSet Name="FK_PinnedItemsToUserTBL_UsersTBL" Association="Self.FK_PinnedItemsToUserTBL_UsersTBL">
+    <AssociationSet Name="FK_PinnedItemsToUserTBL_PinnedItemsTBL" Association="Self.FK_PinnedItemsToUserTBL_PinnedItemsTBL">
+      <End Role="PinnedItemsTBL" EntitySet="PinnedItemsTBL" />
+      <End Role="PinnedItemsToUserTBL" EntitySet="PinnedItemsToUserTBL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PinnedItemsToUserTBL_UsersTBL1" Association="Self.FK_PinnedItemsToUserTBL_UsersTBL1">
       <End Role="UsersTBL" EntitySet="UsersTBL" />
       <End Role="PinnedItemsToUserTBL" EntitySet="PinnedItemsToUserTBL" />
     </AssociationSet>

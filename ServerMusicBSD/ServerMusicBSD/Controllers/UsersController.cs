@@ -62,18 +62,14 @@ namespace ServerMusicBSD.Controllers
         {
             return UpdatingsToUserBL.GetUpdatings(userId);
         }
-        public List<PinnedItemsToUserDTO> GetPinnedItemsToUser(int userId)
-        {
-            return UpdatingsToUserBL.GetPinnedItemsToUser(userId);
-        }
         [HttpPost]
-        public void AddPinnedItemToUser([FromBody]PinnedItemsToUserTBL pinnedItem)
+        public void AddPinnedItemToUser([FromBody]UpdatingsToUserDTO updatingsToUser, int userId)
         {
-            UpdatingsToUserBL.AddPinnedItemToUser(pinnedItem);
+            UpdatingsToUserBL.AddPinnedItemToUser(updatingsToUser,userId);
         }
-        public void DeletePinnedItemToUser(int pinnedItemId)
+        public void DeletePinnedItemToUser(int pinnedItemId, int userId)
         {
-            UpdatingsToUserBL.DeletePinnedItemToUser(pinnedItemId);
+            UpdatingsToUserBL.DeletePinnedItemToUser(pinnedItemId,userId);
         }
     }
 }
