@@ -15,7 +15,7 @@ namespace BL.Casts
             if (updatingToUser == null)
                 return null;
             UpdatingsToUserDTO newUpdatingToUser = new UpdatingsToUserDTO();
-            newUpdatingToUser.id = updatingToUser.id;
+            newUpdatingToUser.id = (int)updatingToUser.id;
             newUpdatingToUser.title = updatingToUser.title;
             newUpdatingToUser.image = updatingToUser.image;
             newUpdatingToUser.date = updatingToUser.date;
