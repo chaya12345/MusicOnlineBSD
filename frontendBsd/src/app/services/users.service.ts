@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Song } from '../classes/song';
 import { Article } from '../classes/article';
 import { Singer } from '../classes/singer';
+import { PinnedItemsToUser } from '../classes/pinnedItemsToUser';
 
 export enum eInfo { SUBSCRIPTION = 1, FOLLOW_UP_SONGS, FOLLOW_UP_ARTICLES }
 export class Simple {
@@ -102,5 +103,14 @@ export class UsersService {
   }
   public getUpdatings(userId: number): Observable<UpdatingToUser[]> {
     return this.httpClient.get<UpdatingToUser[]>(this.baseUrl + "GetUpdatings?userId=" + userId);
+  }
+  public getPinnedItemsToUser(userId:number):Observable<PinnedItemsToUser[]>{
+    return this.httpClient.get<PinnedItemsToUser[]>(this.baseUrl+"GetPinnedItemsToUser?userId="+userId);
+  }
+  public addPinnedItemToUser(pinnedItem:PinnedItemsToUser):Observable<any>{
+    return this.httpClient.post(this.baseUrl+"AddPinnedItemToUser",pinnedItem)
+  }
+  public deletePinnedItemToUser(pinnedItemId:number):Observable<any>{
+    return this.httpClient.delete(this.baseUrl+"DeletePinnedItemToUser?pinnedItemId="+pinnedItemId);
   }
 }
