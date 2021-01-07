@@ -104,6 +104,9 @@ export class UsersService {
   public getPinnedItemsToUser(userId:number):Observable<PinnedItemsToUser[]>{
     return this.httpClient.get<PinnedItemsToUser[]>(this.baseUrl+"GetPinnedItemsToUser?userId="+userId);
   }
+  public getUpdatings(userId: number): Observable<UpdatingToUser[]> {
+    return this.httpClient.get<UpdatingToUser[]>(this.baseUrl + "GetUpdatings?userId=" + userId);
+  }
   public addPinnedItemToUser(updatingsToUser:UpdatingToUser,userId:number):Observable<boolean>{
     return this.httpClient.post<boolean>(this.baseUrl+"AddPinnedItemToUser?userId="+userId,updatingsToUser)
   }
