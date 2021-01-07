@@ -15,13 +15,14 @@ namespace BL.Casts
             if (updatingToUser == null)
                 return null;
             UpdatingsToUserDTO newUpdatingToUser = new UpdatingsToUserDTO();
-            newUpdatingToUser.id = updatingToUser.id;
+            newUpdatingToUser.id = (int)updatingToUser.id;
             newUpdatingToUser.title = updatingToUser.title;
             newUpdatingToUser.image = updatingToUser.image;
             newUpdatingToUser.date = updatingToUser.date;
             newUpdatingToUser.count_like = updatingToUser.count_like;
             newUpdatingToUser.count_views = updatingToUser.count_views;
             newUpdatingToUser.type = updatingToUser.type;
+            newUpdatingToUser.isPinned = updatingToUser.isPinned;
             return newUpdatingToUser;
         }
         public static List<UpdatingsToUserDTO> GetUpdatingsToUser(List<UpdatingsToUser_Result> updatingsToUser)
