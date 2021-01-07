@@ -22,6 +22,7 @@ namespace BL.Casts
             newUpdatingToUser.count_like = updatingToUser.count_like;
             newUpdatingToUser.count_views = updatingToUser.count_views;
             newUpdatingToUser.type = updatingToUser.type;
+            newUpdatingToUser.isPinned = updatingToUser.isPinned;
             return newUpdatingToUser;
         }
         public static List<UpdatingsToUserDTO> GetUpdatingsToUser(List<UpdatingsToUser_Result> updatingsToUser)

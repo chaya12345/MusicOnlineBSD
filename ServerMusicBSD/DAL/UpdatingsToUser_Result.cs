@@ -20,6 +20,6 @@ namespace DAL
         public Nullable<long> count_like { get; set; }
         public Nullable<long> count_views { get; set; }
         public string type { get; set; }
-        public string isPinned { get; set; }
+        public Nullable<bool> isPinned { get; set; }
     }
 }

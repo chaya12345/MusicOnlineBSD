@@ -929,7 +929,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <Property Name="count_like" Type="bigint" />
           <Property Name="count_views" Type="bigint" />
           <Property Name="type" Type="varchar" MaxLength="50" />
-          <Property Name="isPinned" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="isPinned" Type="bit" />
         </RowType>
       </CollectionType>
     </ReturnType>
