@@ -14,6 +14,8 @@ export class UpdatingsBoardComponent implements OnInit {
   isUserConnected: boolean = false;
   user: User = new User();
   updatings: UpdatingToUser[] = [];
+  pinnedItems: UpdatingToUser[] = [];
+  notPinnedItems: UpdatingToUser[] = [];
 
   constructor(private userService: UsersService, private _snackBar: MatSnackBar,
     private commonMessage: CommonMessageService) {
@@ -36,28 +38,64 @@ export class UpdatingsBoardComponent implements OnInit {
   getUpdatingsToUser(userId: number): void {
     try {
       this.userService.getUpdatings(userId)
-      .subscribe(updatings => {
-        this.updatings = updatings;
-        updatings.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
-        console.log(updatings);
-      }, err => console.log(err));
+        .subscribe(updatings => {
+          this.updatings = updatings;
+          this.updatings.sort((a, b) =>
+            Math.round(new Date(b.date).getTime() -
+              new Date(a.date).getTime()));
+            this.sortUpdatingsInMatchLists();
+          console.log(updatings);
+        }, err => console.log(err));
     } catch (err) { console.log(err); }
   }
 
-  togglePinnedItem(updating: UpdatingToUser): void {
-    try {
-      this.userService.addPinnedItemToUser(updating, this.user.id)
-      .subscribe(result => {
-        this.openSnackBar(result ? this.commonMessage.GENERATE.ADD.SUCCESS :
-          this.commonMessage.GENERATE.ADD.ERROR);
-      }, () => this.openSnackBar(this.commonMessage.GENERATE.ADD.ERROR))
-    } catch { this.openSnackBar(this.commonMessage.GENERATE.ADD.ERROR); }
+  togglePinning(updating: UpdatingToUser): void {
+    this.updatings.some(item =>{
+      if (item.id == updating.id && item.type == updating.type) {
+        item.isPinned = !item.isPinned;
+      }
+    });
+    this.sortUpdatingsInMatchLists();
   }
 
-  openSnackBar(message: string) {
-    this._snackBar.open(message, '', {
-      duration: 2000,
+  sortUpdatingsInMatchLists(): void {
+    this.pinnedItems = [];
+    this.notPinnedItems = [];
+    this.updatings.forEach(updating => {
+      if (updating.isPinned) {
+        this.pinnedItems.push(updating);
+      }
+      else {
+        this.notPinnedItems.push(updating);
+      }
     });
   }
+
+  // togglePinnedItem(updating: UpdatingToUser): void {
+  //   if (!updating.isPinned) {
+  //     try {
+  //       this.userService.addPinnedItemToUser(updating, this.user.id)
+  //         .subscribe(result => {
+  //           this.openSnackBar(result ? this.commonMessage.GENERATE.ADD.SUCCESS :
+  //             this.commonMessage.GENERATE.ADD.ERROR);
+  //         }, () => this.openSnackBar(this.commonMessage.GENERATE.ADD.ERROR))
+  //     } catch { this.openSnackBar(this.commonMessage.GENERATE.ADD.ERROR); }
+  //   }
+  //   else {
+  //     try {
+  //       this.userService.deletePinnedItemToUser(this.user.id, updating.id, updating.type)
+  //         .subscribe(result => {
+  //           this.openSnackBar(result ? this.commonMessage.GENERATE.REMOVE.SUCCESS :
+  //             this.commonMessage.GENERATE.REMOVE.ERROR);
+  //         })
+  //     } catch { this.openSnackBar(this.commonMessage.GENERATE.REMOVE.ERROR); }
+  //   }
+  // }
+
+  // openSnackBar(message: string) {
+  //   this._snackBar.open(message, '', {
+  //     duration: 2000,
+  //   });
+  // }
 
 }

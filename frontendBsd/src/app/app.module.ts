@@ -172,6 +172,7 @@ import { ReportDetailsComponent } from './report-details/report-details.componen
 import { CommitDetailsComponent } from './commit-details/commit-details.component';
 import { UpdatingsBoardComponent } from './updatings-board/updatings-board.component';
 import { CrudActionsComponent } from './crud-actions/crud-actions.component';
+import { UpdatingComponent } from './updating/updating.component';
 
 @NgModule({
   declarations: [
@@ -330,7 +331,8 @@ import { CrudActionsComponent } from './crud-actions/crud-actions.component';
     ReportDetailsComponent,
     CommitDetailsComponent,
     UpdatingsBoardComponent,
-    CrudActionsComponent
+    CrudActionsComponent,
+    UpdatingComponent
   ],
   imports: [
     BrowserModule,

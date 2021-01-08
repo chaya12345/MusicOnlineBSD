@@ -111,7 +111,7 @@ export class UsersService {
   public addPinnedItemToUser(updatingsToUser: UpdatingToUser, userId: number): Observable<boolean> {
     return this.httpClient.post<boolean>(this.baseUrl + "AddPinnedItemToUser?userId=" + userId, updatingsToUser)
   }
-  public deletePinnedItemToUser(pinnedItemId: number, userId: number): Observable<boolean> {
-    return this.httpClient.delete<boolean>(this.baseUrl + "DeletePinnedItemToUser?pinnedItemId=" + pinnedItemId + "&userId=" + userId);
+  public deletePinnedItemToUser(userId: number, itemId: number, type: string): Observable<boolean> {
+    return this.httpClient.delete<boolean>(this.baseUrl + "DeletePinnedItemToUser?userId=" + userId + "&itemId=" + itemId + "&type=" + type);
   }
 }

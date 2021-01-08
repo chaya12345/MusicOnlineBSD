@@ -53,6 +53,7 @@ namespace BL
                 pinnedItem.date = updatingsToUser.date;
                 pinnedItem.count_like = Convert.ToInt32(updatingsToUser.count_like);
                 pinnedItem.count_views = Convert.ToInt32(updatingsToUser.count_views);
+                pinnedItem.type = updatingsToUser.type;
                 AddPinnedItem(pinnedItem);
                 pinnedItem = et.PinnedItemsTBL.Where(p => p.itemId_ == updatingsToUser.id).FirstOrDefault();
             }
@@ -64,15 +65,22 @@ namespace BL
             et.SaveChanges();
             return true;
         }
-        public static bool DeletePinnedItemToUser(int pinnedItemId, int userId)
+        public static bool DeletePinnedItemToUser(int userId, int itemId, string type)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            PinnedItemsToUserTBL pinnedItemsToUserTBL = et.PinnedItemsToUserTBL.Where(p => p.pinnedItemId == pinnedItemId && p.userId==userId).FirstOrDefault();
-            if (pinnedItemsToUserTBL != null)
+            PinnedItemsTBL pinnedItem = et.PinnedItemsTBL
+                .Where(p => p != null && p.itemId_ == itemId && p.type == type).FirstOrDefault();
+            if (pinnedItem != null)
             {
-                et.PinnedItemsToUserTBL.Remove(pinnedItemsToUserTBL);
-                et.SaveChanges();
-                return true;
+                PinnedItemsToUserTBL pinnedItemToUser = et.PinnedItemsToUserTBL
+                    .Where(ptu => ptu != null && ptu.userId == userId && ptu.pinnedItemId == pinnedItem.id)
+                    .FirstOrDefault();
+                if (pinnedItemToUser != null)
+                {
+                    et.PinnedItemsToUserTBL.Remove(pinnedItemToUser);
+                    et.SaveChanges();
+                    return true;
+                }
             }
             return false;
         }
