@@ -145,6 +145,17 @@
     <Property Name="status" Type="int" />
     <Property Name="date" Type="datetime" />
   </EntityType>
+  <EntityType Name="SearchingsOfUsersTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="int" />
+    <Property Name="itemId" Type="int" />
+    <Property Name="type" Type="varchar" MaxLength="50" />
+    <Property Name="count" Type="bigint" />
+    <Property Name="lastDate" Type="datetime" />
+  </EntityType>
   <EntityType Name="SingerSearchingToUserTBL">
     <Key>
       <PropertyRef Name="id" />
@@ -622,6 +633,18 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_SearchingsOfUsersTBL_UsersTBL">
+    <End Role="UsersTBL" Type="Self.UsersTBL" Multiplicity="0..1" />
+    <End Role="SearchingsOfUsersTBL" Type="Self.SearchingsOfUsersTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsersTBL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SearchingsOfUsersTBL">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_SingerSearchingToUserTBL_SingersTBL">
     <End Role="SingersTBL" Type="Self.SingersTBL" Multiplicity="0..1" />
     <End Role="SingerSearchingToUserTBL" Type="Self.SingerSearchingToUserTBL" Multiplicity="*" />
@@ -886,6 +909,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
   <Function Name="itemByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="item" Type="varchar" Mode="In" />
     <ReturnType>
@@ -894,6 +918,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" />
           <Property Name="image" Type="varchar(max)" />
+          <Property Name="type" Type="varchar" MaxLength="13" Nullable="false" />
         </RowType>
       </CollectionType>
     </ReturnType>
@@ -917,6 +942,36 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
   <Function Name="ItemsToParade" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="paradeId" Type="int" Mode="In" />
   </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="UpdatingsToUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="userId" Type="int" Mode="In" />
     <ReturnType>
@@ -949,6 +1004,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     <EntitySet Name="PinnedItemsToUserTBL" EntityType="Self.PinnedItemsToUserTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PlaylistsTBL" EntityType="Self.PlaylistsTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ReportsTBL" EntityType="Self.ReportsTBL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SearchingsOfUsersTBL" EntityType="Self.SearchingsOfUsersTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SingerSearchingToUserTBL" EntityType="Self.SingerSearchingToUserTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SingersTBL" EntityType="Self.SingersTBL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SingersToArticlesTBL" EntityType="Self.SingersToArticlesTBL" Schema="dbo" store:Type="Tables" />
@@ -1131,6 +1187,10 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
     <AssociationSet Name="FK_ResponsesToSongsTBL_SongsTBL" Association="Self.FK_ResponsesToSongsTBL_SongsTBL">
       <End Role="SongsTBL" EntitySet="SongsTBL" />
       <End Role="CommitsToSongsTBL" EntitySet="CommitsToSongsTBL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SearchingsOfUsersTBL_UsersTBL" Association="Self.FK_SearchingsOfUsersTBL_UsersTBL">
+      <End Role="UsersTBL" EntitySet="UsersTBL" />
+      <End Role="SearchingsOfUsersTBL" EntitySet="SearchingsOfUsersTBL" />
     </AssociationSet>
     <AssociationSet Name="FK_SingerSearchingToUserTBL_SingersTBL" Association="Self.FK_SingerSearchingToUserTBL_SingersTBL">
       <End Role="SingersTBL" EntitySet="SingersTBL" />

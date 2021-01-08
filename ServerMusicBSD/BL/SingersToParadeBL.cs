@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,12 +25,26 @@ namespace BL
         }
         public static void AddSingerToParade(SingersToParadeTBL singerToParade)
         {
-            if (singerToParade != null)
+            try
             {
-                MusicOnlineEntities et = new MusicOnlineEntities();
-                singerToParade.count = 0;
-                et.SingersToParadeTBL.Add(singerToParade);
-                et.SaveChanges();
+                if (singerToParade != null)
+                {
+                    MusicOnlineEntities et = new MusicOnlineEntities();
+                    singerToParade.count = 0;
+                    et.SingersToParadeTBL.Add(singerToParade);
+                    et.SaveChanges();
+                }
+
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
             }
         }
         public static void AddSingersToParade(List<SingersToParadeTBL> singersToParade)
@@ -51,7 +66,7 @@ namespace BL
                 et.SingersToParadeTBL.RemoveRange(singerToParade);
                 et.SaveChanges();
             }
-            
+
         }
         public static List<ItemsToParade_Result> GetSingersInParade()
         {

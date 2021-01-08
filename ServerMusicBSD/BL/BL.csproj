@@ -73,6 +73,7 @@
     <Compile Include="Casts\ToJobsDTO.cs" />
     <Compile Include="Casts\ToLastesResponsDTO.cs" />
     <Compile Include="Casts\ToParadeDTO.cs" />
+    <Compile Include="Casts\ToSearchingsOfUserDTO.cs" />
     <Compile Include="Casts\ToTypesOfTagsDTO.cs" />
     <Compile Include="Casts\ToUpdatingsToUserDTO.cs" />
     <Compile Include="Casts\ToUserPlaylistsDTO.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="LastestResponsesBL.cs" />
     <Compile Include="LastViewsBL.cs" />
     <Compile Include="ParadeBL.cs" />
+    <Compile Include="SearchingsOfUserBL.cs" />
     <Compile Include="SingersToArticlesBL.cs" />
     <Compile Include="SingersToSongsBL.cs" />
     <Compile Include="StatisticsBL.cs" />

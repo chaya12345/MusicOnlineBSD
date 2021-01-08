@@ -4,6 +4,7 @@
     <Property Name="id" Type="Int32" Nullable="false" />
     <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
   </ComplexType>
   <ComplexType Name="itemsByParameter_Result">
     <Property Name="id" Type="Int32" Nullable="false" />
@@ -191,6 +192,18 @@
     <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="status" Type="Int32" />
     <Property Name="date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SearchingsOfUsersTBL">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" />
+    <Property Name="itemId" Type="Int32" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="count" Type="Int64" />
+    <Property Name="lastDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="UsersTBL" Relationship="Self.FK_SearchingsOfUsersTBL_UsersTBL" FromRole="SearchingsOfUsersTBL" ToRole="UsersTBL" />
   </EntityType>
   <EntityType Name="SingerSearchingToUserTBL">
     <Key>
@@ -406,6 +419,7 @@
     <NavigationProperty Name="FavoriteSongsToUserTBL" Relationship="Self.FK_FavoriteSongsToUserTBL_UsersTBL" FromRole="UsersTBL" ToRole="FavoriteSongsToUserTBL" />
     <NavigationProperty Name="FollowUpTBL" Relationship="Self.FK_FollowUpTBL_UsersTBL" FromRole="UsersTBL" ToRole="FollowUpTBL" />
     <NavigationProperty Name="PinnedItemsToUserTBL" Relationship="Self.FK_PinnedItemsToUserTBL_UsersTBL1" FromRole="UsersTBL" ToRole="PinnedItemsToUserTBL" />
+    <NavigationProperty Name="SearchingsOfUsersTBL" Relationship="Self.FK_SearchingsOfUsersTBL_UsersTBL" FromRole="UsersTBL" ToRole="SearchingsOfUsersTBL" />
     <NavigationProperty Name="SingerSearchingToUserTBL" Relationship="Self.FK_SingerSearchingToUserTBL_UsersTBL" FromRole="UsersTBL" ToRole="SingerSearchingToUserTBL" />
     <NavigationProperty Name="SubscriptionTBL" Relationship="Self.FK_SubscriptionTBL_UsersTBL" FromRole="UsersTBL" ToRole="SubscriptionTBL" />
     <NavigationProperty Name="UserPlaylistsTBL" Relationship="Self.FK_PlaylistsTBL_UsersTBL" FromRole="UsersTBL" ToRole="UserPlaylistsTBL" />
@@ -760,6 +774,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_SearchingsOfUsersTBL_UsersTBL">
+    <End Role="UsersTBL" Type="Self.UsersTBL" Multiplicity="0..1" />
+    <End Role="SearchingsOfUsersTBL" Type="Self.SearchingsOfUsersTBL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsersTBL">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="SearchingsOfUsersTBL">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_SingerSearchingToUserTBL_SingersTBL">
     <End Role="SingersTBL" Type="Self.SingersTBL" Multiplicity="0..1" />
     <End Role="SingerSearchingToUserTBL" Type="Self.SingerSearchingToUserTBL" Multiplicity="*" />
@@ -979,6 +1005,7 @@
     <EntitySet Name="PinnedItemsToUserTBL" EntityType="Self.PinnedItemsToUserTBL" />
     <EntitySet Name="PlaylistsTBL" EntityType="Self.PlaylistsTBL" />
     <EntitySet Name="ReportsTBL" EntityType="Self.ReportsTBL" />
+    <EntitySet Name="SearchingsOfUsersTBL" EntityType="Self.SearchingsOfUsersTBL" />
     <EntitySet Name="SingerSearchingToUserTBL" EntityType="Self.SingerSearchingToUserTBL" />
     <EntitySet Name="SingersTBL" EntityType="Self.SingersTBL" />
     <EntitySet Name="SingersToArticlesTBL" EntityType="Self.SingersToArticlesTBL" />
@@ -1079,6 +1106,10 @@
       <End Role="PlaylistsTBL" EntitySet="PlaylistsTBL" />
       <End Role="SongsToPlaylistsTBL" EntitySet="SongsToPlaylistsTBL" />
     </AssociationSet>
+    <AssociationSet Name="FK_SearchingsOfUsersTBL_UsersTBL" Association="Self.FK_SearchingsOfUsersTBL_UsersTBL">
+      <End Role="UsersTBL" EntitySet="UsersTBL" />
+      <End Role="SearchingsOfUsersTBL" EntitySet="SearchingsOfUsersTBL" />
+    </AssociationSet>
     <AssociationSet Name="FK_SingerSearchingToUserTBL_SingersTBL" Association="Self.FK_SingerSearchingToUserTBL_SingersTBL">
       <End Role="SingersTBL" EntitySet="SingersTBL" />
       <End Role="SingerSearchingToUserTBL" EntitySet="SingerSearchingToUserTBL" />
@@ -1159,6 +1190,36 @@
     <FunctionImport Name="ItemsToParade" ReturnType="Collection(MusicOnlineModel.ItemsToParade_Result)">
       <Parameter Name="paradeId" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MusicOnlineModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MusicOnlineModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
   </EntityContainer>
   <ComplexType Name="ItemsToParade_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
@@ -1168,5 +1229,16 @@
     <Property Type="Int32" Name="count" Nullable="true" />
     <Property Type="String" Name="type" Nullable="false" MaxLength="6" />
     <Property Type="Decimal" Name="percent" Nullable="true" Precision="10" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
 </Schema>

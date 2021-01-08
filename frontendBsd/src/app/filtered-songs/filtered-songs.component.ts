@@ -1,7 +1,9 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ItemsByParameter } from '../classes/itemsByParameter';
+import { User } from '../classes/user';
 import { ItemsByParameterService } from '../services/items-by-parameter.service';
+import { SearchingsOfUserService } from '../services/searchings-of-user.service';
 
 @Component({
   selector: 'filtered-songs',
@@ -17,10 +19,12 @@ export class FilteredSongsComponent implements OnInit {
   img: string;
 
   constructor(private itemsByParameterService: ItemsByParameterService, private cdr: ChangeDetectorRef,
-    private activatedRoute: ActivatedRoute) {
-    this.getItemsByFilter(this.activatedRoute.snapshot.queryParams.filter);
+    private activatedRoute: ActivatedRoute, private searchingOfUserService: SearchingsOfUserService) {
+    let filter = this.activatedRoute.snapshot.queryParams.filter;
+    this.getItemsByFilter(filter);
+    this.addSearchingToUser(filter);
     this.navs.push("חדש במוזיקה");
-   }
+  }
 
   ngOnInit(): void {
   }
@@ -41,6 +45,16 @@ export class FilteredSongsComponent implements OnInit {
         this.img = item.image ? "../../assets/images/" + item.image : null;
       }, err => console.log(err))
     } catch (err) { console.log(err); }
+  }
+
+  addSearchingToUser(item: string) {
+    if ((sessionStorage.getItem("user") != null && sessionStorage.getItem("user") != undefined) ||
+      (localStorage.getItem("user") != null && localStorage.getItem("user") != undefined)) {
+      let user: User = JSON.parse(sessionStorage.getItem("user") || localStorage.getItem("user"));
+      try {
+        this.searchingOfUserService.addSearchingsToUser(user.id, item).subscribe();
+      } catch (err) { console.log(err); }
+    }
   }
 
 }
