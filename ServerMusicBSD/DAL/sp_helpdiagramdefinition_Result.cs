@@ -11,11 +11,9 @@ namespace DAL
 {
     using System;
     
-    public partial class itemByName_Result
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public int id { get; set; }
-        public string name { get; set; }
-        public string image { get; set; }
-        public string type { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

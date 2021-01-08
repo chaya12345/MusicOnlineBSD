@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="509f185a2571448b804e6de1116df763" Name="Diagram1">
+      <Diagram DiagramId="c764de1311d943ac8544064911191e51" Name="Diagram1">
         <EntityTypeShape EntityType="MusicOnlineModel.AlbumsTBL" Width="1.5" PointX="0.75" PointY="14.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.ArticlesTBL" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.ArticlesTBL" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.ArtistsTBL" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.ArtistsToSongsTBL" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.CommitsToArticlesTBL" Width="1.5" PointX="8.25" PointY="23.625" IsExpanded="true" />
@@ -15,38 +15,39 @@
         <EntityTypeShape EntityType="MusicOnlineModel.FollowUpTBL" Width="1.5" PointX="8.25" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.JobTBL" Width="1.5" PointX="3" PointY="19.375" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.ParadeTBL" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.PinnedItemsTBL" Width="1.5" PointX="9" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.PinnedItemsTBL" Width="1.5" PointX="9" PointY="33.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.PinnedItemsToUserTBL" Width="1.5" PointX="11.25" PointY="21.25" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.PlaylistsTBL" Width="1.5" PointX="9" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.ReportsTBL" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.SingerSearchingToUserTBL" Width="1.5" PointX="11.25" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.SearchingsOfUsersTBL" Width="1.5" PointX="8.25" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.SingerSearchingToUserTBL" Width="1.5" PointX="11.25" PointY="24.25" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.SingersTBL" Width="1.5" PointX="6" PointY="25.625" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.SingersToArticlesTBL" Width="1.5" PointX="11.25" PointY="17.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.SingersToParadeTBL" Width="1.5" PointX="8.25" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.SingersToParadeTBL" Width="1.5" PointX="8.25" PointY="38" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.SingersToSongsTBL" Width="1.5" PointX="8.25" PointY="17" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.SongsTBL" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.SongsToParadeTBL" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.SongsToPlaylistsTBL" Width="1.5" PointX="11.25" PointY="14" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.SongsToUserPlaylistsTBL" Width="1.5" PointX="8.25" PointY="20" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.SubscriptionTBL" Width="1.5" PointX="11.25" PointY="27.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.TagsForArticlesTBL" Width="1.5" PointX="9" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.TagsForArticlesTBL" Width="1.5" PointX="9" PointY="27" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.TagsForSongsTBL" Width="1.5" PointX="9" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.TagsToArticlesTBL" Width="1.5" PointX="11.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.TagsToArticlesTBL" Width="1.5" PointX="11.25" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.TagsToSongsTBL" Width="1.5" PointX="11.25" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.TopicsTBL" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.TopicsTBL" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.TypesOfTagsTBL" Width="1.5" PointX="6.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.UpdatesTBL" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.UpdatesTBL" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.UserPlaylistsTBL" Width="1.5" PointX="6" PointY="30" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.UsersTBL" Width="1.5" PointX="6" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.UsersTBL" Width="1.5" PointX="6" PointY="20.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.VotingsToParadeTBL" Width="1.5" PointX="5.25" PointY="33.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.AllTags" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.Commits" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.getFavoriteSongs" Width="1.5" PointX="13.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.GetNewSong" Width="1.5" PointX="13.75" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.lastViews" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.latestResponses" Width="1.5" PointX="15.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.reportView" Width="1.5" PointX="15.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MusicOnlineModel.songsDetails" Width="1.5" PointX="15.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.AllTags" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.Commits" Width="1.5" PointX="13.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.getFavoriteSongs" Width="1.5" PointX="13.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.GetNewSong" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.lastViews" Width="1.5" PointX="15.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.latestResponses" Width="1.5" PointX="15.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.reportView" Width="1.5" PointX="15.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.songsDetails" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="MusicOnlineModel.FK_SongsTBL_AlbumsTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_FollowUpTBL_ArticlesTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_ResponsesTBL_ArticlesBTL" ManuallyRouted="false" />
@@ -65,6 +66,7 @@
         <AssociationConnector Association="MusicOnlineModel.FK_PinnedItemsToUserTBL_PinnedItemsTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_PinnedItemsToUserTBL_UsersTBL1" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_SongsToPlaylistsSystemTBL_PlaylistsSystemTBL" ManuallyRouted="false" />
+        <AssociationConnector Association="MusicOnlineModel.FK_SearchingsOfUsersTBL_UsersTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_SingerSearchingToUserTBL_SingersTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_SingerSearchingToUserTBL_UsersTBL" ManuallyRouted="false" />
         <AssociationConnector Association="MusicOnlineModel.FK_SingersToArticlesTBL_SingersTBL" ManuallyRouted="false" />

@@ -10,12 +10,17 @@
 namespace DAL
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class itemByName_Result
+    public partial class SearchingsOfUsersTBL
     {
         public int id { get; set; }
-        public string name { get; set; }
-        public string image { get; set; }
+        public Nullable<int> userId { get; set; }
+        public Nullable<int> itemId { get; set; }
         public string type { get; set; }
+        public Nullable<long> count { get; set; }
+        public Nullable<System.DateTime> lastDate { get; set; }
+    
+        public virtual UsersTBL UsersTBL { get; set; }
     }
 }
