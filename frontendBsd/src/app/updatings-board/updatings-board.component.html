@@ -5,11 +5,11 @@
                 <strong>לוח עדכונים</strong>
                 כאן תוכל לראות עדכונים שעשויים לעניין אותך לפי חיפושים קודמים</p>
 
-            <div class="wrap-group">
+            <div class="wrap-group" *ngIf="isUserConnected">
                 <updating *ngFor="let updating of pinnedItems" [item]="updating" [user]="user"
                 (onTogglePinning)="togglePinning($event)"></updating>
             </div>
-            <div class="wrap-group">
+            <div class="wrap-group" *ngIf="isUserConnected">
                 <updating *ngFor="let updating of notPinnedItems" [item]="updating" [user]="user"
                 (onTogglePinning)="togglePinning($event)"></updating>
             </div>
@@ -27,7 +27,7 @@
             <div class="footer-updatings-board">
                 <p><strong>לוח העדכונים מתעדכן</strong> והתוכן בו משתנה.<br>
                 אם תרצה לשמור עדכון מסויים, תוכל לנעוץ אותו ב'נעץ' שבצד שמאל למעלה של הפריט.</p>
-                <p><button mat-icon-button><mat-icon>add</mat-icon></button>הוסף פריט לרשימת ה'נעוצים'</p>
+                <p *ngIf="isUserConnected"><button mat-icon-button><mat-icon>add</mat-icon></button>הוסף פריט לרשימת ה'נעוצים'</p>
             </div>
         </div>
     </div>
