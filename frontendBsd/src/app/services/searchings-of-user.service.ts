@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ItemsWithPinnedToUser } from '../classes/itemsWithPinnedToUser';
 
 export class SearchingOfUser {
   id: number;
@@ -26,5 +27,8 @@ export class SearchingsOfUserService {
   
   public addSearchingsToUser(userId: number, itemName: string): Observable<boolean> {
     return this.httpClient.post<boolean>(this.baseUrl + "AddSearchingsToUser?userId=" + userId + "&itemName=" + itemName, userId);
+  }
+  public getUpdatingsToUser‏(userId: number): Observable<ItemsWithPinnedToUser[]> {
+    return this.httpClient.get<ItemsWithPinnedToUser[]>(this.baseUrl + "GetUpdatingsToUser‏?userId=" + userId);
   }
 }

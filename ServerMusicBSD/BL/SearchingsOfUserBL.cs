@@ -76,5 +76,10 @@ namespace BL
             }
             return false;
         }
+        public static List<itemsWithPinnedToUserDTO> GetUpdatingsToUser‏(int userId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            return Casts.ToitemsWithPinnedToUserDTO.GetItemsWithPinned(et.itemsWithPinnedToUser(userId).ToList());
+        }
     }
 }

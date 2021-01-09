@@ -23,5 +23,9 @@ namespace ServerMusicBSD.Controllers
         {
             return SearchingsOfUserBL.CheckIsExist(userId, itemName);
         }
+        public List<itemsWithPinnedToUserDTO> GetUpdatingsToUser‏(int userId)
+        {
+            return SearchingsOfUserBL.GetUpdatingsToUser(userId);
+        }
     }
 }
