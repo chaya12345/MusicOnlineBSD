@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f238ca0884624f13ab5f5981662c9f9a" Name="Diagram1">
+      <Diagram DiagramId="7910ca2182d04b40a2f945e8257fdd2b" Name="Diagram1">
         <EntityTypeShape EntityType="MusicOnlineModel.AlbumsTBL" Width="1.5" PointX="0.75" PointY="14.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.ArticlesTBL" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.ArtistsTBL" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
@@ -30,6 +30,7 @@
         <EntityTypeShape EntityType="MusicOnlineModel.SongsToPlaylistsTBL" Width="1.5" PointX="11.25" PointY="14" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.SongsToUserPlaylistsTBL" Width="1.5" PointX="8.25" PointY="20" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.SubscriptionTBL" Width="1.5" PointX="11.25" PointY="27.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MusicOnlineModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.TagsForArticlesTBL" Width="1.5" PointX="9" PointY="27" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.TagsForSongsTBL" Width="1.5" PointX="9" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="MusicOnlineModel.TagsToArticlesTBL" Width="1.5" PointX="11.25" PointY="5.875" IsExpanded="true" />

@@ -257,6 +257,16 @@
           <Property Name="userId" Type="int" />
           <Property Name="singerId" Type="int" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="TagsForArticlesTBL">
           <Key>
             <PropertyRef Name="id" />
@@ -944,8 +954,65 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="ItemsBySearchingsUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="id" Type="int" Nullable="false" />
+                <Property Name="title" Type="varchar(max)" />
+                <Property Name="subtitle" Type="varchar(max)" />
+                <Property Name="date" Type="datetime" />
+                <Property Name="dateHebrew" Type="varchar" MaxLength="50" />
+                <Property Name="image" Type="varchar(max)" />
+                <Property Name="type" Type="varchar" MaxLength="11" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="ItemsToParade" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="paradeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="itemsWithPinnedToUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="id" Type="int" />
+                <Property Name="title" Type="varchar(max)" />
+                <Property Name="image" Type="varchar(max)" />
+                <Property Name="date" Type="datetime" />
+                <Property Name="type" Type="varchar" MaxLength="50" />
+                <Property Name="isPinned" Type="bit" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="NamesItemsToUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="name" Type="varchar" MaxLength="50" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="NewItemsBySearchingsToUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userId" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="id" Type="int" Nullable="false" />
+                <Property Name="title" Type="varchar(max)" />
+                <Property Name="subtitle" Type="varchar(max)" />
+                <Property Name="date" Type="datetime" />
+                <Property Name="dateHebrew" Type="varchar" MaxLength="50" />
+                <Property Name="image" Type="varchar(max)" />
+                <Property Name="type" Type="varchar" MaxLength="11" Nullable="false" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
         </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -1020,6 +1087,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SongsToUserPlaylistsTBL" EntityType="Self.SongsToUserPlaylistsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubscriptionTBL" EntityType="Self.SubscriptionTBL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TagsForArticlesTBL" EntityType="Self.TagsForArticlesTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TagsForSongsTBL" EntityType="Self.TagsForSongsTBL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TagsToArticlesTBL" EntityType="Self.TagsToArticlesTBL" Schema="dbo" store:Type="Tables" />
@@ -1298,6 +1366,35 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <Property Name="type" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
         </ComplexType>
         <ComplexType Name="itemsByParameter_Result">
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="subtitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" />
+          <Property Name="dateHebrew" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ItemsBySearchingsUser_Result">
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="subtitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" />
+          <Property Name="dateHebrew" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="itemsWithPinnedToUser_Result">
+          <Property Name="id" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="isPinned" Type="Boolean" />
+        </ComplexType>
+        <ComplexType Name="NamesItemsToUser_Result">
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <ComplexType Name="NewItemsBySearchingsToUser_Result">
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="subtitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -1621,6 +1718,16 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <Property Name="singerId" Type="Int32" />
           <NavigationProperty Name="SingersTBL" Relationship="Self.FK_SubscriptionTBL_SingersTBL" FromRole="SubscriptionTBL" ToRole="SingersTBL" />
           <NavigationProperty Name="UsersTBL" Relationship="Self.FK_SubscriptionTBL_UsersTBL" FromRole="SubscriptionTBL" ToRole="UsersTBL" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="TagsForArticlesTBL">
           <Key>
@@ -2307,6 +2414,7 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <EntitySet Name="SongsToPlaylistsTBL" EntityType="Self.SongsToPlaylistsTBL" />
           <EntitySet Name="SongsToUserPlaylistsTBL" EntityType="Self.SongsToUserPlaylistsTBL" />
           <EntitySet Name="SubscriptionTBL" EntityType="Self.SubscriptionTBL" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TagsForArticlesTBL" EntityType="Self.TagsForArticlesTBL" />
           <EntitySet Name="TagsForSongsTBL" EntityType="Self.TagsForSongsTBL" />
           <EntitySet Name="TagsToArticlesTBL" EntityType="Self.TagsToArticlesTBL" />
@@ -2474,6 +2582,18 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           </FunctionImport>
           <FunctionImport Name="itemsByParameter" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemsByParameter_Result)">
             <Parameter Name="parameter" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ItemsBySearchingsUser" IsComposable="true" ReturnType="Collection(MusicOnlineModel.ItemsBySearchingsUser_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="itemsWithPinnedToUser" IsComposable="true" ReturnType="Collection(MusicOnlineModel.itemsWithPinnedToUser_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="NamesItemsToUser" IsComposable="true" ReturnType="Collection(MusicOnlineModel.NamesItemsToUser_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="NewItemsBySearchingsToUser" IsComposable="true" ReturnType="Collection(MusicOnlineModel.NewItemsBySearchingsToUser_Result)">
+            <Parameter Name="userId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="UpdatingsToUser" IsComposable="true" ReturnType="Collection(MusicOnlineModel.UpdatingsToUser_Result)">
             <Parameter Name="userId" Mode="In" Type="Int32" />
@@ -2815,6 +2935,17 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MusicOnlineModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TagsForArticlesTBL">
             <EntityTypeMapping TypeName="MusicOnlineModel.TagsForArticlesTBL">
               <MappingFragment StoreEntitySet="TagsForArticlesTBL">
@@ -3049,6 +3180,51 @@ warning 6002: The table/view 'MusicOnline.dbo.songsDetails' does not have a prim
           <FunctionImportMapping FunctionName="MusicOnlineModel.Store.itemsByParameter" FunctionImportName="itemsByParameter">
             <ResultMapping>
               <ComplexTypeMapping TypeName="MusicOnlineModel.itemsByParameter_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="dateHebrew" ColumnName="dateHebrew" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="MusicOnlineModel.Store.ItemsBySearchingsUser" FunctionImportName="ItemsBySearchingsUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MusicOnlineModel.ItemsBySearchingsUser_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="dateHebrew" ColumnName="dateHebrew" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="MusicOnlineModel.Store.itemsWithPinnedToUser" FunctionImportName="itemsWithPinnedToUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MusicOnlineModel.itemsWithPinnedToUser_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="isPinned" ColumnName="isPinned" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="MusicOnlineModel.Store.NamesItemsToUser" FunctionImportName="NamesItemsToUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MusicOnlineModel.NamesItemsToUser_Result">
+                <ScalarProperty Name="name" ColumnName="name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="MusicOnlineModel.Store.NewItemsBySearchingsToUser" FunctionImportName="NewItemsBySearchingsToUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MusicOnlineModel.NewItemsBySearchingsToUser_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="subtitle" ColumnName="subtitle" />

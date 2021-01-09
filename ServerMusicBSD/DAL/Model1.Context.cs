@@ -52,6 +52,7 @@ namespace DAL
         public virtual DbSet<SongsToPlaylistsTBL> SongsToPlaylistsTBL { get; set; }
         public virtual DbSet<SongsToUserPlaylistsTBL> SongsToUserPlaylistsTBL { get; set; }
         public virtual DbSet<SubscriptionTBL> SubscriptionTBL { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TagsForArticlesTBL> TagsForArticlesTBL { get; set; }
         public virtual DbSet<TagsForSongsTBL> TagsForSongsTBL { get; set; }
         public virtual DbSet<TagsToArticlesTBL> TagsToArticlesTBL { get; set; }
@@ -89,6 +90,46 @@ namespace DAL
                 new ObjectParameter("parameter", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<itemsByParameter_Result>("[MusicOnlineEntities].[itemsByParameter](@parameter)", parameterParameter);
+        }
+    
+        [DbFunction("MusicOnlineEntities", "ItemsBySearchingsUser")]
+        public virtual IQueryable<ItemsBySearchingsUser_Result> ItemsBySearchingsUser(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ItemsBySearchingsUser_Result>("[MusicOnlineEntities].[ItemsBySearchingsUser](@userId)", userIdParameter);
+        }
+    
+        [DbFunction("MusicOnlineEntities", "itemsWithPinnedToUser")]
+        public virtual IQueryable<itemsWithPinnedToUser_Result> itemsWithPinnedToUser(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<itemsWithPinnedToUser_Result>("[MusicOnlineEntities].[itemsWithPinnedToUser](@userId)", userIdParameter);
+        }
+    
+        [DbFunction("MusicOnlineEntities", "NamesItemsToUser")]
+        public virtual IQueryable<NamesItemsToUser_Result> NamesItemsToUser(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<NamesItemsToUser_Result>("[MusicOnlineEntities].[NamesItemsToUser](@userId)", userIdParameter);
+        }
+    
+        [DbFunction("MusicOnlineEntities", "NewItemsBySearchingsToUser")]
+        public virtual IQueryable<NewItemsBySearchingsToUser_Result> NewItemsBySearchingsToUser(Nullable<int> userId)
+        {
+            var userIdParameter = userId.HasValue ?
+                new ObjectParameter("userId", userId) :
+                new ObjectParameter("userId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<NewItemsBySearchingsToUser_Result>("[MusicOnlineEntities].[NewItemsBySearchingsToUser](@userId)", userIdParameter);
         }
     
         [DbFunction("MusicOnlineEntities", "UpdatingsToUser")]
