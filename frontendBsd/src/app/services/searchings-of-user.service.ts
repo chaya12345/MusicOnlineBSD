@@ -28,7 +28,11 @@ export class SearchingsOfUserService {
   public addSearchingsToUser(userId: number, itemName: string): Observable<boolean> {
     return this.httpClient.post<boolean>(this.baseUrl + "AddSearchingsToUser?userId=" + userId + "&itemName=" + itemName, userId);
   }
-  public getUpdatingsToUser‏(userId: number): Observable<ItemsWithPinnedToUser[]> {
-    return this.httpClient.get<ItemsWithPinnedToUser[]>(this.baseUrl + "GetUpdatingsToUser‏?userId=" + userId);
+
+  public getUpdatingsToUser(userId: number): Observable<ItemsWithPinnedToUser[]> {
+    return this.httpClient.get<ItemsWithPinnedToUser[]>(this.baseUrl + "GetUpdatingsToUser‏?userId=" + userId)
   }
+  // public getUpdatingsToUser‏(userId: number): Observable<ItemsWithPinnedToUser[]> {
+  //   return this.httpClient.get<ItemsWithPinnedToUser[]>(this.baseUrl + "GetUpdatingsToUser‏?userId=" + userId);
+  // }
 }
