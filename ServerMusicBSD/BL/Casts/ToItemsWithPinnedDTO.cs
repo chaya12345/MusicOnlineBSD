@@ -37,6 +37,8 @@ namespace BL.Casts
                         list.Add(newItem);
                 }
             }
+            if (list != null)
+                list = list.OrderByDescending(i => i.date).ToList();
             return list;
         }
     }
