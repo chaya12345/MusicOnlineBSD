@@ -55,8 +55,9 @@ form > .wrap-buttons > button {
     height: 48px;
     margin-left: auto;
     padding: 0 40px;
-    font-family: fb Joker;
-    font-size: 19px;
+    font-family: assistant;
+    font-size: 17px;
+    font-weight: 400;
     width: 100%;
 }
 

@@ -19,3 +19,13 @@ p {
     background-size: cover;
     background-position: center;
 }
+
+button span {
+    font-family: assistant;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+button mat-icon {
+    margin-left: 6px;
+}

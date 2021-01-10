@@ -88,6 +88,18 @@ const routes: Routes = [{
     path: "content-management",
     component: ContentManagementComponent, 
     children: [{
+      path: "Song",
+      component: UploadingSongComponent
+    }, {
+      path: "Article",
+      component: UploadingArticleComponent
+    }, {
+      path: "Playlist",
+      component: AddingPlaylistComponent
+    }, {
+      path: "Parade",
+      component: ActivationParadeComponent
+    }, {
       path: "songs",
       component: UploadingSongComponent
     }, {

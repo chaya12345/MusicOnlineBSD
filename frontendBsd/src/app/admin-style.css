@@ -1,9 +1,28 @@
 form mat-form-field {
     text-align: right !important;
+    font-family: assistant;
+    font-size: 17px;
 }
 
 form.grid-form-2-columns {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 15px;
+}
+
+mat-error {
+    font-family: assistant;
+    font-size: 12.5px;
+}
+
+mat-checkbox {
+    font-family: assistant !important;
+    font-size: 17px;
+}
+
+form > button,
+form > .wrap-buttons > button {
+    font-family: assistant;
+    font-size: 17px;
+    font-weight: 400;
 }

@@ -1,1 +1,12 @@
-<p>crud-actions works!</p>
+<div class="wrap-crud-actions">
+    <mat-form-field appearance="fill">
+        <mat-label>בחר קטגוריה</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let category of categories" [value]="category.value"
+                [routerLink]="getRouter(category.category)">
+                {{category.value}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <router-outlet></router-outlet>
+</div>
