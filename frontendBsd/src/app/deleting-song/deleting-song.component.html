@@ -1,0 +1,12 @@
+<div class="warp-deleting-song">
+    <mat-form-field appearance="outline">
+        <mat-label>שם שיר</mat-label>
+        <input (keyup.enter)="songSearch()" type="text" matInput [formControl]="songsControl" [matAutocomplete]="autoSongs">
+        <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete" (optionSelected)="onSelectionChange($event)">
+            <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name"></mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+    <button mat-stroked-button (click)="openMessageDialog('האם אתה בטוח שברצונך למחוק את השיר?}')">
+        <mat-icon>delete</mat-icon>מחק שיר
+    </button>
+</div>

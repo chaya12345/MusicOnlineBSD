@@ -174,6 +174,10 @@ import { UpdatingsBoardComponent } from './updatings-board/updatings-board.compo
 import { CrudActionsComponent } from './crud-actions/crud-actions.component';
 import { UpdatingComponent } from './updating/updating.component';
 import { ManageSongComponent } from './manage-song/manage-song.component';
+import { EditingSongComponent } from './editing-song/editing-song.component';
+import { AddingSongComponent } from './adding-song/adding-song.component';
+import { DeletingSongComponent } from './deleting-song/deleting-song.component';
+import { SongFormComponent } from './song-form/song-form.component';
 
 @NgModule({
   declarations: [
@@ -334,7 +338,11 @@ import { ManageSongComponent } from './manage-song/manage-song.component';
     UpdatingsBoardComponent,
     CrudActionsComponent,
     UpdatingComponent,
-    ManageSongComponent
+    ManageSongComponent,
+    EditingSongComponent,
+    AddingSongComponent,
+    DeletingSongComponent,
+    SongFormComponent
   ],
   imports: [
     BrowserModule,
