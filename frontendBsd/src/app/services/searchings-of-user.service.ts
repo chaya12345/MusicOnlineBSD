@@ -30,7 +30,7 @@ export class SearchingsOfUserService {
   }
 
   public getUpdatingsToUser(userId: number): Observable<ItemsWithPinnedToUser[]> {
-    return this.httpClient.get<ItemsWithPinnedToUser[]>(this.baseUrl + "GetUpdatingsToUser‏?userId=" + userId)
+    return this.httpClient.get<ItemsWithPinnedToUser[]>(this.baseUrl + "GetUpdatingsToUser?userId=" + userId)
   }
   // public getUpdatingsToUser‏(userId: number): Observable<ItemsWithPinnedToUser[]> {
   //   return this.httpClient.get<ItemsWithPinnedToUser[]>(this.baseUrl + "GetUpdatingsToUser‏?userId=" + userId);

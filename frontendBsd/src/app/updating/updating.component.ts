@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
+import { ItemsWithPinnedToUser } from '../classes/itemsWithPinnedToUser';
 import { User } from '../classes/user';
 import { CommonMessageService } from '../services/common-message.service';
 import { UpdatingToUser, UsersService } from '../services/users.service';
@@ -11,9 +12,11 @@ import { UpdatingToUser, UsersService } from '../services/users.service';
 })
 export class UpdatingComponent implements OnInit {
 
-  @Input() item: UpdatingToUser;
+  //@Input() item: UpdatingToUser;
+  @Input() item: ItemsWithPinnedToUser;
   @Input() user: User;
-  @Output() onTogglePinning = new EventEmitter<UpdatingToUser>();
+  @Output() onTogglePinning = new EventEmitter<ItemsWithPinnedToUser>();
+ // @Output() onTogglePinning = new EventEmitter<UpdatingToUser>();
 
   constructor(private userService: UsersService, private commonMessage: CommonMessageService,
     private _snackBar: MatSnackBar) { }
@@ -21,10 +24,10 @@ export class UpdatingComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  togglePinnedItem(updating: UpdatingToUser): void {
+  togglePinnedItem(updating: /*UpdatingToUser*/ ItemsWithPinnedToUser): void {
     if (!updating.isPinned) {
       try {
-        this.userService.addPinnedItemToUser(updating, this.user.id)
+        this.userService.addPinnedItemToUser(this.user.id,updating.id,updating.type)
           .subscribe(result => {
             this.openSnackBar(result ? this.commonMessage.GENERATE.ADD.SUCCESS :
               this.commonMessage.GENERATE.ADD.ERROR);

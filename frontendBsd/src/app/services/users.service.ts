@@ -108,8 +108,8 @@ export class UsersService {
   public getUpdatings(userId: number): Observable<UpdatingToUser[]> {
     return this.httpClient.get<UpdatingToUser[]>(this.baseUrl + "GetUpdatings?userId=" + userId);
   }
-  public addPinnedItemToUser(updatingsToUser: UpdatingToUser, userId: number): Observable<boolean> {
-    return this.httpClient.post<boolean>(this.baseUrl + "AddPinnedItemToUser?userId=" + userId, updatingsToUser)
+  public addPinnedItemToUser(userId: number, itemId: number, type: string): Observable<boolean> {
+    return this.httpClient.post<boolean>(this.baseUrl + "AddPinnedItemToUser?userId=" + userId + "&itemId=" + itemId + "&type=" + type, type);
   }
   public deletePinnedItemToUser(userId: number, itemId: number, type: string): Observable<boolean> {
     return this.httpClient.delete<boolean>(this.baseUrl + "DeletePinnedItemToUser?userId=" + userId + "&itemId=" + itemId + "&type=" + type);

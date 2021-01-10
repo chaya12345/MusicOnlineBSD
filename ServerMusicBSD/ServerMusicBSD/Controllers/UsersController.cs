@@ -63,9 +63,9 @@ namespace ServerMusicBSD.Controllers
             return UpdatingsToUserBL.GetUpdatings(userId);
         }
         [HttpPost]
-        public bool AddPinnedItemToUser([FromBody]UpdatingsToUserDTO updatingsToUser, int userId)
+        public bool AddPinnedItemToUser(int userId,int itemId, string type)
         {
-            return UpdatingsToUserBL.AddPinnedItemToUser(updatingsToUser,userId);
+            return UpdatingsToUserBL.AddPinnedItemToUser(userId,itemId,type);
         }
         public bool DeletePinnedItemToUser(int userId, int itemId, string type)
         {

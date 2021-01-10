@@ -38,24 +38,18 @@ namespace BL
                 }
             }
         }
-        public static bool AddPinnedItemToUser(UpdatingsToUserDTO updatingsToUser,int userId)
+        public static bool AddPinnedItemToUser(int userId,int itemId,string type)
         {
-            if (updatingsToUser == null)
-                return false;
+            //if (updatingsToUser == null)
+               // return false;
             MusicOnlineEntities et = new MusicOnlineEntities();
-            PinnedItemsTBL pinnedItem = et.PinnedItemsTBL.Where(p => p.itemId_ == updatingsToUser.id).FirstOrDefault();
+            PinnedItemsTBL pinnedItem = et.PinnedItemsTBL.Where(p => p.itemId_==itemId&&p.type==type).FirstOrDefault();
             if (pinnedItem == null)
             {
                 pinnedItem = new PinnedItemsTBL();
-                pinnedItem.itemId_ = updatingsToUser.id;
-                pinnedItem.title = updatingsToUser.title;
-                pinnedItem.image = updatingsToUser.image;
-                pinnedItem.date = updatingsToUser.date;
-                pinnedItem.count_like = Convert.ToInt32(updatingsToUser.count_like);
-                pinnedItem.count_views = Convert.ToInt32(updatingsToUser.count_views);
-                pinnedItem.type = updatingsToUser.type;
+                pinnedItem = GetPinnedItem(itemId, type);
                 AddPinnedItem(pinnedItem);
-                pinnedItem = et.PinnedItemsTBL.Where(p => p.itemId_ == updatingsToUser.id).FirstOrDefault();
+                pinnedItem = et.PinnedItemsTBL.Where(p => p.itemId_ == itemId&&p.type==type).FirstOrDefault();
             }
             PinnedItemsToUserTBL pitu = new PinnedItemsToUserTBL();
             pitu.pinnedItemId = pinnedItem.id;
@@ -83,6 +77,34 @@ namespace BL
                 }
             }
             return false;
+        }
+        public static PinnedItemsTBL GetPinnedItem(int itemId, string type)
+        {
+            PinnedItemsTBL item = new PinnedItemsTBL();
+            item.type = type;
+            if (type == "song")
+            {
+                songsDetails song = SongsBL.GetSongById(itemId);
+                item.itemId_ = song.id;
+                item.title = song.title;
+                item.image = song.image_location;
+                item.date = song.date;
+                item.count_like = Convert.ToInt32(song.count_like);
+                item.count_views = Convert.ToInt32(song.count_views);
+                return item;
+            }
+            else if (type == "article")
+            {
+                ArticlesDTO article = ArticlesBL.GetArticleById(itemId);
+                item.itemId_ = article.id;
+                item.title = article.title;
+                item.image = article.image;
+                item.date = article.date;
+                item.count_like = Convert.ToInt32(article.count_like);
+                item.count_views = Convert.ToInt32(article.count_views);
+                return item;
+            }
+            return null;
         }
     }
 }

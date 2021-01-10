@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
+import { ItemsWithPinnedToUser } from '../classes/itemsWithPinnedToUser';
 import { User } from '../classes/user';
 import { CommonMessageService } from '../services/common-message.service';
+import { SearchingOfUser, SearchingsOfUserService } from '../services/searchings-of-user.service';
 import { UpdatingToUser, UsersService } from '../services/users.service';
 
 @Component({
@@ -13,12 +15,15 @@ export class UpdatingsBoardComponent implements OnInit {
 
   isUserConnected: boolean = false;
   user: User = new User();
-  updatings: UpdatingToUser[] = [];
-  pinnedItems: UpdatingToUser[] = [];
-  notPinnedItems: UpdatingToUser[] = [];
+  updatings: ItemsWithPinnedToUser[] = [];
+  pinnedItems: ItemsWithPinnedToUser[] = [];
+  notPinnedItems: ItemsWithPinnedToUser[] = [];
+  // updatings: UpdatingToUser[] = [];
+  // pinnedItems: UpdatingToUser[] = [];
+  // notPinnedItems: UpdatingToUser[] = [];
 
   constructor(private userService: UsersService, private _snackBar: MatSnackBar,
-    private commonMessage: CommonMessageService) {
+    private commonMessage: CommonMessageService, private searchingsOfUserService: SearchingsOfUserService) {
     this.checkIsUserConnected();
   }
 
@@ -37,20 +42,27 @@ export class UpdatingsBoardComponent implements OnInit {
 
   getUpdatingsToUser(userId: number): void {
     try {
-      this.userService.getUpdatings(userId)
-        .subscribe(updatings => {
-          this.updatings = updatings;
-          this.updatings.sort((a, b) =>
-            Math.round(new Date(b.date).getTime() -
-              new Date(a.date).getTime()));
-            this.sortUpdatingsInMatchLists();
-          console.log(updatings);
-        }, err => console.log(err));
+      this.searchingsOfUserService.getUpdatingsToUser(userId).subscribe(update => {
+        this.updatings = update;
+        this.updatings.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
+        this.sortUpdatingsInMatchLists();
+      },err=>console.log(err))
     } catch (err) { console.log(err); }
+    // try {
+    //   this.userService.getUpdatings(userId)
+    //     .subscribe(updatings => {
+    //       this.updatings = updatings;
+    //       this.updatings.sort((a, b) =>
+    //         Math.round(new Date(b.date).getTime() -
+    //           new Date(a.date).getTime()));
+    //         this.sortUpdatingsInMatchLists();
+    //       console.log(updatings);
+    //     }, err => console.log(err));
+    // } catch (err) { console.log(err); }
   }
 
   togglePinning(updating: UpdatingToUser): void {
-    this.updatings.some(item =>{
+    this.updatings.some(item => {
       if (item.id == updating.id && item.type == updating.type) {
         item.isPinned = !item.isPinned;
       }
