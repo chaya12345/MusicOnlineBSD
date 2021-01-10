@@ -173,6 +173,7 @@ import { CommitDetailsComponent } from './commit-details/commit-details.componen
 import { UpdatingsBoardComponent } from './updatings-board/updatings-board.component';
 import { CrudActionsComponent } from './crud-actions/crud-actions.component';
 import { UpdatingComponent } from './updating/updating.component';
+import { ManageSongComponent } from './manage-song/manage-song.component';
 
 @NgModule({
   declarations: [
@@ -332,7 +333,8 @@ import { UpdatingComponent } from './updating/updating.component';
     CommitDetailsComponent,
     UpdatingsBoardComponent,
     CrudActionsComponent,
-    UpdatingComponent
+    UpdatingComponent,
+    ManageSongComponent
   ],
   imports: [
     BrowserModule,

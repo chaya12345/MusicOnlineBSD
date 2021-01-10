@@ -90,3 +90,35 @@ form > mat-form-field.ltr {
     padding: 0 20px !important;
     margin-left: 0 !important;
 }
+
+.example-container {
+  /* width: 500px; */
+  height: 300px;
+  /* border: 1px solid rgba(0, 0, 0, 0.5); */
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+
+.wrap-side-nav-buttons {
+    display: grid;
+    grid-row-gap: 20px;
+}
+
+.wrap-side-nav-buttons button mat-icon {
+    margin-left: 6px;
+}
+
+.wrap-side-nav-buttons button {
+    font-family: assistant;
+    font-size: 17px;
+    font-weight: 400;
+}

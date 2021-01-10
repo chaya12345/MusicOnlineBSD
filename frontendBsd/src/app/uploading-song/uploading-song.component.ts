@@ -25,12 +25,16 @@ export interface DialogData {
   mailDetails: MailDetails;
 }
 
+export enum eAction { add = 1, edit, delete }
+
 @Component({
   selector: 'uploading-song',
   templateUrl: './uploading-song.component.html',
   styleUrls: ['./uploading-song.component.css', './../admin-style.css']
 })
 export class UploadingSongComponent implements OnInit {
+
+  activeAction: eAction = eAction.add;
 
   uploadSong: FormGroup;
   imageFile: File;

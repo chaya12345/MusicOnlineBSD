@@ -27,6 +27,7 @@ import { CommitsBoardComponent } from './commits-board/commits-board.component';
 import { ReportsBoardComponent } from './reports-board/reports-board.component';
 import { ActivationParadeComponent } from './activation-parade/activation-parade.component';
 import { DeletingAreaComponent } from './deleting-area/deleting-area.component';
+import { ManageSongComponent } from './manage-song/manage-song.component';
 
 
 const routes: Routes = [{
@@ -89,7 +90,7 @@ const routes: Routes = [{
     component: ContentManagementComponent, 
     children: [{
       path: "Song",
-      component: UploadingSongComponent
+      component: ManageSongComponent
     }, {
       path: "Article",
       component: UploadingArticleComponent

@@ -24,6 +24,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSidenavModule } from '@angular/material';
 
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
@@ -53,7 +54,8 @@ const modules = [
     DragDropModule,
     MatBadgeModule,
     MatRadioModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSidenavModule
 ];
 
 @NgModule({
