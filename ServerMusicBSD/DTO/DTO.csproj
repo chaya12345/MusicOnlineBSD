@@ -48,6 +48,7 @@
     <Compile Include="FavoriteSongsToUserDTO.cs" />
     <Compile Include="FollowUpDTO.cs" />
     <Compile Include="ItemsByParameterDTO.cs" />
+    <Compile Include="itemsWithPinnedToUserDTO.cs" />
     <Compile Include="JobsDTO.cs" />
     <Compile Include="LastestResponsesDTO.cs" />
     <Compile Include="LastViewsDTO.cs" />

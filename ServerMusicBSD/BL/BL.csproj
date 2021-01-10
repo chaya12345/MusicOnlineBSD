@@ -70,6 +70,7 @@
     <Compile Include="Casts\ToArtistsToSongsDTO.cs" />
     <Compile Include="Casts\ToFollowUpDTO.cs" />
     <Compile Include="Casts\ToItemsByParameterDTO.cs" />
+    <Compile Include="Casts\ToItemsWithPinnedDTO.cs" />
     <Compile Include="Casts\ToJobsDTO.cs" />
     <Compile Include="Casts\ToLastesResponsDTO.cs" />
     <Compile Include="Casts\ToParadeDTO.cs" />
