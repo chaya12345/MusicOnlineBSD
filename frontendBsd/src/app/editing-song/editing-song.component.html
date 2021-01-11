@@ -9,7 +9,7 @@
     </mat-form-field>
 
     <div *ngIf="SelectedSong!=null||undefined">
-        <uploading-song></uploading-song>
+        <song-form [selectedSong]="SelectedSong"></song-form>
     </div>
-
+    <!-- (onSendSongObj)="openDialogToMailDetails($event)" -->
 </div>

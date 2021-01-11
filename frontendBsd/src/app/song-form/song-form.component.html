@@ -1,11 +1,11 @@
-<!-- <div class="wrap-uploading-song">
+<div class="wrap-uploading-song">
     <form class="grid-form-2-columns" [formGroup]="uploadSong" (ngSubmit)="onSubmit()">
-        name
+        <!-- name -->
         <mat-form-field appearance="fill">
             <input matInput placeholder="שם שיר" formControlName="name">
             <mat-error *ngIf="uploadSong.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
         </mat-form-field>
-        singer
+        <!-- singer -->
         <mat-form-field appearance="fill">
             <mat-label>בחירת זמרים</mat-label>
             <mat-select formControlName="singers" multiple>
@@ -14,44 +14,42 @@
             <mat-error *ngIf="uploadSong.controls.singers.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
 
-        title
+        <!-- title -->
         <mat-form-field appearance="fill">
             <input matInput placeholder="כותרת" formControlName="title">
             <mat-error *ngIf="uploadSong.controls.title.invalid">{{getTitleErrorMessage()}}</mat-error>
         </mat-form-field>
-        subtitle
+        <!-- subtitle -->
         <mat-form-field appearance="fill">
             <input matInput placeholder="כותרת משנה" formControlName="subtitle">
             <mat-error *ngIf="uploadSong.controls.subtitle.invalid">{{getSubtitleErrorMessage()}}</mat-error>
         </mat-form-field>
-        image
+        <!-- image -->
         <uploading-image (onSelect)="selectImage($event)" [image]="image"></uploading-image>
-        song
+        <!-- song -->
         <uploading-audio-video-file (onSelect)="selectSong($event)" [song]="song"></uploading-audio-video-file>
-        content
+        <!-- content -->
         <editor></editor>
         <text-editor [text]="text"></text-editor>
         <div *ngIf="artistsWithJobs.length>0">
             <p *ngFor="let artistWithJob of artistsWithJobs">{{artistWithJob.artistName}} - {{artistWithJob.jobName}}
             </p>
         </div>
-        artists
-        <mat-form-field appearance="fill">
+        <!-- artists -->
+        <!-- <mat-form-field appearance="fill">
             <mat-label>בחירת אומנים</mat-label>
             <mat-select formControlName="artists">
-                <mat-option #matOption *ngFor="let artist of artists" (onSelectionChange)="selectArtist(artist.name)"
-                    [value]="artist.name">{{artist.name}}</mat-option>
+                <mat-option #matOption *ngFor="let artist of artists" (onSelectionChange)="selectArtist(artist.name)" [value]="artist.name">{{artist.name}}</mat-option>
             </mat-select>
-        </mat-form-field>
-        jobs
-        <mat-form-field appearance="fill">
+        </mat-form-field> -->
+        <!-- jobs -->
+        <!-- <mat-form-field appearance="fill">
             <mat-label>בחירת תפקיד לאומן</mat-label>
             <mat-select formControlName="job" [disabled]="selectedArtist==false">
-                <mat-option #matOption *ngFor="let job of jobs" name="job" [value]="job.name"
-                    (onSelectionChange)="selectJob(job.name)">{{job.name}}</mat-option>
+                <mat-option #matOption *ngFor="let job of jobs" name="job" [value]="job.name" (onSelectionChange)="selectJob(job.name)">{{job.name}}</mat-option>
             </mat-select>
-        </mat-form-field>
-        tags
+        </mat-form-field> -->
+        <!-- tags -->
         <mat-form-field appearance="fill">
             <mat-label>בחירת תגיות</mat-label>
             <mat-select formControlName="tags" multiple>
@@ -59,16 +57,16 @@
             </mat-select>
             <mat-error *ngIf="uploadSong.controls.tags.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
-        is performance
+        <!-- is performance -->
         <mat-checkbox color="warn" (change)="isPerformance=!isPerformance">הופעה</mat-checkbox>
-        action button
+        <!-- action button -->
         <div>
-            <button mat-stroked-button *ngIf="isEdit==false">
+            <button mat-stroked-button (click)="sendingSong()">
                 <mat-icon>publish</mat-icon>אשר
             </button>
-            <button mat-stroked-button *ngIf="isEdit==false">
+            <button mat-stroked-button (click)="reset()">
                 <mat-icon>publish</mat-icon>בטל
             </button>
         </div>
     </form>
-</div> -->
+</div>

@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material';
 import { Artist } from '../classes/artist';
 import { ArtistWithJob } from '../classes/artistWithJob';
 import { Job } from '../classes/job';
@@ -7,17 +9,27 @@ import { Singer } from '../classes/singer';
 import { Song } from '../classes/song';
 import { TagsForSongs } from '../classes/tag';
 import { SingerService } from '../services/singer.service';
-import { SongService } from '../services/song.service';
+import { SingersToSongService } from '../services/singers-to-song.service';
+import { SongObj, SongService } from '../services/song.service';
 import { TagService } from '../services/tag.service';
+import { TagsToSongsService } from '../services/tags-to-songs.service';
+import { MailDetails } from '../services/upload.service';
+
+export class SongObjWithFiles {
+  songObj: SongObj;
+  imageFile: File;
+  songFile: File;
+}
 
 @Component({
-  selector: 'app-song-form',
+  selector: 'song-form',
   templateUrl: './song-form.component.html',
   styleUrls: ['./song-form.component.css', './../admin-style.css']
 })
 export class SongFormComponent implements OnInit {
 
-  @Input() song: Song;
+  @Input() selectedSong: Song;
+  @Output() onSendSongObj: EventEmitter<SongObjWithFiles> = new EventEmitter<SongObjWithFiles>();
 
   uploadSong: FormGroup;
   imageFile: File;
@@ -30,7 +42,11 @@ export class SongFormComponent implements OnInit {
   jobs: Job[] = [];
   text: string;
 
-  constructor(private songService: SongService, private singerService: SingerService, private tagService: TagService,) {
+  image: string;
+  song: string;
+
+  constructor(private songService: SongService, private singerService: SingerService, private tagService: TagService,
+    public dialog: MatDialog, private singersToSService: SingersToSongService, private tagsToSongsService: TagsToSongsService) {
     this.uploadSong = new FormGroup({
       name: new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
       title: new FormControl("", [Validators.required, Validators.minLength(10), Validators.maxLength(150)]),
@@ -48,11 +64,44 @@ export class SongFormComponent implements OnInit {
     //this.getArtists();
     //this.getJobs();
   }
-  
+
   ngOnInit(): void {
   }
   ngOnChanges(): void {
+    //  if (this.song != null || undefined)
   }
+  enteringValues(): void {
+    this.uploadSong.controls.name.setValue(this.selectedSong.name);
+    this.uploadSong.controls.title.setValue(this.selectedSong.title);
+    this.uploadSong.controls.subtitle.setValue(this.selectedSong.subtitle);
+    this.uploadSong.controls.image.setValue(this.selectedSong.image_location);
+    this.uploadSong.controls.content.setValue(this.selectedSong.content);
+    this.uploadSong.controls.song.setValue(this.selectedSong.file_location);
+    this.image = "../../assets/images/" + this.selectedSong.image_location;
+    this.song = "../../assets/songs/" + this.selectedSong.file_location;
+    this.text = "../../assets/text/" + this.selectedSong.content;
+    this.isPerformance = this.selectedSong.isPerformance;
+    try {
+      this.singersToSService.getSingersToSong(this.selectedSong.id)
+        .subscribe(singers => {
+          this.uploadSong.controls.singers.setValue(singers);
+          console.log(singers);
+        }, err => console.log(err));
+    } catch (err) { console.log(err); }
+    try {
+      this.tagsToSongsService.getTagsNamesToSong(this.selectedSong.id)
+        .subscribe(tts => {
+          this.uploadSong.controls.tags.setValue(tts);
+        }, err => console.log(err));
+    } catch (err) { console.log(err); }
+    // try {
+    //   this.artistsToSongsService.getArtistsNamesToSong(this.selectedSong.id)
+    //     .subscribe(ats => {
+    //       this.uploadSong.controls.artists.setValue(ats);
+    //     }, err => console.log(err));
+    // } catch (err) { console.log(err); }
+  }
+
 
   getError(field: AbstractControl) {
     if (field.hasError("required"))
@@ -116,6 +165,47 @@ export class SongFormComponent implements OnInit {
         this.sort(this.tags);
       }, err => console.log(err));
     } catch (err) { console.log(err); }
+  }
+
+  onSubmit(): void {
+    this.uploadSong.controls.song.setValue("songs/");
+    if (this.uploadSong.valid && this.imageFile != null && this.songFile != null) {
+      this.sendingSong();
+    }
+  }
+
+  sendingSong(): void {
+    let folderOfSinger = this.convertToFolderName(this.uploadSong.controls.singers.value[0]);
+    this.uploadSong.controls.image.setValue("for_songs/" + folderOfSinger + "/" + this.imageFile.name);
+    this.uploadSong.controls.song.setValue(folderOfSinger + "\\" + this.songFile.name);
+    let song: Song = new Song;
+    song.name = this.uploadSong.controls.name.value;
+    song.type = null;
+    song.title = this.uploadSong.controls.title.value;
+    song.subtitle = this.uploadSong.controls.subtitle.value;
+    song.image_location = null;
+    song.content = null;
+    song.isPerformance = this.isPerformance;
+    song.file_location = this.uploadSong.controls.song.value;
+    song.image_location = this.uploadSong.controls.image.value;
+    song.type = this.songFile.name.slice(this.songFile.name.lastIndexOf(".") + 1, this.songFile.name.length) == "mp3" ? "audio" : "video";
+    let songObj: SongObj = new SongObj();
+    songObj.song = song;
+    songObj.singers = this.uploadSong.controls.singers.value;
+    songObj.tags = this.uploadSong.controls.tags.value;
+    songObj.artists = this.artistsWithJobs;
+    let sendSong: SongObjWithFiles = new SongObjWithFiles();
+    sendSong.songObj = songObj;
+    sendSong.imageFile = this.imageFile;
+    sendSong.songFile = this.songFile;
+    this.onSendSongObj.emit(sendSong);
+    this.reset();
+  }
+  convertToFolderName(singer: string): string {
+    return singer.trim().split(' ').join('-');
+  }
+  reset() {
+    this.uploadSong.reset({ value: "" });
   }
 
 }
