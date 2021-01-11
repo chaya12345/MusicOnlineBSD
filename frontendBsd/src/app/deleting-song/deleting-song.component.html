@@ -6,7 +6,7 @@
             <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name"></mat-option>
         </mat-autocomplete>
     </mat-form-field>
-    <button mat-stroked-button (click)="openMessageDialog('האם אתה בטוח שברצונך למחוק את השיר?}')">
+    <button mat-stroked-button (click)="openMessageDialog('האם אתה בטוח שברצונך למחוק את השיר?')">
         <mat-icon>delete</mat-icon>מחק שיר
     </button>
 </div>

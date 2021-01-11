@@ -1,4 +1,4 @@
-<div class="wrap-manage-song">
+<div class="wrap-manage-playlist">
     <mat-drawer-container class="example-container" autosize>
         <mat-drawer #drawer class="sidenav" mode="side" opened="true" position="end">
             <div class="wrap-side-nav-buttons">
@@ -9,12 +9,9 @@
         </mat-drawer>
 
         <div class="sidenav-content" [ngSwitch]="activeAction">
-            <!-- <button type="button" mat-button (click)="drawer.toggle()">
-                Toggle sidenav
-            </button> -->
-            <adding-song *ngSwitchCase="1"></adding-song>
-            <editing-song *ngSwitchCase="2"></editing-song>
-            <deleting-song *ngSwitchDefault></deleting-song>
+            <adding-playlist *ngSwitchCase="1"></adding-playlist>
+            <editing-playlist *ngSwitchCase="2"></editing-playlist>
+            <deleting-playlist *ngSwitchDefault></deleting-playlist>
         </div>
     </mat-drawer-container>
 </div>

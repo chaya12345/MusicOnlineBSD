@@ -9,7 +9,7 @@ import { CommonMessageService } from '../services/common-message.service';
 import { SongService } from '../services/song.service';
 
 @Component({
-  selector: 'app-deleting-song',
+  selector: 'deleting-song',
   templateUrl: './deleting-song.component.html',
   styleUrls: ['./deleting-song.component.css']
 })

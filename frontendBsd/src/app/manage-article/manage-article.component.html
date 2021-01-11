@@ -1,0 +1,15 @@
+<div class="wrap-manage-article">
+    <mat-drawer-container class="example-container" autosize>
+        <mat-drawer #drawer class="sidenav" mode="side" opened="true" position="end">
+            <div class="wrap-side-nav-buttons">
+                <button mat-flat-button [class.active]="activeAction==1"><mat-icon>add</mat-icon>הוספה</button>
+                <button mat-flat-button [class.active]="activeAction==2"><mat-icon>edit</mat-icon>עריכה</button>
+                <button mat-flat-button [class.active]="activeAction==3"><mat-icon>delete</mat-icon>מחיקה</button>
+            </div>
+        </mat-drawer>
+
+        <div class="sidenav-content">
+            <uploading-article></uploading-article>
+        </div>
+    </mat-drawer-container>
+</div>

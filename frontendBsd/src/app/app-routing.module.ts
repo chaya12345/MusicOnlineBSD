@@ -28,6 +28,8 @@ import { ReportsBoardComponent } from './reports-board/reports-board.component';
 import { ActivationParadeComponent } from './activation-parade/activation-parade.component';
 import { DeletingAreaComponent } from './deleting-area/deleting-area.component';
 import { ManageSongComponent } from './manage-song/manage-song.component';
+import { ManageArticleComponent } from './manage-article/manage-article.component';
+import { ManagePlaylistComponent } from './manage-playlist/manage-playlist.component';
 
 
 const routes: Routes = [{
@@ -93,10 +95,10 @@ const routes: Routes = [{
       component: ManageSongComponent
     }, {
       path: "Article",
-      component: UploadingArticleComponent
+      component: ManageArticleComponent
     }, {
       path: "Playlist",
-      component: AddingPlaylistComponent
+      component: ManagePlaylistComponent
     }, {
       path: "Parade",
       component: ActivationParadeComponent

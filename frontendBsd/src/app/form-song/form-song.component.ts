@@ -1,41 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { map, startWith } from 'rxjs/operators';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 import { Artist } from '../classes/artist';
 import { ArtistWithJob } from '../classes/artistWithJob';
+import { Job } from '../classes/job';
 import { Singer } from '../classes/singer';
 import { Song } from '../classes/song';
 import { TagsForSongs } from '../classes/tag';
-import { SelectJobComponent } from '../select-job/select-job.component';
+import { MailDetailsDialogComponent } from '../mail-details-dialog/mail-details-dialog.component';
 import { ArtistService } from '../services/artist.service';
+import { ArtistsToSongsService } from '../services/artists-to-songs.service';
+import { JobService } from '../services/job.service';
 import { SingerService } from '../services/singer.service';
+import { SingersToSongService } from '../services/singers-to-song.service';
 import { SongObj, SongService } from '../services/song.service';
 import { TagService } from '../services/tag.service';
-import { MailDetails, UploadService } from '../services/upload.service';
-import { SingersToSongService } from '../services/singers-to-song.service';
 import { TagsToSongsService } from '../services/tags-to-songs.service';
-import { ArtistsToSongsService } from '../services/artists-to-songs.service';
-import { Job } from '../classes/job';
-import { JobService } from '../services/job.service';
-import { MailDetailsDialogComponent } from '../mail-details-dialog/mail-details-dialog.component';
-
-export interface DialogData {
-  mailDetails: MailDetails;
-}
-
-export enum eAction { add = 1, edit, delete }
+import { MailDetails, UploadService } from '../services/upload.service';
 
 @Component({
-  selector: 'uploading-song',
-  templateUrl: './uploading-song.component.html',
-  styleUrls: ['./uploading-song.component.css', './../admin-style.css']
+  selector: 'form-song',
+  templateUrl: './form-song.component.html',
+  styleUrls: ['./form-song.component.css']
 })
-export class UploadingSongComponent implements OnInit {
-
-  activeAction: eAction = eAction.add;
-
+export class FormSongComponent implements OnInit {
+  
   uploadSong: FormGroup;
   imageFile: File;
   songFile: File;
@@ -62,7 +53,6 @@ export class UploadingSongComponent implements OnInit {
 
   mailDetails: MailDetails = new MailDetails();
 
-
   constructor(private singerService: SingerService, private tagService: TagService,
     private artistService: ArtistService, private uploadService: UploadService,
     public dialog: MatDialog, private songService: SongService, private _snackBar: MatSnackBar,
@@ -84,20 +74,11 @@ export class UploadingSongComponent implements OnInit {
     this.getTags();
     this.getArtists();
     this.getJobs();
-    this.getSongs();
-    this.songControl = new FormControl();
+    // this.getSongs();
+    // this.songControl = new FormControl();
   }
 
   ngOnInit(): void {
-  }
-
-  getSongs() {
-    try {
-      this.songService.getSongsIncludePerformances().subscribe(songs => {
-        this.songs = songs;
-        this.songs.sort((a, b) => a.name.localeCompare(b.name));
-      }, err => console.log(err));
-    } catch (err) { console.log(err); }
   }
 
   onSelectionChange(event): void {
@@ -217,24 +198,7 @@ export class UploadingSongComponent implements OnInit {
       this.artist1 = artist;
       this.selectedArtist = true;
     }
-
   }
-
-  // openSelectJob(artistName: string): void {
-  //   try {
-  //     const dialogRef = this.dialog.open(SelectJobComponent, {
-  //       width: '400px',
-  //       data: { }
-  //     });
-  //     dialogRef.afterClosed().subscribe(result => {
-  //       let awj = new ArtistWithJob();
-  //       awj.artistName = artistName;
-  //       awj.jobName = result;
-  //       this.artistsWithJobs.push(awj);
-  //     });
-  //   }
-  //   catch (err) { console.log(err); }
-  // }
 
   convertToFolderName(singer: string): string {
     return singer.trim().split(' ').join('-');
@@ -310,36 +274,6 @@ export class UploadingSongComponent implements OnInit {
 
   sort(list: any[]): void {
     list.sort((a, b) => a.name.localeCompare(b.name));
-  }
-
-  getNameErrorMessage(): string {
-    let message: string = this.getError(this.uploadSong.controls.name);
-    if (message != "") return message;
-  }
-
-  getTitleErrorMessage(): string {
-    let message: string = this.getError(this.uploadSong.controls.title);
-    if (message != "") return message;
-  }
-
-  getSubtitleErrorMessage(): string {
-    let message: string = this.getError(this.uploadSong.controls.subtitle);
-    if (message != "") return message;
-  }
-
-  getErrorMessage(): string {
-    let message: string = this.getError(this.uploadSong.controls.singers);
-    if (message != "") return message;
-  }
-
-  getError(field: AbstractControl) {
-    if (field.hasError("required"))
-      return "זהו שדה חובה.";
-    else if (field.hasError("minlength"))
-      return "שם לא תקין. (פחות ממינימום תווים שנדרש)";
-    else if (field.hasError("maxLength"))
-      return "שם חורג ממגבלת התווים"
-    return "";
   }
 
   public updatePlaylists(): void {

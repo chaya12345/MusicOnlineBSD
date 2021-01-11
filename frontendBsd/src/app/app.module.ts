@@ -174,10 +174,15 @@ import { UpdatingsBoardComponent } from './updatings-board/updatings-board.compo
 import { CrudActionsComponent } from './crud-actions/crud-actions.component';
 import { UpdatingComponent } from './updating/updating.component';
 import { ManageSongComponent } from './manage-song/manage-song.component';
+import { ManageArticleComponent } from './manage-article/manage-article.component';
 import { EditingSongComponent } from './editing-song/editing-song.component';
 import { AddingSongComponent } from './adding-song/adding-song.component';
 import { DeletingSongComponent } from './deleting-song/deleting-song.component';
 import { SongFormComponent } from './song-form/song-form.component';
+import { ManagePlaylistComponent } from './manage-playlist/manage-playlist.component';
+import { EditingPlaylistComponent } from './editing-playlist/editing-playlist.component';
+import { DeletingPlaylistComponent } from './deleting-playlist/deleting-playlist.component';
+import { FormSongComponent } from './form-song/form-song.component';
 
 @NgModule({
   declarations: [
@@ -339,10 +344,15 @@ import { SongFormComponent } from './song-form/song-form.component';
     CrudActionsComponent,
     UpdatingComponent,
     ManageSongComponent,
+    ManageArticleComponent,
     EditingSongComponent,
     AddingSongComponent,
     DeletingSongComponent,
-    SongFormComponent
+    SongFormComponent,
+    ManagePlaylistComponent,
+    EditingPlaylistComponent,
+    DeletingPlaylistComponent,
+    FormSongComponent
   ],
   imports: [
     BrowserModule,
