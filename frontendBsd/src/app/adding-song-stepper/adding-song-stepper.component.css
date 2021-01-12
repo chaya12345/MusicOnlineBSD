@@ -15,3 +15,7 @@ form button {
     font-family: assistant;
     font-size: 17px;
 }
+
+mat-form-field {
+    font-family: assistant !important;
+}
