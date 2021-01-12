@@ -184,10 +184,10 @@ import { EditingPlaylistComponent } from './editing-playlist/editing-playlist.co
 import { DeletingPlaylistComponent } from './deleting-playlist/deleting-playlist.component';
 import { FormSongComponent } from './form-song/form-song.component';
 import { AddingSongStepperComponent } from './adding-song-stepper/adding-song-stepper.component';
-import { ManageArtistComponent } from './manage-artist/manage-artist.component';
-import { EditingArtistComponent } from './editing-artist/editing-artist.component';
-import { DeletingArtistComponent } from './deleting-artist/deleting-artist.component';
-import { AddingAArtistComponent } from './adding-a-artist/adding-a-artist.component';
+import { ManageSingerComponent } from './manage-singer/manage-singer.component';
+import { EditingSingerComponent } from './editing-singer/editing-singer.component';
+import { DeletingSingerComponent } from './deleting-singer/deleting-singer.component';
+import { AddingASingerComponent } from './adding-a-singer/adding-a-singer.component';
 
 @NgModule({
   declarations: [
@@ -359,10 +359,10 @@ import { AddingAArtistComponent } from './adding-a-artist/adding-a-artist.compon
     DeletingPlaylistComponent,
     FormSongComponent,
     AddingSongStepperComponent,
-    ManageArtistComponent,
-    EditingArtistComponent,
-    DeletingArtistComponent,
-    AddingAArtistComponent
+    ManageSingerComponent,
+    EditingSingerComponent,
+    DeletingSingerComponent,
+    AddingASingerComponent
   ],
   imports: [
     BrowserModule,
