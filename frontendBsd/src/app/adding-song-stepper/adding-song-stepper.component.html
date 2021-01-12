@@ -1,10 +1,10 @@
 <div class="wrap-adding-song-stepper">
-      <mat-vertical-stepper linear="true" #stepper dir="rtl">
-        <mat-step [stepControl]="nameFormGroup" color="warn">
-          <form [formGroup]="nameFormGroup">
+      <mat-vertical-stepper [linear]="isLinear" #stepper dir="rtl">
+        <mat-step [stepControl]="firstFormGroup" color="warn">
+          <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel>הכנס פרטי שיר</ng-template>
             <mat-form-field appearance="fill">
-              <input matInput placeholder="שם זמר" formControlName="firstCtrl" required>
+              <input matInput placeholder="שם שיר" formControlName="firstCtrl" required>
             </mat-form-field>
             <mat-form-field appearance="fill">
               <input matInput placeholder="כותרת">
