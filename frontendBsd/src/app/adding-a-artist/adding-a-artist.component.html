@@ -1,0 +1,26 @@
+<div class="wrap-adding-artist">
+    <mat-vertical-stepper linear="true" #stepper dir="rtl">
+        <mat-step [stepControl]="artistDetails">
+            <form [formGroup]="artistDetails" (ngSubmit)="onSubmit()">
+                <ng-template matStepLabel>הכנס פרטי אומן</ng-template>
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="שם אומן" formControlName="name" required minlength="3">
+                    <mat-error *ngIf="artistDetails.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>‏
+            </form>
+        </mat-step>
+        <mat-step>
+            <form>
+                <ng-template matStepLabel>אישור ההוספה </ng-template>
+                <button mat-stroked-button type="submit"><mat-icon>playlist_add</mat-icon>אשר</button>
+                <div>
+                    <button mat-button matStepperPrevious>הקודם</button>
+                    <button mat-button (click)="stepper.reset()">אפס</button>
+                </div>‏‏
+            </form>
+        </mat-step>
+    </mat-vertical-stepper>
+</div>
