@@ -1,4 +1,4 @@
 export class Artist {
-    id: number;
+    id?: number;
     name?: string;
 }

@@ -1,7 +1,7 @@
 <div class="wrap-adding-artist">
     <mat-vertical-stepper linear="true" #stepper dir="rtl">
         <mat-step [stepControl]="artistDetails">
-            <form [formGroup]="artistDetails" (ngSubmit)="onSubmit()">
+            <form [formGroup]="artistDetails">
                 <ng-template matStepLabel>הכנס פרטי אומן</ng-template>
                 <mat-form-field appearance="fill">
                     <input matInput placeholder="שם אומן" formControlName="name" required minlength="3">
@@ -15,7 +15,7 @@
         <mat-step>
             <form>
                 <ng-template matStepLabel>אישור ההוספה </ng-template>
-                <button mat-stroked-button type="submit"><mat-icon>playlist_add</mat-icon>אשר</button>
+                <button mat-stroked-button type="submit" (click)="onSubmit()"><mat-icon>playlist_add</mat-icon>אשר</button>
                 <div>
                     <button mat-button matStepperPrevious>הקודם</button>
                     <button mat-button (click)="stepper.reset()">אפס</button>
