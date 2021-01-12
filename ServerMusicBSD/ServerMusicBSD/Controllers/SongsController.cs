@@ -113,17 +113,20 @@ namespace ServerMusicBSD.Controllers
                         ArtistsToSongsBL.AddArtistsToSong(songObj.artists, song.id);
                         SingersToSongsBL.AddSingersToSong(songObj.singers, song.id);
 
-                        HttpPostedFile postedFile = httpRequest.Files[0];
-                        var filePath = AppDomain.CurrentDomain.BaseDirectory.Substring(0,
-                                AppDomain.CurrentDomain.BaseDirectory.LastIndexOf("Server") - 1) + "\\DAL\\src\\" +
-                                    "songs\\" + formatFolderName(songObj.singers[0]) + "\\" + postedFile.FileName;
-                        postedFile.SaveAs(filePath);
+                        SavingFilesBL.SaveFileWithFormattedName(httpRequest.Files[0], "songs", songObj.singers[0]);
+                        SavingFilesBL.SaveFileWithFormattedName(httpRequest.Files[1], "images\\for_songs", songObj.singers[0]);
 
-                        postedFile = httpRequest.Files[1];
-                        filePath = AppDomain.CurrentDomain.BaseDirectory.Substring(0,
-                                AppDomain.CurrentDomain.BaseDirectory.LastIndexOf("Server") - 1) + "\\DAL\\src\\" +
-                                    "images\\for_songs\\" + formatFolderName(songObj.singers[0]) + "\\" + postedFile.FileName;
-                        postedFile.SaveAs(filePath);
+                        //HttpPostedFile postedFile = httpRequest.Files[0];
+                        //var filePath = AppDomain.CurrentDomain.BaseDirectory.Substring(0,
+                        //        AppDomain.CurrentDomain.BaseDirectory.LastIndexOf("Server") - 1) + "\\DAL\\src\\" +
+                        //            "songs\\" + formatFolderName(songObj.singers[0]) + "\\" + postedFile.FileName;
+                        //postedFile.SaveAs(filePath);
+
+                        //postedFile = httpRequest.Files[1];
+                        //filePath = AppDomain.CurrentDomain.BaseDirectory.Substring(0,
+                        //        AppDomain.CurrentDomain.BaseDirectory.LastIndexOf("Server") - 1) + "\\DAL\\src\\" +
+                        //            "images\\for_songs\\" + formatFolderName(songObj.singers[0]) + "\\" + postedFile.FileName;
+                        //postedFile.SaveAs(filePath);
 
                         if (song.name != null)
                         {

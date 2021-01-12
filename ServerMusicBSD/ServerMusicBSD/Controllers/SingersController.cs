@@ -8,6 +8,7 @@ using BL;
 using DTO;
 using DAL;
 using System.Web.Http.Cors;
+using System.Web;
 
 namespace ServerMusicBSD.Controllers
 {
@@ -25,6 +26,13 @@ namespace ServerMusicBSD.Controllers
         public void PostSinger([FromBody]SingersTBL singer)
         {
             SingersBL.AddSinger(singer);
+        }
+        [HttpPost]
+        public void AddSinger(string name, string image)
+        {
+            SingersBL.AddSinger(name, image);
+            var httpRequest = HttpContext.Current.Request;
+            SavingFilesBL.SaveFileWithFormattedName(httpRequest.Files[0], "images\\singers", name);
         }
         public void PutSearchingToSinger(string singerName)
         {
