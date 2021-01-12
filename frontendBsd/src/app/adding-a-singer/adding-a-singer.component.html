@@ -13,7 +13,7 @@
       </mat-step>
       <mat-step [stepControl]="imageFormGroup">
         <form [formGroup]="imageFormGroup">
-          <ng-template matStepLabel>העלאת קבצים</ng-template>
+          <ng-template matStepLabel>העלאת תמונה</ng-template>
           <div class="wrap-uploading-file">
               <uploading-image (onSelect)="selectImage($event)"></uploading-image>
           </div>
@@ -25,7 +25,7 @@
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>אישור הוספה</ng-template>
-        <!-- <p>You are now done.</p> -->
+        <p>You are now done.</p>
         <button mat-stroked-button>הוסף</button>
         <div>
           <button mat-button matStepperPrevious>הקודם</button>

@@ -49,6 +49,35 @@ namespace BL
                 }
             }
         }
+        public static void AddSinger(string name, string image)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            try
+            {
+                if (name != null)
+                {
+                    if (image == null)
+                    {
+                        image = "";
+                    }
+                    SingersTBL singer = new SingersTBL();
+                    singer.name = name;
+                    singer.image = image;
+                    et.SingersTBL.Add(singer);
+                    et.SaveChanges();
+                }
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
+        }
         public static void AddSearchingToSinger(string singerName)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
