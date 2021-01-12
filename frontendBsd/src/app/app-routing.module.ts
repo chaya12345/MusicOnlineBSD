@@ -30,6 +30,7 @@ import { DeletingAreaComponent } from './deleting-area/deleting-area.component';
 import { ManageSongComponent } from './manage-song/manage-song.component';
 import { ManageArticleComponent } from './manage-article/manage-article.component';
 import { ManagePlaylistComponent } from './manage-playlist/manage-playlist.component';
+import { ManageSingerComponent } from './manage-singer/manage-singer.component';
 
 
 const routes: Routes = [{
@@ -102,6 +103,9 @@ const routes: Routes = [{
     }, {
       path: "Parade",
       component: ActivationParadeComponent
+    }, {
+      path: "Singer",
+      component: ManageSingerComponent
     }, {
       path: "songs",
       component: UploadingSongComponent
