@@ -2,10 +2,6 @@
     margin-top: 8px;
 }
 
-form {
-    display: grid;
-}
-
 form button {
     font-weight: 400;
     font-family: assistant;
