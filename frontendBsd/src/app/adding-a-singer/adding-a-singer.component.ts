@@ -10,6 +10,7 @@ export class AddingASingerComponent implements OnInit {
 
   nameFormGroup: FormGroup;
   imageFormGroup: FormGroup;
+  imageFile: File;
 
   constructor() {
     this.nameFormGroup = new FormGroup({
@@ -21,6 +22,12 @@ export class AddingASingerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  selectImage(fileToUpload: File): void {
+    console.log(fileToUpload.name);
+    this.imageFile = fileToUpload;
+    this.imageFormGroup.controls.image.setValue("for_songs/" + fileToUpload.name);
   }
 
 }
