@@ -1,0 +1,46 @@
+form {
+    display: grid;
+}
+
+mat-form-field {
+    direction: ltr;
+    text-align: right;
+}
+
+form > mat-label, button {
+    font-family: assistant;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.files {
+    height: 250px;
+}
+
+.files, .lists {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 30px;
+}
+
+.lists > div {
+    display: grid;
+}
+
+.lists > div:last-of-type,
+.lists > div:nth-last-of-type(2) {
+    min-height: 20px;
+}
+
+.lists > button {
+    grid-column: 1 / 3;
+}
+
+button {
+    padding-block: 4px;
+    background-color: whitesmoke;
+}
+
+mat-checkbox {
+    margin-top: 20px;
+}

@@ -1,0 +1,17 @@
+.mat-stepper-vertical {
+    margin-top: 8px;
+}
+  
+.mat-form-field {
+    margin-top: 16px;
+}
+
+form {
+    display: grid;
+}
+
+form button {
+    font-weight: 400;
+    font-family: assistant;
+    font-size: 17px;
+}

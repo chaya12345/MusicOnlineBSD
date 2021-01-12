@@ -1,0 +1,67 @@
+<div class="wrap-adding-song-stepper">
+      <mat-vertical-stepper [linear]="isLinear" #stepper dir="rtl">
+        <mat-step [stepControl]="firstFormGroup" color="warn">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>הכנס פרטי שיר</ng-template>
+            <mat-form-field appearance="fill">
+              <input matInput placeholder="שם שיר" formControlName="firstCtrl" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <input matInput placeholder="כותרת">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <textarea matInput placeholder="כותרת משנה"></textarea>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperNext>הבא</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>העלאת קבצים</ng-template>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); height: 250px; grid-column-gap: 30px;">
+                <uploading-image></uploading-image>
+                <uploading-audio-video-file></uploading-audio-video-file>
+            </div>
+            <div>
+              <button mat-button matStepperPrevious>הקודם</button>
+              <button mat-button matStepperNext>הבא</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>זמר/ים ואומנים משתתפים</ng-template>
+            <mat-form-field appearance="fill">
+              <input matInput placeholder="שם זמר" formControlName="firstCtrl" required>
+            </mat-form-field>
+            <button mat-stroked-button>הוסף זמר</button>
+            <div>
+              <button mat-button matStepperPrevious>הקודם</button>
+              <button mat-button matStepperNext>הבא</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>תגיות</ng-template>
+            <mat-form-field appearance="fill">
+              <input matInput placeholder="בחר תגיות" formControlName="firstCtrl" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>הקודם</button>
+              <button mat-button matStepperNext>הבא</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>אישור העלאה</ng-template>
+          <p>You are now done.</p>
+          <div>
+            <button mat-button matStepperPrevious>הקודם</button>
+            <button mat-button (click)="stepper.reset()">אפס</button>
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
+</div>

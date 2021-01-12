@@ -12,7 +12,7 @@ import { SongObjWithFiles } from '../song-form/song-form.component';
 })
 export class AddingSongComponent implements OnInit {
 
-  
+  isPerformance: boolean = false;
    mailDetails: MailDetails = new MailDetails();
   constructor(public dialog: MatDialog,private songService:SongService,private _snackBar: MatSnackBar,) { }
 

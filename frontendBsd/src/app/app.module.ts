@@ -183,6 +183,7 @@ import { ManagePlaylistComponent } from './manage-playlist/manage-playlist.compo
 import { EditingPlaylistComponent } from './editing-playlist/editing-playlist.component';
 import { DeletingPlaylistComponent } from './deleting-playlist/deleting-playlist.component';
 import { FormSongComponent } from './form-song/form-song.component';
+import { AddingSongStepperComponent } from './adding-song-stepper/adding-song-stepper.component';
 
 @NgModule({
   declarations: [
@@ -352,7 +353,8 @@ import { FormSongComponent } from './form-song/form-song.component';
     ManagePlaylistComponent,
     EditingPlaylistComponent,
     DeletingPlaylistComponent,
-    FormSongComponent
+    FormSongComponent,
+    AddingSongStepperComponent
   ],
   imports: [
     BrowserModule,

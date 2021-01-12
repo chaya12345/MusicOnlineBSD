@@ -627,6 +627,20 @@ song-info .mat-slider-track-background {
 
 /* #endregion */
 
+/* #region(collapsed) [Stepper] */
+
+.mat-step-label {
+    font-family: assistant;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.mat-step-header .mat-step-icon {
+    color: white;
+}
+
+/* #endregion */
+
 editor > div, editor form, editor .ck.ck-reset.ck-editor, editor .ck-editor__main, editor .ck-content {
     height: 93.5%;
 }

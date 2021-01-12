@@ -1,5 +1,5 @@
 <div class="wrap-manage-song">
-    <mat-drawer-container class="example-container" autosize>
+    <!-- <mat-drawer-container class="example-container" autosize>
         <mat-drawer #drawer class="sidenav" mode="side" opened="true" position="end">
             <div class="wrap-side-nav-buttons">
                 <button mat-flat-button (click)="activeAction=1" [class.active]="activeAction==1"><mat-icon>add</mat-icon>הוספה</button>
@@ -9,12 +9,13 @@
         </mat-drawer>
 
         <div class="sidenav-content" [ngSwitch]="activeAction">
-            <!-- <button type="button" mat-button (click)="drawer.toggle()">
+            <button type="button" mat-button (click)="drawer.toggle()">
                 Toggle sidenav
-            </button> -->
+            </button>
             <adding-song *ngSwitchCase="1"></adding-song>
             <editing-song *ngSwitchCase="2"></editing-song>
             <deleting-song *ngSwitchDefault></deleting-song>
         </div>
-    </mat-drawer-container>
+    </mat-drawer-container> -->
+    <adding-song-stepper></adding-song-stepper>
 </div>

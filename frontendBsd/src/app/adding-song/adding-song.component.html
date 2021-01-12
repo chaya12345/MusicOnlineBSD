@@ -1,1 +1,50 @@
-<song-form (onSendSongObj)="openDialogToMailDetails($event)"></song-form>
+<!-- <song-form (onSendSongObj)="openDialogToMailDetails($event)"></song-form> -->
+<!-- <form-song></form-song> -->
+<div class="wrap-adding-song">
+    <form>
+        <mat-label>פרטי שיר:</mat-label>
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="שם שיר" />
+        </mat-form-field>
+        <!-- <mat-label>כותרת:</mat-label> -->
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="כותרת" />
+        </mat-form-field>
+        <!-- <mat-label>כותרת משנה:</mat-label> -->
+        <mat-form-field appearance="outline">
+            <textarea matInput placeholder="כותרת משנה"></textarea>
+        </mat-form-field>
+        <div class="files">
+            <uploading-image></uploading-image>
+            <uploading-audio-video-file></uploading-audio-video-file>
+        </div>
+        <div class="lists">
+            <div class="singers">
+                <mat-label>זמר/ים:</mat-label>
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="שם זמר" />
+                </mat-form-field>
+                <button mat-flat-button><mat-icon>add</mat-icon>הוספת זמר</button>
+            </div>
+            <div class="tags">
+                <mat-label>תגית/ות:</mat-label>
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="שם תגית" />
+                </mat-form-field>
+                <button mat-flat-button><mat-icon>add</mat-icon>הוספת תגית</button>
+            </div>
+            <!-- <mat-label>אומן/ים:</mat-label>
+            <mat-form-field appearance="outline">
+                <input matInput placeholder="שם אומן" />
+            </mat-form-field> -->
+            <div class="artists">
+
+            </div>
+            <div class="jobs">
+
+            </div>
+            <button mat-flat-button><mat-icon>add</mat-icon>הוספת אומן</button>
+        </div>
+        <mat-checkbox [(ngModel)]="isPerformance" color="warn">הופעה</mat-checkbox>
+    </form>
+</div>
