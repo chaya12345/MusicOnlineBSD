@@ -184,6 +184,10 @@ import { EditingPlaylistComponent } from './editing-playlist/editing-playlist.co
 import { DeletingPlaylistComponent } from './deleting-playlist/deleting-playlist.component';
 import { FormSongComponent } from './form-song/form-song.component';
 import { AddingSongStepperComponent } from './adding-song-stepper/adding-song-stepper.component';
+import { ManageArtistComponent } from './manage-artist/manage-artist.component';
+import { EditingArtistComponent } from './editing-artist/editing-artist.component';
+import { DeletingArtistComponent } from './deleting-artist/deleting-artist.component';
+import { AddingAArtistComponent } from './adding-a-artist/adding-a-artist.component';
 
 @NgModule({
   declarations: [
@@ -354,7 +358,11 @@ import { AddingSongStepperComponent } from './adding-song-stepper/adding-song-st
     EditingPlaylistComponent,
     DeletingPlaylistComponent,
     FormSongComponent,
-    AddingSongStepperComponent
+    AddingSongStepperComponent,
+    ManageArtistComponent,
+    EditingArtistComponent,
+    DeletingArtistComponent,
+    AddingAArtistComponent
   ],
   imports: [
     BrowserModule,
