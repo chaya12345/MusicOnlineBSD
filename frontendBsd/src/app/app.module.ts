@@ -188,6 +188,10 @@ import { ManageSingerComponent } from './manage-singer/manage-singer.component';
 import { EditingSingerComponent } from './editing-singer/editing-singer.component';
 import { DeletingSingerComponent } from './deleting-singer/deleting-singer.component';
 import { AddingASingerComponent } from './adding-a-singer/adding-a-singer.component';
+import { AddingAArtistComponent } from './adding-a-artist/adding-a-artist.component';
+import { ManageArtistComponent } from './manage-artist/manage-artist.component';
+import { DeletingArtistComponent } from './deleting-artist/deleting-artist.component';
+import { EditingArtistComponent } from './editing-artist/editing-artist.component';
 
 @NgModule({
   declarations: [
@@ -362,7 +366,11 @@ import { AddingASingerComponent } from './adding-a-singer/adding-a-singer.compon
     ManageSingerComponent,
     EditingSingerComponent,
     DeletingSingerComponent,
-    AddingASingerComponent
+    AddingASingerComponent,
+    AddingAArtistComponent,
+    ManageArtistComponent,
+    DeletingArtistComponent,
+    EditingArtistComponent
   ],
   imports: [
     BrowserModule,
