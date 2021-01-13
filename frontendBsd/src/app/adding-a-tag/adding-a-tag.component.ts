@@ -22,8 +22,7 @@ export class AddingATagComponent implements OnInit {
   typesList: TypesOfTags[] = [];
   filteredTypes: Observable<TypesOfTags[]>;
 
-  constructor(private typesOfTagService: TypesOfTagService, private tagsService: TagService,
-    private tagsForArticles: TagsForArticles) {
+  constructor(private typesOfTagService: TypesOfTagService, private tagsService: TagService) {
     this.nameFormGroup = new FormGroup({
       name: new FormControl("", [Validators.required, Validators.minLength(2)])
     });
