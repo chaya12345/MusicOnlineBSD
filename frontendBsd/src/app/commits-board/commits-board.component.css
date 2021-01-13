@@ -37,7 +37,9 @@ p.section-title {
     height: 185px;
     padding: 10px;
     display: grid;
-    grid-template-rows: fit-content(40%) fit-content(40%) auto fit-content(40%);
+    grid-template-rows: fit-content(40%)
+    fit-content(40%) auto fit-content(40%);
+    cursor: pointer;
 }
 
 .wrap-commit .actions {

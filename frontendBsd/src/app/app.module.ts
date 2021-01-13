@@ -192,6 +192,10 @@ import { AddingAArtistComponent } from './adding-a-artist/adding-a-artist.compon
 import { ManageArtistComponent } from './manage-artist/manage-artist.component';
 import { DeletingArtistComponent } from './deleting-artist/deleting-artist.component';
 import { EditingArtistComponent } from './editing-artist/editing-artist.component';
+import { ManageTagComponent } from './manage-tag/manage-tag.component';
+import { AddingATagComponent } from './adding-a-tag/adding-a-tag.component';
+import { EditingTagComponent } from './editing-tag/editing-tag.component';
+import { DeletingTagComponent } from './deleting-tag/deleting-tag.component';
 
 @NgModule({
   declarations: [
@@ -370,7 +374,11 @@ import { EditingArtistComponent } from './editing-artist/editing-artist.componen
     AddingAArtistComponent,
     ManageArtistComponent,
     DeletingArtistComponent,
-    EditingArtistComponent
+    EditingArtistComponent,
+    ManageTagComponent,
+    AddingATagComponent,
+    EditingTagComponent,
+    DeletingTagComponent
   ],
   imports: [
     BrowserModule,

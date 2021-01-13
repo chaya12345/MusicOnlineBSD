@@ -13,6 +13,13 @@ p.title {
     text-align: center;
 }
 
+.wrap-reports > p.explaination {
+    font-family: assistant;
+    margin-block: 20px 12px;
+    line-height: 27px;
+    font-size: 17px;
+}
+
 .wrap-report {
     border: solid 1px #00000024;
     border-radius: 10px;

@@ -1,0 +1,48 @@
+<div class="wrap-adding-tag">
+    <mat-vertical-stepper linear="true" #stepper dir="rtl">
+        <mat-step [stepControl]="nameFormGroup">
+            <form [formGroup]="nameFormGroup">
+                <ng-template matStepLabel>הכנס שם תגית</ng-template>
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="שם תגית" formControlName="name" required>
+                    <mat-error *ngIf="nameFormGroup.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="typeFormGroup">
+            <form [formGroup]="typeFormGroup">
+                <ng-template matStepLabel>הגדר סוג תגית</ng-template>
+                <mat-radio-group [(ngModel)]="typeTag" formControlName="option" (ngModelChange)="updatedType($event)">
+                    <mat-radio-button value="song" color="primary">שיר</mat-radio-button>
+                    <mat-radio-button value="article" color="primary">כתבה</mat-radio-button>
+                </mat-radio-group>
+                <mat-form-field appearance="fill" *ngIf="isSongTag">
+                    <mat-label>סוג תגית</mat-label>
+                    <input type="text" matInput formControlName="type" [matAutocomplete]="autoTypes">
+                    <mat-autocomplete autoActiveFirstOption #autoTypes="matAutocomplete" (optionSelected)="saveSelectedType($event.option.value)">
+                        <mat-option *ngFor="let type of filteredTypes | async" [value]="type.name">
+                            <p>{{type.name}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>הקודם</button>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>אישור הוספה</ng-template>
+            <div class="wrap-actions">
+                <button mat-stroked-button (click)="confirm()">הוסף תגית</button>
+                <button mat-stroked-button (click)="stepper.reset()">אפס</button>
+            </div>
+            <div>
+                <button mat-button matStepperPrevious>הקודם</button>
+            </div>
+        </mat-step>
+    </mat-vertical-stepper>
+</div>
