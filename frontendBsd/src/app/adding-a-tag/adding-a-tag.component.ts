@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { map, startWith } from 'rxjs/operators';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { TagsForArticles, TagsForSongs, TypesOfTags } from '../classes/tag';
@@ -12,6 +12,8 @@ import { TagService } from '../services/tag.service';
   styleUrls: ['./adding-a-tag.component.css']
 })
 export class AddingATagComponent implements OnInit {
+  
+  @ViewChild("autoTypes") autoTypes: ElementRef;
 
   nameFormGroup: FormGroup;
   typeFormGroup: FormGroup;

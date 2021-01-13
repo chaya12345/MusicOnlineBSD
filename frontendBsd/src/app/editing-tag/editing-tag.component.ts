@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
@@ -12,6 +12,9 @@ import { TypesOfTagService } from '../services/types-of-tag.service';
   styleUrls: ['./editing-tag.component.css']
 })
 export class EditingTagComponent implements OnInit {
+  
+  @ViewChild("autoTags") autoTags: ElementRef;
+  @ViewChild("autoTypes") autoTypes: ElementRef;
 
   nameFormGroup: FormGroup;
   typeFormGroup: FormGroup;
@@ -24,6 +27,7 @@ export class EditingTagComponent implements OnInit {
   filteredTypes: Observable<TypesOfTags[]>;
 
   selectedTagName: string;
+  selectedTag: AllTags;
   tagsList: AllTags[] = [];
   filteredTags: Observable<AllTags[]>;
 
@@ -46,9 +50,9 @@ export class EditingTagComponent implements OnInit {
   }
 
   confirm(): void {
-    if (this.nameFormGroup.valid && this.typeFormGroup.valid) {
+    if (this.tagFormGroup.valid && this.nameFormGroup.valid && this.typeFormGroup.valid) {
       try {
-        if (this.isSongTag == true) {
+        if (this.isSongTag == (this.selectedTag.type == "song")) {
           let tag: TagsForSongs = new TagsForSongs;
           tag.name = this.nameFormGroup.controls.name.value;
           this.typesList.forEach(type => {
@@ -110,7 +114,12 @@ export class EditingTagComponent implements OnInit {
     try {
       this.tagsService.getAllTags()
         .subscribe(tags => {
-          this.tagsList = tags;
+          this.tagsList = [];
+          tags.forEach(tag => {
+            if (tag.type == "song" || tag.type == "article") {
+              this.tagsList.push(tag);
+            }
+          });
           this.orderByName(this.tagsList);
           this.updateTagsList();
         }, err => { console.log(err); });
@@ -141,6 +150,22 @@ export class EditingTagComponent implements OnInit {
 
   saveSelectedTag(name: string): void {
     this.selectedTagName = name;
+    this.tagsList.forEach(tag => {
+      if (tag.name == name) {
+        this.selectedTag = tag;
+      }
+    });
+    this.nameFormGroup.controls.name.setValue(this.selectedTag.name);
+    this.typeFormGroup.controls.option.setValue(this.selectedTag.type);
+    if (this.selectedTag.type == "song") {
+      this.isSongTag = true;
+      this.typeFormGroup.controls.type.setValidators(Validators.required);
+      this.typeFormGroup.controls.type.setValue(this.selectedTag.tagType);
+    }
+    else {
+      this.isSongTag = false;
+    }
+    console.log(this.selectedTag);
   }
 
   getNameErrorMessage(): string {

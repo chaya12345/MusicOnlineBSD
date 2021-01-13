@@ -25,16 +25,17 @@
                     <mat-error *ngIf="nameFormGroup.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
                 </mat-form-field>
                 <div>
+                    <button mat-button matStepperPrevious>הקודם</button>
                     <button mat-button matStepperNext>הבא</button>
                 </div>
             </form>
         </mat-step>
-        <mat-step [stepControl]="typeFormGroup">
+        <mat-step [stepControl]="typeFormGroup" *ngIf="isSongTag">
             <form [formGroup]="typeFormGroup">
                 <ng-template matStepLabel>ערוך סוג תגית</ng-template>
                 <mat-radio-group [(ngModel)]="typeTag" formControlName="option" (ngModelChange)="updatedType($event)">
-                    <mat-radio-button value="song" color="primary">שיר</mat-radio-button>
-                    <mat-radio-button value="article" color="primary">כתבה</mat-radio-button>
+                    <mat-radio-button value="song" color="primary" disabled>שיר</mat-radio-button>
+                    <mat-radio-button value="article" color="primary" disabled>כתבה</mat-radio-button>
                 </mat-radio-group>
                 <mat-form-field appearance="fill" *ngIf="isSongTag">
                     <mat-label>סוג תגית</mat-label>

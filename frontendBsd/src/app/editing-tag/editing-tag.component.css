@@ -1,0 +1,30 @@
+.mat-stepper-vertical {
+    margin-top: 8px;
+}
+
+button {
+    font-weight: 400;
+    font-family: assistant;
+    font-size: 17px;
+}
+
+mat-form-field {
+    margin-top: 16px;
+    font-family: assistant !important;
+}
+
+.wrap-actions {
+    padding-block: 15px;
+}
+
+.wrap-actions button {
+    padding: 2px 18px;
+    margin-left: 10px;
+}
+
+mat-radio-button {
+    display: block;
+    margin-block: 20px;
+    font-family: assistant;
+    font-size: 17px;
+}
