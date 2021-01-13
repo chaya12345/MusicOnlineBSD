@@ -29,21 +29,25 @@ namespace ServerMusicBSD.Controllers
         {
             return ArticlesBL.GetArticleById(articleid);
         }
-        public void PostArticle([FromBody] AticleObj articleObj)
+        public bool PostArticle([FromBody] AticleObj articleObj)
         {
             articleObj.article.date = DateTime.Today;
             ArticlesBL.AddArticle(articleObj.article);
             ArticlesDTO article = ArticlesBL.GetArticleByTitle(articleObj.article.title);
+            bool flag = true;
             if (article != null)
             {
-                TagsToArticlesBL.AddTagToArticle(articleObj.tags, article.id);
-                SingersToArticlesBL.AddSingersToArticle(articleObj.singers, article.id);
+                if (TagsToArticlesBL.AddTagToArticle(articleObj.tags, article.id) == false)
+                    flag = false;
+                if (SingersToArticlesBL.AddSingersToArticle(articleObj.singers, article.id) == false)
+                    flag = false;
                 //לבדוק מה קורה עם האומנים לכתבות
             }
+            return flag;
         }
-        public void DeleteArticle(int articleId)
+        public bool DeleteArticle(int articleId)
         {
-            ArticlesBL.DeleteArticle(articleId);
+           return ArticlesBL.DeleteArticle(articleId);
         }
         public List<ArticlesDTO> GetArticlesByTag(string tagName)
         {

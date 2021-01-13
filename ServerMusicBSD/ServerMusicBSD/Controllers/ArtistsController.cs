@@ -14,10 +14,10 @@ namespace ServerMusicBSD.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ArtistsController : ApiController
     {
-        public void PostArtist([FromBody] ArtistsTBL artistsName)
-       {
-            ArtistsBL.AddArtistName(artistsName);
-       }
+        public bool PostArtist([FromBody] ArtistsTBL artistsName)
+        {
+            return ArtistsBL.AddArtistName(artistsName);
+        }
        public List<ArtistsDTO> GetArtists()
        {
             return ArtistsBL.GetArtistsNames();
@@ -27,9 +27,9 @@ namespace ServerMusicBSD.Controllers
         {
             ArtistsBL.UpdateArtist(artist);
         }
-        public void DeleteArtist(int artistId)
+        public bool DeleteArtist(int artistId)
         {
-            ArtistsBL.DeleteArtist(artistId);
+            return ArtistsBL.DeleteArtist(artistId);
         }
     }
 }

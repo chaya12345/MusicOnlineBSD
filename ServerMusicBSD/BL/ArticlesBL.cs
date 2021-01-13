@@ -50,7 +50,7 @@ namespace BL
                 }
             }
         }
-        public static void DeleteArticle(int articleId)
+        public static bool DeleteArticle(int articleId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             ArticlesTBL article = et.ArticlesTBL.Where(a => a != null && a.id == articleId).FirstOrDefault();
@@ -58,7 +58,9 @@ namespace BL
             {
                 et.ArticlesTBL.Remove(article);
                 et.SaveChanges();
+                return true;
             }
+            return false;
         }
         public static List<ArticlesDTO> GetArticlesByTag(string tagName)
         {

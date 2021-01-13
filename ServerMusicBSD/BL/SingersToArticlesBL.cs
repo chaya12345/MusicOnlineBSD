@@ -26,23 +26,31 @@ namespace BL
             }
             return result;
         }
-        public static void AddSingersToArticle(string[] singers,int articleId)
+        public static bool AddSingersToArticle(string[] singers,int articleId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
+            bool flag = true;
             foreach (string item in singers)
             {
                 SingersTBL singer = et.SingersTBL.Where(s => s != null && item != null && s.name == item).FirstOrDefault();
                 if (singer != null)
-                    AddSingerToArticle(new SingersToArticlesTBL() { articleId = articleId, singerId = singer.id });
+                    if (AddSingerToArticle(new SingersToArticlesTBL() { articleId = articleId, singerId = singer.id }) == false)
+                        flag = false;
             }
+            return flag;
         }
-        public static void AddSingerToArticle(SingersToArticlesTBL singerToArticle)
+        public static bool AddSingerToArticle(SingersToArticlesTBL singerToArticle)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try
             {
                 if (singerToArticle != null)
+                {
                     et.SingersToArticlesTBL.Add(singerToArticle);
+                    et.SaveChanges();
+                    return true;
+                }
+                return false;
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -54,6 +62,7 @@ namespace BL
                     }
                 }
             }
+            return false;
         }
         public static void DeleteSingerFromArticle(int singerId,int? articleId)
         {

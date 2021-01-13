@@ -49,7 +49,7 @@ namespace BL
                 return Casts.ToTagsToSongsDTO.GetTagsToSongs(list);
             return null;
         }
-        public static void AddTagToSong(TagsToSongsTBL tagToSong)
+        public static bool AddTagToSong(TagsToSongsTBL tagToSong)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try {
@@ -57,7 +57,9 @@ namespace BL
                 {
                     et.TagsToSongsTBL.Add(tagToSong);
                     et.SaveChanges();
+                    return true;
                 }
+                return false;
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -69,10 +71,12 @@ namespace BL
                     }
                 }
             }
+            return false;
         }
-        public static void AddTagsToSong(string[] tags, int songId)
+        public static bool AddTagsToSong(string[] tags, int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
+            bool flag = true;
             if (tags != null)
             {
                 foreach (string tag in tags)
@@ -80,10 +84,12 @@ namespace BL
                     TagsForSongsTBL currentTag = et.TagsForSongsTBL.Where(t => t != null && t.name == tag).FirstOrDefault();
                     if (currentTag != null)
                     {
-                        AddTagToSong(new TagsToSongsTBL { songId = songId, tagId = currentTag.id });
+                        if(AddTagToSong(new TagsToSongsTBL { songId = songId, tagId = currentTag.id })==false)
+                            flag=false;
                     }
                 }
             }
+            return flag;
         }
         public static void UpdateTagsToSong(int songId, List<TagsForSongsTBL> tags)
         {

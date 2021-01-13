@@ -62,9 +62,9 @@ export class UploadingArticleComponent implements OnInit {
       }
       try {
         this.articleService.addArticle(obj).subscribe(res =>
-          this.openSnackBar("העלאת הכתבה בוצעה בהצלחה"), err => console.log(err));
+          this.openSnackBar(res==true?"העלאת הכתבה בוצעה בהצלחה":"העלאת שיר נכשלה, נסה שוב מאוחר יותר"), err => console.log(err));
 
-      } catch (err) { this.openSnackBar("העלאת שיר בוצעה בהצלחה"); }
+      } catch (err) { this.openSnackBar( "העלאת שיר נכשלה, נסה שוב מאוחר יותר"); }
       // this.reset();
     }
   }

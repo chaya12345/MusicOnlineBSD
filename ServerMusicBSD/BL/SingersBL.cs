@@ -28,7 +28,7 @@ namespace BL
                 return Casts.ToSingersDTO.GetSinger(singer1);
             return null;
         }
-        public static void AddSinger(SingersTBL name)
+        public static bool AddSinger(SingersTBL name)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try {
@@ -36,7 +36,9 @@ namespace BL
                 {
                     et.SingersTBL.Add(name);
                     et.SaveChanges();
+                    return true;
                 }
+                return false;
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -48,6 +50,7 @@ namespace BL
                     }
                 }
             }
+            return false;
         }
         public static void AddSinger(string name, string image)
         {

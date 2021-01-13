@@ -77,8 +77,8 @@ export class SongService {
     headers.append('Content-Type', 'multipart/form-data');
     return this.httpClient.post<boolean>(this.baseUrl + "AddSong?username=" + mailDetails.username + "&password=" + mailDetails.password+"&email="+mailDetails.email, formData);
   }
-  public deleteSong(songId: number): Observable<any> {
-    return this.httpClient.delete(this.baseUrl + "deleteSong?songId=" + songId);
+  public deleteSong(songId: number): Observable<boolean> {
+    return this.httpClient.delete<boolean>(this.baseUrl + "deleteSong?songId=" + songId);
   }
   public increaseLikeToSong(songId: number): Observable<any> {
     return this.httpClient.put(this.baseUrl + "PutIncreaseLikeToSong?songId=" + songId, songId);

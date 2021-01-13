@@ -40,7 +40,7 @@ export class AddingArtistComponent implements OnInit {
       newArtist.name = this.artistAddingForm.controls.name.value;
       try {
         this.artistService.addArtist(newArtist).subscribe(res => {
-          this.openSnackBar(this.cmService.GENERATE.ADD.SUCCESS);
+          this.openSnackBar(res==true? this.cmService.GENERATE.ADD.SUCCESS:this.cmService.GENERATE.ADD.FAIL);
           this.getArtists();
         }, () => this.openSnackBar(this.cmService.GENERATE.ADD.ERROR));
       } catch { this.openSnackBar(this.cmService.GENERATE.ADD.ERROR); }
@@ -80,7 +80,7 @@ export class AddingArtistComponent implements OnInit {
       artist.name = this.artistAddingForm.controls.name.value;
       this.artistService.updateArtist(artist)
       .subscribe(res => {
-        this.openSnackBar(this.cmService.UPDATE_ITEM.SUCCESS);
+        this.openSnackBar(res==true? this.cmService.UPDATE_ITEM.SUCCESS:this.cmService.UPDATE_ITEM.FAIL);
         this.getArtists();
         this.reset();
       }, () => this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR));

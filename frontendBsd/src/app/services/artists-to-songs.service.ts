@@ -17,8 +17,8 @@ export class ArtistsToSongsService {
   public getSongsToArtist(artistId:number):Observable<AtristToSongs[]>{
     return this.httpClient.get<AtristToSongs[]>(this.baseUrl+"getSongsToArtist?artistId="+artistId);
   }
-  public addArtistToSong(artistsToSongs:AtristToSongs):Observable<any>{
-   return this.httpClient.post(this.baseUrl+"PostArtistToSong",artistsToSongs);
+  public addArtistToSong(artistsToSongs:AtristToSongs):Observable<boolean>{
+   return this.httpClient.post<boolean>(this.baseUrl+"PostArtistToSong",artistsToSongs);
   }
   public getArtistsNamesToSong(songId: number): Observable<string[]> {
     return this.httpClient.get<string[]>(this.baseUrl + "GetArtistsNamesToSong?songId=" + songId);

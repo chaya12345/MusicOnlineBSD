@@ -41,7 +41,7 @@ export class DeletingArtistComponent implements OnInit {
   confirm(): void {
     try {
       this.artistService.DeleteArtist(this.artistSelected.id).subscribe(
-        suc => this.openSnackBar(this.cmService.DELETE_ITEM.SUCCESS),
+        suc => this.openSnackBar(suc==true? this.cmService.DELETE_ITEM.SUCCESS:this.cmService.DELETE_ITEM.FAIL),
         err => this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
     } catch (err) { console.log(err); }
   }
