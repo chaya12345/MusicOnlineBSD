@@ -1,1 +1,30 @@
-<p>deleting-artist works!</p>
+<div class="wrap-deleting-artist">
+    <mat-vertical-stepper linear="true" #stepper dir="rtl">
+        <mat-step [stepControl]="selectArtist">
+            <form [formGroup]="selectArtist">
+                <ng-template matStepLabel>בחר אומן</ng-template>
+                <mat-form-field appearance="fill">
+                    <mat-label>שם אומן</mat-label>
+                    <mat-select formControlName="artist">
+                        <mat-option #matOption *ngFor="let artist of artistsList" value="artist.name" (onSelectionChange)="selectingArtist(artist)">{{artist.name}} </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <form>
+                <ng-template matStepLabel>אישור מחיקה</ng-template>
+                <div class="wrap-actions">
+                    <button mat-sroked-buttom type="submit" (click)="stepper.reset();confirm()">מחק אומן</button>
+                    <button mat-buttom (click)="stepper.reset()">אפס</button>
+                </div>
+                <div>
+                    <button mat-buttom matStepperPrevious>הקודם</button>
+                </div>
+            </form>
+        </mat-step>
+    </mat-vertical-stepper>
+</div>

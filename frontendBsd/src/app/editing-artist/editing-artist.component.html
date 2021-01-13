@@ -30,7 +30,7 @@
         <mat-step>
             <ng-template matStepLadel>שמירת שינויים</ng-template>
             <div class="wrap-actions">
-                <button mat-stroked-button type="submit" (click)="confirm()">שמור שינויים</button>
+                <button mat-stroked-button type="submit" (click)="stepper.reset();confirm()">שמור שינויים</button>
                 <button mat-button (click)="stepper.reset()">אפס</button>
             </div>
             <div>
