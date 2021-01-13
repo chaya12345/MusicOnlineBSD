@@ -73,7 +73,7 @@ export class EditingArtistComponent implements OnInit {
     if (this.editArtist.valid) {
       this.selectedArtist.name = this.editArtist.controls.name.value;
       this.artistService.updateArtist(this.selectedArtist).subscribe(
-        suc => this.openSnackBar(this.cmService.UPDATE_ITEM.SUCCESS),
+        suc => this.openSnackBar(suc==true? this.cmService.UPDATE_ITEM.SUCCESS:this.cmService.UPDATE_ITEM.FAIL),
         err => this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR));
       this.reset();
     }

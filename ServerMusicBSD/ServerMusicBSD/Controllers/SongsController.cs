@@ -78,19 +78,25 @@ namespace ServerMusicBSD.Controllers
         {
             return SongsBL.GetSongsByAllTags(tagsResponse.tags);
         }
-        public void PostSong([FromBody] SongObj songObj)
+        public bool PostSong([FromBody] SongObj songObj)
         {
             if (songObj.singers.Length > 0)
             {
                 SongsBL.AddSong(songObj.song);
                 SongsTBL song = SongsBL.getSongByName(songObj.song.name);
+                bool flag = true;
                 if (song != null)
                 {
-                    TagsToSongsBL.AddTagsToSong(songObj.tags, song.id);
-                    ArtistsToSongsBL.AddArtistsToSong(songObj.artists, song.id);
-                    SingersToSongsBL.AddSingersToSong(songObj.singers, song.id);
+                    if(TagsToSongsBL.AddTagsToSong(songObj.tags, song.id)==false)
+                        flag=false;
+                    if(ArtistsToSongsBL.AddArtistsToSong(songObj.artists, song.id)==false)
+                        flag=false;
+                    if(SingersToSongsBL.AddSingersToSong(songObj.singers, song.id)==false)
+                        flag=false;
                 }
+                return flag;
             }
+            return false;
         }
         [HttpPost]
         public bool AddSong(string username, string password,string email)

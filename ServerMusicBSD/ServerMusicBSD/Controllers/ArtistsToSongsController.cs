@@ -26,9 +26,9 @@ namespace ServerMusicBSD.Controllers
         {
             return ArtistsToSongsBL.GetSongsToArtist(artistId);
         }
-        public  void PostArtistToSong([FromBody] ArtistsToSongsTBL artistToSong)
+        public  bool PostArtistToSong([FromBody] ArtistsToSongsTBL artistToSong)
         {
-            ArtistsToSongsBL.AddArtistToSong(artistToSong);
+           return ArtistsToSongsBL.AddArtistToSong(artistToSong);
         }
     }
 }

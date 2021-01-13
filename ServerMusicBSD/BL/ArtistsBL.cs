@@ -11,14 +11,15 @@ namespace BL
 {
     public class ArtistsBL
     {
-        public static void AddArtistName(ArtistsTBL artistsName)
+        public static bool AddArtistName(ArtistsTBL artistsName)
         {
             if (artistsName == null)
-                return;
+                return false;
             MusicOnlineEntities et = new MusicOnlineEntities();
             try { 
                 et.ArtistsTBL.Add(artistsName);
                 et.SaveChanges();
+                return true;
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -30,6 +31,7 @@ namespace BL
                     }
                 }
             }
+            return false;
         }
         public static List<ArtistsDTO> GetArtistsNames()
         {
@@ -53,15 +55,16 @@ namespace BL
             artists.name = artist.name;
             et.SaveChanges();
         }
-        public static void DeleteArtist(int artistId)
+        public static bool DeleteArtist(int artistId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             ArtistsTBL artist = et.ArtistsTBL.Where(a => a.id == artistId).FirstOrDefault();
             if (artist == null)
-                return;
+                return false;
             ArtistsToSongsBL.DeleteArtistFromSongs(artistId);
             et.ArtistsTBL.Remove(artist);
             et.SaveChanges();
+            return true;
         }
     }
 }

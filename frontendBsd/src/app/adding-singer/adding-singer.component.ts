@@ -46,7 +46,7 @@ export class AddingSingerComponent implements OnInit {
       newSinger.image = this.singerAddingForm.controls.image.value;
       try {
         this.singerService.addSinger(newSinger).subscribe(res => {
-          this.openSnackBar(this.cmService.GENERATE.ADD.SUCCESS);
+          this.openSnackBar(res==true? this.cmService.GENERATE.ADD.SUCCESS:this.cmService.GENERATE.ADD.FAIL);
           this.saveImage(this.imageFile);
         }, () => this.openSnackBar(this.cmService.GENERATE.ADD.ERROR));
         this.getSingers();

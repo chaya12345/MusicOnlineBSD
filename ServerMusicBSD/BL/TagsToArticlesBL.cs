@@ -39,7 +39,7 @@ namespace BL
                 return Casts.ToTagsToArticleDTO.GetTagsToArticles(list);
             return null;
         }
-        public static void AddTagToArticle(TagsToArticlesTBL tagsToArticle)
+        public static bool AddTagToArticle(TagsToArticlesTBL tagsToArticle)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try
@@ -48,7 +48,9 @@ namespace BL
                 {
                     et.TagsToArticlesTBL.Add(tagsToArticle);
                     et.SaveChanges();
+                    return true;
                 }
+                return false;
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -61,15 +63,18 @@ namespace BL
                 }
             }
         }
-        public static void AddTagToArticle(string[] tags,int articleId)
+        public static bool AddTagToArticle(string[] tags,int articleId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
+            bool flag = true;
             foreach (string item in tags)
             {
                 TagsForArticlesTBL tag = et.TagsForArticlesTBL.Where(t => t != null && item != null && t.name == item).FirstOrDefault();
                 if (tag != null)
-                    AddTagToArticle(new TagsToArticlesTBL() { tagId = tag.id, articleId = articleId });
+                   if( AddTagToArticle(new TagsToArticlesTBL() { tagId = tag.id, articleId = articleId })==false)
+                      flag=false;
             }
+            return flag;
         }
         public static void DeleteTagFromArticles(int tagId)
         {

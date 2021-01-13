@@ -17,8 +17,8 @@ export class SingerService {
   public GetSingerByName(name: string): Observable<Singer> {
     return this.httpClient.get<Singer>(this.baseUrl + "GetSingerByName?name=" + name);
   }
-  public addSinger(singer:Singer):Observable<any>{
-   return this.httpClient.post(this.baseUrl+"PostSinger",singer);
+  public addSinger(singer:Singer):Observable<boolean>{
+   return this.httpClient.post<boolean>(this.baseUrl+"PostSinger",singer);
   }
   public addSingerWithSavingImg(singer: Singer, imageFile: File): Observable<any> {
     const formData: FormData = new FormData();

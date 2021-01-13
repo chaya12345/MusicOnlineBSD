@@ -71,7 +71,7 @@ namespace BL
             //}
             //return Casts.ToSongsDTO.GetSongs(songs);
         }
-        public static void AddArtistToSong(ArtistsToSongsTBL artistToSong)
+        public static bool AddArtistToSong(ArtistsToSongsTBL artistToSong)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try {
@@ -79,7 +79,9 @@ namespace BL
                 {
                     et.ArtistsToSongsTBL.Add(artistToSong);
                     et.SaveChanges();
+                    return true;
                 }
+                return false;
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -91,10 +93,12 @@ namespace BL
                     }
                 }
             }
+            return false;
         }
-        public static void AddArtistsToSong(ArtistWithJob[] artists, int songId)
+        public static bool AddArtistsToSong(ArtistWithJob[] artists, int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
+            bool flag = true;
             if (artists != null) {
                 foreach (ArtistWithJob artist in artists)
                 {
@@ -105,11 +109,14 @@ namespace BL
                         JobTBL currentJob = et.JobTBL
                             .Where(j => j.name == artist.jobName).FirstOrDefault();
                         if (currentArtist != null && currentJob != null)
-                            AddArtistToSong(new ArtistsToSongsTBL { songId = songId,
-                                artistId = currentArtist.id, jobId = currentJob.id });
+                           if( AddArtistToSong(new ArtistsToSongsTBL { songId = songId,
+                                artistId = currentArtist.id, jobId = currentJob.id })==false)
+                                flag=false;
                     }
                 }
+                return flag;
             }
+            return false;
         }
         public static void UpdateArtistsToSong(int songId, List<ArtistsToSongsTBL> artists)
         {

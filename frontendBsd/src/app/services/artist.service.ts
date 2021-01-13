@@ -13,14 +13,14 @@ export class ArtistService {
   public getArtists(): Observable<Artist[]> {
     return this.httpClient.get<Artist[]>(this.baseUrl+"GetArtists");
   }
-  public addArtist(artist:Artist):Observable<any>{
-   return this.httpClient.post(this.baseUrl+"PostArtist",artist);
+  public addArtist(artist:Artist):Observable<boolean>{
+   return this.httpClient.post<boolean>(this.baseUrl+"PostArtist",artist);
   }
-  public updateArtist(artist:Artist):Observable<any>{
-    return this.httpClient.put(this.baseUrl+"UpdateArtist",artist);
+  public updateArtist(artist:Artist):Observable<boolean>{
+    return this.httpClient.put<boolean>(this.baseUrl+"UpdateArtist",artist);
   }
-  DeleteArtist(artistId:number):Observable<any>{
-    return this.httpClient.delete(this.baseUrl+"DeleteArtist?artistId="+artistId);
+  DeleteArtist(artistId:number):Observable<boolean>{
+    return this.httpClient.delete<boolean>(this.baseUrl+"DeleteArtist?artistId="+artistId);
   }
 
 }

@@ -38,7 +38,7 @@ export class AddingAArtistComponent implements OnInit {
         let artist: Artist = new Artist;
         artist.name = this.artistDetails.controls.name.value;
         this.artistService.addArtist(artist).subscribe(suc=>
-          this.openSnackBar(this.cmService.GENERATE.ADD.SUCCESS),
+          this.openSnackBar(suc==true?this.cmService.GENERATE.ADD.SUCCESS:this.cmService.GENERATE.ADD.FAIL),
           err=> this.openSnackBar(this.cmService.GENERATE.ADD.ERROR))}
     } catch (err) { console.log(err) }
     this.reset();

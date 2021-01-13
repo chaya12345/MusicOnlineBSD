@@ -79,14 +79,16 @@ export class DeletingAreaComponent implements OnInit {
 
   deleteSong(songId: number) {
     try {
-      this.songService.deleteSong(songId).subscribe(suc => this.openSnackBar(this.cmService.DELETE_ITEM.SUCCESS),
+      this.songService.deleteSong(songId).subscribe(
+        suc => this.openSnackBar(suc==true? this.cmService.DELETE_ITEM.SUCCESS:this.cmService.DELETE_ITEM.FAIL),
         err => this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
     } catch (err) { console.log(err); }
   }
 
   deleteArticle(articleId: number) {
     try {
-      this.articleService.deleteArticle(articleId).subscribe(suc => this.openSnackBar(this.cmService.DELETE_ITEM.SUCCESS),
+      this.articleService.deleteArticle(articleId).subscribe(res => 
+        this.openSnackBar(res==true?this.cmService.DELETE_ITEM.SUCCESS:this.cmService.DELETE_ITEM.FAIL),
         err => this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
     } catch (err) { console.log(err); }
   }
@@ -107,7 +109,8 @@ export class DeletingAreaComponent implements OnInit {
 
   deleteArtist(artistId: number) {
     try {
-      this.artistService.DeleteArtist(artistId).subscribe(suc => this.openSnackBar(this.cmService.DELETE_ITEM.SUCCESS),
+      this.artistService.DeleteArtist(artistId).subscribe(
+        suc => this.openSnackBar(suc==true? this.cmService.DELETE_ITEM.SUCCESS:this.cmService.DELETE_ITEM.FAIL),
         err => this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
     } catch (err) { console.log(err); }
   }

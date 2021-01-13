@@ -24,9 +24,9 @@ namespace ServerMusicBSD.Controllers
         {
             return SingersBL.GetSingerByName(name);
         }
-        public void PostSinger([FromBody]SingersTBL singer)
+        public bool PostSinger([FromBody]SingersTBL singer)
         {
-            SingersBL.AddSinger(singer);
+           return SingersBL.AddSinger(singer);
         }
         [HttpPost]
         public void AddSinger(string name, string image)

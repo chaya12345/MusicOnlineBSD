@@ -26,7 +26,7 @@ namespace BL
             }
             return result;
         }
-        public static void AddSingerToSong(SingersToSongsTBL singersToSongs)
+        public static bool AddSingerToSong(SingersToSongsTBL singersToSongs)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try
@@ -35,7 +35,9 @@ namespace BL
                 {
                     et.SingersToSongsTBL.Add(singersToSongs);
                     et.SaveChanges();
+                    return true;
                 }
+                return false;
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -47,18 +49,22 @@ namespace BL
                     }
                 }
             }
+            return false;
         }
-        public static void AddSingersToSong(string[] singers, int songId)
+        public static bool AddSingersToSong(string[] singers, int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
+            bool flag = true;
             foreach (string singer in singers)
             {
                 SingersTBL singerTBL = et.SingersTBL.Where(s => s != null && singer != null && s.name == singer).FirstOrDefault();
                 if (singer != null)
                 {
-                    AddSingerToSong(new SingersToSongsTBL { singerId = singerTBL.id, songId = songId });
+                    if(AddSingerToSong(new SingersToSongsTBL { singerId = singerTBL.id, songId = songId })==false)
+                        flag=false;
                 }
             }
+            return flag;
         }
         public static void UpdateSingersToSong(int songId, List<SingersTBL> singers)
         {

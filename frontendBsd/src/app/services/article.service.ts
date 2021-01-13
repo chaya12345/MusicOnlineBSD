@@ -17,11 +17,11 @@ export class ArticleService {
   public getArticleById(articleId:number):Observable<Article>{
     return this.httpClient.get<Article>(this.baseUrl+"GetArticleById?articleid="+articleId);
   }
-  public addArticle(obj:object):Observable<any>{
-   return this.httpClient.post(this.baseUrl+"PostArticle",obj);
+  public addArticle(obj:object):Observable<boolean>{
+   return this.httpClient.post<boolean>(this.baseUrl+"PostArticle",obj);
   }
-  public deleteArticle(articleId:number):Observable<any>{
-   return this.httpClient.delete(this.baseUrl+ "GetArticleById?articleid="+articleId);
+  public deleteArticle(articleId:number):Observable<boolean>{
+   return this.httpClient.delete<boolean>(this.baseUrl+ "GetArticleById?articleid="+articleId);
   }
   public getArticlesByTag(tagName:string):Observable<Article[]>{
     return this.httpClient.get<Article[]>(this.baseUrl+"DeleteArticle?tagName="+tagName);
