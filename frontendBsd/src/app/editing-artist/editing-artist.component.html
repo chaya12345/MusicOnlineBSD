@@ -4,10 +4,13 @@
             <form [formGroup]="selectArtist">
                 <ng-template matStepLabel>בחר אומן</ng-template>
                 <mat-form-field appearance="fill">
-                    <mat-label>בחירת אומנים</mat-label>
-                    <mat-select formControlName="artist">
-                        <mat-option #matOption *ngFor="let artist of artistsList" (onSelectionChange)="selectingArtist(artist)" [value]="artist.name">{{artist.name}}</mat-option>
-                    </mat-select>
+                    <mat-label>בחר אומן</mat-label>
+                    <input type="text" matInput formControlName="artist" [matAutocomplete]="autoArtists">
+                    <mat-autocomplete autoActiveFirstOption #autoArtists="matAutocomplete" (optionSelected)="selectingArtist($event.option.value)">
+                        <mat-option *ngFor="let artist of filteredArtists | async" [value]="artist.name">
+                            {{artist.name}}
+                        </mat-option>
+                    </mat-autocomplete>
                 </mat-form-field>
                 <div>
                     <button mat-button matStepperNext>הבא</button>

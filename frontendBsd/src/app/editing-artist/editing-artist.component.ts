@@ -41,23 +41,14 @@ export class EditingArtistComponent implements OnInit {
     list.sort((a, b) => a.name.localeCompare(b.name));
   }
 
-  public updateArtistsList(): void {
-    this.filteredArtists = this.selectArtist.controls.artist.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filterArtists(value))
-      );
-  }
-
-  public _filterArtists(value: string): Artist[] {
-    const filterValue = value.toLowerCase();
-    return this.artistsList.filter(artist => artist.name.toLowerCase().includes(filterValue));
-  }
-
-  selectingArtist(artist: Artist) {
-    this.selectedArtist = artist;
-    this.selectArtist.controls.artist.setValue(artist);
-    this.editArtist.controls.name.setValue(artist.name);
+  selectingArtist(name: string) {
+    this.artistsList.forEach(artist=>{
+      if(artist.name==name)
+      this.selectedArtist=artist;
+    })
+    //this.selectedArtist = artist;
+    this.selectArtist.controls.artist.setValue(this.selectedArtist.name);
+    this.editArtist.controls.name.setValue(this.selectedArtist.name);
   }
 
   getNameErrorMessage() {
@@ -88,6 +79,19 @@ export class EditingArtistComponent implements OnInit {
     this._snackBar.open(message, '', {
       duration: 2000
     });
+  }
+
+  public updateArtistsList(): void {
+    this.filteredArtists = this.selectArtist.controls.artist.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filterArtists(value))
+      );
+  }
+  
+  public _filterArtists(value: string): Artist[] {
+    const filterValue = value.toLowerCase();
+    return this.artistsList.filter(artist => artist.name.toLowerCase().includes(filterValue));
   }
 
 }
