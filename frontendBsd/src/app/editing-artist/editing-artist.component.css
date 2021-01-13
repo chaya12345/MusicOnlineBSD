@@ -13,11 +13,6 @@ mat-form-field {
     font-family: assistant !important;
 }
 
-.wrap-uploading-file {
-    height: 250px;
-    width: 350px;
-}
-
 .wrap-actions {
     padding-block: 15px;
 }
