@@ -1,36 +1,39 @@
 <div class="wrap-adding-singer">
+    <!-- <p>הוספת זמר</p> -->
     <mat-vertical-stepper linear="true" #stepper dir="rtl">
-      <mat-step [stepControl]="nameFormGroup" color="warn">
-        <form [formGroup]="nameFormGroup">
-          <ng-template matStepLabel>הכנס פרטי זמר</ng-template>
-          <mat-form-field appearance="fill">
-            <input matInput placeholder="שם זמר" formControlName="name" required>
-          </mat-form-field>
-          <div>
-            <button mat-button matStepperNext>הבא</button>
-          </div>
-        </form>
-      </mat-step>
-      <mat-step [stepControl]="imageFormGroup">
-        <form [formGroup]="imageFormGroup">
-          <ng-template matStepLabel>העלאת תמונה</ng-template>
-          <div class="wrap-uploading-file">
-              <uploading-image (onSelect)="selectImage($event)"></uploading-image>
-          </div>
-          <div>
-            <button mat-button matStepperPrevious>הקודם</button>
-            <button mat-button matStepperNext>הבא</button>
-          </div>
-        </form>
-      </mat-step>
-      <mat-step>
-        <ng-template matStepLabel>אישור הוספה</ng-template>
-        <p>You are now done.</p>
-        <button mat-stroked-button>הוסף</button>
-        <div>
-          <button mat-button matStepperPrevious>הקודם</button>
-          <button mat-button (click)="stepper.reset()">אפס</button>
-        </div>
-      </mat-step>
+        <mat-step [stepControl]="nameFormGroup">
+            <form [formGroup]="nameFormGroup">
+                <ng-template matStepLabel>הכנס פרטי זמר</ng-template>
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="שם זמר" formControlName="name" required>
+                    <mat-error *ngIf="nameFormGroup.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="imageFormGroup">
+            <form [formGroup]="imageFormGroup">
+                <ng-template matStepLabel>העלאת תמונה</ng-template>
+                <div class="wrap-uploading-file">
+                    <uploading-image (onSelect)="selectImage($event)"></uploading-image>
+                </div>
+                <div>
+                    <button mat-button matStepperPrevious>הקודם</button>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>אישור הוספה</ng-template>
+            <div class="wrap-actions">
+                <button mat-stroked-button (click)="confirm()">הוסף זמר</button>
+                <button mat-button (click)="stepper.reset()">אפס</button>
+            </div>
+            <div>
+                <button mat-button matStepperPrevious>הקודם</button>
+            </div>
+        </mat-step>
     </mat-vertical-stepper>
 </div>

@@ -4,6 +4,15 @@
     padding: 20px 30px;
 }
 
+p.title {
+    font-family: assistant;
+    font-size: 17px;
+    background-color: whitesmoke;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 .wrap-group {
     font-family: assistant;
     font-size: 17px;

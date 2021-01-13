@@ -9,6 +9,7 @@ using DTO;
 using DAL;
 using System.Web.Http.Cors;
 using System.Web;
+using System.IO;
 
 namespace ServerMusicBSD.Controllers
 {
@@ -32,7 +33,7 @@ namespace ServerMusicBSD.Controllers
         {
             SingersBL.AddSinger(name, image);
             var httpRequest = HttpContext.Current.Request;
-            SavingFilesBL.SaveFileWithFormattedName(httpRequest.Files[0], "images\\singers", name);
+            SavingFilesBL.SaveFile(httpRequest.Files[0], "images\\singers");
         }
         public void PutSearchingToSinger(string singerName)
         {

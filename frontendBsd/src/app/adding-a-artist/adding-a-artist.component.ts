@@ -31,6 +31,7 @@ export class AddingAArtistComponent implements OnInit {
       return "שם לא תקין. (פחות מ-3 תווים)"
     }
   }
+  
   onSubmit(): void {
     try {
       if (this.artistDetails.valid) {

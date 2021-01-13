@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,11 @@ namespace BL
         public static void SaveFileWithFormattedName(HttpPostedFile postedFile, string folderName, string folderToFormatted)
         {
             folderToFormatted = formatFolderName(folderToFormatted);
+            string projectPath = AppDomain.CurrentDomain.BaseDirectory.Substring(0,
+                    AppDomain.CurrentDomain.BaseDirectory.LastIndexOf("Server") - 1) + "\\DAL\\src\\" +
+                        folderName;
+            string newFolderName = Path.Combine(projectPath, folderToFormatted);
+            System.IO.Directory.CreateDirectory(newFolderName);
             var filePath = AppDomain.CurrentDomain.BaseDirectory.Substring(0,
                     AppDomain.CurrentDomain.BaseDirectory.LastIndexOf("Server") - 1) + "\\DAL\\src\\" +
                         folderName + "\\" + folderToFormatted + "\\" + postedFile.FileName;

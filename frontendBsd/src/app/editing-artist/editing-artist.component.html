@@ -16,7 +16,7 @@
         </mat-step>
         <mat-step [stepControl]="editArtist">
             <form [formGroup]="editArtist">
-                <ng-template matStepLabel>שנה פרטי אומן</ng-template>
+                <ng-template matStepLabel>ערוך פרטי אומן</ng-template>
                 <mat-form-field appearance="fill">
                     <input matInput placeholder="שם אומן" formControlName="name">
                     <mat-error *ngIf="editArtist.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
@@ -28,14 +28,14 @@
             </form>
         </mat-step>
         <mat-step>
-            <form>
-                <ng-template matStepLadel>אישור שינויים</ng-template>
-                <button mat-stroked-button type="submit" (click)="onSubmit()"><mat-icon>playlist_add</mat-icon>אשר</button>
-                <div>
-                    <button mat-button matStepperPrevious>הקודם</button>
-                    <button mat-button (click)="stepper.reset()">אפס</button>
-                </div>
-            </form>
+            <ng-template matStepLadel>שמירת שינויים</ng-template>
+            <div class="wrap-actions">
+                <button mat-stroked-button type="submit" (click)="confirm()">שמור שינויים</button>
+                <button mat-button (click)="stepper.reset()">אפס</button>
+            </div>
+            <div>
+                <button mat-button matStepperPrevious>הקודם</button>
+            </div>
         </mat-step>
     </mat-vertical-stepper>
 </div>

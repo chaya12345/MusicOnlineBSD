@@ -1,5 +1,5 @@
 <div class="wrap-content-management">
-    <div class="wrap-actions">
+    <!-- <div class="wrap-actions">
         <button mat-flat-button (click)="scrollToElement(song)">ניהול שירים</button>
         <button mat-flat-button (click)="scrollToElement(article)">ניהול כתבות</button>
         <button mat-flat-button (click)="scrollToElement(playlist)">ניהול פלייליסטים</button>
@@ -7,13 +7,12 @@
         <button mat-flat-button (click)="scrollToElement(commits)">ניהול תגובות משתמשים</button>
         <button mat-flat-button (click)="scrollToElement(deleting)">איזור מחיקה</button>
         <button mat-flat-button (click)="scrollToElement(reports)">איזור דיווח</button>
-    </div>
+    </div> -->
     <div class="wrap-content">
-        <p #reports>» לוח דיווחים «</p>
+        <!-- <p #reports>» לוח דיווחים «</p> -->
         <reports-board></reports-board>
-        <p #reports>» ניהול תגובות משתמשים «</p>
-        <commits-board></commits-board>
-        <p #reports>» ניהול תוכן האתר «</p>
+        <!-- <p #reports>» ניהול תגובות משתמשים «</p> -->
+        <!-- <p #reports>» ניהול תוכן האתר «</p> -->
         <crud-actions></crud-actions>
         <!-- <p #song>» ניהול שיר «</p>
         <uploading-song></uploading-song>
@@ -25,6 +24,7 @@
         <activation-parade></activation-parade>
         <p #deleting>» איזור מחיקה «</p>
         <deleting-area></deleting-area> -->
+        <commits-board></commits-board>
     </div>
     <!-- <router-outlet></router-outlet> -->
 </div>

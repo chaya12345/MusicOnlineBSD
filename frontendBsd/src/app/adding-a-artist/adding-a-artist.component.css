@@ -2,7 +2,7 @@
     margin-top: 8px;
 }
 
-form button {
+button {
     font-weight: 400;
     font-family: assistant;
     font-size: 17px;
@@ -11,4 +11,13 @@ form button {
 mat-form-field {
     margin-top: 16px;
     font-family: assistant !important;
+}
+
+.wrap-actions {
+    padding-block: 15px;
+}
+
+.wrap-actions button {
+    padding: 2px 18px;
+    margin-left: 10px;
 }

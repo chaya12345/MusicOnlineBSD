@@ -1,5 +1,26 @@
+.wrap-crud-actions {
+    padding-block: 100px;
+}
+
 mat-form-field {
     text-align: right;
     font-family: assistant;
     font-size: 17px;
+}
+
+p.title {
+    font-family: assistant;
+    font-size: 17px;
+    background-color: whitesmoke;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+span.explaination {
+    font-family: assistant;
+    display: block;
+    font-size: 17px;
+    line-height: 32px;
+    margin-bottom: 40px;
 }

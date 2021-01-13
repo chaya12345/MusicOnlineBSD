@@ -16,9 +16,9 @@ export class EditingArtistComponent implements OnInit {
 
   selectArtist: FormGroup;
   artistsList: Artist[] = [];
-  //filteredArtists: Observable<Artist[]>;
+  filteredArtists: Observable<Artist[]>;
   editArtist: FormGroup;
-  selectedArtist:Artist;
+  selectedArtist: Artist;
 
   constructor(private artistService: ArtistService, private _snackBar: MatSnackBar, private cmService: CommonMessageService) {
     this.selectArtist = new FormGroup({
@@ -26,7 +26,7 @@ export class EditingArtistComponent implements OnInit {
     });
     try {
       this.artistService.getArtists().subscribe(
-        artists => { this.artistsList = artists; this.orderByName(this.artistsList); /*this.updateArtistsList(); */},
+        artists => { this.artistsList = artists; this.orderByName(this.artistsList); this.updateArtistsList(); },
         err => console.log(err));
     } catch (err) { console.log(err) }
     this.editArtist = new FormGroup({
@@ -41,31 +41,21 @@ export class EditingArtistComponent implements OnInit {
     list.sort((a, b) => a.name.localeCompare(b.name));
   }
 
-  // public updateArtistsList(): void {
-  //   this.filteredArtists = this.selectArtist.valueChanges
-  //     .pipe(
-  //       startWith(''),
-  //       map(value => this._filterArtists(value))
-  //     );
-  // }
+  public updateArtistsList(): void {
+    this.filteredArtists = this.selectArtist.controls.artist.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filterArtists(value))
+      );
+  }
 
-  // public _filterArtists(value: string): Artist[] {
-  //   const filterValue = value.toLowerCase();
-  //   return this.artistsList.filter(artist => artist.name.toLowerCase().includes(filterValue));
-  // }
-
-  // artistSelect(): void {
-  //   try {
-  //     this.artistsList.forEach(artist => {
-  //       if (artist.name == (document.getElementById("artist-select") as HTMLInputElement).value) {
-  //         this.selectingArtist(artist);
-  //       }
-  //     });
-  //   } catch (err) { console.log(err) }
-  // }
+  public _filterArtists(value: string): Artist[] {
+    const filterValue = value.toLowerCase();
+    return this.artistsList.filter(artist => artist.name.toLowerCase().includes(filterValue));
+  }
 
   selectingArtist(artist: Artist) {
-    this.selectedArtist=artist;
+    this.selectedArtist = artist;
     this.selectArtist.controls.artist.setValue(artist);
     this.editArtist.controls.name.setValue(artist.name);
   }
@@ -75,11 +65,11 @@ export class EditingArtistComponent implements OnInit {
       return "זהו שדה חובה.";
     }
     else if (this.editArtist.controls.name.hasError("minlength")) {
-      return "שם לא תקין. (פחות מ-3 תווים)"
+      return "שם לא תקין. (מינימום 3 תווים)"
     }
   }
 
-  onSubmit(): void {
+  confirm(): void {
     if (this.editArtist.valid) {
       this.selectedArtist.name = this.editArtist.controls.name.value;
       this.artistService.updateArtist(this.selectedArtist).subscribe(

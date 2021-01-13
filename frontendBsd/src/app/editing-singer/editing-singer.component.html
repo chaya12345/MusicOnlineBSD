@@ -1,1 +1,54 @@
-<p>editing-singer works!</p>
+<div class="wrap-editing-singer">
+    <mat-vertical-stepper linear="true" #stepper dir="rtl">
+      <mat-step [stepControl]="singerFormGroup" color="warn">
+        <form [formGroup]="singerFormGroup">
+          <ng-template matStepLabel>בחר זמר</ng-template>
+          <mat-form-field appearance="fill">
+            <mat-label>שם זמר</mat-label>
+            <input id="singer-search" type="text" matInput formControlName="singer" [matAutocomplete]="autoSingers">
+            <mat-autocomplete autoActiveFirstOption #autoSingers="matAutocomplete" (optionSelected)="getSelectedSinger($event.option.value)">
+                <mat-option *ngFor="let singer of filteredSingers | async" [value]="singer.name"><p>{{singer.name}}</mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="singerFormGroup.controls.singer.invalid">{{getSingerErrorMessage()}}</mat-error>
+        </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>הבא</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="nameFormGroup">
+        <form [formGroup]="nameFormGroup">
+          <ng-template matStepLabel>ערוך פרטי זמר</ng-template>
+          <mat-form-field appearance="fill">
+            <input matInput placeholder="שם זמר" formControlName="name" required>
+            <mat-error *ngIf="nameFormGroup.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
+          </mat-form-field>
+          <div>
+            <button mat-button matStepperNext>הבא</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="imageFormGroup">
+        <form [formGroup]="imageFormGroup">
+          <ng-template matStepLabel>ערוך תמונה</ng-template>
+          <div class="wrap-uploading-file">
+              <uploading-image (onSelect)="selectImage($event)" [image]="image"></uploading-image>
+          </div>
+          <div>
+            <button mat-button matStepperPrevious>הקודם</button>
+            <button mat-button matStepperNext>הבא</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>שמירת שינויים</ng-template>
+        <div class="wrap-actions">
+            <button mat-stroked-button (click)="confirm()">שמור שינויים</button>
+            <button mat-stroked-button (click)="stepper.reset()">אפס</button>
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>הקודם</button>
+        </div>
+      </mat-step>
+    </mat-vertical-stepper>
+</div>

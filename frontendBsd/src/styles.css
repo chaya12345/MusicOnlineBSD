@@ -100,6 +100,14 @@ mat-option mat-pseudo-checkbox.mat-pseudo-checkbox {
     font-size: 21px !important;
 }
 
+crud-actions .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+crud-actions .mat-form-field-invalid .mat-input-element {
+    color: black;
+}
+
 /* main-actions .mat-form-field-flex {
     background-color: rgb(255 255 255 / 4%) !important;
 } */

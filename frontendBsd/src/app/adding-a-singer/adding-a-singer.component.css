@@ -17,3 +17,12 @@ mat-form-field {
     height: 250px;
     width: 350px;
 }
+
+.wrap-actions {
+    padding-block: 15px;
+}
+
+.wrap-actions button {
+    padding: 2px 18px;
+    margin-left: 10px;
+}
