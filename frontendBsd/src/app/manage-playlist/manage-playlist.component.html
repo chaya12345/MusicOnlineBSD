@@ -1,5 +1,5 @@
 <div class="wrap-manage-playlist">
-    <mat-drawer-container class="example-container" autosize>
+    <!-- <mat-drawer-container class="example-container" autosize>
         <mat-drawer #drawer class="sidenav" mode="side" opened="true" position="end">
             <div class="wrap-side-nav-buttons">
                 <button mat-flat-button (click)="activeAction=1" [class.active]="activeAction==1"><mat-icon>add</mat-icon>הוספה</button>
@@ -13,5 +13,11 @@
             <editing-playlist *ngSwitchCase="2"></editing-playlist>
             <deleting-playlist *ngSwitchDefault></deleting-playlist>
         </div>
-    </mat-drawer-container>
+    </mat-drawer-container> -->
+    <p>הוספת פלייליסט</p>
+    <adding-a-playlist></adding-a-playlist>
+    <p>עריכת פלייליסט</p>
+    <editing-playlist></editing-playlist>
+    <p>מחיקת פלייליסט</p>
+    <deleting-playlist></deleting-playlist>
 </div>

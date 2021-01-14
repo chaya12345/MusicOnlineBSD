@@ -196,6 +196,7 @@ import { ManageTagComponent } from './manage-tag/manage-tag.component';
 import { AddingATagComponent } from './adding-a-tag/adding-a-tag.component';
 import { EditingTagComponent } from './editing-tag/editing-tag.component';
 import { DeletingTagComponent } from './deleting-tag/deleting-tag.component';
+import { AddingAPlaylistComponent } from './adding-a-playlist/adding-a-playlist.component';
 
 @NgModule({
   declarations: [
@@ -378,7 +379,8 @@ import { DeletingTagComponent } from './deleting-tag/deleting-tag.component';
     ManageTagComponent,
     AddingATagComponent,
     EditingTagComponent,
-    DeletingTagComponent
+    DeletingTagComponent,
+    AddingAPlaylistComponent
   ],
   imports: [
     BrowserModule,
