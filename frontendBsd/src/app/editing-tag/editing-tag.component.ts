@@ -50,23 +50,26 @@ export class EditingTagComponent implements OnInit {
   }
 
   confirm(): void {
-    if (this.tagFormGroup.valid && this.nameFormGroup.valid && this.typeFormGroup.valid) {
+    if (this.tagFormGroup.valid && this.nameFormGroup.valid && this.typeFormGroup.valid &&
+      this.isSongTag == (this.selectedTag.type == "song")) {
       try {
-        if (this.isSongTag == (this.selectedTag.type == "song")) {
+        if (this.isSongTag) {
           let tag: TagsForSongs = new TagsForSongs;
+          tag.id = this.selectedTag.id;
           tag.name = this.nameFormGroup.controls.name.value;
           this.typesList.forEach(type => {
             if (type.name == this.typeFormGroup.controls.type.value) {
               tag.typeId = type.id;
             }
           });
-          this.tagsService.addTagForSong(tag)
+          this.tagsService.updateTagForSong(tag)
             .subscribe();
         }
         else {
           let tag: TagsForArticles = new TagsForArticles;
+          tag.id = this.selectedTag.id;
           tag.name = this.nameFormGroup.controls.name.value;
-          this.tagsService.addTagForArticle(tag)
+          this.tagsService.updateTagForArticle(tag)
             .subscribe();
         }
       } catch { }

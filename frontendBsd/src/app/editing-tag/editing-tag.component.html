@@ -30,14 +30,14 @@
                 </div>
             </form>
         </mat-step>
-        <mat-step [stepControl]="typeFormGroup" *ngIf="isSongTag">
+        <mat-step [stepControl]="typeFormGroup" *ngIf="selectedTag&&selectedTag.type=='song'">
             <form [formGroup]="typeFormGroup">
                 <ng-template matStepLabel>ערוך סוג תגית</ng-template>
-                <mat-radio-group [(ngModel)]="typeTag" formControlName="option" (ngModelChange)="updatedType($event)">
+                <mat-radio-group [(ngModel)]="selectedTag?selectedTag.type:typeTag" formControlName="option" (ngModelChange)="updatedType($event)">
                     <mat-radio-button value="song" color="primary" disabled>שיר</mat-radio-button>
                     <mat-radio-button value="article" color="primary" disabled>כתבה</mat-radio-button>
                 </mat-radio-group>
-                <mat-form-field appearance="fill" *ngIf="isSongTag">
+                <mat-form-field appearance="fill" *ngIf="selectedTag?selectedTag.type:false">
                     <mat-label>סוג תגית</mat-label>
                     <input type="text" matInput formControlName="type" [matAutocomplete]="autoTypes">
                     <mat-autocomplete autoActiveFirstOption #autoTypes="matAutocomplete" (optionSelected)="saveSelectedType($event.option.value)">
