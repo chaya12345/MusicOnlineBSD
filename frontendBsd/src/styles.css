@@ -96,8 +96,8 @@ mat-option mat-pseudo-checkbox.mat-pseudo-checkbox {
 }
 
 .mat-select-panel mat-option, .mat-select-value-text {
-    font-family: fb Joker, calibri;
-    font-size: 21px !important;
+    font-family: assistant;
+    font-size: 17px !important;
 }
 
 crud-actions .mat-form-field.mat-form-field-invalid .mat-form-field-label {
@@ -436,8 +436,8 @@ mat-spinner.small-spinner svg {
 
 button.primary-style {
     margin: 0 auto 50px;
-    font-family: fb Joker;
-    font-size: 21px;
+    font-family: assistant;
+    font-size: 17px;
     background: #fbc02d;
     color: white !important;
     padding: 7px 35px;
@@ -487,8 +487,8 @@ article-details text div > strong:only-child {
 tools .mat-input-element {
     color: #252525;
     border: none;
-    font-family: fb Joker, calibri;
-    font-size: 21px;
+    font-family: assistant;
+    font-size: 17px;
 }
 
 tools mat-menu {
@@ -498,8 +498,8 @@ tools mat-menu {
 
 .mat-menu-content button {
     text-align: right;
-    font-family: fb Joker, calibri;
-    font-size: 19px;
+    font-family: assistant;
+    font-size: 17px;
     padding: 0 22px;
 }
 
@@ -552,8 +552,8 @@ snack-bar-container {
 }
 
 .mat-simple-snackbar {
-    font-family: fb Joker !important;
-    font-size: 21px !important;
+    font-family: assistant !important;
+    font-size: 17px !important;
 }
 
 .mat-simple-snackbar span {
@@ -618,19 +618,6 @@ song-info .mat-slider-track-background {
 
 .mat-slider-disabled .mat-slider-track-fill {
     background-color: #2196f3;
-}
-
-/* #endregion */
-
-/* #region(collapsed) [Tabs] */
-
-.mat-tab-label-content {
-    font-family: fb Joker, calibri;
-    font-size: 21px;
-}
-
-.mat-tab-label-content mat-icon {
-    margin-left: 15px;
 }
 
 /* #endregion */

@@ -4,7 +4,7 @@
 
 mat-form-field {
     text-align: right;
-    font-family: assistant;
+    font-family: assistant !important;
     font-size: 17px;
 }
 
