@@ -3,6 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Parade } from '../classes/parade';
 
+export class ParadeObj {
+  parade?: Parade;
+  songs?: string[];
+  singers: string[];
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,16 +26,16 @@ export class ParadeService {
     return this.httpClient.get<Parade>(this.baseUrl + "GetParadeByYear?year=" + year);
   }
 
-  addParade(parade: Parade): Observable<boolean> {
+  addParade(parade: ParadeObj): Observable<boolean> {
     return this.httpClient.post<boolean>(this.baseUrl + "PostParade", parade);
   }
 
-  finishedParade():Observable<any>{
-    return this.httpClient.put(this.baseUrl+"PutFinishedParade",1);
+  finishedParade(): Observable<any> {
+    return this.httpClient.put(this.baseUrl + "PutFinishedParade", 1);
   }
-  
-  restartParade():Observable<any>{
-    return this.httpClient.put(this.baseUrl+"RestartParade",1);
+
+  restartParade(): Observable<any> {
+    return this.httpClient.put(this.baseUrl + "RestartParade", 1);
   }
 
 }
