@@ -62,6 +62,7 @@ namespace BL
                     }
                 }
             }
+            return false;
         }
         public static bool AddTagToArticle(string[] tags,int articleId)
         {
