@@ -23,7 +23,7 @@ namespace BL
                 et.SaveChanges();
             }
         }
-        public static void AddSingerToParade(SingersToParadeTBL singerToParade)
+        public static bool AddSingerToParade(SingersToParadeTBL singerToParade)
         {
             try
             {
@@ -33,8 +33,9 @@ namespace BL
                     singerToParade.count = 0;
                     et.SingersToParadeTBL.Add(singerToParade);
                     et.SaveChanges();
+                    return true;
                 }
-
+                return false;
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -46,6 +47,7 @@ namespace BL
                     }
                 }
             }
+            return false;
         }
         public static void AddSingersToParade(List<SingersToParadeTBL> singersToParade)
         {
@@ -56,6 +58,24 @@ namespace BL
                 if (singerToParade != null)
                     AddSingerToParade(singerToParade);
             }
+        }
+        public static bool AddSingersToParade(string[] singersToParade,int paradeId)
+        {
+            if (singersToParade.Length == 0)
+                return false;
+            bool flag = true;
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            foreach(string singer in singersToParade)
+            {
+                if (singer != null)
+                {
+                    SingersTBL singerTBL = et.SingersTBL.Where(s => s.name == singer).FirstOrDefault();
+                    if (singerTBL != null)
+                        if (AddSingerToParade(new SingersToParadeTBL() { singerId = singerTBL.id, paradeId = paradeId, count = 0 }) == false)
+                            flag = false;
+                }
+            }
+            return flag;
         }
         public static void DeleteSingerFromParade(int singerId)
         {

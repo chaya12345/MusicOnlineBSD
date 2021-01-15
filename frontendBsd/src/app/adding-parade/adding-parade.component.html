@@ -1,0 +1,59 @@
+<div class="warp-adding-parade">
+    <mat-vertical-stepper linear="true" #stepper dir="rtl">
+        <mat-step [stepControl]="selectSongs">
+            <form [formGroup]="selectSongs">
+                <ng-template matStepLabel>בחירת שירים</ng-template>
+                <mat-form-field>
+                    <mat-label>בחר שירים</mat-label>
+                    <mat-select formControlName="songs" multiple>
+                        <mat-option *ngFor="let song of songsList" value="song.name">{{song.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-error *ngIf="selectSongs.controls.songs.invalid">{{getSongsErrorMessage()}}</mat-error>
+                <div>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="selectSingers">
+            <form [formGroup]="selectSingers">
+                <ng-template matStepLabel>בחירת זמרים</ng-template>
+                <mat-form-field>
+                    <mat-label>בחר זמרים</mat-label>
+                    <mat-select formControlName="singers" multiple>
+                        <mat-option *ngFor="let singer of singersList" value="singer.name">{{singer.name}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="">{{getSingersErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>הקודם</button>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="uploadingImage">
+            <form [formGroup]="uploadingImage">
+                <ng-template matStepLabel>העלאת תמונה</ng-template>
+                <div class="wrap-uploading-file">
+                    <uploading-image (onSelect)="selectImage($event)"></uploading-image>
+                </div>
+                <div>
+                    <button mat-button matStepperPrevious>הקודם</button>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <form>
+                <ng-template matStepLabel>אישור הפעלה</ng-template>
+                <div class="wrap-action">
+                    <button mat-stroked-button (click)="stepper.reset(); confirm()">הפעלת מצעד</button>
+                    <button mat-stroked-button (click)="stepper.reset()">אפס</button>
+                </div>
+                <div>
+                    <button mat-button matStepperPrevious>הקודם</button>
+                </div>
+            </form>
+        </mat-step>
+    </mat-vertical-stepper>
+</div>

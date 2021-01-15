@@ -32,7 +32,7 @@ namespace BL
                 }
             }
         }
-        public static void AddSongToParade(SongsToParadeTBL songToParade)
+        public static bool AddSongToParade(SongsToParadeTBL songToParade)
         {
             if (songToParade != null)
             {
@@ -40,7 +40,9 @@ namespace BL
                 songToParade.count = 0;
                 et.SongsToParadeTBL.Add(songToParade);
                 et.SaveChanges();
+                return true;
             }
+            return false;
         }
         public static void AddSongsToParade(List<SongsToParadeTBL> songsToParade)
         {
@@ -51,6 +53,24 @@ namespace BL
                 if (songToParade != null)
                     AddSongToParade(songToParade);
             }
+        }
+        public static bool AddSongsToParade(string[] songsToParade,int paradeId)
+        {
+            if (songsToParade.Length == 0)
+                return false;
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            bool flag = true;
+            foreach(string song in songsToParade)
+            {
+                if (song != null)
+                {
+                    SongsTBL songTBL = et.SongsTBL.Where(s => s.name == song).FirstOrDefault();
+                    if (songTBL != null)
+                        if (AddSongToParade(new SongsToParadeTBL() { songId = songTBL.id, paradeId = paradeId }) == false)
+                            flag = false;
+                }
+            }
+            return flag;
         }
         public static void DeleteSongFromParade(int songId)
         {
