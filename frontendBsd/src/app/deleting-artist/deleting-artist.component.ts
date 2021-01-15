@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs';
@@ -13,6 +13,8 @@ import { CommonMessageService } from '../services/common-message.service';
   styleUrls: ['./deleting-artist.component.css']
 })
 export class DeletingArtistComponent implements OnInit {
+
+  @ViewChild("autoArtists") autoArtists: ElementRef;
 
   selectArtist: FormGroup;
   artistSelected: Artist;

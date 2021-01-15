@@ -4,5 +4,4 @@ export class Playlists {
     title: string;
     count_views: number;
     image: string;
-    tagId: number;
 }

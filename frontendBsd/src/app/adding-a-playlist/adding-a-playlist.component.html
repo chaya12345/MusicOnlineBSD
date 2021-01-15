@@ -1,1 +1,65 @@
-<p>adding-a-playlist works!</p>
+<div class="wrap-adding-playlist">
+    <mat-vertical-stepper linear="true" #stepper dir="rtl">
+        <mat-step [stepControl]="detailsFormGroup">
+            <form [formGroup]="detailsFormGroup">
+                <ng-template matStepLabel>הכנס פרטי פלייליסט</ng-template>
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="שם פלייליסט" formControlName="name" required>
+                    <mat-error *ngIf="detailsFormGroup.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <textarea matInput placeholder="כותרת פלייליסט" formControlName="title" required></textarea>
+                    <mat-error *ngIf="detailsFormGroup.controls.title.invalid">{{getTitleErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="songsFormGroup">
+            <form [formGroup]="songsFormGroup">
+                <ng-template matStepLabel>הוסף שירים לפלייליסט</ng-template>
+                <div class="selectedSongs">
+                    <p *ngFor="let song of selectedSongs">{{song.name}}
+                        <mat-icon (click)="clearSong(song)">clear</mat-icon>
+                    </p>
+                </div>
+                <input type="text" matInput formControlName="songs" style="display: none;">
+                <mat-form-field appearance="fill">
+                  <mat-label>שם שיר</mat-label>
+                  <input type="text" matInput [matAutocomplete]="autoSongs" formControlName="songControl">
+                  <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete">
+                          <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name">{{song.name}}</mat-option>
+                  </mat-autocomplete>
+              </mat-form-field>
+              <button id="addSong-button" mat-stroked-button (click)="addSong()">הוסף שיר</button>
+                <div>
+                    <button mat-button matStepperPrevious>הקודם</button>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="imageFormGroup">
+            <form [formGroup]="imageFormGroup">
+                <ng-template matStepLabel>העלאת תמונה</ng-template>
+                <div class="wrap-uploading-file">
+                    <uploading-image (onSelect)="selectImage($event)"></uploading-image>
+                </div>
+                <div>
+                    <button mat-button matStepperPrevious>הקודם</button>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>אישור הוספה</ng-template>
+            <div class="wrap-actions">
+                <button mat-stroked-button (click)="confirm()">הוסף פלייליסט</button>
+                <button mat-stroked-button (click)="stepper.reset()">אפס</button>
+            </div>
+            <div>
+                <button mat-button matStepperPrevious>הקודם</button>
+            </div>
+        </mat-step>
+    </mat-vertical-stepper>
+</div>

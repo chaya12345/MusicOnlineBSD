@@ -35,7 +35,7 @@ namespace BL
                 return Casts.ToPlaylistsDTO.GetPlaylist(playlists);
             return null;
         }
-        public static void AddPlaylist(PlaylistsTBL playlists)
+        public static bool AddPlaylist(PlaylistsTBL playlists)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try {
@@ -43,7 +43,9 @@ namespace BL
                 {
                     et.PlaylistsTBL.Add(playlists);
                     et.SaveChanges();
+                    return true;
                 }
+                return false;
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -54,9 +56,10 @@ namespace BL
                         System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                     }
                 }
+                return false;
             }
         }
-        public static void AddPlaylistWithSongs(PlaylistsTBL playlist, string[] songs)
+        public static bool AddPlaylistWithSongs(PlaylistsTBL playlist, string[] songs)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             AddPlaylist(playlist);
@@ -64,8 +67,9 @@ namespace BL
                 .Where(p => p != null && p.name == playlist.name).FirstOrDefault();
             if (currentPlaylist != null)
             {
-                SongsToPlaylistsBL.AddSongsToPlaylist(songs, currentPlaylist.id);
+                return SongsToPlaylistsBL.AddSongsToPlaylist(songs, currentPlaylist.id);
             }
+            return false;
         }
         public static bool UpdatePlaylistWithSongs(PlaylistsTBL playlist, string[] songs)
         {

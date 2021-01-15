@@ -56,7 +56,7 @@ namespace BL
                 }
             }
         }
-        public static void AddSongsToPlaylist(string[] songs, int? playlistId)
+        public static bool AddSongsToPlaylist(string[] songs, int? playlistId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try
@@ -73,9 +73,11 @@ namespace BL
                             newStp.songId = song.id;
                             et.SongsToPlaylistsTBL.Add(newStp);
                             et.SaveChanges();
+                            return true;
                         }
                     }
                 }
+                return false;
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -86,6 +88,7 @@ namespace BL
                         System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                     }
                 }
+                return false;
             }
         }
         public static void AddSongsToPlaylist(List<SongsToPlaylistsTBL> stpList)

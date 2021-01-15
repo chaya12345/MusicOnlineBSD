@@ -8,6 +8,7 @@ using DTO;
 using BL;
 using DAL;
 using System.Web.Http.Cors;
+using System.Web;
 
 namespace ServerMusicBSD.Controllers
 {
@@ -31,9 +32,30 @@ namespace ServerMusicBSD.Controllers
         {
             return PlaylistsBL.GetPlaylistByName(playlistName);
         }
-        public  void PostPlaylist([FromBody] PlaylistsTBL playlists)
+        public void PostPlaylist([FromBody] PlaylistsTBL playlists)
         {
             PlaylistsBL.AddPlaylist(playlists);
+        }
+        [HttpPost]
+        public bool AddPlaylist()
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            var httpRequest = HttpContext.Current.Request;
+            if (httpRequest.Files.Count > 0 && httpRequest.Params.Count > 0)
+            {
+                bool isSuccess = false;
+                playlistWithSongs pws = Newtonsoft.Json.JsonConvert.DeserializeObject<playlistWithSongs>(httpRequest.Params["playlist"]);
+                if (pws != null && pws.playlist != null && pws.songs != null)
+                {
+                    isSuccess = PlaylistsBL.AddPlaylistWithSongs(pws.playlist, pws.songs);
+                }
+                if (isSuccess)
+                {
+                    SavingFilesBL.SaveFile(httpRequest.Files[0], "images\\for_playlists");
+                }
+                return isSuccess;
+            }
+            return false;
         }
         [HttpPost]
         public void PostPlaylistWithSongs([FromBody] playlistWithSongs pws)

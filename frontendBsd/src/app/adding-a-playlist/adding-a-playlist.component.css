@@ -1,0 +1,63 @@
+.mat-stepper-vertical {
+    margin-top: 8px;
+}
+
+button {
+    font-weight: 400;
+    font-family: assistant;
+    font-size: 17px;
+}
+
+mat-form-field {
+    margin-top: 16px;
+    font-family: assistant !important;
+    display: flex;
+}
+
+.wrap-uploading-file {
+    height: 250px;
+    width: 350px;
+}
+
+.wrap-actions {
+    padding-block: 15px;
+}
+
+.wrap-actions button {
+    padding: 2px 18px;
+    margin-left: 10px;
+}
+
+.selectedSongs {
+    margin-block: 10px 20px;
+    line-height: 38px;
+    font-family: assistant;
+    font-size: 17px;
+}
+
+.selectedSongs p {
+    display: grid;
+    grid-template-columns: 150px 25px;
+    grid-column-gap: 10px;
+    align-items: baseline;
+}
+
+.selectedSongs > p:hover {
+    color: #fbc02d;
+}
+
+.selectedSongs > p > mat-icon {
+    font-size: 16px;
+    color: #00000080;
+    cursor: pointer;
+    transition: .4s;
+    opacity: 0.3;
+}
+
+.selectedSongs > p > mat-icon:hover {
+    opacity: 1;
+}
+
+button#addSong-button {
+    margin-bottom: 15px;
+}
