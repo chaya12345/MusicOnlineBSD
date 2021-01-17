@@ -33,6 +33,7 @@ import { ManagePlaylistComponent } from './manage-playlist/manage-playlist.compo
 import { ManageSingerComponent } from './manage-singer/manage-singer.component';
 import { ManageArtistComponent } from './manage-artist/manage-artist.component';
 import { ManageTagComponent } from './manage-tag/manage-tag.component';
+import { ManageParadeComponent } from './manage-parade/manage-parade.component';
 
 
 const routes: Routes = [{
@@ -104,7 +105,7 @@ const routes: Routes = [{
       component: ManagePlaylistComponent
     }, {
       path: "Parade",
-      component: ActivationParadeComponent
+      component: ManageParadeComponent
     }, {
       path: "Singer",
       component: ManageSingerComponent

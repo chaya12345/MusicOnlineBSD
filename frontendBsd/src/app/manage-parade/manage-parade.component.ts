@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-manage-parade',
+  selector: 'manage-parade',
   templateUrl: './manage-parade.component.html',
   styleUrls: ['./manage-parade.component.css']
 })
