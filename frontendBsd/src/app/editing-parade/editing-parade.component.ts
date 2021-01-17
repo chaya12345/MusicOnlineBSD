@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { MessageComponent } from '../message/message.component';
 import { CommonMessageService } from '../services/common-message.service';
@@ -11,8 +12,10 @@ import { ParadeService } from '../services/parade.service';
 })
 export class EditingParadeComponent implements OnInit {
 
+  @Output() onFinishParade:EventEmitter<boolean>=new EventEmitter<boolean>();
   isTowDays: boolean = false;
   activatedParade:boolean;
+
   constructor(private paradeService:ParadeService,private _snackBar:MatSnackBar,private commonMessage:CommonMessageService,
     public dialog: MatDialog) { 
     this.getParade();
@@ -52,6 +55,7 @@ export class EditingParadeComponent implements OnInit {
           this.openSnackBar(this.commonMessage.FINISHED_PARADE.SUCCESS);
           this.activatedParade = false;
           this.isTowDays = true;
+          this.onFinishParade.emit(true);
         }, err => this.commonMessage.FINISHED_PARADE.ERROR);
     } catch { this.commonMessage.FINISHED_PARADE.ERROR }
 
@@ -74,12 +78,14 @@ export class EditingParadeComponent implements OnInit {
       });
     } catch (err) { console.log(err); }
   }
+
   restartParade(): void {
     try {
       this.paradeService.restartParade().subscribe(suc => {
         this.openSnackBar(this.commonMessage.RESTART_PARADE.SUCCESS);
         this.isTowDays = false;
         this.activatedParade = true;
+        this.onFinishParade.emit(false);
       }, err => console.log(err));
     } catch (err) { console.log(err); }
   }

@@ -1,4 +1,4 @@
-<div class="wrap-editing-parade">
+<div class="wrap-editing-parade" *ngIf="activatedParade||isTowDays">
     <mini-title text="עריכת מצעד"></mini-title>
     <div class="finish-prade" *ngIf="activatedParade">
         <button mat-stroked-button (click)="openMessageDialog('האם אתה בטוח שברצונך לסיים את המצעד?','finishParade')">
