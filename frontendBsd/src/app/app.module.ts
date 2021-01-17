@@ -199,6 +199,7 @@ import { DeletingTagComponent } from './deleting-tag/deleting-tag.component';
 import { AddingAPlaylistComponent } from './adding-a-playlist/adding-a-playlist.component';
 import { AddingParadeComponent } from './adding-parade/adding-parade.component';
 import { ManageParadeComponent } from './manage-parade/manage-parade.component';
+import { EditingParadeComponent } from './editing-parade/editing-parade.component';
 
 @NgModule({
   declarations: [
@@ -384,7 +385,8 @@ import { ManageParadeComponent } from './manage-parade/manage-parade.component';
     DeletingTagComponent,
     AddingAPlaylistComponent,
     AddingParadeComponent,
-    ManageParadeComponent
+    ManageParadeComponent,
+    EditingParadeComponent
   ],
   imports: [
     BrowserModule,

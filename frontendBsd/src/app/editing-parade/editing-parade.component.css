@@ -1,0 +1,19 @@
+button {
+    height: 48px;
+    margin-left: auto;
+    padding: 0 40px;
+    font-family: fb Joker;
+    font-size: 19px;
+}
+
+button mat-icon {
+    margin-left: 10px;
+}
+
+div {
+    height: 100%;
+    width: 100%;
+    background-color: whitesmoke;
+    background-clip: content-box;
+    padding-bottom: 17px;
+}

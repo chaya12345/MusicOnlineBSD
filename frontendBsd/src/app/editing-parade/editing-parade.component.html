@@ -1,0 +1,13 @@
+<div class="wrap-editing-parade">
+    <mini-title text="עריכת מצעד"></mini-title>
+    <div class="finish-prade" *ngIf="activatedParade">
+        <button mat-stroked-button (click)="openMessageDialog('האם אתה בטוח שברצונך לסיים את המצעד?','finishParade')">
+            <mat-icon>pause_presentation</mat-icon>סיים מצעד
+        </button>
+    </div>
+    <div class="restart-parade" *ngIf="isTowDays">
+        <button mat-stroked-button (click)="openMessageDialog('האם אתה בטוח שברצונך להפעיל את המצעד מחדש?','restartParade')">
+            <mat-icon>slideshow</mat-icon>בטל סיום מצעד
+        </button>
+    </div>
+</div>
