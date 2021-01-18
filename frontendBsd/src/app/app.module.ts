@@ -200,6 +200,10 @@ import { AddingAPlaylistComponent } from './adding-a-playlist/adding-a-playlist.
 import { AddingParadeComponent } from './adding-parade/adding-parade.component';
 import { ManageParadeComponent } from './manage-parade/manage-parade.component';
 import { EditingParadeComponent } from './editing-parade/editing-parade.component';
+import { AddingArticleComponent } from './adding-article/adding-article.component';
+import { EditingArticleComponent } from './editing-article/editing-article.component';
+import { DeletingArticleComponent } from './deleting-article/deleting-article.component';
+import { ManageAArticleComponent } from './manage-aarticle/manage-aarticle.component';
 
 @NgModule({
   declarations: [
@@ -386,7 +390,11 @@ import { EditingParadeComponent } from './editing-parade/editing-parade.componen
     AddingAPlaylistComponent,
     AddingParadeComponent,
     ManageParadeComponent,
-    EditingParadeComponent
+    EditingParadeComponent,
+    AddingArticleComponent,
+    EditingArticleComponent,
+    DeletingArticleComponent,
+    ManageAArticleComponent
   ],
   imports: [
     BrowserModule,
