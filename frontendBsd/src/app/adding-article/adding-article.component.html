@@ -1,1 +1,82 @@
-<p>adding-article works!</p>
+<div class="wrap-adding-article">
+    <mat-vertical-stepper linear="true" #stepper dir="rtl">
+        <mat-step [stepControl]="articleHeadlines">
+            <form [formGroup]="articleHeadlines">
+                <ng-template matStepperLabel>כתיבת כותרות</ng-template>
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="כותרת" type="text" formControlName="title" />
+                    <mat-error *ngIf="articleHeadlines.controls.title.invalid">{{getTitleErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="כותרת משנה" type="text" formControlName="subtitle" />
+                    <mat-error *ngIf="articleHeadlines.controls.subtitle.invalid">{{getSubtitleErrorMessage()}}
+                    </mat-error>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="uploadingImage">
+            <form [formGroup]="uploadingImage">
+                <ng-template matStepLabel>העלאת תמונה</ng-template>
+                <uploading-image (onSelect)="selectImage($event)"></uploading-image>
+                <div>
+                    <button mat-button matStepperPreviuos>הקודם</button>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="articleTagging">
+            <form [formGroup]="articleTagging">
+                <ng-template matStepLabel>תיוג כתבה</ng-template>
+                <mat-form-field appearance="fill">
+                    <mat-label>בחר זמרים</mat-label>
+                    <mat-select formControlName="singers" multiple>
+                        <mat-option *ngFor="let singer of singers" [value]="singer.name">{{singer.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>בחר אומנים</mat-label>
+                    <mat-select formControlName="artists" multiple>
+                        <mat-option *ngFor="let artist og artists" [value]="artist.name">{{artist.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>בחר תגיות</mat-label>
+                    <mat-select formControlName="tags" multiple>
+                        <mat-option *ngFor="let tag of tags" [value]="tag.name">{{tag.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>הקודם</button>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <form>
+                <ng-template matStepLabel>תוכן הכתבה</ng-template>
+                <text-editor></text-editor>
+                <div>
+                    <button mat-button matStepperPrevious>הקודם</button>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <form>
+                <ng=template matStepLabel>אישור העלאת כתבה</ng>
+                    <div class="wrap-actions">
+                        <button mat-stroked-button (click)="stepper.reset();confirm()">
+                            <mat-icon>publish</mat-icon>אשר
+                        </button>
+                        <button mat-stroked-button (click)="stepper.reset()">אפס</button>
+                    </div>
+                    <div>
+                        <button mat-button matStepperPrevious>הקודם</button>
+                    </div>
+            </form>
+        </mat-step>
+    </mat-vertical-stepper>
+</div>

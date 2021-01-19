@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-manage-aarticle',
+  selector: 'manage-aarticle',
   templateUrl: './manage-aarticle.component.html',
   styleUrls: ['./manage-aarticle.component.css']
 })

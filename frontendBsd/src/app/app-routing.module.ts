@@ -34,6 +34,7 @@ import { ManageSingerComponent } from './manage-singer/manage-singer.component';
 import { ManageArtistComponent } from './manage-artist/manage-artist.component';
 import { ManageTagComponent } from './manage-tag/manage-tag.component';
 import { ManageParadeComponent } from './manage-parade/manage-parade.component';
+import { ManageAArticleComponent } from './manage-aarticle/manage-aarticle.component';
 
 
 const routes: Routes = [{
@@ -99,7 +100,7 @@ const routes: Routes = [{
       component: ManageSongComponent
     }, {
       path: "Article",
-      component: ManageArticleComponent
+      component: ManageAArticleComponent
     }, {
       path: "Playlist",
       component: ManagePlaylistComponent
