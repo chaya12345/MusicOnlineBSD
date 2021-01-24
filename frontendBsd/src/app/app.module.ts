@@ -204,6 +204,7 @@ import { AddingArticleComponent } from './adding-article/adding-article.componen
 import { EditingArticleComponent } from './editing-article/editing-article.component';
 import { DeletingArticleComponent } from './deleting-article/deleting-article.component';
 import { ManageAArticleComponent } from './manage-aarticle/manage-aarticle.component';
+import { MainSearchComponent } from './main-search/main-search.component';
 
 @NgModule({
   declarations: [
@@ -394,7 +395,8 @@ import { ManageAArticleComponent } from './manage-aarticle/manage-aarticle.compo
     AddingArticleComponent,
     EditingArticleComponent,
     DeletingArticleComponent,
-    ManageAArticleComponent
+    ManageAArticleComponent,
+    MainSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -427,7 +429,8 @@ import { ManageAArticleComponent } from './manage-aarticle/manage-aarticle.compo
     LogInComponent,
     MessageComponent,
     MailDetailsDialogComponent,
-    ReportDetailsComponent
+    ReportDetailsComponent,
+    MainSearchComponent
   ]
 })
 export class AppModule { }

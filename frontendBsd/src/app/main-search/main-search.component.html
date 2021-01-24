@@ -1,0 +1,30 @@
+<div class="wrap-dialog">
+    <h1 mat-dialog-title>חיפוש ראשי</h1>
+    <div mat-dialog-content>
+        <p>בחר קטגוריה ומילת חיפוש</p>
+        <form>
+
+            <button mat-stroked-button [matMenuTriggerFor]="animals">בחר תגית</button>
+            <mat-menu #animals="matMenu" xPosition="before">
+                <button mat-menu-item *ngFor="let category of list; let i = index"
+                [matMenuTriggerFor]="tagsMenu" [matMenuTriggerData]="{tags: category.list}">{{category.typeName}}</button>
+            </mat-menu>
+
+            <mat-menu #tagsMenu="matMenu" xPosition="before">
+                <ng-template matMenuContent let-tags="tags">
+                  <button mat-menu-item *ngFor="let tag of tags" (click)="updateSelecting(tag)">{{tag.name}}</button>
+                </ng-template>
+            </mat-menu>
+
+            <mat-form-field appearance="fill">
+                <input type="text" matInput placeholder="תגית" [formControl]="tagControl" required readonly>
+            </mat-form-field>
+
+            <div mat-dialog-actions>
+                <button class="action-button" mat-stroked-button color="warn" (click)="onNoClick()">בטל</button>
+                <button class="action-button" mat-flat-button color="warn" [disabled]="tagControl.invalid" (click)="search()">הפעל חיפוש</button>
+            </div>
+
+        </form>
+    </div>
+</div>

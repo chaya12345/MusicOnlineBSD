@@ -2,7 +2,7 @@
     <custom-tool-bar [isPublic]="true"></custom-tool-bar>
     <top [_title]="title" [subtitle]="subtitle" [img]="img"></top>
     <current-nav [navs]="navs"></current-nav>
-    <div style="padding: 30px 17vw;">
+    <div style="padding: 30px 17vw; min-height: 180vh;">
         <generic-area *ngFor="let item of items" [item]="item"></generic-area>
     </div>
     <footer></footer>

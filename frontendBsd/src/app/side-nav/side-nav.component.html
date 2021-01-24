@@ -1,4 +1,4 @@
-<div [class.open-menu]="open" [class.close-nav]="!show" class="wrap-side-nav" *ngIf="navigateStr!='שגיאה'">
+<div [class.open-menu]="open" [class.close-nav]="!show" class="wrap-side-nav">
     <button [matTooltip]="open ? 'סגור' : 'הרחב'"
             matTooltipClass="blue-tooltip tooltip"
             mat-icon-button
@@ -11,6 +11,10 @@
             [href]="topic.href">
                 <mat-icon>{{topic.icon}}</mat-icon>
                 <p>{{topic.title}}</p>
+            </a>
+            <a *ngIf="topics!=null&&topics.length>0" [class.close-menu-item]="!open" class="side-nav-item" (click)="openMainSearching()">
+                <mat-icon>{{searching.icon}}</mat-icon>
+                <p>{{searching.title}}</p>
             </a>
         </div>
     </div>
