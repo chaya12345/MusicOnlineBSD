@@ -12,13 +12,14 @@
 }
 
 .number-button {
-    font-family: fb Joker;
-    font-size: 21px;
     font-weight: 400;
     width: fit-content;
     min-width: 35px;
-    border: solid 1px #ececec;
     margin: 0 5px;
+}
+
+.number-button:hover {
+    background-color: #ececec;
 }
 
 .activeIndex .number-button {
@@ -34,4 +35,7 @@
 
 button {
     color: #000000c7 !important;
+    font-family: assistant;
+    font-weight: 300;
+    font-size: 17px;
 }

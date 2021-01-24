@@ -3,6 +3,7 @@
     width: 260px;
     transition: .4s;
     overflow: hidden;
+    padding: 10px;
 }
 
 .img {
@@ -20,8 +21,8 @@
     height: 25.5%;
     width: 100%;
     color: #000000c7;
-    font-family: fb Joker, calibri;
-    font-size: 21px;
+    font-family: assistant;
+    font-size: 18px;
     text-align: center;
     display: grid;
 }

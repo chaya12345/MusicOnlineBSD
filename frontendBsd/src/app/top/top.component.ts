@@ -15,7 +15,7 @@ export class TopComponent implements OnInit {
   @Input() icon?: string;
   @Input() notBlur?: boolean = false;
   imgFailed: boolean = false;
-  isImage:boolean = false;
+  isImage: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute) { }
 
@@ -48,20 +48,19 @@ export class TopComponent implements OnInit {
         document.getElementById("top-scroll").style.height = "55vh";
       }
     }
-    this.imageExists();
-    if (this.img == (null || undefined || "")||this.img == null || undefined || "")
+    let isImageFoundInterval = setInterval(() => {
+      var img = new Image();
+      img.src = this.img;
+      img.onerror = () => {
+        if (this.img != '' && this.img != null && this.img !== undefined) {
+          this.imgFailed = true;
+        }
+      }
+      img.onload = (() => clearInterval(isImageFoundInterval));
+    }, 1000);
+    if (this.img == (null || undefined || "") || this.img == null || undefined || "")
       this.isImage = false;
     else this.isImage = true;
-  }
-
-  imageExists() {
-    var img = new Image();
-    img.src = this.img;
-    img.onerror = () => {
-      if (this.img != '' && this.img != null && this.img !== undefined) {
-        this.imgFailed = true;
-      }
-    }
   }
 
 }

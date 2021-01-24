@@ -1,12 +1,6 @@
-textarea {
-    font-size: 19px !important;
-    font-family: fb Joker !important;
-}
-
-input {
-  font-size: 19px !important;
-  font-family: fb Joker !important;
-  padding-bottom: 5px !important;
+textarea, mat-form-field, button {
+  font-family: assistant;
+  font-size: 17px;
 }
 
 form {
@@ -37,11 +31,10 @@ mat-form-field.content {
 }
 
 button {
-  margin: 0 10px;
-  padding: 4px 0;
-  font-family: fb Joker;
-  font-size: 19px;
+  margin-inline: 13px;
+  padding-block: 1px;
   transition: .4s;
+  font-weight: 400;
 }
 
 button:first-of-type {

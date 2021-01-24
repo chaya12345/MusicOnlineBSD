@@ -1,6 +1,7 @@
 <div class="wrap-parade-item">
     <div class="img" [style.background-image]="'url('+img+')'"></div>
     <div class="song-details">
-        <p><span>{{title}}</span> >> {{subtitle}}</p>
+        <p *ngIf="subtitle!=''"><span>{{title}}</span> » {{subtitle}}</p>
+        <p *ngIf="subtitle==''">{{title}}</p>
     </div>
 </div>

@@ -5,8 +5,8 @@ mat-divider {
 .info {
     display: flex;
     padding: 0 7px;
-    font-family: fb Joker;
-    font-size: 21px;
+    font-family: assistant;
+    font-size: 18.5px;
 }
 
 .info > * {

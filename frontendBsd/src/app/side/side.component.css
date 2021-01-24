@@ -10,10 +10,10 @@
 div.title-section {
     padding: 15px;
     text-align: center;
-    font-family: fb Joker, calibri;
-    font-size: 21px;
+    font-family: assistant;
+    font-size: 19px;
     border-bottom: solid 1px #dcdcdc;
-    margin: 55px 0 35px;
+    margin: 45px 15px 20px;
     color: #929292;
 }
 

@@ -1,88 +1,3 @@
-/* .main-wrapper {
-    padding: 10px 10px 15px;
-    border: solid 1px #e6e5e5;
-    border-radius: 4px;
-    min-height: 305px;
-}
-
-.wrapper {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    height: 215px;
-    width: 387px;
-    overflow: hidden;
-}
-
-.wrap-popular-playlist {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    height: 100%;
-    width: 100%;
-    background-color: white;
-    margin: auto;
-    background-size: cover;
-    background-position: center;
-    transition: .6s;
-    display: flex;
-    cursor: pointer;
-    animation-duration: .6s;
-    animation-timing-function: ease linear;
-}
-
-.wrapper:hover .wrap-popular-playlist {
-    transform: scale(1.1);
-    display: flex;
-}
-
-@keyframes bigger {
-    from {
-        transform: scale(0.85);
-    }
-    to {
-        transform: scale(1);
-    }
-}
-
-.header-playlist {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    height: 215px;
-    width: 387px;
-    position: absolute;
-    background-color: #00000052;
-    transition: .4s;
-    z-index: 1;
-    display: flex;
-}
-
-.text-container {
-    display: grid;
-    grid-template-columns: auto fit-content(50%);
-    padding-top: 15px;
-    padding-left: 10px;
-}
-
-.text {
-    color: #252525;
-    font-family: fb Joker;
-    font-size: 21px;
-    font-weight: bold;
-}
-
-.text > span {
-    font-size: 19px;
-    font-weight: 400;
-}
-
-.rating {
-    display: flex;
-    color: #fbc02d;
-    margin-right: 15px;
-}
-
-.rating span {
-    margin-left: 10px;
-} */
 .wrap-playlist {
     height: 260px;
     width: 290px;
@@ -101,14 +16,15 @@ a.img {
 
 .wrap-details {
     display: grid;
-    grid-template-columns: auto fit-content(50%);
+    /* grid-template-columns: auto fit-content(50%); */
+    grid-template-rows: 48px fit-content(40%);
     grid-column-gap: 10px;
     min-height: 46px;
 }
 
 p.text {
-    font-family: fb Joker;
-    font-size: 21px;
+    font-family: assistant;
+    font-size: 18px;
     font-weight: bold;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -119,14 +35,35 @@ p.text {
 
 p.text span {
     font-weight: 400;
-    font-size: 19px;
+    font-size: 17px;
+}
+
+.wrap-playlist:hover .rating {
+    height: fit-content !important;
+    padding-block: 5px;
 }
 
 .rating {
     display: flex;
-    color: #333;
+    font-size: 15.5px;
+    font-family: assistant;
+    align-items: center;
+    margin-top: 5px;
+    background-color: #d6d6d6;
+    color: white;
+    border-radius: 0 0 4px 4px;
+    height: 0 !important;
+    transition: .1s;
+}
+
+.rating span {
+    margin-right: auto;
 }
 
 .rating mat-icon {
     margin-right: 6px;
+    margin-left: auto;
+    font-size: 21px;
+    height: fit-content;
+    width: fit-content;
 }

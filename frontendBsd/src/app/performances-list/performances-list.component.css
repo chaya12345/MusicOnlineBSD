@@ -7,8 +7,6 @@
     flex-wrap: wrap;
     margin: 30px 11vw;
     padding: 0px 3vw;
-    border-right: solid 1px #eaeaea;
-    border-left: solid 1px #eaeaea;
     min-height: 2000px;
 }
 
@@ -18,5 +16,5 @@
 }
 
 .wrap-performance {
-    margin-block: 25px;
+    margin-block: 38px;
 }

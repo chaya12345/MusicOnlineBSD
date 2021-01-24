@@ -75,10 +75,10 @@ div.content div {
 }
 
 .content p {
-    font-family: fb Joker, calibri;
+    font-family: assistant;
     line-height: 34px;
-    font-size: 32px;
-    font-weight: 100;
+    font-size: 28px;
+    font-weight: 300;
 }
 
 .tool-box {
@@ -114,8 +114,8 @@ div.content div {
     margin: 6px 15px;
 }
 
-.bigger-font {
-    font-size: 37px !important;
+.date-style {
+    font-weight: 100;
 }
 
 .content h3 mat-icon {

@@ -1,6 +1,6 @@
 .wrap-generic-area {
-    height: 275px;
-    margin: 30px 8vw 0;
+    height: 253px;
+    margin: 40px 9vw 0;
     display: grid;
     grid-template-columns: fit-content(50%) auto;
     border: solid 1px #e6e5e5;
@@ -70,8 +70,8 @@ div.content {
 
 .content h3 {
     font-family: assistant;
-    font-size: 19px;
-    margin-bottom: 12px;
+    font-size: 20.5px;
+    margin-bottom: 4px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -83,13 +83,14 @@ div.content {
     font-family: assistant;
     font-size: 18px;
     line-height: 30px;
-    margin-top: 12px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     padding-top: 3px;
+    border-top: solid 1px #e0e0e0;
+    margin-top: 9px;
 }
 
 .content span {
@@ -103,17 +104,21 @@ div.content {
 }
 
 .type-item {
-    background-color: #2196f3cc;
     color: white;
     width: fit-content;
-    padding: 5px 10px;
-    min-width: 85px;
+    padding: 3px 5px;
     text-align: center;
     border-radius: 4px;
     margin-right: auto;
     display: flex;
+    background-color: #a5a5a5;
 }
 
 .type-item mat-icon {
     margin-right: 6px;
+}
+
+.type-item span {
+    font-weight: 400;
+    font-size: 17px;
 }

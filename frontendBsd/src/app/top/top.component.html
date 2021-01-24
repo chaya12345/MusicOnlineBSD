@@ -7,7 +7,7 @@
             <div class="current-content">
                 <h3><mat-icon *ngIf="icon!=null&&icon!=undefined&&icon!=''">{{icon}}</mat-icon>{{_title||'טוען...'}}</h3>
                 <p *ngIf="subtitle!=null&&subtitle!=undefined">{{subtitle}}</p>
-                <p *ngIf="date!=null&&date!=undefined" class="bigger-font">{{date | date: 'd/M/yyyy H:mm'}}</p>
+                <p *ngIf="date!=null&&date!=undefined" class="date-style">{{date | date: 'd/M/yyyy H:mm'}}</p>
             </div>
         </div>
     </div>

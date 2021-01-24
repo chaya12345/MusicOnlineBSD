@@ -675,5 +675,6 @@ div.angular-editor {
     background-color: transparent !important;
     font-family: assistant !important;
     font-weight: 400;
-    font-size: 17.5px !important;
+    font-size: 16.5px !important;
+    border: solid 1px #e0e0e0;
 }

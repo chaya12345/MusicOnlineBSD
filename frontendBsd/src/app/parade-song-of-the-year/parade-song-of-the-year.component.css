@@ -11,7 +11,7 @@
 
 .wrap-song {
     margin: 15px 13px;
-    border: solid 2px #0000000f;
+    border: solid 1px #e0e0e0;
     border-radius: 4px;
     transition: .4s;
     display: grid;
