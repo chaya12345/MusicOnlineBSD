@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-editing-article',
+  selector: 'editing-article',
   templateUrl: './editing-article.component.html',
   styleUrls: ['./editing-article.component.css']
 })

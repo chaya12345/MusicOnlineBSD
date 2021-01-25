@@ -5,7 +5,7 @@
     <mat-form-field appearance="fill">
         <mat-label>בחר קטגוריה</mat-label>
         <mat-select [(value)]="selected">
-            <mat-option *ngFor="let category of categories" [value]="category.value" [routerLink]="getRouter(category.category)">
+            <mat-option *ngFor="let category of categories" [value]="category.value" [routerLink]="getRouter(category.type)">
                 {{category.value}}
             </mat-option>
         </mat-select>

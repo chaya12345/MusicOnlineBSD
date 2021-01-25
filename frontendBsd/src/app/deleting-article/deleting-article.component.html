@@ -1,1 +1,33 @@
-<p>deleting-article works!</p>
+<div class="wrap-deleting-article">
+    <mat-vertical-stepper linear="true" #stepper dir="rtl">
+        <mat-step [stepControl]="articleFormGroup">
+            <form [formGroup]="articleFormGroup">
+                <ng-template matStepLabel>בחר כתבה</ng-template>
+                <mat-form-field appearance="fill">
+                    <mat-label>שם כתבה</mat-label>
+                    <input type="text" matInput formControlName="article" [matAutocomplete]="autoArticles" />
+                    <mat-autocomplete autoActiveFirstOption #autoArticles="matAutocomplete" (optionSelected)="selectingArticle($event.option.value)">
+                        <mat-option *ngFor="let article of filteredArticles | async" [value]="article.title">
+                            {{article.title}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <form>
+                <ng-template matStepLabel>אישור מחיקה</ng-template>
+                <div class="wrap-actions">
+                    <button mat-stroked-button (click)="confirm()">מחק כתבה</button>
+                    <button mat-stroked-button (click)="stepper.reset()">אפס</button>
+                </div>
+                <div>
+                    <button mat-button matStepperPrevious>הקודם</button>
+                </div>
+            </form>
+        </mat-step>
+    </mat-vertical-stepper>
+</div>

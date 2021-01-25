@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+export class Category {
+  value: string;
+  type: eCategory;
+}
+
 export enum eCategory { Song, Article, Playlist, Parade, Singer, Artist, Tag }
 
 @Component({
@@ -9,27 +14,27 @@ export enum eCategory { Song, Article, Playlist, Parade, Singer, Artist, Tag }
 })
 export class CrudActionsComponent implements OnInit {
 
-  categories = [{
+  categories: Category[] = [{
     value: "שיר",
-    category: eCategory.Song
+    type: eCategory.Song
   }, {
     value: "כתבה",
-    categoty: eCategory.Article
+    type: eCategory.Article
   }, {
     value: "פלייליסט",
-    category: eCategory.Playlist
+    type: eCategory.Playlist
   }, {
     value: "מצעד",
-    category: eCategory.Parade
+    type: eCategory.Parade
   }, {
     value: "זמר",
-    category: eCategory.Singer
+    type: eCategory.Singer
   }, {
     value: "אומן",
-    category: eCategory.Artist
+    type: eCategory.Artist
   }, {
     value: "תגית",
-    category: eCategory.Tag
+    type: eCategory.Tag
   }];
   selected = {
     value: "שיר",
@@ -41,8 +46,8 @@ export class CrudActionsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getRouter(category: eCategory): string {
-    return eCategory[category];
+  getRouter(type: eCategory): string {
+    return eCategory[type];
   }
 
 }

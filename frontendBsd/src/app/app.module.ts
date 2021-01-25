@@ -203,9 +203,9 @@ import { EditingParadeComponent } from './editing-parade/editing-parade.componen
 import { AddingArticleComponent } from './adding-article/adding-article.component';
 import { EditingArticleComponent } from './editing-article/editing-article.component';
 import { DeletingArticleComponent } from './deleting-article/deleting-article.component';
-import { ManageAArticleComponent } from './manage-aarticle/manage-aarticle.component';
 import { MainSearchComponent } from './main-search/main-search.component';
 import { AddingASongComponent } from './adding-a-song/adding-a-song.component';
+import { AddingAArticleComponent } from './adding-a-article/adding-a-article.component';
 
 @NgModule({
   declarations: [
@@ -396,9 +396,9 @@ import { AddingASongComponent } from './adding-a-song/adding-a-song.component';
     AddingArticleComponent,
     EditingArticleComponent,
     DeletingArticleComponent,
-    ManageAArticleComponent,
     MainSearchComponent,
-    AddingASongComponent
+    AddingASongComponent,
+    AddingAArticleComponent
   ],
   imports: [
     BrowserModule,

@@ -28,13 +28,12 @@ import { ReportsBoardComponent } from './reports-board/reports-board.component';
 import { ActivationParadeComponent } from './activation-parade/activation-parade.component';
 import { DeletingAreaComponent } from './deleting-area/deleting-area.component';
 import { ManageSongComponent } from './manage-song/manage-song.component';
-import { ManageArticleComponent } from './manage-article/manage-article.component';
 import { ManagePlaylistComponent } from './manage-playlist/manage-playlist.component';
 import { ManageSingerComponent } from './manage-singer/manage-singer.component';
 import { ManageArtistComponent } from './manage-artist/manage-artist.component';
 import { ManageTagComponent } from './manage-tag/manage-tag.component';
 import { ManageParadeComponent } from './manage-parade/manage-parade.component';
-import { ManageAArticleComponent } from './manage-aarticle/manage-aarticle.component';
+import { ManageArticleComponent } from './manage-article/manage-article.component';
 
 
 const routes: Routes = [{
@@ -103,7 +102,7 @@ const routes: Routes = [{
       component: ManageSongComponent
     }, {
       path: "Article",
-      component: ManageAArticleComponent
+      component: ManageArticleComponent
     }, {
       path: "Playlist",
       component: ManagePlaylistComponent

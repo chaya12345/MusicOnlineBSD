@@ -3,14 +3,8 @@
         <mat-step [stepControl]="selectArtist">
             <form [formGroup]="selectArtist">
                 <ng-template matStepLabel>בחר אומן</ng-template>
-                <!-- <mat-form-field appearance="fill">
+                <mat-form-field appearance="fill">
                     <mat-label>שם אומן</mat-label>
-                    <mat-select formControlName="artist">
-                        <mat-option #matOption *ngFor="let artist of artistsList" value="artist.name" (onSelectionChange)="selectingArtist(artist)">{{artist.name}} </mat-option>
-                    </mat-select>
-                </mat-form-field> -->
-                <mat-form-field>
-                    <mat-label>בחר אומן</mat-label>
                     <input type="text" matInput formControlName="artist" [matAutocomplete]="autoArtists" />
                     <mat-autocomplete autoActiveFirstOption #autoArtists="matAutocomplete" (optionSelected)="selectingArtist($event.option.value)">
                         <mat-option *ngFor="let artist of filteredArtists | async" [value]="artist.name">
@@ -27,11 +21,11 @@
             <form>
                 <ng-template matStepLabel>אישור מחיקה</ng-template>
                 <div class="wrap-actions">
-                    <button mat-sroked-buttom type="submit" (click)="stepper.reset();confirm()">מחק אומן</button>
-                    <button mat-buttom (click)="stepper.reset()">אפס</button>
+                    <button mat-stroked-button (click)="confirm()">מחק אומן</button>
+                    <button mat-stroked-button (click)="stepper.reset()">אפס</button>
                 </div>
                 <div>
-                    <button mat-buttom matStepperPrevious>הקודם</button>
+                    <button mat-button matStepperPrevious>הקודם</button>
                 </div>
             </form>
         </mat-step>

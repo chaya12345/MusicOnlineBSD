@@ -67,11 +67,11 @@ export class DeletingArtistComponent implements OnInit {
     this.filteredArtists = this.selectArtist.controls.artist.valueChanges
       .pipe(
         startWith(''),
-        map(value =>this._filterArtists(value)));
+        map(value => this._filterArtists(value)));
   }
 
   _filterArtists(value: string): Artist[] {
     const filterValue = value.toLocaleLowerCase();
-    return this.artistsList.filter(artist=>artist.name.toLocaleLowerCase().includes(filterValue));
+    return this.artistsList.filter(artist => artist.name.toLocaleLowerCase().includes(filterValue));
   }
 }
