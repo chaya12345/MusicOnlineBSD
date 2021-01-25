@@ -1,0 +1,46 @@
+.mat-stepper-vertical {
+    margin-top: 8px;
+}
+
+button {
+    font-weight: 400;
+    font-family: assistant;
+    font-size: 17px;
+}
+
+form {
+    width: fit-content;
+    min-width: 550px;
+}
+
+mat-form-field {
+    margin-top: 16px;
+    font-family: assistant !important;
+    display: block;
+}
+
+.wrap-uploading-file {
+    height: 250px;
+    width: 720px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 20px;
+}
+
+.wrap-actions {
+    padding-block: 15px;
+}
+
+.wrap-actions button {
+    padding: 2px 18px;
+    margin-left: 10px;
+}
+
+.wrap-checkbox {
+    margin: 5px 5px 15px;
+}
+
+mat-checkbox {
+    font-family: assistant;
+    font-size: 17px;
+}

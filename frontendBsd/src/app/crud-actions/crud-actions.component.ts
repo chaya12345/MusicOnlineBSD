@@ -31,6 +31,10 @@ export class CrudActionsComponent implements OnInit {
     value: "תגית",
     category: eCategory.Tag
   }];
+  selected = {
+    value: "שיר",
+    category: eCategory.Song
+  }
 
   constructor() { }
 

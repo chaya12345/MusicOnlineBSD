@@ -205,6 +205,7 @@ import { EditingArticleComponent } from './editing-article/editing-article.compo
 import { DeletingArticleComponent } from './deleting-article/deleting-article.component';
 import { ManageAArticleComponent } from './manage-aarticle/manage-aarticle.component';
 import { MainSearchComponent } from './main-search/main-search.component';
+import { AddingASongComponent } from './adding-a-song/adding-a-song.component';
 
 @NgModule({
   declarations: [
@@ -396,7 +397,8 @@ import { MainSearchComponent } from './main-search/main-search.component';
     EditingArticleComponent,
     DeletingArticleComponent,
     ManageAArticleComponent,
-    MainSearchComponent
+    MainSearchComponent,
+    AddingASongComponent
   ],
   imports: [
     BrowserModule,

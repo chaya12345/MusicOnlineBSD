@@ -96,6 +96,9 @@ const routes: Routes = [{
     path: "content-management",
     component: ContentManagementComponent, 
     children: [{
+      path: "",
+      component: ManageSongComponent
+    }, {
       path: "Song",
       component: ManageSongComponent
     }, {

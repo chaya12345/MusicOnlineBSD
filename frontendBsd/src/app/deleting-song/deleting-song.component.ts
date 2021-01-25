@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -15,41 +15,48 @@ import { SongService } from '../services/song.service';
 })
 export class DeletingSongComponent implements OnInit {
 
+  @ViewChild("autoSongs") autoSongs: ElementRef;
+
   filteredSongs: Observable<Song[]>;
   songsList: Song[] = [];
-  songsControl = new FormControl();
-  SelectedSong:Song;
+  SelectedSong: Song;
+  songFormGroup: FormGroup;
 
-  constructor(private songService:SongService,public dialog: MatDialog,private _snackBar: MatSnackBar,
-     private cmService: CommonMessageService) {
-    this.songsControl = new FormControl();
+  constructor(private songService: SongService, public dialog: MatDialog, private _snackBar: MatSnackBar,
+    private cmService: CommonMessageService) {
+    this.songFormGroup = new FormGroup({
+      song: new FormControl("", Validators.required)
+    });
+    this.getSongs();
+  }
+
+  getSongs() {
     try {
-      this.songService.getSongs().subscribe(songs => { this.songsList = songs; this.updateSongsList(); }, err => { console.log(err); });
+      this.songService.getSongs().subscribe(songs => {
+        this.songsList = songs; this.updateSongsList();
+      }, err => { console.log(err); });
     }
     catch (err) { console.log(err); }
-   }
+  }
 
   ngOnInit(): void {
   }
 
-  
+  confirm(): void {
+    this.openMessageDialog("האם אתה בטוח שברצונך למחוק את השיר?");
+  }
+
   public updateSongsList(): void {
-    this.filteredSongs = this.songsControl.valueChanges
+    this.filteredSongs = this.songFormGroup.controls.song.valueChanges
       .pipe(
         startWith(''),
         map(value => this._filterSongs(value))
       );
   }
+
   public _filterSongs(value: string): Song[] {
     const filterValue = value.toLowerCase();
     return this.songsList.filter(song => song.name.toLowerCase().includes(filterValue));
-  }
-  songSearch(): void {
-    this.songsList.forEach(song => {
-      if (song.name == (document.getElementById("song-search") as HTMLInputElement).value) {
-        window.location.href = "song?songId=" + song.id;
-      }
-    });
   }
 
   onSelectionChange(event): void {
@@ -75,10 +82,13 @@ export class DeletingSongComponent implements OnInit {
 
   deleteSong() {
     try {
-      this.songService.deleteSong(this.SelectedSong.id).subscribe(suc => this.openSnackBar(this.cmService.DELETE_ITEM.SUCCESS),
-        err => this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
+      this.songService.deleteSong(this.SelectedSong.id)
+      .subscribe(res => this.openSnackBar(res ? this.cmService.DELETE_ITEM.SUCCESS : 
+        this.cmService.DELETE_ITEM.ERROR),
+        () => this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
     } catch (err) { console.log(err); }
   }
+
   openSnackBar(message: string) {
     this._snackBar.open(message, '', {
       duration: 2000,

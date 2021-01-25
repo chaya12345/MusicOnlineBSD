@@ -1,1 +1,29 @@
-<p>deleting-playlist works!</p>
+<div class="wrap-editing-playlist">
+    <mat-vertical-stepper linear="true" #stepper dir="rtl">
+        <mat-step [stepControl]="playlistFormGroup">
+            <form [formGroup]="playlistFormGroup">
+                <ng-template matStepLabel>בחר פלייליסט</ng-template>
+                <mat-form-field appearance="fill">
+                  <mat-label>שם פלייליסט</mat-label>
+                  <input type="text" matInput [matAutocomplete]="autoPlaylists" formControlName="playlist">
+                  <mat-autocomplete autoActiveFirstOption #autoPlaylists="matAutocomplete" (optionSelected)="updateSelectedPlaylist($event.option.value)">
+                          <mat-option *ngFor="let playlist of filteredPlaylists | async" [value]="playlist.name">{{playlist.name}}</mat-option>
+                  </mat-autocomplete>
+              </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>אישור מחיקה</ng-template>
+            <div class="wrap-actions">
+                <button mat-stroked-button (click)="confirm()">מחק פלייליסט</button>
+                <button mat-stroked-button (click)="stepper.reset()">אפס</button>
+            </div>
+            <div>
+                <button mat-button matStepperPrevious>הקודם</button>
+            </div>
+        </mat-step>
+    </mat-vertical-stepper>
+</div>

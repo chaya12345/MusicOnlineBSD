@@ -30,13 +30,13 @@ export class PlaylistsService {
   public addPlaylist(playlists: Playlists): Observable<any> {
     return this.httpClient.post(this.baseUrl + "PostPlaylist", playlists);
   }
-  public addFullPlaylist(playlistWithSong: playlistWithSongs, imageFile: File): Observable<Boolean> {
+  public addFullPlaylist(playlistWithSong: playlistWithSongs, imageFile: File, isEdit: boolean = false): Observable<Boolean> {
     const formData: FormData = new FormData();
     formData.append("playlist", JSON.stringify(playlistWithSong));
     formData.append("image", imageFile, imageFile.name);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Content-Type', 'multipart/form-data');
-    return this.httpClient.post<boolean>(this.baseUrl + "AddPlaylist", formData);
+    return this.httpClient.post<boolean>(this.baseUrl + "AddPlaylist?isEdit=" + isEdit, formData);
   }
   public addPlaylistWithSongs(playlistsSystem: Playlists, songs: string[]): Observable<any> {
     let pws = new playlistWithSongs();

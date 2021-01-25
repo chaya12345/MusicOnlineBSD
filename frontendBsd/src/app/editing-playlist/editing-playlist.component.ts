@@ -142,22 +142,23 @@ export class EditingPlaylistComponent implements OnInit {
   }
 
   confirm(): void {
-    // try {
-    //   let pws: playlistWithSongs = new playlistWithSongs();
-    //   pws.playlist = new Playlists;
-    //   pws.playlist.name = this.detailsFormGroup.controls.name.value;
-    //   pws.playlist.title = this.detailsFormGroup.controls.title.value;
-    //   pws.playlist.image = this.detailsFormGroup.controls.image.value;
-    //   pws.songs = [];
-    //   let songs: string[] = [];
-    //   this.selectedSongs.forEach(song => {
-    //     songs.push(song.name);
-    //   });
-    //   pws.songs = songs;
-    //   this.playlistService.updatePlaylistWithSongs(pws)//, this.imageFile
-    //     .subscribe(res => this.openSnackBar(res ? this.commonMessage.PLAYLIST.ADD.SUCCESS :
-    //       this.commonMessage.PLAYLIST.ADD.FAIL));
-    // } catch { this.openSnackBar(this.commonMessage.PLAYLIST.ADD.ERROR); }
+    try {
+      let pws: playlistWithSongs = new playlistWithSongs();
+      pws.playlist = new Playlists();
+      pws.playlist.id = this.selectedPlaylist.id;
+      pws.playlist.name = this.detailsFormGroup.controls.name.value;
+      pws.playlist.title = this.detailsFormGroup.controls.title.value;
+      pws.playlist.image = this.detailsFormGroup.controls.image.value;
+      pws.songs = [];
+      let songs: string[] = [];
+      this.selectedSongs.forEach(song => {
+        songs.push(song.name);
+      });
+      pws.songs = songs;
+      this.playlistService.addFullPlaylist(pws, this.imageFile, true)
+        .subscribe(res => this.openSnackBar(res ? this.commonMessage.PLAYLIST.ADD.SUCCESS :
+          this.commonMessage.PLAYLIST.ADD.FAIL));
+    } catch { this.openSnackBar(this.commonMessage.PLAYLIST.ADD.ERROR); }
   }
 
   public updateSongs(): void {

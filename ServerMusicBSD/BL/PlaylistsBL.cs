@@ -59,15 +59,22 @@ namespace BL
                 return false;
             }
         }
-        public static bool AddPlaylistWithSongs(PlaylistsTBL playlist, string[] songs)
+        public static bool AddPlaylistWithSongs(PlaylistsTBL playlist, string[] songs, bool isEdit)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            AddPlaylist(playlist);
-            PlaylistsTBL currentPlaylist = et.PlaylistsTBL
-                .Where(p => p != null && p.name == playlist.name).FirstOrDefault();
-            if (currentPlaylist != null)
+            if (!isEdit)
             {
-                return SongsToPlaylistsBL.AddSongsToPlaylist(songs, currentPlaylist.id);
+                AddPlaylist(playlist);
+                PlaylistsTBL currentPlaylist = et.PlaylistsTBL
+                    .Where(p => p != null && p.name == playlist.name).FirstOrDefault();
+                if (currentPlaylist != null)
+                {
+                    return SongsToPlaylistsBL.AddSongsToPlaylist(songs, currentPlaylist.id);
+                }
+            }
+            else
+            {
+                UpdatePlaylistWithSongs(playlist, songs);
             }
             return false;
         }

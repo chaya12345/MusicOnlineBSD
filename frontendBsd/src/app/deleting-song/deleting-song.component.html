@@ -1,12 +1,31 @@
 <div class="warp-deleting-song">
-    <mat-form-field appearance="outline">
-        <mat-label>שם שיר</mat-label>
-        <input (keyup.enter)="songSearch()" type="text" matInput [formControl]="songsControl" [matAutocomplete]="autoSongs">
-        <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete" (optionSelected)="onSelectionChange($event)">
-            <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name"></mat-option>
-        </mat-autocomplete>
-    </mat-form-field>
-    <button mat-stroked-button (click)="openMessageDialog('האם אתה בטוח שברצונך למחוק את השיר?')">
-        <mat-icon>delete</mat-icon>מחק שיר
-    </button>
+    <mat-vertical-stepper linear="true" #stepper dir="rtl">
+        <mat-step [stepControl]="songFormGroup" color="warn">
+            <form [formGroup]="songFormGroup">
+                <ng-template matStepLabel>בחר שיר</ng-template>
+                <mat-form-field appearance="fill">
+                    <mat-label>שם שיר</mat-label>
+                    <input type="text" matInput formControlName="song" [matAutocomplete]="autoSongs">
+                    <mat-autocomplete autoActiveFirstOption #autoSongs="matAutocomplete"
+                        (optionSelected)="onSelectionChange($event)">
+                        <mat-option *ngFor="let song of filteredSongs | async" [value]="song.name">{{song.name}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>אישור מחיקה</ng-template>
+            <div class="wrap-actions">
+                <button mat-stroked-button (click)="confirm()">מחק שיר</button>
+                <button mat-stroked-button (click)="stepper.reset()">אפס</button>
+            </div>
+            <div>
+                <button mat-button matStepperPrevious>הקודם</button>
+            </div>
+        </mat-step>
+    </mat-vertical-stepper>
 </div>

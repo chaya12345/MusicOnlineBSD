@@ -37,19 +37,18 @@ namespace ServerMusicBSD.Controllers
             PlaylistsBL.AddPlaylist(playlists);
         }
         [HttpPost]
-        public bool AddPlaylist()
+        public bool AddPlaylist(bool isEdit = false)
         {
-            HttpResponseMessage response = new HttpResponseMessage();
             var httpRequest = HttpContext.Current.Request;
-            if (httpRequest.Files.Count > 0 && httpRequest.Params.Count > 0)
+            if (httpRequest.Params.Count > 0)
             {
                 bool isSuccess = false;
                 playlistWithSongs pws = Newtonsoft.Json.JsonConvert.DeserializeObject<playlistWithSongs>(httpRequest.Params["playlist"]);
                 if (pws != null && pws.playlist != null && pws.songs != null)
                 {
-                    isSuccess = PlaylistsBL.AddPlaylistWithSongs(pws.playlist, pws.songs);
+                    isSuccess = PlaylistsBL.AddPlaylistWithSongs(pws.playlist, pws.songs, isEdit);
                 }
-                if (isSuccess)
+                if (httpRequest.Files.Count > 0 && isSuccess)
                 {
                     SavingFilesBL.SaveFile(httpRequest.Files[0], "images\\for_playlists");
                 }
@@ -58,13 +57,13 @@ namespace ServerMusicBSD.Controllers
             return false;
         }
         [HttpPost]
-        public void PostPlaylistWithSongs([FromBody] playlistWithSongs pws)
-        {
-            if (pws != null && pws.playlist != null && pws.songs != null)
-            {
-                PlaylistsBL.AddPlaylistWithSongs(pws.playlist, pws.songs);
-            }
-        }
+        //public void PostPlaylistWithSongs([FromBody] playlistWithSongs pws, ise)
+        //{
+        //    if (pws != null && pws.playlist != null && pws.songs != null)
+        //    {
+        //        PlaylistsBL.AddPlaylistWithSongs(pws.playlist, pws.songs, isEdit);
+        //    }
+        //}
         [HttpPut]
         public bool UpdatePlaylistWithSongs([FromBody] playlistWithSongs pws)
         {

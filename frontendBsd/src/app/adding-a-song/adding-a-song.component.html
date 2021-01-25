@@ -1,0 +1,50 @@
+<div class="wrap-adding-singer">
+    <mat-vertical-stepper linear="true" #stepper dir="rtl">
+        <mat-step [stepControl]="detailsFormGroup">
+            <form [formGroup]="detailsFormGroup">
+                <ng-template matStepLabel>הכנס פרטי שיר</ng-template>
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="שם שיר" formControlName="name" required>
+                    <mat-error *ngIf="detailsFormGroup.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="כותרת" formControlName="title" required>
+                    <mat-error *ngIf="detailsFormGroup.controls.title.invalid">{{getTitleErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <textarea matInput placeholder="כותרת משנה" formControlName="subtitle" required></textarea>
+                    <mat-error *ngIf="detailsFormGroup.controls.subtitle.invalid">{{getSubtitleErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <div class="wrap-checkbox">
+                    <mat-checkbox formControlName="isPerformance" color="primary">הופעה</mat-checkbox>
+                </div>
+                <div>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="filesFormGroup">
+            <form [formGroup]="filesFormGroup">
+                <ng-template matStepLabel>העלאת קבצים</ng-template>
+                <div class="wrap-uploading-file">
+                    <uploading-image (onSelect)="selectImage($event)"></uploading-image>
+                    <uploading-audio-video-file (onSelect)="selectSong($event)"></uploading-audio-video-file>
+                </div>
+                <div>
+                    <button mat-button matStepperPrevious>הקודם</button>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>אישור הוספה</ng-template>
+            <div class="wrap-actions">
+                <button mat-stroked-button (click)="confirm()">הוסף שיר</button>
+                <button mat-stroked-button (click)="stepper.reset()">אפס</button>
+            </div>
+            <div>
+                <button mat-button matStepperPrevious>הקודם</button>
+            </div>
+        </mat-step>
+    </mat-vertical-stepper>
+</div>
