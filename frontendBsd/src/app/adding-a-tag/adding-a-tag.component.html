@@ -24,7 +24,7 @@
                     <input type="text" matInput formControlName="type" [matAutocomplete]="autoTypes">
                     <mat-autocomplete autoActiveFirstOption #autoTypes="matAutocomplete" (optionSelected)="saveSelectedType($event.option.value)">
                         <mat-option *ngFor="let type of filteredTypes | async" [value]="type.name">
-                            <p>{{type.name}}
+                            <p>{{type.name}}</p>
                         </mat-option>
                     </mat-autocomplete>
                 </mat-form-field>

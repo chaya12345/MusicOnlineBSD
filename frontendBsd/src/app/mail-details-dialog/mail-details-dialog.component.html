@@ -2,7 +2,7 @@
     <h1 mat-dialog-title>פרטי חשבון גוגל</h1>
     <div mat-dialog-content>
         <p>נא הכנס את פרטי החשבון שלך לשליחת עדכונים למנויים</p>
-        <form [formGroup]="detailsMailForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="detailsMailForm">
 
             <mat-form-field appearance="fill">
                 <input type="text" matInput placeholder="הכנס שם משתמש" formControlName="username" required>
@@ -24,7 +24,7 @@
 
             <div mat-dialog-actions>
                 <button class="action-button" mat-stroked-button color="warn" (click)="onNoClick()">בטל</button>
-                <button class="action-button" mat-flat-button color="warn" type="submit">שלח</button>
+                <button class="action-button" mat-flat-button color="warn" (click)="send()">שלח</button>
             </div>
 
         </form>

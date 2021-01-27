@@ -33,7 +33,7 @@ export class MailDetailsDialogComponent implements OnInit {
     this.dialogRef.close(this.data);
   }
 
-  onSubmit(): void {
+  send(): void {
     if (this.detailsMailForm.valid) {
       this.data.mailDetails=new MailDetails();
       this.data.mailDetails.username = this.detailsMailForm.controls.username.value;

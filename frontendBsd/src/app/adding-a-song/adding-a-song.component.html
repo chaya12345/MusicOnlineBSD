@@ -13,7 +13,8 @@
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <textarea matInput placeholder="כותרת משנה" formControlName="subtitle" required></textarea>
-                    <mat-error *ngIf="detailsFormGroup.controls.subtitle.invalid">{{getSubtitleErrorMessage()}}</mat-error>
+                    <mat-error *ngIf="detailsFormGroup.controls.subtitle.invalid">{{getSubtitleErrorMessage()}}
+                    </mat-error>
                 </mat-form-field>
                 <div class="wrap-checkbox">
                     <mat-checkbox formControlName="isPerformance" color="primary">הופעה</mat-checkbox>
@@ -22,6 +23,90 @@
                     <button mat-button matStepperNext>הבא</button>
                 </div>
             </form>
+        </mat-step>
+        <mat-step [stepControl]="contentFormGroup">
+            <form [formGroup]="contentFormGroup">
+                <ng-template matStepLabel>הכנס תוכן שיר</ng-template>
+                <div class="custom-editor" contenteditable="true"></div>
+                <div>
+                    <button mat-button matStepperPrevious>הקודם</button>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="artistsFormGroup">
+            <form [formGroup]="artistsFormGroup">
+                <ng-template matStepLabel>זמר/ים ואומנים משתתפים</ng-template>
+                <div class="selectedItems">
+                    <p *ngFor="let singer of selectedSingers">{{singer.name}}
+                        <mat-icon (click)="clearSinger(singer)">clear</mat-icon>
+                    </p>
+                </div>
+                <mat-form-field appearance="fill" class="table-style">
+                    <mat-label>שם זמר</mat-label>
+                    <input type="text" matInput formControlName="singer" [matAutocomplete]="autoSingers">
+                    <mat-autocomplete autoActiveFirstOption #autoSingers="matAutocomplete">
+                        <mat-option *ngFor="let singer of filteredSingers | async" [value]="singer.name">
+                            <p>{{singer.name}}</p>
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <button class="addItem-button" mat-stroked-button (click)="addSinger()">הוסף זמר</button>
+                <mat-divider></mat-divider>
+                <div class="selectedItems wide-div">
+                    <p *ngFor="let item of selectedArtists">
+                        <span>{{item.artist.name}} <strong>~</strong> {{item.job.name}}</span>
+                        <mat-icon (click)="clearArtist(item)">clear</mat-icon>
+                    </p>
+                </div>
+                <mat-form-field appearance="fill" class="table-style">
+                    <mat-label>שם אומן</mat-label>
+                    <input type="text" matInput formControlName="artist" [matAutocomplete]="autoArtists">
+                    <mat-autocomplete autoActiveFirstOption #autoArtists="matAutocomplete">
+                        <mat-option *ngFor="let artist of filteredArtists | async" [value]="artist.name">
+                            <p>{{artist.name}}</p>
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="table-style">
+                    <mat-label>שם תפקיד</mat-label>
+                    <input type="text" matInput formControlName="job" [matAutocomplete]="autoJobs">
+                    <mat-autocomplete autoActiveFirstOption #autoJobs="matAutocomplete">
+                        <mat-option *ngFor="let job of filteredJobs | async" [value]="job.name">
+                            <p>{{job.name}}</p>
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <button class="addItem-button" mat-stroked-button (click)="addArtist()">הוסף אומן</button>
+                <div>
+                    <button mat-button matStepperPrevious>הקודם</button>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="tagFormGroup">
+          <form [formGroup]="tagFormGroup">
+            <ng-template matStepLabel>תגיות</ng-template>
+            <div class="selectedItems">
+                <p *ngFor="let tag of selectedTags">{{tag.name}}
+                    <mat-icon (click)="clearTag(tag)">clear</mat-icon>
+                </p>
+            </div>
+            <mat-form-field appearance="fill" class="table-style">
+                <mat-label>שם תגית</mat-label>
+                <input type="text" matInput formControlName="tag" [matAutocomplete]="autoTags">
+                <mat-autocomplete autoActiveFirstOption #autoTags="matAutocomplete">
+                    <mat-option *ngFor="let tag of filteredTags | async" [value]="tag.name">
+                        <p>{{tag.name}}</p>
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <button class="addItem-button" mat-stroked-button (click)="addTag()">הוסף תגית</button>
+            <div>
+              <button mat-button matStepperPrevious>הקודם</button>
+              <button mat-button matStepperNext>הבא</button>
+            </div>
+          </form>
         </mat-step>
         <mat-step [stepControl]="filesFormGroup">
             <form [formGroup]="filesFormGroup">
@@ -39,7 +124,7 @@
         <mat-step>
             <ng-template matStepLabel>אישור הוספה</ng-template>
             <div class="wrap-actions">
-                <button mat-stroked-button (click)="confirm()">הוסף שיר</button>
+                <button mat-stroked-button (click)="openDialogToMailDetails()">הוסף שיר</button>
                 <button mat-stroked-button (click)="stepper.reset()">אפס</button>
             </div>
             <div>

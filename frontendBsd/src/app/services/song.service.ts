@@ -63,11 +63,11 @@ export class SongService {
   public getSingerOfSong(songId: number): Observable<Singer> {
     return this.httpClient.get<Singer>(this.baseUrl + "GetSingerOfSong?songId=" + songId);
   }
-  public addSong(songObj: SongObj): Observable<any> {
-    return this.httpClient.post(this.baseUrl + "PostSong", songObj);
-  }
+  // public addSong(songObj: SongObj): Observable<any> {
+  //   return this.httpClient.post(this.baseUrl + "PostSong", songObj);
+  // }
   //----------------------------------------------------------------------//
-  public addFullSong(songObj: SongObj, imageFile: File, songFile: File,mailDetails:MailDetails): Observable<boolean> {
+  public addFullSong(songObj: SongObj, imageFile: File, songFile: File, mailDetails: MailDetails): Observable<boolean> {
     const formData: FormData = new FormData();
     formData.append("details", JSON.stringify(songObj));
     formData.append("song", songFile, songFile.name);
@@ -75,7 +75,17 @@ export class SongService {
     // formData.append("mailDetails", JSON.stringify(mailDetails));
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Content-Type', 'multipart/form-data');
-    return this.httpClient.post<boolean>(this.baseUrl + "AddSong?username=" + mailDetails.username + "&password=" + mailDetails.password+"&email="+mailDetails.email, formData);
+    return this.httpClient.post<boolean>(this.baseUrl + "AddSong?username=" + mailDetails.username + "&password=" + mailDetails.password + "&email=" + mailDetails.email, formData);
+  }
+  public addSong(songObj: SongObj, imageFile: File, songFile: File, mailDetails: MailDetails, content: string): Observable<boolean> {
+    const formData: FormData = new FormData();
+    formData.append("details", JSON.stringify(songObj));
+    formData.append("song", songFile, songFile.name);
+    formData.append("image", imageFile, imageFile.name);
+    // formData.append("mailDetails", JSON.stringify(mailDetails));
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    headers.append('Content-Type', 'multipart/form-data');
+    return this.httpClient.post<boolean>(this.baseUrl + "AddSong?username=" + mailDetails.username + "&password=" + mailDetails.password + "&email=" + mailDetails.email, formData);
   }
   public deleteSong(songId: number): Observable<boolean> {
     return this.httpClient.delete<boolean>(this.baseUrl + "deleteSong?songId=" + songId);

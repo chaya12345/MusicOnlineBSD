@@ -90,11 +90,11 @@ export class AddingATagComponent implements OnInit {
     this.filteredTypes = this.typeFormGroup.controls.type.valueChanges
       .pipe(
         startWith(''),
-        map(value => this._filterSingers(value))
+        map(value => this._filterTypes(value))
       );
   }
 
-  public _filterSingers(value: string): TypesOfTags[] {
+  public _filterTypes(value: string): TypesOfTags[] {
     const filterValue = value.toLowerCase();
     return this.typesList.filter(type => type.name.toLowerCase().includes(filterValue));
   }
