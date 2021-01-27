@@ -144,5 +144,16 @@ namespace BL
                 et.SaveChanges();
             }
         }
+        public static void DeleteTagsOfSong(int songId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<TagsToSongsTBL> tags = et.TagsToSongsTBL
+                .Where(tts => tts != null && tts.songId == songId).ToList();
+            if (tags != null)
+            {
+                et.TagsToSongsTBL.RemoveRange(tags);
+                et.SaveChanges();
+            }
+        }
     }
 }

@@ -337,15 +337,20 @@ namespace BL
                 }
             }
         }
-        public static void DeleteSong(int songId)
+        public static bool DeleteSong(int songId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             SongsTBL song = et.SongsTBL.Where(s => s != null && s.id == songId).FirstOrDefault();
             if (song != null)
             {
-                et.SongsTBL.Remove(song);
-                et.SaveChanges();
+                    SingersToSongsBL.DeleteSingersOfSong(song.id);
+                    ArtistsToSongsBL.DeleteArtistsOfSong(song.id);
+                    TagsToSongsBL.DeleteTagsOfSong(song.id);
+                    et.SongsTBL.Remove(song);
+                    et.SaveChanges();
+                    return true;
             }
+            return false;
         }
         public static void IncreaseLike(int songId)
         {

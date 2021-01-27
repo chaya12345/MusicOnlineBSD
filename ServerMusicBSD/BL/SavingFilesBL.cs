@@ -30,7 +30,15 @@ namespace BL
                         folderName + "\\" + folderToFormatted + "\\" + postedFile.FileName;
             postedFile.SaveAs(filePath);
         }
-        private static string formatFolderName(string name)
+        public static void SaveToTxtFile(string content, string folders, string fileName)
+        {
+            string FilePath = AppDomain.CurrentDomain.BaseDirectory.Substring(0,
+                    AppDomain.CurrentDomain.BaseDirectory.LastIndexOf("Server") - 1) + "\\DAL\\src\\" +
+                        "text\\" + folders + "\\" + fileName + ".txt";
+            string FileContent = content;
+            File.WriteAllText(FilePath, FileContent, System.Text.Encoding.UTF8);
+        }
+        public static string formatFolderName(string name)
         {
             return name.Replace(" ", "-");
         }

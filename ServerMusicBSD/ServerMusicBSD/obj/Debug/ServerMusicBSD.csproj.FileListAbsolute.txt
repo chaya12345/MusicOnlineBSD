@@ -704,3 +704,16 @@ C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\Microso
 C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\Microsoft.Extensions.ObjectPool.xml
 C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\System.Diagnostics.DiagnosticSource.xml
 C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\System.Threading.Tasks.Extensions.xml
+C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\bin\Microsoft.Web.Infrastructure.dll
+C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\bin\System.Web.Helpers.dll
+C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\bin\System.Web.Mvc.dll
+C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\bin\System.Web.Razor.dll
+C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\bin\System.Web.WebPages.Deployment.dll
+C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\bin\System.Web.WebPages.dll
+C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\bin\System.Web.WebPages.Razor.dll
+C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\bin\System.Web.Helpers.xml
+C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\bin\System.Web.Mvc.xml
+C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\bin\System.Web.Razor.xml
+C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\bin\System.Web.WebPages.xml
+C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\bin\System.Web.WebPages.Deployment.xml
+C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\bin\System.Web.WebPages.Razor.xml

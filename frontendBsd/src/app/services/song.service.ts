@@ -82,6 +82,7 @@ export class SongService {
     formData.append("details", JSON.stringify(songObj));
     formData.append("song", songFile, songFile.name);
     formData.append("image", imageFile, imageFile.name);
+    formData.append("content", content);
     // formData.append("mailDetails", JSON.stringify(mailDetails));
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Content-Type', 'multipart/form-data');

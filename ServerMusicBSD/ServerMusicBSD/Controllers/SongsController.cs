@@ -12,6 +12,7 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json;
+using System.Web.Mvc;
 
 namespace ServerMusicBSD.Controllers
 {
@@ -98,7 +99,8 @@ namespace ServerMusicBSD.Controllers
             }
             return false;
         }
-        [HttpPost]
+        [System.Web.Http.HttpPost]
+        [ValidateInput(false)]
         public bool AddSong(string username, string password, string email)
         {
             var httpRequest = HttpContext.Current.Request;
@@ -110,6 +112,9 @@ namespace ServerMusicBSD.Controllers
                 //SongObj songObj = _songObj as SongObj;
                 if (songObj.singers.Length > 0)
                 {
+                    string firstSinger = songObj.singers[0];
+                    SavingFilesBL.SaveToTxtFile(httpRequest.Form["content"], "songs_content\\" +
+                        SavingFilesBL.formatFolderName(firstSinger), SavingFilesBL.formatFolderName(songObj.song.name));
                     SongsBL.AddSong(songObj.song);
                     SongsTBL song = SongsBL.getSongByName(songObj.song.name);
                     if (song != null)
@@ -118,8 +123,11 @@ namespace ServerMusicBSD.Controllers
                         ArtistsToSongsBL.AddArtistsToSong(songObj.artists, song.id);
                         SingersToSongsBL.AddSingersToSong(songObj.singers, song.id);
 
-                        SavingFilesBL.SaveFileWithFormattedName(httpRequest.Files[0], "songs", songObj.singers[0]);
-                        SavingFilesBL.SaveFileWithFormattedName(httpRequest.Files[1], "images\\for_songs", songObj.singers[0]);
+                        //string firstSinger = songObj.singers[0];
+                        SavingFilesBL.SaveFileWithFormattedName(httpRequest.Files[0], "songs", firstSinger);
+                        SavingFilesBL.SaveFileWithFormattedName(httpRequest.Files[1], "images\\for_songs", firstSinger);
+                        SavingFilesBL.SaveToTxtFile(httpRequest.Form["content"], "songs_content\\" + 
+                            SavingFilesBL.formatFolderName(firstSinger), SavingFilesBL.formatFolderName(songObj.song.name));
 
                         //HttpPostedFile postedFile = httpRequest.Files[0];
                         //var filePath = AppDomain.CurrentDomain.BaseDirectory.Substring(0,
@@ -151,9 +159,9 @@ namespace ServerMusicBSD.Controllers
         {
             return name.Replace(" ", "-");
         }
-        public void DeleteSong(int songId)
+        public bool DeleteSong(int songId)
         {
-            SongsBL.DeleteSong(songId);
+            return SongsBL.DeleteSong(songId);
         }
         public List<songsDetails> GetSimilarSongs(int songId)
         {
@@ -187,7 +195,7 @@ namespace ServerMusicBSD.Controllers
         {
             SongsBL.AddViewToSong(songId);
         }
-        [HttpPut]
+        [System.Web.Http.HttpPut]
         public void UpdateSong([FromBody] SongObj songObj)
         {
             if (songObj != null && songObj.song != null && songObj.tags != null && songObj.singers != null)
@@ -195,7 +203,7 @@ namespace ServerMusicBSD.Controllers
                 SongsBL.UpdateSong(songObj.song, songObj.singers, songObj.tags, songObj.artists);
             }
         }
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public bool sendEmail(string username, string password, bool isSwitch, string subject, string body)
         {
 
@@ -225,7 +233,7 @@ namespace ServerMusicBSD.Controllers
                 return false;
             }
         }
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public bool sendMail(string username, string password, string FoldersPath, string imageName)
         {
             try
@@ -269,7 +277,7 @@ namespace ServerMusicBSD.Controllers
                 return false;
             }
         }
-        [HttpPost]
+        [System.Web.Http.HttpPost]
         public bool sendEmail1(string username, string password, bool isSwitch, string subject, string body)
         {
             MailAddress fromAddress = new MailAddress("bsd.odaya@gmail.com");

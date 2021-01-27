@@ -83,10 +83,18 @@ export class DeletingSongComponent implements OnInit {
   deleteSong() {
     try {
       this.songService.deleteSong(this.SelectedSong.id)
-      .subscribe(res => this.openSnackBar(res ? this.cmService.DELETE_ITEM.SUCCESS : 
-        this.cmService.DELETE_ITEM.ERROR),
+      .subscribe(res => {
+        if (res) {
+          this.deleteSongFromList();
+        }
+        this.openSnackBar(res ? this.cmService.DELETE_ITEM.SUCCESS : 
+        this.cmService.DELETE_ITEM.ERROR) },
         () => this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
     } catch (err) { console.log(err); }
+  }
+
+  deleteSongFromList() {
+    this.songsList.splice(this.songsList.indexOf(this.SelectedSong), 1);
   }
 
   openSnackBar(message: string) {

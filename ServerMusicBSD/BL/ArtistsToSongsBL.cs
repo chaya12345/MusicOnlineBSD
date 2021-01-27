@@ -171,5 +171,16 @@ namespace BL
                 et.SaveChanges();
             }
         }
+        public static void DeleteArtistsOfSong(int songId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<ArtistsToSongsTBL> artists = et.ArtistsToSongsTBL
+                .Where(ats => ats != null && ats.songId == songId).ToList();
+            if (artists != null)
+            {
+                et.ArtistsToSongsTBL.RemoveRange(artists);
+                et.SaveChanges();
+            }
+        }
     }
 }
