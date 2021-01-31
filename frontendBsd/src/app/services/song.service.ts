@@ -75,18 +75,26 @@ export class SongService {
     // formData.append("mailDetails", JSON.stringify(mailDetails));
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Content-Type', 'multipart/form-data');
-    return this.httpClient.post<boolean>(this.baseUrl + "AddSong?username=" + mailDetails.username + "&password=" + mailDetails.password + "&email=" + mailDetails.email, formData);
+    return this.httpClient.post<boolean>(this.baseUrl + "AddSong?username=" + mailDetails.username +
+      "&password=" + mailDetails.password + "&email=" + mailDetails.email, formData);
   }
-  public addSong(songObj: SongObj, imageFile: File, songFile: File, mailDetails: MailDetails, content: string): Observable<boolean> {
+  public addSong(songObj: SongObj, imageFile: File, songFile: File, mailDetails: MailDetails, content: string, isEdit: boolean = false): Observable<boolean> {
     const formData: FormData = new FormData();
     formData.append("details", JSON.stringify(songObj));
-    formData.append("song", songFile, songFile.name);
-    formData.append("image", imageFile, imageFile.name);
+    if (isEdit) {
+      if (songFile != undefined && songFile != null) {
+        formData.append("song", songFile, songFile.name);
+      }
+      if (imageFile != undefined && imageFile != null) {
+        formData.append("image", imageFile, imageFile.name);
+      }
+    }
     formData.append("content", content);
-    // formData.append("mailDetails", JSON.stringify(mailDetails));
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Content-Type', 'multipart/form-data');
-    return this.httpClient.post<boolean>(this.baseUrl + "AddSong?username=" + mailDetails.username + "&password=" + mailDetails.password + "&email=" + mailDetails.email, formData);
+    return this.httpClient.post<boolean>(this.baseUrl + "AddSong?username=" + (!isEdit ? mailDetails.username +
+      "&password=" + mailDetails.password + "&email=" + mailDetails.email : null + "&password=" + null + "&email=" + null)
+      + "&isEdit=" + isEdit, formData);
   }
   public deleteSong(songId: number): Observable<boolean> {
     return this.httpClient.delete<boolean>(this.baseUrl + "deleteSong?songId=" + songId);

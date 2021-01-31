@@ -76,22 +76,22 @@ namespace BL
             {
                 foreach (SingersToSongsTBL item in existSingers)
                 {
-                    SingersTBL so = singers.Where(s => s != null && s.id == item.songId).FirstOrDefault();
-                    if (so == null)
+                    SingersTBL singer = singers.Where(s => s != null && s.id == item.singerId).FirstOrDefault();
+                    if (singer == null)
                     {
                         DeleteSingerFromSong(songId, item.singerId);
                     }
                     else
                     {
-                        existAndSelected.Add(so);
+                        existAndSelected.Add(singer);
                     }
                 }
             }
-            foreach (SingersTBL sin in singers)
+            foreach (SingersTBL singer in singers)
             {
-                if (sin != null && existAndSelected.Where(s => s.id == sin.id).FirstOrDefault() == null)
+                if (singer != null && existAndSelected.Where(s => s.id == singer.id).FirstOrDefault() == null)
                 {
-                    AddSingerToSong(new SingersToSongsTBL() { singerId = sin.id, songId = songId });
+                    AddSingerToSong(new SingersToSongsTBL() { singerId = singer.id, songId = songId });
                 }
             }
         }

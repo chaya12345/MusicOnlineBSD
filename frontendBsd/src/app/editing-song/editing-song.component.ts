@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar, MatDialog } from '@angular/material';
@@ -74,7 +75,7 @@ export class EditingSongComponent implements OnInit {
     private tagService: TagService, private songService: SongService,
     private dialog: MatDialog, private cmService: CommonMessageService,
     private tagsToSongService: TagsToSongsService, private singersToSongService: SingersToSongService,
-    private artistsToSongService: ArtistsToSongsService) {
+    private artistsToSongService: ArtistsToSongsService, private httpClient: HttpClient) {
     this.songFormGroup = new FormGroup({
       song: new FormControl("", Validators.required)
     });
@@ -116,14 +117,26 @@ export class EditingSongComponent implements OnInit {
     try {
       let songObj = new SongObj();
       let song = new Song();
+      song.id = this.SelectedSong.id;
       song.name = this.detailsFormGroup.controls.name.value;
       song.title = this.detailsFormGroup.controls.title.value;
       song.subtitle = this.detailsFormGroup.controls.subtitle.value;
-      song.type = this.songFile.type.includes("video") ? "video" : "audio";
-      song.isPerformance = this.detailsFormGroup.controls.isPerformance.value;
+
       let folder = this.formatToFolderName(this.selectedSingers[0].name);
+      if (this.songFile != undefined && this.songFile != null) {
+      song.type = this.songFile.type.includes("video") ? "video" : "audio";
       song.file_location = folder + "\\" + this.songFile.name;
-      song.image_location = "for_songs/" + folder + "/" + this.imageFile.name;
+      }
+      else {
+        song.file_location = this.SelectedSong.file_location;
+      }
+      if (this.imageFile != undefined && this.imageFile != null) {
+        song.image_location = "for_songs/" + folder + "/" + this.imageFile.name;
+      }
+      else {
+        song.image_location = this.SelectedSong.image_location;
+      }
+      song.isPerformance = this.detailsFormGroup.controls.isPerformance.value;
       let content: string = (document.getElementsByClassName("custom-editor")[0] as HTMLElement).innerHTML.toString();
       song.content = "songs_content/" + folder + "/" + this.formatToFolderName(song.name);
       songObj.song = song;
@@ -145,24 +158,24 @@ export class EditingSongComponent implements OnInit {
         tags.push(tag.name);
       });
       songObj.tags = tags;
-      this.songService.addSong(songObj, this.imageFile, this.songFile, this.mailDetails, content.toString())
-        .subscribe(res => this.openSnackBar(res ? this.cmService.GENERATE.ADD.SUCCESS :
-          this.cmService.GENERATE.ADD.ERROR));
-    } catch { this.openSnackBar(this.cmService.GENERATE.ADD.ERROR); }
+      this.songService.addSong(songObj, this.imageFile, this.songFile, this.mailDetails, content.toString(), true)
+        .subscribe(res => this.openSnackBar(res ? this.cmService.UPDATE_ITEM.SUCCESS :
+          this.cmService.UPDATE_ITEM.ERROR));
+    } catch { this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR); }
   }
 
-  openDialogToMailDetails(): void {
-    try {
-      const dialogRef = this.dialog.open(MailDetailsDialogComponent, {
-        width: '400px', data: {}
-      });
-      dialogRef.afterClosed().subscribe(result => {
-        this.mailDetails = result.mailDetails;
-        this.confirm();
-      });
-    }
-    catch (err) { console.log(err); return null; }
-  }
+  // openDialogToMailDetails(): void {
+  //   try {
+  //     const dialogRef = this.dialog.open(MailDetailsDialogComponent, {
+  //       width: '400px', data: {}
+  //     });
+  //     dialogRef.afterClosed().subscribe(result => {
+  //       this.mailDetails = result.mailDetails;
+  //       this.confirm();
+  //     });
+  //   }
+  //   catch (err) { console.log(err); return null; }
+  // }
 
   formatToFolderName(singer: string): string {
     return singer.trim().split(' ').join('-');
@@ -358,12 +371,19 @@ export class EditingSongComponent implements OnInit {
     this.detailsFormGroup.controls.isPerformance.setValue(this.SelectedSong.isPerformance);
     this.contentFormGroup.controls.text.setValue(this.SelectedSong.content);
     this.filesFormGroup.controls.song.setValue(this.SelectedSong.file_location);
+    this.filesFormGroup.controls.image.setValue(this.SelectedSong.image_location);
     this.song = "../../assets/songs/" + this.SelectedSong.file_location;
     this.image = "../../assets/images/" + this.SelectedSong.image_location;
-    this.text = (document.getElementsByClassName("custom-editor")[0] as HTMLElement).innerHTML;
+    this.getContent();
     this.getTagsOfSong();
     this.getSingersOfSong();
     this.getArtistsOfSong();
+  }
+
+  getContent(): void {
+    this.httpClient.get("../../assets/text/" + this.SelectedSong.content, {
+      responseType: 'text'
+    }).subscribe(data => { this.text = data; });
   }
 
   getTagsOfSong(): void {

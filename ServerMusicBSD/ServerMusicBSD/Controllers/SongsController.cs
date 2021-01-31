@@ -101,20 +101,15 @@ namespace ServerMusicBSD.Controllers
         }
         [System.Web.Http.HttpPost]
         [ValidateInput(false)]
-        public bool AddSong(string username, string password, string email)
+        public bool AddSong(string username, string password, string email, bool isEdit = false)
         {
             var httpRequest = HttpContext.Current.Request;
-            if (httpRequest.Files.Count > 1 && httpRequest.Params.Count > 0)
+            SongObj songObj = Newtonsoft.Json.JsonConvert.DeserializeObject<SongObj>(httpRequest.Params["details"]);
+            if (!isEdit && httpRequest.Files.Count > 1 && httpRequest.Params.Count > 0)
             {
-                SongObj songObj = Newtonsoft.Json.JsonConvert.DeserializeObject<SongObj>(httpRequest.Params["details"]);
-                //SongObj songObj = Newtonsoft.Json.JsonConvert.DeserializeObject<SongObj>(httpRequest.Params[0]);
-                //object _songObj = Newtonsoft.Json.JsonConvert.DeserializeObject(httpRequest.Files[0].ContentType);
-                //SongObj songObj = _songObj as SongObj;
                 if (songObj.singers.Length > 0)
                 {
                     string firstSinger = songObj.singers[0];
-                    SavingFilesBL.SaveToTxtFile(httpRequest.Form["content"], "songs_content\\" +
-                        SavingFilesBL.formatFolderName(firstSinger), SavingFilesBL.formatFolderName(songObj.song.name));
                     SongsBL.AddSong(songObj.song);
                     SongsTBL song = SongsBL.getSongByName(songObj.song.name);
                     if (song != null)
@@ -122,38 +117,44 @@ namespace ServerMusicBSD.Controllers
                         TagsToSongsBL.AddTagsToSong(songObj.tags, song.id);
                         ArtistsToSongsBL.AddArtistsToSong(songObj.artists, song.id);
                         SingersToSongsBL.AddSingersToSong(songObj.singers, song.id);
-
-                        //string firstSinger = songObj.singers[0];
-                        SavingFilesBL.SaveFileWithFormattedName(httpRequest.Files[0], "songs", firstSinger);
-                        SavingFilesBL.SaveFileWithFormattedName(httpRequest.Files[1], "images\\for_songs", firstSinger);
-                        SavingFilesBL.SaveToTxtFile(httpRequest.Form["content"], "songs_content\\" + 
-                            SavingFilesBL.formatFolderName(firstSinger), SavingFilesBL.formatFolderName(songObj.song.name));
-
-                        //HttpPostedFile postedFile = httpRequest.Files[0];
-                        //var filePath = AppDomain.CurrentDomain.BaseDirectory.Substring(0,
-                        //        AppDomain.CurrentDomain.BaseDirectory.LastIndexOf("Server") - 1) + "\\DAL\\src\\" +
-                        //            "songs\\" + formatFolderName(songObj.singers[0]) + "\\" + postedFile.FileName;
-                        //postedFile.SaveAs(filePath);
-
-                        //postedFile = httpRequest.Files[1];
-                        //filePath = AppDomain.CurrentDomain.BaseDirectory.Substring(0,
-                        //        AppDomain.CurrentDomain.BaseDirectory.LastIndexOf("Server") - 1) + "\\DAL\\src\\" +
-                        //            "images\\for_songs\\" + formatFolderName(songObj.singers[0]) + "\\" + postedFile.FileName;
-                        //postedFile.SaveAs(filePath);
-
+                        saveFiles(httpRequest, firstSinger, songObj.song.name);
                         if (song.name != null)
                         {
-                            //MailDetails mailDetails = Newtonsoft.Json.JsonConvert.DeserializeObject<MailDetails>(httpRequest.Params[1]);
-                            ////object _mailDetails = Newtonsoft.Json.JsonConvert.DeserializeObject(httpRequest.Files[3].ContentType);
-                            ////mailDetails mailDetails = _mailDetails as mailDetails;
-                            SongsBL.sendUpdatingEmailToUsers(username, password,email,
+                            SongsBL.sendUpdatingEmailToUsers(username, password, email,
                                 song.name, "for_songs\\" + formatFolderName(songObj.singers[0]), httpRequest.Files[1].FileName);
                         }
                         return true;
                     }
                 }
             }
+            else if (isEdit)
+            {
+                if (songObj != null && songObj.song != null && songObj.tags != null && songObj.singers != null)
+                {
+                    SongsBL.UpdateSong(songObj.song, songObj.singers, songObj.tags, songObj.artists);
+                    string firstSinger = songObj.singers[0];
+                    saveFiles(httpRequest, firstSinger, songObj.song.name);
+                    return true;
+                }
+                return false;
+            }
             return false;
+        }
+        private void saveFiles(HttpRequest httpRequest, string singer, string songName)
+        {
+            if (httpRequest.Files["song"] != null)
+            {
+                SavingFilesBL.SaveFileWithFormattedName(httpRequest.Files[0], "songs", singer);
+            }
+            if (httpRequest.Files["image"] != null)
+            {
+                SavingFilesBL.SaveFileWithFormattedName(httpRequest.Files[1], "images\\for_songs", singer);
+            }
+            if (httpRequest.Form["content"] != null)
+            {
+                SavingFilesBL.SaveToTxtFile(httpRequest.Form["content"], "songs_content\\" +
+                    SavingFilesBL.formatFolderName(singer), SavingFilesBL.formatFolderName(songName));
+            }
         }
         private string formatFolderName(string name)
         {
