@@ -164,19 +164,6 @@ export class EditingSongComponent implements OnInit {
     } catch { this.openSnackBar(this.cmService.UPDATE_ITEM.ERROR); }
   }
 
-  // openDialogToMailDetails(): void {
-  //   try {
-  //     const dialogRef = this.dialog.open(MailDetailsDialogComponent, {
-  //       width: '400px', data: {}
-  //     });
-  //     dialogRef.afterClosed().subscribe(result => {
-  //       this.mailDetails = result.mailDetails;
-  //       this.confirm();
-  //     });
-  //   }
-  //   catch (err) { console.log(err); return null; }
-  // }
-
   formatToFolderName(singer: string): string {
     return singer.trim().split(' ').join('-');
   }

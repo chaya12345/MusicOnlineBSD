@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DTO;
 using DAL;
 using System.Data.Entity.Validation;
+using System.Globalization;
 
 namespace BL
 {
@@ -27,16 +28,22 @@ namespace BL
                 return Casts.ToArticlesDTO.GetArticle(article);
             return null;
         }
-        public static void AddArticle(ArticlesTBL article)
+        public static bool AddArticle(ArticlesTBL article)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try
             {
                 if (article != null)
                 {
+                    article.date = DateTime.Now;
+                    article.dateHebrew = ToJewishDateString(DateTime.Now, "D");
+                    article.count_views = 0;
+                    article.count_like = 0;
                     et.ArticlesTBL.Add(article);
                     et.SaveChanges();
+                    return true;
                 }
+                return false;
 
             }
             catch (DbEntityValidationException dbEx)
@@ -48,7 +55,14 @@ namespace BL
                         System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                     }
                 }
+                return false;
             }
+        }
+        public static string ToJewishDateString(DateTime value, string format)
+        {
+            var ci = CultureInfo.CreateSpecificCulture("he-IL");
+            ci.DateTimeFormat.Calendar = new HebrewCalendar();
+            return value.ToString(format, ci);
         }
         public static bool DeleteArticle(int articleId)
         {

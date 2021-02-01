@@ -8,15 +8,17 @@ using DTO;
 using BL;
 using DAL;
 using System.Web.Http.Cors;
+using System.Web;
+using System.Globalization;
 
 namespace ServerMusicBSD.Controllers
 {
-    public class AticleObj
+    public class ArticleObj
     {
         public ArticlesTBL article;
         public string[] singers;
         public string[] tags;
-        public string[] artists;
+        //public string[] artists;
     }
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ArticlesController : ApiController
@@ -29,7 +31,7 @@ namespace ServerMusicBSD.Controllers
         {
             return ArticlesBL.GetArticleById(articleid);
         }
-        public bool PostArticle([FromBody] AticleObj articleObj)
+        public bool PostArticle([FromBody] ArticleObj articleObj)
         {
             articleObj.article.date = DateTime.Today;
             ArticlesBL.AddArticle(articleObj.article);
@@ -41,9 +43,42 @@ namespace ServerMusicBSD.Controllers
                     flag = false;
                 if (SingersToArticlesBL.AddSingersToArticle(articleObj.singers, article.id) == false)
                     flag = false;
-                //לבדוק מה קורה עם האומנים לכתבות
             }
             return flag;
+        }
+        [HttpPost]
+        public bool AddArticle(bool isEdit = false)
+        {
+            var httpRequest = HttpContext.Current.Request;
+            ArticleObj articleObj = Newtonsoft.Json.JsonConvert.DeserializeObject<ArticleObj>(httpRequest.Params["details"]);
+            if (!isEdit)
+            {
+                ArticlesBL.AddArticle(articleObj.article);
+                ArticlesDTO article = ArticlesBL.GetArticleByTitle(articleObj.article.title);
+                bool flag = true;
+                if (article != null)
+                {
+                    saveFiles(httpRequest, article.title);
+                    if (TagsToArticlesBL.AddTagToArticle(articleObj.tags, article.id) == false)
+                        flag = false;
+                    if (SingersToArticlesBL.AddSingersToArticle(articleObj.singers, article.id) == false)
+                        flag = false;
+                }
+                return flag;
+            }
+            return false;
+        }
+        private void saveFiles(HttpRequest httpRequest, string title)
+        {
+            if (httpRequest.Files["image"] != null)
+            {
+                SavingFilesBL.SaveFile(httpRequest.Files["image"], "images\\for_articles");
+            }
+            if (httpRequest.Form["content"] != null)
+            {
+                SavingFilesBL.SaveToTxtFile(httpRequest.Form["content"], "articles_content",
+                    SavingFilesBL.formatFolderName(title));
+            }
         }
         public bool DeleteArticle(int articleId)
         {

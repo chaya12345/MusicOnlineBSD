@@ -60,11 +60,11 @@ export class UploadingArticleComponent implements OnInit {
         artists: this.uploadingArticleForm.controls.artists.value,
         singers: this.uploadingArticleForm.controls.singers.value
       }
-      try {
-        this.articleService.addArticle(obj).subscribe(res =>
-          this.openSnackBar(res==true?"העלאת הכתבה בוצעה בהצלחה":"העלאת שיר נכשלה, נסה שוב מאוחר יותר"), err => console.log(err));
+      // try {
+      //   this.articleService.addArticle(obj).subscribe(res =>
+      //     this.openSnackBar(res==true?"העלאת הכתבה בוצעה בהצלחה":"העלאת שיר נכשלה, נסה שוב מאוחר יותר"), err => console.log(err));
 
-      } catch (err) { this.openSnackBar( "העלאת שיר נכשלה, נסה שוב מאוחר יותר"); }
+      // } catch (err) { this.openSnackBar( "העלאת שיר נכשלה, נסה שוב מאוחר יותר"); }
       // this.reset();
     }
   }

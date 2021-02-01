@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 import { Singer } from '../classes/singer';
 import { SingerService } from '../services/singer.service';
 import { MessageComponent } from '../message/message.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { CommonMessageService } from '../services/common-message.service';
 
 @Component({
   selector: 'deleting-singer',
@@ -24,7 +25,8 @@ export class DeletingSingerComponent implements OnInit {
   selectedSingerName: string;
   selectedSinger: Singer;
 
-  constructor(private singerService: SingerService, private dialog: MatDialog) {
+  constructor(private singerService: SingerService, private dialog: MatDialog,
+    private _snackBar: MatSnackBar, private cmService: CommonMessageService) {
     this.singerFormGroup = new FormGroup({
       singer: new FormControl("", Validators.required)
     });
@@ -68,11 +70,14 @@ export class DeletingSingerComponent implements OnInit {
   }
 
   confirm(): void {
-    this.singersList.forEach(singer => {
-      if (singer.name == this.selectedSingerName) {
-        this.selectedSinger = singer;
+    for (let i = 0; i < this.singersList.length; i++) {
+      if (this.singersList[i].name == this.selectedSingerName) {
+        this.selectedSinger = this.singersList[i];
+        break;
       }
-    });
+    }
+    this.openMessageDialog("האם אתה בטוח שברצונך למחוק את '" +
+      this.selectedSingerName + "'?");
   }
 
   openMessageDialog(text: string) {
@@ -88,10 +93,18 @@ export class DeletingSingerComponent implements OnInit {
     } catch (err) { console.log(err); }
   }
 
+  openSnackBar(message: string) {
+    this._snackBar.open(message, '', {
+      duration: 2000,
+    });
+  }
+
   deleteSinger(): void {
     try {
       this.singerService.deleteSinger(this.selectedSinger.id)
-      .subscribe();
+        .subscribe(res => this.openSnackBar(res ? this.cmService.GENERATE.REMOVE.SUCCESS :
+          this.cmService.GENERATE.REMOVE.ERROR),
+          () => this.openSnackBar(this.cmService.GENERATE.REMOVE.ERROR));
     } catch (err) { console.log(err); }
   }
 

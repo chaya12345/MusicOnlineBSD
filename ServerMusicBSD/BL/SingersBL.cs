@@ -52,7 +52,7 @@ namespace BL
             }
             return false;
         }
-        public static void AddSinger(string name, string image)
+        public static bool AddSinger(string name, string image)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try
@@ -68,7 +68,9 @@ namespace BL
                     singer.image = image;
                     et.SingersTBL.Add(singer);
                     et.SaveChanges();
+                    return true;
                 }
+                return false;
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -79,6 +81,7 @@ namespace BL
                         System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                     }
                 }
+                return false;
             }
         }
         public static void AddSearchingToSinger(string singerName)
@@ -108,17 +111,18 @@ namespace BL
             }
             return false;
         }
-        public static void DeleteSinger(int singerId)
+        public static bool DeleteSinger(int singerId)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             SingersTBL singer = et.SingersTBL.Where(s => s.id == singerId).FirstOrDefault();
             if (singer == null)
-                return;
+                return false;
             SingersToSongsBL.DeleteSingerFromSongs(singerId);
             SingersToArticlesBL.DeleteSingerFronArticles(singerId);
             SingersToParadeBL.DeleteSingerFromParade(singerId);
             et.SingersTBL.Remove(singer);
             et.SaveChanges();
+            return true;
         }
     }
 }

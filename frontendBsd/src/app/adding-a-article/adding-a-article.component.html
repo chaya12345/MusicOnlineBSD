@@ -1,1 +1,101 @@
-<p>adding-a-article works!</p>
+<div class="wrap-adding-singer">
+    <mat-vertical-stepper linear="true" #stepper dir="rtl">
+        <mat-step [stepControl]="detailsFormGroup">
+            <form [formGroup]="detailsFormGroup">
+                <ng-template matStepLabel>הכנס פרטי כתבה</ng-template>
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="כותרת" formControlName="title" required>
+                    <mat-error *ngIf="detailsFormGroup.controls.title.invalid">{{getTitleErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <input matInput placeholder="כותרת משנה" formControlName="subtitle" required>
+                    <mat-error *ngIf="detailsFormGroup.controls.subtitle.invalid">{{getSubtitleErrorMessage()}}
+                    </mat-error>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="imageFormGroup">
+            <form [formGroup]="imageFormGroup">
+                <ng-template matStepLabel>העלאת תמונה</ng-template>
+                <div class="wrap-uploading-file">
+                    <uploading-image (onSelect)="selectImage($event)"></uploading-image>
+                </div>
+                <div>
+                    <button mat-button matStepperPrevious>הקודם</button>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="contentFormGroup">
+            <form [formGroup]="contentFormGroup">
+                <ng-template matStepLabel>הכנס תוכן כתבה</ng-template>
+                <div class="custom-editor" contenteditable="true"></div>
+                <div>
+                    <button mat-button matStepperPrevious>הקודם</button>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="singersFormGroup">
+            <form [formGroup]="singersFormGroup">
+                <ng-template matStepLabel>זמר/ים משתתפים</ng-template>
+                <div class="selectedItems">
+                    <p *ngFor="let singer of selectedSingers">{{singer.name}}
+                        <mat-icon (click)="clearSinger(singer)">clear</mat-icon>
+                    </p>
+                </div>
+                <mat-form-field appearance="fill" class="table-style">
+                    <mat-label>שם זמר</mat-label>
+                    <input type="text" matInput formControlName="singer" [matAutocomplete]="autoSingers">
+                    <mat-autocomplete autoActiveFirstOption #autoSingers="matAutocomplete">
+                        <mat-option *ngFor="let singer of filteredSingers | async" [value]="singer.name">
+                            <p>{{singer.name}}</p>
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <button class="addItem-button" mat-stroked-button (click)="addSinger()">הוסף זמר</button>
+                <div>
+                    <button mat-button matStepperPrevious>הקודם</button>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="tagsFormGroup">
+            <form [formGroup]="tagsFormGroup">
+                <ng-template matStepLabel>תגיות</ng-template>
+                <div class="selectedItems">
+                    <p *ngFor="let tag of selectedTags">{{tag.name}}
+                        <mat-icon (click)="clearTag(tag)">clear</mat-icon>
+                    </p>
+                </div>
+                <mat-form-field appearance="fill" class="table-style">
+                    <mat-label>שם תגית</mat-label>
+                    <input type="text" matInput formControlName="tag" [matAutocomplete]="autoTags">
+                    <mat-autocomplete autoActiveFirstOption #autoTags="matAutocomplete">
+                        <mat-option *ngFor="let tag of filteredTags | async" [value]="tag.name">
+                            <p>{{tag.name}}</p>
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+                <button class="addItem-button" mat-stroked-button (click)="addTag()">הוסף תגית</button>
+                <div>
+                    <button mat-button matStepperPrevious>הקודם</button>
+                    <button mat-button matStepperNext>הבא</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>אישור הוספה</ng-template>
+            <div class="wrap-actions">
+                <button mat-stroked-button (click)="confirm()">הוסף כתבה</button>
+                <button mat-stroked-button (click)="stepper.reset()">אפס</button>
+            </div>
+            <div>
+                <button mat-button matStepperPrevious>הקודם</button>
+            </div>
+        </mat-step>
+    </mat-vertical-stepper>
+</div>

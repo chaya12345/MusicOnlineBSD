@@ -29,11 +29,12 @@ namespace ServerMusicBSD.Controllers
            return SingersBL.AddSinger(singer);
         }
         [HttpPost]
-        public void AddSinger(string name, string image)
+        public bool AddSinger(string name, string image)
         {
-            SingersBL.AddSinger(name, image);
+            bool result = SingersBL.AddSinger(name, image);
             var httpRequest = HttpContext.Current.Request;
             SavingFilesBL.SaveFile(httpRequest.Files[0], "images\\singers");
+            return result;
         }
         public void PutSearchingToSinger(string singerName)
         {
@@ -44,9 +45,9 @@ namespace ServerMusicBSD.Controllers
         {
             return SingersBL.UpdateSinger(singer);
         }
-        public void DeleteSinger(int singerId)
+        public bool DeleteSinger(int singerId)
         {
-            SingersBL.DeleteSinger(singerId);
+            return SingersBL.DeleteSinger(singerId);
         }
     }
 }

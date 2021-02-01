@@ -20,6 +20,7 @@ export class DeletingArticleComponent implements OnInit {
   articleSelected: Article;
   articlesList: Article[] = [];
   filteredArticles: Observable<Article[]>;
+  articleSelectedTitle: string;
 
   constructor(private articleService: ArticleService, private _snackBar: MatSnackBar, private cmService: CommonMessageService) {
     this.articleFormGroup = new FormGroup({
@@ -40,17 +41,27 @@ export class DeletingArticleComponent implements OnInit {
       }, err => console.log(err));
   }
 
-  selectingArticle(article: Article): void {
-    this.articleSelected = article;
+  selectingArticle(article: string): void {
+    this.articleSelectedTitle = article;
   }
 
   confirm(): void {
     try {
+      this.getArticleByTitle();
       this.articleService.deleteArticle(this.articleSelected.id)
       .subscribe(res => this.openSnackBar(res ? this.cmService.DELETE_ITEM.SUCCESS :
         this.cmService.DELETE_ITEM.FAIL),
         () => this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
     } catch (err) { this.openSnackBar(this.cmService.DELETE_ITEM.ERROR); }
+  }
+
+  getArticleByTitle() {
+    for (let i = 0; i < this.articlesList.length; i++) {
+      if (this.articlesList[i].title == this.articleSelectedTitle) {
+        this.articleSelected = this.articlesList[i];
+        break;
+      }
+    }
   }
 
   openSnackBar(message: string): void {
