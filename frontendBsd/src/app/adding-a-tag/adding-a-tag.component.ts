@@ -5,6 +5,8 @@ import { TagsForArticles, TagsForSongs, TypesOfTags } from '../classes/tag';
 import { TypesOfTagService } from '../services/types-of-tag.service';
 import { Observable } from 'rxjs';
 import { TagService } from '../services/tag.service';
+import { MatSnackBar } from '@angular/material';
+import { CommonMessageService } from '../services/common-message.service';
 
 @Component({
   selector: 'adding-a-tag',
@@ -24,7 +26,8 @@ export class AddingATagComponent implements OnInit {
   typesList: TypesOfTags[] = [];
   filteredTypes: Observable<TypesOfTags[]>;
 
-  constructor(private typesOfTagService: TypesOfTagService, private tagsService: TagService) {
+  constructor(private typesOfTagService: TypesOfTagService, private tagsService: TagService,
+    private _snackBar: MatSnackBar, private cmService: CommonMessageService) {
     this.nameFormGroup = new FormGroup({
       name: new FormControl("", [Validators.required, Validators.minLength(2)])
     });
@@ -50,16 +53,26 @@ export class AddingATagComponent implements OnInit {
             }
           });
           this.tagsService.addTagForSong(tag)
-          .subscribe();
+          .subscribe(res => this.openSnackBar(res ? this.cmService.GENERATE.ADD.SUCCESS :
+            this.cmService.GENERATE.ADD.ERROR),
+            () => this.openSnackBar(this.cmService.GENERATE.ADD.ERROR));
         }
         else {
           let tag: TagsForArticles = new TagsForArticles;
           tag.name = this.nameFormGroup.controls.name.value;
           this.tagsService.addTagForArticle(tag)
-          .subscribe();
+          .subscribe(res => this.openSnackBar(res ? this.cmService.GENERATE.ADD.SUCCESS :
+            this.cmService.GENERATE.ADD.ERROR),
+            () => this.openSnackBar(this.cmService.GENERATE.ADD.ERROR));
         }
       } catch { }
     }
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, '', {
+      duration: 2000,
+    });
   }
 
   updatedType(value): void {

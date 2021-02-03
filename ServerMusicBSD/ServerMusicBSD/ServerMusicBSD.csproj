@@ -248,6 +248,7 @@
     <Compile Include="Controllers\LastViewsController.cs" />
     <Compile Include="Controllers\LatestResponsesController.cs" />
     <Compile Include="Controllers\SearchingsOfUserController.cs" />
+    <Compile Include="Controllers\SingersToArticlesController.cs" />
     <Compile Include="Controllers\SingersToSongsController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\TypesOfTagsController.cs" />

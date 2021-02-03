@@ -58,6 +58,36 @@ namespace BL
                 return false;
             }
         }
+        public static void UpdateArticle(ArticlesTBL article, string[] singers, string[] tags)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            if (article == null)
+                return;
+            ArticlesTBL newArticle = et.ArticlesTBL.Where(a => a.id == article.id).FirstOrDefault();
+            newArticle.title = article.title;
+            newArticle.subtitle = article.subtitle;
+            newArticle.image = article.image;
+            newArticle.content = article.content;
+            et.SaveChanges();
+
+            List<SingersTBL> singersList = new List<SingersTBL>();
+            foreach (string item in singers)
+            {
+                SingersTBL singerTBL = et.SingersTBL.Where(s => s.name == item).FirstOrDefault();
+                if (singerTBL != null)
+                    singersList.Add(singerTBL);
+            }
+            SingersToArticlesBL.UpdateSingersToArticle(article.id, singersList);
+
+            List<TagsForArticlesTBL> tagsList = new List<TagsForArticlesTBL>();
+            foreach (string item in tags)
+            {
+                TagsForArticlesTBL tagTBL = et.TagsForArticlesTBL.Where(t => t.name == item).FirstOrDefault();
+                if (tagTBL != null)
+                    tagsList.Add(tagTBL);
+            }
+            TagsToArticlesBL.UpdateTagsToArticle(article.id, tagsList);
+        }
         public static string ToJewishDateString(DateTime value, string format)
         {
             var ci = CultureInfo.CreateSpecificCulture("he-IL");
@@ -70,6 +100,8 @@ namespace BL
             ArticlesTBL article = et.ArticlesTBL.Where(a => a != null && a.id == articleId).FirstOrDefault();
             if (article != null)
             {
+                SingersToArticlesBL.DeleteSingersOfArticle(article.id);
+                TagsToArticlesBL.DeleteTagsOfArticle(article.id);
                 et.ArticlesTBL.Remove(article);
                 et.SaveChanges();
                 return true;

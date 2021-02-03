@@ -11,17 +11,18 @@ namespace BL
 {
     public class CommitsToSongsBL
     {
-        public static void AddResponse(CommitsToSongsTBL response)
+        public static void AddResponse(CommitsToSongsTBL commit)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
-            if (response == null)
+            if (commit == null)
                 return;
-            if (response.content == "") {
-                response.content = null;
+            if (commit.content == "") {
+                commit.content = null;
+                commit.tested = false;
             }
             try
             {
-                et.CommitsToSongsTBL.Add(response);
+                et.CommitsToSongsTBL.Add(commit);
                 et.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)

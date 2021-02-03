@@ -150,6 +150,10 @@ export class AddingASongComponent implements OnInit {
   }
 
   formatToFolderName(singer: string): string {
+    let nonValidSigns: string = "%#@*:,/$!?^=;()`~.";
+    for (let i = 0; i < nonValidSigns.length; i++) {
+      singer = singer.trim().split(nonValidSigns[i] + "").join("");
+    }
     return singer.trim().split(' ').join('-');
   }
 

@@ -87,5 +87,59 @@ namespace BL
                 et.SaveChanges();
             }
         }
+        public static void DeleteTagFromArticle(int? articleId, int? tagId)
+        {
+            if (articleId != null && tagId != null)
+            {
+                MusicOnlineEntities et = new MusicOnlineEntities();
+                TagsToArticlesTBL result = et.TagsToArticlesTBL
+                    .Where(tta => tta.tagId == tagId && tta.articleId == articleId).FirstOrDefault();
+                if (result != null)
+                {
+                    et.TagsToArticlesTBL.Remove(result);
+                    et.SaveChanges();
+                }
+            }
+        }
+        public static void DeleteTagsOfArticle(int articleId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<TagsToArticlesTBL> tags = et.TagsToArticlesTBL
+                .Where(tts => tts != null && tts.articleId == articleId).ToList();
+            if (tags != null)
+            {
+                et.TagsToArticlesTBL.RemoveRange(tags);
+                et.SaveChanges();
+            }
+        }
+        public static void UpdateTagsToArticle(int articleId, List<TagsForArticlesTBL> tags)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<TagsToArticlesTBL> existTags = et.TagsToArticlesTBL
+                .Where(tta => tta != null && tta.articleId == articleId).ToList();
+            List<TagsForArticlesTBL> existAndSelected = new List<TagsForArticlesTBL>();
+            if (existTags != null)
+            {
+                foreach (TagsToArticlesTBL item in existTags)
+                {
+                    TagsForArticlesTBL so = tags.Where(tag => tag != null && tag.id == item.tagId).FirstOrDefault();
+                    if (so == null)
+                    {
+                        DeleteTagFromArticle(articleId, item.tagId);
+                    }
+                    else
+                    {
+                        existAndSelected.Add(so);
+                    }
+                }
+            }
+            foreach (TagsForArticlesTBL tta in tags)
+            {
+                if (tta != null && existAndSelected.Where(t => t.id == tta.id).FirstOrDefault() == null)
+                {
+                    AddTagToArticle(new TagsToArticlesTBL() { tagId = tta.id, articleId = articleId });
+                }
+            }
+        }
     }
 }

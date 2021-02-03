@@ -40,6 +40,11 @@ namespace BL
         }
         public static string formatFolderName(string name)
         {
+            string nonValidSigns = "%#@*:,/$!?^=;()`~.";
+            for (int i = 0; i < nonValidSigns.Length; i++)
+            {
+                name = name.Replace(nonValidSigns[i] + "", "");
+            }
             return name.Replace(" ", "-");
         }
     }

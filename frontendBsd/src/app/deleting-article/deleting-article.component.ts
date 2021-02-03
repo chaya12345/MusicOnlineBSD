@@ -49,10 +49,12 @@ export class DeletingArticleComponent implements OnInit {
     try {
       this.getArticleByTitle();
       this.articleService.deleteArticle(this.articleSelected.id)
-      .subscribe(res => this.openSnackBar(res ? this.cmService.DELETE_ITEM.SUCCESS :
-        this.cmService.DELETE_ITEM.FAIL),
-        () => this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
-    } catch (err) { this.openSnackBar(this.cmService.DELETE_ITEM.ERROR); }
+        .subscribe(res => {
+          this.openSnackBar(res ? this.cmService.DELETE_ITEM.SUCCESS :
+            this.cmService.DELETE_ITEM.FAIL);
+          window.location.reload();
+        }, () => this.openSnackBar(this.cmService.DELETE_ITEM.ERROR));
+    } catch { this.openSnackBar(this.cmService.DELETE_ITEM.ERROR); }
   }
 
   getArticleByTitle() {

@@ -28,7 +28,7 @@ export class AddingAArticleComponent implements OnInit {
   singersList: Singer[] = [];
   filteredSingers: Observable<Singer[]>;
   selectedSingers: Singer[] = [];
-  
+
   @ViewChild("autoTags") autoTags: ElementRef;
   filteredTags: Observable<TagsForArticles[]>;
   tagsList: TagsForArticles[] = [];
@@ -51,7 +51,7 @@ export class AddingAArticleComponent implements OnInit {
     });
     this.singersFormGroup = new FormGroup({
       singer: new FormControl(""),
-      singers: new FormControl("", [Validators.required, Validators.minLength(1)])
+      singers: new FormControl("")
     });
     this.tagsFormGroup = new FormGroup({
       tag: new FormControl(""),
@@ -71,7 +71,7 @@ export class AddingAArticleComponent implements OnInit {
       article.title = this.detailsFormGroup.controls.title.value;
       article.subtitle = this.detailsFormGroup.controls.subtitle.value;
       article.image = "for_articles/" + this.imageFile.name;
-      article.content = "articles_content" + this.formatToFolderName(article.title);
+      article.content = "articles_content/" + this.formatToFolderName(article.title) + ".txt";
       let singers: string[] = [];
       this.selectedSingers.forEach(singer => singers.push(singer.name));
       let tags: string[] = [];
@@ -81,14 +81,18 @@ export class AddingAArticleComponent implements OnInit {
       articleObj.tags = tags;
       let content: string = (document.getElementsByClassName("custom-editor")[0] as HTMLElement).innerHTML.toString();
       this.articleService.addArticle(articleObj, this.imageFile, content.toString())
-      .subscribe(res => this.openSnackBar(res ? this.cmService.GENERATE.ADD.SUCCESS :
-        this.cmService.GENERATE.ADD.ERROR),
-        () => this.openSnackBar(this.cmService.GENERATE.ADD.ERROR));
+        .subscribe(res => this.openSnackBar(res ? this.cmService.GENERATE.ADD.SUCCESS :
+          this.cmService.GENERATE.ADD.ERROR),
+          () => this.openSnackBar(this.cmService.GENERATE.ADD.ERROR));
     } catch { this.openSnackBar(this.cmService.GENERATE.ADD.ERROR); }
   }
 
-  formatToFolderName(singer: string): string {
-    return singer.trim().split(' ').join('-');
+  formatToFolderName(name: string): string {
+    let nonValidSigns: string = "%#@*:,/$!?^=;()`~.";
+    for (let i = 0; i < nonValidSigns.length; i++) {
+      name = name.trim().split(nonValidSigns[i] + "").join("");
+    }
+    return name.trim().split(' ').join('-');
   }
 
   getSingers(): void {
@@ -102,7 +106,7 @@ export class AddingAArticleComponent implements OnInit {
     }
     catch (err) { console.log(err); }
   }
-  
+
   getTags() {
     try {
       this.tagService.getTagsForArticles()

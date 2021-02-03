@@ -86,5 +86,45 @@ namespace BL
                     DeleteSingerFromArticle(singerId, item.articleId);
             }
         }
+        public static void DeleteSingersOfArticle(int articleId)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<SingersToArticlesTBL> singers = et.SingersToArticlesTBL
+                .Where(sts => sts != null && sts.articleId == articleId).ToList();
+            if (singers != null)
+            {
+                et.SingersToArticlesTBL.RemoveRange(singers);
+                et.SaveChanges();
+            }
+        }
+        public static void UpdateSingersToArticle(int articleId, List<SingersTBL> singers)
+        {
+            MusicOnlineEntities et = new MusicOnlineEntities();
+            List<SingersToArticlesTBL> existSingers = et.SingersToArticlesTBL
+                .Where(sta => sta != null && sta.articleId == articleId).ToList();
+            List<SingersTBL> existAndSelected = new List<SingersTBL>();
+            if (existSingers != null)
+            {
+                foreach (SingersToArticlesTBL item in existSingers)
+                {
+                    SingersTBL singer = singers.Where(s => s != null && s.id == item.singerId).FirstOrDefault();
+                    if (singer == null)
+                    {
+                        DeleteSingerFromArticle(articleId, item.singerId);
+                    }
+                    else
+                    {
+                        existAndSelected.Add(singer);
+                    }
+                }
+            }
+            foreach (SingersTBL singer in singers)
+            {
+                if (singer != null && existAndSelected.Where(s => s.id == singer.id).FirstOrDefault() == null)
+                {
+                    AddSingerToArticle(new SingersToArticlesTBL() { singerId = singer.id, articleId = articleId });
+                }
+            }
+        }
     }
 }

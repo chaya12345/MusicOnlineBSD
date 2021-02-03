@@ -66,7 +66,17 @@ namespace ServerMusicBSD.Controllers
                 }
                 return flag;
             }
-            return false;
+            else
+            {
+                if (articleObj != null && articleObj.article != null && articleObj.singers != null &&
+                    articleObj.tags != null)
+                {
+                    ArticlesBL.UpdateArticle(articleObj.article, articleObj.singers, articleObj.tags);
+                    saveFiles(httpRequest, articleObj.article.title);
+                    return true;
+                }
+                return false;
+            }
         }
         private void saveFiles(HttpRequest httpRequest, string title)
         {

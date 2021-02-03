@@ -18,7 +18,7 @@
       </mat-step>
       <mat-step [stepControl]="nameFormGroup">
         <form [formGroup]="nameFormGroup">
-          <ng-template matStepLabel>ערוך פרטי זמר</ng-template>
+          <ng-template matStepLabel>עדכן פרטי זמר</ng-template>
           <mat-form-field appearance="fill">
             <input matInput placeholder="שם זמר" formControlName="name" required>
             <mat-error *ngIf="nameFormGroup.controls.name.invalid">{{getNameErrorMessage()}}</mat-error>
@@ -30,7 +30,7 @@
       </mat-step>
       <mat-step [stepControl]="imageFormGroup">
         <form [formGroup]="imageFormGroup">
-          <ng-template matStepLabel>ערוך תמונה</ng-template>
+          <ng-template matStepLabel>עדכן תמונה</ng-template>
           <div class="wrap-uploading-file">
               <uploading-image (onSelect)="selectImage($event)" [image]="image"></uploading-image>
           </div>

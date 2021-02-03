@@ -8,46 +8,47 @@ import { AllTags, TagsForArticles, TagsForSongs } from '../classes/tag';
 })
 export class TagService {
 
-  baseUrl:string="https://localhost:44368/api/Tags/";
+  baseUrl: string = "https://localhost:44368/api/Tags/";
+
   constructor(private httpClient: HttpClient) { }
-  
+
   public getTagsForSongs(): Observable<TagsForSongs[]> {
-    return this.httpClient.get<TagsForSongs[]>(this.baseUrl+"GetTagsForSongs");
+    return this.httpClient.get<TagsForSongs[]>(this.baseUrl + "GetTagsForSongs");
   }
-  public addTagForSong(tag:TagsForSongs): Observable<any> {
-    return this.httpClient.post(this.baseUrl + "PostTagForSong", tag);
+  public addTagForSong(tag: TagsForSongs): Observable<boolean> {
+    return this.httpClient.post<boolean>(this.baseUrl + "PostTagForSong", tag);
   }
-  getTagNameForSong(id:number):Observable<string>{
-    return this.httpClient.get<string>(this.baseUrl+"GetTagNameForSong?id="+id);
+  getTagNameForSong(id: number): Observable<string> {
+    return this.httpClient.get<string>(this.baseUrl + "GetTagNameForSong?id=" + id);
   }
-  updateTagForSong(tag:TagsForSongs):Observable<any>{
-    return this.httpClient.put(this.baseUrl+"UpdateTagForSong",tag);
+  updateTagForSong(tag: TagsForSongs): Observable<any> {
+    return this.httpClient.put(this.baseUrl + "UpdateTagForSong", tag);
   }
-  deleteTagForSong(tagForSongId:number):Observable<any>{
-    return this.httpClient.delete(this.baseUrl+"DeleteTagForSong?tagForSongId="+tagForSongId);
-  }
-
-  /////////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-  getTagsForArticles():Observable<TagsForArticles[]>{
-    return this.httpClient.get<TagsForArticles[]>(this.baseUrl+"GetTagsForArticles");
-  }
-  public addTagForArticle(tag:TagsForArticles): Observable<any> {
-    return this.httpClient.post(this.baseUrl + "PostTagForArticle", tag);
-  }
-  getTagNameForArticle(id:number):Observable<string>{
-    return this.httpClient.get<string>(this.baseUrl+"GetTagNameForArticle?id="+id);
-  }
-  updateTagForArticle(tag:TagsForArticles):Observable<any>{
-    return this.httpClient.put(this.baseUrl+"UpdateTagForArticle",tag);
-  }
-  deleteTagForArticle(tagForArticleId:number):Observable<any>{
-    return this.httpClient.delete(this.baseUrl+"DeleteTagForArticle?tagForArticleId="+tagForArticleId);
+  deleteTagForSong(tagForSongId: number): Observable<any> {
+    return this.httpClient.delete(this.baseUrl + "DeleteTagForSong?tagForSongId=" + tagForSongId);
   }
 
   /////////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-  getAllTags():Observable<AllTags[]>{
-    return this.httpClient.get<AllTags[]>(this.baseUrl+"GetAllTags");
+  getTagsForArticles(): Observable<TagsForArticles[]> {
+    return this.httpClient.get<TagsForArticles[]>(this.baseUrl + "GetTagsForArticles");
+  }
+  public addTagForArticle(tag: TagsForArticles): Observable<boolean> {
+    return this.httpClient.post<boolean>(this.baseUrl + "PostTagForArticle", tag);
+  }
+  getTagNameForArticle(id: number): Observable<string> {
+    return this.httpClient.get<string>(this.baseUrl + "GetTagNameForArticle?id=" + id);
+  }
+  updateTagForArticle(tag: TagsForArticles): Observable<any> {
+    return this.httpClient.put(this.baseUrl + "UpdateTagForArticle", tag);
+  }
+  deleteTagForArticle(tagForArticleId: number): Observable<any> {
+    return this.httpClient.delete(this.baseUrl + "DeleteTagForArticle?tagForArticleId=" + tagForArticleId);
+  }
+
+  /////////////////////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+  getAllTags(): Observable<AllTags[]> {
+    return this.httpClient.get<AllTags[]>(this.baseUrl + "GetAllTags");
   }
 }

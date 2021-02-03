@@ -29,7 +29,9 @@ export class ArticleService {
   public addArticle(articleObj: ArticleObj, imageFile: File, content: string, isEdit: boolean = false): Observable<boolean> {
     const formData: FormData = new FormData();
     formData.append("details", JSON.stringify(articleObj));
-    formData.append("image", imageFile, imageFile.name);
+    if (isEdit && imageFile != null && imageFile != undefined) {
+      formData.append("image", imageFile, imageFile.name);
+    }
     formData.append("content", content);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Content-Type', 'multipart/form-data');

@@ -12,14 +12,18 @@ namespace BL
 {
     public class CommitsToArticlesBL
     {
-        public static void AddResponse(CommitsToArticlesTBL response)
+        public static void AddResponse(CommitsToArticlesTBL commit)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
+            if (commit == null)
+                return;
+            if (commit.content == "")
+            {
+                commit.content = null;
+                commit.tested = false;
+            }
             try { 
-                et.CommitsToArticlesTBL.Add(response);
-                ArticlesTBL article = et.ArticlesTBL.Where(a =>a!=null&& a.id == response.articleId).FirstOrDefault();
-                if (article == null)
-                    return;
+                et.CommitsToArticlesTBL.Add(commit);
                 et.SaveChanges();
             }
             catch (DbEntityValidationException dbEx)

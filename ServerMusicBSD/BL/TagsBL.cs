@@ -23,7 +23,7 @@ namespace BL
         {
             return Casts.ToTagsDTO.GetTagsForSongs(tagsToSongs);
         }
-        public static void AddTagForSong(TagsForSongsTBL tag)
+        public static bool AddTagForSong(TagsForSongsTBL tag)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try {
@@ -31,7 +31,9 @@ namespace BL
                 {
                     et.TagsForSongsTBL.Add(tag);
                     et.SaveChanges();
+                    return true;
                 }
+                return false;
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -42,6 +44,7 @@ namespace BL
                         System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                     }
                 }
+                return false;
             }
         }
         public static string GetTagNameForSong(int id)
@@ -90,7 +93,7 @@ namespace BL
                 return Casts.ToTagsDTO.GetTagsForArticles(list);
             return null;
         }
-        public static void AddTagForArticle(TagsForArticlesTBL tag)
+        public static bool AddTagForArticle(TagsForArticlesTBL tag)
         {
             MusicOnlineEntities et = new MusicOnlineEntities();
             try
@@ -99,7 +102,9 @@ namespace BL
                 {
                     et.TagsForArticlesTBL.Add(tag);
                     et.SaveChanges();
+                    return true;
                 }
+                return false;
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -110,6 +115,7 @@ namespace BL
                         System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                     }
                 }
+                return false;
             }
         }
         public static string GetTagNameForArticle(int id)

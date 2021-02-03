@@ -19,9 +19,9 @@ namespace ServerMusicBSD.Controllers
         {
             return TagsBL.GetTagsForSongs();
         }
-        public void PostTagForSong([FromBody] TagsForSongsTBL tag)
+        public bool PostTagForSong([FromBody] TagsForSongsTBL tag)
         {
-            TagsBL.AddTagForSong(tag);
+            return TagsBL.AddTagForSong(tag);
         }
         public  string GetTagNameForSong(int id)
         {
@@ -43,9 +43,9 @@ namespace ServerMusicBSD.Controllers
         {
             return TagsBL.GetTagsForArticles();
         }
-        public void PostTagForArticle([FromBody] TagsForArticlesTBL tag)
+        public bool PostTagForArticle([FromBody] TagsForArticlesTBL tag)
         {
-            TagsBL.AddTagForArticle(tag);
+            return TagsBL.AddTagForArticle(tag);
         }
         public string GetTagNameForArticle(int id)
         {
