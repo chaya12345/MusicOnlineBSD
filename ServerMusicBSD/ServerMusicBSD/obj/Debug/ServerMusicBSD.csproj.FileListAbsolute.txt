@@ -717,3 +717,16 @@ C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\obj\Debug\ServerMusicBSD.csproj.
 C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\obj\Debug\ServerMusicBSD.csproj.CopyComplete
 C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\obj\Debug\ServerMusicBSD.dll
 C:\BsdMusicOnline\ServerMusicBSD\ServerMusicBSD\obj\Debug\ServerMusicBSD.pdb
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\System.Web.Helpers.dll
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\System.Web.Mvc.dll
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\System.Web.Razor.dll
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\System.Web.WebPages.Deployment.dll
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\System.Web.WebPages.dll
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\System.Web.WebPages.Razor.dll
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\System.Web.Helpers.xml
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\System.Web.Mvc.xml
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\System.Web.Razor.xml
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\System.Web.WebPages.xml
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\System.Web.WebPages.Deployment.xml
+C:\Users\הודיה\Desktop\projectBSD\ServerMusicBSD\ServerMusicBSD\bin\System.Web.WebPages.Razor.xml
