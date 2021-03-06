@@ -11,6 +11,9 @@ import { LogInComponent } from '../log-in/log-in.component';
 import { ReportingDialogComponent } from '../reporting-dialog/reporting-dialog.component';
 import { ToolbarService } from '../services/toolbar.service';
 import { UserPlaylists } from "../classes/UserPlaylists";
+import { User } from '../classes/user';
+import { join } from 'path';
+import { UserPlaylistsService } from '../services/user-playlists.service';
 
 @Component({
   selector: 'song-details',
@@ -18,7 +21,7 @@ import { UserPlaylists } from "../classes/UserPlaylists";
   styleUrls: ['./song-details.component.css']
 })
 export class SongDetailsComponent implements OnInit {
-  
+
   song: Song;
   title: string;
   img: string;
@@ -40,7 +43,7 @@ export class SongDetailsComponent implements OnInit {
   similarSongs: Song[] = [];*/
 
   constructor(private songService: SongService, private activatedRoute: ActivatedRoute,
-    private toolbarService: ToolbarService
+    private toolbarService: ToolbarService, private userPlaylistsService: UserPlaylistsService
     /*, private httpClient: HttpClient,
     private router: Router*/) {
     /*this.navs.push("חדש במוזיקה");*/
@@ -51,6 +54,7 @@ export class SongDetailsComponent implements OnInit {
     let songId = this.activatedRoute.snapshot.queryParams.songId;
     this.getSong(songId);
     this.getSimilarResults(songId);
+    this.getUserPlaylist();
   }
 
   ngOnInit() {
@@ -69,8 +73,8 @@ export class SongDetailsComponent implements OnInit {
 
   toggleFollowUp(value: boolean): void {
     value == true ?
-    this.toolbarService.addFollowUpToSong(this.song.id) :
-    this.toolbarService.removeFollowUpToSong(this.song.id);
+      this.toolbarService.addFollowUpToSong(this.song.id) :
+      this.toolbarService.removeFollowUpToSong(this.song.id);
   }
 
   addReport() {
@@ -92,12 +96,18 @@ export class SongDetailsComponent implements OnInit {
   getSimilarResults(songId: number): void {
     try {
       this.songService.getSimilarSongs(songId)
-        .subscribe(song => { 
-          this.similarSongs = song; 
+        .subscribe(song => {
+          this.similarSongs = song;
           this.similarSongs = this.similarSongs.slice(0, 3);
         }, err => { console.log(err); });
     }
     catch (err) { console.log(err); }
+  }
+  getUserPlaylist(): void {
+    let user: User = JSON.parse(sessionStorage.getItem('user'));
+    if (user != null && user.id != null) {
+      this.userPlaylistsService.GetPlaylistsByUserId(user.id).subscribe(playlist => this.userPlaylists = playlist);
+    }
   }
 
 
