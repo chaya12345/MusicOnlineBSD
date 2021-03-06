@@ -13,9 +13,9 @@ export class HomePageComponent implements OnInit {
   constructor(private shareData: ShareDataService) { }
 
   ngOnInit() {
-    this.shareData.childEventListner().subscribe(isNavOpened =>{
-        this.isNarrow = isNavOpened;
-     });
+    this.shareData.childEventListner().subscribe(isNavOpened => {
+      this.isNarrow = isNavOpened;
+    });
   }
 
 }

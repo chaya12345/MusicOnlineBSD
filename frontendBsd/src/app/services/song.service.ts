@@ -81,7 +81,7 @@ export class SongService {
   public addSong(songObj: SongObj, imageFile: File, songFile: File, mailDetails: MailDetails, content: string, isEdit: boolean = false): Observable<boolean> {
     const formData: FormData = new FormData();
     formData.append("details", JSON.stringify(songObj));
-    if (isEdit) {
+    if (!isEdit) {
       if (songFile != undefined && songFile != null) {
         formData.append("song", songFile, songFile.name);
       }
@@ -92,8 +92,8 @@ export class SongService {
     formData.append("content", content);
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Content-Type', 'multipart/form-data');
-    return this.httpClient.post<boolean>(this.baseUrl + "AddSong?username=" + (!isEdit ? mailDetails.username +
-      "&password=" + mailDetails.password + "&email=" + mailDetails.email : null + "&password=" + null + "&email=" + null)
+    return this.httpClient.post<boolean>(this.baseUrl + "AddSong?username=" + (!isEdit ? (mailDetails.username +
+      "&password=" + mailDetails.password + "&email=" + mailDetails.email) : null + "&password=" + null + "&email=" + null)
       + "&isEdit=" + isEdit, formData);
   }
   public deleteSong(songId: number): Observable<boolean> {

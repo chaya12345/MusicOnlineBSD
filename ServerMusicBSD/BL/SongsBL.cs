@@ -540,6 +540,8 @@ namespace BL
             songTBL.file_location = song.file_location;
             songTBL.content = song.content;
             songTBL.isPerformance = song.isPerformance;
+            if (songTBL.isPerformance == null)
+                songTBL.isPerformance = false;
             et.SaveChanges();
 
             List<SingersTBL> singersList = new List<SingersTBL>();

@@ -32,7 +32,7 @@ export class AddingAArtistComponent implements OnInit {
     }
   }
   
-  onSubmit(): void {
+  confirm(): void {
     try {
       if (this.artistDetails.valid) {
         let artist: Artist = new Artist;

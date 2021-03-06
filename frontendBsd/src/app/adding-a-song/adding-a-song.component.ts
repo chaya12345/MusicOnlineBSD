@@ -110,7 +110,7 @@ export class AddingASongComponent implements OnInit {
       song.file_location = folder + "\\" + this.songFile.name;
       song.image_location = "for_songs/" + folder + "/" + this.imageFile.name;
       let content: string = (document.getElementsByClassName("custom-editor")[0] as HTMLElement).innerHTML.toString();
-      song.content = "songs_content/" + folder + "/" + this.formatToFolderName(song.name);
+      song.content = "songs_content/" + folder + "/" + this.formatToFolderName(song.name) + ".txt";
       songObj.song = song;
       let singers: string[] = [];
       this.selectedSingers.forEach(singer => {

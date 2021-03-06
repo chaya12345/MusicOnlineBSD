@@ -17,6 +17,7 @@ export class FilteredSongsComponent implements OnInit {
   title: string;
   subtitle: string;
   img: string;
+  websiteName = "מיוזיק online";
 
   constructor(private itemsByParameterService: ItemsByParameterService, private cdr: ChangeDetectorRef,
     private activatedRoute: ActivatedRoute, private searchingOfUserService: SearchingsOfUserService) {
@@ -36,6 +37,7 @@ export class FilteredSongsComponent implements OnInit {
         this.cdr.detectChanges();
         this.items.sort((a, b) => Math.round(new Date(b.date).getTime() - new Date(a.date).getTime()));
         this.navs.push(filter);
+        document.getElementById("tabTitle").innerText = "חיפוש של " + filter + " | " + this.websiteName;
       }, err => console.log(err))
     } catch (err) { console.log(err); }
     try {

@@ -10,9 +10,12 @@ import { UsersService } from '../services/users.service';
 export class UserAreaComponent implements OnInit {
 
   user: User;
+  sectionName = "איזור אישי";
+  websiteName = "מיוזיק online";
 
   constructor(private userService: UsersService) {
     this.getUserById();
+    document.getElementById("tabTitle").innerText = this.sectionName + " | " + this.websiteName;
   }
 
   ngOnInit(): void {

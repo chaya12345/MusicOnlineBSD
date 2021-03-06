@@ -17,10 +17,13 @@ export class PlaylistsComponent implements OnInit {
   subtitle: string = "";
   img: string = "";
   icon: string = "";
+  sectionName = "הפלייליסטים";
+  websiteName = "מיוזיק online";
 
   constructor(private playlistsService: PlaylistsService, private cdr: ChangeDetectorRef,
     private topicsService: TopicsService) { 
-    this.navs.push("הפלייליסטים");
+    this.navs.push(this.sectionName);
+    document.getElementById("tabTitle").innerText = this.sectionName + " | " + this.websiteName;
   }
 
   ngOnInit() {

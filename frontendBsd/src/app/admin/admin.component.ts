@@ -7,7 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  sectionName = "איזור מנהל";
+  websiteName = "מיוזיק online";
+
+  constructor() {
+    document.getElementById("tabTitle").innerText = this.sectionName + " | " + this.websiteName;
+  }
 
   ngOnInit(): void {
   }

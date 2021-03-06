@@ -18,9 +18,12 @@ export class NewSongsComponent implements OnInit {
 
   constructor(private songService: SongService, private router: Router) {
     try {
-      this.songService.getSongs().subscribe(song => { this.newSongsList = song; this.filter(); }, err => { console.log(err); });
+      this.songService.getSongs().subscribe(song => {
+        this.newSongsList = song; this.filter();
+      }, err => { console.log(err); });
     }
     catch (err) { console.log(err); }
+    document.getElementById("tabTitle").innerText = "מיוזיק online | בכל סגנון שתבחרו";
   }
 
   ngOnInit(): void {

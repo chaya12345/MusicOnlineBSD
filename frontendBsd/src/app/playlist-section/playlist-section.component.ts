@@ -19,6 +19,7 @@ export class PlaylistSectionComponent implements OnInit {
   loaded: boolean = false;
   songsList: Song[];
   playingObj: AudioPlaying = new AudioPlaying();
+  websiteName = "מיוזיק online";
 
   constructor(private activatedRoute: ActivatedRoute, private playlistService: PlaylistsService,
     private cdr: ChangeDetectorRef, private songService: SongService, private songsToPlaylistsSystemService: SongsToPlaylistsSystemService) {
@@ -28,6 +29,7 @@ export class PlaylistSectionComponent implements OnInit {
           this.playlist = playlist;
           this.loaded = true;
           this.navs.push(this.playlist.name);
+          document.getElementById("tabTitle").innerText = "פלייליסט " + this.playlist.name + " | " + this.websiteName;
           this.cdr.detectChanges();
         },
           err => console.log(err));

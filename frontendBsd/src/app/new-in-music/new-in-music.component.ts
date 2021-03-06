@@ -16,11 +16,14 @@ export class NewInMusicComponent implements OnInit {
   icon: string;
 
   navs: string[] = [];
+  sectionName = "חדש במוזיקה";
+  websiteName = "מיוזיק online";
 
   constructor(private songService: SongService, private cdr: ChangeDetectorRef,
     private topicService: TopicsService) {
     this.getSongs();
-    this.navs.push("חדש במוזיקה");
+    this.navs.push(this.sectionName);
+    document.getElementById("tabTitle").innerText = this.sectionName + " | " + this.websiteName;
   }
 
   ngOnInit(): void {

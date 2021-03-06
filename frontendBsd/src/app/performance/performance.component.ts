@@ -14,12 +14,15 @@ export class PerformanceComponent implements OnInit {
   topic: Topics = new Topics;
   navs: string[] = [];
   songs: Song[] = [];
+  sectionName = "הופעות";
+  websiteName = "מיוזיק online";
 
   constructor(private topicsService: TopicsService, private songService: SongService) {
     try {
       this.topicsService.getTopic("הופעות").subscribe(t => this.topic = t, err => console.log(err));
     } catch (err) { console.log(err); }
-    this.navs.push("הופעות");
+    this.navs.push(this.sectionName);
+    document.getElementById("tabTitle").innerText = this.sectionName + " | " + this.websiteName;
     try {
       this.songService.getPerformances().subscribe(songs => this.songs = songs, err => console.log(err));
     } catch (err) { console.log(err); }

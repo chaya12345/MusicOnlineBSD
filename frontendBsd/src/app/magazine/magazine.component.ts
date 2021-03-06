@@ -14,9 +14,12 @@ export class MagazineComponent implements OnInit {
   img: string = "";
   icon: string = "";
   href: string = "";
+  sectionName = "מגזין";
+  websiteName = "מיוזיק online";
 
   constructor(private topicsService: TopicsService) {
-    this.navs.push("מגזין");
+    this.navs.push(this.sectionName);
+    document.getElementById("tabTitle").innerText = this.sectionName + " | " + this.websiteName;
   }
 
   ngOnInit() {

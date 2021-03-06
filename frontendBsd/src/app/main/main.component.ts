@@ -29,6 +29,7 @@ export class MainComponent implements OnInit {
   text: string = "";
   views: number = 0;
   likes: number = 0;
+  websiteName = "מיוזיק online";
 
   constructor(private commitToSongsService: CommitsToSongsService,
     private tagsToSongsService: TagsToSongsService, private cdr: ChangeDetectorRef,
@@ -42,9 +43,11 @@ export class MainComponent implements OnInit {
     try {
       if (this.activatedRoute.snapshot.routeConfig.path.includes("song")) {
         this.navigate = "song";
+        document.getElementById("tabTitle").innerText = this.song.title + " | " + this.websiteName;
       }
       else if (this.activatedRoute.snapshot.routeConfig.path.includes("article")) {
         this.navigate = "article";
+        document.getElementById("tabTitle").innerText = this.article.title + " | " + this.websiteName;
       }
       this.getData();
       this.getTags();
@@ -59,8 +62,6 @@ export class MainComponent implements OnInit {
       this.img = '../../assets/images/' + this.song.image_location;
       this.type = this.song.type;
       this.text = '../../assets/text/' + this.song.content;
-      console.log("text:");
-      console.log(this.text);
       this.views = this.song.count_views;
       this.likes = this.song.count_like;
       this.loaded = true;
@@ -71,14 +72,6 @@ export class MainComponent implements OnInit {
       this.text = '../../assets/text/' + this.article.content;
       this.views = this.article.count_views;
       this.likes = this.article.count_like;
-      // if (this.article.video != null) {
-      //   this.file = '../../assets/songs/' + this.article.video;
-      //   this.type = "video";
-      // }
-      // if (this.article.audio1 != null) {
-      //   this.file = this.article.audio1;
-      //   this.type = "audio";
-      // }
       this.loaded = true;
     }
   }

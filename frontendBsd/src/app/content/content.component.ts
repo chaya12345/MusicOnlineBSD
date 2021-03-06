@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContentComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    document.getElementById("tabTitle").innerText = "מיוזיק online | בכל סגנון שתבחרו";
+  }
 
   ngOnInit(): void {
+    document.getElementById("tabTitle").innerText = "מיוזיק online | בכל סגנון שתבחרו";
   }
 
 }

@@ -13,8 +13,10 @@ export class ParadeComponent implements OnInit {
   isActive: boolean = null;
   topic: Topics = new Topics();
   navs: string[] = [];
+  sectionName = "המצעד";
+  websiteName = "מיוזיק online";
 
-  constructor(private topicsService: TopicsService, private paradeService: ParadeService) { 
+  constructor(private topicsService: TopicsService, private paradeService: ParadeService) {
     this.getDetailsTopic();
     this.checkIsParadeActive();
   }
@@ -26,20 +28,19 @@ export class ParadeComponent implements OnInit {
     try {
       this.topicsService.getTopic("המצעד").subscribe(t => {
         this.topic.title = t.title; this.topic.subtitle = t.subtitle;
-       // this.topic.icon = t.icon; this.topic.img = t.img;
+        document.getElementById("tabTitle").innerText = this.sectionName + " | " + this.websiteName;
       }, err => console.log(err));
     } catch (err) { console.log(err); }
-    this.navs.push("המצעד");
+    this.navs.push(this.sectionName);
   }
 
   checkIsParadeActive(): void {
     try {
       this.paradeService.getLastParade()
-      .subscribe(result => {
-        this.isActive = result.isActive == true ? true : false
-        console.log(this.isActive + ">>>>>>>>>>>>>>>>>>")
-      },
-        err => console.log(err));
+        .subscribe(result => {
+          this.isActive = result.isActive;
+        },
+          err => console.log(err));
     } catch (err) { console.log(err); }
   }
 

@@ -21,12 +21,12 @@
 
             <div *ngIf="!isUserConnected" class="notConnected">
                 <mat-icon>tag_faces</mat-icon>
-                <span>שלום לך, ממליצים להתחבר לאתר!</span>
+                <span>שלום לך, ממליצים <strong (click)="openLoginDialog()">להתחבר</strong> לאתר!</span>
             </div>
 
             <div class="footer-updatings-board">
-                <p><strong>לוח העדכונים מתעדכן</strong> והתוכן בו משתנה.<br>
-                אם תרצה לשמור עדכון מסויים, תוכל לנעוץ אותו ב'נעץ' שבצד שמאל למעלה של הפריט.</p>
+                <p><strong>שים לב!</strong> לוח העדכונים מתעדכן מידי יום,<br>
+                אם ברצונך לשמור עדכון, תוכל לנעוץ אותו ב'נעץ' שבצד שמאל למעלה של הפריט.</p>
                 <p *ngIf="isUserConnected"><button mat-icon-button><mat-icon>add</mat-icon></button>הוסף פריט לרשימת ה'נעוצים'</p>
             </div>
         </div>

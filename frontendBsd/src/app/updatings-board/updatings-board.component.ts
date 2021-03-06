@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { ItemsWithPinnedToUser } from '../classes/itemsWithPinnedToUser';
 import { User } from '../classes/user';
+import { LogInComponent } from '../log-in/log-in.component';
 import { CommonMessageService } from '../services/common-message.service';
 import { SearchingOfUser, SearchingsOfUserService } from '../services/searchings-of-user.service';
 import { UpdatingToUser, UsersService } from '../services/users.service';
@@ -18,12 +19,10 @@ export class UpdatingsBoardComponent implements OnInit {
   updatings: ItemsWithPinnedToUser[] = [];
   pinnedItems: ItemsWithPinnedToUser[] = [];
   notPinnedItems: ItemsWithPinnedToUser[] = [];
-  // updatings: UpdatingToUser[] = [];
-  // pinnedItems: UpdatingToUser[] = [];
-  // notPinnedItems: UpdatingToUser[] = [];
 
   constructor(private userService: UsersService, private _snackBar: MatSnackBar,
-    private commonMessage: CommonMessageService, private searchingsOfUserService: SearchingsOfUserService) {
+    private commonMessage: CommonMessageService, private searchingsOfUserService: SearchingsOfUserService,
+    private dialog: MatDialog) {
     this.checkIsUserConnected();
   }
 
@@ -48,17 +47,6 @@ export class UpdatingsBoardComponent implements OnInit {
         this.sortUpdatingsInMatchLists();
       },err=>console.log(err))
     } catch (err) { console.log(err); }
-    // try {
-    //   this.userService.getUpdatings(userId)
-    //     .subscribe(updatings => {
-    //       this.updatings = updatings;
-    //       this.updatings.sort((a, b) =>
-    //         Math.round(new Date(b.date).getTime() -
-    //           new Date(a.date).getTime()));
-    //         this.sortUpdatingsInMatchLists();
-    //       console.log(updatings);
-    //     }, err => console.log(err));
-    // } catch (err) { console.log(err); }
   }
 
   togglePinning(updating: UpdatingToUser): void {
@@ -83,31 +71,15 @@ export class UpdatingsBoardComponent implements OnInit {
     });
   }
 
-  // togglePinnedItem(updating: UpdatingToUser): void {
-  //   if (!updating.isPinned) {
-  //     try {
-  //       this.userService.addPinnedItemToUser(updating, this.user.id)
-  //         .subscribe(result => {
-  //           this.openSnackBar(result ? this.commonMessage.GENERATE.ADD.SUCCESS :
-  //             this.commonMessage.GENERATE.ADD.ERROR);
-  //         }, () => this.openSnackBar(this.commonMessage.GENERATE.ADD.ERROR))
-  //     } catch { this.openSnackBar(this.commonMessage.GENERATE.ADD.ERROR); }
-  //   }
-  //   else {
-  //     try {
-  //       this.userService.deletePinnedItemToUser(this.user.id, updating.id, updating.type)
-  //         .subscribe(result => {
-  //           this.openSnackBar(result ? this.commonMessage.GENERATE.REMOVE.SUCCESS :
-  //             this.commonMessage.GENERATE.REMOVE.ERROR);
-  //         })
-  //     } catch { this.openSnackBar(this.commonMessage.GENERATE.REMOVE.ERROR); }
-  //   }
-  // }
-
-  // openSnackBar(message: string) {
-  //   this._snackBar.open(message, '', {
-  //     duration: 2000,
-  //   });
-  // }
+  openLoginDialog() {
+    try {
+      const dialogRef = this.dialog.open(LogInComponent, {
+        width: '400px',
+        data: {}
+      });
+      dialogRef.afterClosed().subscribe(result => {
+      });
+    } catch (err) { console.log(err); }
+  }
 
 }
